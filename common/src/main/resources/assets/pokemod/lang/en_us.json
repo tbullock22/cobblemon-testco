@@ -47,6 +47,7 @@
   "pokemod.your_pc": "Your PC",
   "pokemod.command.pokespawn.invalid-pokemon": "Invalid pokemon name",
   "pokemod.command.pokespawn.invalid-move": "Invalid move name",
+  "pokemod.command.playvisual.invalid-pattern": "Invalid pattern",
   "itemGroup.pokemod.pokeball": "Poké Balls",
   "pokemod.ui.pokenav.title": "PokeNav",
   "pokemod.ui.summary.title": "Summary",
