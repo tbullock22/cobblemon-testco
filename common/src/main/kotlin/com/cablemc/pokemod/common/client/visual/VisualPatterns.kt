@@ -14,8 +14,5 @@ object VisualPatterns {
     }
 
     fun getByName(name: String) = allPatterns[name.lowercase()]
-
-    fun getPatterns(): Iterable<String> {
-        return allPatterns.keys.asIterable()
-    }
+    fun getPatterns(): Collection<String> = allPatterns.keys.toSet()
 }

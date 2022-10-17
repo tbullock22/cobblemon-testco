@@ -29,7 +29,7 @@ class PatternArgumentType: ArgumentType<VisualPattern> {
     companion object {
 
         val EXAMPLES: List<String> = listOf("orbit")
-        val INVALID_PATTERN = Text.translatable("pokemod.command.playvisual.invalid-pattern")
+        val INVALID_PATTERN: Text? = Text.translatable("pokemod.command.playvisual.invalid-pattern")
 
         fun pattern() = PatternArgumentType()
 

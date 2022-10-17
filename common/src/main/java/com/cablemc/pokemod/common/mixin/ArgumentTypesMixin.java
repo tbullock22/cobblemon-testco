@@ -35,6 +35,7 @@ public class ArgumentTypesMixin {
         register(registry, "pokemod:spawnbucket", SpawnBucketArgumentType.class, ConstantArgumentSerializer.of(SpawnBucketArgumentType.Companion::spawnBucket));
         register(registry, "pokemod:move", MoveArgumentType.class, ConstantArgumentSerializer.of(MoveArgumentType.Companion::move));
         register(registry, "pokemod:partyslot", PartySlotArgumentType.class, ConstantArgumentSerializer.of(PartySlotArgumentType.Companion::partySlot));
+        register(registry, "pokemod:pattern", PatternArgumentType.class, ConstantArgumentSerializer.of(PatternArgumentType.Companion::pattern));
     }
 
 }
