@@ -10,6 +10,7 @@ package com.cablemc.pokemod.common.events
 
 import com.cablemc.pokemod.common.Pokemod
 import com.cablemc.pokemod.common.battles.BattleRegistry
+import com.cablemc.pokemod.common.client.visual.Visuals
 import com.cablemc.pokemod.common.util.party
 import net.minecraft.server.MinecraftServer
 
@@ -18,6 +19,7 @@ object ServerTickHandler {
 
     fun onTick(server: MinecraftServer) {
         Pokemod.bestSpawner.spawnerManagers.forEach { it.onServerTick() }
+        Visuals.tick()
         BattleRegistry.tick()
 
         secondsTick++
