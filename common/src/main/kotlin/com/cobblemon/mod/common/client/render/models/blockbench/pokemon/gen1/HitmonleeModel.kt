@@ -8,6 +8,8 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1
 
+import com.cobblemon.mod.common.client.render.models.blockbench.animation.BipedWalkAnimation
+import com.cobblemon.mod.common.client.render.models.blockbench.frame.BipedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
@@ -15,8 +17,11 @@ import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
-class HitmonleeModel(root: ModelPart) : PokemonPoseableModel() {
+class HitmonleeModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
     override val rootPart = root.registerChildWithAllChildren("hitmonlee")
+
+    override val leftLeg = getPart("leftleg")
+    override val rightLeg = getPart("rightleg")
 
     override val portraitScale = 1.0F
     override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
@@ -40,6 +45,7 @@ class HitmonleeModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
+                BipedWalkAnimation(this, periodMultiplier = .8F, amplitudeMultiplier = 1.1F),
                 bedrock("0106_hitmonlee/hitmonlee", "ground_idle")
                 //bedrock("0106_hitmonlee/hitmonlee", "ground_walk")
             )
