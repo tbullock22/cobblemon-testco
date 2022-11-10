@@ -1,0 +1,28 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.elekid.ground_idle": {
+			"loop": true,
+			"bones": {
+				"rightleg": {
+					"rotation": [0, 5, 0]
+				},
+				"leftleg": {
+					"rotation": [0, -5, 0]
+				},
+				"rightarm": {
+					"rotation": [0, 10, -45]
+				},
+				"righthand": {
+					"rotation": [0, -30, 0]
+				},
+				"leftarm": {
+					"rotation": [0, -10, 45]
+				},
+				"lefthand": {
+					"rotation": [0, 30, 0]
+				}
+			}
+		}
+	}
+}

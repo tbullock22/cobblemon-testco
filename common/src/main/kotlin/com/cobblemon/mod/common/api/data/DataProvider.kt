@@ -44,4 +44,5 @@ interface DataProvider {
      */
     fun sync(player: ServerPlayerEntity)
 
+    fun doAfterSync(player: ServerPlayerEntity, action: () -> Unit)
 }

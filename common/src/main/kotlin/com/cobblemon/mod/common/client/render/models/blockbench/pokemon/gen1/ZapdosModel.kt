@@ -11,11 +11,11 @@ package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
-import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
-import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
+
 class ZapdosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("zapdos")
     override val head = getPart("head")
@@ -27,29 +27,38 @@ class ZapdosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
 
     lateinit var standing: PokemonPose
-    lateinit var walk: PokemonPose
+    lateinit var hover: PokemonPose
+    lateinit var fly: PokemonPose
 
     override fun registerPoses() {
         standing = registerPose(
             poseName = "standing",
-            poseTypes = STATIONARY_POSES + UI_POSES,
-            transformTicks = 10,
+            poseType = PoseType.STAND,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("0145_zapdos/zapdos", "ground_idle")
+                singleBoneLook(),
+                bedrock("0145_zapdos/zapdos", "ground_idle")
             )
         )
 
-        walk = registerPose(
-            poseName = "walk",
-            poseTypes = MOVING_POSES,
-            transformTicks = 10,
+        hover = registerPose(
+            poseName = "hover",
+            poseTypes = UI_POSES + PoseType.HOVER + PoseType.FLOAT,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("0145_zapdos/zapdos", "ground_walk")
+                singleBoneLook(),
+                bedrock("0145_zapdos/zapdos", "air_idle")
+            )
+        )
+
+        fly = registerPose(
+            poseName = "fly",
+            poseTypes = setOf(PoseType.FLY, PoseType.SWIM),
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("0145_zapdos/zapdos", "air_fly")
             )
         )
     }
+
 
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,

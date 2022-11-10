@@ -91,7 +91,7 @@ open class PokemonStoreManager {
         return null
     }
 
-    open fun onPlayerLogin(player: ServerPlayerEntity) {
+    open fun onPlayerDataSync(player: ServerPlayerEntity) {
         val parties = getParties(player.uuid)
         parties.forEach { party -> party.sendTo(player) }
         getPCs(player.uuid).forEach { pc -> pc.sendTo(player) }

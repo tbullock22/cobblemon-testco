@@ -165,6 +165,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1.Zub
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.BellossomModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.BlisseyModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.CleffaModel
+import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.CrobatModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.ElekidModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.EspeonModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.HitmontopModel
@@ -319,6 +320,7 @@ object PokemonModelRepository : ModelRepository<PokemonEntity>() {
         inbuilt("bellsprout", ::BellsproutModel)
         inbuilt("chansey", ::ChanseyModel)
         inbuilt("cloyster", ::CloysterModel)
+        inbuilt("crobat", ::CrobatModel)
         inbuilt("cubone", ::CuboneModel)
         inbuilt("dewgong", ::DewgongModel)
         inbuilt("ditto", ::DittoModel)

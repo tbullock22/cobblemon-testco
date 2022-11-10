@@ -1,0 +1,149 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.pidgeotto.ground_idle": {
+			"loop": true,
+			"bones": {
+				"tail": {
+					"rotation": [30, 0, 0]
+				},
+				"wing_left": {
+					"position": [0, 0, -1]
+				},
+				"wing_right": {
+					"position": [0, 0, -1]
+				}
+			}
+		},
+		"animation.pidgeotto.air_idle": {
+			"loop": true,
+			"bones": {
+				"pidgeotto": {
+					"rotation": [-10, 0, 0]
+				},
+				"head": {
+					"rotation": [7, 0, 0]
+				},
+				"tail": {
+					"rotation": [22.5, 0, 0]
+				},
+				"knee_left": {
+					"rotation": [-15, 0, 0],
+					"position": [0, 1.5, 0]
+				},
+				"foot_left": {
+					"rotation": [15, 0, 0]
+				},
+				"toe_left_back": {
+					"rotation": [-45, 0, 0]
+				},
+				"toe_left_front": {
+					"rotation": [45, 0, 0]
+				},
+				"toe_left_front2": {
+					"rotation": [45, 0, 0]
+				},
+				"knee_right": {
+					"rotation": [-15, 0, 0],
+					"position": [0, 1.5, 0]
+				},
+				"foot_right": {
+					"rotation": [15, 0, 0]
+				},
+				"toe_right_back": {
+					"rotation": [-45, 0, 0]
+				},
+				"toe_right_front": {
+					"rotation": [45, 0, 0]
+				},
+				"toe_right_front2": {
+					"rotation": [45, 0, 0]
+				},
+				"wing_left": {
+					"rotation": [-45, -30, -100]
+				},
+				"wing_left_tip": {
+					"rotation": [-20, 0, 0]
+				},
+				"wing_right": {
+					"rotation": [-45, 30, 100]
+				},
+				"wing_right_tip": {
+					"rotation": [-20, 0, 0]
+				},
+				"leg_left": {
+					"position": [0, 0.5, 0]
+				},
+				"leg_right": {
+					"position": [0, 0.5, 0]
+				}
+			}
+		},
+		"animation.pidgeotto.air_fly": {
+			"loop": true,
+			"bones": {
+				"pidgeotto": {
+					"rotation": [-10, 0, 0]
+				},
+				"head": {
+					"rotation": [-5, 0, 0]
+				},
+				"knee_left": {
+					"rotation": [-15, 0, 0],
+					"position": [0, 1.5, 0]
+				},
+				"foot_left": {
+					"rotation": [15, 0, 0]
+				},
+				"toe_left_back": {
+					"rotation": [-45, 0, 0]
+				},
+				"toe_left_front": {
+					"rotation": [45, 0, 0]
+				},
+				"toe_left_front2": {
+					"rotation": [45, 0, 0]
+				},
+				"knee_right": {
+					"rotation": [-15, 0, 0],
+					"position": [0, 1.5, 0]
+				},
+				"foot_right": {
+					"rotation": [15, 0, 0]
+				},
+				"toe_right_back": {
+					"rotation": [-45, 0, 0]
+				},
+				"toe_right_front": {
+					"rotation": [45, 0, 0]
+				},
+				"toe_right_front2": {
+					"rotation": [45, 0, 0]
+				},
+				"wing_left": {
+					"rotation": [-45, -15, -90]
+				},
+				"wing_left_tip": {
+					"rotation": [-30, 0, 0]
+				},
+				"wing_right": {
+					"rotation": [-45, 15, 90]
+				},
+				"wing_right_tip": {
+					"rotation": [-30, 0, 0]
+				},
+				"leg_left": {
+					"rotation": [15, 0, 0],
+					"position": [0, 0.5, 0]
+				},
+				"leg_right": {
+					"rotation": [15, 0, 0],
+					"position": [0, 0.5, 0]
+				},
+				"body": {
+					"rotation": [15, 0, 0]
+				}
+			}
+		}
+	}
+}

@@ -18,7 +18,7 @@
 				{
 					"name": "body",
 					"parent": "piplup",
-					"pivot": [0, 0, 0]
+					"pivot": [0, 6, 0]
 				},
 				{
 					"name": "torso",
@@ -32,7 +32,7 @@
 				{
 					"name": "head",
 					"parent": "torso",
-					"pivot": [0, 8, 0],
+					"pivot": [0, 8, -1],
 					"cubes": [
 						{"origin": [-5, 8, -4], "size": [10, 8, 8], "uv": [0, 0]},
 						{"origin": [-1.5, 10, -5], "size": [3, 2, 1], "uv": [8, 28]}

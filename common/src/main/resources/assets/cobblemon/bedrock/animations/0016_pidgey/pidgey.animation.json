@@ -30,10 +30,10 @@
 			"loop": true,
 			"bones": {
 				"wing_left": {
-					"rotation": [5, 0, -15]
+					"rotation": [0, -5, -15]
 				},
 				"wing_left3": {
-					"rotation": [0, -22.5, 0]
+					"rotation": [0, -25, 0]
 				},
 				"neck": {
 					"rotation": [11, 0, 0]
@@ -42,7 +42,7 @@
 					"rotation": [-10, 0, 0]
 				},
 				"wing_left2": {
-					"rotation": [0, 0, 0]
+					"rotation": [0, 10, 0]
 				},
 				"leg_right": {
 					"rotation": [22.5, 0, 0]
@@ -87,10 +87,10 @@
 					"rotation": [-10, 0, 0]
 				},
 				"wing_right": {
-					"rotation": [5, 0, 15]
+					"rotation": [0, 5, 15]
 				},
 				"wing_right3": {
-					"rotation": [0, 22.5, 0]
+					"rotation": [0, 25, 0]
 				},
 				"toe_back_right": {
 					"rotation": [-45, 0, 0]
@@ -106,6 +106,9 @@
 				},
 				"claw_outer_left": {
 					"rotation": [45, 0, 0]
+				},
+				"wing_right2": {
+					"rotation": [0, -10, 0]
 				}
 			}
 		},
@@ -116,7 +119,7 @@
 					"rotation": [0.5, 0, -5]
 				},
 				"wing_left3": {
-					"rotation": [0, -22.5, 0]
+					"rotation": [0, -15, 0]
 				},
 				"torso": {
 					"rotation": [0, 0, 0]
@@ -195,7 +198,7 @@
 					"rotation": [0.5, 0, 5]
 				},
 				"wing_right3": {
-					"rotation": [0, 22.5, 0]
+					"rotation": [0, 15, 0]
 				}
 			}
 		}

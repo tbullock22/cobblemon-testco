@@ -11,11 +11,11 @@ package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
-import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
-import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
+
 class KabutopsModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("kabutops")
     override val head = getPart("head")
@@ -28,25 +28,43 @@ class KabutopsModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
+    lateinit var float: PokemonPose
+    lateinit var swim: PokemonPose
 
     override fun registerPoses() {
         standing = registerPose(
             poseName = "standing",
-            poseTypes = STATIONARY_POSES + UI_POSES,
-            transformTicks = 10,
+            poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("0141_kabutops/kabutops", "ground_idle")
+                singleBoneLook(),
+                bedrock("0141_kabutops/kabutops", "ground_idle")
             )
         )
 
         walk = registerPose(
             poseName = "walk",
-            poseTypes = MOVING_POSES,
-            transformTicks = 10,
+            poseType = PoseType.WALK,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("0141_kabutops/kabutops", "ground_walk")
+                singleBoneLook(),
+                bedrock("0141_kabutops/kabutops", "ground_idle")
+            )
+        )
+
+        float = registerPose(
+            poseName = "float",
+            poseTypes = setOf(PoseType.FLOAT, PoseType.HOVER),
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("0141_kabutops/kabutops", "water_idle")
+            )
+        )
+
+        swim = registerPose(
+            poseName = "swim",
+            poseTypes = setOf(PoseType.SWIM, PoseType.FLOAT),
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("0141_kabutops/kabutops", "water_swim")
             )
         )
     }

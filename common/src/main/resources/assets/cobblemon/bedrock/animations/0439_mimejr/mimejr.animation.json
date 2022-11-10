@@ -1,0 +1,28 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.mimejr.ground_idle": {
+			"loop": true,
+			"bones": {
+				"arm_right": {
+					"rotation": [0, 0, -15]
+				},
+				"arm_right2": {
+					"rotation": [0, 0, 10]
+				},
+				"hand_right": {
+					"rotation": [0, 0, 5]
+				},
+				"arm_left": {
+					"rotation": [0, 0, 15]
+				},
+				"arm_left2": {
+					"rotation": [0, 0, -10]
+				},
+				"hand_left": {
+					"rotation": [0, 0, -5]
+				}
+			}
+		}
+	}
+}

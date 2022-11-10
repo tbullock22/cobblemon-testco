@@ -59,7 +59,7 @@
 				{
 					"name": "leftarm",
 					"parent": "body",
-					"pivot": [3.5, 6, -0.25],
+					"pivot": [3.5, 7, -0.25],
 					"cubes": [
 						{"origin": [3.5, 5, -1.75], "size": [4, 2, 3], "uv": [0, 33]}
 					]
@@ -67,7 +67,7 @@
 				{
 					"name": "rightarm",
 					"parent": "body",
-					"pivot": [-3.5, 6, -0.25],
+					"pivot": [-3.5, 7, -0.25],
 					"cubes": [
 						{"origin": [-7.5, 5, -1.75], "size": [4, 2, 3], "uv": [32, 9]}
 					]

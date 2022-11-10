@@ -27,6 +27,50 @@
 				},
 				"tail3": {
 					"rotation": [-10, 0, 0]
+				},
+				"body": {
+					"position": [0, 0, 0]
+				}
+			}
+		},
+		"animation.poipole.ground_walk": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": [-5, 0, 0]
+				},
+				"arm_right": {
+					"rotation": [30, -5, -30]
+				},
+				"arm_right2": {
+					"rotation": [0, 0, 15]
+				},
+				"arm_left": {
+					"rotation": [30, -5, 30]
+				},
+				"arm_left2": {
+					"rotation": [0, 0, -15]
+				},
+				"tail": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail2": {
+					"rotation": [-5, 0, 0]
+				},
+				"tail3": {
+					"rotation": [-5, 0, 0]
+				},
+				"body": {
+					"rotation": [15, 0, 0]
+				},
+				"neck": {
+					"rotation": [-5, 0, 0]
+				},
+				"leg_right": {
+					"rotation": [10, 0, 0]
+				},
+				"leg_left": {
+					"rotation": [10, 0, 0]
 				}
 			}
 		}

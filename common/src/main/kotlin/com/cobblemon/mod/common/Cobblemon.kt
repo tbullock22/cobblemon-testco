@@ -15,8 +15,8 @@ import com.cobblemon.mod.common.api.drop.CommandDropEntry
 import com.cobblemon.mod.common.api.drop.DropEntry
 import com.cobblemon.mod.common.api.drop.ItemDropEntry
 import com.cobblemon.mod.common.api.events.CobblemonEvents.BATTLE_VICTORY
+import com.cobblemon.mod.common.api.events.CobblemonEvents.DATA_SYNCHRONIZED
 import com.cobblemon.mod.common.api.events.CobblemonEvents.EVOLUTION_COMPLETE
-import com.cobblemon.mod.common.api.events.CobblemonEvents.PLAYER_JOIN
 import com.cobblemon.mod.common.api.events.CobblemonEvents.PLAYER_QUIT
 import com.cobblemon.mod.common.api.events.CobblemonEvents.POKEMON_CAPTURED
 import com.cobblemon.mod.common.api.events.CobblemonEvents.SERVER_STARTED
@@ -36,9 +36,9 @@ import com.cobblemon.mod.common.api.pokemon.experience.StandardExperienceCalcula
 import com.cobblemon.mod.common.api.pokemon.feature.EnumSpeciesFeature
 import com.cobblemon.mod.common.api.pokemon.feature.FlagSpeciesFeature
 import com.cobblemon.mod.common.api.pokemon.feature.SpeciesFeature
-import com.cobblemon.mod.common.api.pokemon.stats.StatProvider
 import com.cobblemon.mod.common.api.pokemon.stats.EvCalculator
 import com.cobblemon.mod.common.api.pokemon.stats.Generation8EvCalculator
+import com.cobblemon.mod.common.api.pokemon.stats.StatProvider
 import com.cobblemon.mod.common.api.properties.CustomPokemonProperty
 import com.cobblemon.mod.common.api.reactive.Observable.Companion.takeFirst
 import com.cobblemon.mod.common.api.scheduling.ScheduledTaskTracker
@@ -169,8 +169,8 @@ object Cobblemon {
         CobblemonGameRules.register()
 
         ShoulderEffectRegistry.register()
-        PLAYER_JOIN.subscribe {
-            storage.onPlayerLogin(it)
+        DATA_SYNCHRONIZED.subscribe {
+            storage.onPlayerDataSync(it)
             playerData.get(it).sendToPlayer(it)
             starterHandler.handleJoin(it)
             ServerSettingsPacket().sendToPlayer(it)

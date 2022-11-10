@@ -20,5 +20,7 @@ import net.minecraft.util.Identifier
  */
 open class PokeBall(
     val name: Identifier,
-    val catchRateModifiers: List<CatchRateModifier> = listOf()
+    val catchRateModifiers: List<CatchRateModifier> = listOf(),
+    val model2d: String = "${name}#inventory",
+    val model3d: String = "${name}_in_hand#inventory"
 )

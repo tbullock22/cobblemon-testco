@@ -49,4 +49,7 @@ object PokeBalls {
     fun getPokeBall(name : Identifier) : PokeBall? {
         return allPokeBalls.find { pokeball -> pokeball.name == name }
     }
+
+    fun all() = this.allPokeBalls.toList()
+
 }

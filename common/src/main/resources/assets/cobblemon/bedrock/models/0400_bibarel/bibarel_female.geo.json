@@ -18,7 +18,7 @@
 				{
 					"name": "body",
 					"parent": "bibarel",
-					"pivot": [0, 0, 0]
+					"pivot": [0, 11, 0]
 				},
 				{
 					"name": "torso",

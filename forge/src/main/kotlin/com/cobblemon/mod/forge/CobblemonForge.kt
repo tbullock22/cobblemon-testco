@@ -78,10 +78,7 @@ class CobblemonForge : CobblemonImplementation {
     private val hasBeenSynced = hashSetOf<UUID>()
 
     fun onDataPackSync(event: OnDatapackSyncEvent) {
-        val player = event.player ?: return
-        if (player.uuid !in this.hasBeenSynced) {
-            Cobblemon.dataProvider.sync(player)
-        }
+        Cobblemon.dataProvider.sync(event.player ?: return)
     }
 
     fun onLogin(event: PlayerEvent.PlayerLoggedInEvent) {

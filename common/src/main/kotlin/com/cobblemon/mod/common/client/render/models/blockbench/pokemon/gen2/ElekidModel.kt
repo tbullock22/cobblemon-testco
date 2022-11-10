@@ -31,18 +31,16 @@ class ElekidModel(root: ModelPart) : PokemonPoseableModel() {
         standing = registerPose(
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
-            transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0239_elekid/elekid", "ground_idle")
+                bedrock("0239_elekid/elekid", "ground_idle")
             )
         )
 
         walk = registerPose(
             poseName = "walk",
             poseTypes = MOVING_POSES,
-            transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0239_elekid/elekid", "ground_walk")
+                bedrock("0239_elekid/elekid", "ground_idle")
             )
         )
     }

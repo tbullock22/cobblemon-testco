@@ -1,0 +1,73 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.electivire.ground_idle": {
+			"loop": true,
+			"bones": {
+				"torso": {
+					"rotation": [2.5, 0, 0]
+				},
+				"head": {
+					"rotation": [-2.5, 0, 0]
+				},
+				"lefttail": {
+					"rotation": [-30, 45, 0]
+				},
+				"lefttail2": {
+					"rotation": [45, 30, 0]
+				},
+				"lefttail3": {
+					"rotation": [45, 30, 0]
+				},
+				"lefttail4": {
+					"rotation": [30, 30, 0]
+				},
+				"righttail": {
+					"rotation": [-30, -45, 0]
+				},
+				"righttail2": {
+					"rotation": [45, -30, 0]
+				},
+				"righttail3": {
+					"rotation": [45, -30, 0]
+				},
+				"righttail4": {
+					"rotation": [30, -30, 0]
+				},
+				"leftleg": {
+					"rotation": [-5, 5, 15]
+				},
+				"leftknee": {
+					"rotation": [10, 0, 0]
+				},
+				"leftfoot": {
+					"rotation": [-5, 0, -15]
+				},
+				"rightleg": {
+					"rotation": [-5, -5, -15]
+				},
+				"rightknee": {
+					"rotation": [10, 0, 0]
+				},
+				"rightfoot": {
+					"rotation": [-5, 0, 15]
+				},
+				"leftarm": {
+					"rotation": [15, -5, 45]
+				},
+				"leftforearm": {
+					"rotation": [0, 45, 0]
+				},
+				"rightarm": {
+					"rotation": [15, 5, -45]
+				},
+				"rightforearm": {
+					"rotation": [0, -45, 0]
+				},
+				"body": {
+					"position": [0, -0.75, 0]
+				}
+			}
+		}
+	}
+}

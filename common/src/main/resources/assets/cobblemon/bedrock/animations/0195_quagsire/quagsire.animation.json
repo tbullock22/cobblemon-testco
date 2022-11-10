@@ -5,16 +5,74 @@
 			"loop": true,
 			"bones": {
 				"leftarm": {
-					"rotation": [0, 0, 60]
+					"rotation": [15, 5, 45]
 				},
 				"rightarm": {
-					"rotation": [0, 0, -60]
+					"rotation": [15, -5, -45]
 				},
 				"tail": {
 					"rotation": [-20, 0, 0]
 				},
 				"tail2": {
 					"rotation": [15, 0, 0]
+				}
+			}
+		},
+		"animation.quagsire.water_idle": {
+			"loop": true,
+			"bones": {
+				"leftarm": {
+					"rotation": [15, 5, 45]
+				},
+				"rightarm": {
+					"rotation": [15, -5, -45]
+				},
+				"tail": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail2": {
+					"rotation": [5, 0, 0]
+				},
+				"body": {
+					"rotation": [15, 0, 0]
+				},
+				"head": {
+					"rotation": [-15, 0, 0]
+				},
+				"leftfoot": {
+					"rotation": [15, 0, 0]
+				},
+				"rightfoot": {
+					"rotation": [15, 0, 0]
+				}
+			}
+		},
+		"animation.quagsire.water_swim": {
+			"loop": true,
+			"bones": {
+				"leftarm": {
+					"rotation": [15, 0, 45]
+				},
+				"rightarm": {
+					"rotation": [15, 0, -45]
+				},
+				"tail": {
+					"rotation": [-60, 0, 0]
+				},
+				"tail2": {
+					"rotation": [5, 0, 0]
+				},
+				"body": {
+					"rotation": [60, 0, 0]
+				},
+				"head": {
+					"rotation": [-60, 0, 0]
+				},
+				"leftfoot": {
+					"rotation": [30, 0, 0]
+				},
+				"rightfoot": {
+					"rotation": [30, 0, 0]
 				}
 			}
 		}

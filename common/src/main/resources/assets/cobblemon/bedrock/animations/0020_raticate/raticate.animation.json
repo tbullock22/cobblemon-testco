@@ -6,7 +6,7 @@
 			"bones": {
 				"body": {
 					"rotation": [5, 0, 0],
-					"position": [0, "0.775-math.sin(q.anim_time*90*4-90)*0.275", "-math.sin(q.anim_time*90*4-90)*0.2"]
+					"position": [0, "0.775-math.sin(q.anim_time*90*4-90)*0.275", "math.sin(q.anim_time*90*4-90)*0.2"]
 				},
 				"head": {
 					"rotation": ["-2.5-0.5*math.sin(q.anim_time*90*8*2)", 0, 0]

@@ -1,0 +1,31 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.steelix.ground_idle": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": [7.5, 0, 0]
+				},
+				"tail": {
+					"rotation": [-15, 0, 0]
+				},
+				"tail2": {
+					"rotation": [-15, 0, 0]
+				},
+				"tail3": {
+					"rotation": [30, 0, 0]
+				},
+				"tail7": {
+					"rotation": [-5, 0, 0]
+				},
+				"tail8": {
+					"rotation": [5, 0, 0]
+				},
+				"body": {
+					"position": [0, 2.5, 0]
+				}
+			}
+		}
+	}
+}

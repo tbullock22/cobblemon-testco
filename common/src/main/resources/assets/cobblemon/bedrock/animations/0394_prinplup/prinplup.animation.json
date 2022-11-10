@@ -17,6 +17,80 @@
 					"rotation": [0, 0, -5]
 				}
 			}
+		},
+		"animation.prinplup.water_idle": {
+			"loop": true,
+			"bones": {
+				"wing_right1": {
+					"rotation": [15, 15, -45]
+				},
+				"wing_right2": {
+					"rotation": [0, 0, 5]
+				},
+				"wing_left1": {
+					"rotation": [15, -15, 45]
+				},
+				"wing_left2": {
+					"rotation": [0, 0, -5]
+				},
+				"body": {
+					"rotation": [15, 0, 0]
+				},
+				"head": {
+					"rotation": [-12.5, 0, 0]
+				},
+				"leg_right": {
+					"rotation": [7.5, 0, 0]
+				},
+				"foot_right": {
+					"rotation": [15, 0, 0]
+				},
+				"leg_left": {
+					"rotation": [7.5, 0, 0]
+				},
+				"foot_left": {
+					"rotation": [15, 0, 0]
+				}
+			}
+		},
+		"animation.prinplup.water_swim": {
+			"loop": true,
+			"bones": {
+				"wing_right1": {
+					"rotation": [5, 15, -75]
+				},
+				"wing_right2": {
+					"rotation": [0, 0, 5]
+				},
+				"wing_left1": {
+					"rotation": [5, -15, 75]
+				},
+				"wing_left2": {
+					"rotation": [0, 0, -5]
+				},
+				"body": {
+					"rotation": [60, 0, 0]
+				},
+				"head": {
+					"rotation": [-57.5, 0, 0],
+					"position": [0, -0.5, -0.5]
+				},
+				"leg_right": {
+					"rotation": [15, 0, 0]
+				},
+				"foot_right": {
+					"rotation": [30, 0, 0]
+				},
+				"leg_left": {
+					"rotation": [15, 0, 0]
+				},
+				"foot_left": {
+					"rotation": [30, 0, 0]
+				},
+				"tail": {
+					"rotation": [-15, 0, 0]
+				}
+			}
 		}
 	}
 }

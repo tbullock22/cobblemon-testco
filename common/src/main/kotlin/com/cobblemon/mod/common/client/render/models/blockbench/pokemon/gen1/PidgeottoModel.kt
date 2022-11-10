@@ -16,6 +16,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonP
 import com.cobblemon.mod.common.client.render.models.blockbench.pose.TransformedModelPart
 import com.cobblemon.mod.common.client.render.models.blockbench.wavefunction.parabolaFunction
 import com.cobblemon.mod.common.client.render.models.blockbench.wavefunction.sineFunction
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
@@ -41,11 +42,30 @@ class PidgeottoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseName = "stand",
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 0,
-            idleAnimations = arrayOf(singleBoneLook())
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("0017_pidgeotto/pidgeotto", "ground_idle")
+            )
+        )
+        registerPose(
+            poseName = "hover",
+            poseTypes = setOf(PoseType.HOVER, PoseType.FLOAT),
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("0017_pidgeotto/pidgeotto", "air_idle")
+            )
+        )
+        registerPose(
+            poseName = "fly",
+            poseTypes = setOf(PoseType.FLY, PoseType.SWIM),
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("0017_pidgeotto/pidgeotto", "air_fly")
+            )
         )
         registerPose(
             poseName = "walk",
-            poseTypes = MOVING_POSES,
+            poseType = PoseType.WALK,
             transformTicks = 5,
             idleAnimations = arrayOf(
                 singleBoneLook(),

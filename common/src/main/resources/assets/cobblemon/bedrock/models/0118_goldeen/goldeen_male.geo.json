@@ -62,17 +62,17 @@
 				{
 					"name": "leftwing",
 					"parent": "body",
-					"pivot": [2.5, 2.75, 0.25],
+					"pivot": [2.5, 2.75, -0.75],
 					"cubes": [
-						{"origin": [2.5, 2.75, -2.25], "size": [8, 0, 5], "inflate": 0.02, "uv": [0, 24]}
+						{"origin": [2.5, 2.75, -3.25], "size": [8, 0, 5], "inflate": 0.02, "uv": [0, 24]}
 					]
 				},
 				{
 					"name": "rightwing",
 					"parent": "body",
-					"pivot": [-2.5, 2.75, 0.25],
+					"pivot": [-2.5, 2.75, -0.75],
 					"cubes": [
-						{"origin": [-10.5, 2.75, -2.25], "size": [8, 0, 5], "inflate": 0.02, "uv": [16, 24]}
+						{"origin": [-10.5, 2.75, -3.25], "size": [8, 0, 5], "inflate": 0.02, "uv": [16, 24]}
 					]
 				}
 			]

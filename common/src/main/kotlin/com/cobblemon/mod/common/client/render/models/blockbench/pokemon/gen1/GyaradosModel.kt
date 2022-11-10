@@ -17,6 +17,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pose.Transformed
 import com.cobblemon.mod.common.client.render.models.blockbench.wavefunction.sineFunction
 import com.cobblemon.mod.common.client.render.models.blockbench.withPosition
 import com.cobblemon.mod.common.client.render.models.blockbench.withRotation
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.FLYING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.STANDING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.SWIMMING_POSES
@@ -66,6 +67,7 @@ class GyaradosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STANDING_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
+                bedrock("0130_gyarados/gyarados", "ground_idle"),
                 WaveAnimation(
                     frame = this,
                     waveFunction = sineFunction(
@@ -88,17 +90,9 @@ class GyaradosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
                         wseg12
                     )
                 )
-            ),
-            transformedParts = arrayOf(
-                rootPart.withPosition(0F, 5F, 10F),
-                seg1.withRotation(X_AXIS, (-60F).toRadians()),
-                seg2.withRotation(X_AXIS, (-12.5F).toRadians()),
-                seg3.withRotation(X_AXIS, (-10F).toRadians()),
-                seg4.withRotation(X_AXIS, 7.5F.toRadians()),
-                seg5.withRotation(X_AXIS, 75F.toRadians()).withPosition(Y_AXIS, 2F)
-//                head.withRotation(X_AXIS, (-62.5F).toRadians())
             )
         )
+
         registerPose(
             poseName = "swim",
             poseTypes = SWIMMING_POSES + FLYING_POSES,

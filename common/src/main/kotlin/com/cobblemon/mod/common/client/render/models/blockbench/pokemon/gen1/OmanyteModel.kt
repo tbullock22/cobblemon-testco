@@ -10,6 +10,7 @@ package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1
 
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
@@ -26,23 +27,39 @@ class OmanyteModel(root: ModelPart) : PokemonPoseableModel() {
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
+    lateinit var float: PokemonPose
+    lateinit var swim: PokemonPose
 
     override fun registerPoses() {
         standing = registerPose(
             poseName = "standing",
-            poseTypes = STATIONARY_POSES + UI_POSES,
-            transformTicks = 10,
+            poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
-                //bedrock("0138_omanyte/omanyte", "ground_idle")
+                bedrock("0138_omanyte/omanyte", "ground_idle")
             )
         )
 
         walk = registerPose(
             poseName = "walk",
-            poseTypes = MOVING_POSES,
-            transformTicks = 10,
+            poseType = PoseType.WALK,
             idleAnimations = arrayOf(
-                //bedrock("0138_omanyte/omanyte", "ground_walk")
+                bedrock("0138_omanyte/omanyte", "ground_idle")
+            )
+        )
+
+        float = registerPose(
+            poseName = "float",
+            poseTypes = setOf(PoseType.FLOAT, PoseType.HOVER),
+            idleAnimations = arrayOf(
+                bedrock("0138_omanyte/omanyte", "water_idle")
+            )
+        )
+
+        swim = registerPose(
+            poseName = "swim",
+            poseTypes = setOf(PoseType.SWIM, PoseType.FLY),
+            idleAnimations = arrayOf(
+                bedrock("0138_omanyte/omanyte", "water_swim")
             )
         )
     }

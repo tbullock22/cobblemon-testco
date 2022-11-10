@@ -10,11 +10,10 @@ package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1
 
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
-import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
-import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
-import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
+import com.cobblemon.mod.common.entity.PoseType
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
+
 class GoldeenModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("goldeen")
 
@@ -26,23 +25,39 @@ class GoldeenModel(root: ModelPart) : PokemonPoseableModel() {
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
+    lateinit var float: PokemonPose
+    lateinit var swim: PokemonPose
 
     override fun registerPoses() {
         standing = registerPose(
             poseName = "standing",
-            poseTypes = STATIONARY_POSES + UI_POSES,
-            transformTicks = 10,
+            poseType = PoseType.STAND,
             idleAnimations = arrayOf(
-                //bedrock("0118_goldeen/goldeen", "ground_idle")
+                bedrock("0118_goldeen/goldeen", "ground_idle")
             )
         )
 
         walk = registerPose(
             poseName = "walk",
-            poseTypes = MOVING_POSES,
-            transformTicks = 10,
+            poseType = PoseType.WALK,
             idleAnimations = arrayOf(
-                //bedrock("0118_goldeen/goldeen", "ground_walk")
+                bedrock("0118_goldeen/goldeen", "ground_idle")
+            )
+        )
+
+        float = registerPose(
+            poseName = "float",
+            poseType = PoseType.FLOAT,
+            idleAnimations = arrayOf(
+                bedrock("0118_goldeen/goldeen", "water_idle")
+            )
+        )
+
+        swim = registerPose(
+            poseName = "swim",
+            poseType = PoseType.SWIM,
+            idleAnimations = arrayOf(
+                bedrock("0118_goldeen/goldeen", "water_swim")
             )
         )
     }

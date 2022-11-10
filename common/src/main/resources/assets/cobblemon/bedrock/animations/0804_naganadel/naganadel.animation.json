@@ -18,6 +18,48 @@
 				},
 				"torso_bottom": {
 					"rotation": [-25, 0, 0]
+				},
+				"body": {
+					"position": [0, 0, 5]
+				}
+			}
+		},
+		"animation.naganadel.ground_walk": {
+			"loop": true,
+			"bones": {
+				"neck": {
+					"rotation": [10, 0, 0]
+				},
+				"neck2": {
+					"rotation": [7.5, 0, 0]
+				},
+				"arm_right": {
+					"rotation": [10, -15, 15]
+				},
+				"arm_left": {
+					"rotation": [10, 15, -15]
+				},
+				"torso_bottom": {
+					"rotation": [15, 0, 0]
+				},
+				"body": {
+					"rotation": [45, 0, 0],
+					"position": [0, 0, 2]
+				},
+				"head": {
+					"rotation": [-45, 0, 0]
+				},
+				"arm_right2": {
+					"rotation": [15, 0, 0]
+				},
+				"arm_left2": {
+					"rotation": [15, 0, 0]
+				},
+				"wing_right": {
+					"rotation": [0, -15, 0]
+				},
+				"wing_left": {
+					"rotation": [0, 15, 0]
 				}
 			}
 		}

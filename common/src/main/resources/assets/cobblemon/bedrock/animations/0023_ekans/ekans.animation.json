@@ -26,6 +26,7 @@
 			}
 		},
 		"animation.ekans.summary_idle": {
+			"loop": true,
 			"bones": {
 				"ekans": {
 					"position": [0, -0.5, 0]

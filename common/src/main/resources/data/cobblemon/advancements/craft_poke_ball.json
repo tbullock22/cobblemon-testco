@@ -8,8 +8,7 @@
     },
     "description": {
       "translate": "advancements.cobblemon.craft_poke_ball.description"
-    },
-    "background": "cobblemon:textures/blocks/apricorn_planks.png"
+    }
   },
   "parent": "cobblemon:harvest_apricorn",
   "criteria": {
@@ -18,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "cobblemon:poke_ball"
+            "tag": "cobblemon:pokeballs"
           }
         ]
       }

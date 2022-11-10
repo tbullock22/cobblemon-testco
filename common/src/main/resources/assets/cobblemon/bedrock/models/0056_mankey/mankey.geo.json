@@ -13,7 +13,7 @@
 			"bones": [
 				{
 					"name": "mankey",
-					"pivot": [0, -1, 0]
+					"pivot": [0, 0, 0]
 				},
 				{
 					"name": "body",

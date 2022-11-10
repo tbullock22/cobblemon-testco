@@ -48,7 +48,7 @@ class ExeggutorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                BipedWalkAnimation(this, periodMultiplier = 1.2F, amplitudeMultiplier = 1f),
+                BipedWalkAnimation(this, periodMultiplier = 0.7F, amplitudeMultiplier = 1f),
                 singleBoneLook(),
                 bedrock("0103_exeggutor/exeggutor", "ground_idle")
                 //bedrock("0103_exeggutor/exeggutor", "ground_walk")

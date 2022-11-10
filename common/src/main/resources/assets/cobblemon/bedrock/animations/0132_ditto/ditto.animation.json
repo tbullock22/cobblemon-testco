@@ -5,11 +5,11 @@
 			"loop": true,
 			"bones": {
 				"body2": {
-					"rotation": ["-1.25+math.sin(q.anim_time*90*1.5-60)*4", 0, 0],
+					"rotation": ["-1.25+math.sin(q.anim_time*90*1.5-60)*4", 0, "-math.sin(q.anim_time*90*0.75)*3"],
 					"position": [0, "math.sin(q.anim_time*90*1.5+30)*0.25", 0]
 				},
 				"head": {
-					"rotation": ["-1.25+math.sin(q.anim_time*90*1.5-120)*3", 0, 0],
+					"rotation": ["-1.25+math.sin(q.anim_time*90*1.5-120)*3", 0, "-math.sin(q.anim_time*90*0.75)*3"],
 					"position": [0, "-math.sin(q.anim_time*90*1.5-120)*0.25", 0]
 				},
 				"arm_left": {

@@ -1,0 +1,19 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.magnezone.ground_idle": {
+			"loop": true,
+			"bones": {
+				"leftmagnet": {
+					"rotation": [15, -15, 0]
+				},
+				"rightmagnet": {
+					"rotation": [15, 15, 0]
+				},
+				"backmagnet": {
+					"rotation": [-15, 0, 0]
+				}
+			}
+		}
+	}
+}

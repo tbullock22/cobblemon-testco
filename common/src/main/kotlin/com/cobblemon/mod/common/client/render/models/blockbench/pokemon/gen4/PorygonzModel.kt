@@ -33,20 +33,18 @@ class PorygonzModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
         standing = registerPose(
             poseName = "standing",
             poseTypes = UI_POSES + STATIONARY_POSES,
-            transformTicks = 10,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("0474_porygonz/porygonz", "ground_idle")
+                singleBoneLook(),
+                bedrock("0474_porygonz/porygonz", "ground_idle")
             )
         )
 
         walk = registerPose(
             poseName = "walk",
             poseTypes = MOVING_POSES,
-            transformTicks = 10,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("0474_porygonz/porygonz", "ground_walk")
+                singleBoneLook(),
+                bedrock("0474_porygonz/porygonz", "ground_idle")
             )
         )
     }

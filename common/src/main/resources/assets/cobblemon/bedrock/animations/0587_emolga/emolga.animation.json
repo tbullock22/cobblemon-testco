@@ -17,6 +17,64 @@
 					"rotation": [7.5, 0, 45]
 				}
 			}
+		},
+		"animation.emolga.air_idle": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [15, 0, 0]
+				},
+				"head": {
+					"rotation": [-10, 0, 0]
+				},
+				"tail": {
+					"rotation": [-15, 0, 0]
+				},
+				"tail2": {
+					"rotation": [15, 0, 0]
+				},
+				"leftfoot": {
+					"rotation": [15, 0, 0]
+				},
+				"rightfoot": {
+					"rotation": [15, 0, 0]
+				},
+				"rightarm": {
+					"rotation": [15, 15, 0]
+				},
+				"leftarm": {
+					"rotation": [15, -15, 0]
+				}
+			}
+		},
+		"animation.emolga.air_fly": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [45, 0, 0]
+				},
+				"head": {
+					"rotation": [-35, 0, 0]
+				},
+				"tail": {
+					"rotation": [-45, 0, 0]
+				},
+				"tail2": {
+					"rotation": [-7.5, 0, 0]
+				},
+				"leftfoot": {
+					"rotation": [30, 0, 0]
+				},
+				"rightfoot": {
+					"rotation": [30, 0, 0]
+				},
+				"rightarm": {
+					"rotation": [15, 15, 0]
+				},
+				"leftarm": {
+					"rotation": [15, -15, 0]
+				}
+			}
 		}
 	}
 }

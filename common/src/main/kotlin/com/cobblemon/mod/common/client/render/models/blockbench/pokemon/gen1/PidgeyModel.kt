@@ -29,7 +29,7 @@ class PidgeyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
     override val rightWing = getPart("wing_right")
     override val leftLeg = getPart("leg_left")
     override val rightLeg = getPart("leg_right")
-    override val head = getPart("neck")
+    override val head = getPart("head")
     private val tail = getPart("tail")
 
     override val portraitScale = 1.95F

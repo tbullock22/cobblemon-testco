@@ -1,51 +1,20 @@
 {
     "format_version": "1.8.0",
     "animations": {
-        "animation.magikarp.fly": {
+        "animation.magikarp.water_swim": {
             "loop": true,
-            "animation_length": 2.5,
             "bones": {
-                "tail": {
-                    "rotation": {
-                        "0.0": [0, 0, 0],
-                        "0.25": [0, 0, 90]
-                    }
+                "whisker_right": {
+                    "rotation": [0, 2.5, 0]
                 },
-                "rightmustache": {
-                    "rotation": {
-                        "0.0": [0, 60, 0],
-                        "0.25": [0, 0, 0]
-                    }
+                "whisker_left": {
+                    "rotation": [0, -2.5, 0]
                 },
-                "rightmustachetip": {
-                    "rotation": {
-                        "0.25": [0, 0, 0],
-                        "2.5": [0, 0, -18000]
-                    }
+                "fin_right": {
+                    "rotation": [0, 15, 0]
                 },
-                "leftmustache": {
-                    "rotation": {
-                        "0.0": [0, -60, 0],
-                        "0.25": [0, 0, 0]
-                    }
-                },
-                "leftmustachetip": {
-                    "rotation": {
-                        "0.25": [0, 0, 0],
-                        "2.5": [0, 0, 18000]
-                    }
-                },
-                "rightlfipper": {
-                    "rotation": {
-                        "0.0": [0, 0, 0],
-                        "0.25": [72.5, 12.5, -90]
-                    }
-                },
-                "leftlfipper": {
-                    "rotation": {
-                        "0.0": [0, 0, 0],
-                        "0.25": [72.5, -12.5, 90]
-                    }
+                "fin_left": {
+                    "rotation": [0, -15, 0]
                 }
             }
         },
@@ -183,6 +152,40 @@
                         "0.1979": [0, 22.5, 0],
                         "0.25": [0, 10, 0]
                     }
+                }
+            }
+        },
+        "animation.magikarp.air_idle": {
+            "loop": true,
+            "bones": {
+                "whisker_right": {
+                    "rotation": [30, -30, 45]
+                },
+                "whisker_left": {
+                    "rotation": [30, 30, -45]
+                },
+                "fin_right": {
+                    "rotation": [60, 30, -90]
+                },
+                "fin_left": {
+                    "rotation": [60, -30, 90]
+                },
+                "whisker_right2": {
+                    "rotation": [0, 0, 15],
+                    "position": [3, 0, 0]
+                },
+                "whisker_right3": {
+                    "rotation": [0, 0, "20*1+q.anim_time*90*50"]
+                },
+                "whisker_left2": {
+                    "rotation": [0, 0, -15],
+                    "position": [-3, 0, 0]
+                },
+                "whisker_left3": {
+                    "rotation": [0, 0, "-20*1+q.anim_time*90*50"]
+                },
+                "tail3": {
+                    "rotation": [0, 0, 90]
                 }
             }
         }

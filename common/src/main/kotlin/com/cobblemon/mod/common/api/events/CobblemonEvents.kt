@@ -38,6 +38,7 @@ import net.minecraft.server.network.ServerPlayerEntity
 
 object CobblemonEvents {
     val MESSAGE_BUILT = EventObservable<MessageBuiltEvent<*>>()
+    val DATA_SYNCHRONIZED = EventObservable<ServerPlayerEntity>()
     val ENTITY_ATTRIBUTE = EventObservable<EntityAttributeEvent>()
     val SHOULDER_MOUNT = CancelableObservable<ShoulderMountEvent>()
     val FRIENDSHIP_UPDATED = EventObservable<FriendshipUpdatedEvent>()

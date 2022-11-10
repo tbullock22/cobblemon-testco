@@ -15,6 +15,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonP
 import com.cobblemon.mod.common.client.render.models.blockbench.pose.TransformedModelPart.Companion.Y_AXIS
 import com.cobblemon.mod.common.client.render.models.blockbench.withRotation
 import com.cobblemon.mod.common.entity.PoseType
+import com.cobblemon.mod.common.entity.PoseType.Companion.FLYING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.STANDING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.SWIMMING_POSES
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
@@ -43,10 +44,20 @@ class MagikarpModel(root: ModelPart) : PokemonPoseableModel() {
             )
         )
 
-        registerPose<PokemonPoseableModel>(
+        registerPose(
             poseName = "swimming",
             poseTypes = SWIMMING_POSES,
-            idleAnimations = arrayOf()
+            idleAnimations = arrayOf(
+                bedrock("0129_magikarp/magikarp", "water_swim")
+            )
+        )
+
+        registerPose(
+            poseName = "fly",
+            poseTypes = FLYING_POSES,
+            idleAnimations = arrayOf(
+                bedrock("0129_magikarp/magikarp", "air_idle")
+            )
         )
 
         registerPose(

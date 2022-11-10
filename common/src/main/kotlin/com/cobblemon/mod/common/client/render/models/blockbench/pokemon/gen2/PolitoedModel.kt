@@ -12,10 +12,10 @@ import com.cobblemon.mod.common.client.render.models.blockbench.frame.BipedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
-import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
-import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
 import net.minecraft.client.model.ModelPart
+
 class PolitoedModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFrame {
     override val rootPart = root.registerChildWithAllChildren("politoed")
     override val head = getPart("head")
@@ -25,23 +25,43 @@ class PolitoedModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
 
     lateinit var standing: PokemonPose
     lateinit var walking: PokemonPose
+    lateinit var float: PokemonPose
+    lateinit var swim: PokemonPose
 
     override fun registerPoses() {
         standing = registerPose(
             poseName = "standing",
-            poseTypes = STATIONARY_POSES + UI_POSES,
+            poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                //bedrock("0186_politoed/politoed", "ground_idle")
+                bedrock("0186_politoed/politoed", "ground_idle")
             )
         )
 
         walking = registerPose(
             poseName = "walking",
-            poseTypes = MOVING_POSES,
+            poseType = PoseType.WALK,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("0186_politoed/politoed", "ground_walk")
+                singleBoneLook(),
+                bedrock("0186_politoed/politoed", "ground_idle")
+            )
+        )
+
+        float = registerPose(
+            poseName = "float",
+            poseTypes = setOf(PoseType.FLOAT, PoseType.HOVER),
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("0186_politoed/politoed", "water_idle")
+            )
+        )
+
+        swim = registerPose(
+            poseName = "swim",
+            poseTypes = setOf(PoseType.SWIM, PoseType.FLY),
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("0186_politoed/politoed", "water_swim")
             )
         )
     }

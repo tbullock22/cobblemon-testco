@@ -1,0 +1,19 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.porygonz.ground_idle": {
+			"loop": true,
+			"bones": {
+				"tail": {
+					"rotation": [-30, 0, 0]
+				},
+				"leftarm": {
+					"rotation": [15, -15, -15]
+				},
+				"rightarm": {
+					"rotation": [15, 15, 15]
+				}
+			}
+		}
+	}
+}

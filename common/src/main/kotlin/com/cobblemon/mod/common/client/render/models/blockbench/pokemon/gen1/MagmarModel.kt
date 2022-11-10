@@ -33,20 +33,18 @@ class MagmarModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
         standing = registerPose(
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
-            transformTicks = 10,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("0126_magmar/magmar", "ground_idle")
+                singleBoneLook(),
+                bedrock("0126_magmar/magmar", "ground_idle")
             )
         )
 
         walk = registerPose(
             poseName = "walk",
             poseTypes = MOVING_POSES,
-            transformTicks = 10,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("0126_magmar/magmar", "ground_walk")
+                singleBoneLook(),
+                bedrock("0126_magmar/magmar", "ground_idle")
             )
         )
     }

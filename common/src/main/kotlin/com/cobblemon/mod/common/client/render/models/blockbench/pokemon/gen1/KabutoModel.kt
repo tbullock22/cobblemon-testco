@@ -33,7 +33,7 @@ class KabutoModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0140_kabuto/kabuto", "ground_idle")
+                bedrock("0140_kabuto/kabuto", "ground_idle")
             )
         )
 
@@ -42,6 +42,7 @@ class KabutoModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
+                bedrock("0140_kabuto/kabuto", "ground_idle")
                 //bedrock("0140_kabuto/kabuto", "ground_walk")
             )
         )

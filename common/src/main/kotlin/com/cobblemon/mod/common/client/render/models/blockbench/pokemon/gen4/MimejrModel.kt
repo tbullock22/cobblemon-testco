@@ -33,20 +33,18 @@ class MimejrModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
         standing = registerPose(
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
-            transformTicks = 10,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("0439_mimejr/mimejr", "ground_idle")
+                singleBoneLook(),
+                bedrock("0439_mimejr/mimejr", "ground_idle")
             )
         )
 
         walk = registerPose(
             poseName = "walk",
             poseTypes = MOVING_POSES,
-            transformTicks = 10,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("0439_mimejr/mimejr", "ground_walk")
+                singleBoneLook(),
+                bedrock("0439_mimejr/mimejr", "ground_idle")
             )
         )
     }

@@ -2,7 +2,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "cobblemon:blocks/healing_machine",
-		"particle": "minecraft:blocks/iron_block"
+		"particle": "minecraft:block/iron_block"
 	},
 	"elements": [
 		{

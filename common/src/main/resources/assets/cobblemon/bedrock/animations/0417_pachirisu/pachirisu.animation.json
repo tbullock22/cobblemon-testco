@@ -1,0 +1,22 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.pachirisu.ground_idle": {
+			"loop": true,
+			"bones": {
+				"lefthand": {
+					"rotation": [30, 15, 0]
+				},
+				"righthand": {
+					"rotation": [30, -15, 0]
+				},
+				"leftfoot": {
+					"rotation": [0, 5, 0]
+				},
+				"rightfoot": {
+					"rotation": [0, -5, 0]
+				}
+			}
+		}
+	}
+}

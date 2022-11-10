@@ -1,0 +1,49 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.hitmontop.ground_idle": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"position": [0, -0.25, 0]
+				},
+				"tail": {
+					"rotation": [-45, 0, 0]
+				},
+				"tail2": {
+					"rotation": [15, 0, 0]
+				},
+				"leftarm": {
+					"rotation": [15, 0, 45]
+				},
+				"leftforearm": {
+					"rotation": [0, 15, 0]
+				},
+				"rightarm": {
+					"rotation": [15, 0, -45]
+				},
+				"rightforearm": {
+					"rotation": [0, -15, 0]
+				},
+				"leftleg": {
+					"rotation": [-5, -5, -5]
+				},
+				"leftknee": {
+					"rotation": [10, 0, 0]
+				},
+				"leftfoot": {
+					"rotation": [-5, 0, 5]
+				},
+				"rightleg": {
+					"rotation": [-5, 5, 5]
+				},
+				"rightknee": {
+					"rotation": [10, 0, 0]
+				},
+				"rightfoot": {
+					"rotation": [-5, 0, -5]
+				}
+			}
+		}
+	}
+}

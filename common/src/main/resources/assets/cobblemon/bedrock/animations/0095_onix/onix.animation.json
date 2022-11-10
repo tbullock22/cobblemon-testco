@@ -173,23 +173,23 @@
 				"body": {
 					"position": {
 						"0.0": {
-							"post": [0, 29, 39],
+							"post": [0, 29, 14],
 							"lerp_mode": "catmullrom"
 						},
 						"1.6": {
-							"post": [0, 29, 39],
+							"post": [0, 29, 14],
 							"lerp_mode": "catmullrom"
 						},
 						"2.1": {
-							"post": [0, 29, 39],
+							"post": [0, 29, 14],
 							"lerp_mode": "catmullrom"
 						},
 						"3.6": {
-							"post": [0, 29, 39],
+							"post": [0, 29, 14],
 							"lerp_mode": "catmullrom"
 						},
 						"4.1": {
-							"post": [0, 29, 39],
+							"post": [0, 29, 14],
 							"lerp_mode": "catmullrom"
 						}
 					}

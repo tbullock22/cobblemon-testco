@@ -12,10 +12,12 @@ import com.cobblemon.mod.common.Cobblemon.LOGGER
 import com.cobblemon.mod.common.api.abilities.Abilities
 import com.cobblemon.mod.common.api.data.DataProvider
 import com.cobblemon.mod.common.api.data.DataRegistry
+import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.moves.Moves
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies
 import com.cobblemon.mod.common.pokemon.properties.PropertiesCompletionProvider
 import dev.architectury.registry.ReloadListenerRegistry
+import java.util.UUID
 import net.minecraft.resource.ResourceManager
 import net.minecraft.resource.SynchronousResourceReloader
 import net.minecraft.server.network.ServerPlayerEntity
@@ -26,12 +28,17 @@ internal object CobblemonDataProvider : DataProvider {
     // Both Forge n Fabric keep insertion order so if a registry depends on another simply register it after
     var canReload = true
     private val registries = mutableListOf<DataRegistry>()
+    private val synchronizedPlayerIds = mutableListOf<UUID>()
+
+    private val scheduledActions = mutableMapOf<UUID, MutableList<() -> Unit>>()
 
     fun registerDefaults() {
         this.register(Moves)
         this.register(Abilities)
         this.register(PokemonSpecies)
         this.register(PropertiesCompletionProvider)
+
+        CobblemonEvents.PLAYER_QUIT.subscribe { synchronizedPlayerIds.remove(it.uuid) }
     }
 
     override fun register(registry: DataRegistry) {
@@ -50,6 +57,18 @@ internal object CobblemonDataProvider : DataProvider {
     override fun sync(player: ServerPlayerEntity) {
         if (!player.networkHandler.connection.isLocal) {
             this.registries.forEach { registry -> registry.sync(player) }
+        }
+
+        CobblemonEvents.DATA_SYNCHRONIZED.emit(player)
+        val waitingActions = this.scheduledActions.remove(player.uuid) ?: return
+        waitingActions.forEach { it() }
+    }
+
+    override fun doAfterSync(player: ServerPlayerEntity, action: () -> Unit) {
+        if (player.uuid in synchronizedPlayerIds) {
+            action()
+        } else {
+            this.scheduledActions.computeIfAbsent(player.uuid) { mutableListOf() }.add(action)
         }
     }
 

@@ -11,6 +11,7 @@ package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
@@ -28,25 +29,43 @@ class ScizorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
+    lateinit var hover: PokemonPose
+    lateinit var fly: PokemonPose
 
     override fun registerPoses() {
         standing = registerPose(
             poseName = "standing",
-            poseTypes = STATIONARY_POSES + UI_POSES,
-            transformTicks = 10,
+            poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("0212_scizor/scizor", "ground_idle")
+                singleBoneLook(),
+                bedrock("0212_scizor/scizor", "ground_idle")
             )
         )
 
         walk = registerPose(
             poseName = "walk",
-            poseTypes = MOVING_POSES,
-            transformTicks = 10,
+            poseType = PoseType.WALK,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("0212_scizor/scizor", "ground_walk")
+                singleBoneLook(),
+                bedrock("0212_scizor/scizor", "ground_idle")
+            )
+        )
+
+        hover = registerPose(
+            poseName = "hover",
+            poseTypes = setOf(PoseType.HOVER, PoseType.FLOAT),
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("0212_scizor/scizor", "air_idle")
+            )
+        )
+
+        fly = registerPose(
+            poseName = "fly",
+            poseTypes = setOf(PoseType.FLY, PoseType.SWIM),
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("0212_scizor/scizor", "air_fly")
             )
         )
     }

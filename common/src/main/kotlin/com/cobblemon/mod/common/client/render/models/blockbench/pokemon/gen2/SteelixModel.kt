@@ -33,20 +33,18 @@ class SteelixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
         standing = registerPose(
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
-            transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-//                bedrock("0208_steelix/steelix", "ground_idle")
+                bedrock("0208_steelix/steelix", "ground_idle")
             )
         )
 
         walk = registerPose(
             poseName = "walk",
             poseTypes = MOVING_POSES,
-            transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-//                bedrock("0208_steelix/steelix", "ground_idle")
+                bedrock("0208_steelix/steelix", "ground_idle")
             )
         )
     }

@@ -1,0 +1,92 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.mew.ground_idle": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [15, 0, 0],
+					"position": [0, 2, 0]
+				},
+				"leftarm": {
+					"rotation": [15, 15, 30]
+				},
+				"rightarm": {
+					"rotation": [15, -15, -30]
+				},
+				"tail2": {
+					"rotation": [45, 0, 0]
+				},
+				"tail3": {
+					"rotation": [45, 0, 0]
+				},
+				"tail4": {
+					"rotation": [-45, 0, 0]
+				},
+				"tail5": {
+					"rotation": [-45, 0, 0]
+				},
+				"leftleg": {
+					"rotation": [15, 0, 0]
+				},
+				"leftfoot": {
+					"rotation": [15, 0, 0]
+				},
+				"rightleg": {
+					"rotation": [15, 0, 0]
+				},
+				"rightfoot": {
+					"rotation": [15, 0, 0]
+				},
+				"head": {
+					"rotation": [-15, 0, 0]
+				}
+			}
+		},
+		"animation.mew.ground_walk": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [45, 0, 0],
+					"position": [0, 2, 0]
+				},
+				"leftarm": {
+					"rotation": [15, 0, 30]
+				},
+				"rightarm": {
+					"rotation": [15, 0, -30]
+				},
+				"tail": {
+					"rotation": [-45, 0, 0]
+				},
+				"tail2": {
+					"rotation": [15, 0, 0]
+				},
+				"tail3": {
+					"rotation": [15, 0, 0]
+				},
+				"tail4": {
+					"rotation": [-15, 0, 0]
+				},
+				"tail5": {
+					"rotation": [-15, 0, 0]
+				},
+				"leftleg": {
+					"rotation": [15, 0, 0]
+				},
+				"leftfoot": {
+					"rotation": [30, 0, 0]
+				},
+				"rightleg": {
+					"rotation": [15, 0, 0]
+				},
+				"rightfoot": {
+					"rotation": [30, 0, 0]
+				},
+				"head": {
+					"rotation": [-45, 0, 0]
+				}
+			}
+		}
+	}
+}

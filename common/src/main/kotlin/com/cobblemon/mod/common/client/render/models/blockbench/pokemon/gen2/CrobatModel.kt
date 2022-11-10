@@ -24,24 +24,31 @@ class CrobatModel(root: ModelPart) : PokemonPoseableModel() {
     override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
 
     lateinit var standing: PokemonPose
-    lateinit var walk: PokemonPose
+    lateinit var hover: PokemonPose
+    lateinit var fly: PokemonPose
 
     override fun registerPoses() {
         standing = registerPose(
             poseName = "standing",
-            poseTypes = PoseType.STATIONARY_POSES + PoseType.UI_POSES,
-            transformTicks = 10,
+            poseType = PoseType.STAND,
             idleAnimations = arrayOf(
-                //bedrock("crobat/crobat", "ground_idle")
+                bedrock("0169_crobat/crobat", "ground_idle")
             )
         )
 
-        walk = registerPose(
-            poseName = "walk",
-            poseTypes = PoseType.MOVING_POSES,
-            transformTicks = 10,
+        hover = registerPose(
+            poseName = "hover",
+            poseTypes = PoseType.UI_POSES + PoseType.HOVER + PoseType.FLOAT,
             idleAnimations = arrayOf(
-                //bedrock("crobat/crobat", "ground_walk")
+                bedrock("0169_crobat/crobat", "ground_idle")
+            )
+        )
+
+        fly = registerPose(
+            poseName = "fly",
+            poseTypes = setOf(PoseType.FLY, PoseType.SWIM),
+            idleAnimations = arrayOf(
+                bedrock("0169_crobat/crobat", "ground_walk")
             )
         )
     }
