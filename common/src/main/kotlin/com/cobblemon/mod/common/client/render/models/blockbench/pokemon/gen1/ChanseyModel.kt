@@ -19,7 +19,7 @@ import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
 class ChanseyModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
     override val rootPart = root.registerChildWithAllChildren("chansey")
-
+    
     override val leftLeg = getPart("leftfoot")
     override val rightLeg = getPart("rightfoot")
 
