@@ -12,10 +12,12 @@ import com.cobblemon.mod.common.*
 import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.reactive.Observable.Companion.filter
 import com.cobblemon.mod.common.api.reactive.Observable.Companion.takeFirst
+import com.cobblemon.mod.forge.compat.AdornForgeCompat
 import com.cobblemon.mod.forge.net.CobblemonForgeNetworkDelegate
 import com.cobblemon.mod.forge.permission.ForgePermissionValidator
 import dev.architectury.event.events.common.LifecycleEvent
 import dev.architectury.platform.forge.EventBuses
+import juuxel.adorn.compat.CompatBlocks
 import java.util.*
 import net.minecraftforge.common.ForgeMod
 import net.minecraftforge.common.MinecraftForge
@@ -29,6 +31,14 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
 
 @Mod(Cobblemon.MODID)
 class CobblemonForge : CobblemonImplementation {
+
+    private val modCompat = mapOf(
+        "adorn" to {
+            CompatBlocks.addVariants(AdornForgeCompat)
+            CompatBlocks.register()
+        }
+    )
+
     init {
         with(FMLJavaModLoadingContext.get().modEventBus) {
             EventBuses.registerModEventBus(Cobblemon.MODID, this)
@@ -61,6 +71,11 @@ class CobblemonForge : CobblemonImplementation {
             addListener(this@CobblemonForge::onLogout)
         }
         Cobblemon.permissionValidator = ForgePermissionValidator
+        this.modCompat.forEach { (modId, compatSupplier) ->
+            if (this.isModInstalled(modId)) {
+                compatSupplier.invoke()
+            }
+        }
     }
 
     fun serverInit(event: FMLDedicatedServerSetupEvent) {

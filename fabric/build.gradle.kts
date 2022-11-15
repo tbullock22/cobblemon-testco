@@ -20,6 +20,7 @@ sourceSets {
 repositories {
     maven("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
     maven("https://oss.sonatype.org/content/repositories/snapshots")
+    maven("https://api.modrinth.com/maven")
 }
 
 dependencies {
@@ -37,6 +38,7 @@ dependencies {
     modApi(libs.fabricKotlin)
     modApi(libs.architecturyFabric)
     modApi(libs.fabricPermissionsApi)
+    modCompileOnly(libs.adornFabric)
 
     listOf(
         libs.stdlib,

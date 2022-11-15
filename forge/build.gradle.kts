@@ -16,11 +16,13 @@ loom {
 
 repositories {
     maven(url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
+    maven("https://api.modrinth.com/maven")
 }
 
 dependencies {
     forge(libs.forge)
     modApi(libs.architecturyForge)
+    compileOnly(libs.adornForge)
 
     //shadowCommon group: 'commons-io', name: 'commons-io', version: '2.6'
 

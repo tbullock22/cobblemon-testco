@@ -33,6 +33,10 @@ versions:
   #
   fabric-permissions-api: 0.2-SNAPSHOT
 
+  # adorn
+  adorn-fabric: 3.7.0-fabric
+  adorn-forge: 3.7.0-forge
+
 dependencies:
 
   # build-logic
@@ -123,6 +127,10 @@ dependencies:
     group: me.lucko
     name: fabric-permissions-api
     version: { ref: fabric-permissions-api }
+  adornFabric:
+    group: maven.modrinth
+    name: adorn
+    version: { ref: adorn-fabric }
 
   # forge
   forge:
@@ -133,6 +141,10 @@ dependencies:
     group: dev.architectury
     name: architectury-forge
     version: { ref: architectury }
+  adornForge:
+    group: maven.modrinth
+    name: adorn
+    version: { ref: adorn-forge }
 
   # test
   junitEngine:

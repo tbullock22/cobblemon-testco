@@ -13,12 +13,23 @@ import com.cobblemon.mod.common.CobblemonConfiguredFeatures
 import com.cobblemon.mod.common.CobblemonImplementation
 import com.cobblemon.mod.common.CobblemonNetwork
 import com.cobblemon.mod.common.CobblemonPlacements
+import com.cobblemon.mod.fabric.compat.AdornFabricCompat
 import com.cobblemon.mod.fabric.net.CobblemonFabricNetworkDelegate
 import com.cobblemon.mod.fabric.permission.FabricPermissionValidator
+import juuxel.adorn.compat.CompatBlocks
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents
 import net.fabricmc.loader.api.FabricLoader
 
 object CobblemonFabric : CobblemonImplementation {
+
+    private val modCompat = mapOf(
+        "adorn" to {
+            CompatBlocks.addVariants(AdornFabricCompat)
+            CompatBlocks.register()
+        },
+        "fabric-permissions-api-v0" to { Cobblemon.permissionValidator = FabricPermissionValidator() }
+    )
+
     override fun isModInstalled(id: String) = FabricLoader.getInstance().isModLoaded(id)
     fun initialize() {
         CobblemonNetwork.networkDelegate = CobblemonFabricNetworkDelegate
@@ -33,8 +44,10 @@ object CobblemonFabric : CobblemonImplementation {
             Cobblemon.permissionValidator = LuckPermsPermissionValidator()
         }
          */
-        if (FabricLoader.getInstance().getModContainer("fabric-permissions-api-v0").isPresent) {
-            Cobblemon.permissionValidator = FabricPermissionValidator()
+        this.modCompat.forEach { (modId, compatSupplier) ->
+            if (this.isModInstalled(modId)) {
+                compatSupplier.invoke()
+            }
         }
         ServerLifecycleEvents.SYNC_DATA_PACK_CONTENTS.register { player, isLogin ->
             if (isLogin) {

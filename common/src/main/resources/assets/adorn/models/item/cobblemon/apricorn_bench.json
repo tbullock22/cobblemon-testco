@@ -1,0 +1,8 @@
+{
+  "parent": "adorn:item/templates/bench",
+  "textures": {
+    "planks": "cobblemon:blocks/apricorn_planks",
+    "log": "cobblemon:blocks/apricorn_log",
+    "end": "cobblemon:blocks/apricorn_log_top"
+  }
+}

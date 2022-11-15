@@ -1,0 +1,7 @@
+{
+  "parent": "adorn:item/templates/table",
+  "textures": {
+    "planks": "cobblemon:blocks/apricorn_planks",
+    "log": "cobblemon:blocks/apricorn_log"
+  }
+}
