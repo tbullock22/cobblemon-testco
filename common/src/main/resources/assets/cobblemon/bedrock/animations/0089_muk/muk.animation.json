@@ -2,7 +2,6 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"animation.muk.ground_idle": {
-			"animation_length": 1.5,
 			"bones": {
 				"arm_right": {
 					"rotation": [45, 0, -15.5]

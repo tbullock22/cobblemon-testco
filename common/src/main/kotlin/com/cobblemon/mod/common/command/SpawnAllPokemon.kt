@@ -42,7 +42,7 @@ object SpawnAllPokemon {
     private fun execute(context: CommandContext<ServerCommandSource>, range: IntRange) : Int {
         val player = context.source.playerOrThrow
 
-        for (species in PokemonSpecies.species) {
+        for (species in PokemonSpecies.implemented) {
             if (species.nationalPokedexNumber in range) {
                 LOGGER.debug(species.name)
                 species.create().sendOut(player.world as ServerWorld, player.pos)

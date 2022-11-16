@@ -16,7 +16,7 @@ import com.cobblemon.mod.common.client.gui.battle.subscreen.BattleActionSelectio
 import com.cobblemon.mod.common.client.gui.battle.subscreen.BattleGeneralActionSelection
 import com.cobblemon.mod.common.client.gui.battle.subscreen.BattleSwitchPokemonSelection
 import com.cobblemon.mod.common.client.gui.battle.widgets.BattleMessagePane
-import com.cobblemon.mod.common.client.keybind.currentKey
+import com.cobblemon.mod.common.client.keybind.boundKey
 import com.cobblemon.mod.common.client.keybind.keybinds.PartySendBinding
 import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.util.battleLang
@@ -100,7 +100,7 @@ class BattleGUI : Screen(battleLang("gui.title")) {
         if (currentSelection == null || currentSelection is BattleGeneralActionSelection ) {
             drawScaledText(
                 matrixStack = poseStack,
-                text = battleLang("ui.hide_label", PartySendBinding.currentKey().localizedText),
+                text = battleLang("ui.hide_label", PartySendBinding.boundKey().localizedText),
                 x = MinecraftClient.getInstance().window.scaledWidth / 2,
                 y = (MinecraftClient.getInstance().window.scaledHeight / 2) - 25,
                 opacity = 0.75F * opacity,
@@ -128,7 +128,7 @@ class BattleGUI : Screen(battleLang("gui.title")) {
     }
 
     override fun charTyped(chr: Char, modifiers: Int): Boolean {
-        if (chr.toString() == PartySendBinding.currentKey().localizedText.string && CobblemonClient.battleOverlay.opacity == BattleOverlay.MAX_OPACITY) {
+        if (chr.toString() == PartySendBinding.boundKey().localizedText.string && CobblemonClient.battleOverlay.opacity == BattleOverlay.MAX_OPACITY) {
             val battle = CobblemonClient.battle ?: return false
             battle.minimised = !battle.minimised
             return true

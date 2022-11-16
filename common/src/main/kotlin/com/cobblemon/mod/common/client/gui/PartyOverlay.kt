@@ -13,9 +13,10 @@ import com.cobblemon.mod.common.api.gui.drawPortraitPokemon
 import com.cobblemon.mod.common.client.CobblemonClient
 import com.cobblemon.mod.common.client.CobblemonResources
 import com.cobblemon.mod.common.client.gui.battle.BattleGUI
-import com.cobblemon.mod.common.client.keybind.currentKey
+import com.cobblemon.mod.common.client.keybind.boundKey
 import com.cobblemon.mod.common.client.keybind.keybinds.HidePartyBinding
 import com.cobblemon.mod.common.client.keybind.keybinds.PokeNavigatorBinding
+import com.cobblemon.mod.common.client.keybind.keybinds.SummaryBinding
 import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.client.render.getDepletableRedGreen
 import com.cobblemon.mod.common.pokemon.Gender
@@ -70,9 +71,10 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
                 !CobblemonClient.clientPlayerData.starterSelected &&
                 !CobblemonClient.checkedStarterScreen
             ) {
+                // ToDo replace back to PokeNav once reimplemented
                 drawScaledText(
                     matrixStack = matrixStack,
-                    text = lang("ui.starter.chooseyourstarter", PokeNavigatorBinding.currentKey().localizedText),
+                    text = lang("ui.starter.chooseyourstarter", SummaryBinding.boundKey().localizedText),
                     x = minecraft.window.scaledWidth / 2,
                     y = 70,
                     centered = true,

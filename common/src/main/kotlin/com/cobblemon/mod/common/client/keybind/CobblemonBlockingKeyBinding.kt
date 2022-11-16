@@ -24,7 +24,7 @@ abstract class CobblemonBlockingKeyBinding(
 ) : CobblemonKeyBinding(name, type, key, category) {
     private var wasDown = false
 
-    override fun onKeyInput() {
+    override fun onTick() {
         if (isPressed && !wasDown) {
             wasDown = true
             onPress()

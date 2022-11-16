@@ -471,6 +471,7 @@ open class Pokemon {
         nbt.put(DataKeys.POKEMON_EVOLUTIONS, this.evolutionProxy.saveToNBT())
         val propertyList = customProperties.map { it.asString() }.map { NbtString.of(it) }
         nbt.put(DataKeys.POKEMON_DATA, NbtList().also { it.addAll(propertyList) })
+        nbt.putString(DataKeys.POKEMON_NATURE, nature.name.toString())
         features.forEach { it.saveToNBT(nbt) }
         return nbt
     }
@@ -519,6 +520,7 @@ open class Pokemon {
         this.customProperties.clear()
         this.customProperties.addAll(properties.customProperties)
         features.forEach { it.loadFromNBT(nbt) }
+        this.nature = nbt.getString(DataKeys.POKEMON_NATURE).takeIf { it.isNotBlank() }?.let { Natures.getNature(Identifier(it))!! } ?: Natures.getRandomNature()
         updateAspects()
         return this
     }
@@ -547,6 +549,7 @@ open class Pokemon {
         json.add(DataKeys.POKEMON_EVOLUTIONS, this.evolutionProxy.saveToJson())
         val propertyList = customProperties.map { it.asString() }.map { JsonPrimitive(it) }
         json.add(DataKeys.POKEMON_DATA, JsonArray().also { propertyList.forEach(it::add) })
+        json.addProperty(DataKeys.POKEMON_NATURE, nature.name.toString())
         features.forEach { it.saveToJSON(json) }
         return json
     }
@@ -594,6 +597,7 @@ open class Pokemon {
         this.customProperties.clear()
         this.customProperties.addAll(properties.customProperties)
         features.forEach { it.loadFromJSON(json) }
+        this.nature = json.get(DataKeys.POKEMON_NATURE).asString?.let { Natures.getNature(Identifier(it))!! } ?: Natures.getRandomNature()
         updateAspects()
         return this
     }

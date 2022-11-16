@@ -12,7 +12,8 @@ import com.cobblemon.mod.common.CobblemonClientImplementation
 import com.cobblemon.mod.common.CobblemonEntities
 import com.cobblemon.mod.common.client.CobblemonClient
 import com.cobblemon.mod.common.client.CobblemonClient.reloadCodedAssets
-import com.cobblemon.mod.common.client.keybind.CobblemonKeybinds
+import com.cobblemon.mod.common.client.keybind.CobblemonKeyBinds
+import com.cobblemon.mod.common.client.keybind.keybinds.HidePartyBinding
 import com.cobblemon.mod.common.util.cobblemonResource
 import dev.architectury.init.fabric.ArchitecturyClient
 import java.util.function.Supplier
@@ -23,15 +24,18 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener
 import net.minecraft.client.model.TexturedModelData
+import net.minecraft.client.option.KeyBinding
 import net.minecraft.client.render.entity.model.EntityModelLayer
+import net.minecraft.client.util.InputUtil
 import net.minecraft.resource.ResourceManager
 import net.minecraft.resource.ResourceType
+import org.lwjgl.glfw.GLFW
+
 class CobblemonFabricClient: ClientModInitializer, CobblemonClientImplementation {
     override fun onInitializeClient() {
         ArchitecturyClient.init()
 
         CobblemonClient.initialize(this)
-        CobblemonKeybinds.keybinds.forEach(KeyBindingHelper::registerKeyBinding)
 
         EntityRendererRegistry.register(CobblemonEntities.POKEMON.get()) { CobblemonClient.registerPokemonRenderer(it) }
         EntityRendererRegistry.register(CobblemonEntities.EMPTY_POKEBALL.get()) { CobblemonClient.registerPokeBallRenderer(it) }
@@ -40,6 +44,7 @@ class CobblemonFabricClient: ClientModInitializer, CobblemonClientImplementation
             override fun getFabricId() = cobblemonResource("resources")
             override fun reload(resourceManager: ResourceManager) { reloadCodedAssets(resourceManager) }
         })
+        CobblemonKeyBinds.register(KeyBindingHelper::registerKeyBinding)
     }
 
     override fun registerLayer(modelLayer: EntityModelLayer, supplier: Supplier<TexturedModelData>) {

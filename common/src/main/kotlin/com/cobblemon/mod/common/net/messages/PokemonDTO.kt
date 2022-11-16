@@ -14,6 +14,7 @@ import com.cobblemon.mod.common.api.moves.MoveSet
 import com.cobblemon.mod.common.api.net.Decodable
 import com.cobblemon.mod.common.api.net.Encodable
 import com.cobblemon.mod.common.api.pokeball.PokeBalls
+import com.cobblemon.mod.common.api.pokemon.Natures
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies
 import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.net.IntSize
@@ -61,6 +62,7 @@ class PokemonDTO : Encodable, Decodable {
     var benchedMoves = BenchedMoves()
     var aspects = setOf<String>()
     lateinit var evolutionBuffer: PacketByteBuf
+    lateinit var nature: Identifier
 
     constructor()
     constructor(pokemon: Pokemon, toClient: Boolean) {
@@ -85,6 +87,7 @@ class PokemonDTO : Encodable, Decodable {
         this.aspects = pokemon.aspects
         evolutionBuffer = PacketByteBuf(Unpooled.buffer())
         pokemon.evolutionProxy.saveToBuffer(evolutionBuffer, toClient)
+        this.nature = pokemon.nature.name
     }
 
     override fun encode(buffer: PacketByteBuf) {
@@ -104,7 +107,7 @@ class PokemonDTO : Encodable, Decodable {
         buffer.writeString(ability)
         buffer.writeBoolean(shiny)
         state.writeToBuffer(buffer)
-        buffer.writeNullable(status) { bf, v -> buffer.writeIdentifier(v) }
+        buffer.writeNullable(status) { _, v -> buffer.writeIdentifier(v) }
         buffer.writeIdentifier(caughtBall)
         benchedMoves.saveToBuffer(buffer)
         buffer.writeSizedInt(IntSize.U_BYTE, aspects.size)
@@ -113,6 +116,7 @@ class PokemonDTO : Encodable, Decodable {
         buffer.writeSizedInt(IntSize.U_SHORT, byteCount)
         buffer.writeBytes(evolutionBuffer)
         evolutionBuffer.release()
+        buffer.writeIdentifier(nature)
     }
 
     override fun decode(buffer: PacketByteBuf) {
@@ -142,6 +146,7 @@ class PokemonDTO : Encodable, Decodable {
         this.aspects = aspects
         val bytesToRead = buffer.readSizedInt(IntSize.U_SHORT)
         evolutionBuffer = PacketByteBuf(buffer.readBytes(bytesToRead))
+        nature = buffer.readIdentifier()
     }
 
     fun create(): Pokemon {
@@ -178,6 +183,7 @@ class PokemonDTO : Encodable, Decodable {
             it.aspects = aspects
             it.evolutionProxy.loadFromBuffer(evolutionBuffer)
             evolutionBuffer.release()
+            it.nature = Natures.getNature(nature)!!
         }
     }
 }

@@ -6,14 +6,14 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-package com.cobblemon.mod.forge.mod.client
+package com.cobblemon.mod.forge.client
 
 import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.CobblemonClientImplementation
 import com.cobblemon.mod.common.CobblemonEntities
 import com.cobblemon.mod.common.api.pokeball.PokeBalls
 import com.cobblemon.mod.common.client.CobblemonClient
-import com.cobblemon.mod.common.client.keybind.CobblemonKeybinds
+import com.cobblemon.mod.common.client.keybind.CobblemonKeyBinds
 import java.util.function.Supplier
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.model.TexturedModelData
@@ -76,9 +76,10 @@ object CobblemonForgeClient : CobblemonClientImplementation {
         }
     }
 
+    @JvmStatic
     @SubscribeEvent
-    fun onKeybindRegister(event: RegisterKeyMappingsEvent) {
-        CobblemonKeybinds.keybinds.forEach(event::register)
+    fun onKeyMappingRegister(event: RegisterKeyMappingsEvent) {
+        CobblemonKeyBinds.register(event::register)
     }
 
     private fun register3dPokeballModels(event: ModelEvent.RegisterAdditional) {

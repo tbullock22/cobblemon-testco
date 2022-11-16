@@ -69,6 +69,7 @@ class Species : ClientDataSynchronizer<Species> {
     val eggCycles = 120
     val eggGroups = setOf<EggGroup>()
     var dynamaxBlocked = false
+    var implemented = false
 
     /**
      * The height in decimeters

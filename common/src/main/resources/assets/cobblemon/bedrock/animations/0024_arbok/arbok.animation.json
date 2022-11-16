@@ -2,7 +2,6 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"animation.arbok.ground_idle": {
-			"animation_length": 17.7,
 			"bones": {
 				"body_upper": {
 					"rotation": ["-10+math.sin(q.anim_time*90*4+90)*1+1", 0, "math.sin(q.anim_time*90*2+90)*6"]

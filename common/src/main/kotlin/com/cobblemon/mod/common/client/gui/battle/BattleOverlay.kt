@@ -16,7 +16,7 @@ import com.cobblemon.mod.common.client.CobblemonClient
 import com.cobblemon.mod.common.client.CobblemonResources
 import com.cobblemon.mod.common.client.battle.ActiveClientBattlePokemon
 import com.cobblemon.mod.common.client.battle.ClientBallDisplay
-import com.cobblemon.mod.common.client.keybind.currentKey
+import com.cobblemon.mod.common.client.keybind.boundKey
 import com.cobblemon.mod.common.client.keybind.keybinds.PartySendBinding
 import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.client.render.getDepletableRedGreen
@@ -100,7 +100,7 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
             val textOpacity = PROMPT_TEXT_OPACITY_CURVE(passedSeconds)
             drawScaledText(
                 matrixStack = matrices,
-                text = battleLang("ui.actions_label", PartySendBinding.currentKey().localizedText),
+                text = battleLang("ui.actions_label", PartySendBinding.boundKey().localizedText),
                 x = MinecraftClient.getInstance().window.scaledWidth / 2,
                 y = (MinecraftClient.getInstance().window.scaledHeight / 2) - 25,
                 opacity = textOpacity,

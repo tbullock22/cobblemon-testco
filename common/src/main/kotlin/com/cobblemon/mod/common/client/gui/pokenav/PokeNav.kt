@@ -11,7 +11,7 @@ package com.cobblemon.mod.common.client.gui.pokenav
 import com.cobblemon.mod.common.api.gui.blitk
 import com.cobblemon.mod.common.client.CobblemonClient
 import com.cobblemon.mod.common.client.gui.summary.Summary
-import com.cobblemon.mod.common.client.keybind.currentKey
+import com.cobblemon.mod.common.client.keybind.boundKey
 import com.cobblemon.mod.common.client.keybind.keybinds.PokeNavigatorBinding
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.cobblemon.mod.common.util.lang
@@ -92,7 +92,7 @@ class PokeNav : Screen(Text.translatable("cobblemon.ui.pokenav.title")) {
                 button?.onPress()
                 0 to 0
             }
-            PokeNavigatorBinding.currentKey().code, InputUtil.GLFW_KEY_LEFT_SHIFT, InputUtil.GLFW_KEY_RIGHT_SHIFT -> {
+            PokeNavigatorBinding.boundKey().code, InputUtil.GLFW_KEY_LEFT_SHIFT, InputUtil.GLFW_KEY_RIGHT_SHIFT -> {
                 this.aboutToClose = true
                 0 to 0
             }
@@ -103,7 +103,7 @@ class PokeNav : Screen(Text.translatable("cobblemon.ui.pokenav.title")) {
     }
 
     override fun keyReleased(pKeyCode: Int, pScanCode: Int, pModifiers: Int): Boolean {
-        if ((pKeyCode == PokeNavigatorBinding.currentKey().code || pKeyCode == InputUtil.GLFW_KEY_LEFT_SHIFT || pKeyCode == InputUtil.GLFW_KEY_RIGHT_SHIFT) && aboutToClose) {
+        if ((pKeyCode == PokeNavigatorBinding.boundKey().code || pKeyCode == InputUtil.GLFW_KEY_LEFT_SHIFT || pKeyCode == InputUtil.GLFW_KEY_RIGHT_SHIFT) && aboutToClose) {
             MinecraftClient.getInstance().setScreen(null) // So we only close if the Key was released
         }
         return super.keyReleased(pKeyCode, pScanCode, pModifiers)

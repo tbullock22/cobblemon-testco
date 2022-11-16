@@ -2,7 +2,6 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"animation.grimer.ground_idle": {
-			"animation_length": 1.5,
 			"bones": {
 				"arm_right": {
 					"rotation": [9.00717, -20.70481, -24.14867]

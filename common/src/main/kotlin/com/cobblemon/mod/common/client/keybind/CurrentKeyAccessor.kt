@@ -8,20 +8,10 @@
 
 package com.cobblemon.mod.common.client.keybind
 
+import com.cobblemon.mod.common.mixin.accessor.KeyBindingAccessor
 import net.minecraft.client.option.KeyBinding
 import net.minecraft.client.util.InputUtil
 
-
-/**
- * Interface for us to retrieve the current [Key] if it has been changed from the default [Key].
- *
- * @author Qu
- * @since 2022-02-17
- */
-interface CurrentKeyAccessor {
-    fun currentKey(): InputUtil.Key
-}
-
-fun KeyBinding.currentKey(): InputUtil.Key {
-    return (this as CurrentKeyAccessor).currentKey()
+fun KeyBinding.boundKey(): InputUtil.Key {
+    return (this as KeyBindingAccessor).boundKey()
 }

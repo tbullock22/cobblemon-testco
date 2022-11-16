@@ -6,8 +6,7 @@
   "client": [
     "EntityRenderDispatcherMixin",
     "GameRendererMixin",
-    "KeyBindingMixin",
-    "KeyboardHandlerMixin",
+    "accessor.KeyBindingAccessor",
     "pokeball.ItemRendererMixin"
   ],
   "mixins": [

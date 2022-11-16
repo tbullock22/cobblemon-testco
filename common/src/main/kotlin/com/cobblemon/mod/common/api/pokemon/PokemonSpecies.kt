@@ -127,45 +127,11 @@ object PokemonSpecies : JsonDataRegistry<Species> {
 
     val species: Collection<Species>
         get() = this.speciesByIdentifier.values
+    val implemented = mutableListOf<Species>()
 
     object SpeciesByNameDelegate {
         operator fun getValue(_species: PokemonSpecies, property: KProperty<*>) = getByIdentifier(cobblemonResource(property.name.lowercase()))
     }
-
-    val BULBASAUR by SpeciesByNameDelegate
-    val IVYSAUR by SpeciesByNameDelegate
-    val VENUSAUR by SpeciesByNameDelegate
-    val CHARMANDER by SpeciesByNameDelegate
-    val CHARMELEON by SpeciesByNameDelegate
-    val CHARIZARD by SpeciesByNameDelegate
-    val SQUIRTLE by SpeciesByNameDelegate
-    val WARTORTLE by SpeciesByNameDelegate
-    val BLASTOISE by SpeciesByNameDelegate
-    val CATERPIE by SpeciesByNameDelegate
-    val METAPOD by SpeciesByNameDelegate
-    val BUTTERFREE by SpeciesByNameDelegate
-    val WEEDLE by SpeciesByNameDelegate
-    val KAKUNA by SpeciesByNameDelegate
-    val BEEDRILL by SpeciesByNameDelegate
-    val PIDGEY by SpeciesByNameDelegate
-    val PIDGEOTTO by SpeciesByNameDelegate
-    val PIDGEOT by SpeciesByNameDelegate
-    val EKANS by SpeciesByNameDelegate
-    val ZUBAT by SpeciesByNameDelegate
-    val DIGLETT by SpeciesByNameDelegate
-    val DUGTRIO by SpeciesByNameDelegate
-    val MAGIKARP by SpeciesByNameDelegate
-    val GYARADOS by SpeciesByNameDelegate
-    val EEVEE by SpeciesByNameDelegate
-    val RATTATA by SpeciesByNameDelegate
-    val RATICATE by SpeciesByNameDelegate
-    val CLEFFA by SpeciesByNameDelegate
-    val CLEFABLE by SpeciesByNameDelegate
-    val CLEFAIRY by SpeciesByNameDelegate
-    val MACHOP by SpeciesByNameDelegate
-    val MACHOKE by SpeciesByNameDelegate
-    val MACHAMP by SpeciesByNameDelegate
-
 
     /**
      * Finds a species by the pathname of their [Identifier].
@@ -207,10 +173,11 @@ object PokemonSpecies : JsonDataRegistry<Species> {
      *
      * @return A randomly selected [Species].
      */
-    fun random(): Species = this.species.random()
+    fun random(): Species = this.implemented.random()
 
     override fun reload(data: Map<Identifier, Species>) {
         this.speciesByIdentifier.clear()
+        this.implemented.clear()
         this.speciesByDex.clear()
         data.forEach { (identifier, species) ->
             species.resourceIdentifier = identifier
@@ -218,6 +185,9 @@ object PokemonSpecies : JsonDataRegistry<Species> {
                 this.speciesByDex.remove(old.resourceIdentifier.namespace, old.nationalPokedexNumber)
             }
             this.speciesByDex.put(species.resourceIdentifier.namespace, species.nationalPokedexNumber, species)
+            if (species.implemented) {
+                this.implemented.add(species)
+            }
             species.initialize()
         }
         this.species.forEach(Species::initializePostLoads)
