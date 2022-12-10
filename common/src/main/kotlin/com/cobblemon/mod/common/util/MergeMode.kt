@@ -20,6 +20,10 @@ enum class MergeMode : Merger {
         override fun <T> merge(base: MutableCollection<T>?, other: MutableCollection<T>?): MutableCollection<T>? {
             return other?.toMutableList() ?: base
         }
+
+        override fun <T> mergeSingle(base: T?, other: T?): T? {
+            return other ?: base
+        }
     },
     /** Inserts the other list's contents into the base list, creating a new base list if the current is blank.*/
     INSERT {
@@ -31,6 +35,19 @@ enum class MergeMode : Merger {
                 list.addAll(other)
                 list
             }
+        }
+
+        override fun <T> mergeSingle(base: T?, other: T?): T? {
+            return KEEP.mergeSingle(base, other)
+        }
+    },
+    KEEP {
+        override fun <T> merge(base: MutableCollection<T>?, other: MutableCollection<T>?): MutableCollection<T>? {
+            return base?.toMutableList() ?: other
+        }
+
+        override fun <T> mergeSingle(base: T?, other: T?): T? {
+            return base ?: other
         }
     }
 }
@@ -44,4 +61,5 @@ enum class MergeMode : Merger {
  */
 interface Merger {
     fun <T> merge(base: MutableCollection<T>?, other: MutableCollection<T>?): MutableCollection<T>?
+    fun <T> mergeSingle(base: T?, other: T?): T?
 }

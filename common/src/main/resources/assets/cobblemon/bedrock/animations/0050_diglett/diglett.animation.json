@@ -3,7 +3,6 @@
 	"animations": {
 		"animation.diglett.ground_idle": {
 			"loop": true,
-			"animation_length": 13.04167,
 			"bones": {
 				"body": {
 					"rotation": ["math.sin(q.anim_time*90*4)*0.5", "math.sin(q.anim_time*90*4)*0.5", "math.sin(q.anim_time*90*4-90)*1"],

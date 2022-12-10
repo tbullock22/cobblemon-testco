@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "blaziken",
     "nationalPokedexNumber": 257,
     "primaryType": "fire",
@@ -141,6 +142,19 @@
     "eggGroups": [
         "field"
     ],
+	"drops": {
+    "amount": "2",
+    "entries": [
+      {
+        "item": "minecraft:feather",
+        "quantityRange": "1-3",
+        "percentage": 75
+      },
+      {
+        "item": "minecraft:chicken"
+      }
+    ]
+  },
     "moves": [
         "1:firepunch",
         "1:scratch",

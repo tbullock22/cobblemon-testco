@@ -54,7 +54,7 @@ class BestSpawnerConfig {
 
         fun load(): BestSpawnerConfig {
             val internal = loadInternal()
-            if (Cobblemon.config.exportSpawnConfigToConfig) {
+            if (Cobblemon.config.exportSpawnConfig) {
                 val external = loadExternal()
                 return if (external == null) {
                     saveExternal()

@@ -8,15 +8,20 @@
 
 package com.cobblemon.mod.common.item
 
+import com.cobblemon.mod.common.api.text.gray
+import com.cobblemon.mod.common.api.text.red
 import com.cobblemon.mod.common.entity.pokeball.EmptyPokeBallEntity
 import com.cobblemon.mod.common.item.CobblemonItemGroups.POKE_BALL_GROUP
 import com.cobblemon.mod.common.pokeball.PokeBall
+import com.cobblemon.mod.common.util.asTranslated
 import com.cobblemon.mod.common.util.isServerSide
 import com.cobblemon.mod.common.util.math.geometry.toRadians
+import net.minecraft.client.item.TooltipContext
 import kotlin.math.cos
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.text.Text
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
@@ -43,4 +48,9 @@ class PokeBallItem(
         }
         world.spawnEntity(pokeBallEntity)
     }
+
+    override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
+        tooltip.add("item.${this.pokeBall.name.namespace}.${this.pokeBall.name.path}.tooltip".asTranslated().gray())
+    }
+
 }

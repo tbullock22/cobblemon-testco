@@ -25,7 +25,7 @@ interface DataProvider {
      *
      * @param registry The [DataRegistry] being registered.
      */
-    fun register(registry: DataRegistry)
+    fun <T : DataRegistry> register(registry: T): T
 
     /**
      * Attempts to find a [DataRegistry] with the given [Identifier].

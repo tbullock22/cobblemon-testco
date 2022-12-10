@@ -1,21 +1,27 @@
 {
-  "capture_succeeded": {
+  "poke_ball.capture_started": {
+    "sounds": [ "cobblemon:pokeball/capture_started" ]
+  },
+  "poke_ball.capture_succeeded": {
     "subtitle": "cobblemon.subtitle.capture_succeeded",
     "sounds": [ "cobblemon:pokeball/capture_succeeded" ]
   },
-  "shake": {
+  "poke_ball.shake": {
     "sounds": [ "cobblemon:pokeball/shake" ]
   },
-  "capture_started": {
-    "sounds": [ "cobblemon:pokeball/capture_started" ]
+  "poke_ball.open": {
+    "sounds": [ "cobblemon:pokeball/open" ]
   },
-  "recall": {
+  "poke_ball.recall": {
     "sounds": [ "cobblemon:pokeball/recall" ]
   },
-  "send_out": {
+  "poke_ball.send_out": {
     "sounds": [ "cobblemon:pokeball/send_out" ]
   },
-  "hit": {
+  "poke_ball.hit": {
     "sounds": [ "cobblemon:pokeball/hit" ]
+  },
+  "item.use": {
+    "sounds": [ "cobblemon:use_item" ]
   }
 }

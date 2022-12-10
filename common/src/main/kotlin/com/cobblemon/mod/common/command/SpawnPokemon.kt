@@ -39,14 +39,18 @@ object SpawnPokemon {
     private fun execute(context: CommandContext<ServerCommandSource>) : Int {
         val entity = context.source.entity
         if (entity is ServerPlayerEntity && !entity.world.isClient) {
-            val pkm = PokemonPropertiesArgumentType.getPokemonProperties(context, PROPERTIES)
-            if (pkm.species == null) {
-                entity.sendMessage(commandLang("${NAME}.nospecies").red())
-                return Command.SINGLE_SUCCESS
+            try {
+                val pkm = PokemonPropertiesArgumentType.getPokemonProperties(context, PROPERTIES)
+                if (pkm.species == null) {
+                    entity.sendMessage(commandLang("${NAME}.nospecies").red())
+                    return Command.SINGLE_SUCCESS
+                }
+                val pokemonEntity = pkm.createEntity(entity.world)
+                entity.world.spawnEntity(pokemonEntity)
+                pokemonEntity.setPosition(entity.pos)
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-            val pokemonEntity = pkm.createEntity(entity.world)
-            entity.world.spawnEntity(pokemonEntity)
-            pokemonEntity.setPosition(entity.pos)
         }
         return Command.SINGLE_SUCCESS
     }

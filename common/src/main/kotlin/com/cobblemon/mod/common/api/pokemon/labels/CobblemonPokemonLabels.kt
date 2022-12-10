@@ -157,4 +157,14 @@ object CobblemonPokemonLabels {
      */
     const val GENERATION_8 = "gen8"
 
+    /**
+     * Official Pokémon changed by a datapack, there is no guarantee authors will adhere to this principle
+     */
+    const val CUSTOMIZED_OFFICIAL = "customized_official"
+
+    /**
+     * Unofficial Pokémon created by a datapack, there is no guarantee authors will adhere to this principle
+     */
+    const val FAKEMON = "fakemon"
+
 }

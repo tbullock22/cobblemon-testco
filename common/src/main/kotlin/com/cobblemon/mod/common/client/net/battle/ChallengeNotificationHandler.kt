@@ -10,7 +10,7 @@ package com.cobblemon.mod.common.client.net.battle
 
 import com.cobblemon.mod.common.CobblemonNetwork
 import com.cobblemon.mod.common.api.text.lightPurple
-import com.cobblemon.mod.common.client.keybind.currentKey
+import com.cobblemon.mod.common.client.keybind.boundKey
 import com.cobblemon.mod.common.client.keybind.keybinds.PartySendBinding
 import com.cobblemon.mod.common.client.net.ClientPacketHandler
 import com.cobblemon.mod.common.net.messages.client.battle.ChallengeNotificationPacket
@@ -23,7 +23,7 @@ object ChallengeNotificationHandler : ClientPacketHandler<ChallengeNotificationP
             lang(
                 "challenge.receiver",
                 packet.challengerName,
-                PartySendBinding.currentKey().localizedText
+                PartySendBinding.boundKey().localizedText
             ).lightPurple()
         )
     }

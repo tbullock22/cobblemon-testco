@@ -17,13 +17,12 @@ import java.net.Socket
 import java.nio.charset.Charset
 class JavetShowdownConnection : ShowdownConnection {
 
-    private lateinit var process: Process
     private lateinit var socket: Socket
     private lateinit var writer: OutputStreamWriter
     private lateinit var reader: BufferedReader
     private var data = ""
     private var closed = false
-    val serverThread = Thread { ShowdownServer.start() }
+    private val serverThread = Thread({ ShowdownServer.start() }, "Cobblemon Showdown Server")
 
     fun initializeServer() {
         serverThread.start()
@@ -38,7 +37,6 @@ class JavetShowdownConnection : ShowdownConnection {
 
     override fun close() {
         socket.close()
-        process.destroy()
         closed = true
     }
 

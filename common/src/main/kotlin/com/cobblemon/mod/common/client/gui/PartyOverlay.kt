@@ -10,12 +10,14 @@ package com.cobblemon.mod.common.client.gui
 
 import com.cobblemon.mod.common.api.gui.blitk
 import com.cobblemon.mod.common.api.gui.drawPortraitPokemon
+import com.cobblemon.mod.common.api.text.text
 import com.cobblemon.mod.common.client.CobblemonClient
 import com.cobblemon.mod.common.client.CobblemonResources
 import com.cobblemon.mod.common.client.gui.battle.BattleGUI
-import com.cobblemon.mod.common.client.keybind.currentKey
+import com.cobblemon.mod.common.client.keybind.boundKey
 import com.cobblemon.mod.common.client.keybind.keybinds.HidePartyBinding
 import com.cobblemon.mod.common.client.keybind.keybinds.PokeNavigatorBinding
+import com.cobblemon.mod.common.client.keybind.keybinds.SummaryBinding
 import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.client.render.getDepletableRedGreen
 import com.cobblemon.mod.common.pokemon.Gender
@@ -28,26 +30,33 @@ import net.minecraft.client.gui.hud.InGameHud
 import net.minecraft.client.gui.screen.ChatScreen
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.util.math.MatrixStack
-import net.minecraft.text.Text
 
 class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.getInstance().itemRenderer) {
 
-    val partySlot = cobblemonResource("ui/party/party_slot.png")
-    val partySlotActive = cobblemonResource("ui/party/party_slot_active.png")
-    val partySlotFainted = cobblemonResource("ui/party/party_slot_fainted.png")
-    val partySlotFaintedActive = cobblemonResource("ui/party/party_slot_fainted_active.png")
-    val partySlotCollapsed = cobblemonResource("ui/party/party_slot_collapsed.png")
-    val genderIconMale = cobblemonResource("ui/party/party_gender_male.png")
-    val genderIconFemale = cobblemonResource("ui/party/party_gender_female.png")
-    val portraitBackground = cobblemonResource("ui/party/party_slot_portrait_background.png")
-    val screenExemptions: List<Class<out Screen>> = listOf(
+    companion object {
+        private const val SLOT_HEIGHT = 30
+        private const val SLOT_WIDTH = 57
+        private const val SLOT_SPACING = 4
+        private const val PORTRAIT_DIAMETER = 21
+        private const val SCALE = 0.5F
+
+        private val partySlot = cobblemonResource("ui/party/party_slot.png")
+        private val partySlotActive = cobblemonResource("ui/party/party_slot_active.png")
+        private val partySlotFainted = cobblemonResource("ui/party/party_slot_fainted.png")
+        private val partySlotFaintedActive = cobblemonResource("ui/party/party_slot_fainted_active.png")
+        private val partySlotCollapsed = cobblemonResource("ui/party/party_slot_collapsed.png")
+        private val genderIconMale = cobblemonResource("ui/party/party_gender_male.png")
+        private val genderIconFemale = cobblemonResource("ui/party/party_gender_female.png")
+        private val portraitBackground = cobblemonResource("ui/party/party_slot_portrait_background.png")
+    }
+
+    private val screenExemptions: List<Class<out Screen>> = listOf(
         ChatScreen::class.java,
         BattleGUI::class.java
     )
 
     override fun render(matrixStack: MatrixStack, partialDeltaTicks: Float) {
         val minecraft = MinecraftClient.getInstance()
-        val player = minecraft.player
 
         // Hiding if a Screen is open and not exempt
         if (minecraft.currentScreen != null) {
@@ -70,28 +79,24 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
                 !CobblemonClient.clientPlayerData.starterSelected &&
                 !CobblemonClient.checkedStarterScreen
             ) {
+                // ToDo replace back to PokeNav once reimplemented
                 drawScaledText(
                     matrixStack = matrixStack,
-                    text = lang("ui.starter.chooseyourstarter", PokeNavigatorBinding.currentKey().localizedText),
+                    text = lang("ui.starter.chooseyourstarter", SummaryBinding.boundKey().localizedText),
                     x = minecraft.window.scaledWidth / 2,
                     y = 70,
                     centered = true,
                     shadow = true
                 )
             }
-
             return
         }
 
-        val slotHeight = 30
-        val slotWidth = 57
-        val slotSpacing = 4
-        val portraitDiameter = 21
-        val totalHeight = party.slots.size * slotHeight
+        val totalHeight = party.slots.size * SLOT_HEIGHT
         val midY = minecraft.window.scaledHeight / 2
-        val startY = (midY - totalHeight / 2) - ((slotSpacing * 5) / 2)
-        val frameOffsetX = 17
-        val frameOffsetY = 2
+        val startY = (midY - totalHeight / 2) - ((SLOT_SPACING * 5) / 2)
+        val portraitFrameOffsetX = 17
+        val portraitFrameOffsetY = 2
         val selectedSlot = CobblemonClient.storage.selectedSlot
 
         val scaleIt: (Int) -> Int = { (it * minecraft.window.scaleFactor).toInt() }
@@ -100,30 +105,31 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
         party.forEachIndexed { index, pokemon ->
             if (pokemon != null) {
                 val selectedOffsetX = if (selectedSlot == index) 6 else 0
-                val y = startY + ((slotHeight + slotSpacing) * index) + frameOffsetY
+                val indexOffsetY = (SLOT_HEIGHT + SLOT_SPACING) * index
+                val y = startY + indexOffsetY + portraitFrameOffsetY
 
                 blitk(
                     matrixStack = matrixStack,
                     texture = portraitBackground,
-                    x = panelX + frameOffsetX + selectedOffsetX,
+                    x = panelX + portraitFrameOffsetX + selectedOffsetX,
                     y = y,
-                    height = portraitDiameter,
-                    width = portraitDiameter
+                    height = PORTRAIT_DIAMETER,
+                    width = PORTRAIT_DIAMETER
                 )
 
                 val height = minecraft.window.height
                 val scaledTotalHeight = downscaleIt(totalHeight)
 
                 RenderSystem.enableScissor(
-                    ((panelX + frameOffsetX + selectedOffsetX) * minecraft.window.scaleFactor).roundToInt(),
-                    height / 2 + scaledTotalHeight * 2 + scaleIt(8) - scaleIt(((11 * index) + ((portraitDiameter + 2) * (index + 1))) - 2),
-                    (portraitDiameter * minecraft.window.scaleFactor).roundToInt(),
-                    (portraitDiameter * minecraft.window.scaleFactor).roundToInt()
+                    ((panelX + portraitFrameOffsetX + selectedOffsetX) * minecraft.window.scaleFactor).roundToInt(),
+                    height / 2 + scaledTotalHeight * 2 + scaleIt(8) - scaleIt(((11 * index) + ((PORTRAIT_DIAMETER + 2) * (index + 1))) - 2),
+                    (PORTRAIT_DIAMETER * minecraft.window.scaleFactor).roundToInt(),
+                    (PORTRAIT_DIAMETER * minecraft.window.scaleFactor).roundToInt()
                 )
 
                 val matrixStack = MatrixStack()
                 matrixStack.translate(
-                    panelX + frameOffsetX + selectedOffsetX + portraitDiameter / 2.0 - 1.0,
+                    panelX + portraitFrameOffsetX + selectedOffsetX + PORTRAIT_DIAMETER / 2.0 - 1.0,
                     y.toDouble() - 12,
                     0.0
                 )
@@ -141,26 +147,100 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
         matrixStack.translate(0.0, 0.0, 300.0)
         party.slots.forEachIndexed { index, pokemon ->
             val selectedOffsetX = if (selectedSlot == index) 6 else 0
+            val indexOffsetY = (SLOT_HEIGHT + SLOT_SPACING) * index
+            val indexY = startY + indexOffsetY
+
             val slotTexture = if (pokemon != null)
                     if (pokemon.isFainted())
                         if (selectedSlot == index) partySlotFaintedActive else partySlotFainted
                     else
                         if (selectedSlot == index) partySlotActive else partySlot
                 else partySlotCollapsed
+
             blitk(
                 matrixStack = matrixStack,
                 texture = slotTexture,
                 x = panelX,
-                y = startY + ((slotHeight + slotSpacing) * index),
-                height = slotHeight,
-                width = slotWidth
+                y = indexY,
+                height = SLOT_HEIGHT,
+                width = SLOT_WIDTH
             )
 
             if (pokemon != null) {
+                val stateIcon = pokemon.state.getIcon(pokemon)
+                if (stateIcon != null) {
+                    blitk(
+                        matrixStack = matrixStack,
+                        texture = stateIcon,
+                        x = (panelX + selectedOffsetX + 2.5) / SCALE,
+                        y = (indexY + portraitFrameOffsetY + 1) / SCALE,
+                        height = 17,
+                        width = 24,
+                        scale = SCALE
+                    )
+                }
+
+                drawScaledText(
+                    matrixStack = matrixStack,
+                    text = lang("ui.lv"),
+                    x = panelX + selectedOffsetX + 8.5F,
+                    y = indexY + 14,
+                    scale = SCALE,
+                    centered = true,
+                    shadow = true
+                )
+
+                drawScaledText(
+                    matrixStack = matrixStack,
+                    text = pokemon.level.toString().text(),
+                    x = panelX + selectedOffsetX + 8.5F,
+                    y = indexY + 18.5,
+                    scale = SCALE,
+                    centered = true,
+                    shadow = true
+                )
+
+                drawScaledText(
+                    matrixStack = matrixStack,
+                    text = pokemon.displayName,
+                    x = panelX + selectedOffsetX + 2.5F,
+                    y = indexY + 25,
+                    scale = SCALE
+                )
+
+                if (pokemon.gender != Gender.GENDERLESS) {
+                    blitk(
+                        matrixStack = matrixStack,
+                        texture = if (pokemon.gender == Gender.MALE) genderIconMale else genderIconFemale,
+                        x = (panelX + selectedOffsetX + 35) / SCALE,
+                        y = (indexY + 25)  / SCALE,
+                        height = 7,
+                        width = 5,
+                        scale = SCALE
+                    )
+                }
+
                 val hpRatio = pokemon.currentHealth / pokemon.hp.toFloat()
                 val barHeightMax = 18
                 val hpBarWidth = 2
                 val hpBarHeight = hpRatio * barHeightMax
+
+                val (red, green) = getDepletableRedGreen(hpRatio)
+
+                blitk(
+                    matrixStack = matrixStack,
+                    texture = CobblemonResources.WHITE,
+                    x = panelX + selectedOffsetX + 41,
+                    y = indexY + (barHeightMax - hpBarHeight) + 5,
+                    width = hpBarWidth,
+                    height = hpBarHeight,
+                    textureHeight = hpBarHeight / hpRatio,
+                    vOffset = barHeightMax - hpBarHeight,
+                    red = red * 0.8F,
+                    green = green * 0.8F,
+                    blue = 0.27F
+                )
+
                 val expForThisLevel = pokemon.experience - if (pokemon.level == 1) 0 else pokemon.experienceGroup.getExperience(pokemon.level)
                 val expToNextLevel = pokemon.experienceGroup.getExperience(pokemon.level + 1) - pokemon.experienceGroup.getExperience(pokemon.level)
                 val expRatio = expForThisLevel / expToNextLevel.toFloat()
@@ -168,102 +248,46 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
                 val expBarWidth = 1
                 val expBarHeight = expRatio * barHeightMax
 
-                val (r, g) = getDepletableRedGreen(hpRatio)
-                val b = 0
-
-                blitk(
-                    matrixStack = matrixStack,
-                    texture = CobblemonResources.WHITE,
-                    x = panelX + selectedOffsetX + 41,
-                    y = startY + 5 + ((slotHeight + slotSpacing) * index) + (barHeightMax - hpBarHeight),
-                    width = hpBarWidth,
-                    height = hpBarHeight,
-                    textureHeight = hpBarHeight / hpRatio,
-                    vOffset = barHeightMax - hpBarHeight,
-                    red = r,
-                    green = g,
-                    blue = b
-                )
-
                 blitk(
                     matrixStack = matrixStack,
                     texture = CobblemonResources.WHITE,
                     x = panelX + selectedOffsetX + 44,
-                    y = startY + 5 + ((slotHeight + slotSpacing) * index) + (barHeightMax - expBarHeight),
+                    y = indexY + (barHeightMax - expBarHeight) + 5,
                     width = expBarWidth,
                     height = expBarHeight,
                     textureHeight = expBarHeight / expRatio,
                     vOffset = barHeightMax - expBarHeight,
-                    red = 0,
-                    green = 0.784,
-                    blue = 1.0
+                    red = 0.2,
+                    green = 0.65,
+                    blue = 0.84
                 )
-
-                val fontScale = 0.5F
-
-                drawScaledText(
-                    matrixStack = matrixStack,
-                    text = pokemon.species.translatedName,
-                    x = panelX + selectedOffsetX + 2.5F,
-                    y = startY + 1 + ((slotHeight + slotSpacing) * index) + slotHeight * 0.84F - 1F,
-                    scale = fontScale
-                )
-
-                drawScaledText(
-                    matrixStack = matrixStack,
-                    text = lang("ui.lv"),
-                    x = panelX + selectedOffsetX + 2.5F,
-                    y = startY + ((slotHeight + slotSpacing) * index) + slotHeight * 0.84F - 10.75F,
-                    scale = 0.45F
-                )
-
-                val width = minecraft.textRenderer.getWidth(pokemon.level.toString())
-                drawScaledText(
-                    matrixStack = matrixStack,
-                    text = Text.translatable(pokemon.level.toString()),
-                    x = panelX + selectedOffsetX + 6.5F - width / 4F,
-                    y = startY + ((slotHeight + slotSpacing) * index) + slotHeight * 0.84F - 7F,
-                    scale = 0.45F
-                )
-
-                if (pokemon.gender != Gender.GENDERLESS) {
-                    blitk(
-                        matrixStack = matrixStack,
-                        texture = if (pokemon.gender == Gender.MALE) genderIconMale else genderIconFemale,
-                        x = (panelX + selectedOffsetX + 35) * 2,
-                        y = (startY + 1 + ((slotHeight + slotSpacing) * index) + slotHeight * 0.84F - 1F) * 2,
-                        height = 7,
-                        width = 5,
-                        scale = 0.5F
-                    )
-                }
-
-                val stateIcon = pokemon.state.getIcon(pokemon)
-                if (stateIcon != null) {
-                    blitk(
-                        matrixStack = matrixStack,
-                        texture = stateIcon,
-                        x = ((panelX + selectedOffsetX + 2) * 2) + 1,
-                        y = (startY + ((slotHeight + slotSpacing) * index) + frameOffsetY + 1) * 2,
-                        height = 17,
-                        width = 24,
-                        scale = 0.5F
-                    )
-                }
 
                 val ballIcon = cobblemonResource("ui/ball/" + pokemon.caughtBall.name.path + ".png")
                 val ballHeight = 22
                 blitk(
                     matrixStack = matrixStack,
                     texture = ballIcon,
-                    x = ((panelX + selectedOffsetX + 38) * 2) + 1,
-                    y = (startY + ((slotHeight + slotSpacing) * index) + 22) * 2,
+                    x = (panelX + selectedOffsetX + 38.5) / SCALE,
+                    y = (indexY + 22) / SCALE,
                     height = ballHeight,
                     width = 18,
                     vOffset = if (stateIcon != null) ballHeight else 0,
                     textureHeight = ballHeight * 2,
-                    scale = 0.5F
+                    scale = SCALE
                 )
+
+                val status = pokemon.status?.status
+                if (!pokemon.isFainted() && status != null) {
+                    val statusName = status.showdownName
+                    blitk(
+                        matrixStack = matrixStack,
+                        texture = cobblemonResource("ui/party/status_$statusName.png"),
+                        x = panelX + selectedOffsetX + 46,
+                        y = indexY + 8,
+                        height = 14,
+                        width = 4
+                    )
+                }
             }
         }
         matrixStack.pop()

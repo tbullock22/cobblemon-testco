@@ -1,0 +1,19 @@
+{
+  "species": "cobblemon:charmander",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:charmander",
+      "model": "cobblemon:charmander.geo",
+      "texture": "cobblemon:textures/pokemon/0004_charmander/charmander.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0004_charmander/charmander_shiny.png"
+    }
+  ]
+}

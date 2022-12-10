@@ -3,7 +3,6 @@
 	"animations": {
 		"animation.sylveon.ground_idle": {
 			"loop": true,
-			"animation_length": 95.55,
 			"bones": {
 				"head": {
 					"rotation": ["-math.sin(q.anim_time*90*4)*0.2", 0, "math.clamp(math.sin(q.anim_time*90*4+45)*0.2,-1.2,1.2)"]
@@ -79,7 +78,6 @@
 		},
 		"animation.sylveon.ground_walk": {
 			"loop": true,
-			"animation_length": 342.05,
 			"override_previous_animation": true,
 			"bones": {
 				"body": {

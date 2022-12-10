@@ -3,9 +3,9 @@
   "id": "cobblemon",
   "version": "${version}",
   "name": "Cobblemon",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Adds Pokémon to the world, letting you find, battle, capture, and evolve them.",
   "authors": [
-    "Me!"
+    "The Cobblemon Team"
   ],
   "contact": {
     "homepage": "https://gitlab.com/cable-mc/cobblemon",

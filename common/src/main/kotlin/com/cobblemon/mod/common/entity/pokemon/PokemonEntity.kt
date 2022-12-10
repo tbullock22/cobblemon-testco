@@ -9,6 +9,7 @@
 package com.cobblemon.mod.common.entity.pokemon
 
 import com.cobblemon.mod.common.Cobblemon
+import com.cobblemon.mod.common.CobblemonEntities
 import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.drop.DropTable
 import com.cobblemon.mod.common.api.entity.Despawner
@@ -17,6 +18,7 @@ import com.cobblemon.mod.common.api.events.pokemon.ShoulderMountEvent
 import com.cobblemon.mod.common.api.net.serializers.PoseTypeDataSerializer
 import com.cobblemon.mod.common.api.net.serializers.StringSetDataSerializer
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies
+import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.api.reactive.ObservableSubscription
 import com.cobblemon.mod.common.api.reactive.SimpleObservable
 import com.cobblemon.mod.common.api.scheduling.afterOnMain
@@ -47,6 +49,7 @@ import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityPose
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.ai.control.MoveControl
+import net.minecraft.entity.ai.goal.BreatheAirGoal
 import net.minecraft.entity.ai.goal.Goal
 import net.minecraft.entity.ai.pathing.PathNodeType
 import net.minecraft.entity.damage.DamageSource
@@ -62,7 +65,6 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
-import net.minecraft.sound.SoundEvents
 import net.minecraft.tag.FluidTags
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
@@ -72,7 +74,7 @@ import net.minecraft.world.World
 class PokemonEntity(
     world: World,
     pokemon: Pokemon = Pokemon(),
-    type: EntityType<out PokemonEntity> = com.cobblemon.mod.common.CobblemonEntities.POKEMON_TYPE,
+    type: EntityType<out PokemonEntity> = CobblemonEntities.POKEMON.get(),
 ) : TameableShoulderEntity(type, world), EntitySpawnExtension, Poseable {
     val removalObservable = SimpleObservable<RemovalReason?>()
     /** A list of observable subscriptions related to this entity that need to be cleaned up when the entity is removed. */
@@ -100,12 +102,13 @@ class PokemonEntity(
     val busyLocks = mutableListOf<Any>()
     val isBusy: Boolean
         get() = busyLocks.isNotEmpty()
+    val isBattling: Boolean
+        get() = this.battleId.get().isPresent
 
     var drops: DropTable? = null
     val entityProperties = mutableListOf<EntityProperty<*>>()
 
     val species = addEntityProperty(SPECIES, pokemon.species.resourceIdentifier.toString())
-    val shiny = addEntityProperty(SHINY, pokemon.shiny)
     val isMoving = addEntityProperty(MOVING, false)
     val behaviourFlags = addEntityProperty(BEHAVIOUR_FLAGS, 0)
     val phasingTargetId = addEntityProperty(PHASING_TARGET_ID, -1)
@@ -158,17 +161,16 @@ class PokemonEntity(
     }
 
     companion object {
-        private val SPECIES = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.STRING)
-        private val SHINY = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-        private val MOVING = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-        private val BEHAVIOUR_FLAGS = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.BYTE)
-        private val PHASING_TARGET_ID = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
-        private val BEAM_MODE = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.BYTE)
-        private val BATTLE_ID = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.OPTIONAL_UUID)
-        private val ASPECTS = DataTracker.registerData(PokemonEntity::class.java, StringSetDataSerializer)
-        private val DYING_EFFECTS_STARTED = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-        private val POSE_TYPE = DataTracker.registerData(PokemonEntity::class.java, PoseTypeDataSerializer)
-        private val LABEL_LEVEL = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
+        val SPECIES = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.STRING)
+        val MOVING = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+        val BEHAVIOUR_FLAGS = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.BYTE)
+        val PHASING_TARGET_ID = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
+        val BEAM_MODE = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.BYTE)
+        val BATTLE_ID = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.OPTIONAL_UUID)
+        val ASPECTS = DataTracker.registerData(PokemonEntity::class.java, StringSetDataSerializer)
+        val DYING_EFFECTS_STARTED = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+        val POSE_TYPE = DataTracker.registerData(PokemonEntity::class.java, PoseTypeDataSerializer)
+        val LABEL_LEVEL = DataTracker.registerData(PokemonEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 
         const val BATTLE_LOCK = "battle"
     }
@@ -253,7 +255,7 @@ class PokemonEntity(
         val owner = owner
         val future = CompletableFuture<Pokemon>()
         if (phasingTargetId.get() == -1 && owner != null) {
-            owner.getWorld().playSoundServer(pos, CobblemonSounds.RECALL.get(), volume = 0.2F)
+            owner.getWorld().playSoundServer(pos, CobblemonSounds.POKE_BALL_RECALL.get(), volume = 0.2F)
             phasingTargetId.set(owner.id)
             beamModeEmitter.set(2)
             afterOnMain(seconds = SEND_OUT_DURATION) {
@@ -272,7 +274,6 @@ class PokemonEntity(
         super.readNbt(nbt)
         pokemon = Pokemon().loadFromNBT(nbt.getCompound(DataKeys.POKEMON))
         species.set(pokemon.species.resourceIdentifier.toString())
-        shiny.set(pokemon.shiny)
         labelLevel.set(pokemon.level)
     }
 
@@ -283,22 +284,25 @@ class PokemonEntity(
     }
 
     public override fun initGoals() {
+        // It is capable of being null in specific cases, dw about it
         if (pokemon != null) {
             moveControl = PokemonMoveControl(this)
             navigation = PokemonNavigation(world, this)
+            goalSelector.clear()
+            goalSelector.add(0, object : Goal() {
+                override fun canStart() = this@PokemonEntity.phasingTargetId.get() != -1 || pokemon.status?.status == Statuses.SLEEP
+                override fun getControls() = EnumSet.allOf(Control::class.java)
+            })
+
+            goalSelector.add(1, PokemonBreatheAirGoal(this))
+            goalSelector.add(2, PokemonFloatToSurfaceGoal(this))
+            goalSelector.add(3, PokemonFollowOwnerGoal(this, 1.0, 8F, 2F, false))
+            goalSelector.add(4, PokemonMoveIntoFluidGoal(this))
+            goalSelector.add(5, SleepOnTrainerGoal(this))
+            goalSelector.add(5, WildRestGoal(this))
+            goalSelector.add(6, PokemonWanderAroundGoal(this))
+            goalSelector.add(7, PokemonLookAtEntityGoal(this, ServerPlayerEntity::class.java, 5F))
         }
-
-        goalSelector.clear()
-        goalSelector.add(0, object : Goal() {
-            override fun canStart() = this@PokemonEntity.phasingTargetId.get() != -1
-            override fun getControls() = EnumSet.allOf(Control::class.java)
-        })
-
-        goalSelector.add(2, SleepOnTrainerGoal(this))
-        goalSelector.add(3, PokemonFollowOwnerGoal(this, 0.4, 8F, 2F, false))
-        goalSelector.add(4, WildRestGoal(this))
-        goalSelector.add(5, PokemonWanderAroundGoal(this, 0.4))
-        goalSelector.add(6, PokemonLookAtEntityGoal(this, ServerPlayerEntity::class.java, 5F))
     }
 
     fun <T> addEntityProperty(accessor: TrackedData<T>, initialValue: T): EntityProperty<T> {
@@ -342,7 +346,7 @@ class PokemonEntity(
             if (this.health == 0F) {
                 pokemon.currentHealth = 0
             } else {
-                pokemon.currentHealth = this.health.toInt()
+//                pokemon.currentHealth = this.health.toInt()
             }
             true
         } else false
@@ -354,7 +358,6 @@ class PokemonEntity(
         buffer.writeString(pokemon.form.name)
         buffer.writeInt(phasingTargetId.get())
         buffer.writeByte(beamModeEmitter.get().toInt())
-        buffer.writeBoolean(pokemon.shiny)
         buffer.writeCollection(pokemon.aspects, PacketByteBuf::writeString)
         buffer.writeInt(if (Cobblemon.config.displayEntityLevelLabel) this.labelLevel.get() else -1)
     }
@@ -369,7 +372,6 @@ class PokemonEntity(
             pokemon.form = pokemon.species.forms.find { form -> form.name == formName } ?: pokemon.species.standardForm
             phasingTargetId.set(buffer.readInt())
             beamModeEmitter.set(buffer.readByte())
-            shiny.set(buffer.readBoolean())
             this.aspects.set(buffer.readList(PacketByteBuf::readString).toSet())
             labelLevel.set(buffer.readInt())
         }
@@ -436,7 +438,7 @@ class PokemonEntity(
                         if (!player.isCreative) {
                             stack.decrement(1)
                         }
-                        this.world.playSoundServer(position = this.pos, sound = SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM, volume = 1F, pitch = 1F)
+                        this.world.playSoundServer(position = this.pos, sound = CobblemonSounds.ITEM_USE.get(), volume = 1F, pitch = 1F)
                         return true
                     }
                 }
@@ -444,7 +446,7 @@ class PokemonEntity(
 
         (stack.item as? PokemonInteractiveItem)?.let {
             if (it.onInteraction(player, this, stack)) {
-                this.world.playSoundServer(position = this.pos, sound = SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM, volume = 1F, pitch = 1F)
+                this.world.playSoundServer(position = this.pos, sound = CobblemonSounds.ITEM_USE.get(), volume = 1F, pitch = 1F)
                 return true
             }
         }

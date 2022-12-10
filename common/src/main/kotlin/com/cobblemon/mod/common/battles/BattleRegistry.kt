@@ -10,6 +10,8 @@ package com.cobblemon.mod.common.battles
 
 import com.cobblemon.mod.common.Cobblemon.showdown
 import com.cobblemon.mod.common.api.battles.model.PokemonBattle
+import com.cobblemon.mod.common.api.pokemon.stats.Stats
+import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
 import com.cobblemon.mod.common.util.DataKeys
 import com.google.gson.GsonBuilder
@@ -62,6 +64,12 @@ object BattleRegistry {
             packedTeamBuilder.append("${pk.currentHealth}|")
             val showdownStatus = if (pk.status != null) pk.status!!.status.showdownName else ""
             packedTeamBuilder.append("$showdownStatus|")
+            // If a temporary status is on the Pokémon, provide a duration.
+            if (pk.status?.status in listOf(Statuses.SLEEP, Statuses.FROZEN)) {
+                packedTeamBuilder.append("2|")
+            } else {
+                packedTeamBuilder.append("-1|")
+            }
 
             // Held item, empty if non TODO: Replace with actual held item
             packedTeamBuilder.append("|")
@@ -82,11 +90,13 @@ object BattleRegistry {
             // Nature
             packedTeamBuilder.append("${pk.nature.name.path}|")
             // EVs
-            packedTeamBuilder.append("${pk.evs.map { ev -> ev.value }.joinToString(",")}|")
+            val evsInOrder = Stats.PERMANENT.map { pk.evs.getOrDefault(it) }.joinToString(separator = ",")
+            packedTeamBuilder.append("$evsInOrder|")
             // Gender
             packedTeamBuilder.append("${pk.gender.showdownName}|")
             // IVs
-            packedTeamBuilder.append("${pk.ivs.map { iv -> iv.value }.joinToString(",")}|")
+            val ivsInOrder = Stats.PERMANENT.map { pk.ivs.getOrDefault(it) }.joinToString(separator = ",")
+            packedTeamBuilder.append("$ivsInOrder|")
             // Shiny
             packedTeamBuilder.append("${if (pk.shiny) "S" else ""}|")
             // Level

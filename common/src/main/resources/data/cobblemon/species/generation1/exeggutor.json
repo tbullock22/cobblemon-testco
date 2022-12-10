@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "exeggutor",
   "nationalPokedexNumber": 103,
   "primaryType": "grass",
@@ -138,6 +139,16 @@
   "experienceGroup": "slow",
   "eggCycles": 20,
   "eggGroups": ["grass"],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:egg",
+        "quantityRange": "1-3",
+        "percentage": 75
+      }
+    ]
+  },
   "moves": [
     "0:stomp",
     "1:stomp",

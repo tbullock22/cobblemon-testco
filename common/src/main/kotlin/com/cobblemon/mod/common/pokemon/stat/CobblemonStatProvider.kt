@@ -31,7 +31,6 @@ object CobblemonStatProvider : StatProvider {
     private val stats = Stats.values().associateBy { it.identifier }
     private val ordinalToStat = Stats.values().associateBy { it.ordinal }
     private val identifierToOrdinal = Stats.values().associate { it.identifier to it.ordinal }
-    private var printed = false
 
     override fun all(): Collection<Stat> = Stats.ALL
 
@@ -81,16 +80,20 @@ object CobblemonStatProvider : StatProvider {
 
     override fun getStatForPokemon(pokemon: Pokemon, stat: Stat): Int {
         val stats = pokemon.form.baseStats
+        val iv = pokemon.ivs.getOrDefault(stat)
+        val base = pokemon.form.baseStats[stat]!!
+        val ev = pokemon.evs.getOrDefault(stat)
+        val level = pokemon.level
         return if (stat == Stats.HP) {
             if (pokemon.species.resourceIdentifier == Pokemon.SHEDINJA) {
                 1
             } else {
                 // Why does showdown have the + 100 inside the numerator instead of + level at the end? It's the same mathematically but odd choice.
                 // modStats['hp'] = tr(tr(2 * stat + set.ivs['hp'] + tr(set.evs['hp'] / 4) + 100) * set.level / 100 + 10);
-                truncate(truncate(2.0 * stats[Stats.HP]!! + pokemon.ivs.getOrDefault(Stats.HP) + truncate(pokemon.evs.getOrDefault(Stats.HP) / 4.0)) * pokemon.level / 100.0 + pokemon.level + 10).toInt()
+                truncate(truncate(2.0 * base + iv + truncate(ev / 4.0) + 100) * level / 100.0 + 10).toInt()
             }
         } else {
-            pokemon.nature.modifyStat(stat, (2 * stats[stat]!! + pokemon.ivs.getOrDefault(stat) + pokemon.evs.getOrDefault(stat) / 4) / 100 * pokemon.level + 5)
+            pokemon.nature.modifyStat(stat, (2 * base + iv + ev / 4) / 100 * level + 5)
         }
     }
 

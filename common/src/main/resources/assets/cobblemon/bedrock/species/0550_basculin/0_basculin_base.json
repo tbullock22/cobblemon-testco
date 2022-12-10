@@ -1,0 +1,19 @@
+{
+  "species": "cobblemon:basculin",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:basculin",
+      "model": "cobblemon:basculin_redstripe.geo",
+      "texture": "cobblemon:textures/pokemon/0550_basculin/basculin_redstripe.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0550_basculin/basculin_redstripe_shiny.png"
+    }
+  ]
+}

@@ -46,7 +46,7 @@ class TaurosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0128_tauros/tauros", "ground_run")
+                bedrock("0128_tauros/tauros", "ground_walk")
             )
         )
     }

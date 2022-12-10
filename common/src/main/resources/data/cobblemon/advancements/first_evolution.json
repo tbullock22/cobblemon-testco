@@ -1,4 +1,5 @@
 {
+  "parent": "cobblemon:root",
   "display": {
     "icon": {
       "item": "cobblemon:link_cable"
@@ -9,7 +10,10 @@
     "description": {
       "translate": "advancements.cobblemon.first_evolution.description"
     },
-  "parent": "cobblemon:first_battle_victory",
+    "frame": "task",
+    "show_toast": true,
+	"announce_to_chat": true,
+	"hidden": false
   },
   "criteria": {
     "catch": {
@@ -18,5 +22,10 @@
         "count": 1
       }
     }
-  }
+  },
+	"requirements": [
+		[
+			"catch"
+		]
+	]
 }

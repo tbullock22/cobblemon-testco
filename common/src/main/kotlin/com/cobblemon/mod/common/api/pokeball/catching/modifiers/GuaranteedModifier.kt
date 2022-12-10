@@ -12,7 +12,11 @@ import com.cobblemon.mod.common.api.pokeball.catching.CatchRateModifier
 import com.cobblemon.mod.common.pokemon.Pokemon
 import net.minecraft.entity.LivingEntity
 class GuaranteedModifier : CatchRateModifier {
+
+    override fun isGuaranteed() = true
+
     override fun modifyCatchRate(currentCatchRate: Float, thrower: LivingEntity, pokemon: Pokemon, host: Pokemon?): Float {
-        return 255.0f // Catch rates should check the CatchRateModifier#isGuaranteed call
+        return 255.0f
     }
+
 }

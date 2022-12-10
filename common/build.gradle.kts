@@ -1,5 +1,6 @@
 plugins {
     id("cobblemon.base-conventions")
+    id("maven-publish")
 }
 
 architectury {
@@ -37,4 +38,25 @@ dependencies {
 //    modCompileOnly 'com.caoccao.javet:javet:1.0.6' // Linux or Windows
 //    modCompileOnly 'com.caoccao.javet:javet-macos:1.0.6' // Mac OS (x86_64 Only)
 //    modCompileOnly group: 'commons-io', name: 'commons-io', version: '2.6'
+}
+
+publishing {
+    repositories {
+        maven("https://maven.impactdev.net/repository/development/") {
+            name = "ImpactDev-Public"
+            credentials {
+                username = System.getenv("NEXUS_USER")
+                password = System.getenv("NEXUS_PW")
+            }
+        }
+    }
+
+    publications {
+        create<MavenPublication>("mod") {
+            from(components["java"])
+            groupId = "com.cobblemon"
+            artifactId = "mod"
+            version = rootProject.version.toString()
+        }
+    }
 }

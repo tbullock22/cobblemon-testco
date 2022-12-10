@@ -38,7 +38,7 @@ object Moves : JsonDataRegistry<MoveTemplate> {
     override val id = cobblemonResource("moves")
     override val type = ResourceType.SERVER_DATA
     override val typeToken: TypeToken<MoveTemplate> = TypeToken.get(MoveTemplate::class.java)
-    override val resourcePath = Path("moves")
+    override val resourcePath = "moves"
     override val observable = SimpleObservable<Moves>()
 
     private val allMoves = mutableMapOf<String, MoveTemplate>()

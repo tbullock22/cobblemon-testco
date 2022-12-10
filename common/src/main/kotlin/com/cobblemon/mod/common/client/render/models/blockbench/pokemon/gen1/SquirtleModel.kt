@@ -34,12 +34,19 @@ class SquirtleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
     override val profileScale = 1.0F
     override val profileTranslation = Vec3d(-0.0, 0.2, 0.0)
 
+    lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose
     lateinit var swimIdle: PokemonPose
     lateinit var swim: PokemonPose
     lateinit var walk: PokemonPose
 
     override fun registerPoses() {
+        sleep = registerPose(
+            poseType = PoseType.SLEEP,
+            transformTicks = 10,
+            idleAnimations = arrayOf(bedrock("0007_squirtle/squirtle", "sleep"))
+        )
+
         standing = registerPose(
             poseName = "standing",
             poseTypes = UI_POSES + STATIONARY_POSES - PoseType.FLOAT,

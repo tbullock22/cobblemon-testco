@@ -12,7 +12,7 @@ import com.cobblemon.mod.common.api.text.add
 import com.cobblemon.mod.common.client.entity.PokemonClientDelegate
 import com.cobblemon.mod.common.client.entity.PokemonClientDelegate.Companion.BEAM_EXTEND_TIME
 import com.cobblemon.mod.common.client.entity.PokemonClientDelegate.Companion.BEAM_SHRINK_TIME
-import com.cobblemon.mod.common.client.keybind.currentKey
+import com.cobblemon.mod.common.client.keybind.boundKey
 import com.cobblemon.mod.common.client.keybind.keybinds.PartySendBinding
 import com.cobblemon.mod.common.client.render.addVertex
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
@@ -238,7 +238,7 @@ class PokemonRenderer(
         textRenderer.draw(label, h, y, -1, false, matrix4f, multiBufferSource, false, 0, packedLight)
 
         if (entity.canBattle(player)) {
-            val sendOutBinding = PartySendBinding.currentKey().localizedText
+            val sendOutBinding = PartySendBinding.boundKey().localizedText
             val battlePrompt = lang("challenge_label", sendOutBinding)
             h = (-textRenderer.getWidth(battlePrompt) / 2).toFloat()
             textRenderer.draw(battlePrompt, h, y + 10, 0x20FFFFFF, false, matrix4f, multiBufferSource, seeThrough, k, packedLight)

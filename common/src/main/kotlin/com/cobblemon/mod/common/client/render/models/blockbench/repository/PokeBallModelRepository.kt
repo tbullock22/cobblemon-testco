@@ -21,27 +21,14 @@ object PokeBallModelRepository : ModelRepository<EmptyPokeBallEntity>() {
     private val modelTexturesByPokeBall: MutableMap<PokeBall, Identifier> = mutableMapOf()
 
     override fun registerAll() {
+        this.modelsByPokeBall.clear()
+        this.modelTexturesByPokeBall.clear()
         val baseModel = BlockBenchModelWrapper(PokeBallModel.LAYER_LOCATION, PokeBallModel::createBodyLayer) { PokeBallModel(it) }
-        registerModel(PokeBalls.POKE_BALL, baseModel)
-        registerModel(PokeBalls.VERDANT_BALL, baseModel)
-        registerModel(PokeBalls.SPORT_BALL, baseModel)
-        registerModel(PokeBalls.SLATE_BALL, baseModel)
-        registerModel(PokeBalls.AZURE_BALL, baseModel)
-        registerModel(PokeBalls.CITRINE_BALL, baseModel)
-        registerModel(PokeBalls.ROSEATE_BALL, baseModel)
-        registerModel(PokeBalls.GREAT_BALL, baseModel)
-        registerModel(PokeBalls.ULTRA_BALL, baseModel)
-        registerModel(PokeBalls.MASTER_BALL, baseModel)
-        registerModelTexture(PokeBalls.POKE_BALL, cobblemonResource("textures/items/poke_balls/models/poke_ball.png"))
-        registerModelTexture(PokeBalls.VERDANT_BALL, cobblemonResource("textures/items/poke_balls/models/verdant_ball.png"))
-        registerModelTexture(PokeBalls.SPORT_BALL, cobblemonResource("textures/items/poke_balls/models/sport_ball.png"))
-        registerModelTexture(PokeBalls.SLATE_BALL, cobblemonResource("textures/items/poke_balls/models/slate_ball.png"))
-        registerModelTexture(PokeBalls.AZURE_BALL, cobblemonResource("textures/items/poke_balls/models/azure_ball.png"))
-        registerModelTexture(PokeBalls.CITRINE_BALL, cobblemonResource("textures/items/poke_balls/models/citrine_ball.png"))
-        registerModelTexture(PokeBalls.ROSEATE_BALL, cobblemonResource("textures/items/poke_balls/models/roseate_ball.png"))
-        registerModelTexture(PokeBalls.GREAT_BALL, cobblemonResource("textures/items/poke_balls/models/great_ball.png"))
-        registerModelTexture(PokeBalls.ULTRA_BALL, cobblemonResource("textures/items/poke_balls/models/ultra_ball.png"))
-        registerModelTexture(PokeBalls.MASTER_BALL, cobblemonResource("textures/items/poke_balls/models/master_ball.png"))
+        // ToDo when datapack pokeballs are implemented we will need them to provide these fields instead of our defaults
+        PokeBalls.all().forEach { pokeball ->
+            registerModel(pokeball, baseModel)
+            registerModelTexture(pokeball, Identifier(pokeball.name.namespace, "textures/items/poke_balls/models/${pokeball.name.path}.png"))
+        }
     }
 
 

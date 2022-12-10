@@ -18,8 +18,8 @@ import net.minecraft.util.math.Vec3d
 class VictreebelModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("victreebel")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 1.9F
+    override val portraitTranslation = Vec3d(0.05, -0.3, 0.0)
 
     override val profileScale = 1.0F
     override val profileTranslation = Vec3d(0.0, 0.0, 0.0)

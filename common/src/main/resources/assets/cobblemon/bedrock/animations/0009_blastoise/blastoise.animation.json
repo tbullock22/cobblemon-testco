@@ -48,7 +48,6 @@
 		},
 		"animation.blastoise.ground_walk": {
 			"loop": true,
-			"animation_length": 2.2,
 			"bones": {
 				"body": {
 					"rotation": [
@@ -74,7 +73,7 @@
 				"leg_right": {
 					"rotation": [
 						"-math.clamp(math.sin(query.anim_time*90*4+45+180)*10,-1,10)+math.clamp(-math.sin(query.anim_time*90*4+20)*12,5,12)-15",
-						"+math.clamp(math.sin(query.anim_time*90*4+20+180)*10,0,30)",
+						"math.clamp(math.sin(query.anim_time*90*4+20+180)*10,0,30)",
 						0
 					],
 					"position": [
@@ -117,7 +116,6 @@
 		},
 		"animation.blastoise.water_idle": {
 			"loop": true,
-			"animation_length": 38.7,
 			"bones": {
 				"body": {
 					"rotation": ["89.5-math.clamp(math.sin(q.anim_time*90*2)*2,0,2)-math.clamp(math.sin(q.anim_time*90*2)*2,-2,0)", 0, 0],
@@ -214,7 +212,6 @@
 		},
 		"animation.blastoise.water_swim": {
 			"loop": true,
-			"animation_length": 29.85,
 			"bones": {
 				"body": {
 					"rotation": [90, "-math.sin(q.anim_time*90*8+90)*1.5", "math.sin(q.anim_time*90*8+90)*0.5"],

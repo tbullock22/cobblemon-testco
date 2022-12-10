@@ -11,7 +11,7 @@ package com.cobblemon.mod.common.net.messages.client.storage.pc
 import com.cobblemon.mod.common.api.net.NetworkPacket
 import com.cobblemon.mod.common.api.storage.pc.PCBox
 import com.cobblemon.mod.common.net.IntSize
-import com.cobblemon.mod.common.pokemon.Pokemon
+import com.cobblemon.mod.common.net.messages.PokemonDTO
 import com.cobblemon.mod.common.util.readMapK
 import com.cobblemon.mod.common.util.readSizedInt
 import com.cobblemon.mod.common.util.writeMapK
@@ -32,12 +32,12 @@ import net.minecraft.network.PacketByteBuf
 class SetPCBoxPokemonPacket() : NetworkPacket {
     lateinit var storeID: UUID
     var boxNumber = 0
-    var pokemon = mapOf<Int, Pokemon>()
+    var pokemon = mapOf<Int, PokemonDTO>()
 
     constructor(box: PCBox): this() {
         this.storeID = box.pc.uuid
         this.boxNumber = box.boxNumber
-        this.pokemon = box.getNonEmptySlots()
+        this.pokemon = box.getNonEmptySlots().map { it.key to PokemonDTO(it.value, toClient = true) }.toMap()
     }
 
     override fun encode(buffer: PacketByteBuf) {
@@ -45,15 +45,15 @@ class SetPCBoxPokemonPacket() : NetworkPacket {
         buffer.writeSizedInt(IntSize.U_BYTE, boxNumber)
         buffer.writeMapK(map = pokemon) { (slot, pokemon) ->
             buffer.writeSizedInt(IntSize.U_BYTE, slot)
-            pokemon.saveToBuffer(buffer, toClient = true)
+            pokemon.encode(buffer)
         }
     }
 
     override fun decode(buffer: PacketByteBuf) {
         storeID = buffer.readUuid()
         boxNumber = buffer.readSizedInt(IntSize.U_BYTE)
-        val pokemonMap = mutableMapOf<Int, Pokemon>()
-        buffer.readMapK(map = pokemonMap) { buffer.readSizedInt(IntSize.U_BYTE) to Pokemon().loadFromBuffer(buffer) }
+        val pokemonMap = mutableMapOf<Int, PokemonDTO>()
+        buffer.readMapK(map = pokemonMap) { buffer.readSizedInt(IntSize.U_BYTE) to PokemonDTO().also { it.decode(buffer) } }
         pokemon = pokemonMap
     }
 }

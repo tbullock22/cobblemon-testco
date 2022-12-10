@@ -1,8 +1,0 @@
-{
-  "name": "underground",
-  "condition": {
-    "biomes": [ "#minecraft:is_overworld" ],
-    "canSeeSky": false,
-	"maxY": 62
-  }
-}

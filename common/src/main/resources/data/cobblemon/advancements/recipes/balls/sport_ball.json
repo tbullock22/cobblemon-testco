@@ -13,24 +13,12 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_green_apricorn": {
+    "has_white_apricorn": {
       "conditions": {
         "items": [
           {
             "items": [
-              "cobblemon:green_apricorn"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_copper_ingot": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:copper_ingot"
+              "cobblemon:white_apricorn"
             ]
           }
         ]
@@ -47,8 +35,10 @@
   "requirements": [
     [
       "has_red_apricorn",
-      "has_green_apricorn",
-      "has_copper_ingot",
+      "has_the_recipe"
+    ],
+	[
+      "has_white_apricorn",
       "has_the_recipe"
     ]
   ],

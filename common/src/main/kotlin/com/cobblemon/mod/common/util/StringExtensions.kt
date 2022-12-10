@@ -30,7 +30,7 @@ fun String.splitMap(delimiter: String, assigner: String) : MutableList<Pair<Stri
 
             joiner = null
             result.add(key to value)
-        } else if(joiner == null) {
+        } else if (joiner == null) {
             if (argument.contains(assigner)) {
                 val equalsIndex = argument.indexOf(assigner)
                 val key = argument.substring(0, equalsIndex).lowercase()

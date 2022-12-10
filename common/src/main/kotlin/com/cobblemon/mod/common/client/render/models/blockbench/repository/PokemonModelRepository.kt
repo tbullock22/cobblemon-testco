@@ -9,6 +9,7 @@
 package com.cobblemon.mod.common.client.render.models.blockbench.repository
 
 import com.cobblemon.mod.common.Cobblemon
+import com.cobblemon.mod.common.client.render.models.blockbench.TexturedModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.JsonPokemonPoseableModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1.AbraModel
@@ -193,6 +194,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.Min
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.MudkipModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.PlusleModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.RayquazaModel
+import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.SableyeModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.SwampertModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.TorchicModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.BibarelModel
@@ -219,9 +221,11 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.Tan
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.YanmegaModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen5.BasculinModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen5.CrustleModel
+import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen5.DeerlingModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen5.DwebbleModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen5.EmolgaModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen5.MaractusModel
+import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen5.SawsbuckModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen6.SylveonModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen7.BounsweetModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen7.DartrixModel
@@ -231,6 +235,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen7.Lit
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen7.MimikyuModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen7.NaganadelModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen7.PoipoleModel
+import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen7.PyukumukuModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen7.RowletModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen7.SteeneeModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen7.TorracatModel
@@ -240,17 +245,16 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen8.Kle
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen8.SizzlipedeModel
 import com.cobblemon.mod.common.client.render.pokemon.ModelLayer
 import com.cobblemon.mod.common.client.render.pokemon.RegisteredSpeciesRendering
-import com.cobblemon.mod.common.client.render.pokemon.SpeciesAssetResolver
+import com.cobblemon.mod.common.client.render.pokemon.SpeciesVariationSet
 import com.cobblemon.mod.common.client.util.exists
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import com.cobblemon.mod.common.pokemon.Species
 import com.cobblemon.mod.common.pokemon.aspects.SHINY_ASPECT
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.cobblemon.mod.common.util.endsWith
+import com.cobblemon.mod.common.util.fromJson
 import java.io.File
 import java.nio.charset.StandardCharsets
-import kotlin.io.path.Path
-import kotlin.io.path.pathString
 import net.minecraft.client.model.ModelPart
 import net.minecraft.resource.ResourceManager
 import net.minecraft.util.Identifier
@@ -495,14 +499,20 @@ object PokemonModelRepository : ModelRepository<PokemonEntity>() {
         inbuilt("centiskorch", ::CentiskorchModel)
         inbuilt("sizzlipede", ::SizzlipedeModel)
         inbuilt("kleavor", ::KleavorModel)
+        inbuilt("pyukumuku", ::PyukumukuModel)
+        inbuilt("deerling", ::DeerlingModel)
+        inbuilt("sawsbuck", ::SawsbuckModel)
+        inbuilt("sableye", ::SableyeModel)
     }
 
     fun inbuilt(name: String, model: (ModelPart) -> PokemonPoseableModel) {
         posers[cobblemonResource(name)] = model
     }
 
+
+
     fun registerJsonPosers(resourceManager: ResourceManager) {
-        resourceManager.findResources(Path("bedrock/posers").pathString) { path -> path.endsWith(".json") }.forEach { identifier, resource ->
+        resourceManager.findResources("bedrock/posers") { path -> path.endsWith(".json") }.forEach { identifier, resource ->
             resource.inputStream.use { stream ->
                 val json = String(stream.readAllBytes(), StandardCharsets.UTF_8)
                 val resolvedIdentifier = Identifier(identifier.namespace, File(identifier.path).nameWithoutExtension)
@@ -515,19 +525,35 @@ object PokemonModelRepository : ModelRepository<PokemonEntity>() {
     }
 
     fun registerSpeciesAssetResolvers(resourceManager: ResourceManager) {
-        resourceManager.findResources(Path("bedrock/species").pathString) { path -> path.endsWith(".json") }.forEach { identifier, resource ->
+        val speciesToSpeciesVariationSets = mutableMapOf<Identifier, MutableList<SpeciesVariationSet>>()
+        resourceManager.findResources("bedrock/species") { path -> path.endsWith(".json") }.forEach { identifier, resource ->
             resource.inputStream.use { stream ->
                 val json = String(stream.readAllBytes(), StandardCharsets.UTF_8)
-                val resolvedIdentifier = Identifier(identifier.namespace, File(identifier.path).nameWithoutExtension)
-                renders[resolvedIdentifier] = RegisteredSpeciesRendering(
-                    resolvedIdentifier,
-                    SpeciesAssetResolver.GSON.fromJson(json, SpeciesAssetResolver::class.java)
-                )
+                val speciesVariationSet = RegisteredSpeciesRendering.GSON.fromJson<SpeciesVariationSet>(json)
+                speciesToSpeciesVariationSets.getOrPut(speciesVariationSet.species) { mutableListOf() }.add(speciesVariationSet)
             }
         }
+
+        for ((species, speciesVariationSets) in speciesToSpeciesVariationSets) {
+            val variations = speciesVariationSets.sortedBy { it.order }.flatMap { it.variations }.toMutableList()
+            renders[species] = RegisteredSpeciesRendering(species, variations)
+        }
+
+        renders.values.forEach(RegisteredSpeciesRendering::initialize)
     }
 
     override fun registerAll() {
+    }
+
+    val texturedModels = mutableMapOf<Identifier, TexturedModel>()
+    fun registerModels(resourceManager: ResourceManager) {
+        resourceManager.findResources("bedrock/models") { path -> path.endsWith(".geo.json") }.forEach { identifier, resource ->
+            resource.inputStream.use { stream ->
+                val json = String(stream.readAllBytes(), StandardCharsets.UTF_8)
+                val resolvedIdentifier = Identifier(identifier.namespace, File(identifier.path).nameWithoutExtension)
+                texturedModels[resolvedIdentifier] = TexturedModel.from(json)
+            }
+        }
     }
 
     override fun reload(resourceManager: ResourceManager) {
@@ -535,11 +561,10 @@ object PokemonModelRepository : ModelRepository<PokemonEntity>() {
         this.renders.clear()
         this.posers.clear()
         registerPosers(resourceManager)
+        registerModels(resourceManager)
         registerSpeciesAssetResolvers(resourceManager)
         initializeModelLayers()
     }
-
-    var brokenOnes = mutableListOf<Species>()
 
     fun getPoser(species: Species, aspects: Set<String>): PokemonPoseableModel {
         try {

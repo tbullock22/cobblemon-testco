@@ -45,3 +45,5 @@ fun String.isHigherVersion(other: String): Boolean {
 }
 
 fun String.substitute(placeholder: String, value: Any?) = replace("{{$placeholder}}", value?.toString() ?: "")
+
+val Pair<Boolean, Boolean>.either: Boolean get() = first || second

@@ -69,6 +69,7 @@ class Species : ClientDataSynchronizer<Species> {
     val eggCycles = 120
     val eggGroups = setOf<EggGroup>()
     var dynamaxBlocked = false
+    var implemented = false
 
     /**
      * The height in decimeters
@@ -136,6 +137,7 @@ class Species : ClientDataSynchronizer<Species> {
 
     override fun encode(buffer: PacketByteBuf) {
         buffer.writeIdentifier(this.resourceIdentifier)
+        buffer.writeBoolean(this.implemented)
         buffer.writeString(this.name)
         buffer.writeInt(this.nationalPokedexNumber)
         buffer.writeMap(this.baseStats,
@@ -147,6 +149,7 @@ class Species : ClientDataSynchronizer<Species> {
         buffer.writeNullable(this.secondaryType) { pb, type -> pb.writeString(type.name) }
         buffer.writeCollection(this.pokedex) { pb, line -> pb.writeString(line) }
         buffer.writeCollection(this.forms) { pb, form -> form.encode(pb) }
+        buffer.writeString(this.experienceGroup.name)
         this.moves.encode(buffer)
         buffer.writeFloat(baseScale)
         // Hitbox start
@@ -157,6 +160,7 @@ class Species : ClientDataSynchronizer<Species> {
     }
 
     override fun decode(buffer: PacketByteBuf) {
+        this.implemented = buffer.readBoolean()
         // identifier is decoded in the sync packet for easier debug log
         this.name = buffer.readString()
         this.nationalPokedexNumber = buffer.readInt()
@@ -170,6 +174,7 @@ class Species : ClientDataSynchronizer<Species> {
         this.pokedex += buffer.readList { pb -> pb.readString() }
         this.forms.clear()
         this.forms += buffer.readList{ pb -> FormData().apply { decode(pb) } }.filterNotNull()
+        this.experienceGroup = ExperienceGroups.findByName(buffer.readString())!!
         this.moves.decode(buffer)
         this.baseScale = buffer.readFloat()
         this.hitbox = EntityDimensions(buffer.readFloat(), buffer.readFloat(), buffer.readBoolean())

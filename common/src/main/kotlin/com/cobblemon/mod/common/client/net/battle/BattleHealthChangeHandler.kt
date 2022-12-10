@@ -21,7 +21,7 @@ object BattleHealthChangeHandler : ClientPacketHandler<BattleHealthChangePacket>
             val battle = CobblemonClient.battle ?: return@execute
             val (_, activePokemon) = battle.getPokemonFromPNX(packet.pnx)
             activePokemon.animations.add(
-                HealthChangeAnimation(newHealthRatio = packet.newHealthRatio)
+                HealthChangeAnimation(newHealthRatio = packet.newHealthRatio, newHealth = packet.newHealth)
             )
         }
     }

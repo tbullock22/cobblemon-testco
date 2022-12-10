@@ -1,0 +1,46 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.tangrowth.ground_idle": {
+			"loop": true,
+			"bones": {
+				"leftarm": {
+					"rotation": [15, -15, 45]
+				},
+				"leftforearm": {
+					"rotation": [0, 45, -20]
+				},
+				"lefthand": {
+					"rotation": [0, 45, -20]
+				},
+				"finger4": {
+					"rotation": [0, 15, -5]
+				},
+				"finger5": {
+					"rotation": [0, 10, -7.5]
+				},
+				"finger6": {
+					"rotation": [0, 20, -2.5]
+				},
+				"rightarm": {
+					"rotation": [15, 15, -45]
+				},
+				"rightforearm": {
+					"rotation": [0, -45, 20]
+				},
+				"righthand": {
+					"rotation": [0, -45, 20]
+				},
+				"finger": {
+					"rotation": [0, -15, 5]
+				},
+				"finger2": {
+					"rotation": [0, -10, 7.5]
+				},
+				"finger3": {
+					"rotation": [0, -20, 2.5]
+				}
+			}
+		}
+	}
+}

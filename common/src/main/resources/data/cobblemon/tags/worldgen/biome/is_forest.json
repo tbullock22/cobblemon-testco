@@ -15,6 +15,10 @@
       "required": false
     },
 	{
+      "id": "terralith:forested_highlands",
+      "required": false
+    },
+	{
       "id": "terralith:lavender_forest",
       "required": false
     },

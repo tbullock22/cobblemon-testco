@@ -78,6 +78,9 @@ open class PokemonBattle(
     var ended = false
     // TEMP battle showcase stuff
     var announcingRules = false
+    var turn: Int = 1
+        private set
+
 
     var dispatchResult = GO
     val dispatches = ConcurrentLinkedQueue<BattleDispatch>()
@@ -158,7 +161,7 @@ open class PokemonBattle(
         showdown.write(json)
     }
 
-    fun turn() {
+    fun turn(newTurnNumber: Int) {
         actors.forEach { it.turn() }
         for (side in sides) {
             val opposite = side.getOppositeSide()
@@ -167,6 +170,7 @@ open class PokemonBattle(
                 battlePokemon.facedOpponents.addAll(opposite.activePokemon.mapNotNull { it.battlePokemon })
             }
         }
+        this.turn = newTurnNumber
     }
 
     fun end() {

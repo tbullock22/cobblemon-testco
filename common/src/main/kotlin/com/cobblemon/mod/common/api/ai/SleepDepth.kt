@@ -14,21 +14,31 @@ import net.minecraft.entity.ai.TargetPredicate
 import net.minecraft.util.math.Box
 
 /**
- * How deeply a Pokémon sleeps. This works as a boolean function that takes the current situation and returns true
- * if the Pokémon is able to sleep at this depth.
+ * How deeply a Pokémon sleeps. This takes the current situation and decides if a Pokémon should fall asleep or wake.
  *
  * A depth should be registered by name in [SleepDepth.depths].
  *
  * @author Hiroku
  * @since July 17th, 2022
  */
-fun interface SleepDepth {
+interface SleepDepth {
     companion object {
-        val comatose = SleepDepth { true }
-        val normal = SleepDepth { pokemonEntity ->
-            val nearbyPlayers = pokemonEntity.world.getPlayers(TargetPredicate.DEFAULT, pokemonEntity, Box.of(pokemonEntity.pos, 16.0, 16.0, 16.0))
-            return@SleepDepth nearbyPlayers.none { !it.isSneaking }
+        val comatose = object : SleepDepth {
+            override fun canSleep(pokemonEntity: PokemonEntity) = true
+            override fun shouldWake(pokemonEntity: PokemonEntity) = true
         }
+
+        val normal = object : SleepDepth {
+            override fun canSleep(pokemonEntity: PokemonEntity): Boolean {
+                return pokemonEntity.world.getPlayers(TargetPredicate.createNonAttackable(), pokemonEntity, Box.of(pokemonEntity.pos, 16.0, 16.0, 16.0)).isEmpty()
+            }
+
+            override fun shouldWake(pokemonEntity: PokemonEntity): Boolean {
+                val nearbyPlayers = pokemonEntity.world.getPlayers(TargetPredicate.createNonAttackable(), pokemonEntity, Box.of(pokemonEntity.pos, 16.0, 16.0, 16.0))
+                return nearbyPlayers.none { !it.isSneaking }
+            }
+        }
+
         val depths = mutableMapOf(
             "comatose" to comatose,
             "normal" to normal
@@ -37,4 +47,5 @@ fun interface SleepDepth {
     }
 
     fun canSleep(pokemonEntity: PokemonEntity): Boolean
+    fun shouldWake(pokemonEntity: PokemonEntity): Boolean
 }

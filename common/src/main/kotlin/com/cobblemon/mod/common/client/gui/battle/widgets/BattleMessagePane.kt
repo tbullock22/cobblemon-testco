@@ -27,8 +27,7 @@ import net.minecraft.text.OrderedText
  * @since June 24th, 2022
  */
 class BattleMessagePane(
-    val battleGUI: BattleGUI,
-    val messageQueue: ClientBattleMessageQueue
+    messageQueue: ClientBattleMessageQueue
 ): AlwaysSelectedEntryListWidget<BattleMessagePane.BattleMessageLine>(
     MinecraftClient.getInstance(),
     TEXT_BOX_WIDTH, // width
@@ -37,6 +36,8 @@ class BattleMessagePane(
     1 + TEXT_BOX_HEIGHT, // bottom
     LINE_HEIGHT
 ) {
+    var opacity = 1F
+
     init {
         correctSize()
         setRenderHorizontalShadows(false)
@@ -106,7 +107,8 @@ class BattleMessagePane(
             x = left,
             y = appropriateY,
             height = if (expanded) FRAME_EXPANDED_HEIGHT else FRAME_HEIGHT,
-            width = FRAME_WIDTH
+            width = FRAME_WIDTH,
+            alpha = opacity
         )
 
         val textBoxHeight = if (expanded) TEXT_BOX_HEIGHT * 2 else TEXT_BOX_HEIGHT
@@ -146,7 +148,8 @@ class BattleMessagePane(
                 poseStack,
                 line,
                 rowLeft - 29,
-                rowTop - 2
+                rowTop - 2,
+                opacity = pane.opacity
             )
         }
     }

@@ -44,6 +44,7 @@ import com.cobblemon.mod.common.api.spawning.spawner.Spawner
 import com.cobblemon.mod.common.api.spawning.spawner.TickingSpawner
 import com.cobblemon.mod.common.entity.pokemon.CobblemonAgingDespawner
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
+import net.minecraft.util.Identifier
 
 /**
  * A grouping of all the overarching behaviours of the Best Spawner system. This is a convenient accessor to
@@ -79,7 +80,6 @@ import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
  */
 object BestSpawner {
     var config = BestSpawnerConfig()
-    var presets = mutableMapOf<String, SpawnDetailPreset>()
     val spawnerManagers = mutableListOf<SpawnerManager>(CobblemonWorldSpawnerManager)
     var defaultPokemonDespawner: Despawner<PokemonEntity> = CobblemonAgingDespawner(getAgeTicks = { it.ticksLived })
 
@@ -108,10 +108,8 @@ object BestSpawner {
 
         config = BestSpawnerConfig.load()
 
-        SpawnDetailPreset.registerPresetType(BasicSpawnDetailPreset.NAME, BasicSpawnDetailPreset::class.java)
-        SpawnDetailPreset.registerPresetType(PokemonSpawnDetailPreset.NAME, PokemonSpawnDetailPreset::class.java)
-        presets = SpawnDetailPreset.load()
-        LOGGER.info("Loaded ${presets.size} spawn detail presets.")
+        SpawnDetailPresets.registerPresetType(BasicSpawnDetailPreset.NAME, BasicSpawnDetailPreset::class.java)
+        SpawnDetailPresets.registerPresetType(PokemonSpawnDetailPreset.NAME, PokemonSpawnDetailPreset::class.java)
     }
 
     fun onServerStarted() {

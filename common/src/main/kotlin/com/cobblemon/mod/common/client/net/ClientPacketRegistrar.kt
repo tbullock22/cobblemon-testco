@@ -54,11 +54,12 @@ import com.cobblemon.mod.common.net.messages.client.pokemon.update.AbilityUpdate
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.AspectsUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.BenchedMovesUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.CaughtBallUpdatePacket
+import com.cobblemon.mod.common.net.messages.client.pokemon.update.EVsUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.ExperienceUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.FriendshipUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.GenderUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.HealthUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.LevelUpdatePacket
+import com.cobblemon.mod.common.net.messages.client.pokemon.update.IVsUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.MoveSetUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.NatureUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.PokemonStateUpdatePacket
@@ -84,7 +85,6 @@ object ClientPacketRegistrar : SidedPacketRegistrar() {
         // Don't forget to register packets in CobblemonNetwork!
 
         registerHandler<ExperienceUpdatePacket>(SingleUpdatePacketHandler())
-        registerHandler<LevelUpdatePacket>(SingleUpdatePacketHandler())
         registerHandler<SpeciesUpdatePacket>(SingleUpdatePacketHandler())
         registerHandler<FriendshipUpdatePacket>(SingleUpdatePacketHandler())
         registerHandler<PokemonStateUpdatePacket>(SingleUpdatePacketHandler())
@@ -98,6 +98,8 @@ object ClientPacketRegistrar : SidedPacketRegistrar() {
         registerHandler<GenderUpdatePacket>(SingleUpdatePacketHandler())
         registerHandler<AspectsUpdatePacket>(SingleUpdatePacketHandler())
         registerHandler<AbilityUpdatePacket>(SingleUpdatePacketHandler())
+        registerHandler<EVsUpdatePacket>(SingleUpdatePacketHandler())
+        registerHandler<IVsUpdatePacket>(SingleUpdatePacketHandler())
 
         // Party storage
         registerHandler(InitializePartyHandler)

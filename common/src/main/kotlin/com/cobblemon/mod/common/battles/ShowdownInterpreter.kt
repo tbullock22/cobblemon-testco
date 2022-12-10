@@ -44,6 +44,7 @@ import com.cobblemon.mod.common.util.asTranslated
 import com.cobblemon.mod.common.util.battleLang
 import com.cobblemon.mod.common.util.getPlayer
 import com.cobblemon.mod.common.util.lang
+import com.cobblemon.mod.common.util.runOnServer
 import com.cobblemon.mod.common.util.swap
 import java.util.UUID
 import java.util.concurrent.CompletableFuture
@@ -107,7 +108,7 @@ object ShowdownInterpreter {
         val targetPokemon = battle.getActorAndActiveSlotFromPNX(targetPNX)
         val statKey = line.split("|")[3]
         val stages = line.split("|")[4].toInt()
-        val stat = getStat(statKey).name.asTranslated()
+        val stat = getStat(statKey).displayName
         val severity = getSeverity(stages)
         val rootKey = if (isBoost) "boost" else "unboost"
 
@@ -166,8 +167,10 @@ object ShowdownInterpreter {
             return
         }
 
-        battle.showdownMessages.add(message)
-        interpret(battle, rawMessage)
+        runOnServer {
+            battle.showdownMessages.add(message)
+            interpret(battle, rawMessage)
+        }
     }
 
     fun interpret(battle: PokemonBattle, rawMessage: String) {
@@ -431,7 +434,7 @@ object ShowdownInterpreter {
         battle.dispatch {
             battle.sendToActors(BattleMakeChoicePacket())
             battle.broadcastChatMessage("It is now turn $turnNumber".aqua())
-            battle.turn()
+            battle.turn(turnNumber)
             GO
         }
     }
@@ -711,8 +714,9 @@ object ShowdownInterpreter {
 //            if ("|confusion" in message) { // Don't even say anything about it, it's too spammy
 //                battle.broadcastChatMessage(battleLang("confusion_continues_idk", pokemon.battlePokemon!!.getName()))
 //            }
-            if ("|protect" in message) {
-                battle.broadcastChatMessage(battleLang("protect_activate",pokemon.battlePokemon!!.getName()))
+            when {
+                "|protect" in message -> battle.broadcastChatMessage(battleLang("protect_activate",pokemon.battlePokemon!!.getName()))
+                "move: Magnitude" in message -> battle.broadcastChatMessage(battleLang("magnitude_level", message.substringAfterLast("|").toIntOrNull() ?: 1))
             }
             GO
         }
@@ -851,6 +855,7 @@ object ShowdownInterpreter {
 
         battle.dispatch {
             val newHealthRatio: Float
+            val remainingHealth = newHealth.split("/")[0].toInt()
             if (newHealth == "0") {
                 newHealthRatio = 0F
                 battle.dispatch {
@@ -860,7 +865,6 @@ object ShowdownInterpreter {
                 }
             } else {
                 val maxHealth = newHealth.split("/")[1].toInt()
-                val remainingHealth = newHealth.split("/")[0].toInt()
                 val difference = maxHealth - remainingHealth
                 newHealthRatio = remainingHealth.toFloat() / maxHealth
                 battle.dispatch {
@@ -872,7 +876,7 @@ object ShowdownInterpreter {
                     GO
                 }
             }
-            battle.sendUpdate(BattleHealthChangePacket(pnx, newHealthRatio))
+            battle.sendUpdate(BattleHealthChangePacket(pnx, newHealthRatio, remainingHealth))
             if (cause != null) {
                 when (cause) {
                     "confusion" -> battle.broadcastChatMessage(battleLang("confusion_activate", activePokemon.battlePokemon?.getName()!!))

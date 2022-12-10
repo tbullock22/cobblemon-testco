@@ -8,39 +8,16 @@
 
 package com.cobblemon.mod.common.api.spawning.preset
 
-import com.cobblemon.mod.common.Cobblemon
-import com.cobblemon.mod.common.Cobblemon.LOGGER
-import com.cobblemon.mod.common.api.asset.JsonManifestWalker
-import com.cobblemon.mod.common.api.conditional.RegistryLikeCondition
-import com.cobblemon.mod.common.api.pokemon.PokemonProperties
 import com.cobblemon.mod.common.api.spawning.SpawnBucket
+import com.cobblemon.mod.common.api.spawning.SpawnDetailPresets
 import com.cobblemon.mod.common.api.spawning.SpawnLoader
 import com.cobblemon.mod.common.api.spawning.condition.SpawningCondition
-import com.cobblemon.mod.common.api.spawning.condition.TimeRange
 import com.cobblemon.mod.common.api.spawning.context.RegisteredSpawningContext
 import com.cobblemon.mod.common.api.spawning.detail.SpawnDetail
 import com.cobblemon.mod.common.api.spawning.multiplier.WeightMultiplier
-import com.cobblemon.mod.common.util.AssetLoading
 import com.cobblemon.mod.common.util.MergeMode
-import com.cobblemon.mod.common.util.adapters.BiomeLikeConditionAdapter
-import com.cobblemon.mod.common.util.adapters.BlockLikeConditionAdapter
-import com.cobblemon.mod.common.util.adapters.IdentifierAdapter
-import com.cobblemon.mod.common.util.adapters.RegisteredSpawningContextAdapter
-import com.cobblemon.mod.common.util.adapters.SpawnBucketAdapter
 import com.cobblemon.mod.common.util.adapters.SpawnDetailAdapter
-import com.cobblemon.mod.common.util.adapters.SpawnDetailPresetAdapter
-import com.cobblemon.mod.common.util.adapters.SpawningConditionAdapter
-import com.cobblemon.mod.common.util.adapters.TimeRangeAdapter
-import com.cobblemon.mod.common.util.adapters.pokemonPropertiesShortAdapter
-import com.cobblemon.mod.common.util.fromJson
-import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
-import com.google.gson.reflect.TypeToken
-import java.io.File
-import java.io.FileReader
-import net.minecraft.block.Block
-import net.minecraft.util.Identifier
-import net.minecraft.world.biome.Biome
 
 /**
  * Base class for spawn detail presets. Presets are a spawn loading mechanism that allows various properties to be
@@ -48,7 +25,7 @@ import net.minecraft.world.biome.Biome
  * to shortcut the process of commonly used conditions and other [SpawnDetail] properties as well as make those
  * commonly used properties very easy to maintain.
  *
- * A subclass of this base must be registered using [SpawnDetailPreset.registerPresetType].
+ * A subclass of this base must be registered using [SpawnDetailPresets.registerPresetType].
  *
  * Preset loading occurs during initialization and first will load the internal presets. Then the external
  * config/cobblemon/spawning/presets directory and its child directories will be searched for presets.
@@ -63,75 +40,6 @@ import net.minecraft.world.biome.Biome
  * @since July 8th, 2022
  */
 abstract class SpawnDetailPreset {
-    companion object {
-        val GSON = GsonBuilder()
-            .setPrettyPrinting()
-            .setLenient()
-            .disableHtmlEscaping()
-            .registerTypeAdapter(SpawnBucket::class.java, SpawnBucketAdapter)
-            .registerTypeAdapter(RegisteredSpawningContext::class.java, RegisteredSpawningContextAdapter)
-            .registerTypeAdapter(TypeToken.getParameterized(RegistryLikeCondition::class.java, Biome::class.java).type, BiomeLikeConditionAdapter)
-            .registerTypeAdapter(TypeToken.getParameterized(RegistryLikeCondition::class.java, Block::class.java).type, BlockLikeConditionAdapter)
-            .registerTypeAdapter(SpawnDetailPreset::class.java, SpawnDetailPresetAdapter)
-            .registerTypeAdapter(Identifier::class.java, IdentifierAdapter)
-            .registerTypeAdapter(SpawningCondition::class.java, SpawningConditionAdapter)
-            .registerTypeAdapter(TimeRange::class.java, TimeRangeAdapter)
-            .registerTypeAdapter(PokemonProperties::class.java, pokemonPropertiesShortAdapter)
-            .create()
-
-        val presetTypes = mutableMapOf<String, Class<out SpawnDetailPreset>>()
-        fun <T : SpawnDetailPreset> registerPresetType(name: String, detailClass: Class<T>) {
-            presetTypes[name] = detailClass
-        }
-
-        fun load(): MutableMap<String, SpawnDetailPreset> {
-            val map = mutableMapOf<String, SpawnDetailPreset>()
-            map.putAll(loadInternal())
-            map.putAll(loadExternal())
-            return map
-        }
-
-        fun loadInternal(): MutableMap<String, SpawnDetailPreset> {
-            val map = mutableMapOf<String, SpawnDetailPreset>()
-            try {
-                val presets = JsonManifestWalker.load(
-                    SpawnDetailPreset::class.java,
-                    "spawning/presets",
-                    GSON
-                )
-                for (template in presets) {
-                    map[template.name] = template
-                }
-                return map
-            } catch (e: Exception) {
-                LOGGER.error("Error loading internal spawn detail presets", e)
-            }
-            return mutableMapOf()
-        }
-
-        fun loadExternal(): MutableMap<String, SpawnDetailPreset> {
-            val files = mutableListOf<File>()
-            val map = mutableMapOf<String, SpawnDetailPreset>()
-            AssetLoading.searchFor(
-                dir = "config/${Cobblemon.MODID}/spawning/presets",
-                suffix = ".json",
-                list = files
-            )
-            files.forEach {
-                try {
-                    val reader = FileReader(it)
-                    val preset = GSON.fromJson<SpawnDetailPreset>(reader)
-                    reader.close()
-                    map[preset.name] = preset
-                } catch (e: Exception) {
-                    LOGGER.error("Unable to load preset from file: ${it.name}", e)
-                }
-            }
-            return map
-        }
-    }
-
-    var name = ""
     var bucket: SpawnBucket? = null
     var spawnDetailType: String? = null
     var context: RegisteredSpawningContext<*>? = null
@@ -140,7 +48,7 @@ abstract class SpawnDetailPreset {
     var weightMultipliers: MutableList<WeightMultiplier>? = null
     var weight: Float? = null
     var percentage: Float? = null
-    var mergeMode = MergeMode.REPLACE
+    var mergeMode = MergeMode.KEEP
 
     open fun apply(spawnDetail: SpawnDetail) {
         bucket?.let { spawnDetail.bucket = it }

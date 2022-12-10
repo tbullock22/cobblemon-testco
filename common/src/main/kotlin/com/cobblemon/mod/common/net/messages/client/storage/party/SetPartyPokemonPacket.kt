@@ -11,6 +11,7 @@ package com.cobblemon.mod.common.net.messages.client.storage.party
 import com.cobblemon.mod.common.api.storage.party.PartyPosition
 import com.cobblemon.mod.common.api.storage.party.PartyPosition.Companion.readPartyPosition
 import com.cobblemon.mod.common.api.storage.party.PartyPosition.Companion.writePartyPosition
+import com.cobblemon.mod.common.net.messages.PokemonDTO
 import com.cobblemon.mod.common.net.messages.client.storage.SetPokemonPacket
 import com.cobblemon.mod.common.pokemon.Pokemon
 import java.util.UUID
@@ -25,11 +26,15 @@ import net.minecraft.network.PacketByteBuf
  * @author Hiroku
  * @since November 29th, 2021
 */
-class SetPartyPokemonPacket() : SetPokemonPacket<PartyPosition>() {
-    constructor(storeID: UUID, storePosition: PartyPosition, pokemon: Pokemon): this() {
+class SetPartyPokemonPacket : SetPokemonPacket<PartyPosition> {
+    constructor() {
+        this.pokemon = PokemonDTO()
+    }
+
+    constructor(storeID: UUID, storePosition: PartyPosition, pokemon: Pokemon) {
         this.storeID = storeID
         this.storePosition = storePosition
-        this.pokemon = pokemon
+        this.pokemon = PokemonDTO(pokemon, toClient = true)
     }
 
     override fun encodePosition(buffer: PacketByteBuf) = buffer.writePartyPosition(storePosition)

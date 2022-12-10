@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "scyther",
     "nationalPokedexNumber": 123,
     "primaryType": "bug",

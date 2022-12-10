@@ -11,9 +11,12 @@ package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1
 import com.cobblemon.mod.common.client.render.models.blockbench.asTransformed
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.BiWingedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
+import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pose.TransformedModelPart.Companion.Y_AXIS
 import com.cobblemon.mod.common.entity.PoseType
+import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
+import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
 class BeedrillModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BiWingedFrame {
@@ -28,11 +31,22 @@ class BeedrillModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BiWi
     override val profileScale = 1.0F
     override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
 
+    lateinit var sleep: PokemonPose
+    lateinit var standing: PokemonPose
+    lateinit var walk: PokemonPose
+
     override fun registerPoses() {
-        registerPose(
+        sleep = registerPose(
+            poseType = PoseType.SLEEP,
+            idleAnimations = arrayOf(bedrock("0015_beedrill/beedrill", "sleep")),
+            transformedParts = arrayOf(
+                rootPart.asTransformed().addPosition(Y_AXIS, -3F)
+            )
+        )
+
+        standing = registerPose(
             poseName = "standing",
-            poseTypes = setOf(PoseType.NONE, PoseType.PROFILE, PoseType.PORTRAIT, PoseType.STAND, PoseType.HOVER, PoseType.FLOAT),
-            transformTicks = 10,
+            poseTypes = STATIONARY_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("0015_beedrill/beedrill", "air_idle")
@@ -40,10 +54,9 @@ class BeedrillModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BiWi
             transformedParts = arrayOf(rootPart.asTransformed().addPosition(Y_AXIS, -10F))
         )
 
-        registerPose(
+        walk = registerPose(
             poseName = "walk",
-            poseTypes = setOf(PoseType.WALK, PoseType.FLY, PoseType.SWIM),
-            transformTicks = 10,
+            poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("0015_beedrill/beedrill", "air_fly")

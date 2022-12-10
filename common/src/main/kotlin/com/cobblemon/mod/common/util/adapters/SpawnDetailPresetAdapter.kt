@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.util.adapters
 
+import com.cobblemon.mod.common.api.spawning.SpawnDetailPresets
 import com.cobblemon.mod.common.api.spawning.preset.BasicSpawnDetailPreset
 import com.cobblemon.mod.common.api.spawning.preset.SpawnDetailPreset
 import com.google.gson.JsonDeserializationContext
@@ -26,7 +27,7 @@ object SpawnDetailPresetAdapter : JsonDeserializer<SpawnDetailPreset> {
     override fun deserialize(json: JsonElement, type: Type, ctx: JsonDeserializationContext): SpawnDetailPreset {
         json as JsonObject
         val type = json.get("type")?.asString ?: BasicSpawnDetailPreset.NAME
-        val clazz = SpawnDetailPreset.presetTypes[type] ?: throw IllegalStateException("Unrecognized preset type: $type")
+        val clazz = SpawnDetailPresets.presetTypes[type] ?: throw IllegalStateException("Unrecognized preset type: $type")
         return ctx.deserialize(json, clazz)
     }
 }

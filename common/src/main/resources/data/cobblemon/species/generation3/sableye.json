@@ -157,6 +157,24 @@
     "eggGroups": [
         "human_like"
     ],
+	"drops": {
+        "amount": "3",
+        "entries": [
+            {
+                "item": "minecraft:amethyst_shard",
+				"quantityRange": "1-2",
+                "percentage": 66
+            },
+            {
+                "item": "minecraft:diamond",
+                "percentage": 5
+            },
+            {
+                "item": "minecraft:emerald",
+                "percentage": 5
+            }
+        ]
+    },
     "moves": [
         "1:scratch",
         "1:leer",
@@ -289,10 +307,10 @@
         "cobblemon.species.sableye.desc2"
     ],
     "evolutions": [],
-    "baseScale": 1.0,
+    "baseScale": 0.65,
     "hitbox": {
-        "width": 1.0,
-        "height": 1.0,
+        "width": 0.7,
+        "height": 1.2,
         "fixed": false
     },
     "baseFriendship": 35,

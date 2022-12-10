@@ -41,7 +41,7 @@ class ReforgedConversion(val base: Path) : CobblemonConverter<NbtCompound> {
         val extension = if (storeClass.simpleName.lowercase() == "playerpartystore") "pk" else ("comp")
         val target = this.root().resolve("$uuid.$extension")
 
-        if(!this.exists(target)) {
+        if (!this.exists(target)) {
             return null
         }
 
@@ -55,9 +55,9 @@ class ReforgedConversion(val base: Path) : CobblemonConverter<NbtCompound> {
 
     override fun party(user: UUID, nbt: NbtCompound) : PlayerPartyStore {
         val result = PlayerPartyStore(user)
-        for(x in 0..5) {
+        for (x in 0..5) {
             val key = "party$x"
-            if(nbt.contains(key)) {
+            if (nbt.contains(key)) {
                 result.add(this.translate(nbt.getCompound(key)))
             }
         }

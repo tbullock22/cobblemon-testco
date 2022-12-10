@@ -30,18 +30,11 @@ object CobblemonEntities : CompletableRegistry<EntityType<*>>(Registry.ENTITY_TY
         super.register()
 
         EntityAttributeRegistry.register(
-            { POKEMON_TYPE },
+            { POKEMON.get() },
             {
-                DefaultAttributeContainer
-                    .builder()
+                LivingEntity.createLivingAttributes()
                     .add(EntityAttributes.GENERIC_FOLLOW_RANGE)
-                    .add(EntityAttributes.GENERIC_MAX_HEALTH)
-                    .add(EntityAttributes.GENERIC_MOVEMENT_SPEED)
-                    .add(EntityAttributes.HORSE_JUMP_STRENGTH)
-                    .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE)
-                    .add(EntityAttributes.GENERIC_ARMOR)
-                    .add(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)
-                    .also { CobblemonEvents.ENTITY_ATTRIBUTE.post(EntityAttributeEvent(POKEMON_TYPE, it)) }
+                    .also { CobblemonEvents.ENTITY_ATTRIBUTE.post(EntityAttributeEvent(POKEMON.get(), it)) }
             }
         )
     }
@@ -59,7 +52,7 @@ object CobblemonEntities : CompletableRegistry<EntityType<*>>(Registry.ENTITY_TY
         return queue(name) { entityTypeBuilder.build(cobblemonResource("pokemon").toString()) }
     }
 
-    val POKEMON = com.cobblemon.mod.common.CobblemonEntities.livingEntity(
+    val POKEMON = livingEntity(
         name = "pokemon",
         entityTypeBuilder = EntityType.Builder.create<PokemonEntity>(
             { _, world -> PokemonEntity(world) },
@@ -67,18 +60,11 @@ object CobblemonEntities : CompletableRegistry<EntityType<*>>(Registry.ENTITY_TY
         )
     )
 
-    val EMPTY_POKEBALL = com.cobblemon.mod.common.CobblemonEntities.entity(
+    val EMPTY_POKEBALL = entity(
         name = "empty_pokeball",
         entityTypeBuilder = EntityType.Builder.create<EmptyPokeBallEntity>(
             { _, world -> EmptyPokeBallEntity(PokeBalls.POKE_BALL, world) },
             SpawnGroup.MISC
         )
     )
-
-    // TODO remove these because they're pretty hair brained
-    val POKEMON_TYPE: EntityType<PokemonEntity>
-        get() = POKEMON.get()
-
-    val EMPTY_POKEBALL_TYPE: EntityType<EmptyPokeBallEntity>
-        get() = EMPTY_POKEBALL.get()
 }

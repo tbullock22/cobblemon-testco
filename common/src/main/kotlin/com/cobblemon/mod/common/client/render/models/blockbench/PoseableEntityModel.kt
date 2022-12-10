@@ -296,7 +296,7 @@ abstract class PoseableEntityModel<T : Entity>(
 
     fun quirk(
         name: String,
-        secondsBetweenOccurrences: Pair<Float, Float> = 4F to 15F,
+        secondsBetweenOccurrences: Pair<Float, Float> = 8F to 30F,
         loopTimes: IntRange = 1..1,
         condition: (state: PoseableEntityState<T>) -> Boolean = { true },
         animation: () -> StatefulAnimation<T, *>

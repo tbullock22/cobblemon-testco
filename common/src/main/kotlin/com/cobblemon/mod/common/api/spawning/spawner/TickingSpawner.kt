@@ -46,7 +46,6 @@ abstract class TickingSpawner(
 
     var active = true
     val spawnedEntities = mutableListOf<Entity>()
-    var maximumSpawned = Cobblemon.config.maximumSpawnedPokemonPerPlayer
 
     var lastSpawnTime = 0L
     var ticksUntilNextSpawn = 100F
@@ -66,7 +65,7 @@ abstract class TickingSpawner(
             removalCheckTicks = 0
         }
 
-        if (!active || spawnedEntities.size >= maximumSpawned) {
+        if (!active) {
             return
         }
 

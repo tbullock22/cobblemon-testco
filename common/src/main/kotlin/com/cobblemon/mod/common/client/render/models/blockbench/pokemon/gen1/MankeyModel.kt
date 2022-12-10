@@ -38,8 +38,7 @@ class MankeyModel(root: ModelPart) : PokemonPoseableModel() {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 bedrock("0056_mankey/mankey", "ground_idle")
-            ),
-            transformedParts = arrayOf(rootPart.asTransformed().addPosition(Y_AXIS, 1.5F))
+            )
         )
 
         walk = registerPose(
@@ -48,8 +47,7 @@ class MankeyModel(root: ModelPart) : PokemonPoseableModel() {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 bedrock("0056_mankey/mankey", "ground_walk")
-            ),
-            transformedParts = arrayOf(rootPart.asTransformed().addPosition(Y_AXIS, 1.5F))
+            )
         )
     }
 

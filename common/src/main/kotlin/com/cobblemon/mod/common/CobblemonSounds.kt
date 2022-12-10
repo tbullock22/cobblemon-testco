@@ -16,10 +16,12 @@ import net.minecraft.util.registry.Registry
 object CobblemonSounds : CompletableRegistry<SoundEvent>(Registry.SOUND_EVENT_KEY) {
     private fun queue(name: String) = queue(name) { SoundEvent(cobblemonResource(name)) }
 
-    val CAPTURE_SUCCEEDED = queue("capture_succeeded")
-    val POKEBALL_SHAKE = queue("shake")
-    val POKEBALL_HIT = queue("hit")
-    val SEND_OUT = queue("send_out")
-    val RECALL = queue("recall")
-    val CAPTURE_STARTED = queue("capture_started")
+    val POKE_BALL_CAPTURE_STARTED = queue("poke_ball.capture_started")
+    val POKE_BALL_CAPTURE_SUCCEEDED = queue("poke_ball.capture_succeeded")
+    val POKE_BALL_SHAKE = queue("poke_ball.shake")
+    val POKE_BALL_OPEN = queue("poke_ball.open")
+    val POKE_BALL_HIT = queue("poke_ball.hit")
+    val POKE_BALL_SEND_OUT = queue("poke_ball.send_out")
+    val POKE_BALL_RECALL = queue("poke_ball.recall")
+    val ITEM_USE = queue("item.use")
 }

@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "mamoswine",
     "nationalPokedexNumber": 473,
     "primaryType": "ice",
@@ -26,6 +27,16 @@
     "eggGroups": [
         "field"
     ],
+	"drops": {
+        "amount": "1",
+        "entries": [
+            {
+                "item": "minecraft:brown_wool",
+                "quantityRange": "1-3",
+                "percentage": 75
+            }
+        ]
+    },
     "moves": [
         "0:doublehit",
         "1:furyattack",

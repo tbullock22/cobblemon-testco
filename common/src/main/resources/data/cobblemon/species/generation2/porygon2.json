@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "porygon2",
     "nationalPokedexNumber": 233,
     "primaryType": "normal",
@@ -25,6 +26,15 @@
     "eggGroups": [
         "mineral"
     ],
+	"drops": {
+        "amount": "1",
+        "entries": [
+            {
+                "item": "cobblemon:dubious_disc",
+                "percentage": 50
+            }
+        ]
+    },
     "behaviour": {
         "moving": {
             "fly": {

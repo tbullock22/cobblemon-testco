@@ -1,0 +1,13 @@
+{
+  "species": "cobblemon:deerling",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:deerling",
+      "model": "cobblemon:deerling.geo",
+      "texture": "cobblemon:textures/pokemon/0585_deerling/deerling_spring.png",
+      "layers": []
+    }
+  ]
+}

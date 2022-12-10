@@ -1,0 +1,52 @@
+{
+  "species": "cobblemon:arbok",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:arbok",
+      "model": "cobblemon:arbok.geo",
+      "texture": "cobblemon:textures/pokemon/0024_arbok/arbok.png",
+      "layers": [
+        {
+          "name": "pattern",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "tint": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "cobblemon:textures/pokemon/0024_arbok/arbok_pattern_classic.png"
+        }
+      ]
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0024_arbok/arbok_shiny.png",
+      "layers": [
+        {
+          "name": "pattern",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "tint": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "cobblemon:textures/pokemon/0024_arbok/arbok_pattern_classic_shiny.png"
+        }
+      ]
+    }
+  ]
+}

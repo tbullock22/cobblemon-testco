@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "bidoof",
     "nationalPokedexNumber": 399,
     "primaryType": "normal",
@@ -30,7 +31,7 @@
         "moving": {
             "swim": {
                 "canSwimInWater": true,
-                "canBreatheUnderwater": true
+                "canWalkOnWater": true
             }
         }
     },

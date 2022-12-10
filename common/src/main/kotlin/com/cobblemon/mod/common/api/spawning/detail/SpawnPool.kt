@@ -8,11 +8,23 @@
 
 package com.cobblemon.mod.common.api.spawning.detail
 
+import com.cobblemon.mod.common.api.data.DataRegistry
+import com.cobblemon.mod.common.api.data.JsonDataRegistry
+import com.cobblemon.mod.common.api.reactive.SimpleObservable
+import com.cobblemon.mod.common.api.spawning.SpawnLoader
+import com.cobblemon.mod.common.api.spawning.SpawnSet
+import com.cobblemon.mod.common.api.spawning.condition.FinalPrecalculationResult
 import com.cobblemon.mod.common.api.spawning.condition.PrecalculationResult
 import com.cobblemon.mod.common.api.spawning.condition.RootPrecalculation
 import com.cobblemon.mod.common.api.spawning.condition.SpawningPrecalculation
 import com.cobblemon.mod.common.api.spawning.context.SpawningContext
 import com.cobblemon.mod.common.api.spawning.spawner.Spawner
+import com.cobblemon.mod.common.util.cobblemonResource
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import net.minecraft.resource.ResourceType
+import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.util.Identifier
 
 /**
  * A collection of [SpawnDetail]s with precalculation logic for optimization of searches.
@@ -25,7 +37,22 @@ import com.cobblemon.mod.common.api.spawning.spawner.Spawner
  * @author Hiroku
  * @since February 9th, 2022
  */
-class SpawnPool : Iterable<SpawnDetail> {
+class SpawnPool(val name: String) : JsonDataRegistry<SpawnSet>, Iterable<SpawnDetail> {
+    override val id = cobblemonResource("spawn_pool_$name")
+    override val type = ResourceType.SERVER_DATA
+    override val observable = SimpleObservable<SpawnPool>()
+    override val gson: Gson = SpawnLoader.gson
+    override val typeToken = TypeToken.get(SpawnSet::class.java)
+    override val resourcePath = id.path
+    override fun sync(player: ServerPlayerEntity) {}
+    override fun reload(data: Map<Identifier, SpawnSet>) {
+        details.clear()
+        for (set in data.values) {
+            details.addAll(set.filter { it.isModDependencySatisfied() })
+        }
+        precalculate()
+    }
+
     val details = mutableListOf<SpawnDetail>()
     var precalculation: PrecalculationResult<*> = RootPrecalculation.generate(details, emptyList())
     val precalculators = mutableListOf<SpawningPrecalculation<*>>()
@@ -75,8 +102,8 @@ class SpawnPool : Iterable<SpawnDetail> {
      * Creates a de-referenced copy of the pool which can be modified safely without
      * this pool being changed.
      */
-    fun copy(): SpawnPool {
-        val copy = SpawnPool()
+    fun copy(newName: String): SpawnPool {
+        val copy = SpawnPool(newName)
         copy.details.addAll(details)
         copy.precalculators.addAll(precalculators)
         copy.precalculation = precalculation

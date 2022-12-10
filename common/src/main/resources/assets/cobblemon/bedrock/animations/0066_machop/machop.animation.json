@@ -3,7 +3,6 @@
 	"animations": {
 		"animation.machop.ground_idle": {
 			"loop": true,
-			"animation_length": 49.125,
 			"bones": {
 				"body": {
 					"rotation": [5, 0, 0]

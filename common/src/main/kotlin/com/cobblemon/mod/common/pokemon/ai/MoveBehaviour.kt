@@ -18,5 +18,7 @@ class MoveBehaviour {
     val walk = WalkBehaviour()
     val swim = SwimBehaviour()
     val fly = FlyBehaviour()
+    val wanderChance = 120
+    val wanderSpeed = 1.0
     val canLook = true
 }

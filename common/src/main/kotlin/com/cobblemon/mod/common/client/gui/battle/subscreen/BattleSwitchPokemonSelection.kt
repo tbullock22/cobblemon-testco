@@ -64,6 +64,7 @@ class BattleSwitchPokemonSelection(
                 gender = pokemon.gender,
                 status = pokemon.status?.status,
                 hpRatio = pokemon.currentHealth.toFloat() / pokemon.hp,
+                trueHealth = pokemon.currentHealth to pokemon.hp,
                 state = null,
                 colour = null,
                 opacity = selection.opacity

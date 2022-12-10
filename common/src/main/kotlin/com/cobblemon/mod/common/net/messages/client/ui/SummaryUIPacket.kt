@@ -9,22 +9,23 @@
 package com.cobblemon.mod.common.net.messages.client.ui
 
 import com.cobblemon.mod.common.api.net.NetworkPacket
+import com.cobblemon.mod.common.net.messages.PokemonDTO
 import com.cobblemon.mod.common.pokemon.Pokemon
 import net.minecraft.network.PacketByteBuf
 class SummaryUIPacket internal constructor(): NetworkPacket {
     constructor(vararg pokemon: Pokemon, editable: Boolean = true) : this() {
-        pokemonArray.addAll(pokemon)
+        pokemonArray.addAll(pokemon.map { PokemonDTO(it, toClient = true) })
         this.editable = editable
     }
 
-    val pokemonArray = mutableListOf<Pokemon>()
+    val pokemonArray = mutableListOf<PokemonDTO>()
     var editable = true
 
     override fun encode(buffer: PacketByteBuf) {
         buffer.writeBoolean(editable)
         buffer.writeInt(pokemonArray.size)
         pokemonArray.forEach {
-            it.saveToBuffer(buffer, toClient = true)
+            it.encode(buffer)
         }
     }
 
@@ -32,7 +33,7 @@ class SummaryUIPacket internal constructor(): NetworkPacket {
         editable = buffer.readBoolean()
         val amount = buffer.readInt()
         for (i in 0 until amount) {
-            pokemonArray.add(Pokemon().loadFromBuffer(buffer))
+            pokemonArray.add(PokemonDTO().also { it.decode(buffer) })
         }
     }
 }

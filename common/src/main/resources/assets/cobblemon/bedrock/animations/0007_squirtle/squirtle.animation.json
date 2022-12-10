@@ -87,7 +87,6 @@
 		},
 		"animation.squirtle.water_idle": {
 			"loop": true,
-			"animation_length": 20.65,
 			"bones": {
 				"tail": {
 					"rotation": [

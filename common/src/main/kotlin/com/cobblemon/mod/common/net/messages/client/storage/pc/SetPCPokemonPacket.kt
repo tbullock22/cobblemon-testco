@@ -11,6 +11,7 @@ package com.cobblemon.mod.common.net.messages.client.storage.pc
 import com.cobblemon.mod.common.api.storage.pc.PCPosition
 import com.cobblemon.mod.common.api.storage.pc.PCPosition.Companion.readPCPosition
 import com.cobblemon.mod.common.api.storage.pc.PCPosition.Companion.writePCPosition
+import com.cobblemon.mod.common.net.messages.PokemonDTO
 import com.cobblemon.mod.common.net.messages.client.storage.SetPokemonPacket
 import com.cobblemon.mod.common.pokemon.Pokemon
 import java.util.UUID
@@ -24,11 +25,15 @@ import net.minecraft.network.PacketByteBuf
  * @author Hiroku
  * @since June 18th, 2022
  */
-class SetPCPokemonPacket() : SetPokemonPacket<PCPosition>() {
-    constructor(storeID: UUID, storePosition: PCPosition, pokemon: Pokemon): this() {
+class SetPCPokemonPacket : SetPokemonPacket<PCPosition> {
+    constructor() {
+        this.pokemon = PokemonDTO()
+    }
+
+    constructor(storeID: UUID, storePosition: PCPosition, pokemon: Pokemon) {
         this.storeID = storeID
         this.storePosition = storePosition
-        this.pokemon = pokemon
+        this.pokemon = PokemonDTO(pokemon, toClient = true)
     }
 
     override fun encodePosition(buffer: PacketByteBuf) = buffer.writePCPosition(storePosition)

@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "golem",
   "nationalPokedexNumber": 76,
   "primaryType": "rock",
@@ -126,6 +127,16 @@
   "experienceGroup": "mediumslow",
   "eggCycles": 15,
   "eggGroups": ["mineral"],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:coal",
+        "quantityRange": "1-3",
+        "percentage": 75
+      }
+    ]
+  },
   "moves": [
     "1:megapunch",
     "1:sandattack",

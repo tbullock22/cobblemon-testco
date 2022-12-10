@@ -3,7 +3,6 @@
 	"animations": {
 		"animation.pinsir.ground_idle": {
 			"loop": true,
-			"animation_length": 18.95833,
 			"bones": {
 				"body": {
 					"position": [0, "-0.05*(math.sin(q.anim_time*90*3-90)*1+1)", 0]

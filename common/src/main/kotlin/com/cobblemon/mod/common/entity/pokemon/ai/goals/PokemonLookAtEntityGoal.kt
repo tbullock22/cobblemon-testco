@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.entity.pokemon.ai.goals
 
+import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.entity.pokemon.PokemonBehaviourFlag
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import net.minecraft.entity.LivingEntity
@@ -20,7 +21,7 @@ import net.minecraft.entity.ai.goal.LookAtEntityGoal
  * @since July 30th, 2022
  */
 class PokemonLookAtEntityGoal(entity: PokemonEntity, targetType: Class<out LivingEntity>, range: Float) : LookAtEntityGoal(entity, targetType, range) {
-    fun canLook() = (mob as PokemonEntity).behaviour.moving.canLook
+    fun canLook() = (mob as PokemonEntity).behaviour.moving.canLook && (mob as PokemonEntity).pokemon.status?.status != Statuses.SLEEP
     override fun canStart() = super.canStart() && canLook()
     override fun shouldContinue() = super.shouldContinue() && canLook()
 

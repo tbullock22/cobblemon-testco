@@ -9,6 +9,7 @@
 package com.cobblemon.mod.common.api.pokemon
 
 import com.cobblemon.mod.common.Cobblemon
+import com.cobblemon.mod.common.api.pokeball.PokeBalls
 import com.cobblemon.mod.common.api.pokemon.aspect.AspectProvider
 import com.cobblemon.mod.common.api.properties.CustomPokemonProperty
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
@@ -25,6 +26,7 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtList
 import net.minecraft.nbt.NbtString
+import net.minecraft.util.Identifier
 import net.minecraft.util.InvalidIdentifierException
 import net.minecraft.world.World
 
@@ -74,6 +76,8 @@ open class PokemonProperties {
             props.species = parseSpeciesIdentifier(keyPairs)
             props.form = parseForm(keyPairs)
             props.friendship = parseIntProperty(keyPairs, listOf("friendship"))?.coerceIn(0, Cobblemon.config.maxPokemonFriendship)
+            props.pokeball = parseIdentifierOfRegistry(keyPairs, listOf("pokeball")) { identifier -> PokeBalls.getPokeBall(identifier)?.name?.toString() }
+            props.nature = parseIdentifierOfRegistry(keyPairs, listOf("nature")) { identifier -> Natures.getNature(identifier)?.name?.toString() }
             props.updateAspects()
             return props
         }
@@ -89,6 +93,17 @@ open class PokemonProperties {
                 null
             } else {
                 value.toInt()
+            }
+        }
+
+        private fun parseIdentifierOfRegistry(keyPairs: MutableList<Pair<String, String?>>, validKeys: List<String>, valueFetcher: (Identifier) -> String?): String? {
+            val matched = getMatchedKeyPair(keyPairs, validKeys) ?: return null
+            val value = matched.second?.lowercase() ?: return null
+            return try {
+                val identifier = value.asIdentifierDefaultingNamespace()
+                valueFetcher(identifier)
+            } catch (_: InvalidIdentifierException) {
+                null
             }
         }
 
@@ -186,6 +201,8 @@ open class PokemonProperties {
     var gender: Gender? = null
     var level: Int? = null
     var friendship: Int? = null
+    var pokeball: String? = null
+    var nature: String? = null
     var aspects: Set<String> = emptySet()
 
     var customProperties = mutableListOf<CustomPokemonProperty>()
@@ -202,9 +219,6 @@ open class PokemonProperties {
     )
 
     fun apply(pokemon: Pokemon) {
-        level?.let { pokemon.level = it }
-        shiny?.let { pokemon.shiny = it }
-        gender?.let { pokemon.gender = it }
         species?.let {
             return@let try {
                 if (it == "random") {
@@ -217,14 +231,16 @@ open class PokemonProperties {
             }
         }?.let { pokemon.species = it }
         form?.let { formID -> pokemon.species.forms.firstOrNull { it.name.equals(formID, true) } }?.let { form -> pokemon.form = form }
+        shiny?.let { pokemon.shiny = it }
+        gender?.let { pokemon.gender = it }
+        level?.let { pokemon.level = it }
         friendship?.let { pokemon.setFriendship(it) }
+        pokeball?.let { PokeBalls.getPokeBall(it.asIdentifierDefaultingNamespace())?.let { pokeball -> pokemon.caughtBall = pokeball } }
+        nature?.let { Natures.getNature(it.asIdentifierDefaultingNamespace())?.let { nature -> pokemon.nature = nature } }
         customProperties.forEach { it.apply(pokemon) }
     }
 
     fun apply(pokemonEntity: PokemonEntity) {
-        level?.let { pokemonEntity.pokemon.level = it }
-        shiny?.let { pokemonEntity.pokemon.shiny = it }
-        gender?.let { pokemonEntity.pokemon.gender = it }
         species?.let {
             return@let try {
                 if (it == "random") {
@@ -237,7 +253,12 @@ open class PokemonProperties {
             }
         }?.let { pokemonEntity.pokemon.species = it }
         form?.let { formID -> pokemonEntity.pokemon.species.forms.firstOrNull { it.name.equals(formID, true) } }?.let { form -> pokemonEntity.pokemon.form = form }
+        level?.let { pokemonEntity.pokemon.level = it }
+        shiny?.let { pokemonEntity.pokemon.shiny = it }
+        gender?.let { pokemonEntity.pokemon.gender = it }
         friendship?.let { pokemonEntity.pokemon.setFriendship(it) }
+        pokeball?.let { PokeBalls.getPokeBall(it.asIdentifierDefaultingNamespace())?.let { pokeball -> pokemonEntity.pokemon.caughtBall = pokeball } }
+        nature?.let { Natures.getNature(it.asIdentifierDefaultingNamespace())?.let { nature -> pokemonEntity.pokemon.nature = nature } }
         customProperties.forEach { it.apply(pokemonEntity) }
     }
 
@@ -261,12 +282,14 @@ open class PokemonProperties {
         }
         form?.takeIf { !it.equals(pokemon.form.name, true) }?.let { return false }
         friendship?.takeIf { it != pokemon.friendship }?.let { return false }
+        pokeball?.takeIf { it != pokemon.caughtBall.name.toString() }?.let { return false }
+        nature?.takeIf { it != pokemon.nature.name.toString() }?.let { return false }
         return customProperties.none { !it.matches(pokemon) }
     }
 
     fun matches(pokemonEntity: PokemonEntity): Boolean {
         level?.takeIf { it != pokemonEntity.pokemon.level }?.let { return false }
-        shiny?.takeIf { it != pokemonEntity.shiny.get() }?.let { return false }
+        shiny?.takeIf { it != ("shiny" in pokemonEntity.pokemon.aspects) }?.let { return false }
         gender?.takeIf { it != pokemonEntity.pokemon.gender }?.let { return false }
         species?.run {
             try {
@@ -282,6 +305,8 @@ open class PokemonProperties {
         }
         form?.takeIf { !it.equals(pokemonEntity.pokemon.form.name, true) }?.let { return false }
         friendship?.takeIf { it != pokemonEntity.pokemon.friendship }?.let { return false }
+        pokeball?.takeIf { it != pokemonEntity.pokemon.caughtBall.name.toString() }?.let { return false }
+        nature?.takeIf { it != pokemonEntity.pokemon.nature.name.toString() }?.let { return false }
         return customProperties.none { !it.matches(pokemonEntity) }
     }
 
@@ -302,6 +327,8 @@ open class PokemonProperties {
         species?.let { nbt.putString(DataKeys.POKEMON_SPECIES_TEXT, it) }
         form?.let { nbt.putString(DataKeys.POKEMON_FORM_ID, it) }
         friendship?.let { nbt.putInt(DataKeys.POKEMON_FRIENDSHIP, it) }
+        pokeball?.let { nbt.putString(DataKeys.POKEMON_CAUGHT_BALL, it) }
+        nature?.let { nbt.putString(DataKeys.POKEMON_NATURE, it) }
         val custom = NbtList()
         customProperties.map { NbtString.of(it.asString()) }.forEach { custom.add(it) }
         nbt.put(DataKeys.POKEMON_PROPERTIES_CUSTOM, custom)
@@ -316,6 +343,8 @@ open class PokemonProperties {
         species = if (tag.contains(DataKeys.POKEMON_SPECIES_TEXT)) tag.getString(DataKeys.POKEMON_SPECIES_TEXT) else null
         form = if (tag.contains(DataKeys.POKEMON_FORM_ID)) tag.getString(DataKeys.POKEMON_FORM_ID) else null
         friendship = if (tag.contains(DataKeys.POKEMON_FRIENDSHIP)) tag.getInt(DataKeys.POKEMON_FRIENDSHIP) else null
+        pokeball = if (tag.contains(DataKeys.POKEMON_CAUGHT_BALL)) tag.getString(DataKeys.POKEMON_CAUGHT_BALL) else null
+        nature = if (tag.contains(DataKeys.POKEMON_NATURE)) tag.getString(DataKeys.POKEMON_NATURE) else null
         val custom = tag.getList(DataKeys.POKEMON_PROPERTIES_CUSTOM, NbtElement.STRING_TYPE.toInt())
         // This is kinda gross
         custom.forEach { customProperties.addAll(parse(it.asString()).customProperties) }
@@ -332,6 +361,8 @@ open class PokemonProperties {
         species?.let { json.addProperty(DataKeys.POKEMON_SPECIES_TEXT, it) }
         form?.let { json.addProperty(DataKeys.POKEMON_FORM_ID, it) }
         friendship?.let { json.addProperty(DataKeys.POKEMON_FRIENDSHIP, it) }
+        pokeball?.let { json.addProperty(DataKeys.POKEMON_CAUGHT_BALL, it) }
+        nature?.let { json.addProperty(DataKeys.POKEMON_NATURE, it) }
         val custom = JsonArray()
         customProperties.map { it.asString() }.forEach { custom.add(it) }
         json.add(DataKeys.POKEMON_PROPERTIES_CUSTOM, custom)
@@ -346,6 +377,8 @@ open class PokemonProperties {
         species = json.get(DataKeys.POKEMON_SPECIES_TEXT)?.asString
         form = json.get(DataKeys.POKEMON_FORM_ID)?.asString
         friendship = json.get(DataKeys.POKEMON_FRIENDSHIP)?.asInt
+        pokeball = json.get(DataKeys.POKEMON_CAUGHT_BALL)?.asString
+        nature = json.get(DataKeys.POKEMON_NATURE)?.asString
         val custom = json.get(DataKeys.POKEMON_PROPERTIES_CUSTOM)?.asJsonArray
         // This is still kinda gross
         custom?.forEach { customProperties.addAll(parse(it.asString).customProperties) }
@@ -361,6 +394,8 @@ open class PokemonProperties {
         shiny?.let { pieces.add("shiny=$it") }
         gender?.let { pieces.add("gender=$it")}
         friendship?.let { pieces.add("friendship=$it") }
+        pokeball?.let { pieces.add("pokeball=$it") }
+        nature?.let { pieces.add("nature=$it") }
         customProperties.forEach { pieces.add(it.asString()) }
         return pieces.joinToString(separator)
     }

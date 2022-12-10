@@ -15,6 +15,6 @@ import com.cobblemon.mod.common.net.messages.client.storage.party.SetPartyPokemo
 
 object SetPartyPokemonHandler : ClientPacketHandler<SetPartyPokemonPacket> {
     override fun invokeOnClient(packet: SetPartyPokemonPacket, ctx: CobblemonNetwork.NetworkContext) {
-        CobblemonClient.storage.setPartyPokemon(packet.storeID, packet.storePosition, packet.pokemon)
+        CobblemonClient.storage.setPartyPokemon(packet.storeID, packet.storePosition, packet.pokemon.create())
     }
 }

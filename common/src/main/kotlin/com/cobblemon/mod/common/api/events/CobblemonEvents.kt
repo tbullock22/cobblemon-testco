@@ -26,19 +26,24 @@ import com.cobblemon.mod.common.api.events.pokemon.interaction.ExperienceCandyUs
 import com.cobblemon.mod.common.api.events.starter.StarterChosenEvent
 import com.cobblemon.mod.common.api.reactive.CancelableObservable
 import com.cobblemon.mod.common.api.reactive.EventObservable
+import com.cobblemon.mod.common.api.reactive.SimpleObservable
 import com.cobblemon.mod.common.util.asObservable
 import com.cobblemon.mod.common.util.asServerObservable
 import com.cobblemon.mod.common.util.asTickObservable
+import dev.architectury.event.EventResult
+import dev.architectury.event.events.common.EntityEvent
+import dev.architectury.event.events.common.EntityEvent.LivingDeath
 import dev.architectury.event.events.common.LifecycleEvent
 import dev.architectury.event.events.common.PlayerEvent
 import dev.architectury.event.events.common.PlayerEvent.PlayerJoin
 import dev.architectury.event.events.common.PlayerEvent.PlayerQuit
 import dev.architectury.event.events.common.TickEvent
+import net.minecraft.entity.LivingEntity
 import net.minecraft.server.network.ServerPlayerEntity
 
 object CobblemonEvents {
     val MESSAGE_BUILT = EventObservable<MessageBuiltEvent<*>>()
-    val DATA_SYNCHRONIZED = EventObservable<ServerPlayerEntity>()
+    val DATA_SYNCHRONIZED = SimpleObservable<ServerPlayerEntity>()
     val ENTITY_ATTRIBUTE = EventObservable<EntityAttributeEvent>()
     val SHOULDER_MOUNT = CancelableObservable<ShoulderMountEvent>()
     val FRIENDSHIP_UPDATED = EventObservable<FriendshipUpdatedEvent>()
@@ -72,4 +77,6 @@ object CobblemonEvents {
 
     val PLAYER_JOIN = PlayerEvent.PLAYER_JOIN.asObservable<PlayerJoin, ServerPlayerEntity> { obs -> PlayerJoin { obs.emit(it) } }
     val PLAYER_QUIT = PlayerEvent.PLAYER_QUIT.asObservable<PlayerQuit, ServerPlayerEntity> { obs -> PlayerQuit { obs.emit(it) } }
+
+    val LIVING_DEATH = EntityEvent.LIVING_DEATH.asObservable<LivingDeath, LivingEntity> { obs -> LivingDeath { entity, source -> obs.emit(entity); EventResult.pass() } }
 }

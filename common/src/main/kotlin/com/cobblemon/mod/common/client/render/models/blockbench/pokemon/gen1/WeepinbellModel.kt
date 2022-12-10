@@ -18,8 +18,8 @@ import net.minecraft.util.math.Vec3d
 class WeepinbellModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("weepinbell")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 1.45F
+    override val portraitTranslation = Vec3d(0.15, -0.5, 0.0)
 
     override val profileScale = 1.0F
     override val profileTranslation = Vec3d(0.0, 0.0, 0.0)

@@ -99,7 +99,7 @@ open class PlayerPartyStore(
 
                 // Statuses
                 val status = pokemon.status
-                if (status != null) {
+                if (status != null && !player.isSleeping) {
                     if (status.isExpired()) {
                         status.status.onStatusExpire(player, pokemon, random)
                         pokemon.status = null
@@ -114,12 +114,13 @@ open class PlayerPartyStore(
             }
             // Friendship
             // ToDo expand this down the line just a very basic implementation for the first releases
-            if (++this.secondsSinceFriendshipUpdate == 60) {
+            if (++this.secondsSinceFriendshipUpdate == 120) {
                 this.secondsSinceFriendshipUpdate = 0
                 this.forEach { pokemon ->
                     if (pokemon.friendship < 160) {
-                        val amount = if (pokemon.entity != null) 3 else 1
-                        pokemon.incrementFriendship(amount)
+                        if (pokemon.entity != null) {
+                            pokemon.incrementFriendship(1)
+                        }
                     }
                 }
             }

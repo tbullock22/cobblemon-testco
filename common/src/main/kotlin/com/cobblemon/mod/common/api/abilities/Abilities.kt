@@ -36,7 +36,7 @@ object Abilities : JsonDataRegistry<AbilityTemplate> {
     override val type = ResourceType.SERVER_DATA
     override val observable = SimpleObservable<Abilities>()
     override val typeToken: TypeToken<AbilityTemplate> = TypeToken.get(AbilityTemplate::class.java)
-    override val resourcePath = Path("abilities")
+    override val resourcePath = "abilities"
     override val gson: Gson = GsonBuilder()
         .disableHtmlEscaping()
         .setLenient()

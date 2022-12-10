@@ -3,7 +3,6 @@
 	"animations": {
 		"animation.gloom.ground_walk": {
 			"loop": true,
-			"animation_length": 85.4,
 			"bones": {
 				"torso": {
 					"rotation": [

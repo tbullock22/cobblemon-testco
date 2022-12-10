@@ -24,7 +24,7 @@ import java.io.InputStreamReader
 import java.util.concurrent.CompletableFuture
 import net.minecraft.client.MinecraftClient
 import net.minecraft.util.Identifier
-class ShowdownThread : Thread() {
+class ShowdownThread : Thread("Cobblemon Showdown") {
 
     var showdownStarted = CompletableFuture<Unit>()
     val gson = GsonBuilder()

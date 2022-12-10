@@ -16,7 +16,8 @@ import com.cobblemon.mod.common.client.CobblemonClient
 import com.cobblemon.mod.common.client.CobblemonResources
 import com.cobblemon.mod.common.client.battle.ActiveClientBattlePokemon
 import com.cobblemon.mod.common.client.battle.ClientBallDisplay
-import com.cobblemon.mod.common.client.keybind.currentKey
+import com.cobblemon.mod.common.client.gui.battle.widgets.BattleMessagePane
+import com.cobblemon.mod.common.client.keybind.boundKey
 import com.cobblemon.mod.common.client.keybind.keybinds.PartySendBinding
 import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.client.render.getDepletableRedGreen
@@ -35,14 +36,17 @@ import com.cobblemon.mod.common.util.lang
 import com.mojang.blaze3d.systems.RenderSystem
 import java.lang.Double.max
 import java.lang.Double.min
+import java.util.UUID
 import kotlin.math.roundToInt
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.hud.InGameHud
+import net.minecraft.client.gui.screen.ChatScreen
 import net.minecraft.client.render.DiffuseLighting
 import net.minecraft.client.render.LightmapTextureManager
 import net.minecraft.client.render.OverlayTexture
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.text.MutableText
+import net.minecraft.util.math.MathHelper.ceil
 import net.minecraft.util.math.Vec3f
 
 class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.getInstance().itemRenderer) {
@@ -77,6 +81,9 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
         get() = (opacity - MIN_OPACITY) / (MAX_OPACITY - MIN_OPACITY)
     var passedSeconds = 0F
 
+    var lastKnownBattle: UUID? = null
+    lateinit var messagePane: BattleMessagePane
+
     override fun render(matrices: MatrixStack, tickDelta: Float) {
         passedSeconds += tickDelta / 20
         if (passedSeconds > 100) {
@@ -100,12 +107,23 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
             val textOpacity = PROMPT_TEXT_OPACITY_CURVE(passedSeconds)
             drawScaledText(
                 matrixStack = matrices,
-                text = battleLang("ui.actions_label", PartySendBinding.currentKey().localizedText),
+                text = battleLang("ui.actions_label", PartySendBinding.boundKey().localizedText),
                 x = MinecraftClient.getInstance().window.scaledWidth / 2,
-                y = (MinecraftClient.getInstance().window.scaledHeight / 2) - 25,
+                y = MinecraftClient.getInstance().window.scaledHeight / 5,
                 opacity = textOpacity,
                 centered = true
             )
+        }
+
+        val currentScreen = MinecraftClient.getInstance().currentScreen
+
+        if (currentScreen == null || currentScreen is ChatScreen) {
+            if (lastKnownBattle != battle.battleId) {
+                lastKnownBattle = battle.battleId
+                messagePane = BattleMessagePane(CobblemonClient.battle!!.messages)
+            }
+            messagePane.opacity = 0.3F
+            messagePane.render(matrices, 0, 0, 0F)
         }
     }
 
@@ -136,6 +154,8 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
         val g = ((hue shr 8) and 0b11111111) / 255F
         val b = (hue and 0b11111111) / 255F
 
+        val truePokemon = activeBattlePokemon.actor.pokemon.find { it.uuid == activeBattlePokemon.battlePokemon?.uuid }
+
         drawBattleTile(
             matrices = matrices,
             x = x,
@@ -151,7 +171,8 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
             state = battlePokemon.state,
             colour = Triple(r, g, b),
             opacity = opacity.toFloat(),
-            ballState = activeBattlePokemon.ballCapturing
+            ballState = activeBattlePokemon.ballCapturing,
+            trueHealth = truePokemon?.let { (it.hp * battlePokemon.hpRatio).roundToInt() to it.hp }
         )
     }
 
@@ -170,8 +191,10 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
         state: PoseableEntityState<PokemonEntity>?,
         colour: Triple<Float, Float, Float>?,
         opacity: Float,
-        ballState: ClientBallDisplay? = null
+        ballState: ClientBallDisplay? = null,
+        trueHealth: Pair<Int, Int>?
     ) {
+
         val mc = MinecraftClient.getInstance()
         fun scaleIt(i: Number): Int {
             return (mc.window.scaleFactor * i.toFloat()).roundToInt()
@@ -335,9 +358,26 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
             green = healthGreen * 0.8F,
             blue = 0.27F
         )
+
+        val text = if (trueHealth != null) {
+            "${trueHealth.first}/${trueHealth.second}"
+        } else {
+            "${ceil(hpRatio * 100)}%"
+        }.text()
+
+        drawScaledText(
+            matrixStack = matrices,
+            text = text,
+            x = infoBoxX + (if (!reversed) 39.5 else 44.5),
+            y = y + 22,
+            scale = 0.5F,
+            opacity = opacity,
+            centered = true,
+            shadow = true
+        )
     }
 
-    fun drawPokeBall(
+    private fun drawPokeBall(
         state: ClientBallDisplay,
         matrixStack: MatrixStack,
         scale: Float = 6F,

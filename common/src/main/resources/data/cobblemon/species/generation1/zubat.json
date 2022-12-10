@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "zubat",
     "nationalPokedexNumber": 41,
     "primaryType": "poison",
@@ -18,6 +19,7 @@
     "catchRate": 255,
     "maleRatio": 0.5,
     "shoulderMountable": true,
+    "shoulderEffects": ["slow_fall"],
     "forms": [],
     "baseExperienceYield": 49,
     "experienceGroup": "mediumfast",
@@ -27,8 +29,8 @@
     ],
     "behaviour": {
         "moving": {
-            "swim": {
-                "canWalkOnWater": true
+            "walk": {
+                "canWalk": false
             },
             "fly": {
                 "canFly": true

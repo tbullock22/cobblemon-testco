@@ -18,7 +18,7 @@ object SummaryUIPacketHandler: ClientPacketHandler<SummaryUIPacket> {
     override fun invokeOnClient(packet: SummaryUIPacket, ctx: CobblemonNetwork.NetworkContext) {
         MinecraftClient.getInstance().setScreen(
             Summary(
-                pokemon = packet.pokemonArray.toTypedArray(),
+                pokemon = packet.pokemonArray.map { it.create() }.toTypedArray(),
                 editable = packet.editable
             )
         )

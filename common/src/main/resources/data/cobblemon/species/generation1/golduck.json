@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "golduck",
     "nationalPokedexNumber": 55,
     "primaryType": "water",
@@ -29,6 +30,7 @@
     "behaviour": {
         "moving": {
             "swim": {
+                "swimSpeed": 0.1,
                 "canSwimInWater": true,
                 "canBreatheUnderwater": true
             }

@@ -27,7 +27,7 @@ abstract class CobblemonKeyBinding(
 
     abstract fun onPress()
 
-    open fun onKeyInput() {
+    open fun onTick() {
         if (this.wasPressed()) {
             onPress()
         }

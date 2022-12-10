@@ -8,8 +8,10 @@
 
 package com.cobblemon.mod.common.api.storage.adapter.flatifle
 
+import com.cobblemon.mod.common.Cobblemon.LOGGER
 import com.cobblemon.mod.common.api.storage.PokemonStore
 import com.cobblemon.mod.common.api.storage.StorePosition
+import java.io.EOFException
 import java.io.File
 import java.util.UUID
 import net.minecraft.nbt.NbtCompound
@@ -32,7 +34,13 @@ open class NBTStoreAdapter(
     override fun save(file: File, serialized: NbtCompound) = NbtIo.writeCompressed(serialized, file)
     override fun <E, T : PokemonStore<E>> load(file: File, storeClass: Class<out T>, uuid: UUID): T? {
         val store = storeClass.getConstructor(UUID::class.java).newInstance(uuid)
-        store.loadFromNBT(NbtIo.readCompressed(file))
-        return store
+        return try {
+            val nbt = NbtIo.readCompressed(file)
+            store.loadFromNBT(nbt)
+            store
+        } catch (eof: EOFException) {
+            LOGGER.error("Pokémon save file for ${storeClass.simpleName} ($uuid) was corrupted. A fresh file will be created.")
+            store
+        }
     }
 }

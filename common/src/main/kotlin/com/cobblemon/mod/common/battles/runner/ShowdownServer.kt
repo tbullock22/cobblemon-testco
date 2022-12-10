@@ -121,6 +121,7 @@ object ShowdownServer {
                         // ends the connection.
                         socket.on('end', function () {
                             console.log('Closing connection with the client');
+                            server.close();
                         });
                     
                         // Don't forget to catch error, for your own sake.

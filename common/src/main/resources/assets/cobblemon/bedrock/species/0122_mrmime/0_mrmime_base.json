@@ -1,0 +1,19 @@
+{
+  "species": "cobblemon:mrmime",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:mrmime",
+      "model": "cobblemon:mrmime.geo",
+      "texture": "cobblemon:textures/pokemon/0122_mrmime/mrmime.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0122_mrmime/mrmime_shiny.png"
+    }
+  ]
+}

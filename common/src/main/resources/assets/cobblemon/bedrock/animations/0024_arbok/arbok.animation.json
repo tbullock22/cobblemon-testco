@@ -2,7 +2,7 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"animation.arbok.ground_idle": {
-			"animation_length": 17.7,
+			"loop": true,
 			"bones": {
 				"body_upper": {
 					"rotation": ["-10+math.sin(q.anim_time*90*4+90)*1+1", 0, "math.sin(q.anim_time*90*2+90)*6"]
@@ -81,7 +81,7 @@
 			}
 		},
 		"animation.arbok.tongue_flick": {
-			"animation_length": 5.25,
+			"loop": true,
 			"bones": {
 				"tongue": {
 					"rotation": ["7.5+math.sin(q.anim_time*90*8*3)*0.25", 0, 0],

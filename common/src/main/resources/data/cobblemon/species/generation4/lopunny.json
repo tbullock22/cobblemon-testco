@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "lopunny",
     "nationalPokedexNumber": 428,
     "primaryType": "normal",
@@ -142,6 +143,25 @@
         "field",
         "human_like"
     ],
+	"drops": {
+        "amount": "3",
+        "entries": [
+            {
+                "item": "minecraft:carrot",
+				"quantityRange": "1-2",
+                "percentage": 66
+            },
+            {
+                "item": "minecraft:rabbit_hide",
+				"quantityRange": "1-2",
+                "percentage": 66
+            },
+            {
+                "item": "minecraft:rabbit_foot",
+                "percentage": 10
+            }
+        ]
+    },
     "moves": [
         "0:return",
         "1:pound",

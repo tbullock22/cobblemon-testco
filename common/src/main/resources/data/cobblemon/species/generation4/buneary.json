@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "buneary",
     "nationalPokedexNumber": 427,
     "primaryType": "normal",
@@ -27,11 +28,19 @@
         "human_like"
     ],
     "drops": {
-        "amount": "1",
+        "amount": "3",
         "entries": [
             {
                 "item": "minecraft:carrot",
                 "percentage": 50
+            },
+            {
+                "item": "minecraft:rabbit_hide",
+                "percentage": 50
+            },
+            {
+                "item": "minecraft:rabbit_foot",
+                "percentage": 5
             }
         ]
     },

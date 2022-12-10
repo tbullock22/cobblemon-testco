@@ -16,8 +16,9 @@ import net.minecraft.nbt.NbtCompound
 
 /**
  * A piece of state that can be added to some species of Pokémon. Registering an implementing class
- * using [SpeciesFeature.register] adds it as a usable value in the [Species.features] list. All Pokémon
- * are given a default-constructed instance of all SpeciesFeatures mentioned in its species definition.
+ * using [SpeciesFeatures.register] adds it as a usable value in the [SpeciesFeatures] list. All Pokémon
+ * are given the opportunity to be assigned features depending on whether it's a global feature or they
+ * have opted into it in their species JSON.
  *
  * The role of this is to allow species-specific data to be attached to individual Pokémon, such as an alolan
  * flag or a Vivillon pattern variety. This is powerful when combined with [AspectProvider]s.
@@ -27,36 +28,6 @@ import net.minecraft.nbt.NbtCompound
  */
 interface SpeciesFeature {
     val name: String
-    companion object {
-        private val speciesFeatures = HashBiMap.create<String, () -> SpeciesFeature>()
-        private val globalSpeciesFeatures = HashBiMap.create<String, () -> SpeciesFeature>()
-        fun <T : SpeciesFeature> register(name: String, clazz: Class<T>, global: Boolean = false) {
-            try {
-                clazz.getDeclaredConstructor().newInstance()
-            } catch (e: Exception) {
-                e.printStackTrace()
-                throw IllegalArgumentException("The given species feature class for $name could not be constructed with a default constructor call. You need a default constructor to use species features.", e)
-            }
-            val instanceJob = { clazz.getDeclaredConstructor().newInstance() }
-            speciesFeatures[name] = instanceJob
-            if (global) {
-                globalSpeciesFeatures[name] = instanceJob
-            }
-        }
-        fun <T : SpeciesFeature> register(name: String, instantiator: () -> T) {
-            speciesFeatures[name] = instantiator
-        }
-        fun <T : SpeciesFeature> registerGlobalFeature(name: String, instantiator: () -> T) {
-            this.register(name, instantiator)
-            globalSpeciesFeatures[name] = instantiator
-        }
-        fun unregister(name: String) {
-            speciesFeatures.remove(name)
-        }
-        fun get(name: String) = speciesFeatures[name]
-        fun globalFeatures() = this.globalSpeciesFeatures.toMap()
-    }
-
     fun saveToNBT(pokemonNBT: NbtCompound): NbtCompound
     fun loadFromNBT(pokemonNBT: NbtCompound): SpeciesFeature
     fun saveToJSON(pokemonJSON: JsonObject): JsonObject

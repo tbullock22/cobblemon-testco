@@ -1,0 +1,20 @@
+{
+  "species": "cobblemon:ninetales",
+  "order": 1,
+  "variations": [
+    {
+      "aspects": [
+        "alolan"
+      ],
+      "model": "cobblemon:ninetales_alolan.geo",
+      "texture": "cobblemon:textures/pokemon/0038_ninetales/ninetales_alolan.png"
+    },
+    {
+      "aspects": [
+        "alolan",
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0038_ninetales/ninetales_alolan_shiny.png"
+    }
+  ]
+}

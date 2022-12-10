@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "kingler",
     "nationalPokedexNumber": 99,
     "primaryType": "water",
@@ -46,7 +47,8 @@
     "behaviour": {
         "moving": {
             "swim": {
-                "canSwimInWater": true,
+                "swimSpeed": 0.1,
+                "canSwimInWater": false,
                 "canBreatheUnderwater": true
             }
         }

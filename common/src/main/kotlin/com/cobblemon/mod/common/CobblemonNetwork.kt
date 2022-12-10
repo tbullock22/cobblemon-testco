@@ -8,7 +8,6 @@
 
 package com.cobblemon.mod.common
 
-import com.cobblemon.mod.common.Cobblemon.LOGGER
 import com.cobblemon.mod.common.net.messages.client.battle.BattlePersistentStatusPacket
 import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.events.net.MessageBuiltEvent
@@ -37,11 +36,12 @@ import com.cobblemon.mod.common.net.messages.client.pokemon.update.AbilityUpdate
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.AspectsUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.BenchedMovesUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.CaughtBallUpdatePacket
+import com.cobblemon.mod.common.net.messages.client.pokemon.update.EVsUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.ExperienceUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.FriendshipUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.GenderUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.HealthUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.LevelUpdatePacket
+import com.cobblemon.mod.common.net.messages.client.pokemon.update.IVsUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.MoveSetUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.NatureUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.PokemonStateUpdatePacket
@@ -103,16 +103,14 @@ object CobblemonNetwork {
     var serverHandlersRegistered = CompletableFuture<Unit>()
 
     init {
-        clientHandlersRegistered.runAfterBoth(serverHandlersRegistered) {
-            register()
-        }
+        clientHandlersRegistered.runAfterBoth(serverHandlersRegistered) { register() }
     }
 
     lateinit var networkDelegate: NetworkDelegate
 
 
     fun ServerPlayerEntity.sendPacket(packet: NetworkPacket) = sendToPlayer(this, packet)
-    fun sendToPlayer(player: ServerPlayerEntity, packet: NetworkPacket) = networkDelegate/*.also { LOGGER.info("Sending ${packet::class.simpleName} to ${player.name}") }*/.sendPacketToPlayer(player, packet)
+    fun sendToPlayer(player: ServerPlayerEntity, packet: NetworkPacket) = networkDelegate.sendPacketToPlayer(player, packet)
     fun sendToServer(packet: NetworkPacket) = networkDelegate.sendPacketToServer(packet)
     fun sendToAllPlayers(packet: NetworkPacket) = sendToPlayers(getServer()!!.playerManager.playerList, packet)
     fun sendToPlayers(players: Iterable<ServerPlayerEntity>, packet: NetworkPacket) = players.forEach { sendToPlayer(it, packet) }
@@ -135,7 +133,6 @@ object CobblemonNetwork {
          */
 
         // Pokemon Update Packets
-        buildClientMessage<LevelUpdatePacket>()
         buildClientMessage<FriendshipUpdatePacket>()
         buildClientMessage<MoveSetUpdatePacket>()
         buildClientMessage<NatureUpdatePacket>()
@@ -149,6 +146,9 @@ object CobblemonNetwork {
         buildClientMessage<GenderUpdatePacket>()
         buildClientMessage<AspectsUpdatePacket>()
         buildClientMessage<AbilityUpdatePacket>()
+        buildClientMessage<EVsUpdatePacket>()
+        buildClientMessage<IVsUpdatePacket>()
+
         // Evolution start
         buildClientMessage<AddEvolutionPacket>()
         buildClientMessage<ClearEvolutionsPacket>()

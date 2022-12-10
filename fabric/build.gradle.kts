@@ -58,7 +58,7 @@ dependencies {
 tasks {
     // The AW file is needed in :fabric project resources when the game is run.
     val copyAccessWidener by registering(Copy::class) {
-        from(ACCESS_WIDENER)
+        from(loom.accessWidenerPath)
         into(generatedResources)
     }
 

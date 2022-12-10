@@ -19,6 +19,7 @@ import com.cobblemon.mod.common.api.pokemon.egg.EggGroup
 import com.cobblemon.mod.common.api.pokemon.evolution.Evolution
 import com.cobblemon.mod.common.api.pokemon.evolution.PreEvolution
 import com.cobblemon.mod.common.api.pokemon.experience.ExperienceGroup
+import com.cobblemon.mod.common.api.pokemon.experience.ExperienceGroups
 import com.cobblemon.mod.common.api.pokemon.moves.Learnset
 import com.cobblemon.mod.common.api.pokemon.stats.Stat
 import com.cobblemon.mod.common.api.types.ElementalType
@@ -236,6 +237,7 @@ class FormData(
             pb.writeFloat(hitbox.height)
             pb.writeBoolean(hitbox.fixed)
         }
+        buffer.writeNullable(this._experienceGroup) { pb, value -> pb.writeString(value.name) }
     }
 
     override fun decode(buffer: PacketByteBuf) {
@@ -256,5 +258,6 @@ class FormData(
         this._hitbox = buffer.readNullable { pb ->
             EntityDimensions(pb.readFloat(), pb.readFloat(), pb.readBoolean())
         }
+        this._experienceGroup = ExperienceGroups.findByName(buffer.readString())
     }
 }

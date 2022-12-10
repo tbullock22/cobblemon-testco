@@ -46,6 +46,7 @@ class BellossomModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
+                bedrock("0182_bellossom/bellossom", "ground_idle"),
                 bedrock("0182_bellossom/bellossom", "ground_walk"),
                 singleBoneLook()
             )

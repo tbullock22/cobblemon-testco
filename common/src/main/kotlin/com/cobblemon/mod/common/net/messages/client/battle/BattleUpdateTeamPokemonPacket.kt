@@ -9,6 +9,7 @@
 package com.cobblemon.mod.common.net.messages.client.battle
 
 import com.cobblemon.mod.common.api.net.NetworkPacket
+import com.cobblemon.mod.common.net.messages.PokemonDTO
 import com.cobblemon.mod.common.pokemon.Pokemon
 import net.minecraft.network.PacketByteBuf
 
@@ -23,17 +24,17 @@ import net.minecraft.network.PacketByteBuf
  * @since August 27th, 2022
  */
 class BattleUpdateTeamPokemonPacket internal constructor() : NetworkPacket {
-    lateinit var pokemon: Pokemon
+    lateinit var pokemon: PokemonDTO
 
     constructor(pokemon: Pokemon): this() {
-        this.pokemon = pokemon
+        this.pokemon = PokemonDTO(pokemon, toClient = true)
     }
 
     override fun encode(buffer: PacketByteBuf) {
-        pokemon.saveToBuffer(buffer, toClient = true)
+        pokemon.encode(buffer)
     }
 
     override fun decode(buffer: PacketByteBuf) {
-        pokemon = Pokemon().loadFromBuffer(buffer)
+        pokemon = PokemonDTO().also { it.decode(buffer) }
     }
 }

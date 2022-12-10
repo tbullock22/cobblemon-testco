@@ -9,12 +9,13 @@
 package com.cobblemon.mod.common.entity.pokeball
 
 import com.cobblemon.mod.common.Cobblemon
-import com.cobblemon.mod.common.CobblemonItems
+import com.cobblemon.mod.common.CobblemonEntities.EMPTY_POKEBALL
 import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.events.pokemon.PokemonCapturedEvent
 import com.cobblemon.mod.common.api.net.serializers.Vec3DataSerializer
 import com.cobblemon.mod.common.api.pokeball.PokeBalls
+import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.api.scheduling.afterOnMain
 import com.cobblemon.mod.common.api.scheduling.taskBuilder
 import com.cobblemon.mod.common.api.text.red
@@ -49,7 +50,6 @@ import net.minecraft.network.Packet
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.particle.ParticleTypes
 import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.sound.SoundEvents
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.util.math.MathHelper.PI
@@ -59,7 +59,7 @@ import net.minecraft.world.World
 class EmptyPokeBallEntity(
     var pokeBall: PokeBall,
     world: World,
-    entityType: EntityType<out EmptyPokeBallEntity> = com.cobblemon.mod.common.CobblemonEntities.EMPTY_POKEBALL_TYPE
+    entityType: EntityType<out EmptyPokeBallEntity> = EMPTY_POKEBALL.get()
 ) : ThrownItemEntity(entityType, world), EntitySpawnExtension {
     enum class CaptureState {
         NOT,
@@ -170,7 +170,7 @@ class EmptyPokeBallEntity(
                             lang(
                                 "capture.attempted_capture",
                                 throwerActor.getName(),
-                                CobblemonItems.ballMap[pokeBall]!!.get().name,
+                                pokeBall.item().name,
                                 pokemonEntity.pokemon.species.translatedName
                             ).yellow()
                         )
@@ -248,7 +248,7 @@ class EmptyPokeBallEntity(
                             if (captureResult.isSuccessfulCapture) {
                                 // Do a capture
                                 world.sendParticlesServer(ParticleTypes.CRIT, pos, 10, Vec3d(0.1, -0.5, 0.1), 0.2)
-                                world.playSoundServer(pos, CobblemonSounds.CAPTURE_SUCCEEDED.get(), volume = 0.3F, pitch = 1F)
+                                world.playSoundServer(pos, CobblemonSounds.POKE_BALL_CAPTURE_SUCCEEDED.get(), volume = 0.3F, pitch = 1F)
                                 val pokemon = capturingPokemon ?: return@execute
                                 val player = this.owner as? ServerPlayerEntity ?: return@execute
 
@@ -270,7 +270,7 @@ class EmptyPokeBallEntity(
                         }
 
                         rollsRemaining--
-                        world.playSoundServer(pos, CobblemonSounds.POKEBALL_SHAKE.get())
+                        world.playSoundServer(pos, CobblemonSounds.POKE_BALL_SHAKE.get())
                         shakeEmitter.set(!shakeEmitter.get())
                     }
                     .build()
@@ -284,16 +284,20 @@ class EmptyPokeBallEntity(
         pokemon.beamModeEmitter.set(1)
         pokemon.isInvisible = false
 
+        if (pokemon.battleId.get().isEmpty) {
+            pokemon.pokemon.status?.takeIf { it.status == Statuses.SLEEP }?.let { pokemon.pokemon.status = null }
+        }
+
         afterOnMain(seconds = 0.25F) {
             pokemon.busyLocks.remove(this)
             captureFuture.complete(false)
             world.sendParticlesServer(ParticleTypes.CLOUD, pos, 20, Vec3d(0.0, 0.2, 0.0), 0.05)
-            world.playSoundServer(pos, SoundEvents.BLOCK_GLASS_BREAK)
+            world.playSoundServer(pos, CobblemonSounds.POKE_BALL_OPEN.get())
             discard()
         }
     }
 
-    override fun getDefaultItem(): Item = CobblemonItems.ballMap[pokeBall]?.get() as Item
+    override fun getDefaultItem(): Item = pokeBall.item()
 
     override fun createSpawnPacket(): Packet<*> {
         return NetworkManager.createAddEntityPacket(this)
@@ -315,13 +319,13 @@ class EmptyPokeBallEntity(
         val displace = velocity
         captureState.set(CaptureState.HIT.ordinal.toByte())
         val mul = if (random.nextBoolean()) 1 else -1
-        world.playSoundServer(pos, CobblemonSounds.POKEBALL_HIT.get())
+        world.playSoundServer(pos, CobblemonSounds.POKE_BALL_HIT.get())
         velocity = displace.multiply(-1.0, 0.0, -1.0).normalize().rotateY(mul * PI/3).multiply(0.1, 0.0, 0.1).add(0.0, 1.0 / 3, 0.0)
         pokemonEntity.phasingTargetId.set(this.id)
         afterOnMain(seconds = 0.7F) {
             velocity = Vec3d.ZERO
             setNoGravity(true)
-            world.playSoundServer(pos, CobblemonSounds.CAPTURE_STARTED.get(), volume = 0.2F)
+            world.playSoundServer(pos, CobblemonSounds.POKE_BALL_CAPTURE_STARTED.get(), volume = 0.2F)
             pokemonEntity.beamModeEmitter.set(2.toByte())
         }
 

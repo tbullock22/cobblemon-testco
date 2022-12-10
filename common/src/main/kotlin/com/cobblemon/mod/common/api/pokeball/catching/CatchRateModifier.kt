@@ -21,9 +21,7 @@ import net.minecraft.entity.LivingEntity
  */
 interface CatchRateModifier {
 
-    fun isGuaranteed() : Boolean {
-        return this is GuaranteedModifier
-    }
+    fun isGuaranteed() = false
 
     fun modifyCatchRate(currentCatchRate: Float, thrower: LivingEntity, pokemon: Pokemon, host: Pokemon?): Float
 }

@@ -15,6 +15,6 @@ import com.cobblemon.mod.common.net.messages.client.storage.pc.SetPCPokemonPacke
 
 object SetPCPokemonHandler : ClientPacketHandler<SetPCPokemonPacket> {
     override fun invokeOnClient(packet: SetPCPokemonPacket, ctx: CobblemonNetwork.NetworkContext) {
-        CobblemonClient.storage.setPCPokemon(packet.storeID, packet.storePosition, packet.pokemon)
+        CobblemonClient.storage.setPCPokemon(packet.storeID, packet.storePosition, packet.pokemon.create())
     }
 }

@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "decidueye",
   "nationalPokedexNumber": 724,
   "primaryType": "grass",
@@ -70,6 +71,19 @@
   "experienceGroup": "mediumslow",
   "eggCycles": 15,
   "eggGroups": ["flying"],
+  "drops": {
+    "amount": "2",
+    "entries": [
+      {
+        "item": "minecraft:feather",
+        "quantityRange": "1-3",
+        "percentage": 75
+      },
+      {
+        "item": "minecraft:chicken"
+      }
+    ]
+  },
   "behaviour": {
     "moving": {
       "fly": {

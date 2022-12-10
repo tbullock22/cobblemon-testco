@@ -1,0 +1,42 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "jigglypuff-1",
+            "pokemon": "jigglypuff",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "common",
+            "level": "12-27",
+            "weight": 9.0,
+            "condition": {
+                "canSeeSky": true,
+                "biomes": [
+                    "#cobblemon:is_floral"
+                ]
+            }
+        },
+		{
+            "id": "jigglypuff-2",
+            "pokemon": "jigglypuff",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "common",
+            "level": "12-27",
+            "weight": 1.8,
+            "condition": {
+                "canSeeSky": true,
+                "biomes": [
+                    "#cobblemon:is_plains"
+                ]
+            },
+            "anticondition": {
+                "biomes": [
+                    "#cobblemon:is_floral"
+                ]
+            }
+        }
+    ]
+}

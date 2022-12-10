@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "basculin",
   "nationalPokedexNumber": 550,
   "primaryType": "water",
@@ -16,15 +17,20 @@
   "shoulderMountable": false,
   "baseExperienceYield": 161,
   "experienceGroup": "mediumfast",
-  "features": ["striped"],
   "eggCycles": 40,
   "eggGroups": ["water_2"],
   "behaviour": {
     "moving": {
+      "canLook": false,
+      "walk": {
+        "avoidsLand": true
+      },
       "swim": {
+        "swimSpeed": 0.1,
         "canSwimInWater": true,
         "canBreatheUnderwater": true
-      }
+      },
+      "wanderChance": 1
     }
   },
   "moves": [

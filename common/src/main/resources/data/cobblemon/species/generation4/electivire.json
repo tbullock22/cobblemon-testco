@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "electivire",
     "nationalPokedexNumber": 466,
     "primaryType": "electric",
@@ -24,6 +25,16 @@
     "eggGroups": [
         "human_like"
     ],
+	"drops": {
+        "amount": "1",
+        "entries": [
+            {
+                "item": "minecraft:redstone",
+                "quantityRange": "1-3",
+                "percentage": 75
+            }
+        ]
+    },
     "moves": [
         "1:leer",
         "1:thundershock",

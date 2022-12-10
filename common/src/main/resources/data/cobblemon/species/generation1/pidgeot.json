@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "pidgeot",
     "nationalPokedexNumber": 18,
     "primaryType": "normal",
@@ -117,6 +118,19 @@
                 "canFly": true
             }
         }
+    },
+	"drops": {
+        "amount": "2",
+        "entries": [
+            {
+                "item": "minecraft:feather",
+                "quantityRange": "1-3",
+                "percentage": 75
+            },
+            {
+                "item": "minecraft:chicken"
+            }
+        ]
     },
     "moves": [
         "1:gust",

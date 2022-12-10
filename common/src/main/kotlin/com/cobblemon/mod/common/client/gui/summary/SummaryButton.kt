@@ -8,10 +8,10 @@
 
 package com.cobblemon.mod.common.client.gui.summary
 
-import com.cobblemon.mod.common.api.gui.ColourLibrary
 import com.cobblemon.mod.common.api.gui.blitk
+import com.cobblemon.mod.common.api.text.bold
+import com.cobblemon.mod.common.client.CobblemonResources
 import com.cobblemon.mod.common.client.render.drawScaledText
-import com.cobblemon.mod.common.util.cobblemonResource
 import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder
 import net.minecraft.client.gui.widget.ButtonWidget
 import net.minecraft.client.sound.SoundManager
@@ -25,13 +25,23 @@ class SummaryButton(
     val buttonWidth: Number,
     val buttonHeight: Number,
     val clickAction: PressAction,
-    private val text: MutableText,
-    private val resource: Identifier = cobblemonResource("ui/summary/summary_button.png"),
+    private val text: MutableText? = null,
+    private val resource: Identifier,
+    private val activeResource: Identifier? = null,
     private val renderRequirement: ((button: SummaryButton) -> Boolean) = { true },
     private val clickRequirement: ((button: SummaryButton) -> Boolean) = { true },
+    private val hoverTexture: Boolean = true,
     private val silent: Boolean = false,
+    private val boldText: Boolean = true,
+    private val largeText: Boolean = true,
     private val textScale: Float = 1F
 ): ButtonWidget(buttonX.toInt(), buttonY.toInt(), buttonWidth.toInt(), buttonHeight.toInt(), text, clickAction) {
+
+    companion object {
+        const val TEXT_HEIGHT = 9
+    }
+
+    var isActive = false
 
     override fun mouseDragged(d: Double, e: Double, i: Int, f: Double, g: Double) = false
     override fun appendNarrations(builder: NarrationMessageBuilder) {
@@ -41,29 +51,33 @@ class SummaryButton(
         if (!this.renderRequirement.invoke(this)) {
             return
         }
-        // Render Button Image
+
+        // Render Button
         blitk(
             matrixStack = poseStack,
-            texture = this.resource,
-            x = buttonX, y = buttonY,
-            width = buttonWidth, height = buttonHeight
+            texture = if (isActive && activeResource != null) activeResource else resource,
+            x = buttonX,
+            y = buttonY,
+            width = buttonWidth,
+            height = buttonHeight,
+            vOffset = if (hoverTexture && isHovered) buttonHeight else 0,
+            textureHeight = if (hoverTexture) (buttonHeight.toFloat() * 2) else buttonHeight,
         )
-        // Draw Text
-        drawScaledText(
-            matrixStack = poseStack,
-            font = null,
-            text = this.text,
-            scale = textScale,
-            x = this.buttonX + buttonWidth.toFloat() / 2,
-            y = buttonY + buttonHeight.toFloat() / 2 - textScale / 2 * 8,
-            colour = if (isHovered) ColourLibrary.BUTTON_HOVER_COLOUR else ColourLibrary.WHITE,
-            shadow = false,
-            maxCharacterWidth = (buttonWidth.toFloat() * 0.8F).toInt(),
-            centered = true
-        )
-    }
 
-//    fun isHovered(mouseX: Int, mouseY: Int) = mouseX in x..(x + buttonWidth.toInt()) && mouseY in y..(y + buttonHeight.toInt())
+        // Render Text
+        if (text != null) {
+            drawScaledText(
+                matrixStack = poseStack,
+                font = if (largeText) CobblemonResources.DEFAULT_LARGE else null,
+                text = if (boldText) text.bold() else text,
+                x = buttonX + (buttonWidth.toFloat() / 2),
+                y = buttonY + (buttonHeight.toFloat() / 2) - ((TEXT_HEIGHT / 2) * textScale),
+                scale = textScale,
+                centered = true,
+                shadow = true
+            )
+        }
+    }
 
     override fun mouseClicked(mouseX: Double, mouseY: Double, button: Int): Boolean {
         if (this.clickRequirement.invoke(this)) {
@@ -78,19 +92,10 @@ class SummaryButton(
         }
     }
 
-//    override fun onPress() {
-//        this.clickAction()
-//    }
-
     fun setPosFloat(x: Float, y: Float) {
         this.x = x.toInt()
         this.y = y.toInt()
         this.buttonX = x
         this.buttonY = y
-    }
-
-    companion object {
-        const val BUTTON_WIDTH = 28
-        const val BUTTON_HEIGHT = 14
     }
 }

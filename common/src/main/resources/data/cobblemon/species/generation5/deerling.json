@@ -16,6 +16,7 @@
         "special_defence": 50,
         "speed": 75
     },
+    "features": ["season"],
     "catchRate": 190,
     "maleRatio": 0.5,
     "shoulderMountable": false,
@@ -26,6 +27,15 @@
     "eggGroups": [
         "field"
     ],
+	"drops": {
+		"amount": "1",
+		"entries": [
+			{
+			"item": "minecraft:leather",
+			"percentage": 50
+			}
+		]
+	},
     "moves": [
         "1:tackle",
         "1:camouflage",
@@ -112,10 +122,10 @@
             ]
         }
     ],
-    "baseScale": 1.0,
+    "baseScale": 0.8,
     "hitbox": {
-        "width": 1.0,
-        "height": 1.0,
+        "width": 0.6,
+        "height": 1.1,
         "fixed": false
     },
     "baseFriendship": 70,

@@ -18,8 +18,8 @@ import net.minecraft.util.math.Vec3d
 class HorseaModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("horsea")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 1.6F
+    override val portraitTranslation = Vec3d(0.125, 0.1, 0.0)
 
     override val profileScale = 1.0F
     override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
@@ -32,7 +32,7 @@ class HorseaModel(root: ModelPart) : PokemonPoseableModel() {
     override fun registerPoses() {
         standing = registerPose(
             poseName = "standing",
-            poseTypes = UI_POSES + PoseType.STAND,
+            poseType = PoseType.STAND,
             idleAnimations = arrayOf(
                 bedrock("0116_horsea/horsea", "ground_idle")
             )
@@ -48,7 +48,7 @@ class HorseaModel(root: ModelPart) : PokemonPoseableModel() {
 
         float = registerPose(
             poseName = "float",
-            poseType = PoseType.FLOAT,
+            poseTypes = UI_POSES + PoseType.FLOAT,
             idleAnimations = arrayOf(
                 bedrock("0116_horsea/horsea", "water_idle")
             )

@@ -168,16 +168,21 @@ class ApricornTreeFeature(
                 .randomNoCopy(allApricornSpots.size.coerceAtMost(8))
                 .map { it.random() }
                 .forEach {
-                    setBlockIfClear(
-                        worldGenLevel,
-                        it.second,
-                        context.config.state
-                            .with(HorizontalFacingBlock.FACING, it.first)
-                            .with(ApricornBlock.AGE, if (isGenerating) random.nextInt(ApricornBlock.MAX_AGE + 1) else 0)
-                    )
+                    if(worldGenLevel.getBlockState(it.second.offset(it.first)).block.equals(leafBlock.block)) {
+                        setBlockIfClear(
+                            worldGenLevel,
+                            it.second,
+                            context.config.state
+                                .with(HorizontalFacingBlock.FACING, it.first)
+                                .with(
+                                    ApricornBlock.AGE,
+                                    if (isGenerating) random.nextInt(ApricornBlock.MAX_AGE + 1) else 0
+                                )
+                        )
+                    }
                 }
         }
-        return true;
+        return true
     }
 
     private fun setBlockIfClear(worldGenLevel: StructureWorldAccess, blockPos: BlockPos, blockState: BlockState) {

@@ -1,0 +1,55 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "magmotar-1",
+            "pokemon": "magmotar",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "common",
+            "level": "50-54",
+            "weight": 0.1,
+            "condition": {
+                "canSeeSky": true,
+                "biomes": [
+                    "#cobblemon:is_hills"
+                ],
+                "isRaining": false
+            }
+        },
+        {
+            "id": "magmotar-2",
+            "pokemon": "magmotar",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "common",
+            "level": "50-54",
+            "weight": 0.1,
+            "condition": {
+                "canSeeSky": true,
+                "biomes": [
+                    "#cobblemon:is_volcanic"
+                ],
+                "isRaining": false
+            }
+        },
+        {
+            "id": "magmotar-3",
+            "pokemon": "magmotar",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "uncommon",
+            "level": "50-54",
+            "weight": 0.1,
+            "condition": {
+                "biomes": [
+                    "minecraft:basalt_deltas",
+                    "minecraft:crimson_forest",
+                    "minecraft:nether_wastes"
+                ]
+            }
+        }
+    ]
+}

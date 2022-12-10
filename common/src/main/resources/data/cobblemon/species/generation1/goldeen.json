@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "goldeen",
     "nationalPokedexNumber": 118,
     "primaryType": "water",
@@ -15,6 +16,20 @@
         "special_defence": 50,
         "speed": 63
     },
+    "behaviour": {
+        "moving": {
+            "canLook": false,
+            "walk": {
+                "avoidsLand": true
+            },
+            "swim": {
+                "swimSpeed": 0.1,
+                "canSwimInWater": true,
+                "canBreatheUnderwater": true
+            },
+            "wanderChance": 1
+        }
+    },
     "catchRate": 225,
     "maleRatio": 0.5,
     "shoulderMountable": false,
@@ -25,14 +40,6 @@
     "eggGroups": [
         "water_2"
     ],
-    "behaviour": {
-        "moving": {
-            "swim": {
-                "canSwimInWater": true,
-                "canBreatheUnderwater": true
-            }
-        }
-    },
     "drops": {
         "amount": "1",
         "entries": [

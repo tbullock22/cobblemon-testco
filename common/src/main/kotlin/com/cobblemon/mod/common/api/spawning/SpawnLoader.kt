@@ -81,145 +81,145 @@ object SpawnLoader {
 
     var deserializingConditionClass: Class<out SpawningCondition<*>>? = null
 
-    fun load(folder: String): SpawnPool {
-        val pool = SpawnPool()
-
-        val external = getExternalSets(folder)
-        val internal = loadInternalFolder(folder)
-
-        external.forEach { set ->
-            val matchingInternal = internal.find { it.id == set.id }
-            if (set.preventOverwrite) {
-                if (matchingInternal != null) {
-                    internal.remove(matchingInternal)
-                }
-                if (set.isEnabled()) {
-                    pool.details.addAll(set.filter { it.isModDependencySatisfied() })
-                }
-            } else {
-                if (matchingInternal != null && matchingInternal.version.isHigherVersion(set.version)) {
-                    if (matchingInternal.isEnabled()) {
-                        pool.details.addAll(matchingInternal.filter { it.isModDependencySatisfied() })
-                    }
-                    internal.remove(matchingInternal)
-                    exportSet(folder, matchingInternal)
-                }
-            }
-        }
-
-        internal.forEach { set ->
-            if (set.isEnabled()) {
-                pool.details.addAll(set.filter { it.isModDependencySatisfied() })
-            }
-            if (config.exportSpawnsToConfig) {
-                exportSet(folder, set)
-            }
-        }
-
-        pool.precalculate()
-
-        return pool
-    }
-
-    fun exportSet(folder: String, set: SpawnSet) {
-        val file = File("./config/cobblemon/spawning/spawns/$folder/${set.id.lowercase()}.set.json")
-        file.parentFile.mkdirs()
-        file.createNewFile()
-
-        val internalStream = Cobblemon::class.java.getResourceAsStream(set.path.toAbsolutePath().toString())!!
-        val bytes = internalStream.readAllBytes()
-        internalStream.close()
-
-        val externalStream = FileOutputStream(file)
-        externalStream.write(bytes)
-        externalStream.close()
-    }
-
-    fun getExternalSets(folder: String): MutableList<SpawnSet> {
-        val sets = mutableListOf<SpawnSet>()
-        val files = mutableListOf<File>()
-        AssetLoading.searchFor(
-            dir = "config/cobblemon/spawning/spawns/$folder",
-            suffix = ".json",
-            list = files
-        )
-        val paths = files.map { it.toPath() }
-
-        sets.addAll(
-            paths.mapNotNull {
-                try {
-                    val file = it.toFile()
-                    val reader = FileReader(file)
-                    val set = gson.fromJson<SpawnSet>(reader)
-                    reader.close()
-                    return@mapNotNull set
-                } catch (exception : Exception) {
-                    LOGGER.error("Unable to load spawn set from ${it.pathString}")
-                    exception.printStackTrace()
-                    null
-                }
-            }
-        )
-
-        return sets
-    }
-
-    fun loadSetFromPath(path: Path): SpawnSet {
-        val pathString = if (path.toString().startsWith("/")) path.toString() else "/$path"
-        val inputStream = Cobblemon.javaClass.getResourceAsStream(pathString)
-            ?: throw IllegalArgumentException("Unable to open resource stream for: $pathString")
-        val reader = InputStreamReader(inputStream)
-        val set = gson.fromJson<SpawnSet>(reader)
-        reader.close()
-        return set
-    }
-
-    fun loadInternalFolder(folder: String): MutableList<SpawnSet> {
-        val internalFolder = cobblemonResource("spawning/spawns/$folder")
-        val path = internalFolder.toPath() ?: throw IllegalArgumentException("There is no valid, internal path for $internalFolder")
-        val internalPaths = AssetLoading.fileSearch(path, { it.toString().endsWith(".json") }, recursive = true)
-        val sets = mutableListOf<SpawnSet>()
-        sets.addAll(internalPaths.flatMap { filePath -> loadInternalFile(filePath) })
-        return sets
-    }
-
-    fun loadInternalFile(path: Path): MutableList<SpawnSet> {
-        if (path.toString().endsWith(".packed.json")) {
-            return loadPackedSets(path).onEach { it.path = path }
-        } else if (path.toString().endsWith(".json")) {
-            return mutableListOf(loadSetFromPath(path)).onEach { it.path = path }
-        }
-
-        return mutableListOf()
-    }
-
-    fun loadPackedSets(path: Path): MutableList<SpawnSet> {
-        val fileStream = Cobblemon::class.java.getResourceAsStream(path.toAbsolutePath().toString())
-            ?: throw IllegalArgumentException("Unable to create input stream for $path")
-
-        return try {
-            loadPackedSetsFromStream(fileStream)
-        } catch (e: Exception) {
-            LOGGER.error(e.message)
-            return mutableListOf()
-        } finally {
-            fileStream.close()
-        }
-    }
-
-
-    fun loadPackedSetsFromStream(inputStream: InputStream): MutableList<SpawnSet> {
-        val sets = mutableListOf<SpawnSet>()
-        val stream = InputStreamReader(inputStream)
-        val jsonArray = gson.fromJson(stream, JsonArray::class.java)
-        stream.close()
-        jsonArray.forEach { jsonElement ->
-            try {
-                sets.add(gson.fromJson<SpawnSet>(jsonElement))
-            } catch (exception: Exception) {
-                exception.printStackTrace()
-            }
-        }
-        return sets
-    }
+//    fun load(folder: String): SpawnPool {
+//        val pool = SpawnPool()
+//
+//        val external = getExternalSets(folder)
+//        val internal = loadInternalFolder(folder)
+//
+//        external.forEach { set ->
+//            val matchingInternal = internal.find { it.id == set.id }
+//            if (set.preventOverwrite) {
+//                if (matchingInternal != null) {
+//                    internal.remove(matchingInternal)
+//                }
+//                if (set.isEnabled()) {
+//                    pool.details.addAll(set.filter { it.isModDependencySatisfied() })
+//                }
+//            } else {
+//                if (matchingInternal != null && matchingInternal.version.isHigherVersion(set.version)) {
+//                    if (matchingInternal.isEnabled()) {
+//                        pool.details.addAll(matchingInternal.filter { it.isModDependencySatisfied() })
+//                    }
+//                    internal.remove(matchingInternal)
+//                    exportSet(folder, matchingInternal)
+//                }
+//            }
+//        }
+//
+//        internal.forEach { set ->
+//            if (set.isEnabled()) {
+//                pool.details.addAll(set.filter { it.isModDependencySatisfied() })
+//            }
+//            if (config.exportSpawnsToConfig) {
+//                exportSet(folder, set)
+//            }
+//        }
+//
+//        pool.precalculate()
+//
+//        return pool
+//    }
+//
+//    fun exportSet(folder: String, set: SpawnSet) {
+//        val file = File("./config/cobblemon/spawning/spawns/$folder/${set.id.lowercase()}.set.json")
+//        file.parentFile.mkdirs()
+//        file.createNewFile()
+//
+//        val internalStream = Cobblemon::class.java.getResourceAsStream(set.path.toAbsolutePath().toString())!!
+//        val bytes = internalStream.readAllBytes()
+//        internalStream.close()
+//
+//        val externalStream = FileOutputStream(file)
+//        externalStream.write(bytes)
+//        externalStream.close()
+//    }
+//
+//    fun getExternalSets(folder: String): MutableList<SpawnSet> {
+//        val sets = mutableListOf<SpawnSet>()
+//        val files = mutableListOf<File>()
+//        AssetLoading.searchFor(
+//            dir = "config/cobblemon/spawning/spawns/$folder",
+//            suffix = ".json",
+//            list = files
+//        )
+//        val paths = files.map { it.toPath() }
+//
+//        sets.addAll(
+//            paths.mapNotNull {
+//                try {
+//                    val file = it.toFile()
+//                    val reader = FileReader(file)
+//                    val set = gson.fromJson<SpawnSet>(reader)
+//                    reader.close()
+//                    return@mapNotNull set
+//                } catch (exception : Exception) {
+//                    LOGGER.error("Unable to load spawn set from ${it.pathString}")
+//                    exception.printStackTrace()
+//                    null
+//                }
+//            }
+//        )
+//
+//        return sets
+//    }
+//
+//    fun loadSetFromPath(path: Path): SpawnSet {
+//        val pathString = if (path.toString().startsWith("/")) path.toString() else "/$path"
+//        val inputStream = Cobblemon.javaClass.getResourceAsStream(pathString)
+//            ?: throw IllegalArgumentException("Unable to open resource stream for: $pathString")
+//        val reader = InputStreamReader(inputStream)
+//        val set = gson.fromJson<SpawnSet>(reader)
+//        reader.close()
+//        return set
+//    }
+//
+//    fun loadInternalFolder(folder: String): MutableList<SpawnSet> {
+//        val internalFolder = cobblemonResource("spawning/spawns/$folder")
+//        val path = internalFolder.toPath() ?: throw IllegalArgumentException("There is no valid, internal path for $internalFolder")
+//        val internalPaths = AssetLoading.fileSearch(path, { it.toString().endsWith(".json") }, recursive = true)
+//        val sets = mutableListOf<SpawnSet>()
+//        sets.addAll(internalPaths.flatMap { filePath -> loadInternalFile(filePath) })
+//        return sets
+//    }
+//
+//    fun loadInternalFile(path: Path): MutableList<SpawnSet> {
+//        if (path.toString().endsWith(".packed.json")) {
+//            return loadPackedSets(path).onEach { it.path = path }
+//        } else if (path.toString().endsWith(".json")) {
+//            return mutableListOf(loadSetFromPath(path)).onEach { it.path = path }
+//        }
+//
+//        return mutableListOf()
+//    }
+//
+//    fun loadPackedSets(path: Path): MutableList<SpawnSet> {
+//        val fileStream = Cobblemon::class.java.getResourceAsStream(path.toAbsolutePath().toString())
+//            ?: throw IllegalArgumentException("Unable to create input stream for $path")
+//
+//        return try {
+//            loadPackedSetsFromStream(fileStream)
+//        } catch (e: Exception) {
+//            LOGGER.error(e.message)
+//            return mutableListOf()
+//        } finally {
+//            fileStream.close()
+//        }
+//    }
+//
+//
+//    fun loadPackedSetsFromStream(inputStream: InputStream): MutableList<SpawnSet> {
+//        val sets = mutableListOf<SpawnSet>()
+//        val stream = InputStreamReader(inputStream)
+//        val jsonArray = gson.fromJson(stream, JsonArray::class.java)
+//        stream.close()
+//        jsonArray.forEach { jsonElement ->
+//            try {
+//                sets.add(gson.fromJson<SpawnSet>(jsonElement))
+//            } catch (exception: Exception) {
+//                exception.printStackTrace()
+//            }
+//        }
+//        return sets
+//    }
 }

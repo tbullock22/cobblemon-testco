@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "porygon",
     "nationalPokedexNumber": 137,
     "primaryType": "normal",
@@ -34,6 +35,15 @@
                 "canWalk": false
             }
         }
+    },
+	"drops": {
+        "amount": "1",
+        "entries": [
+            {
+                "item": "cobblemon:up_grade",
+                "percentage": 50
+            }
+        ]
     },
     "moves": [
         "1:tackle",

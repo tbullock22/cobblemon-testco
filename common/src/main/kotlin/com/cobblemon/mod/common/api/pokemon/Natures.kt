@@ -174,4 +174,7 @@ object Natures {
     fun getRandomNature(): Nature {
         return allNatures.random()
     }
+
+    fun all(): Collection<Nature> = this.allNatures.toList()
+
 }

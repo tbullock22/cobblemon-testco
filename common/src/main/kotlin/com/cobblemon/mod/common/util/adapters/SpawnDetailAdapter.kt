@@ -10,11 +10,13 @@ package com.cobblemon.mod.common.util.adapters
 
 import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.Cobblemon.LOGGER
+import com.cobblemon.mod.common.api.spawning.SpawnDetailPresets
 import com.cobblemon.mod.common.api.spawning.SpawnLoader
 import com.cobblemon.mod.common.api.spawning.condition.SpawningCondition
 import com.cobblemon.mod.common.api.spawning.context.SpawningContext
 import com.cobblemon.mod.common.api.spawning.detail.SpawnDetail
 import com.cobblemon.mod.common.api.spawning.preset.SpawnDetailPreset
+import com.cobblemon.mod.common.util.asIdentifierDefaultingNamespace
 import com.cobblemon.mod.common.util.singularToPluralList
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
@@ -36,7 +38,7 @@ object SpawnDetailAdapter : JsonDeserializer<SpawnDetail> {
         element.singularToPluralList("preset")
         val presetNames = element.get("presets")?.asJsonArray?.map { it.asString }?.toMutableSet() ?: mutableSetOf()
         val presets = presetNames.mapNotNull {
-            val preset = Cobblemon.bestSpawner.presets[it]
+            val preset = SpawnDetailPresets.presets[it.asIdentifierDefaultingNamespace()]
             if (preset == null) {
                 LOGGER.error("Unknown preset name: $it.")
             }

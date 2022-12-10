@@ -25,18 +25,6 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_iron_ingot": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:iron_ingot"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "cobblemon:great_ball"
@@ -46,9 +34,11 @@
   },
   "requirements": [
     [
-      "has_red_apricorn",
       "has_blue_apricorn",
-      "has_iron_ingot",
+      "has_the_recipe"
+    ],
+	[
+      "has_red_apricorn",
       "has_the_recipe"
     ]
   ],

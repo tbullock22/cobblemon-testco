@@ -8,8 +8,9 @@
 
 package com.cobblemon.mod.common.entity.pokemon.ai.goals
 
-import com.cobblemon.mod.common.entity.pokemon.PokemonBehaviourFlag.SLEEPING
+import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
+import com.cobblemon.mod.common.pokemon.status.PersistentStatusContainer
 import net.minecraft.block.BedBlock
 import net.minecraft.entity.ai.goal.Goal
 import net.minecraft.entity.player.PlayerEntity
@@ -30,7 +31,7 @@ class SleepOnTrainerGoal(private val pokemonEntity: PokemonEntity) : Goal() {
     private var ticksOnBed = 0
 
     override fun canStart(): Boolean {
-        if (!pokemonEntity.pokemon.isPlayerOwned() || !pokemonEntity.behaviour.resting.willSleepOnBed) {
+        if (!pokemonEntity.pokemon.isPlayerOwned() || !pokemonEntity.behaviour.resting.willSleepOnBed || pokemonEntity.pokemon.status != null) {
             return false
         }
         val livingEntity = pokemonEntity.owner
@@ -57,7 +58,7 @@ class SleepOnTrainerGoal(private val pokemonEntity: PokemonEntity) : Goal() {
 
     private fun cannotSleep(): Boolean {
         val closePokemon = pokemonEntity.world.getNonSpectatingEntities(PokemonEntity::class.java, Box(bedPos).expand(2.0))
-        return closePokemon.any { it.getBehaviourFlag(SLEEPING) && it != pokemonEntity }
+        return closePokemon.any { it.pokemon.status?.status == Statuses.SLEEP && it != pokemonEntity }
     }
 
     override fun shouldContinue(): Boolean {
@@ -67,7 +68,6 @@ class SleepOnTrainerGoal(private val pokemonEntity: PokemonEntity) : Goal() {
 
     override fun start() {
         if (bedPos != null) {
-            pokemonEntity.setBehaviourFlag(SLEEPING, false)
             pokemonEntity.navigation.startMovingTo(
                 bedPos!!.x.toDouble(),
                 bedPos!!.y.toDouble(),
@@ -78,7 +78,7 @@ class SleepOnTrainerGoal(private val pokemonEntity: PokemonEntity) : Goal() {
     }
 
     override fun stop() {
-        pokemonEntity.setBehaviourFlag(SLEEPING, false)
+        pokemonEntity.pokemon.status = null
 //        val f = pokemonEntity.world.getSkyAngle(1.0f)
 //        if (owner!!.sleepTimer >= 100 && f.toDouble() > 0.77 && f.toDouble() < 0.8 && pokemonEntity.world.getRandom().nextFloat() < 0.7) {
 //            dropMorningGifts()
@@ -122,21 +122,15 @@ class SleepOnTrainerGoal(private val pokemonEntity: PokemonEntity) : Goal() {
 
     override fun tick() {
         if (owner != null && bedPos != null) {
-            pokemonEntity.navigation.startMovingTo(
-                bedPos!!.x.toDouble(),
-                bedPos!!.y.toDouble(),
-                bedPos!!.z.toDouble(),
-                0.7
-            )
-            if (pokemonEntity.squaredDistanceTo(owner) < 2.5) {
+            if (pokemonEntity.squaredDistanceTo(owner) < 1.5) {
                 ++ticksOnBed
                 if (ticksOnBed > getTickCount(16)) {
-                    pokemonEntity.setBehaviourFlag(SLEEPING, true)
+                    pokemonEntity.pokemon.status = PersistentStatusContainer(Statuses.SLEEP)
                 } else {
                     pokemonEntity.lookAtEntity(owner, 45.0f, 45.0f)
                 }
             } else {
-                pokemonEntity.setBehaviourFlag(SLEEPING, false)
+                pokemonEntity.pokemon.status = null
             }
         }
     }

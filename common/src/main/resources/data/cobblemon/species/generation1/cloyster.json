@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "cloyster",
     "nationalPokedexNumber": 91,
     "primaryType": "water",
@@ -29,6 +30,7 @@
     "behaviour": {
         "moving": {
             "swim": {
+                "swimSpeed": 0.15,
                 "canSwimInWater": true,
                 "canBreatheUnderwater": true
             }

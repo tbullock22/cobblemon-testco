@@ -12,9 +12,9 @@ import com.cobblemon.mod.common.api.pokeball.catching.CatchRateModifier
 import com.cobblemon.mod.common.pokemon.Pokemon
 import java.util.function.Predicate
 import net.minecraft.entity.LivingEntity
-class MultiplierModifier(private val multiplier: Float, private val condition: Predicate<Pokemon>?) : CatchRateModifier {
+class MultiplierModifier(private val multiplier: Float, private val condition: (pokemon: Pokemon) -> Boolean =  { true }) : CatchRateModifier {
     override fun modifyCatchRate(currentCatchRate: Float, thrower: LivingEntity, pokemon: Pokemon, host: Pokemon?): Float {
-        return if(condition?.test(pokemon) != false) {
+        return if(condition(pokemon)) {
             currentCatchRate * multiplier
         } else {
             currentCatchRate

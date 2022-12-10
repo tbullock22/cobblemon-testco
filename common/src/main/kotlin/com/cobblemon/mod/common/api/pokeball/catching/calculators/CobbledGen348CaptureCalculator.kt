@@ -82,7 +82,7 @@ object CobblemonGen348CaptureCalculator : CaptureCalculator {
         val guaranteed = pokeBall.catchRateModifiers.any { it.isGuaranteed() }
         val statusBonus = this.getStatusBonus(target)
 
-        val base = (((3 * target.hp - 2 * target.currentHealth) * catchRate) / (3 * target.hp)) * statusBonus
+        val base = (((3 * target.hp - 2 * pokeBall.hpForCalculation(target)) * catchRate) / (3 * target.hp)) * statusBonus
         val l = max(1, (30 - target.level) / 10)
 
         val min = 33.0f/100.0f
@@ -92,7 +92,7 @@ object CobblemonGen348CaptureCalculator : CaptureCalculator {
             min
         }
 
-        return if(guaranteed) 255.0f else (base * l * d)
+        return if (guaranteed) 255.0f else (base * l * d)
     }
 
     private fun tryCriticalCapture(catchRate: Float, thrower: LivingEntity): Boolean {
@@ -109,5 +109,4 @@ object CobblemonGen348CaptureCalculator : CaptureCalculator {
         // TODO: Get status from pokemon and get bonus (2 for sleep and freeze, 1.5 for paralyze, poison, or burn, and 1 otherwise).
         return 1f
     }
-
 }

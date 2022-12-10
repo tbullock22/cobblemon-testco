@@ -41,9 +41,10 @@ abstract class SubmergedTypeSpawningCondition<T : SubmergedSpawningContext> : Ar
     override fun copyFrom(other: SpawningCondition<*>, merger: Merger) {
         super.copyFrom(other, merger)
         if (other is SubmergedTypeSpawningCondition) {
-            if (other.minDepth != null) minDepth = other.minDepth
-            if (other.fluidIsSource != null) fluidIsSource = other.fluidIsSource
-            if (other.fluidBlock != null) fluidBlock = other.fluidBlock
+            minDepth = merger.mergeSingle(minDepth, other.minDepth)
+            maxDepth = merger.mergeSingle(minDepth, other.minDepth)
+            fluidIsSource = merger.mergeSingle(fluidIsSource, other.fluidIsSource)
+            fluidBlock = merger.mergeSingle(fluidBlock, other.fluidBlock)
         }
     }
 }

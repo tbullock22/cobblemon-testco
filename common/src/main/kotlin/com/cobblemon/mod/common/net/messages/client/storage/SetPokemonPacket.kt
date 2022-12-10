@@ -10,6 +10,7 @@ package com.cobblemon.mod.common.net.messages.client.storage
 
 import com.cobblemon.mod.common.api.net.NetworkPacket
 import com.cobblemon.mod.common.api.storage.StorePosition
+import com.cobblemon.mod.common.net.messages.PokemonDTO
 import com.cobblemon.mod.common.pokemon.Pokemon
 import java.util.UUID
 import net.minecraft.network.PacketByteBuf
@@ -23,20 +24,20 @@ import net.minecraft.network.PacketByteBuf
  * @since November 29th, 2021
  */
 abstract class SetPokemonPacket<T : StorePosition> : NetworkPacket {
-    var pokemon = Pokemon()
+    lateinit var pokemon: PokemonDTO
     var storeID = UUID.randomUUID()
     lateinit var storePosition: T
 
     abstract fun encodePosition(buffer: PacketByteBuf)
     override fun encode(buffer: PacketByteBuf) {
-        pokemon.saveToBuffer(buffer, toClient = true)
+        pokemon.encode(buffer)
         buffer.writeUuid(storeID)
         encodePosition(buffer)
     }
 
     abstract fun decodePosition(buffer: PacketByteBuf): T
     override fun decode(buffer: PacketByteBuf) {
-        pokemon.loadFromBuffer(buffer)
+        pokemon.decode(buffer)
         storeID = buffer.readUuid()
         storePosition = decodePosition(buffer)
     }

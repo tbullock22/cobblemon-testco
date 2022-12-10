@@ -19,16 +19,29 @@
 					"name": "body",
 					"parent": "kingdra",
 					"pivot": [0, 20, 0],
-					"rotation": [20, 0, 0],
+					"rotation": [20, 0, 0]
+				},
+				{
+					"name": "waist",
+					"parent": "body",
+					"pivot": [0, 12, 0],
 					"cubes": [
-						{"origin": [-3.5, 25, -3.5], "size": [7, 2, 7], "uv": [3, 3]},
 						{"origin": [-4.5, 14, -5], "size": [9, 11, 9], "uv": [0, 1]},
+						{"origin": [-3.5, 25, -3.5], "size": [7, 2, 7], "uv": [3, 3]},
 						{"origin": [-3.5, 12, -3.5], "size": [7, 2, 7], "uv": [66, 7]}
 					]
 				},
 				{
+					"name": "fin",
+					"parent": "waist",
+					"pivot": [0, 21.5, 4],
+					"cubes": [
+						{"origin": [0, 14, 4], "size": [0, 17, 12], "uv": [0, 10]}
+					]
+				},
+				{
 					"name": "neck",
-					"parent": "body",
+					"parent": "waist",
 					"pivot": [0, 27.5, 0],
 					"rotation": [-5, 0, 0],
 					"cubes": [
@@ -38,23 +51,23 @@
 				{
 					"name": "head",
 					"parent": "neck",
-					"pivot": [0, 29.5, 0]
+					"pivot": [0, 30.5, 0]
 				},
 				{
 					"name": "head_correction",
 					"parent": "head",
-					"pivot": [0, 29.5, 0],
+					"pivot": [0, 30.5, 0],
 					"rotation": [-15, 0, 0]
 				},
 				{
 					"name": "head_ai",
 					"parent": "head_correction",
-					"pivot": [0, 29.5, 0]
+					"pivot": [0, 30.5, 0]
 				},
 				{
 					"name": "head_angle",
 					"parent": "head_ai",
-					"pivot": [0, 29.5, 0],
+					"pivot": [0, 30.5, 0],
 					"rotation": [7.5, 0, 0],
 					"cubes": [
 						{"origin": [-4, 29.5, -5], "size": [8, 8, 9], "uv": [24, 22]},
@@ -111,14 +124,6 @@
 					"cubes": [
 						{"origin": [-2, 29.75, -10.75], "size": [4, 4, 6], "uv": [42, 40]},
 						{"origin": [-1.5, 30.75, -15.75], "size": [3, 3, 5], "uv": [26, 0]}
-					]
-				},
-				{
-					"name": "fin",
-					"parent": "body",
-					"pivot": [0, 21.5, 4],
-					"cubes": [
-						{"origin": [0, 14, 4], "size": [0, 17, 12], "uv": [0, 10]}
 					]
 				},
 				{

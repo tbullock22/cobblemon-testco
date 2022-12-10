@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "kingdra",
     "nationalPokedexNumber": 230,
     "primaryType": "water",
@@ -27,6 +28,16 @@
         "water_1",
         "dragon"
     ],
+	"drops": {
+        "amount": "1",
+        "entries": [
+            {
+                "item": "minecraft:prismarine_crystals",
+                "quantityRange": "1-3",
+                "percentage": 75
+            }
+        ]
+    },
     "behaviour": {
         "moving": {
             "swim": {

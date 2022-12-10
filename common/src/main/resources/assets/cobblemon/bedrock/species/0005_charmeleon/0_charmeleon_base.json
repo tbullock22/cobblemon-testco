@@ -1,0 +1,19 @@
+{
+  "species": "cobblemon:charmeleon",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:charmeleon",
+      "model": "cobblemon:charmeleon.geo",
+      "texture": "cobblemon:textures/pokemon/0005_charmeleon/charmeleon.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0005_charmeleon/charmeleon_shiny.png"
+    }
+  ]
+}

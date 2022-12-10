@@ -14,7 +14,13 @@ import com.cobblemon.mod.common.api.data.DataProvider
 import com.cobblemon.mod.common.api.data.DataRegistry
 import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.moves.Moves
+import com.cobblemon.mod.common.api.pokeball.PokeBalls
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies
+import com.cobblemon.mod.common.api.pokemon.feature.GlobalSpeciesFeatures
+import com.cobblemon.mod.common.api.pokemon.feature.SpeciesFeatureAssignments
+import com.cobblemon.mod.common.api.pokemon.feature.SpeciesFeatures
+import com.cobblemon.mod.common.api.spawning.CobblemonSpawnPools
+import com.cobblemon.mod.common.api.spawning.SpawnDetailPresets
 import com.cobblemon.mod.common.pokemon.properties.PropertiesCompletionProvider
 import dev.architectury.registry.ReloadListenerRegistry
 import java.util.UUID
@@ -23,7 +29,7 @@ import net.minecraft.resource.SynchronousResourceReloader
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Identifier
 
-internal object CobblemonDataProvider : DataProvider {
+object CobblemonDataProvider : DataProvider {
 
     // Both Forge n Fabric keep insertion order so if a registry depends on another simply register it after
     var canReload = true
@@ -36,12 +42,19 @@ internal object CobblemonDataProvider : DataProvider {
         this.register(Moves)
         this.register(Abilities)
         this.register(PokemonSpecies)
+        this.register(PokeBalls)
+        this.register(SpeciesFeatures)
+        this.register(GlobalSpeciesFeatures)
         this.register(PropertiesCompletionProvider)
+        this.register(SpeciesFeatureAssignments)
+        this.register(SpawnDetailPresets)
+
+        CobblemonSpawnPools.load()
 
         CobblemonEvents.PLAYER_QUIT.subscribe { synchronizedPlayerIds.remove(it.uuid) }
     }
 
-    override fun register(registry: DataRegistry) {
+    override fun <T : DataRegistry> register(registry: T): T {
         // Only send message once
         if (this.registries.isEmpty()) {
             LOGGER.info("Note: Cobblemon data registries are only loaded once per server instance as Pokémon species are not safe to reload.")
@@ -50,6 +63,7 @@ internal object CobblemonDataProvider : DataProvider {
         this.registries.add(registry)
         LOGGER.info("Registered the {} registry", registry.id.toString())
         LOGGER.debug("Registered the {} registry of class {}", registry.id.toString(), registry::class.qualifiedName)
+        return registry
     }
 
     override fun fromIdentifier(registryIdentifier: Identifier): DataRegistry? = this.registries.find { it.id == registryIdentifier }

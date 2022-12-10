@@ -1,0 +1,19 @@
+{
+  "species": "cobblemon:staryu",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:staryu",
+      "model": "cobblemon:staryu.geo",
+      "texture": "cobblemon:textures/pokemon/0120_staryu/staryu.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0120_staryu/staryu_shiny.png"
+    }
+  ]
+}

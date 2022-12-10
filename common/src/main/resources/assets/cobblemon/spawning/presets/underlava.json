@@ -1,7 +1,0 @@
-{
-  "name": "underlava",
-  "context": "submerged",
-  "condition": {
-    "fluidBlock": "lava"
-  }
-}

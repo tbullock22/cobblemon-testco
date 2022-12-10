@@ -18,6 +18,6 @@ object BattleSetTeamPokemonHandler : ClientPacketHandler<BattleSetTeamPokemonPac
     override fun invokeOnClient(packet: BattleSetTeamPokemonPacket, ctx: CobblemonNetwork.NetworkContext) {
         CobblemonClient.battle!!.side1.actors
             .find { it.uuid == MinecraftClient.getInstance().player?.uuid }
-            ?.pokemon = packet.team
+            ?.pokemon = packet.team.map { it.create() }.toMutableList()
     }
 }

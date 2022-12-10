@@ -23,7 +23,7 @@ build-job:
 # Separate step to deploy the artifacts, save Norry the headache of keeping even more shit around
 deploy-job:
   stage: deploy
-#  when: manual
+  when: manual
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull

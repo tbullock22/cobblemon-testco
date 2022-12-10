@@ -1,0 +1,7 @@
+{
+  "condition": {
+	"biomes": [ "#cobblemon:is_overworld" ],
+    "canSeeSky": false,
+	"maxY": 58
+  }
+}

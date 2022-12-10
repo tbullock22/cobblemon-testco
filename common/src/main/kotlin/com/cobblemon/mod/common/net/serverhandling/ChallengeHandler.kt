@@ -48,6 +48,10 @@ object ChallengeHandler : ServerPacketHandler<BattleChallengePacket> {
                 BattleBuilder.pve(player, targetedEntity, leadingPokemon).ifErrored { it.sendTo(player) { it.red() } }
             }
             is ServerPlayerEntity -> {
+                // Bandaid for odd desync thing with data tracker
+                if (player == targetedEntity) {
+                    return
+                }
                 // Check in on battle requests, if the other player has challenged me, this starts the battle
                 val existingChallenge = BattleRegistry.pvpChallenges[targetedEntity.uuid]
                 if (existingChallenge != null && !existingChallenge.isExpired()) {

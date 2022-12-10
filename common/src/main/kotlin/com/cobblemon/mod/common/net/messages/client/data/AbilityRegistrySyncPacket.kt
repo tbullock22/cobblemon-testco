@@ -23,7 +23,7 @@ class AbilityRegistrySyncPacket : DataRegistrySyncPacket<AbilityTemplate> {
         buffer.writeText(entry.description)
     }
 
-    override fun decodeEntry(buffer: PacketByteBuf): AbilityTemplate? {
+    override fun decodeEntry(buffer: PacketByteBuf): AbilityTemplate {
         return AbilityTemplate(
             name = buffer.readString(),
             displayName = buffer.readText().copy(),
@@ -34,5 +34,4 @@ class AbilityRegistrySyncPacket : DataRegistrySyncPacket<AbilityTemplate> {
     override fun synchronizeDecoded(entries: Collection<AbilityTemplate>) {
         Abilities.reload(entries.associateBy { cobblemonResource(it.name.lowercase()) })
     }
-
 }

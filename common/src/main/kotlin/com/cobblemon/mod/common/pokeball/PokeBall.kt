@@ -8,7 +8,13 @@
 
 package com.cobblemon.mod.common.pokeball
 
+import com.cobblemon.mod.common.api.pokeball.PokeBalls
+import com.cobblemon.mod.common.api.pokeball.catching.CaptureEffect
 import com.cobblemon.mod.common.api.pokeball.catching.CatchRateModifier
+import com.cobblemon.mod.common.item.PokeBallItem
+import com.cobblemon.mod.common.pokemon.Pokemon
+import dev.architectury.registry.registries.RegistrySupplier
+import net.minecraft.item.ItemStack
 import net.minecraft.util.Identifier
 
 /**
@@ -16,11 +22,27 @@ import net.minecraft.util.Identifier
  * It is intended that there is one poke ball object initialized for a given poke ball type.
  *
  * @property name the poke ball registry name
- * @property catchRateModifiers list of all [CatchRateModifier] that is applicable to the poke ball
+ * @property catchRateModifiers list of all [CatchRateModifier] that is applicable to the Pokéball
+ * @property effects list of all [CaptureEffect]s applicable to the Pokéball
+ * @property model2d The identifier for the resource this Pokéball will use for the 2d model.
+ * @property model3d The identifier for the resource this Pokéball will use for the 3d model.
  */
 open class PokeBall(
     val name: Identifier,
     val catchRateModifiers: List<CatchRateModifier> = listOf(),
-    val model2d: String = "${name}#inventory",
-    val model3d: String = "${name}_in_hand#inventory"
-)
+    val effects: List<CaptureEffect> = listOf(),
+    val model2d: String,
+    val model3d: String
+) {
+
+    // This gets attached during item registry
+    internal lateinit var itemSupplier: RegistrySupplier<PokeBallItem>
+
+    fun item(): PokeBallItem = this.itemSupplier.get()
+
+    fun stack(count: Int = 1): ItemStack = ItemStack(this.item(), count)
+
+    @Deprecated("This is a temporary solution for the safari ball dilemma", ReplaceWith("target.currentHealth"))
+    internal fun hpForCalculation(target: Pokemon): Int = if (this.name == PokeBalls.SAFARI_BALL.name) target.hp else target.currentHealth
+
+}
