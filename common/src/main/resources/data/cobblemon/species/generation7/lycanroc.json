@@ -318,7 +318,8 @@
             "pokedex": [
                 "cobblemon.form.lycanroc-dusk.desc1",
                 "cobblemon.form.lycanroc-dusk.desc2"
-            ]
+            ],
+            "preEvolution": "rockruff f:own_tempo"
         }
     ]
 }
