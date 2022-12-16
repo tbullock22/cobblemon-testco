@@ -36,7 +36,7 @@ class PorygonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0137_porygon/porygon", "ground_idle")
+                //bedrock("porygon", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class PorygonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0137_porygon/porygon", "ground_walk")
+                //bedrock("porygon", "ground_walk")
             )
         )
     }
@@ -54,5 +54,5 @@ class PorygonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0137_porygon/porygon", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("porygon", "faint") else null
 }

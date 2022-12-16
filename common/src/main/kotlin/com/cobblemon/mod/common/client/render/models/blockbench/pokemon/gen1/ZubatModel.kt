@@ -47,7 +47,7 @@ class ZubatModel(root: ModelPart) : PokemonPoseableModel(), BiWingedFrame, Eared
             poseName = "hover",
             poseTypes = ALL_POSES - SHOULDER_POSES - PoseType.FLY,
             idleAnimations = arrayOf(
-                bedrock("0041_zubat/zubat", "ground_idle")
+                bedrock("zubat", "ground_idle")
             )
         )
 
@@ -55,7 +55,7 @@ class ZubatModel(root: ModelPart) : PokemonPoseableModel(), BiWingedFrame, Eared
             poseName = "fly",
             poseType = PoseType.FLY,
             idleAnimations = arrayOf(
-                bedrock("0041_zubat/zubat", "ground_walk")
+                bedrock("zubat", "ground_walk")
             )
         )
 

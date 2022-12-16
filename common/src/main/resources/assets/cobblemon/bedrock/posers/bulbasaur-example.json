@@ -12,7 +12,7 @@
       "poseTypes": ["STAND", "NONE", "PORTRAIT", "PROFILE", "FLOAT"],
       "animations": [
         "look",
-        "bedrock(0001_bulbasaur/bulbasaur, ground_idle)"
+        "bedrock(bulbasaur, ground_idle)"
       ]
     },
     "walking": {
@@ -21,7 +21,7 @@
       "poseTypes": ["WALK"],
       "animations": [
         "look",
-        "bedrock(0001_bulbasaur/bulbasaur, ground_walk)"
+        "bedrock(bulbasaur, ground_walk)"
       ]
     }
   }

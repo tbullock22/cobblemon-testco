@@ -41,7 +41,7 @@ class MarshtompModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0259_marshtomp/marshtomp", "ground_idle")
+                bedrock("marshtomp", "ground_idle")
             )
         )
 
@@ -50,9 +50,9 @@ class MarshtompModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0259_marshtomp/marshtomp", "ground_idle"),
+                bedrock("marshtomp", "ground_idle"),
                 BipedWalkAnimation(this, periodMultiplier = 0.75F, amplitudeMultiplier = 0.8F)
-                //bedrock("0259_marshtomp/marshtomp", "ground_walk")
+                //bedrock("marshtomp", "ground_walk")
             )
         )
     }
@@ -60,5 +60,5 @@ class MarshtompModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0259_marshtomp/marshtomp", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("marshtomp", "faint") else null
 }

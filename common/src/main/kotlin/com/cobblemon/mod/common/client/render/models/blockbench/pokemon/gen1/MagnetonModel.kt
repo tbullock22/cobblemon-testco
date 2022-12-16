@@ -32,7 +32,7 @@ class MagnetonModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0082_magneton/magneton", "ground_idle")
+                bedrock("magneton", "ground_idle")
             )
         )
 
@@ -40,8 +40,8 @@ class MagnetonModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0082_magneton/magneton", "ground_idle")
-                //bedrock("0082_magneton/magneton", "ground_walk")
+                bedrock("magneton", "ground_idle")
+                //bedrock("magneton", "ground_walk")
             )
         )
     }
@@ -49,5 +49,5 @@ class MagnetonModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0082_magneton/magneton", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("magneton", "faint") else null
 }

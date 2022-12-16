@@ -36,7 +36,7 @@ class TaurosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0128_tauros/tauros", "ground_idle")
+                bedrock("tauros", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class TaurosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0128_tauros/tauros", "ground_walk")
+                bedrock("tauros", "ground_walk")
             )
         )
     }
@@ -54,5 +54,5 @@ class TaurosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0128_tauros/tauros", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("tauros", "faint") else null
 }

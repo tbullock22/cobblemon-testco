@@ -54,7 +54,7 @@ class EkansModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0023_ekans/ekans", "ground_idle"),
+                bedrock("ekans", "ground_idle"),
                 WaveAnimation(
                     frame = this,
                     waveFunction = sineFunction(
@@ -83,7 +83,7 @@ class EkansModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
         registerPose(
             poseName = "portrait",
             poseTypes = UI_POSES,
-            idleAnimations = arrayOf(bedrock("0023_ekans/ekans", "summary_idle"))
+            idleAnimations = arrayOf(bedrock("ekans", "summary_idle"))
         )
     }
 
@@ -91,5 +91,5 @@ class EkansModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = bedrockStateful("0023_ekans/ekans", "faint")
+    ) = bedrockStateful("ekans", "faint")
 }

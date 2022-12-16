@@ -40,7 +40,7 @@ class GolemModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFr
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0076_golem/golem", "ground_idle")
+                bedrock("golem", "ground_idle")
             )
         )
 
@@ -50,8 +50,8 @@ class GolemModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFr
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this, periodMultiplier = 1.2F, amplitudeMultiplier = 0.9f),
                 singleBoneLook(),
-                bedrock("0076_golem/golem", "ground_idle")
-                //bedrock("0076_golem/golem", "ground_walk")
+                bedrock("golem", "ground_idle")
+                //bedrock("golem", "ground_walk")
             )
         )
     }
@@ -59,5 +59,5 @@ class GolemModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFr
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0076_golem/golem", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("golem", "faint") else null
 }

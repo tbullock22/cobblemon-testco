@@ -8,8 +8,6 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1
 
-import com.cobblemon.mod.common.client.render.models.blockbench.animation.BipedWalkAnimation
-import com.cobblemon.mod.common.client.render.models.blockbench.frame.BipedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
@@ -17,11 +15,8 @@ import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
-class HitmonleeModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
+class HitmonleeModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("hitmonlee")
-
-    override val leftLeg = getPart("leftleg")
-    override val rightLeg = getPart("rightleg")
 
     override val portraitScale = 1.0F
     override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
@@ -37,7 +32,7 @@ class HitmonleeModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0106_hitmonlee/hitmonlee", "ground_idle")
+                bedrock("hitmonlee", "ground_idle")
             )
         )
 
@@ -45,9 +40,8 @@ class HitmonleeModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                BipedWalkAnimation(this, periodMultiplier = .8F, amplitudeMultiplier = 1.1F),
-                bedrock("0106_hitmonlee/hitmonlee", "ground_idle")
-                //bedrock("0106_hitmonlee/hitmonlee", "ground_walk")
+                bedrock("hitmonlee", "ground_idle")
+                //bedrock("hitmonlee", "ground_walk")
             )
         )
     }
@@ -55,5 +49,5 @@ class HitmonleeModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0106_hitmonlee/hitmonlee", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("hitmonlee", "faint") else null
 }

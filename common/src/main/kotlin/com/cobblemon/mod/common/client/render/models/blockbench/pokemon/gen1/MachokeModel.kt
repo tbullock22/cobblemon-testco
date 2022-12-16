@@ -36,7 +36,7 @@ class MachokeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0067_machoke/machoke", "ground_idle")
+                bedrock("machoke", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class MachokeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0067_machoke/machoke", "ground_walk")
+                bedrock("machoke", "ground_walk")
             )
         )
     }
@@ -54,6 +54,6 @@ class MachokeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     /*override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0067_machoke/machoke", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("machoke", "faint") else null
      */
 }

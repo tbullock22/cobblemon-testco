@@ -39,7 +39,7 @@ class KingdraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0230_kingdra/kingdra", "ground_idle")
+                bedrock("kingdra", "ground_idle")
             ),
             transformedParts = arrayOf(
                 rootPart.asTransformed().addPosition(Y_AXIS, -4.0)
@@ -51,7 +51,7 @@ class KingdraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0230_kingdra/kingdra", "ground_walk")
+                bedrock("kingdra", "ground_walk")
             ),
             transformedParts = arrayOf(
                 rootPart.asTransformed().addPosition(Y_AXIS, -4.0)
@@ -63,7 +63,7 @@ class KingdraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.FLOAT,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0230_kingdra/kingdra", "water_idle")
+                bedrock("kingdra", "water_idle")
             ),
             transformedParts = arrayOf(
                 rootPart.asTransformed().addPosition(Y_AXIS, -4.0)
@@ -75,7 +75,7 @@ class KingdraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.SWIM,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0230_kingdra/kingdra", "water_swim")
+                bedrock("kingdra", "water_swim")
             ),
             transformedParts = arrayOf(
                 rootPart.asTransformed().addPosition(Y_AXIS, -4.0)
@@ -86,5 +86,5 @@ class KingdraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0230_kingdra/kingdra", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("kingdra", "faint") else null
 }

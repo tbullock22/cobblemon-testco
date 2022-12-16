@@ -41,7 +41,7 @@ class EmpoleonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0395_empoleon/empoleon", "ground_idle")
+                bedrock("empoleon", "ground_idle")
             )
         )
 
@@ -50,9 +50,9 @@ class EmpoleonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0395_empoleon/empoleon", "ground_idle"),
+                bedrock("empoleon", "ground_idle"),
                 BipedWalkAnimation(this, periodMultiplier = 0.7F, amplitudeMultiplier = 0.8F)
-                //bedrock("0395_empoleon/empoleon", "ground_walk")
+                //bedrock("empoleon", "ground_walk")
             )
         )
     }
@@ -60,5 +60,5 @@ class EmpoleonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0395_empoleon/empoleon", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("empoleon", "faint") else null
 }

@@ -41,7 +41,7 @@ class PachirisuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0417_pachirisu/pachirisu", "ground_idle")
+                bedrock("pachirisu", "ground_idle")
             )
         )
 
@@ -51,7 +51,7 @@ class PachirisuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 BipedWalkAnimation(this, periodMultiplier = 0.8F, amplitudeMultiplier = 0.7F),
-                bedrock("0417_pachirisu/pachirisu", "ground_idle")
+                bedrock("pachirisu", "ground_idle")
             )
         )
     }
@@ -59,5 +59,5 @@ class PachirisuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0417_pachirisu/pachirisu", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("pachirisu", "faint") else null
 }

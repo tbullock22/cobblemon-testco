@@ -35,7 +35,7 @@ class PikachuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0025_pikachu/pikachu", "ground_idle")
+                bedrock("pikachu", "ground_idle")
             )
         )
 
@@ -44,8 +44,8 @@ class PikachuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0025_pikachu/pikachu", "ground_idle")
-                //bedrock("0025_pikachu/pikachu", "ground_walk")
+                bedrock("pikachu", "ground_idle")
+                //bedrock("pikachu", "ground_walk")
             )
         )
     }
@@ -53,5 +53,5 @@ class PikachuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0025_pikachu/pikachu", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("pikachu", "faint") else null
 }

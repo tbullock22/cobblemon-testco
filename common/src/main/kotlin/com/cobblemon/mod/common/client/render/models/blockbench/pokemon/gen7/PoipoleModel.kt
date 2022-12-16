@@ -46,7 +46,7 @@ class PoipoleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biman
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0803_poipole/poipole", "ground_idle")
+                bedrock("poipole", "ground_idle")
             )
         )
 
@@ -55,10 +55,10 @@ class PoipoleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biman
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0803_poipole/poipole", "ground_idle"),
+                bedrock("poipole", "ground_idle"),
                 BipedWalkAnimation(this, amplitudeMultiplier = 0.7F, periodMultiplier = 0.9F),
                 BimanualSwingAnimation(this, amplitudeMultiplier = 0.8F, swingPeriodMultiplier = 0.9F)
-                //bedrock("0803_poipole/poipole", "ground_walk")
+                //bedrock("poipole", "ground_walk")
             )
         )
     }
@@ -66,5 +66,5 @@ class PoipoleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biman
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0803_poipole/poipole", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("poipole", "faint") else null
 }

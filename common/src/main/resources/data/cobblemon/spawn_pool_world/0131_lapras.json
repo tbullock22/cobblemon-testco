@@ -7,10 +7,9 @@
             "id": "lapras-1",
             "pokemon": "lapras",
 			"presets": [
-                "underwater"
+                "water_surface"
             ],
             "type": "pokemon",
-            "context": "submerged",
             "bucket": "rare",
             "level": "20-53",
             "weight": 10,

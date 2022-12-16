@@ -34,7 +34,7 @@ class DratiniModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + MOVING_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0147_dratini/dratini", "ground_idle")
+                bedrock("dratini", "ground_idle")
             )
         )
     }
@@ -42,5 +42,5 @@ class DratiniModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0147_dratini/dratini", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("dratini", "faint") else null
 }

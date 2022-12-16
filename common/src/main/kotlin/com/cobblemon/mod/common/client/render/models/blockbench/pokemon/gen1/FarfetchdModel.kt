@@ -51,7 +51,7 @@ class FarfetchdModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseType = PoseType.HOVER,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0083_farfetchd/farfetchd", "air_idle")
+                bedrock("farfetchd", "air_idle")
             )
         )
 
@@ -60,8 +60,8 @@ class FarfetchdModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseType = PoseType.FLY,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0083_farfetchd/farfetchd", "air_fly")
-                //bedrock("0083_farfetchd/farfetchd", "ground_walk")
+                bedrock("farfetchd", "air_fly")
+                //bedrock("farfetchd", "ground_walk")
             )
         )
     }
@@ -69,5 +69,5 @@ class FarfetchdModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0083_farfetchd/farfetchd", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("farfetchd", "faint") else null
 }

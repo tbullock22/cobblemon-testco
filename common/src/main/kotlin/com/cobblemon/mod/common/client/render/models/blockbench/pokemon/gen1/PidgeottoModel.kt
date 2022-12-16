@@ -44,7 +44,7 @@ class PidgeottoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             transformTicks = 0,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0017_pidgeotto/pidgeotto", "ground_idle")
+                bedrock("pidgeotto", "ground_idle")
             )
         )
         registerPose(
@@ -52,7 +52,7 @@ class PidgeottoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseTypes = setOf(PoseType.HOVER, PoseType.FLOAT),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0017_pidgeotto/pidgeotto", "air_idle")
+                bedrock("pidgeotto", "air_idle")
             )
         )
         registerPose(
@@ -60,7 +60,7 @@ class PidgeottoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseTypes = setOf(PoseType.FLY, PoseType.SWIM),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0017_pidgeotto/pidgeotto", "air_fly")
+                bedrock("pidgeotto", "air_fly")
             )
         )
         registerPose(

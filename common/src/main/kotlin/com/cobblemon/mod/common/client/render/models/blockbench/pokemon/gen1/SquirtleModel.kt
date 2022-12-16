@@ -44,7 +44,7 @@ class SquirtleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
         sleep = registerPose(
             poseType = PoseType.SLEEP,
             transformTicks = 10,
-            idleAnimations = arrayOf(bedrock("0007_squirtle/squirtle", "sleep"))
+            idleAnimations = arrayOf(bedrock("squirtle", "sleep"))
         )
 
         standing = registerPose(
@@ -53,7 +53,7 @@ class SquirtleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0007_squirtle/squirtle", "ground_idle")
+                bedrock("squirtle", "ground_idle")
             )
         )
 
@@ -62,7 +62,7 @@ class SquirtleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0007_squirtle/squirtle", "ground_walk")
+                bedrock("squirtle", "ground_walk")
             )
         )
 
@@ -72,7 +72,7 @@ class SquirtleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0007_squirtle/squirtle", "water_idle")
+                bedrock("squirtle", "water_idle")
             )
         )
 
@@ -82,7 +82,7 @@ class SquirtleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0007_squirtle/squirtle", "water_swim")
+                bedrock("squirtle", "water_swim")
             )
         )
     }
@@ -90,5 +90,5 @@ class SquirtleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0007_squirtle/squirtle", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("squirtle", "faint") else null
 }

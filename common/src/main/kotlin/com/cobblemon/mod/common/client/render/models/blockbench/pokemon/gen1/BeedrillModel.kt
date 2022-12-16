@@ -38,7 +38,7 @@ class BeedrillModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BiWi
     override fun registerPoses() {
         sleep = registerPose(
             poseType = PoseType.SLEEP,
-            idleAnimations = arrayOf(bedrock("0015_beedrill/beedrill", "sleep")),
+            idleAnimations = arrayOf(bedrock("beedrill", "sleep")),
             transformedParts = arrayOf(
                 rootPart.asTransformed().addPosition(Y_AXIS, -3F)
             )
@@ -49,7 +49,7 @@ class BeedrillModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BiWi
             poseTypes = STATIONARY_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0015_beedrill/beedrill", "air_idle")
+                bedrock("beedrill", "air_idle")
             ),
             transformedParts = arrayOf(rootPart.asTransformed().addPosition(Y_AXIS, -10F))
         )
@@ -59,7 +59,7 @@ class BeedrillModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BiWi
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0015_beedrill/beedrill", "air_fly")
+                bedrock("beedrill", "air_fly")
             ),
             transformedParts = arrayOf(rootPart.asTransformed().addPosition(Y_AXIS, -5F))
         )

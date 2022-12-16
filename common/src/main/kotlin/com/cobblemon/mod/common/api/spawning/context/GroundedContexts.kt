@@ -93,3 +93,17 @@ open class LavafloorSpawningContext(
     nearbyBlocks: List<BlockState>,
     slice: WorldSlice
 ) : FlooredSpawningContext(cause, world, position, light, canSeeSky, influences, width, height, nearbyBlocks, slice)
+
+open class SurfaceSpawningContext(
+    cause: SpawnCause,
+    world: World,
+    position: BlockPos,
+    light: Int,
+    canSeeSky: Boolean,
+    influences: MutableList<SpawningInfluence>,
+    width: Int,
+    height: Int,
+    val depth: Int,
+    nearbyBlocks: List<BlockState>,
+    slice: WorldSlice
+) : FlooredSpawningContext(cause, world, position, light, canSeeSky, influences, width, height, nearbyBlocks, slice)

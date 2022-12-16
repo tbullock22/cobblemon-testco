@@ -34,7 +34,7 @@ class OnixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseName = "ui",
             poseTypes = UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0095_onix/onix", "summary_idle")
+                bedrock("onix", "summary_idle")
             )
         )
 
@@ -43,7 +43,7 @@ class OnixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0095_onix/onix", "ground_idle")
+                bedrock("onix", "ground_idle")
             )
         )
 
@@ -52,7 +52,7 @@ class OnixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0095_onix/onix", "ground_walk")
+                bedrock("onix", "ground_walk")
             )
         )
     }
@@ -60,5 +60,5 @@ class OnixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0095_onix/onix", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("onix", "faint") else null
 }

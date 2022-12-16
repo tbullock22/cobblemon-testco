@@ -38,7 +38,7 @@ class BounsweetModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                //bedrock("0761_bounsweet/bounsweet", "ground_idle")
+                //bedrock("bounsweet", "ground_idle")
             )
         )
 
@@ -47,7 +47,7 @@ class BounsweetModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this, periodMultiplier = 1F, amplitudeMultiplier = 0.5F)
-                //bedrock("0761_bounsweet/bounsweet", "ground_walk")
+                //bedrock("bounsweet", "ground_walk")
             )
         )
     }
@@ -55,5 +55,5 @@ class BounsweetModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0761_bounsweet/bounsweet", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("bounsweet", "faint") else null
 }

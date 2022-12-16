@@ -30,18 +30,18 @@ class MetapodModel(root: ModelPart) : PokemonPoseableModel() {
     override fun registerPoses() {
         sleep = registerPose(
             poseType = PoseType.SLEEP,
-            idleAnimations = arrayOf(bedrock("0011_metapod/metapod", "sleep"))
+            idleAnimations = arrayOf(bedrock("metapod", "sleep"))
         )
 
         standing = registerPose(
             poseName = "standing",
             poseTypes = ALL_POSES - PoseType.SLEEP,
-            idleAnimations = arrayOf(bedrock("0011_metapod/metapod", "ground_idle"))
+            idleAnimations = arrayOf(bedrock("metapod", "ground_idle"))
         )
     }
 
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing)) bedrockStateful("0011_metapod/metapod", "faint") else null
+    ) = if (state.isPosedIn(standing)) bedrockStateful("metapod", "faint") else null
 }

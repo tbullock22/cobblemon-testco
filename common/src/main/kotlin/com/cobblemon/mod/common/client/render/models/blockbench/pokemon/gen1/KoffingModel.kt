@@ -32,7 +32,7 @@ class KoffingModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0109_koffing/koffing", "ground_idle")
+                bedrock("koffing", "ground_idle")
             )
         )
 
@@ -40,7 +40,7 @@ class KoffingModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0109_koffing/koffing", "ground_walk")
+                bedrock("koffing", "ground_walk")
             )
         )
     }
@@ -48,5 +48,5 @@ class KoffingModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0109_koffing/koffing", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("koffing", "faint") else null
 }

@@ -41,7 +41,7 @@ class MinunModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFr
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0312_minun/minun", "ground_idle")
+                bedrock("minun", "ground_idle")
             )
         )
 
@@ -50,9 +50,9 @@ class MinunModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFr
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0312_minun/minun", "ground_idle"),
+                bedrock("minun", "ground_idle"),
                 BipedWalkAnimation(this, periodMultiplier = 0.8F, amplitudeMultiplier = 0.7F)
-                //bedrock("0312_minun/minun", "ground_walk")
+                //bedrock("minun", "ground_walk")
             )
         )
     }
@@ -60,5 +60,5 @@ class MinunModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFr
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0312_minun/minun", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("minun", "faint") else null
 }

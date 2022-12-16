@@ -49,7 +49,7 @@ class CharizardModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
     override fun registerPoses() {
         sleep = registerPose(
             poseType = PoseType.SLEEP,
-            idleAnimations = arrayOf(bedrock("0006_charizard/charizard", "sleep"))
+            idleAnimations = arrayOf(bedrock("charizard", "sleep"))
         )
 
         standing = registerPose(
@@ -57,7 +57,7 @@ class CharizardModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseTypes = STATIONARY_POSES - PoseType.HOVER + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0006_charizard/charizard", "ground_idle")
+                bedrock("charizard", "ground_idle")
             )
         )
 
@@ -66,8 +66,8 @@ class CharizardModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseTypes = MOVING_POSES - PoseType.FLY,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0006_charizard/charizard", "ground_idle"),
-                bedrock("0006_charizard/charizard", "ground_walk")
+                bedrock("charizard", "ground_idle"),
+                bedrock("charizard", "ground_walk")
             )
         )
 
@@ -76,7 +76,7 @@ class CharizardModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseType = PoseType.HOVER,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0006_charizard/charizard", "air_idle")
+                bedrock("charizard", "air_idle")
             ),
             transformedParts = arrayOf(rootPart.asTransformed().addPosition(Y_AXIS, -2F))
         )
@@ -86,7 +86,7 @@ class CharizardModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseType = PoseType.FLY,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0006_charizard/charizard", "air_fly")
+                bedrock("charizard", "air_fly")
             ),
             transformedParts = arrayOf(rootPart.asTransformed().addPosition(Y_AXIS, 6F))
         )
@@ -95,5 +95,5 @@ class CharizardModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0006_charizard/charizard", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("charizard", "faint") else null
 }

@@ -40,7 +40,7 @@ class ExeggutorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0103_exeggutor/exeggutor", "ground_idle")
+                bedrock("exeggutor", "ground_idle")
             )
         )
 
@@ -50,8 +50,8 @@ class ExeggutorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this, periodMultiplier = 0.7F, amplitudeMultiplier = 1f),
                 singleBoneLook(),
-                bedrock("0103_exeggutor/exeggutor", "ground_idle")
-                //bedrock("0103_exeggutor/exeggutor", "ground_walk")
+                bedrock("exeggutor", "ground_idle")
+                //bedrock("exeggutor", "ground_walk")
             )
         )
     }
@@ -59,5 +59,5 @@ class ExeggutorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0103_exeggutor/exeggutor", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("exeggutor", "faint") else null
 }

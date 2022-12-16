@@ -32,7 +32,7 @@ class ElekidModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0239_elekid/elekid", "ground_idle")
+                bedrock("elekid", "ground_idle")
             )
         )
 
@@ -40,7 +40,7 @@ class ElekidModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0239_elekid/elekid", "ground_idle")
+                bedrock("elekid", "ground_idle")
             )
         )
     }
@@ -48,5 +48,5 @@ class ElekidModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0239_elekid/elekid", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("elekid", "faint") else null
 }

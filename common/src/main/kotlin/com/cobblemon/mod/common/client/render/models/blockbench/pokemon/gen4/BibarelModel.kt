@@ -43,7 +43,7 @@ class BibarelModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0400_bibarel/bibarel", "ground_idle")
+                bedrock("bibarel", "ground_idle")
             )
         )
 
@@ -52,9 +52,9 @@ class BibarelModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0400_bibarel/bibarel", "ground_idle"),
+                bedrock("bibarel", "ground_idle"),
                 QuadrupedWalkAnimation(this, periodMultiplier = 0.6F, amplitudeMultiplier = 0.75F)
-                //bedrock("0400_bibarel/bibarel", "ground_walk")
+                //bedrock("bibarel", "ground_walk")
             )
         )
     }
@@ -62,5 +62,5 @@ class BibarelModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0400_bibarel/bibarel", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("bibarel", "faint") else null
 }

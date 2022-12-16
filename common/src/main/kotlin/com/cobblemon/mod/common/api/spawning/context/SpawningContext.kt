@@ -15,6 +15,7 @@ import com.cobblemon.mod.common.api.spawning.influence.SpawningInfluence
 import com.cobblemon.mod.common.api.spawning.spawner.Spawner
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity
+import net.minecraft.fluid.Fluid
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.registry.Registry
@@ -65,6 +66,7 @@ abstract class SpawningContext {
 
     val biomeRegistry: Registry<Biome> by lazy { world.registryManager.get(Registry.BIOME_KEY) }
     val blockRegistry: Registry<Block> by lazy { world.registryManager.get(Registry.BLOCK_KEY) }
+    val fluidRegistry: Registry<Fluid> by lazy { world.registryManager.get(Registry.FLUID_KEY)}
 
     val biomeName: Identifier
         get() = this.biomeRegistry.getId(biome)!!

@@ -79,7 +79,7 @@ class ArbokModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0024_arbok/arbok", "ground_idle"),
+                bedrock("arbok", "ground_idle"),
                 wave
             )
         )
@@ -90,7 +90,7 @@ class ArbokModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0024_arbok/arbok", "ground_walk"),
+                bedrock("arbok", "ground_walk"),
                 wave
             )
         )
@@ -100,7 +100,7 @@ class ArbokModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0024_arbok/arbok", "summary_idle")
+                bedrock("arbok", "summary_idle")
             )
         )
     }
@@ -108,5 +108,5 @@ class ArbokModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0024_arbok/arbok", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("arbok", "faint") else null
 }

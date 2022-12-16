@@ -41,7 +41,7 @@ class IvysaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
         sleep = registerPose(
             poseType = PoseType.SLEEP,
             transformTicks = 10,
-            idleAnimations = arrayOf(bedrock("0002_ivysaur/ivysaur", "sleep"))
+            idleAnimations = arrayOf(bedrock("ivysaur", "sleep"))
         )
 
         standing = registerPose(
@@ -50,7 +50,7 @@ class IvysaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0002_ivysaur/ivysaur", "ground_idle")
+                bedrock("ivysaur", "ground_idle")
             )
         )
 
@@ -60,7 +60,7 @@ class IvysaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0002_ivysaur/ivysaur", "ground_walk")
+                bedrock("ivysaur", "ground_walk")
             )
         )
     }
@@ -68,5 +68,5 @@ class IvysaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0002_ivysaur/ivysaur", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("ivysaur", "faint") else null
 }

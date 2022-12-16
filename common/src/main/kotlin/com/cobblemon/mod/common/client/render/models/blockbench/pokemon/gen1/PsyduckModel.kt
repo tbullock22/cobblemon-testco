@@ -37,7 +37,7 @@ class PsyduckModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0054_psyduck/psyduck", "ground_idle")
+                bedrock("psyduck", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class PsyduckModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0054_psyduck/psyduck", "ground_walk")
+                bedrock("psyduck", "ground_walk")
             )
         )
 
@@ -54,7 +54,7 @@ class PsyduckModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.FLOAT,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0054_psyduck/psyduck", "water_idle")
+                bedrock("psyduck", "water_idle")
             )
         )
 
@@ -62,7 +62,7 @@ class PsyduckModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.SWIM,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0054_psyduck/psyduck", "water_swim")
+                bedrock("psyduck", "water_swim")
             )
         )
     }
@@ -70,5 +70,5 @@ class PsyduckModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0054_psyduck/psyduck", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("psyduck", "faint") else null
 }

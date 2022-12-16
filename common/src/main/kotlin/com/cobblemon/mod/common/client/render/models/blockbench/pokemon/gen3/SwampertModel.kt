@@ -44,7 +44,7 @@ class SwampertModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0260_swampert/swampert", "ground_idle")
+                bedrock("swampert", "ground_idle")
             )
         )
 
@@ -53,9 +53,9 @@ class SwampertModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0260_swampert/swampert", "ground_idle"),
+                bedrock("swampert", "ground_idle"),
                 BipedWalkAnimation(this)
-                //bedrock("0260_swampert/swampert", "ground_walk")
+                //bedrock("swampert", "ground_walk")
             )
         )
     }
@@ -63,5 +63,5 @@ class SwampertModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0260_swampert/swampert", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("swampert", "faint") else null
 }

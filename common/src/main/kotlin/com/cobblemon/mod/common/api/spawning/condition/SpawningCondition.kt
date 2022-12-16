@@ -9,6 +9,8 @@
 package com.cobblemon.mod.common.api.spawning.condition
 
 import com.cobblemon.mod.common.api.conditional.RegistryLikeCondition
+import com.cobblemon.mod.common.api.spawning.MoonPhaseRange
+import com.cobblemon.mod.common.api.spawning.TimeRange
 import com.cobblemon.mod.common.api.spawning.condition.ListCheckMode.ALL
 import com.cobblemon.mod.common.api.spawning.condition.ListCheckMode.ANY
 import com.cobblemon.mod.common.api.spawning.context.SpawningContext
@@ -37,7 +39,7 @@ abstract class SpawningCondition<T : SpawningContext> {
 
     var dimensions: MutableList<Identifier>? = null
     var biomes: MutableSet<RegistryLikeCondition<Biome>>? = null
-    var moonPhase: Int? = null
+    var moonPhase: MoonPhaseRange? = null
     var canSeeSky: Boolean? = null
     var minX: Float? = null
     var minY: Float? = null
@@ -76,7 +78,7 @@ abstract class SpawningCondition<T : SpawningContext> {
             return false
         } else if (dimensions != null && dimensions!!.isNotEmpty() && ctx.world.dimension.effects !in dimensions!!) {
             return false
-        } else if (moonPhase != null && moonPhase != ctx.moonPhase) {
+        } else if (moonPhase != null && ctx.moonPhase in moonPhase!!) {
             return false
         } else if (biomes != null && biomes!!.isNotEmpty() && biomes!!.none { condition -> condition.fits(ctx.biome, ctx.biomeRegistry) }) {
             return false

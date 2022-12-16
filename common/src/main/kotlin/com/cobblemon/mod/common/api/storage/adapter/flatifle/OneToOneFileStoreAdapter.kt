@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.api.storage.adapter.flatifle
 
+import com.cobblemon.mod.common.Cobblemon.LOGGER
 import com.cobblemon.mod.common.api.storage.PokemonStore
 import com.cobblemon.mod.common.api.storage.StorePosition
 import com.cobblemon.mod.common.api.storage.adapter.CobblemonAdapterParent
@@ -67,6 +68,7 @@ abstract class OneToOneFileStoreAdapter<S>(
             try {
                 val tempLoaded = load(tempFile, storeClass, uuid)
                 if (tempLoaded != null) {
+                    save(file, serialize(tempLoaded))
                     return tempLoaded
                 }
             } finally {
@@ -76,6 +78,10 @@ abstract class OneToOneFileStoreAdapter<S>(
 
         return if (file.exists()) {
             load(file, storeClass, uuid)
+                ?: let {
+                    LOGGER.error("Pokémon save file for ${storeClass.simpleName} ($uuid) was corrupted. A fresh file will be created.")
+                    storeClass.getConstructor(UUID::class.java).newInstance(uuid)
+                }
         } else {
             null
         }

@@ -40,7 +40,7 @@ class MeowthModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0052_meowth/meowth", "ground_idle")
+                bedrock("meowth", "ground_idle")
             )
         )
 
@@ -50,8 +50,8 @@ class MeowthModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 BipedWalkAnimation(this, periodMultiplier = .7F),
-                bedrock("0052_meowth/meowth", "ground_idle")
-                //bedrock("0052_meowth/meowth", "ground_walk")
+                bedrock("meowth", "ground_idle")
+                //bedrock("meowth", "ground_walk")
             )
         )
     }
@@ -59,5 +59,5 @@ class MeowthModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0052_meowth/meowth", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("meowth", "faint") else null
 }

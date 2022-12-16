@@ -40,7 +40,7 @@ class MrmimeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0122_mrmime/mrmime", "ground_idle")
+                bedrock("mrmime", "ground_idle")
             )
         )
 
@@ -50,7 +50,7 @@ class MrmimeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this),
                 singleBoneLook(),
-                bedrock("0122_mrmime/mrmime", "ground_idle")
+                bedrock("mrmime", "ground_idle")
             )
         )
     }
@@ -58,5 +58,5 @@ class MrmimeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0122_mrmime/mrmime", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("mrmime", "faint") else null
 }

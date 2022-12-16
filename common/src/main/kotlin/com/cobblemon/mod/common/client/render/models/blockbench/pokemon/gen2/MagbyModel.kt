@@ -35,7 +35,7 @@ class MagbyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0240_magby/magby", "ground_idle")
+                bedrock("magby", "ground_idle")
             )
         )
 
@@ -44,7 +44,7 @@ class MagbyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0240_magby/magby", "ground_idle")
+                bedrock("magby", "ground_idle")
             )
         )
     }
@@ -52,5 +52,5 @@ class MagbyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0240_magby/magby", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("magby", "faint") else null
 }

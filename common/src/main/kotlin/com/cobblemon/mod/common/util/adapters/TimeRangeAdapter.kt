@@ -8,7 +8,8 @@
 
 package com.cobblemon.mod.common.util.adapters
 
-import com.cobblemon.mod.common.api.spawning.condition.TimeRange
+import com.cobblemon.mod.common.api.spawning.IntRanges
+import com.cobblemon.mod.common.api.spawning.TimeRange
 import com.cobblemon.mod.common.util.isInt
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
@@ -19,24 +20,24 @@ import com.google.gson.JsonSerializer
 import java.lang.reflect.Type
 
 /**
- * Adapter for serializing and deserializing [TimeRange]. It deserializes from comma separated time ranges
- * in either name (referencing [TimeRange.Companion.ranges]) or in the format minTick-maxTick.
+ * Adapter for serializing and deserializing some kind of [IntRanges]. It deserializes from comma separated int ranges
+ * in either name (referencing [ranges]) or in the format min-max
  *
- * For example, it can deserialize "day,18000-20000" as a [TimeRange]
+ * For example, it can deserialize "day,18000-20000,100" as a [TimeRange] if constructed with [TimeRange.timeRanges].
  *
  * @author Hiroku
  * @since January 26th, 2022
  */
-object TimeRangeAdapter : JsonSerializer<TimeRange>, JsonDeserializer<TimeRange> {
-    override fun serialize(timeRange: TimeRange, type: Type, ctx: JsonSerializationContext): JsonElement {
-        return JsonPrimitive(timeRange.ranges.joinToString { "${it.first}-${it.last}" })
+class IntRangesAdapter<T : IntRanges>(val ranges: Map<String, T>, val initializer: (Array<IntRange>) -> T) : JsonDeserializer<T>, JsonSerializer<T> {
+    override fun serialize(src: T, typeOfSrc: Type?, context: JsonSerializationContext?): JsonElement {
+        return JsonPrimitive(src.ranges.joinToString { "${it.first}-${it.last}" })
     }
 
-    override fun deserialize(json: JsonElement, type: Type, ctx: JsonDeserializationContext): TimeRange {
+    override fun deserialize(json: JsonElement, t: Type, ctx: JsonDeserializationContext): T {
         val str = json.asString
         val splits = str.split(",")
         if (splits.isEmpty()) {
-            return TimeRange()
+            return initializer(emptyArray())
         }
 
         val ranges = mutableListOf<IntRange>()
@@ -45,12 +46,14 @@ object TimeRangeAdapter : JsonSerializer<TimeRange>, JsonDeserializer<TimeRange>
             if (range.size == 2 && range[0].isInt() && range[1].isInt()) {
                 ranges.add(range[0].toInt()..range[1].toInt())
             } else if (range.size == 1) {
-                val matchedRange = TimeRange.ranges.entries.find { it.key.equals(range[0], ignoreCase = true) }?.value
-                if (matchedRange != null) {
-                    ranges.addAll(matchedRange.ranges)
+                val matchingRange = this.ranges[range[0].lowercase()]
+                if (matchingRange != null) {
+                    ranges.addAll(matchingRange.ranges)
+                } else if (range[0].isInt()) {
+                    ranges.add(range[0].toInt()..range[0].toInt())
                 }
             }
         }
-        return TimeRange(*ranges.toTypedArray())
+        return initializer(ranges.toTypedArray())
     }
 }

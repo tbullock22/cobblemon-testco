@@ -35,7 +35,7 @@ class KadabraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0064_kadabra/kadabra", "ground_idle")
+                bedrock("kadabra", "ground_idle")
             )
         )
 
@@ -44,8 +44,8 @@ class KadabraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0064_kadabra/kadabra", "ground_idle")
-                //bedrock("0064_kadabra/kadabra", "ground_walk")
+                bedrock("kadabra", "ground_idle")
+                //bedrock("kadabra", "ground_walk")
             )
         )
     }
@@ -53,5 +53,5 @@ class KadabraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0064_kadabra/kadabra", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("kadabra", "faint") else null
 }

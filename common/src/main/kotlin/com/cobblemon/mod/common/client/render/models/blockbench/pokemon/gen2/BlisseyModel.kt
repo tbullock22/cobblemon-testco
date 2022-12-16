@@ -38,7 +38,7 @@ class BlisseyModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0242_blissey/blissey", "ground_idle")
+                bedrock("blissey", "ground_idle")
             )
         )
 
@@ -46,9 +46,9 @@ class BlisseyModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0242_blissey/blissey", "ground_idle"),
+                bedrock("blissey", "ground_idle"),
                 BipedWalkAnimation(this, amplitudeMultiplier = 0.6F, periodMultiplier = 1F)
-                //bedrock("0242_blissey/blissey", "ground_walk")
+                //bedrock("blissey", "ground_walk")
             )
         )
     }
@@ -56,5 +56,5 @@ class BlisseyModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0242_blissey/blissey", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("blissey", "faint") else null
 }

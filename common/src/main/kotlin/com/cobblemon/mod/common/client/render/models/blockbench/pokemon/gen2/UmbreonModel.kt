@@ -36,7 +36,7 @@ class UmbreonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0197_umbreon/umbreon", "ground_idle")
+                bedrock("umbreon", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class UmbreonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0197_umbreon/umbreon", "ground_run")
+                bedrock("umbreon", "ground_run")
             )
         )
     }
@@ -54,5 +54,5 @@ class UmbreonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0197_umbreon/umbreon", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("umbreon", "faint") else null
 }

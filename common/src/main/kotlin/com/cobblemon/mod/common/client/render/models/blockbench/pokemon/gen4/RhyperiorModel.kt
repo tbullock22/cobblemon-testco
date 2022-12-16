@@ -35,7 +35,7 @@ class RhyperiorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0464_rhyperior/rhyperior", "ground_idle")
+                bedrock("rhyperior", "ground_idle")
             )
         )
 
@@ -44,7 +44,7 @@ class RhyperiorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0464_rhyperior/rhyperior", "ground_idle")
+                bedrock("rhyperior", "ground_idle")
             )
         )
     }
@@ -52,5 +52,5 @@ class RhyperiorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0464_rhyperior/rhyperior", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("rhyperior", "faint") else null
 }

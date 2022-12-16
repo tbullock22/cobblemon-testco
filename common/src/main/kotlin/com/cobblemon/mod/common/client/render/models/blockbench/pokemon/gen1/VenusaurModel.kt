@@ -42,7 +42,7 @@ class VenusaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
         sleep = registerPose(
             poseType = PoseType.SLEEP,
             transformTicks = 10,
-            idleAnimations = arrayOf(bedrock("0003_venusaur/venusaur", "sleep"))
+            idleAnimations = arrayOf(bedrock("venusaur", "sleep"))
         )
 
         standing = registerPose(
@@ -50,7 +50,7 @@ class VenusaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0003_venusaur/venusaur", "ground_idle")
+                bedrock("venusaur", "ground_idle")
             )
         )
 
@@ -59,8 +59,8 @@ class VenusaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0003_venusaur/venusaur", "ground_idle"),
-                bedrock("0003_venusaur/venusaur", "ground_walk")
+                bedrock("venusaur", "ground_idle"),
+                bedrock("venusaur", "ground_walk")
             )
         )
     }
@@ -68,5 +68,5 @@ class VenusaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0003_venusaur/venusaur", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("venusaur", "faint") else null
 }

@@ -36,7 +36,7 @@ class ButterfreeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
     override fun registerPoses() {
         sleep = registerPose(
             poseType = PoseType.SLEEP,
-            idleAnimations = arrayOf(bedrock("0012_butterfree/butterfree", "sleep"))
+            idleAnimations = arrayOf(bedrock("butterfree", "sleep"))
         )
 
         registerPose(
@@ -44,7 +44,7 @@ class ButterfreeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
             poseTypes = setOf(PoseType.NONE, PoseType.PROFILE, PoseType.PORTRAIT, PoseType.STAND, PoseType.HOVER, PoseType.FLOAT),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0012_butterfree/butterfree", "air_idle")
+                bedrock("butterfree", "air_idle")
             ),
             transformedParts = arrayOf(rootPart.asTransformed().addPosition(Y_AXIS, -5F))
         )
@@ -53,7 +53,7 @@ class ButterfreeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0012_butterfree/butterfree", "air_fly")
+                bedrock("butterfree", "air_fly")
             ),
             transformedParts = arrayOf(rootPart.asTransformed().addPosition(Y_AXIS, -5F))
         )

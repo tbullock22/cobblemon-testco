@@ -37,7 +37,7 @@ class MankeyModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0056_mankey/mankey", "ground_idle")
+                bedrock("mankey", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class MankeyModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0056_mankey/mankey", "ground_walk")
+                bedrock("mankey", "ground_walk")
             )
         )
     }
@@ -54,5 +54,5 @@ class MankeyModel(root: ModelPart) : PokemonPoseableModel() {
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0056_mankey/mankey", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("mankey", "faint") else null
 }

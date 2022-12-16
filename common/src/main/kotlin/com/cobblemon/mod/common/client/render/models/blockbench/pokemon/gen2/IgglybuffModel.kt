@@ -33,7 +33,7 @@ class IgglybuffModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0174_igglybuff/igglybuff", "ground_idle")
+                bedrock("igglybuff", "ground_idle")
             )
         )
 
@@ -42,7 +42,7 @@ class IgglybuffModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0174_igglybuff/igglybuff", "ground_walk")
+                bedrock("igglybuff", "ground_walk")
             )
         )
     }
@@ -50,5 +50,5 @@ class IgglybuffModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0174_igglybuff/igglybuff", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("igglybuff", "faint") else null
 }

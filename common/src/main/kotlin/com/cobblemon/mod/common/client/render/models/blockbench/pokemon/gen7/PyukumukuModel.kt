@@ -28,18 +28,18 @@ class PyukumukuModel(root: ModelPart) : PokemonPoseableModel() {
     override fun registerPoses() {
 //        sleep = registerPose(
 //            poseType = PoseType.SLEEP,
-//            idleAnimations = arrayOf(bedrock("0771_pyukumuku/pyukumuku", "sleep"))
+//            idleAnimations = arrayOf(bedrock("pyukumuku", "sleep"))
 //        )
 
         standing = registerPose(
             poseName = "standing",
             poseTypes = PoseType.ALL_POSES,// - PoseType.SLEEP,
-            idleAnimations = emptyArray()// arrayOf(bedrock("0771_pyukumuku/pyukumuku", "ground_idle"))
+            idleAnimations = emptyArray()// arrayOf(bedrock("pyukumuku", "ground_idle"))
         )
     }
 
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing)) bedrockStateful("0771_pyukumuku/pyukumuku", "faint") else null
+//    ) = if (state.isPosedIn(standing)) bedrockStateful("pyukumuku", "faint") else null
 }

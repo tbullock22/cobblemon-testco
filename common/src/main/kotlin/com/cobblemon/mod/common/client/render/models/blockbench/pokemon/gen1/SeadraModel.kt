@@ -37,7 +37,7 @@ class SeadraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0117_seadra/seadra", "ground_idle")
+                bedrock("seadra", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class SeadraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0117_seadra/seadra", "ground_walk")
+                bedrock("seadra", "ground_walk")
             )
         )
 
@@ -55,7 +55,7 @@ class SeadraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.FLOAT,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0117_seadra/seadra", "water_idle")
+                bedrock("seadra", "water_idle")
             )
         )
 
@@ -64,7 +64,7 @@ class SeadraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.SWIM,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0117_seadra/seadra", "water_swim")
+                bedrock("seadra", "water_swim")
             )
         )
     }
@@ -72,5 +72,5 @@ class SeadraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0117_seadra/seadra", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("seadra", "faint") else null
 }

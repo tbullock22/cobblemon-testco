@@ -32,7 +32,7 @@ class KakunaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override fun registerPoses() {
         sleep = registerPose(
             poseType = PoseType.SLEEP,
-            idleAnimations = arrayOf(bedrock("0014_kakuna/kakuna", "sleep"))
+            idleAnimations = arrayOf(bedrock("kakuna", "sleep"))
         )
 
         standing = registerPose(
@@ -40,7 +40,7 @@ class KakunaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = ALL_POSES - PoseType.SLEEP,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0014_kakuna/kakuna", "ground_idle")
+                bedrock("kakuna", "ground_idle")
             )
         )
     }
@@ -48,5 +48,5 @@ class KakunaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing)) bedrockStateful("0014_kakuna/kakuna", "faint") else null
+    ) = if (state.isPosedIn(standing)) bedrockStateful("kakuna", "faint") else null
 }

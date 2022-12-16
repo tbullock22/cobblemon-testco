@@ -37,7 +37,7 @@ class DewgongModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STANDING_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0087_dewgong/dewgong", "ground_idle")
+                bedrock("dewgong", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class DewgongModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.FLOAT,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0087_dewgong/dewgong", "water_idle")
+                bedrock("dewgong", "water_idle")
             )
         )
 
@@ -55,7 +55,7 @@ class DewgongModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.SWIM,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0087_dewgong/dewgong", "water_swim")
+                bedrock("dewgong", "water_swim")
             )
         )
     }
@@ -63,5 +63,5 @@ class DewgongModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0087_dewgong/dewgong", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("dewgong", "faint") else null
 }

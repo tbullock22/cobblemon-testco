@@ -69,7 +69,7 @@ class GyaradosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             condition = { !it.isTouchingWater },
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0130_gyarados/gyarados", "ground_idle"),
+                bedrock("gyarados", "ground_idle"),
                 WaveAnimation(
                     frame = this,
                     waveFunction = sineFunction(
@@ -101,7 +101,7 @@ class GyaradosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             condition = { it.isTouchingWater },
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0130_gyarados/gyarados", "surface_idle"),
+                bedrock("gyarados", "surface_idle"),
                 WaveAnimation(
                     frame = this,
                     waveFunction = sineFunction(

@@ -39,7 +39,7 @@ class KleavorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             poseTypes = PoseType.STATIONARY_POSES + PoseType.UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0900_kleavor/kleavor", "ground_idle")
+                bedrock("kleavor", "ground_idle")
             )
         )
 
@@ -48,9 +48,9 @@ class KleavorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             poseTypes = PoseType.MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0900_kleavor/kleavor", "ground_idle"),
+                bedrock("kleavor", "ground_idle"),
                 BipedWalkAnimation(this, periodMultiplier = 0.7F, amplitudeMultiplier = 0.85F)
-                //bedrock("0900_kleavor/kleavor", "ground_walk")
+                //bedrock("kleavor", "ground_walk")
             )
         )
     }
@@ -58,5 +58,5 @@ class KleavorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0900_kleavor/kleavor", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("kleavor", "faint") else null
 }

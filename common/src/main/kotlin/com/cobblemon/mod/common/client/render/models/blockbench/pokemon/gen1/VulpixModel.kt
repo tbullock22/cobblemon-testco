@@ -43,7 +43,7 @@ class VulpixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0037_vulpix/vulpix", "ground_idle")
+                //bedrock("vulpix", "ground_idle")
             )
         )
 
@@ -54,7 +54,7 @@ class VulpixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 QuadrupedWalkAnimation(this, periodMultiplier = 0.5F)
-                //bedrock("0037_vulpix/vulpix", "ground_walk")
+                //bedrock("vulpix", "ground_walk")
             )
         )
     }
@@ -62,5 +62,5 @@ class VulpixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0037_vulpix/vulpix", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("vulpix", "faint") else null
 }

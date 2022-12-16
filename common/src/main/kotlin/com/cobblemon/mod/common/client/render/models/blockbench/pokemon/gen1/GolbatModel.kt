@@ -33,7 +33,7 @@ class GolbatModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0042_golbat/golbat", "ground_idle")
+                //bedrock("golbat", "ground_idle")
             )
         )
 
@@ -42,7 +42,7 @@ class GolbatModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0042_golbat/golbat", "ground_walk")
+                //bedrock("golbat", "ground_walk")
             )
         )
     }
@@ -50,5 +50,5 @@ class GolbatModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0042_golbat/golbat", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("golbat", "faint") else null
 }

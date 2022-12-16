@@ -33,7 +33,7 @@ class GastlyModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0092_gastly/gastly", "ground_idle")
+                //bedrock("gastly", "ground_idle")
             )
         )
 
@@ -42,7 +42,7 @@ class GastlyModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0092_gastly/gastly", "ground_walk")
+                //bedrock("gastly", "ground_walk")
             )
         )
     }
@@ -50,5 +50,5 @@ class GastlyModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0092_gastly/gastly", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("gastly", "faint") else null
 }

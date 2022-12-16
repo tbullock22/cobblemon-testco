@@ -38,7 +38,7 @@ class VaporeonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0134_vaporeon/vaporeon", "ground_idle")
+                bedrock("vaporeon", "ground_idle")
             )
         )
 
@@ -48,7 +48,7 @@ class VaporeonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0134_vaporeon/vaporeon", "ground_run")
+                bedrock("vaporeon", "ground_run")
             )
         )
 
@@ -58,7 +58,7 @@ class VaporeonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0134_vaporeon/vaporeon", "water_idle")
+                bedrock("vaporeon", "water_idle")
             )
         )
 
@@ -68,7 +68,7 @@ class VaporeonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0134_vaporeon/vaporeon", "water_swim")
+                bedrock("vaporeon", "water_swim")
             )
         )
     }
@@ -76,5 +76,5 @@ class VaporeonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0134_vaporeon/vaporeon", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("vaporeon", "faint") else null
 }

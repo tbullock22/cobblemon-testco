@@ -37,7 +37,7 @@ class CaterpieModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
         sleep = registerPose(
             poseType = PoseType.SLEEP,
             transformTicks = 10,
-            idleAnimations = arrayOf(bedrock("0010_caterpie/caterpie", "sleep"))
+            idleAnimations = arrayOf(bedrock("caterpie", "sleep"))
         )
 
         standing = registerPose(
@@ -45,7 +45,7 @@ class CaterpieModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0010_caterpie/caterpie", "ground_idle")
+                bedrock("caterpie", "ground_idle")
             )
         )
 
@@ -54,7 +54,7 @@ class CaterpieModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0010_caterpie/caterpie", "ground_walk")
+                bedrock("caterpie", "ground_walk")
             )
         )
     }
@@ -62,5 +62,5 @@ class CaterpieModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0010_caterpie/caterpie", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("caterpie", "faint") else null
 }

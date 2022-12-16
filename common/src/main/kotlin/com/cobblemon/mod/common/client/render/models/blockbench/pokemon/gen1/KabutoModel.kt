@@ -33,7 +33,7 @@ class KabutoModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0140_kabuto/kabuto", "ground_idle")
+                bedrock("kabuto", "ground_idle")
             )
         )
 
@@ -42,8 +42,8 @@ class KabutoModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0140_kabuto/kabuto", "ground_idle")
-                //bedrock("0140_kabuto/kabuto", "ground_walk")
+                bedrock("kabuto", "ground_idle")
+                //bedrock("kabuto", "ground_walk")
             )
         )
     }
@@ -51,5 +51,5 @@ class KabutoModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0140_kabuto/kabuto", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("kabuto", "faint") else null
 }

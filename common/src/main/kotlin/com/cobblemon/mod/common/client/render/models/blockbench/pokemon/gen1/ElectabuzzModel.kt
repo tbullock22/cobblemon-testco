@@ -40,7 +40,7 @@ class ElectabuzzModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0125_electabuzz/electabuzz", "ground_idle")
+                bedrock("electabuzz", "ground_idle")
             )
         )
 
@@ -50,7 +50,7 @@ class ElectabuzzModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this),
                 singleBoneLook(),
-                bedrock("0125_electabuzz/electabuzz", "ground_idle")
+                bedrock("electabuzz", "ground_idle")
             )
         )
     }
@@ -58,5 +58,5 @@ class ElectabuzzModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0125_electabuzz/electabuzz", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("electabuzz", "faint") else null
 }

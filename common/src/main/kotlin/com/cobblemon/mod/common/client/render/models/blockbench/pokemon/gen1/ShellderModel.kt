@@ -32,7 +32,7 @@ class ShellderModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0090_shellder/shellder", "ground_idle")
+                bedrock("shellder", "ground_idle")
             )
         )
 
@@ -40,8 +40,8 @@ class ShellderModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0090_shellder/shellder", "ground_idle")
-                //bedrock("0090_shellder/shellder", "ground_walk")
+                bedrock("shellder", "ground_idle")
+                //bedrock("shellder", "ground_walk")
             )
         )
     }
@@ -49,5 +49,5 @@ class ShellderModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0090_shellder/shellder", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("shellder", "faint") else null
 }

@@ -35,7 +35,7 @@ class SteelixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0208_steelix/steelix", "ground_idle")
+                bedrock("steelix", "ground_idle")
             )
         )
 
@@ -44,7 +44,7 @@ class SteelixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0208_steelix/steelix", "ground_idle")
+                bedrock("steelix", "ground_idle")
             )
         )
     }
@@ -52,5 +52,5 @@ class SteelixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0208_steelix/steelix", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("steelix", "faint") else null
 }

@@ -38,7 +38,7 @@ class TangelaModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0114_tangela/tangela", "ground_idle")
+                //bedrock("tangela", "ground_idle")
             )
         )
 
@@ -48,7 +48,7 @@ class TangelaModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this, amplitudeMultiplier = 1F, periodMultiplier = 0.4F)
-                //bedrock("0114_tangela/tangela", "ground_walk")
+                //bedrock("tangela", "ground_walk")
             )
         )
     }
@@ -56,5 +56,5 @@ class TangelaModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0114_tangela/tangela", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("tangela", "faint") else null
 }

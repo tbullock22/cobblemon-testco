@@ -37,7 +37,7 @@ class ParasectModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0047_parasect/parasect", "ground_idle"),
+                bedrock("parasect", "ground_idle"),
                 singleBoneLook()
             )
         )
@@ -47,7 +47,7 @@ class ParasectModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0047_parasect/parasect", "ground_walk"),
+                bedrock("parasect", "ground_walk"),
                 singleBoneLook()
             )
         )
@@ -55,5 +55,5 @@ class ParasectModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0047_parasect/parasect", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("parasect", "faint") else null
 }

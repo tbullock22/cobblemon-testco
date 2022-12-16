@@ -36,7 +36,7 @@ class SizzlipedeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook()
-//                bedrock("0850_sizzlipede/sizzlipede", "ground_idle")
+//                bedrock("sizzlipede", "ground_idle")
             )
         )
 
@@ -45,8 +45,8 @@ class SizzlipedeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook()
-//                bedrock("0850_sizzlipede/sizzlipede", "ground_idle")
-                //bedrock("0850_sizzlipede/sizzlipede", "ground_walk")
+//                bedrock("sizzlipede", "ground_idle")
+                //bedrock("sizzlipede", "ground_walk")
             )
         )
     }
@@ -54,5 +54,5 @@ class SizzlipedeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0850_sizzlipede/sizzlipede", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("sizzlipede", "faint") else null
 }

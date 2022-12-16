@@ -33,7 +33,7 @@ class WigglytuffModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0040_wigglytuff/wigglytuff", "ground_idle")
+                bedrock("wigglytuff", "ground_idle")
             )
         )
 
@@ -42,7 +42,7 @@ class WigglytuffModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0040_wigglytuff/wigglytuff", "ground_walk")
+                bedrock("wigglytuff", "ground_walk")
             )
         )
     }
@@ -50,5 +50,5 @@ class WigglytuffModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0040_wigglytuff/wigglytuff", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("wigglytuff", "faint") else null
 }

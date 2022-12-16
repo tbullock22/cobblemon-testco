@@ -38,9 +38,8 @@ open class NBTStoreAdapter(
             val nbt = NbtIo.readCompressed(file)
             store.loadFromNBT(nbt)
             store
-        } catch (eof: EOFException) {
-            LOGGER.error("Pokémon save file for ${storeClass.simpleName} ($uuid) was corrupted. A fresh file will be created.")
-            store
+        } catch (e: Exception) {
+            return null
         }
     }
 }

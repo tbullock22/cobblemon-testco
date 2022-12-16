@@ -32,7 +32,7 @@ class CrobatModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseType = PoseType.STAND,
             idleAnimations = arrayOf(
-                bedrock("0169_crobat/crobat", "ground_idle")
+                bedrock("crobat", "ground_idle")
             )
         )
 
@@ -40,7 +40,7 @@ class CrobatModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "hover",
             poseTypes = PoseType.UI_POSES + PoseType.HOVER + PoseType.FLOAT,
             idleAnimations = arrayOf(
-                bedrock("0169_crobat/crobat", "ground_idle")
+                bedrock("crobat", "ground_idle")
             )
         )
 
@@ -48,7 +48,7 @@ class CrobatModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "fly",
             poseTypes = setOf(PoseType.FLY, PoseType.SWIM),
             idleAnimations = arrayOf(
-                bedrock("0169_crobat/crobat", "ground_walk")
+                bedrock("crobat", "ground_walk")
             )
         )
     }
@@ -56,5 +56,5 @@ class CrobatModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0169_crobat/crobat", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("crobat", "faint") else null
 }

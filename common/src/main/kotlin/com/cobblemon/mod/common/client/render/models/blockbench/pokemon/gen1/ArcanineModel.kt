@@ -43,7 +43,7 @@ class ArcanineModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0059_arcanine/arcanine", "ground_idle")
+                //bedrock("arcanine", "ground_idle")
             )
         )
 
@@ -54,7 +54,7 @@ class ArcanineModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 QuadrupedWalkAnimation(this, periodMultiplier = 0.75F, amplitudeMultiplier = 1F)
-                //bedrock("0059_arcanine/arcanine", "ground_walk")
+                //bedrock("arcanine", "ground_walk")
             )
         )
     }
@@ -62,5 +62,5 @@ class ArcanineModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0059_arcanine/arcanine", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("arcanine", "faint") else null
 }

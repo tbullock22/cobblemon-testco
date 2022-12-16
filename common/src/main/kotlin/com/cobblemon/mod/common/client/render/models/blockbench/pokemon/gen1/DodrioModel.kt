@@ -39,7 +39,7 @@ class DodrioModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
 //                singleBoneLook()
-                bedrock("0085_dodrio/dodrio", "ground_idle")
+                bedrock("dodrio", "ground_idle")
             )
         )
 
@@ -49,9 +49,9 @@ class DodrioModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this, periodMultiplier = 0.9F),
-                bedrock("0085_dodrio/dodrio", "ground_idle")
+                bedrock("dodrio", "ground_idle")
 //                singleBoneLook()
-                //bedrock("0085_dodrio/dodrio", "ground_walk")
+                //bedrock("dodrio", "ground_walk")
             )
         )
     }
@@ -59,5 +59,5 @@ class DodrioModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0085_dodrio/dodrio", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("dodrio", "faint") else null
 }

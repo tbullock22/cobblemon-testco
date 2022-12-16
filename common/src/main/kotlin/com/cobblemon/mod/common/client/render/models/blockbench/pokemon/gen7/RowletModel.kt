@@ -38,7 +38,7 @@ class RowletModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0722_rowlet/rowlet", "ground_idle")
+                bedrock("rowlet", "ground_idle")
             )
         )
 
@@ -46,9 +46,9 @@ class RowletModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0722_rowlet/rowlet", "ground_idle"),
+                bedrock("rowlet", "ground_idle"),
                 BipedWalkAnimation(this, periodMultiplier = 0.8F, amplitudeMultiplier = 0.7F)
-                //bedrock("0722_rowlet/rowlet", "ground_walk")
+                //bedrock("rowlet", "ground_walk")
             )
         )
     }
@@ -56,5 +56,5 @@ class RowletModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0722_rowlet/rowlet", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("rowlet", "faint") else null
 }

@@ -5,9 +5,13 @@
 - Reworked customisation of models, textures, and animations to make fakemon very easy to create.
 - Added 'nature' and 'pokeball' options to commands such as /spawnpokemon and /givepokemon.
 - Added support for datapack spawn files and spawn file presets.
+- Added water surface spawning for Pokémon like Lapras.
 
 ### Changes
 - Changed the healer advancements to make the healing machine's mechanics more obvious.
+- Reinforced party and PC saving to make data corruption from crashes less bad.
+- Added a config option for whether the starter config will be exported, making it more maintainable as we add starter Pokémon.
+- Changed the default Apricorn seed chance config value from 6% to 10%
 
 ### Fixes
 - Fixed an incompatibility with [Porting Lib](https://github.com/Fabricators-of-Create/Porting-Lib) used by Fabric ports of mods such as Create or Twilight Forest.
@@ -15,6 +19,9 @@
 - Fixed some animations on snake-type Pokémon being mega slow.
 - Fixed a typo in the English name for Calcium. Calcuim.
 - Fixed Pokémon gradually becoming rarer around you if you move long distances.
+- Fixed shoulder mount crash on Fabric.
+- Fixed a rare issue where chunks would take a really long time to generate.
+- Fixed a singleplayer bug where battles wouldn't work after leaving and joining a world.
 
 ## 1.1.1 (November 27th, 2022)
 

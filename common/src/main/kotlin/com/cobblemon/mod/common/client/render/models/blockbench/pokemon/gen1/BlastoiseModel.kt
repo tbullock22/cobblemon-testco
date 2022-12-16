@@ -51,7 +51,7 @@ class BlastoiseModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
         sleep = registerPose(
             poseType = PoseType.SLEEP,
             transformTicks = 10,
-            idleAnimations = arrayOf(bedrock("0009_blastoise/blastoise", "sleep"))
+            idleAnimations = arrayOf(bedrock("blastoise", "sleep"))
         )
 
         standing = registerPose(
@@ -60,7 +60,7 @@ class BlastoiseModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0009_blastoise/blastoise", "ground_idle")
+                bedrock("blastoise", "ground_idle")
             )
         )
 
@@ -69,7 +69,7 @@ class BlastoiseModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseTypes = setOf(PoseType.FLOAT),
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0009_blastoise/blastoise", "water_idle"),
+                bedrock("blastoise", "water_idle"),
                 singleBoneLook()
             )
         )
@@ -80,7 +80,7 @@ class BlastoiseModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0009_blastoise/blastoise", "water_swim")
+                bedrock("blastoise", "water_swim")
             )
         )
 
@@ -89,7 +89,7 @@ class BlastoiseModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0009_blastoise/blastoise", "ground_walk")
+                bedrock("blastoise", "ground_walk")
             )
         )
     }
@@ -97,5 +97,5 @@ class BlastoiseModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0009_blastoise/blastoise", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("blastoise", "faint") else null
 }

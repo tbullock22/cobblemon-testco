@@ -41,7 +41,7 @@ class SawsbuckModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             poseTypes = PoseType.STATIONARY_POSES + PoseType.UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-//                bedrock("0586_sawsbuck/sawsbuck", "ground_idle")
+//                bedrock("sawsbuck", "ground_idle")
             )
         )
 
@@ -51,7 +51,7 @@ class SawsbuckModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 QuadrupedWalkAnimation(this, periodMultiplier = 0.9F, amplitudeMultiplier = 0.9F)
-//                bedrock("0586_sawsbuck/sawsbuck", "ground_walk")
+//                bedrock("sawsbuck", "ground_walk")
             )
         )
     }
@@ -59,5 +59,5 @@ class SawsbuckModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0586_sawsbuck/sawsbuck", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("sawsbuck", "faint") else null
 }

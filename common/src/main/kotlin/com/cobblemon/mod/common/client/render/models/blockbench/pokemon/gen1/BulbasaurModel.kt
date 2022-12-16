@@ -38,7 +38,7 @@ class BulbasaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Qua
         sleep = registerPose(
             poseType = PoseType.SLEEP,
             transformTicks = 10,
-            idleAnimations = arrayOf(bedrock("0001_bulbasaur/bulbasaur", "sleep"))
+            idleAnimations = arrayOf(bedrock("bulbasaur", "sleep"))
         )
 
         standing = registerPose(
@@ -47,7 +47,7 @@ class BulbasaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Qua
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0001_bulbasaur/bulbasaur", "ground_idle")
+                bedrock("bulbasaur", "ground_idle")
             )
         )
 
@@ -57,7 +57,7 @@ class BulbasaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Qua
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0001_bulbasaur/bulbasaur", "ground_walk")
+                bedrock("bulbasaur", "ground_walk")
             )
         )
     }
@@ -65,5 +65,5 @@ class BulbasaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Qua
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0001_bulbasaur/bulbasaur", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("bulbasaur", "faint") else null
 }

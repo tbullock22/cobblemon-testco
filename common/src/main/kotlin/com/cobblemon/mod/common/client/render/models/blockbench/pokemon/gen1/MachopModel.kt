@@ -36,7 +36,7 @@ class MachopModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0066_machop/machop", "ground_idle")
+                bedrock("machop", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class MachopModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0066_machop/machop", "ground_walk")
+                bedrock("machop", "ground_walk")
             )
         )
     }
@@ -54,6 +54,6 @@ class MachopModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0066_machop/machop", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("machop", "faint") else null
     */
 }

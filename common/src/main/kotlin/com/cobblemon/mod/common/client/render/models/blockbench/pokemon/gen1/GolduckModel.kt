@@ -37,7 +37,7 @@ class GolduckModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0055_golduck/golduck", "ground_idle")
+                bedrock("golduck", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class GolduckModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0055_golduck/golduck", "ground_walk")
+                bedrock("golduck", "ground_walk")
             )
         )
 
@@ -55,7 +55,7 @@ class GolduckModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.FLOAT,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0055_golduck/golduck", "water_idle")
+                bedrock("golduck", "water_idle")
             )
         )
 
@@ -64,7 +64,7 @@ class GolduckModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.SWIM,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0055_golduck/golduck", "water_swim")
+                bedrock("golduck", "water_swim")
             )
         )
     }
@@ -72,5 +72,5 @@ class GolduckModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0055_golduck/golduck", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("golduck", "faint") else null
 }

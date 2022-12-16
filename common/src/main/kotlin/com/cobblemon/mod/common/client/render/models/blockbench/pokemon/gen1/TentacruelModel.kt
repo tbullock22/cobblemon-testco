@@ -34,7 +34,7 @@ class TentacruelModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
-                bedrock("0073_tentacruel/tentacruel", "ground_idle")
+                bedrock("tentacruel", "ground_idle")
             )
         )
 
@@ -42,8 +42,8 @@ class TentacruelModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
-                bedrock("0073_tentacruel/tentacruel", "ground_idle")
-                //bedrock("0073_tentacruel/tentacruel", "ground_walk")
+                bedrock("tentacruel", "ground_idle")
+                //bedrock("tentacruel", "ground_walk")
             )
         )
 
@@ -51,7 +51,7 @@ class TentacruelModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "float",
             poseType = PoseType.FLOAT,
             idleAnimations = arrayOf(
-                bedrock("0073_tentacruel/tentacruel", "water_idle")
+                bedrock("tentacruel", "water_idle")
             )
         )
 
@@ -59,7 +59,7 @@ class TentacruelModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "swim",
             poseType = PoseType.SWIM,
             idleAnimations = arrayOf(
-                bedrock("0073_tentacruel/tentacruel", "water_swim")
+                bedrock("tentacruel", "water_swim")
             )
         )
     }
@@ -67,5 +67,5 @@ class TentacruelModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0073_tentacruel/tentacruel", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("tentacruel", "faint") else null
 }

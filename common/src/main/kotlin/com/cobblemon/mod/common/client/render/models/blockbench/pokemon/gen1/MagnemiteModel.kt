@@ -33,7 +33,7 @@ class MagnemiteModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0081_magnemite/magnemite", "ground_idle")
+                //bedrock("magnemite", "ground_idle")
             )
         )
 
@@ -42,7 +42,7 @@ class MagnemiteModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0081_magnemite/magnemite", "ground_walk")
+                //bedrock("magnemite", "ground_walk")
             )
         )
     }
@@ -50,5 +50,5 @@ class MagnemiteModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0081_magnemite/magnemite", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("magnemite", "faint") else null
 }

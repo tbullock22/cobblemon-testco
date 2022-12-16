@@ -40,7 +40,7 @@ class HypnoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFr
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0097_hypno/hypno", "ground_idle")
+                bedrock("hypno", "ground_idle")
             )
         )
 
@@ -50,8 +50,8 @@ class HypnoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFr
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this, periodMultiplier = 1.1F),
                 singleBoneLook(),
-                bedrock("0097_hypno/hypno", "ground_idle")
-                //bedrock("0097_hypno/hypno", "ground_walk")
+                bedrock("hypno", "ground_idle")
+                //bedrock("hypno", "ground_walk")
             )
         )
     }
@@ -59,5 +59,5 @@ class HypnoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFr
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0097_hypno/hypno", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("hypno", "faint") else null
 }

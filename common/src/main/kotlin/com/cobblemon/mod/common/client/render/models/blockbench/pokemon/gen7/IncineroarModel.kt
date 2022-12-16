@@ -45,7 +45,7 @@ class IncineroarModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0727_incineroar/incineroar", "ground_idle")
+                bedrock("incineroar", "ground_idle")
             )
         )
 
@@ -54,10 +54,10 @@ class IncineroarModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0727_incineroar/incineroar", "ground_idle"),
+                bedrock("incineroar", "ground_idle"),
                 BipedWalkAnimation(this, periodMultiplier = 0.6F, amplitudeMultiplier = 0.9F),
                 BimanualSwingAnimation(this, swingPeriodMultiplier = 0.6F, amplitudeMultiplier = 0.9F)
-                //bedrock("0727_incineroar/incineroar", "ground_walk")
+                //bedrock("incineroar", "ground_walk")
             )
         )
     }
@@ -65,5 +65,5 @@ class IncineroarModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0727_incineroar/incineroar", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("incineroar", "faint") else null
 }

@@ -41,7 +41,7 @@ class CuboneModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0104_cubone/cubone", "ground_idle")
+                bedrock("cubone", "ground_idle")
             )
         )
 
@@ -52,8 +52,8 @@ class CuboneModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this, periodMultiplier = 1.1F, amplitudeMultiplier = 1.15f),
                 singleBoneLook(),
-                bedrock("0104_cubone/cubone", "ground_idle")
-                //bedrock("0104_cubone/cubone", "ground_walk")
+                bedrock("cubone", "ground_idle")
+                //bedrock("cubone", "ground_walk")
             )
         )
     }
@@ -61,5 +61,5 @@ class CuboneModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0104_cubone/cubone", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("cubone", "faint") else null
 }

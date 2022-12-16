@@ -36,7 +36,7 @@ class ZapdosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0145_zapdos/zapdos", "ground_idle")
+                bedrock("zapdos", "ground_idle")
             )
         )
 
@@ -45,7 +45,7 @@ class ZapdosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.HOVER + PoseType.FLOAT,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0145_zapdos/zapdos", "air_idle")
+                bedrock("zapdos", "air_idle")
             )
         )
 
@@ -54,7 +54,7 @@ class ZapdosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = setOf(PoseType.FLY, PoseType.SWIM),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0145_zapdos/zapdos", "air_fly")
+                bedrock("zapdos", "air_fly")
             )
         )
     }
@@ -63,5 +63,5 @@ class ZapdosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0145_zapdos/zapdos", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("zapdos", "faint") else null
 }

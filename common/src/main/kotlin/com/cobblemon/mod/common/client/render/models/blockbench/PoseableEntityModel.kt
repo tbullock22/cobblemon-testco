@@ -274,23 +274,21 @@ abstract class PoseableEntityModel<T : Entity>(
     )
 
     fun bedrock(
-        file: String,
+        animationGroup: String,
         animation: String,
-        fileSuffix: String = ".animation.json",
-        animationPrefix: String = "animation.${file.substringAfterLast("/")}"
+        animationPrefix: String = "animation.$animationGroup"
     ) = BedrockStatelessAnimation<T>(
         this,
-        BedrockAnimationRepository.getAnimation(file + fileSuffix, "$animationPrefix.$animation")
+        BedrockAnimationRepository.getAnimation(animationGroup, "$animationPrefix.$animation")
     )
 
     fun bedrockStateful(
-        file: String,
+        animationGroup: String,
         animation: String,
-        fileSuffix: String = ".animation.json",
-        animationPrefix: String = "animation.${file.substringAfterLast("/")}",
+        animationPrefix: String = "animation.$animationGroup",
         preventsIdleCheck: (T?, PoseableEntityState<T>, StatelessAnimation<T, *>) -> Boolean = { _, _, _ -> true }
     ) = BedrockStatefulAnimation(
-        BedrockAnimationRepository.getAnimation(file + fileSuffix, "$animationPrefix.$animation"),
+        BedrockAnimationRepository.getAnimation(animationGroup, "$animationPrefix.$animation"),
         preventsIdleCheck
     )
 

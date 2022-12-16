@@ -290,7 +290,7 @@ class PokemonEntity(
             navigation = PokemonNavigation(world, this)
             goalSelector.clear()
             goalSelector.add(0, object : Goal() {
-                override fun canStart() = this@PokemonEntity.phasingTargetId.get() != -1 || pokemon.status?.status == Statuses.SLEEP
+                override fun canStart() = this@PokemonEntity.phasingTargetId.get() != -1 || pokemon.status?.status == Statuses.SLEEP || deathEffectsStarted.get()
                 override fun getControls() = EnumSet.allOf(Control::class.java)
             })
 

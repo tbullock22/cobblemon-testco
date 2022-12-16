@@ -6,10 +6,12 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-package com.cobblemon.mod.common.api.spawning.condition
+package com.cobblemon.mod.common.api.spawning
+
+import com.cobblemon.mod.common.api.spawning.condition.SpawningCondition
 
 /**
- * A range of time ticks for a world to be used in [SpawningCondition]s. A time range
+ * A range of time ticks for a world mainly to be used in [SpawningCondition]s. A time range
  * is defined as any number of tick ranges. For example, you can define a time range
  * as being between 0 and 12000 ticks or 13000 and 14000 ticks just for a single time
  * range. This is to deal with the limitation that Minecraft days go from 0 ticks to
@@ -19,14 +21,14 @@ package com.cobblemon.mod.common.api.spawning.condition
  * your definitions.
  *
  * If you want a time range to be referenced by name in [SpawningCondition]s, you need
- * to register it, by name, in [ranges].
+ * to register it, by name, in [timeRanges].
  *
  * @author Hiroku
  * @since January 26th, 2022
  */
-class TimeRange() {
+class TimeRange : IntRanges {
     companion object {
-        val ranges = mutableMapOf(
+        val timeRanges = mutableMapOf(
             "any" to TimeRange(0..23999),
             "day" to TimeRange(23460..23999, 0..12541),
             "night" to TimeRange(12542..23459),
@@ -40,11 +42,6 @@ class TimeRange() {
         )
     }
 
-    constructor(vararg ranges: IntRange) : this() {
-        this.ranges = ranges.toMutableList()
-    }
-
-    var ranges = mutableListOf<IntRange>()
-
-    operator fun contains(timeTicks: Int) = ranges.any { timeTicks in it }
+    constructor() : super()
+    constructor(vararg ranges: IntRange) : super(*ranges)
 }

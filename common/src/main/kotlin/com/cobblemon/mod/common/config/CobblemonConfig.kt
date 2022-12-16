@@ -92,6 +92,9 @@ class CobblemonConfig {
     @NodeCategory(Category.Spawning)
     var exportSpawnConfig = false
 
+    @NodeCategory(Category.Starter)
+    var exportStarterConfig = false
+
     @NodeCategory(Category.Battles)
     var autoUpdateShowdown = true
 
@@ -148,6 +151,6 @@ class CobblemonConfig {
     var shinyRate = 8192F
 
     @NodeCategory(Category.World)
-    var apricornSeedChance = 0.06
+    var apricornSeedChance = 0.1
 
 }

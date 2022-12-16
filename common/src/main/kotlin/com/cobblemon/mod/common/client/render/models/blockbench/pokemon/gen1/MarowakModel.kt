@@ -40,7 +40,7 @@ class MarowakModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0105_marowak/marowak", "ground_idle")
+                bedrock("marowak", "ground_idle")
             )
         )
 
@@ -50,8 +50,8 @@ class MarowakModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this, periodMultiplier = 0.9F, amplitudeMultiplier = 1.1f),
                 singleBoneLook(),
-                bedrock("0105_marowak/marowak", "ground_idle")
-                //bedrock("0105_marowak/marowak", "ground_walk")
+                bedrock("marowak", "ground_idle")
+                //bedrock("marowak", "ground_walk")
             )
         )
     }
@@ -59,5 +59,5 @@ class MarowakModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0105_marowak/marowak", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("marowak", "faint") else null
 }

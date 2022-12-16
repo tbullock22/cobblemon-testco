@@ -35,7 +35,7 @@ class MukModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0089_muk/muk", "ground_idle")
+                bedrock("muk", "ground_idle")
             )
         )
 
@@ -44,8 +44,8 @@ class MukModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0089_muk/muk", "ground_idle")
-                //bedrock("0089_muk/muk", "ground_walk")
+                bedrock("muk", "ground_idle")
+                //bedrock("muk", "ground_walk")
             )
         )
     }
@@ -53,5 +53,5 @@ class MukModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0089_muk/muk", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("muk", "faint") else null
 }

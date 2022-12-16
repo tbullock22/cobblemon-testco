@@ -8,8 +8,6 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1
 
-import com.cobblemon.mod.common.client.render.models.blockbench.animation.BipedWalkAnimation
-import com.cobblemon.mod.common.client.render.models.blockbench.frame.BipedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
@@ -17,11 +15,8 @@ import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
-class PinsirModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
+class PinsirModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("pinsir")
-
-    override val leftLeg = getPart("leg_left")
-    override val rightLeg = getPart("leg_right")
 
     override val portraitScale = 1.0F
     override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
@@ -38,7 +33,7 @@ class PinsirModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0127_pinsir/pinsir", "ground_idle")
+                bedrock("pinsir", "ground_idle")
             )
         )
 
@@ -47,8 +42,7 @@ class PinsirModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                BipedWalkAnimation(this),
-                bedrock("0127_pinsir/pinsir", "ground_walk")
+                bedrock("pinsir", "ground_walk")
             )
         )
     }
@@ -56,5 +50,5 @@ class PinsirModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0127_pinsir/pinsir", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("pinsir", "faint") else null
 }

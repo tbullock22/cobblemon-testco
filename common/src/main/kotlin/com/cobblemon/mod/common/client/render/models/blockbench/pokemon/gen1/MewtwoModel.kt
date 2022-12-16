@@ -37,7 +37,7 @@ class MewtwoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0150_mewtwo/mewtwo", "ground_idle")
+                bedrock("mewtwo", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class MewtwoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0150_mewtwo/mewtwo", "ground_idle")
+                bedrock("mewtwo", "ground_idle")
             )
         )
 
@@ -55,7 +55,7 @@ class MewtwoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = setOf(PoseType.FLOAT, PoseType.HOVER),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0150_mewtwo/mewtwo", "air_idle")
+                bedrock("mewtwo", "air_idle")
             )
         )
 
@@ -64,7 +64,7 @@ class MewtwoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = setOf(PoseType.FLY, PoseType.SWIM),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0150_mewtwo/mewtwo", "air_fly")
+                bedrock("mewtwo", "air_fly")
             )
         )
     }
@@ -72,5 +72,5 @@ class MewtwoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0150_mewtwo/mewtwo", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("mewtwo", "faint") else null
 }

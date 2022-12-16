@@ -35,7 +35,7 @@ class MimejrModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0439_mimejr/mimejr", "ground_idle")
+                bedrock("mimejr", "ground_idle")
             )
         )
 
@@ -44,7 +44,7 @@ class MimejrModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0439_mimejr/mimejr", "ground_idle")
+                bedrock("mimejr", "ground_idle")
             )
         )
     }
@@ -52,5 +52,5 @@ class MimejrModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0439_mimejr/mimejr", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("mimejr", "faint") else null
 }

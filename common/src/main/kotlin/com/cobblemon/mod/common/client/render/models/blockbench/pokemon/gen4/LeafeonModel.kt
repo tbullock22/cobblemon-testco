@@ -36,7 +36,7 @@ class LeafeonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0470_leafeon/leafeon", "ground_idle")
+                bedrock("leafeon", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class LeafeonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0470_leafeon/leafeon", "ground_run")
+                bedrock("leafeon", "ground_run")
             )
         )
     }
@@ -54,5 +54,5 @@ class LeafeonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0470_leafeon/leafeon", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("leafeon", "faint") else null
 }

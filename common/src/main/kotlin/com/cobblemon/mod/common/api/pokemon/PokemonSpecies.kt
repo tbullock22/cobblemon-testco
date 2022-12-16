@@ -32,7 +32,7 @@ import com.cobblemon.mod.common.api.pokemon.experience.ExperienceGroupAdapter
 import com.cobblemon.mod.common.api.pokemon.moves.Learnset
 import com.cobblemon.mod.common.api.pokemon.stats.Stat
 import com.cobblemon.mod.common.api.reactive.SimpleObservable
-import com.cobblemon.mod.common.api.spawning.condition.TimeRange
+import com.cobblemon.mod.common.api.spawning.TimeRange
 import com.cobblemon.mod.common.api.types.ElementalType
 import com.cobblemon.mod.common.api.types.ElementalTypes
 import com.cobblemon.mod.common.api.types.adapters.ElementalTypeAdapter
@@ -51,11 +51,11 @@ import com.cobblemon.mod.common.util.adapters.DropEntryAdapter
 import com.cobblemon.mod.common.util.adapters.EggGroupAdapter
 import com.cobblemon.mod.common.util.adapters.IdentifierAdapter
 import com.cobblemon.mod.common.util.adapters.IntRangeAdapter
+import com.cobblemon.mod.common.util.adapters.IntRangesAdapter
 import com.cobblemon.mod.common.util.adapters.ItemLikeConditionAdapter
 import com.cobblemon.mod.common.util.adapters.LazySetAdapter
 import com.cobblemon.mod.common.util.adapters.LearnsetAdapter
 import com.cobblemon.mod.common.util.adapters.NbtCompoundAdapter
-import com.cobblemon.mod.common.util.adapters.TimeRangeAdapter
 import com.cobblemon.mod.common.util.adapters.pokemonPropertiesShortAdapter
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.google.common.collect.HashBasedTable
@@ -64,7 +64,6 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import java.io.File
 import java.nio.file.Files
-import kotlin.io.path.Path
 import kotlin.reflect.KProperty
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityDimensions
@@ -99,7 +98,7 @@ object PokemonSpecies : JsonDataRegistry<Species> {
         .registerTypeAdapter(IntRange::class.java, IntRangeAdapter)
         .registerTypeAdapter(PokemonProperties::class.java, pokemonPropertiesShortAdapter)
         .registerTypeAdapter(Identifier::class.java, IdentifierAdapter)
-        .registerTypeAdapter(TimeRange::class.java, TimeRangeAdapter)
+        .registerTypeAdapter(TimeRange::class.java, IntRangesAdapter(TimeRange.timeRanges) { TimeRange(*it) })
         .registerTypeAdapter(ItemDropMethod::class.java, ItemDropMethod.adapter)
         .registerTypeAdapter(SleepDepth::class.java, SleepDepth.adapter)
         .registerTypeAdapter(DropEntry::class.java, DropEntryAdapter)

@@ -41,7 +41,7 @@ class DeerlingModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             poseTypes = PoseType.STATIONARY_POSES + PoseType.UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-//                bedrock("0585_deerling/deerling", "ground_idle")
+//                bedrock("deerling", "ground_idle")
             )
         )
 
@@ -51,7 +51,7 @@ class DeerlingModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 QuadrupedWalkAnimation(this, periodMultiplier = 0.8F, amplitudeMultiplier = 0.8F)
-//                bedrock("0585_deerling/deerling", "ground_walk")
+//                bedrock("deerling", "ground_walk")
             )
         )
     }
@@ -59,5 +59,5 @@ class DeerlingModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0585_deerling/deerling", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("deerling", "faint") else null
 }

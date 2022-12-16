@@ -40,7 +40,7 @@ class MamoswineModel(root: ModelPart) : PokemonPoseableModel(), QuadrupedFrame {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                //bedrock("0473_mamoswine/mamoswine", "ground_idle")
+                //bedrock("mamoswine", "ground_idle")
             )
         )
 
@@ -49,7 +49,7 @@ class MamoswineModel(root: ModelPart) : PokemonPoseableModel(), QuadrupedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 QuadrupedWalkAnimation(this, periodMultiplier = 0.6F, amplitudeMultiplier = 0.9F)
-                //bedrock("0473_mamoswine/mamoswine", "ground_walk")
+                //bedrock("mamoswine", "ground_walk")
             )
         )
     }
@@ -57,5 +57,5 @@ class MamoswineModel(root: ModelPart) : PokemonPoseableModel(), QuadrupedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0473_mamoswine/mamoswine", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("mamoswine", "faint") else null
 }

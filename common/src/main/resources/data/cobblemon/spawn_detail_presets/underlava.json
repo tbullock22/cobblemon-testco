@@ -1,6 +1,6 @@
 {
   "context": "submerged",
   "condition": {
-    "fluidBlock": "lava"
+    "fluid": "#minecraft:lava"
   }
 }

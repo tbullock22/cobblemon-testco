@@ -36,7 +36,7 @@ class HitmontopModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0237_hitmontop/hitmontop", "ground_idle")
+                bedrock("hitmontop", "ground_idle")
             )
         )
 
@@ -45,7 +45,7 @@ class HitmontopModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0237_hitmontop/hitmontop", "ground_idle")
+                bedrock("hitmontop", "ground_idle")
             )
         )
     }
@@ -53,5 +53,5 @@ class HitmontopModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0237_hitmontop/hitmontop", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("hitmontop", "faint") else null
 }

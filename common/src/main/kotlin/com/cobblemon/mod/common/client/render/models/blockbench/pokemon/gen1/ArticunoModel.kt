@@ -37,7 +37,7 @@ class ArticunoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0144_articuno/articuno", "ground_idle")
+                bedrock("articuno", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class ArticunoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0144_articuno/articuno", "ground_idle")
+                bedrock("articuno", "ground_idle")
             )
         )
 
@@ -55,7 +55,7 @@ class ArticunoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.HOVER + PoseType.FLOAT,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0144_articuno/articuno", "air_idle")
+                bedrock("articuno", "air_idle")
             )
         )
 
@@ -64,7 +64,7 @@ class ArticunoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = setOf(PoseType.FLY, PoseType.SWIM),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0144_articuno/articuno", "air_fly")
+                bedrock("articuno", "air_fly")
             )
         )
     }
@@ -72,5 +72,5 @@ class ArticunoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0144_articuno/articuno", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("articuno", "faint") else null
 }

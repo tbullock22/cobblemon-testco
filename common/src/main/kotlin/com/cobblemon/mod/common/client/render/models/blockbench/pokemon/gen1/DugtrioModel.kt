@@ -29,18 +29,18 @@ class DugtrioModel(root: ModelPart) : PokemonPoseableModel() {
         registerPose(
             poseName = "stand",
             poseTypes = STATIONARY_POSES + UI_POSES,
-            idleAnimations = arrayOf(bedrock("0051_dugtrio/dugtrio", "ground_idle"))
+            idleAnimations = arrayOf(bedrock("dugtrio", "ground_idle"))
         )
 
         registerPose(
             poseName = "walk",
             poseTypes = MOVING_POSES,
-            idleAnimations = arrayOf(bedrock("0051_dugtrio/dugtrio", "ground_walk"))
+            idleAnimations = arrayOf(bedrock("dugtrio", "ground_walk"))
         )
     }
 
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = bedrockStateful("0051_dugtrio/dugtrio", "faint")
+    ) = bedrockStateful("dugtrio", "faint")
 }

@@ -44,7 +44,7 @@ class RaticateModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Eare
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0020_raticate/raticate", "ground_idle")
+                bedrock("raticate", "ground_idle")
             )
         )
         walk = registerPose(
@@ -52,7 +52,7 @@ class RaticateModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Eare
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0020_raticate/raticate", "ground_walk")
+                bedrock("raticate", "ground_walk")
             )
         )
     }
@@ -60,5 +60,5 @@ class RaticateModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Eare
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = bedrockStateful("0020_raticate/raticate", "faint")
+    ) = bedrockStateful("raticate", "faint")
 }

@@ -41,7 +41,7 @@ class PrinplupModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0394_prinplup/prinplup", "ground_idle")
+                bedrock("prinplup", "ground_idle")
             )
         )
 
@@ -50,9 +50,9 @@ class PrinplupModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0394_prinplup/prinplup", "ground_idle"),
+                bedrock("prinplup", "ground_idle"),
                 BipedWalkAnimation(this, periodMultiplier = 0.75F, amplitudeMultiplier = 0.8F)
-                //bedrock("0394_prinplup/prinplup", "ground_walk")
+                //bedrock("prinplup", "ground_walk")
             )
         )
     }
@@ -60,5 +60,5 @@ class PrinplupModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0394_prinplup/prinplup", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("prinplup", "faint") else null
 }

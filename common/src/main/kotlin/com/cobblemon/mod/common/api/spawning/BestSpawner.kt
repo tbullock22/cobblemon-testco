@@ -15,17 +15,20 @@ import com.cobblemon.mod.common.api.spawning.condition.BasicSpawningCondition
 import com.cobblemon.mod.common.api.spawning.condition.GroundedSpawningCondition
 import com.cobblemon.mod.common.api.spawning.condition.SpawningCondition
 import com.cobblemon.mod.common.api.spawning.condition.SubmergedSpawningCondition
+import com.cobblemon.mod.common.api.spawning.condition.SurfaceSpawningCondition
 import com.cobblemon.mod.common.api.spawning.context.AreaContextResolver
 import com.cobblemon.mod.common.api.spawning.context.GroundedSpawningContext
 import com.cobblemon.mod.common.api.spawning.context.LavafloorSpawningContext
 import com.cobblemon.mod.common.api.spawning.context.SeafloorSpawningContext
 import com.cobblemon.mod.common.api.spawning.context.SpawningContext
 import com.cobblemon.mod.common.api.spawning.context.SubmergedSpawningContext
+import com.cobblemon.mod.common.api.spawning.context.SurfaceSpawningContext
 import com.cobblemon.mod.common.api.spawning.context.calculators.GroundedSpawningContextCalculator
 import com.cobblemon.mod.common.api.spawning.context.calculators.LavafloorSpawningContextCalculator
 import com.cobblemon.mod.common.api.spawning.context.calculators.SeafloorSpawningContextCalculator
 import com.cobblemon.mod.common.api.spawning.context.calculators.SpawningContextCalculator
 import com.cobblemon.mod.common.api.spawning.context.calculators.SubmergedSpawningContextCalculator
+import com.cobblemon.mod.common.api.spawning.context.calculators.SurfaceSpawningContextCalculator
 import com.cobblemon.mod.common.api.spawning.detail.PokemonSpawnDetail
 import com.cobblemon.mod.common.api.spawning.detail.SpawnAction
 import com.cobblemon.mod.common.api.spawning.detail.SpawnDetail
@@ -33,7 +36,6 @@ import com.cobblemon.mod.common.api.spawning.influence.SpawningInfluence
 import com.cobblemon.mod.common.api.spawning.preset.BasicSpawnDetailPreset
 import com.cobblemon.mod.common.api.spawning.preset.BestSpawnerConfig
 import com.cobblemon.mod.common.api.spawning.preset.PokemonSpawnDetailPreset
-import com.cobblemon.mod.common.api.spawning.preset.SpawnDetailPreset
 import com.cobblemon.mod.common.api.spawning.prospecting.SpawningProspector
 import com.cobblemon.mod.common.api.spawning.selection.SpawningSelector
 import com.cobblemon.mod.common.api.spawning.spawner.AreaSpawner
@@ -44,7 +46,6 @@ import com.cobblemon.mod.common.api.spawning.spawner.Spawner
 import com.cobblemon.mod.common.api.spawning.spawner.TickingSpawner
 import com.cobblemon.mod.common.entity.pokemon.CobblemonAgingDespawner
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
-import net.minecraft.util.Identifier
 
 /**
  * A grouping of all the overarching behaviours of the Best Spawner system. This is a convenient accessor to
@@ -89,17 +90,20 @@ object BestSpawner {
         SpawningCondition.register(AreaSpawningCondition.NAME, AreaSpawningCondition::class.java)
         SpawningCondition.register(SubmergedSpawningCondition.NAME, SubmergedSpawningCondition::class.java)
         SpawningCondition.register(GroundedSpawningCondition.NAME, GroundedSpawningCondition::class.java)
+        SpawningCondition.register(SurfaceSpawningCondition.NAME, SurfaceSpawningCondition::class.java)
 
         LOGGER.info("Loaded ${SpawningCondition.conditionTypes.size} spawning condition types.")
         SpawningContextCalculator.register(GroundedSpawningContextCalculator)
         SpawningContextCalculator.register(SeafloorSpawningContextCalculator)
         SpawningContextCalculator.register(LavafloorSpawningContextCalculator)
         SpawningContextCalculator.register(SubmergedSpawningContextCalculator)
+        SpawningContextCalculator.register(SurfaceSpawningContextCalculator)
 
         SpawningContext.register(name = "grounded", clazz = GroundedSpawningContext::class.java, defaultCondition = GroundedSpawningCondition.NAME)
         SpawningContext.register(name = "seafloor", clazz = SeafloorSpawningContext::class.java, defaultCondition = GroundedSpawningCondition.NAME)
         SpawningContext.register(name = "lavafloor", clazz = LavafloorSpawningContext::class.java, defaultCondition = GroundedSpawningCondition.NAME)
         SpawningContext.register(name = "submerged", clazz = SubmergedSpawningContext::class.java, defaultCondition = SubmergedSpawningCondition.NAME)
+        SpawningContext.register(name = "surface", clazz = SurfaceSpawningContext::class.java, defaultCondition = SurfaceSpawningCondition.NAME)
 
         LOGGER.info("Loaded ${SpawningContext.contexts.size} spawning context types.")
 

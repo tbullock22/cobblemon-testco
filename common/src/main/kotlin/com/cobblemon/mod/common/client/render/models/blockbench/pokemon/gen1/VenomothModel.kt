@@ -35,7 +35,7 @@ class VenomothModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0049_venomoth/venomoth", "ground_idle")
+                bedrock("venomoth", "ground_idle")
             )
         )
 
@@ -44,7 +44,7 @@ class VenomothModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0049_venomoth/venomoth", "ground_walk")
+                bedrock("venomoth", "ground_walk")
             )
         )
     }
@@ -52,5 +52,5 @@ class VenomothModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0049_venomoth/venomoth", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("venomoth", "faint") else null
 }

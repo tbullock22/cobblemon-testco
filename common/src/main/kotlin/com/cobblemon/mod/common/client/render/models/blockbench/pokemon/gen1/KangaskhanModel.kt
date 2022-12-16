@@ -41,7 +41,7 @@ class KangaskhanModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0115_kangaskhan/kangaskhan", "ground_idle")
+                bedrock("kangaskhan", "ground_idle")
             )
         )
 
@@ -52,8 +52,8 @@ class KangaskhanModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this),
                 singleBoneLook(),
-                bedrock("0115_kangaskhan/kangaskhan", "ground_idle")
-                //bedrock("0115_kangaskhan/kangaskhan", "ground_walk")
+                bedrock("kangaskhan", "ground_idle")
+                //bedrock("kangaskhan", "ground_walk")
             )
         )
     }
@@ -61,5 +61,5 @@ class KangaskhanModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0115_kangaskhan/kangaskhan", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("kangaskhan", "faint") else null
 }

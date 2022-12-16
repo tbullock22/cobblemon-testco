@@ -37,7 +37,7 @@ class VenonatModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0048_venonat/venonat", "ground_idle")
+                bedrock("venonat", "ground_idle")
             )
         )
 
@@ -46,8 +46,8 @@ class VenonatModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this, periodMultiplier = 1F,amplitudeMultiplier = 0.8f),
-                bedrock("0048_venonat/venonat", "ground_idle")
-                //bedrock("0048_venonat/venonat", "ground_walk")
+                bedrock("venonat", "ground_idle")
+                //bedrock("venonat", "ground_walk")
             )
         )
     }
@@ -55,5 +55,5 @@ class VenonatModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0048_venonat/venonat", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("venonat", "faint") else null
 }
