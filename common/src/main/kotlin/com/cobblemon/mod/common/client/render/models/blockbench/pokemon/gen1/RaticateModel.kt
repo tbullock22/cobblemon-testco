@@ -36,8 +36,14 @@ class RaticateModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Eare
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
+    lateinit var sleep: PokemonPose
 
     override fun registerPoses() {
+        sleep = registerPose(
+            poseType = PoseType.SLEEP,
+            transformTicks = 10,
+            idleAnimations = arrayOf(bedrock("raticate", "sleep"))
+        )
         standing = registerPose(
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
@@ -60,5 +66,5 @@ class RaticateModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Eare
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = bedrockStateful("raticate", "faint")
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("raticate", "faint") else null
 }
