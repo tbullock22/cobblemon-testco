@@ -88,7 +88,7 @@
     {
       "id": "petilil_lilligant_hisui",
       "variant": "item_interact",
-      "result": "lilligant form=hisui",
+      "result": "lilligant hisuian",
       "consumeHeldItem": false,
       "learnableMoves": [],
       "requirements": [

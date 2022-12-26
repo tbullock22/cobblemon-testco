@@ -11,19 +11,17 @@ package com.cobblemon.mod.common.battles
 import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.Cobblemon.LOGGER
 import com.cobblemon.mod.common.Cobblemon.config
-import com.cobblemon.mod.common.Cobblemon.showdown
-import com.cobblemon.mod.common.battles.runner.JavetShowdownConnection
+import com.cobblemon.mod.common.battles.runner.GraalShowdown
 import com.cobblemon.mod.common.util.FileUtils
 import com.cobblemon.mod.common.util.extractTo
 import com.cobblemon.mod.common.util.fromJson
 import com.google.gson.GsonBuilder
 import java.io.File
 import java.io.FileInputStream
-import java.io.IOException
 import java.io.InputStreamReader
 import java.util.concurrent.CompletableFuture
-import net.minecraft.client.MinecraftClient
 import net.minecraft.util.Identifier
+
 class ShowdownThread : Thread("Cobblemon Showdown") {
 
     var showdownStarted = CompletableFuture<Unit>()
@@ -32,7 +30,8 @@ class ShowdownThread : Thread("Cobblemon Showdown") {
         .create()
 
     override fun run() {
-        var showdownDir = File(".")
+        var showdownDir = File("showdown")
+        showdownDir.mkdir()
 
         val showdownMetadata = loadShowdownMetadata()
 
@@ -63,73 +62,13 @@ class ShowdownThread : Thread("Cobblemon Showdown") {
             }
         }
 
+
         // Initialize showdown connection
-        showdown = JavetShowdownConnection()
-        (showdown as JavetShowdownConnection).initializeServer()
+        GraalShowdown.createContext()
+        GraalShowdown.boot()
 
-        // Sleep for two seconds before attempting connection
-        sleep(2000)
-
-        val maxTries = 15
-        var tries = 0
-
-        // If connection fails, wait another two seconds
-        while (!attemptConnection() && tries < maxTries) {
-            tries++
-            sleep(3000)
-        }
-
-        // Max attempts
-        if (tries == maxTries) {
-            LOGGER.error("Failed to connect to showdown after 5 tries.")
-            MinecraftClient.getInstance().close()
-        }
-
-        LOGGER.info("Showdown has been connected!")
+        LOGGER.info("Showdown has been started!")
         showdownStarted.complete(Unit)
-
-        // Reset tries as this will be used by reconnection attempts
-        tries = 0
-
-        // While showdown is not closed, continue to check connection and read messages
-        while (!showdown.isClosed()) {
-
-            // Attempt reconnection if not connected
-            if (!showdown.isConnected()) {
-                while (!attemptConnection() && tries < maxTries) {
-                    tries++
-                    sleep(3000)
-                }
-
-                // Max attempts
-                if (tries == maxTries) {
-                    LOGGER.error("Failed to connect to showdown after 5 tries.")
-                    MinecraftClient.getInstance().close()
-                }
-
-                tries = 0
-                LOGGER.info("Showdown has been reconnected!")
-            }
-
-            // Reads messages and don't destroy the connection if there is an error
-            try {
-                showdown.read(ShowdownInterpreter::interpretMessage)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-
-            // Read messages every half a second
-            sleep(500)
-        }
-    }
-
-    private fun attemptConnection() : Boolean {
-        try {
-            showdown.open()
-            return true
-        } catch (exception: IOException) {
-            return false
-        }
     }
 
     private fun loadShowdownMetadata() : ShowdownMetadata? {

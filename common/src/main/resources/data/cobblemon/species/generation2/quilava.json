@@ -93,7 +93,7 @@
     {
       "id": "quilava_typhlosion_hisui",
       "variant": "level_up",
-      "result": "typhlosion form=hisui",
+      "result": "typhlosion hisuian",
       "consumeHeldItem": false,
       "learnableMoves": [],
       "requirements": [

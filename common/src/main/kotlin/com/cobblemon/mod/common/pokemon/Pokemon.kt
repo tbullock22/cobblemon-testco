@@ -500,7 +500,9 @@ open class Pokemon {
         scaleModifier = nbt.getFloat(DataKeys.POKEMON_SCALE_MODIFIER)
         val abilityNBT = nbt.getCompound(DataKeys.POKEMON_ABILITY) ?: NbtCompound()
         val abilityName = abilityNBT.getString(DataKeys.POKEMON_ABILITY_NAME).takeIf { it.isNotEmpty() } ?: "runaway"
-        ability = Abilities.getOrException(abilityName).create(abilityNBT)
+        if (abilityName != "dummy") {
+            ability = Abilities.getOrException(abilityName).create(abilityNBT)
+        }
         shiny = nbt.getBoolean(DataKeys.POKEMON_SHINY)
         if (nbt.contains(DataKeys.POKEMON_STATE)) {
             val stateNBT = nbt.getCompound(DataKeys.POKEMON_STATE)
@@ -525,6 +527,9 @@ open class Pokemon {
         features.forEach { it.loadFromNBT(nbt) }
         this.nature = nbt.getString(DataKeys.POKEMON_NATURE).takeIf { it.isNotBlank() }?.let { Natures.getNature(Identifier(it))!! } ?: Natures.getRandomNature()
         updateAspects()
+        if (abilityName == "dummy") {
+            ability = form.abilities.select(species, aspects)
+        }
         return this
     }
 
@@ -577,7 +582,10 @@ open class Pokemon {
         moveSet.loadFromJSON(json.get(DataKeys.POKEMON_MOVESET).asJsonObject)
         scaleModifier = json.get(DataKeys.POKEMON_SCALE_MODIFIER).asFloat
         val abilityJSON = json.get(DataKeys.POKEMON_ABILITY)?.asJsonObject ?: JsonObject()
-        ability = Abilities.getOrException(abilityJSON.get(DataKeys.POKEMON_ABILITY_NAME)?.asString ?: "drought").create(abilityJSON)
+        val abilityName = abilityJSON.get(DataKeys.POKEMON_ABILITY_NAME)?.asString
+        if (abilityName != "dummy" && abilityName != null) {
+            ability = Abilities.getOrException(abilityName).create(abilityJSON)
+        }
         shiny = json.get(DataKeys.POKEMON_SHINY).asBoolean
         if (json.has(DataKeys.POKEMON_STATE)) {
             val stateJson = json.get(DataKeys.POKEMON_STATE).asJsonObject
@@ -602,6 +610,9 @@ open class Pokemon {
         features.forEach { it.loadFromJSON(json) }
         this.nature = json.get(DataKeys.POKEMON_NATURE).asString?.let { Natures.getNature(Identifier(it))!! } ?: Natures.getRandomNature()
         updateAspects()
+        if (abilityName == "dummy") {
+            ability = form.abilities.select(species, aspects)
+        }
         return this
     }
 
@@ -721,6 +732,7 @@ open class Pokemon {
     }
 
     fun initialize(): Pokemon {
+        species = species
         checkGender()
         initializeMoveset()
         return this

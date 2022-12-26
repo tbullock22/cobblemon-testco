@@ -18,6 +18,7 @@ import com.cobblemon.mod.common.client.CobblemonResources
 import com.cobblemon.mod.common.client.gui.summary.widgets.SoundlessWidget
 import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.pokemon.Pokemon
+import com.cobblemon.mod.common.util.asTranslated
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.cobblemon.mod.common.util.lang
 import net.minecraft.client.MinecraftClient
@@ -147,7 +148,7 @@ class InfoWidget(
         drawScaledText(
             matrixStack = pMatrixStack,
             font = CobblemonResources.DEFAULT_LARGE,
-            text = pokemon.nature.displayName.bold(),
+            text = pokemon.nature.displayName.asTranslated().bold(),
             x = x + 53,
             y = y + 66,
             shadow = true
@@ -166,7 +167,7 @@ class InfoWidget(
         drawScaledText(
             matrixStack = pMatrixStack,
             font = CobblemonResources.DEFAULT_LARGE,
-            text = pokemon.ability.displayName.bold(),
+            text = pokemon.ability.displayName.asTranslated().bold(),
             x = x + 53,
             y = y + 81,
             shadow = true
@@ -177,7 +178,7 @@ class InfoWidget(
         pMatrixStack.push()
         pMatrixStack.scale(smallTextScale, smallTextScale, 1F)
         MultiLineLabelK.create(
-            component = pokemon.ability.description,
+            component = pokemon.ability.description.asTranslated(),
             width = 117 / smallTextScale,
             maxLines = 3
         ).renderLeftAligned(

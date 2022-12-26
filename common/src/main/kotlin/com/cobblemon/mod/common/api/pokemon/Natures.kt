@@ -26,127 +26,127 @@ object Natures {
     private val allNatures = mutableListOf<Nature>()
 
     val HARDY = registerNature(
-        Nature(cobblemonResource("hardy"), lang("nature.hardy"),
+        Nature(cobblemonResource("hardy"), "cobblemon.nature.hardy",
         null, null, null, null)
     )
 
     val LONELY = registerNature(
-        Nature(cobblemonResource("lonely"), lang("nature.lonely"),
+        Nature(cobblemonResource("lonely"), "cobblemon.nature.lonely",
         Stats.ATTACK, Stats.DEFENCE, Flavor.SPICY, Flavor.SOUR)
     )
 
     val BRAVE = registerNature(
-        Nature(cobblemonResource("brave"), lang("nature.brave"),
+        Nature(cobblemonResource("brave"), "cobblemon.nature.brave",
             Stats.ATTACK, Stats.SPEED, Flavor.SPICY, Flavor.SWEET)
     )
 
     val ADAMANT = registerNature(
-        Nature(cobblemonResource("adamant"), lang("nature.adamant"),
+        Nature(cobblemonResource("adamant"), "cobblemon.nature.adamant",
         Stats.ATTACK, Stats.SPECIAL_ATTACK, Flavor.SPICY, Flavor.DRY)
     )
 
     val NAUGHTY = registerNature(
-        Nature(cobblemonResource("naughty"), lang("nature.naughty"),
+        Nature(cobblemonResource("naughty"), "cobblemon.nature.naughty",
         Stats.ATTACK, Stats.SPECIAL_DEFENCE, Flavor.SPICY, Flavor.BITTER)
     )
 
     val BOLD = registerNature(
-        Nature(cobblemonResource("bold"), lang("nature.bold"),
+        Nature(cobblemonResource("bold"), "cobblemon.nature.bold",
         Stats.DEFENCE, Stats.ATTACK, Flavor.SOUR, Flavor.SPICY)
     )
 
     val DOCILE = registerNature(
-        Nature(cobblemonResource("docile"), lang("nature.docile"),
+        Nature(cobblemonResource("docile"), "cobblemon.nature.docile",
         null, null, null, null)
     )
 
     val RELAXED = registerNature(
-        Nature(cobblemonResource("relaxed"), lang("nature.relaxed"),
+        Nature(cobblemonResource("relaxed"), "cobblemon.nature.relaxed",
         Stats.DEFENCE, Stats.SPEED, Flavor.SOUR, Flavor.SWEET)
     )
 
     val IMPISH = registerNature(
-        Nature(cobblemonResource("impish"), lang("nature.impish"),
+        Nature(cobblemonResource("impish"), "cobblemon.nature.impish",
         Stats.DEFENCE, Stats.SPECIAL_ATTACK, Flavor.SOUR, Flavor.DRY)
     )
 
     val LAX = registerNature(
-        Nature(cobblemonResource("lax"), lang("nature.lax"),
+        Nature(cobblemonResource("lax"), "cobblemon.nature.lax",
         Stats.DEFENCE, Stats.SPECIAL_DEFENCE, Flavor.SOUR, Flavor.BITTER)
     )
 
     val TIMID = registerNature(
-        Nature(cobblemonResource("timid"), lang("nature.timid"),
+        Nature(cobblemonResource("timid"), "cobblemon.nature.timid",
         Stats.SPEED, Stats.ATTACK, Flavor.SWEET, Flavor.SPICY)
     )
 
     val HASTY = registerNature(
-        Nature(cobblemonResource("hasty"), lang("nature.hasty"),
+        Nature(cobblemonResource("hasty"), "cobblemon.nature.hasty",
         Stats.SPEED, Stats.DEFENCE, Flavor.SWEET, Flavor.SOUR)
     )
 
     val SERIOUS = registerNature(
-        Nature(cobblemonResource("serious"), lang("nature.serious"),
+        Nature(cobblemonResource("serious"), "cobblemon.nature.serious",
         null, null, null, null)
     )
 
     val JOLLY = registerNature(
-        Nature(cobblemonResource("jolly"), lang("nature.jolly"),
+        Nature(cobblemonResource("jolly"), "cobblemon.nature.jolly",
         Stats.SPEED, Stats.SPECIAL_ATTACK, Flavor.SWEET, Flavor.DRY)
     )
 
     val NAIVE = registerNature(
-        Nature(cobblemonResource("naive"), lang("nature.naive"),
+        Nature(cobblemonResource("naive"), "cobblemon.nature.naive",
         Stats.SPEED, Stats.SPECIAL_DEFENCE, Flavor.SWEET, Flavor.BITTER)
     )
 
     val MODEST = registerNature(
-        Nature(cobblemonResource("modest"), lang("nature.modest"),
+        Nature(cobblemonResource("modest"), "cobblemon.nature.modest",
         Stats.SPECIAL_ATTACK, Stats.ATTACK, null, null)
     )
 
     val MILD = registerNature(
-        Nature(cobblemonResource("mild"), lang("nature.mild"),
+        Nature(cobblemonResource("mild"), "cobblemon.nature.mild",
         Stats.SPECIAL_ATTACK, Stats.DEFENCE, Flavor.DRY, Flavor.SOUR)
     )
 
     val QUIET = registerNature(
-        Nature(cobblemonResource("quiet"), lang("nature.quiet"),
+        Nature(cobblemonResource("quiet"), "cobblemon.nature.quiet",
         Stats.SPECIAL_ATTACK, Stats.SPEED, Flavor.DRY, Flavor.SWEET)
     )
 
     val BASHFUL = registerNature(
-        Nature(cobblemonResource("bashful"), lang("nature.bashful"),
+        Nature(cobblemonResource("bashful"), "cobblemon.nature.bashful",
         null, null, null, null)
     )
 
     val RASH = registerNature(
-        Nature(cobblemonResource("rash"), lang("nature.rash"),
+        Nature(cobblemonResource("rash"), "cobblemon.nature.rash",
         Stats.SPECIAL_ATTACK, Stats.SPECIAL_DEFENCE, Flavor.DRY, Flavor.BITTER)
     )
 
     val CALM = registerNature(
-        Nature(cobblemonResource("calm"), lang("nature.calm"),
+        Nature(cobblemonResource("calm"), "cobblemon.nature.calm",
         Stats.SPECIAL_DEFENCE, Stats.ATTACK, Flavor.BITTER, Flavor.SPICY)
     )
 
     val GENTLE = registerNature(
-        Nature(cobblemonResource("gentle"), lang("nature.gentle"),
+        Nature(cobblemonResource("gentle"), "cobblemon.nature.gentle",
         Stats.SPECIAL_DEFENCE, Stats.DEFENCE, Flavor.BITTER, Flavor.SOUR)
     )
 
     val SASSY = registerNature(
-        Nature(cobblemonResource("sassy"), lang("nature.sassy"),
+        Nature(cobblemonResource("sassy"), "cobblemon.nature.sassy",
         Stats.SPECIAL_DEFENCE, Stats.SPEED, Flavor.BITTER, Flavor.SWEET)
     )
 
     val CAREFUL = registerNature(
-        Nature(cobblemonResource("careful"), lang("nature.careful"),
+        Nature(cobblemonResource("careful"), "cobblemon.nature.careful",
         Stats.SPECIAL_DEFENCE, Stats.SPECIAL_ATTACK, Flavor.BITTER, Flavor.DRY)
     )
 
     val QUIRKY = registerNature(
-        Nature(cobblemonResource("quirky"), lang("nature.quirky"),
+        Nature(cobblemonResource("quirky"), "cobblemon.nature.quirky",
         null, null, null, null)
     )
 

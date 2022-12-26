@@ -9,12 +9,15 @@
 package com.cobblemon.mod.common.world.block
 
 import com.cobblemon.mod.common.Cobblemon
+import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.storage.pc.link.PCLinkManager
 import com.cobblemon.mod.common.api.storage.pc.link.ProximityPCLink
 import com.cobblemon.mod.common.api.text.red
 import com.cobblemon.mod.common.net.messages.client.storage.pc.OpenPCPacket
 import com.cobblemon.mod.common.util.isInBattle
 import com.cobblemon.mod.common.util.lang
+import com.cobblemon.mod.common.util.playSoundServer
+import com.cobblemon.mod.common.util.toVec3d
 import com.cobblemon.mod.common.world.block.entity.PCBlockEntity
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
@@ -157,7 +160,7 @@ class PCBlock(properties: Settings): BlockWithEntity(properties) {
         // TODO add event to check if they can open this PC?
         PCLinkManager.addLink(ProximityPCLink(pc, player.uuid, blockEntity))
         OpenPCPacket(pc.uuid).sendToPlayer(player)
-        // play sound maybe?
+        world.playSoundServer(position = blockPos.toVec3d(), sound = CobblemonSounds.PC_ON.get(), volume = 1F, pitch = 1F)
         return ActionResult.SUCCESS
     }
 

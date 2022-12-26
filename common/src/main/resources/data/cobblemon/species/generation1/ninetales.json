@@ -30,6 +30,7 @@
 				"snowcloak",
 				"h:snowwarning"
 			],
+			"aspects": ["alolan"],
 			"baseStats": {
 				"hp": 73,
 				"attack": 67,
@@ -38,7 +39,7 @@
 				"special_defence": 100,
 				"speed": 109
 		  },
-			"evYield": {
+		  "evYield": {
 			"speed": 2
 		  },
 			"moves": [
@@ -137,7 +138,7 @@
 				"alola_regional",
 				"regional"
 			],
-			"preEvolution": "vulpix form=alola"
+			"preEvolution": "vulpix alolan"
 		}
 	],
 	"baseExperienceYield": 177,
@@ -259,6 +260,7 @@
 		"cobblemon.species.ninetales.desc1",
 		"cobblemon.species.ninetales.desc2"
 	],
+	"features": ["alolan"],
 	"preEvolution": "vulpix",
 	"evolutions": [],
 	"baseScale": 0.8,

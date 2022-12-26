@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.client.gui.battle.subscreen
 
+import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.gui.blitk
 import com.cobblemon.mod.common.api.moves.Moves
 import com.cobblemon.mod.common.api.text.bold
@@ -26,6 +27,8 @@ import com.cobblemon.mod.common.util.battleLang
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.cobblemon.mod.common.util.math.toRGB
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.sound.PositionedSoundInstance
+import net.minecraft.client.sound.SoundManager
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.text.Text
 import net.minecraft.util.math.MathHelper.floor
@@ -184,5 +187,9 @@ class BattleMoveSelection(
             battleGUI.changeActionSelection(null)
         }
         return false
+    }
+
+    override fun playDownSound(soundManager: SoundManager) {
+        soundManager.play(PositionedSoundInstance.master(CobblemonSounds.GUI_CLICK.get(), 1.0F))
     }
 }

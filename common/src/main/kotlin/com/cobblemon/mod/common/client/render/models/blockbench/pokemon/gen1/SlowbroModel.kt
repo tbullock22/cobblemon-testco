@@ -50,7 +50,7 @@ class SlowbroModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             poseName = "walk",
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
-                BipedWalkAnimation(this, periodMultiplier = 1.1F),
+                BipedWalkAnimation(this, periodMultiplier = 0.8F, amplitudeMultiplier = 0.7F),
                 singleBoneLook(),
                 bedrock("slowbro", "ground_idle")
                 //bedrock("slowbro", "ground_walk")

@@ -39,6 +39,7 @@ open class NBTStoreAdapter(
             store.loadFromNBT(nbt)
             store
         } catch (e: Exception) {
+            e.printStackTrace()
             return null
         }
     }

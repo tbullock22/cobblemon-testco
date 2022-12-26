@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.client.gui.summary.widgets
 
+import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.gui.blitk
 import com.cobblemon.mod.common.api.text.bold
 import com.cobblemon.mod.common.client.CobblemonResources
@@ -17,8 +18,11 @@ import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.cobblemon.mod.common.util.lang
+import net.minecraft.client.MinecraftClient
+import net.minecraft.client.sound.PositionedSoundInstance
 import java.security.InvalidParameterException
 import net.minecraft.client.util.math.MatrixStack
+import net.minecraft.sound.SoundEvent
 import net.minecraft.text.Text
 
 class PartyWidget(
@@ -46,7 +50,7 @@ class PartyWidget(
 
     private val partySize = partyList.size
     private val partySlots = arrayListOf<PartySlotWidget>()
-    val swapButton: SummaryButton = SummaryButton(
+    private val swapButton: SummaryButton = SummaryButton(
         buttonX = x + 80F,
         buttonY = y - 9F,
         buttonWidth = 26,
@@ -159,6 +163,7 @@ class PartyWidget(
                         index = -1,
                         isClientPartyMember = isParty
                     )
+                    playSound(CobblemonSounds.PC_GRAB.get())
                 }
             }
         }
@@ -174,6 +179,7 @@ class PartyWidget(
                 }
                 swapSource = null
                 draggedSlot = null
+                playSound(CobblemonSounds.PC_DROP.get())
             }
         }
         return super.mouseReleased(pMouseX, pMouseY, pButton)
@@ -203,6 +209,10 @@ class PartyWidget(
             }
         }
         return -1
+    }
+
+    fun playSound(soundEvent: SoundEvent) {
+        MinecraftClient.getInstance().soundManager.play(PositionedSoundInstance.master(soundEvent, 1.0F))
     }
 
     fun isWithinScreen(mouseX: Double, mouseY: Double): Boolean = mouseX.toInt() in x..(x + WIDTH)

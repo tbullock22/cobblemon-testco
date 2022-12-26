@@ -19,6 +19,7 @@
     "maleRatio": -1,
     "shoulderMountable": false,
     "forms": [
+        { "name": "normal" },
         {
             "name": "mega-x",
             "secondaryType": "fighting",

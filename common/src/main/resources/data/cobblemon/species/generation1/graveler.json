@@ -109,12 +109,12 @@
       ],
       "weight": 1100,
       "labels": ["gen1", "alola_regional", "regional"],
-      "preEvolution": "geodude form=alola",
+      "preEvolution": "geodude alolan",
       "evolutions": [
         {
           "id": "graveler_golem_alola",
           "variant": "trade",
-          "result": "golem form=alola",
+          "result": "golem alolan",
           "consumeHeldItem": false,
           "learnableMoves": [],
           "requirements": [],

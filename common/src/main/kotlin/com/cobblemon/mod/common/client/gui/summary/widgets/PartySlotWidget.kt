@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.client.gui.summary.widgets
 
+import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.gui.blitk
 import com.cobblemon.mod.common.client.CobblemonResources
 import com.cobblemon.mod.common.client.gui.drawProfilePokemon
@@ -197,6 +198,7 @@ class PartySlotWidget(
             } else {
                 if ((index > -1) && (summary.selectedPokemon.uuid != pokemon?.uuid)) {
                     summary.switchSelection(index)
+                    if (pokemon != null) partyWidget.playSound(CobblemonSounds.GUI_CLICK.get())
                     return true
                 }
             }
@@ -213,6 +215,7 @@ class PartySlotWidget(
         if (partyWidget.swapEnabled && partyWidget.isWithinScreen(mouseX, mouseY) && index < 0) {
             repositionSlot(mouseX, mouseY)
         } else {
+            if (partyWidget.swapSource != null) partyWidget.playSound(CobblemonSounds.PC_DROP.get())
             toggleDrag(false)
             partyWidget.swapSource = null
             partyWidget.draggedSlot = null

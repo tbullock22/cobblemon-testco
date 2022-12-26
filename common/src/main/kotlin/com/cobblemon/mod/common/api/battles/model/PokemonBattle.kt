@@ -10,7 +10,6 @@ package com.cobblemon.mod.common.api.battles.model
 
 import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.Cobblemon.LOGGER
-import com.cobblemon.mod.common.Cobblemon.showdown
 import com.cobblemon.mod.common.CobblemonNetwork
 import com.cobblemon.mod.common.api.battles.model.actor.ActorType
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor
@@ -26,13 +25,11 @@ import com.cobblemon.mod.common.battles.BattleSide
 import com.cobblemon.mod.common.battles.dispatch.BattleDispatch
 import com.cobblemon.mod.common.battles.dispatch.DispatchResult
 import com.cobblemon.mod.common.battles.dispatch.GO
+import com.cobblemon.mod.common.battles.runner.GraalShowdown
 import com.cobblemon.mod.common.net.messages.client.battle.BattleEndPacket
 import com.cobblemon.mod.common.pokemon.feature.BattleCriticalHitsFeature
-import com.cobblemon.mod.common.util.DataKeys
 import com.cobblemon.mod.common.util.battleLang
 import com.cobblemon.mod.common.util.getPlayer
-import com.google.gson.JsonArray
-import com.google.gson.JsonObject
 import java.util.UUID
 import java.util.concurrent.ConcurrentLinkedQueue
 import net.minecraft.text.Text
@@ -50,6 +47,7 @@ open class PokemonBattle(
 ) {
     /** Whether or not logging will be silenced for this battle. */
     var mute = true
+
     init {
         side1.battle = this
         side2.battle = this
@@ -148,17 +146,8 @@ open class PokemonBattle(
     }
 
     fun writeShowdownAction(vararg messages: String) {
-        val jsonArray = JsonArray()
-        for (message in messages) {
-            jsonArray.add(message)
-        }
-        val request = JsonObject()
-        request.addProperty(DataKeys.REQUEST_TYPE, DataKeys.REQUEST_BATTLE_SEND_MESSAGE)
-        request.addProperty(DataKeys.REQUEST_BATTLE_ID, battleId.toString())
-        request.add(DataKeys.REQUEST_MESSAGES, jsonArray)
-        val json = BattleRegistry.gson.toJson(request)
-        log(json)
-        showdown.write(json)
+        log(messages.joinToString("\n"))
+        GraalShowdown.sendToShowdown(battleId, messages.toList().toTypedArray())
     }
 
     fun turn(newTurnNumber: Int) {

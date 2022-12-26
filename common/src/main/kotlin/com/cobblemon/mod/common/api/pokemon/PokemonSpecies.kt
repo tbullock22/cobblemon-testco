@@ -8,8 +8,6 @@
 
 package com.cobblemon.mod.common.api.pokemon
 
-import com.caoccao.javet.interop.V8Host
-import com.caoccao.javet.interop.V8Runtime
 import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.api.abilities.AbilityPool
 import com.cobblemon.mod.common.api.abilities.AbilityTemplate
@@ -36,6 +34,7 @@ import com.cobblemon.mod.common.api.spawning.TimeRange
 import com.cobblemon.mod.common.api.types.ElementalType
 import com.cobblemon.mod.common.api.types.ElementalTypes
 import com.cobblemon.mod.common.api.types.adapters.ElementalTypeAdapter
+import com.cobblemon.mod.common.battles.runner.GraalShowdown
 import com.cobblemon.mod.common.net.messages.client.data.SpeciesRegistrySyncPacket
 import com.cobblemon.mod.common.pokemon.FormData
 import com.cobblemon.mod.common.pokemon.Species
@@ -217,45 +216,40 @@ object PokemonSpecies : JsonDataRegistry<Species> {
                 this.speciesByDex.remove(species.resourceIdentifier.namespace, species.nationalPokedexNumber)
             }
         }
-        V8Host.getNodeInstance().createV8Runtime<V8Runtime>().use { runtime ->
-            // Showdown loads mods by reading existing files as such we cannot dynamically add to the Pokédex, instead, we will overwrite the existing file and force a mod reload.
-            val pokedexFile = File("node_modules/pokemon-showdown/.data-dist/mods/Cobblemon/pokedex.js")
-            Files.createDirectories(pokedexFile.toPath().parent)
-            pokedexFile.bufferedWriter().use { writer ->
-                writer.write(
-                    """
-                        "use strict";
-                        Object.defineProperty(exports, "__esModule", {value: true});
-                        const Pokedex = {
-                            $pokedexDataHolder
-                        };
-                        exports.Pokedex = Pokedex;
-                    """.trimIndent()
-                )
-            }
-            val formatsDataFile = File("node_modules/pokemon-showdown/.data-dist/mods/Cobblemon/formats-data.js")
-            formatsDataFile.bufferedWriter().use { writer ->
-                writer.write(
-                    """
-                        "use strict";
-                        Object.defineProperty(exports, "__esModule", {value: true});
-                        const FormatsData = {
-                            $formatsDataHolder
-                        };
-                        exports.FormatsData = FormatsData;
-                    """.trimIndent()
-                )
-            }
-            val executor = runtime.getExecutor(
+
+
+        // Showdown loads mods by reading existing files as such we cannot dynamically add to the Pokédex, instead, we will overwrite the existing file and force a mod reload.
+        val pokedexFile = File("showdown/node_modules/pokemon-showdown/.data-dist/mods/cobblemon/pokedex.js")
+        Files.createDirectories(pokedexFile.toPath().parent)
+        pokedexFile.bufferedWriter().use { writer ->
+            writer.write(
                 """
-                        const PokemonShowdown = require('pokemon-showdown');
-                        PokemonShowdown.Dex.modsLoaded = false;
-                        PokemonShowdown.Dex.includeMods();
-                    """.trimIndent()
+                    "use strict";
+                    Object.defineProperty(exports, "__esModule", {value: true});
+                    const Pokedex = {
+                        $pokedexDataHolder
+                    };
+                    exports.Pokedex = Pokedex;
+                """.trimIndent()
             )
-            executor.resourceName = "./node_modules"
-            executor.executeVoid()
         }
+        val formatsDataFile = File("showdown/node_modules/pokemon-showdown/.data-dist/mods/cobblemon/formats-data.js")
+        formatsDataFile.bufferedWriter().use { writer ->
+            writer.write(
+                """
+                    "use strict";
+                    Object.defineProperty(exports, "__esModule", {value: true});
+                    const FormatsData = {
+                        $formatsDataHolder
+                    };
+                    exports.FormatsData = FormatsData;
+                """.trimIndent()
+            )
+        }
+        GraalShowdown.context.eval("js", """
+            PokemonShowdown.Dex.modsLoaded = false;
+            PokemonShowdown.Dex.includeMods();
+        """.trimIndent())
         Cobblemon.LOGGER.info("Finished creating showdown data for species")
     }
 

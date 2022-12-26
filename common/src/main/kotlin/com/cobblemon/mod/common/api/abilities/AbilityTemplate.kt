@@ -22,8 +22,8 @@ import net.minecraft.text.MutableText
 class AbilityTemplate(
     val name: String = "",
     var builder: (AbilityTemplate) -> Ability = { Ability(it) },
-    val displayName: MutableText = lang("ability.$name"),
-    val description: MutableText = lang("ability.$name.desc")
+    val displayName: String = "cobblemon.ability.$name",
+    val description: String = "cobblemon.ability.$name.desc"
 ) {
     /**
      * Returns the Ability or if applicable the extension connected to this template

@@ -30,8 +30,8 @@ class IvysaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
 
     override val portraitScale = 1.65F
     override val portraitTranslation = Vec3d(-0.1, -0.5, 0.0)
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.9F
+    override val profileTranslation = Vec3d(0.0, 0.35, 0.0)
 
     lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose

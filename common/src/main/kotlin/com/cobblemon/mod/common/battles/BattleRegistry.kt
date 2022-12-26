@@ -8,15 +8,12 @@
 
 package com.cobblemon.mod.common.battles
 
-import com.cobblemon.mod.common.Cobblemon.showdown
 import com.cobblemon.mod.common.api.battles.model.PokemonBattle
 import com.cobblemon.mod.common.api.pokemon.stats.Stats
 import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
-import com.cobblemon.mod.common.util.DataKeys
+import com.cobblemon.mod.common.battles.runner.GraalShowdown
 import com.google.gson.GsonBuilder
-import com.google.gson.JsonArray
-import com.google.gson.JsonObject
 import java.time.Instant
 import java.util.Optional
 import java.util.UUID
@@ -113,10 +110,6 @@ object BattleRegistry {
         return team.joinToString("]")
     }
 
-    /**
-     * Temporary starting method for a battle.
-     * TODO: Replace with a builder for battle definition and then a starting method that takes the built result?
-     */
     fun startBattle(
         battleFormat: BattleFormat,
         side1: BattleSide,
@@ -126,8 +119,8 @@ object BattleRegistry {
         battleMap[battle.battleId] = battle
 
         // Build request message
-        val jsonArray = JsonArray()
-        jsonArray.add(">start { \"format\": ${battleFormat.toFormatJSON()} }")
+        val messages = mutableListOf<String>()
+        messages.add(">start { \"format\": ${battleFormat.toFormatJSON()} }")
 
         /*
          * Showdown IDs are like p1, p2, p3, etc. Showdown uses these keys to identify who is doing what to whom.
@@ -167,21 +160,16 @@ object BattleRegistry {
 
         // -> Add the players and team
         for (actor in battle.actors.sortedBy { it.showdownId }) {
-            jsonArray.add(""">player ${actor.showdownId} {"name":"${actor.uuid}","team":"${actor.pokemonList.packTeam()}"}""")
+            messages.add(""">player ${actor.showdownId} {"name":"${actor.uuid}","team":"${actor.pokemonList.packTeam()}"}""")
         }
 
         // -> Set team size
         for (actor in battle.actors.sortedBy { it.showdownId }) {
-            jsonArray.add(">${actor.showdownId} team ${actor.pokemonList.count()}")
+            messages.add(">${actor.showdownId} team ${actor.pokemonList.count()}")
         }
 
         // Compiles the request and sends it off
-        val request = JsonObject()
-        request.addProperty(DataKeys.REQUEST_TYPE, DataKeys.REQUEST_BATTLE_START)
-        request.addProperty(DataKeys.REQUEST_BATTLE_ID, battle.battleId.toString())
-        request.add(DataKeys.REQUEST_MESSAGES, jsonArray)
-        showdown.write(gson.toJson(request))
-
+        GraalShowdown.startBattle(battle, messages.toTypedArray())
         return battle
     }
 

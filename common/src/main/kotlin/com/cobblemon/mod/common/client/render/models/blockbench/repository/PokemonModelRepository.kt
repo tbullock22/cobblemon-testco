@@ -173,6 +173,8 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.Hit
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.IgglybuffModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.KingdraModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.MagbyModel
+import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.MurkrowModel
+import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.NatuModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.PichuModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.PiloswineModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.PolitoedModel
@@ -186,6 +188,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.Swi
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.TyrogueModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.UmbreonModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.WooperModel
+import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.XatuModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2.YanmaModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.BlazikenModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.CombuskenModel
@@ -197,6 +200,8 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.Ray
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.SableyeModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.SwampertModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.TorchicModel
+import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.WailmerModel
+import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3.WailordModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.BibarelModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.BidoofModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.BunearyModel
@@ -204,6 +209,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.Ele
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.EmpoleonModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.GlaceonModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.HappinyModel
+import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.HonchkrowModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.LeafeonModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.LickilickyModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4.LopunnyModel
@@ -451,7 +457,6 @@ object PokemonModelRepository : ModelRepository<PokemonEntity>() {
         inbuilt("sylveon", ::SylveonModel)
         inbuilt("umbreon", ::UmbreonModel)
         inbuilt("espeon", ::EspeonModel)
-
         inbuilt("blissey", ::BlisseyModel)
         inbuilt("kingdra", ::KingdraModel)
         inbuilt("piloswine", ::PiloswineModel)
@@ -503,6 +508,12 @@ object PokemonModelRepository : ModelRepository<PokemonEntity>() {
         inbuilt("deerling", ::DeerlingModel)
         inbuilt("sawsbuck", ::SawsbuckModel)
         inbuilt("sableye", ::SableyeModel)
+        inbuilt("natu", ::NatuModel)
+        inbuilt("xatu", ::XatuModel)
+        inbuilt("wailmer", ::WailmerModel)
+        inbuilt("wailord", ::WailordModel)
+        inbuilt("murkrow", ::MurkrowModel)
+        inbuilt("honchkrow", ::HonchkrowModel)
     }
 
     fun inbuilt(name: String, model: (ModelPart) -> PokemonPoseableModel) {
@@ -547,17 +558,20 @@ object PokemonModelRepository : ModelRepository<PokemonEntity>() {
 
     val texturedModels = mutableMapOf<Identifier, TexturedModel>()
     fun registerModels(resourceManager: ResourceManager) {
+        var models = 0
         resourceManager.findResources("bedrock/models") { path -> path.endsWith(".geo.json") }.forEach { identifier, resource ->
             resource.inputStream.use { stream ->
                 val json = String(stream.readAllBytes(), StandardCharsets.UTF_8)
                 val resolvedIdentifier = Identifier(identifier.namespace, File(identifier.path).nameWithoutExtension)
                 texturedModels[resolvedIdentifier] = TexturedModel.from(json)
+                models++
             }
         }
+        Cobblemon.LOGGER.info("Loaded $models Pokémon models.")
     }
 
     override fun reload(resourceManager: ResourceManager) {
-        Cobblemon.LOGGER.info("Initializing Pokémon models")
+        Cobblemon.LOGGER.info("Loading Pokémon models...")
         this.renders.clear()
         this.posers.clear()
         registerPosers(resourceManager)

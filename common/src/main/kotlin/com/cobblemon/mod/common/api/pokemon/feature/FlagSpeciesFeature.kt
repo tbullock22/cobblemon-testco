@@ -122,7 +122,7 @@ class FlagSpeciesFeatureProvider : SpeciesFeatureProvider<FlagSpeciesFeature>, C
     }
 
     override fun provide(properties: PokemonProperties): Set<String> {
-        return if (isAspect &&  properties.customProperties.filterIsInstance<FlagSpeciesFeature>().find { it.name == keys.first() }?.enabled == true) {
+        return if (isAspect && properties.customProperties.filterIsInstance<FlagSpeciesFeature>().find { it.name == keys.first() }?.enabled == true) {
             setOf(keys.first())
         } else {
             emptySet()

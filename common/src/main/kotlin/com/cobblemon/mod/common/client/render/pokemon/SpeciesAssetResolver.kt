@@ -158,6 +158,7 @@ class ModelLayer {
     val scale: Vec3f = Vec3f(1F, 1F, 1F)
     val tint: Vector4f = Vector4f(1F, 1F, 1F, 1F)
     val texture: Identifier? = null
+    val emissive: Boolean = false
 }
 
 /*

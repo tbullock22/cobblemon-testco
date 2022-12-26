@@ -139,6 +139,9 @@
   "cobblemon.command.pokespawn.invalid-pokemon": "Invalid pokemon name",
   "cobblemon.command.pokespawn.invalid-move": "Invalid move name",
 
+  "cobblemon.ui.generic.yes": "Yes",
+  "cobblemon.ui.generic.no": "No",
+
   "cobblemon.ui.pokenav.title": "PokeNav",
   "cobblemon.ui.summary.title": "Summary",
   "cobblemon.ui.starter.title": "Starter Selection",
@@ -181,7 +184,8 @@
   "cobblemon.ui.effect": "Effect",
   "cobblemon.ui.pokemon": "Pokémon",
   "cobblemon.ui.exit": "Exit",
-  "cobblemon.ui.box.title": "Box %1$s",
+  "cobblemon.ui.pc.box.title": "Box %1$s",
+  "cobblemon.ui.pc.release": "Release",
 
   "key.cobblemon.upshiftparty": "Party Shift Up",
   "key.cobblemon.downshiftparty": "Party Shift Down",

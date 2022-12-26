@@ -8,33 +8,47 @@
 
 package com.cobblemon.mod.common.client.gui.pc
 
+import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.gui.blitk
 import com.cobblemon.mod.common.util.cobblemonResource
-import net.minecraft.client.gui.widget.TexturedButtonWidget
+import net.minecraft.client.gui.widget.ButtonWidget
+import net.minecraft.client.sound.PositionedSoundInstance
+import net.minecraft.client.sound.SoundManager
 import net.minecraft.client.util.math.MatrixStack
+import net.minecraft.text.Text
+
 class NavigationButton(
     pX: Int, pY: Int,
-    val pWidth: Int, val pHeight: Int,
-    pXTexStart: Int, pYTexStart: Int, pYDiffText: Int,
     private val forward: Boolean,
-    onPress: PressAction,
-): TexturedButtonWidget(pX, pY, pWidth, pHeight, pXTexStart, pYTexStart, pYDiffText, forwardButtonResource, onPress) {
+    onPress: PressAction
+): ButtonWidget(pX, pY, (WIDTH * SCALE).toInt(), (HEIGHT * SCALE).toInt(), Text.literal("Navigation"), onPress) {
 
     companion object {
-        private val forwardButtonResource = cobblemonResource("ui/pc/pc_box_right.png")
-        private val backwardsButtonResource = cobblemonResource("ui/pc/pc_box_left.png")
+        private const val WIDTH = 8F
+        private const val HEIGHT = 10F
+        private const val SCALE = 0.5F
+        private val forwardButtonResource = cobblemonResource("ui/pc/pc_arrow_next.png")
+        private val backwardsButtonResource = cobblemonResource("ui/pc/pc_arrow_previous.png")
     }
 
     override fun renderButton(pMatrixStack: MatrixStack, pMouseX: Int, pMouseY: Int, pPartialTicks: Float) {
-        hovered = pMouseX >= x && pMouseY >= y && pMouseX < x + width && pMouseY < y + height
-        if (isHovered) {
-            blitk(
-                matrixStack = pMatrixStack,
-                x = x + 0.25, y = y - 0.5F,
-                texture = if (forward) forwardButtonResource else backwardsButtonResource,
-                width = pWidth, height = pHeight
-            )
-        }
+        val hovered = (isHovered(pMouseX.toDouble(), pMouseY.toDouble()))
+        blitk(
+            matrixStack = pMatrixStack,
+            x = x / SCALE,
+            y = y / SCALE,
+            texture = if (forward) forwardButtonResource else backwardsButtonResource,
+            width = WIDTH,
+            height = HEIGHT,
+            vOffset = if (hovered) HEIGHT else 0,
+            textureHeight = HEIGHT * 2,
+            scale = SCALE
+        )
     }
 
+    override fun playDownSound(soundManager: SoundManager) {
+        soundManager.play(PositionedSoundInstance.master(CobblemonSounds.GUI_CLICK.get(), 1.0F))
+    }
+
+    fun isHovered(mouseX: Double, mouseY: Double) = mouseX.toFloat() in (x.toFloat()..(x.toFloat() + (WIDTH * SCALE))) && mouseY.toFloat() in (y.toFloat()..(y.toFloat() + (HEIGHT * SCALE)))
 }

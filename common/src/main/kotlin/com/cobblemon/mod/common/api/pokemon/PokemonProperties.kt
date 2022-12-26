@@ -311,7 +311,14 @@ open class PokemonProperties {
     }
 
     fun create(): Pokemon {
-        return Pokemon().also { apply(it) }.also { if (it.moveSet.none { it != null }) it.initializeMoveset() }
+        val pokemon = Pokemon()
+        apply(pokemon)
+        // Force the setter to initialize it
+        pokemon.species = pokemon.species
+        if (pokemon.moveSet.none { it != null }) {
+            pokemon.initializeMoveset()
+        }
+        return pokemon
     }
 
     fun createEntity(world: World): PokemonEntity {

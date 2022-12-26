@@ -8,7 +8,7 @@
             "pokemon": "aerodactyl",
             "type": "pokemon",
             "context": "grounded",
-            "bucket": "rare",
+            "bucket": "ultra-rare",
             "level": "25-51",
             "weight": 10.0,
             "condition": {
@@ -26,7 +26,7 @@
             ],
             "type": "pokemon",
             "context": "grounded",
-            "bucket": "rare",
+            "bucket": "ultra-rare",
             "level": "25-51",
             "weight": 10.0,
             "condition": {

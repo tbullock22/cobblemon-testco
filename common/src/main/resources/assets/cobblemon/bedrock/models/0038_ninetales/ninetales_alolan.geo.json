@@ -12,12 +12,12 @@
 			},
 			"bones": [
 				{
-					"name": "alolan_ninetales",
+					"name": "ninetales",
 					"pivot": [0, 0, 0]
 				},
 				{
 					"name": "body",
-					"parent": "alolan_ninetales",
+					"parent": "ninetales",
 					"pivot": [0, 0, 0]
 				},
 				{
@@ -782,7 +782,7 @@
 					]
 				},
 				{
-					"name": "leg_front_right1",
+					"name": "leg_front_right",
 					"parent": "body",
 					"pivot": [-2.75, 13.25, -8],
 					"rotation": [5, 0, 0],
@@ -792,7 +792,7 @@
 				},
 				{
 					"name": "leg_front_right2",
-					"parent": "leg_front_right1",
+					"parent": "leg_front_right",
 					"pivot": [-2.75, 7.25, -7],
 					"rotation": [-10, 0, 0],
 					"cubes": [
@@ -809,7 +809,7 @@
 					]
 				},
 				{
-					"name": "leg_front_left1",
+					"name": "leg_front_left",
 					"parent": "body",
 					"pivot": [2.75, 13.25, -8],
 					"rotation": [5, 0, 0],
@@ -819,7 +819,7 @@
 				},
 				{
 					"name": "leg_front_left2",
-					"parent": "leg_front_left1",
+					"parent": "leg_front_left",
 					"pivot": [2.75, 7.25, -7],
 					"rotation": [-10, 0, 0],
 					"cubes": [

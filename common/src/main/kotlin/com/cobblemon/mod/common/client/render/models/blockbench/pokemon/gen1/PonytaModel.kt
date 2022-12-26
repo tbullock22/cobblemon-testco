@@ -53,7 +53,7 @@ class PonytaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                QuadrupedWalkAnimation(this, periodMultiplier = 0.7F)
+                QuadrupedWalkAnimation(this, periodMultiplier = 0.7F, amplitudeMultiplier = 0.7F)
                 //bedrock("ponyta", "ground_walk")
             )
         )

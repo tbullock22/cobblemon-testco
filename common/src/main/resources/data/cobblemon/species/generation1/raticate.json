@@ -113,7 +113,7 @@
         "cobblemon.form.raticate-alola.desc2"
       ],
       "weight": 255,
-      "preEvolution": "rattata form=alola",
+      "preEvolution": "rattata alolan",
       "labels": ["gen1", "alola_regional", "regional"]
     },
     {

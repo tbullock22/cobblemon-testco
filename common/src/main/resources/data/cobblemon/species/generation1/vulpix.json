@@ -29,6 +29,7 @@
 				"snowcloak",
 				"h:snowwarning"
 			],
+			"aspects": ["alolan"],
 			"moves": [
 				"1:tackle",
 				"1:tailwhip",
@@ -121,7 +122,7 @@
 				{
 					"id": "vulpix_ninetales_alola",
 					"variant": "item_interact",
-					"result": "ninetales form=alola",
+					"result": "ninetales alolan",
 					"consumeHeldItem": false,
 					"learnableMoves": [],
 					"requirements": [],
@@ -130,6 +131,7 @@
 			]
 		}
 	],
+	"features": ["alolan"],
 	"baseExperienceYield": 60,
 	"experienceGroup": "mediumfast",
 	"eggCycles": 20,

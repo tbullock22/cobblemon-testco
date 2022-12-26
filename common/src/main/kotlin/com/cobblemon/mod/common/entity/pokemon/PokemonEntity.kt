@@ -203,6 +203,8 @@ class PokemonEntity(
         }
     }
 
+
+
     fun setMoveControl(moveControl: MoveControl) {
         this.moveControl = moveControl
     }
@@ -289,6 +291,7 @@ class PokemonEntity(
             moveControl = PokemonMoveControl(this)
             navigation = PokemonNavigation(world, this)
             goalSelector.clear()
+            goalSelector.add(0, PokemonInBattleMovementGoal(this, 10))
             goalSelector.add(0, object : Goal() {
                 override fun canStart() = this@PokemonEntity.phasingTargetId.get() != -1 || pokemon.status?.status == Statuses.SLEEP || deathEffectsStarted.get()
                 override fun getControls() = EnumSet.allOf(Control::class.java)

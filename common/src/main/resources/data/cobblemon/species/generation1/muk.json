@@ -118,7 +118,7 @@
       "height": 10,
       "weight": 520,
       "labels": ["gen1", "alola_regional", "regional"],
-      "preEvolution": "grimer form=alola"
+      "preEvolution": "grimer alolan"
     }
   ],
   "baseExperienceYield": 175,

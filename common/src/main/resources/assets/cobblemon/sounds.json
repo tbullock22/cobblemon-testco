@@ -1,4 +1,19 @@
 {
+  "pc.on": {
+    "sounds": [ "cobblemon:pc/pc_on" ]
+  },
+  "pc.off": {
+    "sounds": [ "cobblemon:pc/pc_off" ]
+  },
+  "pc.grab": {
+    "sounds": [ "cobblemon:pc/pc_grab" ]
+  },
+  "pc.drop": {
+    "sounds": [ "cobblemon:pc/pc_drop" ]
+  },
+  "pc.release": {
+    "sounds": [ "cobblemon:pc/pc_release" ]
+  },
   "poke_ball.capture_started": {
     "sounds": [ "cobblemon:pokeball/capture_started" ]
   },
@@ -23,5 +38,8 @@
   },
   "item.use": {
     "sounds": [ "cobblemon:use_item" ]
+  },
+  "gui.click": {
+    "sounds": [ "cobblemon:click" ]
   }
 }

@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.client.gui.battle.subscreen
 
+import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.battles.ShowdownPokemon
 import com.cobblemon.mod.common.battles.SwitchActionResponse
 import com.cobblemon.mod.common.client.CobblemonClient
@@ -19,6 +20,8 @@ import com.cobblemon.mod.common.util.battleLang
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.Selectable
 import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder
+import net.minecraft.client.sound.PositionedSoundInstance
+import net.minecraft.client.sound.SoundManager
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.math.MathHelper.ceil
 class BattleSwitchPokemonSelection(
@@ -118,6 +121,10 @@ class BattleSwitchPokemonSelection(
     }
 
     override fun appendNarrations(builder: NarrationMessageBuilder) {
+    }
+
+    override fun playDownSound(soundManager: SoundManager) {
+        soundManager.play(PositionedSoundInstance.master(CobblemonSounds.GUI_CLICK.get(), 1.0F))
     }
 
     override fun getType() = Selectable.SelectionType.HOVERED

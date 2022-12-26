@@ -93,7 +93,7 @@
     {
       "id": "bergmite_avalugg_hisui",
       "variant": "level_up",
-      "result": "avalugg form=hisui",
+      "result": "avalugg hisuian",
       "consumeHeldItem": false,
       "learnableMoves": [],
       "requirements": [

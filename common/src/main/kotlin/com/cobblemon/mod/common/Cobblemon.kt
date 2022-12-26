@@ -48,7 +48,6 @@ import com.cobblemon.mod.common.api.reactive.Observable.Companion.map
 import com.cobblemon.mod.common.api.reactive.Observable.Companion.takeFirst
 import com.cobblemon.mod.common.api.scheduling.ScheduledTaskTracker
 import com.cobblemon.mod.common.api.spawning.BestSpawner
-import com.cobblemon.mod.common.api.spawning.CobblemonSpawnPools
 import com.cobblemon.mod.common.api.spawning.CobblemonSpawningProspector
 import com.cobblemon.mod.common.api.spawning.context.AreaContextResolver
 import com.cobblemon.mod.common.api.spawning.prospecting.SpawningProspector
@@ -68,7 +67,6 @@ import com.cobblemon.mod.common.battles.BattleSide
 import com.cobblemon.mod.common.battles.ShowdownThread
 import com.cobblemon.mod.common.battles.actor.PokemonBattleActor
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
-import com.cobblemon.mod.common.battles.runner.ShowdownConnection
 import com.cobblemon.mod.common.config.CobblemonConfig
 import com.cobblemon.mod.common.config.constraint.IntConstraint
 import com.cobblemon.mod.common.config.starter.StarterConfig
@@ -128,7 +126,6 @@ object Cobblemon {
     val LOGGER = LogManager.getLogger()
 
     lateinit var implementation: CobblemonImplementation
-    lateinit var showdown: ShowdownConnection
     var captureCalculator: CaptureCalculator = CobblemonGen348CaptureCalculator
     var experienceCalculator: ExperienceCalculator = StandardExperienceCalculator
     var evYieldCalculator: EvCalculator = Generation8EvCalculator
@@ -261,9 +258,6 @@ object Cobblemon {
         SERVER_STOPPED.subscribe {
             storage.unregisterAll()
             playerData.saveAll()
-            if (it.isDedicated) {
-                showdown.close()
-            }
         }
         SERVER_STARTED.subscribe {
             bestSpawner.onServerStarted()

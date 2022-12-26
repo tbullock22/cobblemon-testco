@@ -19,15 +19,15 @@ class AbilityRegistrySyncPacket : DataRegistrySyncPacket<AbilityTemplate> {
 
     override fun encodeEntry(buffer: PacketByteBuf, entry: AbilityTemplate) {
         buffer.writeString(entry.name)
-        buffer.writeText(entry.displayName)
-        buffer.writeText(entry.description)
+        buffer.writeString(entry.displayName)
+        buffer.writeString(entry.description)
     }
 
     override fun decodeEntry(buffer: PacketByteBuf): AbilityTemplate {
         return AbilityTemplate(
             name = buffer.readString(),
-            displayName = buffer.readText().copy(),
-            description= buffer.readText().copy()
+            displayName = buffer.readString(),
+            description = buffer.readString()
         )
     }
 

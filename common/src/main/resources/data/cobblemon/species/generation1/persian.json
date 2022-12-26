@@ -132,7 +132,7 @@
       "height": 11,
       "weight": 330,
       "labels": ["gen1", "alola_regional", "regional"],
-      "preEvolution": "meowth form=alola"
+      "preEvolution": "meowth alolan"
     }
   ],
   "baseExperienceYield": 154,

@@ -4,32 +4,26 @@
 		"animation.krabby.ground_idle": {
 			"loop": true,
 			"bones": {
-				"leftleg": {
-					"rotation": [22.5, -22.5, 0]
-				},
-				"rightknee": {
-					"rotation": [0, 0, 0]
-				},
-				"rightleg2": {
-					"rotation": [22.5, 22.5, 0]
-				},
-				"leftarm": {
-					"rotation": [0, 0, 10.5]
-				},
-				"leftforearm": {
-					"rotation": [0, 22.5, -112.5]
-				},
-				"lefthand": {
-					"rotation": [22.5, 0, 0]
-				},
-				"rightarm": {
+				"arm_right": {
 					"rotation": [0, 0, -10.5]
 				},
-				"rightforearm": {
+				"arm_right2": {
 					"rotation": [0, -22.5, 112.5]
 				},
-				"righthand": {
+				"claw_right": {
 					"rotation": [22.5, 0, 0]
+				},
+				"arm_left": {
+					"rotation": [0, 0, 10.5]
+				},
+				"arm_left2": {
+					"rotation": [0, 22.5, -112.5]
+				},
+				"leg_right_back": {
+					"rotation": [0, 15, 0]
+				},
+				"leg_left_back": {
+					"rotation": [0, -15, 0]
 				}
 			}
 		}

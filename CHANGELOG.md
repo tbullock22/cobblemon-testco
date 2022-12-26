@@ -1,17 +1,24 @@
 # Changelog
 
-## 1.1.2
+## 1.2.0
 ### Additions
-- Reworked customisation of models, textures, and animations to make fakemon very easy to create.
-- Added 'nature' and 'pokeball' options to commands such as /spawnpokemon and /givepokemon.
+- Added models for Natu and Xatu, Murkrow and Honchkrow, Wailmer and Wailord.
+- Added new PC interface and it is beautiful.
+- Reworked the battle system so that battles load faster, cause less bugs, and can run on shared server hosts. This is a very big change that also reduced the size of the mod by 50mb!
+- Added full customisation of models, textures, and animations to make custom Pokémon species and variations very easy to create. [guide needed]
 - Added support for datapack spawn files and spawn file presets.
 - Added water surface spawning for Pokémon like Lapras.
+- Added emissive texture support to Pokémon render layers.
+- Added new sounds for GUIs and item uses.
+- Added `nature` and `pokeball` options to commands such as `/spawnpokemon` and `/givepokemon`.
 
 ### Changes
 - Changed the healer advancements to make the healing machine's mechanics more obvious.
 - Reinforced party and PC saving to make data corruption from crashes less bad.
 - Added a config option for whether the starter config will be exported, making it more maintainable as we add starter Pokémon.
-- Changed the default Apricorn seed chance config value from 6% to 10%
+- Changed the default Apricorn seed chance config value from 6% to 10%.
+- Pokémon now look at their opponents during battle.
+- Updated Sableye's animations to be super freaky.
 
 ### Fixes
 - Fixed an incompatibility with [Porting Lib](https://github.com/Fabricators-of-Create/Porting-Lib) used by Fabric ports of mods such as Create or Twilight Forest.
@@ -22,16 +29,22 @@
 - Fixed shoulder mount crash on Fabric.
 - Fixed a rare issue where chunks would take a really long time to generate.
 - Fixed a singleplayer bug where battles wouldn't work after leaving and joining a world.
+- Fixed stat calculations for everything except HP. HP was fine.
+- Fixed a randomized Pokémon spawning in mountains that corrupted the data of whatever party or PC it got into. Yikes.
+- Fixed a rare crash involving literally random number generation. A random crash involving random numbers.
+- Fixed all regular Mewtwo having the stats and types of Mega Mewtwo X. 
+- Fixed the framing of many Pokémon in GUIs.
+- Fixed texture glitches with Rattata and Nidoqueen (again!).
+- Fixed dropped item forms of all Pokéballs and the Healing Machine, and minorly adjusted all other display settings
+- Fixed issues with forms not showing the correct evolution in the evolution menu.
+- Fixed some alternate forms not having the alternate stats and types.
 
 ## 1.1.1 (November 27th, 2022)
-
 ### Fixes
 - Fixed a critical issue with servers where Pokémon data didn't properly synchronize and so you couldn't see any.
 
 ## 1.1.0 - The Swim and Sleep Update (November 27th, 2022)
 #### "Ideally not at the same time."
-
-
 ### Additions
 - Added a new GUI for viewing party information, rearranging moves, and evolving Pokémon. It looks too good.
 - Starter Pokémon will sleep on top of you if sent out when you get on a bed.
@@ -85,6 +98,7 @@
     - Statuses like sleep and frozen no longer last forever if it was carried over from a previous battle.
 
 ### Localization
-- Added species, ability, and move translations for ko_ko, jp_jp, fr_fr, es_es, it_it, and zh_cn. 
-## 1.0.0 (2022-11-12)
+- Added species, ability, and move translations for ko_ko, jp_jp, fr_fr, es_es, it_it, and zh_cn.
+
+## 1.0.0 (November 12th, 2022)
 - Initial release.

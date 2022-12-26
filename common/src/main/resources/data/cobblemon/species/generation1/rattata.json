@@ -103,7 +103,7 @@
         {
           "id": "rattata_raticate_alola",
           "variant": "level_up",
-          "result": "raticate form=alola",
+          "result": "raticate alolan",
           "consumeHeldItem": false,
           "learnableMoves": [],
           "requirements": [

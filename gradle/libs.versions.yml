@@ -21,7 +21,7 @@ versions:
   forge: 1.19.2-43.1.3
 
   # common
-  javet: 1.1.0
+  graal: 22.3.0
   eliotlash: 18
   architectury: 6.3.49
 
@@ -78,14 +78,10 @@ dependencies:
     group: org.jetbrains.kotlinx
     name: kotlinx-serialization-json-jvm
     version: { ref: serialization }
-  javet:
-    group: com.caoccao.javet
-    name: javet
-    version: { ref: javet }
-  javetMac:
-    group: com.caoccao.javet
-    name: javet-macos
-    version: { ref: javet }
+  graal:
+    group: org.graalvm.js
+    name: js
+    version: { ref: graal }
   molang:
     group: com.eliotlash.molang
     name: molang

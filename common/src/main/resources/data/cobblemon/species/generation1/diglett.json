@@ -115,7 +115,7 @@
         {
           "id": "diglett_dugtrio_alola",
           "variant": "level_up",
-          "result": "dugtrio form=alola",
+          "result": "dugtrio alolan",
           "consumeHeldItem": false,
           "learnableMoves": [],
           "requirements": [

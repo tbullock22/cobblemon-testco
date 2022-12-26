@@ -21,4 +21,5 @@ class MoveBehaviour {
     val wanderChance = 120
     val wanderSpeed = 1.0
     val canLook = true
+    val looksAtEntities = true
 }

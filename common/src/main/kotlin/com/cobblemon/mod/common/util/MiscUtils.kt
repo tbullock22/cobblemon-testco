@@ -10,6 +10,7 @@ package com.cobblemon.mod.common.util
 
 import com.cobblemon.mod.common.Cobblemon
 import kotlin.math.min
+import kotlin.random.Random
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
@@ -47,3 +48,15 @@ fun String.isHigherVersion(other: String): Boolean {
 fun String.substitute(placeholder: String, value: Any?) = replace("{{$placeholder}}", value?.toString() ?: "")
 
 val Pair<Boolean, Boolean>.either: Boolean get() = first || second
+
+fun Random.nextBetween(min: Float, max: Float): Float {
+    return nextFloat() * (max - min) + min;
+}
+
+fun Random.nextBetween(min: Double, max: Double): Double {
+    return nextDouble() * (max - min) + min;
+}
+
+fun Random.nextBetween(min: Int, max: Int): Int {
+    return nextInt(max - min + 1) + min
+}

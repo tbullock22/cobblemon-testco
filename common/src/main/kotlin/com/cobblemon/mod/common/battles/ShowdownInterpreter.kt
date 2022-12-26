@@ -28,7 +28,6 @@ import com.cobblemon.mod.common.battles.dispatch.GO
 import com.cobblemon.mod.common.battles.dispatch.UntilDispatch
 import com.cobblemon.mod.common.battles.dispatch.WaitDispatch
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
-import com.cobblemon.mod.common.battles.runner.ShowdownConnection
 import com.cobblemon.mod.common.net.messages.client.battle.BattleFaintPacket
 import com.cobblemon.mod.common.net.messages.client.battle.BattleHealthChangePacket
 import com.cobblemon.mod.common.net.messages.client.battle.BattleInitializePacket
@@ -149,18 +148,15 @@ object ShowdownInterpreter {
         else -> "HUH!?"
     }
 
-    fun interpretMessage(message: String) {
+    fun interpretMessage(battleId: UUID, message: String) {
         // Check key map and use function if matching
-        val battleId = message.split(ShowdownConnection.LINE_START)[0]
-        val rawMessage = message.replace(battleId + ShowdownConnection.LINE_START, "")
-
-        if (rawMessage.startsWith("{\"winner\":\"")) {
+        if (message.startsWith("{\"winner\":\"")) {
             // The post-win message is something we don't care about just yet. It's basically a summary of what happened in the battle.
             // Check /docs/example-post-win-message.json for its format.
             return
         }
 
-        val battle = BattleRegistry.getBattle(UUID.fromString(battleId))
+        val battle = BattleRegistry.getBattle(battleId)
 
         if (battle == null) {
             LOGGER.info("No battle could be found with the id: $battleId")
@@ -169,7 +165,7 @@ object ShowdownInterpreter {
 
         runOnServer {
             battle.showdownMessages.add(message)
-            interpret(battle, rawMessage)
+            interpret(battle, message)
         }
     }
 

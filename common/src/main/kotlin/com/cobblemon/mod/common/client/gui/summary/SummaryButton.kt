@@ -8,12 +8,14 @@
 
 package com.cobblemon.mod.common.client.gui.summary
 
+import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.gui.blitk
 import com.cobblemon.mod.common.api.text.bold
 import com.cobblemon.mod.common.client.CobblemonResources
 import com.cobblemon.mod.common.client.render.drawScaledText
 import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder
 import net.minecraft.client.gui.widget.ButtonWidget
+import net.minecraft.client.sound.PositionedSoundInstance
 import net.minecraft.client.sound.SoundManager
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.text.MutableText
@@ -86,9 +88,9 @@ class SummaryButton(
         return false
     }
 
-    override fun playDownSound(soundManager: SoundManager?) {
+    override fun playDownSound(soundManager: SoundManager) {
         if (!this.silent) {
-            super.playDownSound(soundManager)
+            soundManager.play(PositionedSoundInstance.master(CobblemonSounds.GUI_CLICK.get(), 1.0F))
         }
     }
 

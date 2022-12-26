@@ -67,14 +67,6 @@ object DataKeys {
     const val CRYSTAL = "crystal"
     /* ---------- */
 
-    /* Battle keys */
-    const val REQUEST_TYPE = "RequestType"
-    const val REQUEST_BATTLE_ID = "RequestBattleId"
-    const val REQUEST_BATTLE_START = "StartBattle"
-    const val REQUEST_BATTLE_SEND_MESSAGE = "SendMessage"
-    const val REQUEST_MESSAGES = "RequestMessages"
-    /* ----------- */
-
     const val POKEMON_PROPERTIES = "Properties"
     const val POKEMON_PROPERTIES_CUSTOM = "CustomProperties"
     const val POKEMON_PROPERTIES_ORIGINAL_TEXT = "OriginalText"
