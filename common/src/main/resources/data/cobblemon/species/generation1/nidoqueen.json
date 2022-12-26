@@ -27,6 +27,14 @@
     "eggGroups": [
         "undiscovered"
     ],
+    "behaviour": {
+        "resting": {
+            "canSleep": true,
+            "willSleepOnBed": false,
+            "depth": "normal",
+            "light": "0-4"
+        }
+    },
     "moves": [
         "0:superpower",
         "1:scratch",

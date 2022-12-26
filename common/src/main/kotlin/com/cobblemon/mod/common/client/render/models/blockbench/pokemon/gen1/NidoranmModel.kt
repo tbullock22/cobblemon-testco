@@ -60,8 +60,8 @@ class NidoranmModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
         )
     }
 
-    override fun getFaintAnimation(
-        pokemonEntity: PokemonEntity,
-        state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("nidoranm", "faint") else null
+//    override fun getFaintAnimation(
+//        pokemonEntity: PokemonEntity,
+//        state: PoseableEntityState<PokemonEntity>
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("nidoranm", "faint") else null
 }

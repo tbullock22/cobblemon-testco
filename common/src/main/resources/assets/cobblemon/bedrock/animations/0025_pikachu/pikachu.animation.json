@@ -8,7 +8,49 @@
 					"rotation": [-180, -45, -135]
 				},
 				"arm_left": {
-					"rotation": [-540, 45, -585]
+					"rotation": [-180, 45, -225]
+				}
+			}
+		},
+		"animation.pikachu.sleep": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [85, 0, 0],
+					"position": [0, 2.75, 10]
+				},
+				"head": {
+					"rotation": [-45.10922, 10.59986, 3.54002]
+				},
+				"eyelids": {
+					"position": [0, 0, -0.1]
+				},
+				"ear_right": {
+					"rotation": [12.5, 0, 0]
+				},
+				"ear_left": {
+					"rotation": [22.5, 0, 0]
+				},
+				"arm_right": {
+					"rotation": [-92.84686, -14.50604, 78.87302]
+				},
+				"arm_left": {
+					"rotation": [-56.42187, 23.82971, -95.02662]
+				},
+				"tail": {
+					"rotation": [-90, 0, 0]
+				},
+				"leg_right": {
+					"rotation": [-5.04292, 7.4713, -0.6574]
+				},
+				"foot_right": {
+					"rotation": [25, 0, 0]
+				},
+				"leg_left": {
+					"rotation": [-10.42439, -16.4927, -7.63722]
+				},
+				"foot_left": {
+					"rotation": [37.5, 0, 0]
 				}
 			}
 		}

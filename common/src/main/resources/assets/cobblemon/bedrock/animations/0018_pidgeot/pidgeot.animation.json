@@ -198,6 +198,62 @@
 					"rotation": [15, 0, 0]
 				}
 			}
+		},
+		"animation.pidgeot.sleep": {
+			"loop": true,
+			"bones": {
+				"tail": {
+					"rotation": [15, 0, 0]
+				},
+				"wing_left": {
+					"position": [0, 0, -1]
+				},
+				"wing_right": {
+					"position": [0, 0, -1]
+				},
+				"hair": {
+					"rotation": [-12.5, 0, 0]
+				},
+				"hair3": {
+					"rotation": [-57.5, 0, 0]
+				},
+				"hair4": {
+					"rotation": [-47.5, 0, 0]
+				},
+				"hair5": {
+					"rotation": [-37.5, 0, 0]
+				},
+				"hair6": {
+					"rotation": [17.5, 0, 0]
+				},
+				"hair7": {
+					"rotation": [25, 0, 0]
+				},
+				"body": {
+					"position": [0, -3, 0]
+				},
+				"head": {
+					"rotation": [15, 0, 0]
+				},
+				"eyelid_left": {
+					"position": [0.1, 0, 0]
+				},
+				"eyelid_right": {
+					"position": [-0.1, 0, 0]
+				},
+				"leg_left": {
+					"position": [0, 1, 0]
+				},
+				"knee_left": {
+					"position": [0, 2, 0]
+				},
+				"leg_right": {
+					"position": [0, 1, 0]
+				},
+				"knee_right": {
+					"position": [0, 2, 0]
+				}
+			}
 		}
 	}
 }

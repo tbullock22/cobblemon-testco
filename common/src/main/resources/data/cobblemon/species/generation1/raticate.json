@@ -212,6 +212,14 @@
   "experienceGroup": "mediumfast",
   "eggCycles": 15,
   "eggGroups": ["field"],
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    }
+  },
   "moves": [
     "0:scaryface",
     "1:swordsdance",

@@ -61,8 +61,8 @@ class VenonatModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
         )
     }
 
-    override fun getFaintAnimation(
-        pokemonEntity: PokemonEntity,
-        state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("venonat", "faint") else null
+//    override fun getFaintAnimation(
+//        pokemonEntity: PokemonEntity,
+//        state: PoseableEntityState<PokemonEntity>
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("venonat", "faint") else null
 }

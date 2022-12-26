@@ -28,6 +28,14 @@
         "monster",
         "field"
     ],
+    "behaviour": {
+        "resting": {
+            "canSleep": true,
+            "willSleepOnBed": false,
+            "depth": "normal",
+            "light": "0-4"
+        }
+    },
     "moves": [
         "0:thrash",
         "0:megahorn",

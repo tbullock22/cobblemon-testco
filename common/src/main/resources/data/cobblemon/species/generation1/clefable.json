@@ -26,6 +26,14 @@
     "eggGroups": [
         "fairy"
     ],
+    "behaviour": {
+        "resting": {
+            "canSleep": true,
+            "willSleepOnBed": false,
+            "depth": "normal",
+            "light": "0-4"
+        }
+    },
     "moves": [
         "1:pound",
         "1:doubleslap",

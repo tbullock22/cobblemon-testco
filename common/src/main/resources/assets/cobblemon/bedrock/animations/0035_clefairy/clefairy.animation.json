@@ -546,6 +546,53 @@
 					}
 				}
 			}
+		},
+		"animation.clefairy.sleep": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"position": [0, -2, 0]
+				},
+				"torso": {
+					"rotation": [7.5, 0, 0]
+				},
+				"eyelid_right": {
+					"position": [0, 0, -0.1]
+				},
+				"eyelid_left": {
+					"position": [0, 0, -0.1]
+				},
+				"ear_right": {
+					"rotation": [0, -20, 0]
+				},
+				"ear_left": {
+					"rotation": [0, 20, 0]
+				},
+				"arm_right": {
+					"rotation": [190.68247, -49.9012, -118.44756]
+				},
+				"arm_left": {
+					"rotation": [-170.60688, 43.40362, -244.01297]
+				},
+				"wing_right": {
+					"rotation": [0, -40, 0]
+				},
+				"wing_left": {
+					"rotation": [0, 40, 0]
+				},
+				"leg_right": {
+					"rotation": [-68.55504, 24.29278, 5.10535]
+				},
+				"leg_right2": {
+					"rotation": [22.99008, 11.53486, 4.8493]
+				},
+				"leg_left": {
+					"rotation": [-71.88679, -33.64409, -10.27206]
+				},
+				"leg_left2": {
+					"rotation": [18.07779, -14.2906, -4.60659]
+				}
+			}
 		}
 	}
 }

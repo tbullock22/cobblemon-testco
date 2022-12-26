@@ -146,6 +146,14 @@
   "experienceGroup": "mediumfast",
   "eggCycles": 10,
   "eggGroups": ["field", "fairy"],
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    }
+  },
   "moves": [
     "0:thunderpunch",
     "1:thunderpunch",

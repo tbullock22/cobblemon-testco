@@ -103,6 +103,38 @@
 					"rotation": [-15, 0, 0]
 				}
 			}
+		},
+		"animation.spearow.sleep": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [7.5, 0, 0],
+					"position": [0, -1.75, 0]
+				},
+				"head": {
+					"rotation": [15, 0, 0]
+				},
+				"tail": {
+					"rotation": [-10, 0, 0]
+				},
+				"leftleg": {
+					"rotation": [-5, 0, 0],
+					"position": [0, 1.75, 0]
+				},
+				"leftfoot": {
+					"rotation": [-2.5, 0, 0]
+				},
+				"rightleg": {
+					"rotation": [-7.5, 0, 0],
+					"position": [0, 1.75, 0]
+				},
+				"rightwing": {
+					"position": [0, -1.25, -1.25]
+				},
+				"leftwing": {
+					"position": [0, -1.5, -1.25]
+				}
+			}
 		}
 	}
 }

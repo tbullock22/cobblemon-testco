@@ -59,8 +59,8 @@ class RaichuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
         )
     }
 
-    override fun getFaintAnimation(
-        pokemonEntity: PokemonEntity,
-        state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("raichu", "faint") else null
+//    override fun getFaintAnimation(
+//        pokemonEntity: PokemonEntity,
+//        state: PoseableEntityState<PokemonEntity>
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("raichu", "faint") else null
 }

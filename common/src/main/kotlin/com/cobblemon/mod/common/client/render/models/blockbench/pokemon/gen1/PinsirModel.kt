@@ -29,14 +29,8 @@ class PinsirModel(root: ModelPart) : PokemonPoseableModel() {
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
-    lateinit var sleep: PokemonPose
 
     override fun registerPoses() {
-        sleep = registerPose(
-            poseType = PoseType.SLEEP,
-            transformTicks = 10,
-            idleAnimations = arrayOf(bedrock("pinsir", "sleep"))
-        )
         standing = registerPose(
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
@@ -56,8 +50,8 @@ class PinsirModel(root: ModelPart) : PokemonPoseableModel() {
         )
     }
 
-    override fun getFaintAnimation(
-        pokemonEntity: PokemonEntity,
-        state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("pinsir", "faint") else null
+//    override fun getFaintAnimation(
+//        pokemonEntity: PokemonEntity,
+//        state: PoseableEntityState<PokemonEntity>
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("pinsir", "faint") else null
 }

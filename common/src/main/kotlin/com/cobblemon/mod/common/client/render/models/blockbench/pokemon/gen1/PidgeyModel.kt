@@ -160,8 +160,8 @@ class PidgeyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
         )
     }
 
-    override fun getFaintAnimation(
-        pokemonEntity: PokemonEntity,
-        state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(stand, walk)) bedrockStateful("pidgey", "faint") else null
+//    override fun getFaintAnimation(
+//        pokemonEntity: PokemonEntity,
+//        state: PoseableEntityState<PokemonEntity>
+//    ) = if (state.isPosedIn(stand, walk)) bedrockStateful("pidgey", "faint") else null
 }
