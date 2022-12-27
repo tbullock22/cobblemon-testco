@@ -10,7 +10,7 @@ architectury {
 loom {
     forge {
         convertAccessWideners.set(true)
-        mixinConfig("mixins.cobblemon-common.json")
+        mixinConfig("mixins.cobblemon-common.json", "mixins.cobblemon-forge.json")
     }
 }
 
