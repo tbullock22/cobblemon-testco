@@ -33,7 +33,7 @@ class PiloswineModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                //bedrock("0221_piloswine/piloswine", "ground_idle")
+                //bedrock("piloswine", "ground_idle")
             )
         )
 
@@ -41,7 +41,7 @@ class PiloswineModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                //bedrock("0221_piloswine/piloswine", "ground_walk")
+                //bedrock("piloswine", "ground_walk")
             )
         )
     }
@@ -49,5 +49,5 @@ class PiloswineModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0221_piloswine/piloswine", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("piloswine", "faint") else null
 }

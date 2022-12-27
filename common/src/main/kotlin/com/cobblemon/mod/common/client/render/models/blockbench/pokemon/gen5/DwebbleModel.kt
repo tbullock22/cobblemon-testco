@@ -36,7 +36,7 @@ class DwebbleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0557_dwebble/dwebble", "ground_idle")
+                bedrock("dwebble", "ground_idle")
             )
         )
 
@@ -45,8 +45,8 @@ class DwebbleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0557_dwebble/dwebble", "ground_idle")
-                //bedrock("0557_dwebble/dwebble", "ground_walk")
+                bedrock("dwebble", "ground_idle")
+                //bedrock("dwebble", "ground_walk")
             )
         )
     }
@@ -54,5 +54,5 @@ class DwebbleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0557_dwebble/dwebble", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("dwebble", "faint") else null
 }

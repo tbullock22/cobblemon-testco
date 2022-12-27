@@ -36,7 +36,7 @@ class AlakazamModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook() ,
-                bedrock("0065_alakazam/alakazam", "ground_idle")
+                bedrock("alakazam", "ground_idle")
             )
         )
 
@@ -46,8 +46,8 @@ class AlakazamModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0065_alakazam/alakazam", "ground_idle")
-                //bedrock("0065_alakazam/alakazam", "ground_walk")
+                bedrock("alakazam", "ground_idle")
+                //bedrock("alakazam", "ground_walk")
             )
         )
     }
@@ -55,5 +55,5 @@ class AlakazamModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0065_alakazam/alakazam", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("alakazam", "faint") else null
 }

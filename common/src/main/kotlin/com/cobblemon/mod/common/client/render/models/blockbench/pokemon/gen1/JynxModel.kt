@@ -35,7 +35,7 @@ class JynxModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0124_jynx/jynx", "ground_idle")
+                bedrock("jynx", "ground_idle")
             )
         )
 
@@ -44,8 +44,8 @@ class JynxModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0124_jynx/jynx", "ground_idle")
-                //bedrock("0124_jynx/jynx", "ground_walk")
+                bedrock("jynx", "ground_idle")
+                //bedrock("jynx", "ground_walk")
             )
         )
     }
@@ -53,5 +53,5 @@ class JynxModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0124_jynx/jynx", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("jynx", "faint") else null
 }

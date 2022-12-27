@@ -8,11 +8,11 @@
 
 package com.cobblemon.mod.common.entity.pokemon.ai.goals
 
+import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.entity.pokemon.PokemonBehaviourFlag.EXCITED
-import com.cobblemon.mod.common.entity.pokemon.PokemonBehaviourFlag.SLEEPING
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
+import com.cobblemon.mod.common.pokemon.status.PersistentStatusContainer
 import java.util.EnumSet
-import kotlin.random.Random
 import net.minecraft.entity.ai.goal.Goal
 import net.minecraft.util.registry.Registry
 
@@ -26,7 +26,8 @@ class WildRestGoal(private val pokemonEntity: PokemonEntity) : Goal() {
     override fun getControls(): EnumSet<Control> = EnumSet.allOf(Control::class.java)
     override fun canStart(): Boolean {
         val rest = pokemonEntity.behaviour.resting
-        if (!pokemonEntity.pokemon.isWild() || Random.Default.nextFloat() >= rest.sleepChance || !canSleep()) {
+
+        if (!pokemonEntity.pokemon.isWild() || pokemonEntity.random.nextFloat() < 1 - rest.sleepChance || !canSleep() || pokemonEntity.isBusy || rest.depth.canSleep(pokemonEntity)) {
             return false
         }
 
@@ -42,27 +43,28 @@ class WildRestGoal(private val pokemonEntity: PokemonEntity) : Goal() {
 
         return rest.canSleep &&
                 !pokemonEntity.getBehaviourFlag(EXCITED) &&
-                !pokemonEntity.isBusy &&
                 worldTime in pokemonEntity.behaviour.resting.times &&
                 light in rest.light &&
                 (rest.blocks.isEmpty() || rest.blocks.any { it.fits(block, pokemonEntity.world.registryManager.get(Registry.BLOCK_KEY)) }) &&
-                (rest.biomes.isEmpty() || rest.biomes.any { it.fits(biome, pokemonEntity.world.registryManager.get(Registry.BIOME_KEY)) }) &&
-                rest.depth.canSleep(pokemonEntity)
+                (rest.biomes.isEmpty() || rest.biomes.any { it.fits(biome, pokemonEntity.world.registryManager.get(Registry.BIOME_KEY)) })
     }
 
     override fun shouldContinue(): Boolean {
-        return canSleep()
+        return if (canSleep() && !pokemonEntity.behaviour.resting.depth.shouldWake(pokemonEntity)) {
+            true
+        } else {
+            wake()
+            false
+        }
     }
 
     override fun start() {
-        pokemonEntity.setBehaviourFlag(SLEEPING, true)
+        pokemonEntity.pokemon.status = PersistentStatusContainer(Statuses.SLEEP)
     }
 
-    override fun stop() {
-        pokemonEntity.setBehaviourFlag(SLEEPING, false)
-    }
-
-    override fun tick() {
-
+    fun wake() {
+        if (pokemonEntity.battleId.get().isEmpty) {
+            pokemonEntity.pokemon.status = null
+        }
     }
 }

@@ -41,7 +41,7 @@ class BlazikenModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0257_blaziken/blaziken", "ground_idle")
+                bedrock("blaziken", "ground_idle")
             )
         )
 
@@ -50,9 +50,9 @@ class BlazikenModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0257_blaziken/blaziken", "ground_idle"),
+                bedrock("blaziken", "ground_idle"),
                 BipedWalkAnimation(this, amplitudeMultiplier = 0.9F, periodMultiplier = 0.75F)
-                //bedrock("0257_blaziken/blaziken", "ground_walk")
+                //bedrock("blaziken", "ground_walk")
             )
         )
     }
@@ -60,5 +60,5 @@ class BlazikenModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0257_blaziken/blaziken", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("blaziken", "faint") else null
 }

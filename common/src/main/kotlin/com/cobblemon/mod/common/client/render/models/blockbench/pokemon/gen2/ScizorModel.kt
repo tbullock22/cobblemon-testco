@@ -38,7 +38,7 @@ class ScizorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0212_scizor/scizor", "ground_idle")
+                bedrock("scizor", "ground_idle")
             )
         )
 
@@ -47,7 +47,7 @@ class ScizorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0212_scizor/scizor", "ground_idle")
+                bedrock("scizor", "ground_idle")
             )
         )
 
@@ -56,7 +56,7 @@ class ScizorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = setOf(PoseType.HOVER, PoseType.FLOAT),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0212_scizor/scizor", "air_idle")
+                bedrock("scizor", "air_idle")
             )
         )
 
@@ -65,7 +65,7 @@ class ScizorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = setOf(PoseType.FLY, PoseType.SWIM),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0212_scizor/scizor", "air_fly")
+                bedrock("scizor", "air_fly")
             )
         )
     }
@@ -73,5 +73,5 @@ class ScizorModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0212_scizor/scizor", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("scizor", "faint") else null
 }

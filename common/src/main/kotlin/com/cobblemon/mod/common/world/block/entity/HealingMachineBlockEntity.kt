@@ -60,7 +60,6 @@ class HealingMachineBlockEntity(
             return true
         }
         val neededHealthPercent = player.party().getHealingRemainderPercent()
-        println("$neededHealthPercent is the needed percent, the healing charge is ${this.healingCharge}")
         return this.healingCharge >= neededHealthPercent
     }
 

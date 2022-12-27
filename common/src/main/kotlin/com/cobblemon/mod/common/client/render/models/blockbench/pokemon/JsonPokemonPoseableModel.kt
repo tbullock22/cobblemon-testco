@@ -150,7 +150,7 @@ class JsonPokemonPoseableModel(override val rootPart: ModelPart) : PokemonPoseab
                     return@mapNotNull JsonPokemonPoseableModelAdapter.model!!.singleBoneLook<PokemonEntity>()
                 } else if (animString.startsWith("bedrock")) {
                     val split = animString.replace("bedrock(", "").replace(")", "").split(",").map(String::trim)
-                    return@mapNotNull model.bedrock(file = split[0], animation = split[1])
+                    return@mapNotNull model.bedrock(animationGroup = split[0], animation = split[1])
                 }
                 return@mapNotNull null
             }.toTypedArray()

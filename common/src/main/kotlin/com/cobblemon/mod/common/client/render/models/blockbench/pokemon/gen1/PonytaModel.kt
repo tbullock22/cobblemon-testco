@@ -43,7 +43,7 @@ class PonytaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0077_ponyta/ponyta", "ground_idle")
+                //bedrock("ponyta", "ground_idle")
             )
         )
 
@@ -53,8 +53,8 @@ class PonytaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                QuadrupedWalkAnimation(this, periodMultiplier = 0.7F)
-                //bedrock("0077_ponyta/ponyta", "ground_walk")
+                QuadrupedWalkAnimation(this, periodMultiplier = 0.7F, amplitudeMultiplier = 0.7F)
+                //bedrock("ponyta", "ground_walk")
             )
         )
     }
@@ -62,5 +62,5 @@ class PonytaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0077_ponyta/ponyta", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("ponyta", "faint") else null
 }

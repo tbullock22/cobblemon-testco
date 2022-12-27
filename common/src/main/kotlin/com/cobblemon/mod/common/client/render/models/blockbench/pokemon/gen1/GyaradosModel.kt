@@ -10,6 +10,7 @@ package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1
 
 import com.cobblemon.mod.common.client.render.models.blockbench.animation.WaveAnimation
 import com.cobblemon.mod.common.client.render.models.blockbench.animation.WaveSegment
+import com.cobblemon.mod.common.client.render.models.blockbench.asTransformed
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pose.TransformedModelPart.Companion.X_AXIS
@@ -57,7 +58,7 @@ class GyaradosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     val wseg12 = WaveSegment(seg12, 4F)
 
     override val portraitScale = 1.6F
-    override val portraitTranslation = Vec3d(-0.8, 0.6, 0.0)
+    override val portraitTranslation = Vec3d(-1.35, 0.5, 0.0)
     override val profileScale = 0.7F
     override val profileTranslation = Vec3d(-0.1, 0.7, 0.0)
 
@@ -65,9 +66,10 @@ class GyaradosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
         registerPose(
             poseName = "land",
             poseTypes = STANDING_POSES + UI_POSES,
+            condition = { !it.isTouchingWater },
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0130_gyarados/gyarados", "ground_idle"),
+                bedrock("gyarados", "ground_idle"),
                 WaveAnimation(
                     frame = this,
                     waveFunction = sineFunction(
@@ -90,6 +92,41 @@ class GyaradosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
                         wseg12
                     )
                 )
+            )
+        )
+
+        registerPose(
+            poseName = "surface",
+            poseTypes = setOf(PoseType.STAND, PoseType.WALK),
+            condition = { it.isTouchingWater },
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("gyarados", "surface_idle"),
+                WaveAnimation(
+                    frame = this,
+                    waveFunction = sineFunction(
+                        period = 3F,
+                        amplitude = 0.2F
+                    ),
+                    oscillationsScalar = 24F,
+                    head = seg6,
+                    rotationAxis = X_AXIS,
+                    motionAxis = Y_AXIS,
+                    headLength = 0F,
+                    basedOnLimbSwing = false,
+                    moveHead = false,
+                    segments = arrayOf(
+                        wseg7,
+                        wseg8,
+                        wseg9,
+                        wseg10,
+                        wseg11,
+                        wseg12
+                    )
+                )
+            ),
+            transformedParts = arrayOf(
+                rootPart.asTransformed().addPosition(Y_AXIS, -6F)
             )
         )
 

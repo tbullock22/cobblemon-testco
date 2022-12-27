@@ -66,13 +66,23 @@
       "height": 20,
       "weight": 1680,
       "labels": ["gen1", "hisui_regional", "regional"],
-      "preEvolution": "growlithe form=hisui"
+      "preEvolution": "growlithe hisuian"
     }
   ],
   "baseExperienceYield": 194,
   "experienceGroup": "slow",
   "eggCycles": 20,
   "eggGroups": ["field"],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:bone",
+		"quantityRange": "1-2",
+        "percentage": 66
+      }
+    ]
+  },
   "moves": [
     "0:extremespeed",
     "1:takedown",

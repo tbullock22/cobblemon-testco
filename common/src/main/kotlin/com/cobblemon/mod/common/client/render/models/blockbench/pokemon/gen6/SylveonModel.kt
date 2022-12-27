@@ -36,7 +36,7 @@ class SylveonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                 bedrock("0700_sylveon/sylveon", "ground_idle")
+                 bedrock("sylveon", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class SylveonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                 bedrock("0700_sylveon/sylveon", "ground_run")
+                 bedrock("sylveon", "ground_run")
             )
         )
     }
@@ -54,5 +54,5 @@ class SylveonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0700_sylveon/sylveon", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("sylveon", "faint") else null
 }

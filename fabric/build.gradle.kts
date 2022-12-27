@@ -46,8 +46,7 @@ dependencies {
         libs.jetbrainsAnnotations,
         libs.serializationCore,
         libs.serializationJson,
-        libs.javet,
-        libs.javetMac,
+        libs.graal,
         libs.molang,
         libs.mclib
     ).forEach {
@@ -60,7 +59,7 @@ dependencies {
 tasks {
     // The AW file is needed in :fabric project resources when the game is run.
     val copyAccessWidener by registering(Copy::class) {
-        from(ACCESS_WIDENER)
+        from(loom.accessWidenerPath)
         into(generatedResources)
     }
 

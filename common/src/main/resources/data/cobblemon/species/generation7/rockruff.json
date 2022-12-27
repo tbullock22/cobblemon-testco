@@ -20,13 +20,32 @@
     "shoulderMountable": false,
     "forms": [
         {
-            "name": "own-tempo",
+            "name": "own_tempo",
             "abilities": [
                 "owntempo"
             ],
             "pokedex": [
-                "cobblemon.form.rockruff-own-tempo.desc1",
-                "cobblemon.form.rockruff-own-tempo.desc2"
+                "cobblemon.form.rockruff-own_tempo.desc1",
+                "cobblemon.form.rockruff-own_tempo.desc2"
+            ],
+            "evolutions": [
+                {
+                    "id": "rockruff_lycanroc_dusk",
+                    "variant": "level_up",
+                    "result": "lycanroc f:dusk",
+                    "consumeHeldItem": false,
+                    "learnableMoves": [],
+                    "requirements": [
+                        {
+                            "variant": "time_range",
+                            "range": "dusk"
+                        },
+                        {
+                            "variant": "level",
+                            "minLevel": 25
+                        }
+                    ]
+                }
             ]
         }
     ],
@@ -105,7 +124,7 @@
     ],
     "evolutions": [
         {
-            "id": "rockruff_lycanroc",
+            "id": "rockruff_lycanroc_midday",
             "variant": "level_up",
             "result": "lycanroc",
             "consumeHeldItem": false,
@@ -122,32 +141,15 @@
             ]
         },
         {
-            "id": "rockruff_lycanroc",
+            "id": "rockruff_lycanroc_midnight",
             "variant": "level_up",
-            "result": "lycanroc",
+            "result": "lycanroc f:midnight",
             "consumeHeldItem": false,
             "learnableMoves": [],
             "requirements": [
                 {
                     "variant": "time_range",
                     "range": "night"
-                },
-                {
-                    "variant": "level",
-                    "minLevel": 25
-                }
-            ]
-        },
-        {
-            "id": "rockruff_lycanroc",
-            "variant": "level_up",
-            "result": "lycanroc",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "time_range",
-                    "range": "dusk"
                 },
                 {
                     "variant": "level",

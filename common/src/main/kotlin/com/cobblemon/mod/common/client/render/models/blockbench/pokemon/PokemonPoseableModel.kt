@@ -89,7 +89,11 @@ abstract class PokemonPoseableModel : PoseableEntityModel<PokemonEntity>() {
         if (provider != null) {
             for (layer in currentLayers) {
                 val texture = layer.texture ?: continue
-                val consumer = provider.getBuffer(RenderLayer.getEntityTranslucent(texture))
+                val consumer = if (layer.emissive) {
+                    provider.getBuffer(RenderLayer.getEntityTranslucentEmissive(texture))
+                } else {
+                    provider.getBuffer(RenderLayer.getEntityTranslucent(texture))
+                }
                 stack.push()
                 stack.scale(layer.scale.x, layer.scale.y, layer.scale.z)
                 super.render(stack, consumer, packedLight, OverlayTexture.DEFAULT_UV, layer.tint.x, layer.tint.y, layer.tint.z, layer.tint.w)

@@ -82,16 +82,16 @@
 					"pivot": [-5, 9, -7],
 					"rotation": [0, 0, -15],
 					"cubes": [
-						{"origin": [-11, 8, -7], "size": [6, 1, 0], "inflate": 0.01, "uv": [52, 26]}
+						{"origin": [-10, 8, -7], "size": [5, 1, 0], "inflate": 0.01, "uv": [52, 26]}
 					]
 				},
 				{
 					"name": "whisker_right3",
 					"parent": "whisker_right2",
-					"pivot": [-11, 8, -7],
+					"pivot": [-10, 8, -7],
 					"rotation": [0, 0, 15],
 					"cubes": [
-						{"origin": [-14, 8, -7], "size": [3, 1, 0], "uv": [52, 27]}
+						{"origin": [-14, 8, -7], "size": [4, 1, 0], "uv": [52, 27]}
 					]
 				},
 				{
@@ -109,16 +109,16 @@
 					"pivot": [5, 9, -7],
 					"rotation": [0, 0, 15],
 					"cubes": [
-						{"origin": [5, 8, -7], "size": [6, 1, 0], "inflate": 0.01, "uv": [52, 29]}
+						{"origin": [5, 8, -7], "size": [5, 1, 0], "inflate": 0.01, "uv": [52, 29]}
 					]
 				},
 				{
 					"name": "whisker_left3",
 					"parent": "whisker_left2",
-					"pivot": [11, 8, -7],
+					"pivot": [10, 8, -7],
 					"rotation": [0, 0, -15],
 					"cubes": [
-						{"origin": [11, 8, -7], "size": [3, 1, 0], "uv": [52, 30]}
+						{"origin": [10, 8, -7], "size": [4, 1, 0], "uv": [52, 30]}
 					]
 				},
 				{

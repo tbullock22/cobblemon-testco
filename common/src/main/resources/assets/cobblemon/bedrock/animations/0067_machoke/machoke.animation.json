@@ -3,7 +3,6 @@
 	"animations": {
 		"animation.machoke.ground_idle": {
 			"loop": true,
-			"animation_length": 14.875,
 			"bones": {
 				"body": {
 					"position": [0, 0, "-0.07*(math.sin(q.anim_time*90*4-90)*1+1)"]
@@ -128,7 +127,6 @@
 		},
 		"animation.machoke.ground_walk": {
 			"loop": true,
-			"animation_length": 160.5,
 			"bones": {
 				"body": {
 					"rotation": [

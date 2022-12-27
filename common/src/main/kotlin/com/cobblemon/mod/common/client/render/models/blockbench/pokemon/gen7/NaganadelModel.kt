@@ -43,7 +43,7 @@ class NaganadelModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BiW
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0804_naganadel/naganadel", "ground_idle"),
+                bedrock("naganadel", "ground_idle"),
                 wingFlap(
                     flapFunction = sineFunction(verticalShift = -10F.toRadians(), period = 0.9F, amplitude = 0.4F),
                     timeVariable = { state, _, _ -> state?.animationSeconds ?: 0F },
@@ -60,7 +60,7 @@ class NaganadelModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BiW
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0804_naganadel/naganadel", "ground_idle"),
+                bedrock("naganadel", "ground_idle"),
                 wingFlap(
                     flapFunction = sineFunction(verticalShift = -10F.toRadians(), period = 0.9F, amplitude = 0.4F),
                     timeVariable = { state, _, _ -> state?.animationSeconds ?: 0F },
@@ -69,7 +69,7 @@ class NaganadelModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BiW
                 rootPart.translation(function = sineFunction(amplitude = -3F, period = 0.9F), axis = Y_AXIS) { state, _, _ ->
                     state?.animationSeconds ?: 0F
                 }
-                //bedrock("0804_naganadel/naganadel", "ground_walk")
+                //bedrock("naganadel", "ground_walk")
             )
         )
     }
@@ -77,5 +77,5 @@ class NaganadelModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BiW
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0804_naganadel/naganadel", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("naganadel", "faint") else null
 }

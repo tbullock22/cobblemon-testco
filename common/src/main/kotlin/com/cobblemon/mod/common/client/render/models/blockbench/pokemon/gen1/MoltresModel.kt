@@ -37,7 +37,7 @@ class MoltresModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0146_moltres/moltres", "ground_idle")
+                bedrock("moltres", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class MoltresModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0146_moltres/moltres", "ground_idle")
+                bedrock("moltres", "ground_idle")
             )
         )
 
@@ -55,7 +55,7 @@ class MoltresModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = setOf(PoseType.FLOAT, PoseType.HOVER),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0146_moltres/moltres", "air_idle")
+                bedrock("moltres", "air_idle")
             )
         )
 
@@ -64,7 +64,7 @@ class MoltresModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = setOf(PoseType.FLY, PoseType.SWIM),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0146_moltres/moltres", "air_fly")
+                bedrock("moltres", "air_fly")
             )
         )
     }
@@ -72,5 +72,5 @@ class MoltresModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0146_moltres/moltres", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("moltres", "faint") else null
 }

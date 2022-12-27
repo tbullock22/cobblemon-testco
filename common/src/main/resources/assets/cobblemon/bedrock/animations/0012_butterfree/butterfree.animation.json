@@ -3,7 +3,6 @@
 	"animations": {
 		"animation.butterfree.air_idle": {
 			"loop": true,
-			"animation_length": 2,
 			"bones": {
 				"body": {
 					"rotation": ["math.sin(q.anim_time*90*2)*2+2", 0, 0],

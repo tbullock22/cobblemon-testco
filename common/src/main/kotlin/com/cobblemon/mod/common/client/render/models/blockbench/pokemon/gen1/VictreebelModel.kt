@@ -33,7 +33,7 @@ class VictreebelModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0071_victreebel/victreebel", "ground_idle")
+                bedrock("victreebel", "ground_idle")
             )
         )
 
@@ -42,8 +42,8 @@ class VictreebelModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0071_victreebel/victreebel", "ground_idle")
-                //bedrock("0071_victreebel/victreebel", "ground_walk")
+                bedrock("victreebel", "ground_idle")
+                //bedrock("victreebel", "ground_walk")
             )
         )
     }
@@ -51,5 +51,5 @@ class VictreebelModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0071_victreebel/victreebel", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("victreebel", "faint") else null
 }

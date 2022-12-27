@@ -11,6 +11,7 @@ package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1
 import com.cobblemon.mod.common.client.render.models.blockbench.PoseableEntityState
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.ALL_POSES
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import net.minecraft.client.model.ModelPart
@@ -23,18 +24,24 @@ class MetapodModel(root: ModelPart) : PokemonPoseableModel() {
     override val profileScale = 1.0F
     override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
 
+    lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose
 
     override fun registerPoses() {
+        sleep = registerPose(
+            poseType = PoseType.SLEEP,
+            idleAnimations = arrayOf(bedrock("metapod", "sleep"))
+        )
+
         standing = registerPose(
             poseName = "standing",
-            poseTypes = ALL_POSES,
-            idleAnimations = arrayOf(bedrock("0011_metapod/metapod", "ground_idle"))
+            poseTypes = ALL_POSES - PoseType.SLEEP,
+            idleAnimations = arrayOf(bedrock("metapod", "ground_idle"))
         )
     }
 
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = bedrockStateful("0011_metapod/metapod", "faint")
+    ) = if (state.isPosedIn(standing)) bedrockStateful("metapod", "faint") else null
 }

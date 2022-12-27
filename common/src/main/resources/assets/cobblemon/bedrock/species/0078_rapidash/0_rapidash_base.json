@@ -1,0 +1,19 @@
+{
+  "species": "cobblemon:rapidash",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:rapidash",
+      "model": "cobblemon:rapidash.geo",
+      "texture": "cobblemon:textures/pokemon/0078_rapidash/rapidash.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0078_rapidash/rapidash_shiny.png"
+    }
+  ]
+}

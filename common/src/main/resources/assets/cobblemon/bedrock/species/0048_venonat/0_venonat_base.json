@@ -1,0 +1,19 @@
+{
+  "species": "cobblemon:venonat",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:venonat",
+      "model": "cobblemon:venonat.geo",
+      "texture": "cobblemon:textures/pokemon/0048_venonat/venonat.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0048_venonat/venonat_shiny.png"
+    }
+  ]
+}

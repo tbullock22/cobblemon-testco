@@ -9,6 +9,8 @@
 package com.cobblemon.mod.common.api.spawning.condition
 
 import com.cobblemon.mod.common.api.conditional.RegistryLikeCondition
+import com.cobblemon.mod.common.api.spawning.MoonPhaseRange
+import com.cobblemon.mod.common.api.spawning.TimeRange
 import com.cobblemon.mod.common.api.spawning.condition.ListCheckMode.ALL
 import com.cobblemon.mod.common.api.spawning.condition.ListCheckMode.ANY
 import com.cobblemon.mod.common.api.spawning.context.SpawningContext
@@ -37,7 +39,7 @@ abstract class SpawningCondition<T : SpawningContext> {
 
     var dimensions: MutableList<Identifier>? = null
     var biomes: MutableSet<RegistryLikeCondition<Biome>>? = null
-    var moonPhase: Int? = null
+    var moonPhase: MoonPhaseRange? = null
     var canSeeSky: Boolean? = null
     var minX: Float? = null
     var minY: Float? = null
@@ -76,7 +78,7 @@ abstract class SpawningCondition<T : SpawningContext> {
             return false
         } else if (dimensions != null && dimensions!!.isNotEmpty() && ctx.world.dimension.effects !in dimensions!!) {
             return false
-        } else if (moonPhase != null && moonPhase != ctx.moonPhase) {
+        } else if (moonPhase != null && ctx.moonPhase in moonPhase!!) {
             return false
         } else if (biomes != null && biomes!!.isNotEmpty() && biomes!!.none { condition -> condition.fits(ctx.biome, ctx.biomeRegistry) }) {
             return false
@@ -108,17 +110,16 @@ abstract class SpawningCondition<T : SpawningContext> {
         dimensions = merger.merge(dimensions, other.dimensions)?.toMutableList()
         biomes = merger.merge(biomes, other.biomes)?.toMutableSet()
         labels = merger.merge(labels, other.labels)?.toMutableList()
-        if (other.moonPhase != null) moonPhase = other.moonPhase
-        if (other.canSeeSky != null) canSeeSky = other.canSeeSky
-        if (other.minX != null) minX = other.minX
-        if (other.minY != null) minY = other.minY
-        if (other.minZ != null) minZ = other.minZ
-        if (other.maxX != null) maxX = other.maxX
-        if (other.maxY != null) maxY = other.maxY
-        if (other.maxZ != null) maxZ = other.maxZ
-        if (other.minLight != null) minLight = other.minLight
-        if (other.maxLight != null) maxLight = other.maxLight
-        if (other.timeRange != null) timeRange = other.timeRange
-        if (other.labelMode != ANY) labelMode = other.labelMode
+        moonPhase = merger.mergeSingle(moonPhase, other.moonPhase)
+        canSeeSky = merger.mergeSingle(canSeeSky, other.canSeeSky)
+        minX = merger.mergeSingle(minX, other.minX)
+        minY = merger.mergeSingle(minY, other.minY)
+        minZ = merger.mergeSingle(minZ, other.minZ)
+        maxX = merger.mergeSingle(maxX, other.maxX)
+        maxY = merger.mergeSingle(maxY, other.maxY)
+        maxZ = merger.mergeSingle(maxZ, other.maxZ)
+        minLight = merger.mergeSingle(minLight, other.minLight)
+        maxLight = merger.mergeSingle(maxLight, other.maxLight)
+        timeRange = merger.mergeSingle(timeRange, other.timeRange)
     }
 }

@@ -9,12 +9,14 @@
 package com.cobblemon.mod.common
 
 import com.cobblemon.mod.common.api.pokeball.PokeBalls
+import com.cobblemon.mod.common.api.pokemon.stats.Stats
 import com.cobblemon.mod.common.item.ApricornItem
 import com.cobblemon.mod.common.item.CobblemonItem
 import com.cobblemon.mod.common.item.CobblemonItemGroups
 import com.cobblemon.mod.common.item.PokeBallItem
 import com.cobblemon.mod.common.item.interactive.CandyItem
 import com.cobblemon.mod.common.item.interactive.LinkCableItem
+import com.cobblemon.mod.common.item.interactive.VitaminItem
 import com.cobblemon.mod.common.pokeball.PokeBall
 import com.cobblemon.mod.common.registry.CompletableRegistry
 import dev.architectury.registry.registries.RegistrySupplier
@@ -118,6 +120,12 @@ object CobblemonItems : CompletableRegistry<Item>(Registry.ITEM_KEY) {
     val EXPERIENCE_CANDY_M = queue("exp_candy_m") { CandyItem { _, _ -> CandyItem.DEFAULT_M_CANDY_YIELD } }
     val EXPERIENCE_CANDY_L = queue("exp_candy_l") { CandyItem { _, _ -> CandyItem.DEFAULT_L_CANDY_YIELD } }
     val EXPERIENCE_CANDY_XL = queue("exp_candy_xl") { CandyItem { _, _ -> CandyItem.DEFAULT_XL_CANDY_YIELD } }
+    val CALCIUM = queue("calcium") { VitaminItem(Stats.SPECIAL_ATTACK) }
+    val CARBOS = queue("carbos") { VitaminItem(Stats.SPEED) }
+    val HP_UP = queue("hp_up") { VitaminItem(Stats.HP) }
+    val IRON = queue("iron") { VitaminItem(Stats.DEFENCE) }
+    val PROTEIN = queue("protein") { VitaminItem(Stats.ATTACK) }
+    val ZINC = queue("zinc") { VitaminItem(Stats.SPECIAL_DEFENCE) }
 
     /**
      * Evolution Ores and Stones

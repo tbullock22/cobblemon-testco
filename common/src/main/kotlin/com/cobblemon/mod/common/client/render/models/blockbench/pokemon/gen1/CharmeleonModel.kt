@@ -28,22 +28,29 @@ class CharmeleonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
     override val leftLeg = getPart("leg_left")
 
     override val portraitScale = 1.5F
-    override val portraitTranslation = Vec3d(0.05, 0.3, 0.0)
+    override val portraitTranslation = Vec3d(0.05, 0.85,0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.75F
+    override val profileTranslation = Vec3d(0.0, 0.6, 0.0)
 
+    lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
 
     override fun registerPoses() {
+        sleep = registerPose(
+            poseType = PoseType.SLEEP,
+            transformTicks = 10,
+            idleAnimations = arrayOf(bedrock("charmeleon", "sleep"))
+        )
+
         standing = registerPose(
             poseName = "standing",
             poseTypes = setOf(PoseType.NONE, PoseType.PROFILE, PoseType.STAND, PoseType.FLOAT, PoseType.PORTRAIT),
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0005_charmeleon/charmeleon", "ground_idle")
+                bedrock("charmeleon", "ground_idle")
             )
         )
 
@@ -53,8 +60,8 @@ class CharmeleonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0005_charmeleon/charmeleon", "ground_idle"),
-                bedrock("0005_charmeleon/charmeleon", "ground_walk")
+                bedrock("charmeleon", "ground_idle"),
+                bedrock("charmeleon", "ground_walk")
             )
         )
     }
@@ -62,5 +69,5 @@ class CharmeleonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0005_charmeleon/charmeleon", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("charmeleon", "faint") else null
 }

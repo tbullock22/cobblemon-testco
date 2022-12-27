@@ -36,6 +36,15 @@
             }
         }
     },
+	"drops": {
+        "amount": "1",
+        "entries": [
+            {
+                "item": "cobblemon:up_grade",
+                "percentage": 50
+            }
+        ]
+    },
     "moves": [
         "1:tackle",
         "1:conversion",

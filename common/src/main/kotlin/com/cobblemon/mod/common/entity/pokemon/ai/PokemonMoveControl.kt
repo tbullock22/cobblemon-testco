@@ -8,9 +8,11 @@
 
 package com.cobblemon.mod.common.entity.pokemon.ai
 
+import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.pokemon.PokemonBehaviourFlag
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
+import com.cobblemon.mod.common.util.getWaterAndLavaIn
 import com.cobblemon.mod.common.util.math.geometry.toDegrees
 import com.cobblemon.mod.common.util.math.geometry.toRadians
 import kotlin.math.abs
@@ -25,7 +27,16 @@ import net.minecraft.util.math.Direction
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 class PokemonMoveControl(val pokemonEntity: PokemonEntity) : MoveControl(pokemonEntity) {
+    companion object {
+        const val VERY_CLOSE = 2.500000277905201E-3
+    }
+
     override fun tick() {
+        if (pokemonEntity.pokemon.status?.status == Statuses.SLEEP || pokemonEntity.isDead) {
+            pokemonEntity.movementSpeed = 0F
+            pokemonEntity.upwardSpeed = 0F
+            return
+        }
         val behaviour = pokemonEntity.behaviour
         val mediumSpeed = if (pokemonEntity.getPoseType() in setOf(PoseType.FLY, PoseType.HOVER)) {
             behaviour.moving.fly.flySpeedHorizontal
@@ -35,7 +46,7 @@ class PokemonMoveControl(val pokemonEntity: PokemonEntity) : MoveControl(pokemon
             behaviour.moving.walk.walkSpeed
         }
 
-        val baseSpeed = entity.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED).toFloat()
+        val baseSpeed = entity.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED).toFloat() * this.speed.toFloat()
         val adjustedSpeed = baseSpeed * mediumSpeed
 
         if (state == State.STRAFE) {
@@ -62,39 +73,28 @@ class PokemonMoveControl(val pokemonEntity: PokemonEntity) : MoveControl(pokemon
             entity.setSidewaysSpeed(sidewaysMovement)
             state = State.WAIT
         } else if (state == State.MOVE_TO) {
-//            state = State.WAIT
             val xDist = targetX - entity.x
             val zDist = targetZ - entity.z
             val yDist = targetY - entity.y
-//            val distanceFromTarget = xDist * xDist + yDist * yDist + zDist * zDist
 
             val horizontalDistanceFromTarget = xDist * xDist + zDist * zDist
-            val closeHorizontally = horizontalDistanceFromTarget < 2.500000277905201E-5
+            val closeHorizontally = horizontalDistanceFromTarget < VERY_CLOSE
             if (!closeHorizontally) {
-                val movingAngle = MathHelper.atan2(zDist, xDist).toDegrees() - 90.0f
-                entity.yaw = movingAngle
+                val angleToTarget = MathHelper.atan2(zDist, xDist).toDegrees() - 90.0f
+                val currentMovingAngle = entity.yaw
+                val steppedAngle = MathHelper.stepUnwrappedAngleTowards(currentMovingAngle, angleToTarget,  if (entity.isOnGround) 20F else 5F)
+                entity.yaw = steppedAngle
             }
 
-            val blockIn = entity.blockStateAtPos
-            val inFluid = blockIn.fluidState.isIn(FluidTags.WATER) || blockIn.fluidState.isIn(FluidTags.LAVA)
-//
-//
+            val (inWater, inLava) = entity.world.getWaterAndLavaIn(entity.boundingBox)
+            val inFluid = inWater || inLava
             var verticalHandled = false
-            if (pokemonEntity.getBehaviourFlag(PokemonBehaviourFlag.FLYING)) {
-//                val upVel = min(abs(baseSpeed * behaviour.moving.fly.flySpeedVertical).toDouble(), abs(yDist)).toFloat()
-//                entity.upwardSpeed = upVel * sign(yDist).toFloat()
-                verticalHandled = true
-            } else if (inFluid) {
-//                val upVel = min(abs(baseSpeed * behaviour.moving.swim.swimSpeed * 4).toDouble(), abs(yDist)).toFloat()
-//                entity.upwardSpeed = upVel * sign(yDist).toFloat()
-                verticalHandled = true
-            }
-
             val blockPos = entity.blockPos
             val blockState = entity.world.getBlockState(blockPos)
             val voxelShape = blockState.getCollisionShape(entity.world, blockPos)
 
             if (pokemonEntity.getBehaviourFlag(PokemonBehaviourFlag.FLYING) || inFluid) {
+                verticalHandled = true
                 entity.upwardSpeed = 0F
                 entity.movementSpeed = 0F
                 val refine: (Double) -> Double = { if (abs(it) < 0.05) 0.0 else it }
@@ -117,8 +117,9 @@ class PokemonMoveControl(val pokemonEntity: PokemonEntity) : MoveControl(pokemon
 
             if (!verticalHandled) {
                 val tooBigToStep = yDist > entity.stepHeight.toDouble()
+
                 val closeEnoughToJump = sqrt(xDist * xDist + zDist * zDist) < 1.0f.coerceAtLeast(entity.width).toDouble() + 1
-//                println("Too big to step: $tooBigToStep with yDist being $yDist. Close enough to jump: $closeEnoughToJump. Distance to jump: ${sqrt(xDist * xDist + zDist * zDist)}")
+
                 if (tooBigToStep &&
                     closeEnoughToJump ||
                     !voxelShape.isEmpty && entity.y < voxelShape.getMax(Direction.Axis.Y) + blockPos.y.toDouble() &&
@@ -128,6 +129,10 @@ class PokemonMoveControl(val pokemonEntity: PokemonEntity) : MoveControl(pokemon
                     entity.jumpControl.setActive()
                     state = State.JUMPING
                 }
+            }
+
+            if (closeHorizontally && abs(yDist) < VERY_CLOSE) {
+                state = State.WAIT
             }
         } else if (state == State.JUMPING) {
             entity.movementSpeed = adjustedSpeed
@@ -141,10 +146,12 @@ class PokemonMoveControl(val pokemonEntity: PokemonEntity) : MoveControl(pokemon
         }
 
         if (state == State.WAIT) {
-//            entity.upwardSpeed = 0F
-//            entity.forwardSpeed = 0F
             if (entity.isOnGround && behaviour.moving.walk.canWalk && pokemonEntity.getBehaviourFlag(PokemonBehaviourFlag.FLYING)) {
                 pokemonEntity.setBehaviourFlag(PokemonBehaviourFlag.FLYING, false)
+            }
+
+            if (entity.isSubmergedIn(FluidTags.WATER) && behaviour.moving.swim.canSwimInWater) {
+                pokemonEntity.setUpwardSpeed(0.2F)
             }
         }
     }

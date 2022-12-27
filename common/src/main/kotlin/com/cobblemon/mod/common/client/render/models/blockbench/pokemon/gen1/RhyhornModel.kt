@@ -43,7 +43,7 @@ class RhyhornModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0111_rhyhorn/rhyhorn", "ground_idle")
+                //bedrock("rhyhorn", "ground_idle")
             )
         )
 
@@ -54,7 +54,7 @@ class RhyhornModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 QuadrupedWalkAnimation(this)
-                //bedrock("0111_rhyhorn/rhyhorn", "ground_walk")
+                //bedrock("rhyhorn", "ground_walk")
             )
         )
     }
@@ -62,5 +62,5 @@ class RhyhornModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0111_rhyhorn/rhyhorn", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("rhyhorn", "faint") else null
 }

@@ -39,7 +39,7 @@ class LaprasModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             condition = { !it.isTouchingWater },
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0131_lapras/lapras", "ground_idle")
+                bedrock("lapras", "ground_idle")
             )
         )
 
@@ -49,7 +49,7 @@ class LaprasModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             condition = { !it.isTouchingWater },
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0131_lapras/lapras", "ground_walk"),
+                bedrock("lapras", "ground_walk"),
             )
         )
 
@@ -59,7 +59,7 @@ class LaprasModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             condition = { it.isTouchingWater },
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0131_lapras/lapras", "water_idle")
+                bedrock("lapras", "water_idle")
             )
         )
 
@@ -69,7 +69,7 @@ class LaprasModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             condition = { it.isTouchingWater },
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0131_lapras/lapras", "water_swim"),
+                bedrock("lapras", "water_swim"),
             )
         )
 
@@ -78,7 +78,7 @@ class LaprasModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = setOf(PoseType.FLOAT),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0131_lapras/lapras", "underwater_idle")
+                bedrock("lapras", "underwater_idle")
             )
         )
 
@@ -87,7 +87,7 @@ class LaprasModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = setOf(PoseType.SWIM),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0131_lapras/lapras", "underwater_swim")
+                bedrock("lapras", "underwater_swim")
             )
         )
     }
@@ -95,5 +95,5 @@ class LaprasModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(landIdle, landMove)) bedrockStateful("0131_lapras/lapras", "faint") else null
+//    ) = if (state.isPosedIn(landIdle, landMove)) bedrockStateful("lapras", "faint") else null
 }

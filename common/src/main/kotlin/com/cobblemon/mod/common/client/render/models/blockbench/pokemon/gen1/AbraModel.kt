@@ -26,7 +26,7 @@ class AbraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val portraitTranslation = Vec3d(0.0, 0.2, 0.0)
 
     override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileTranslation = Vec3d(0.0, 0.4, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
@@ -38,7 +38,7 @@ class AbraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0063_abra/abra", "ground_idle")
+                bedrock("abra", "ground_idle")
             )
         )
 
@@ -48,8 +48,8 @@ class AbraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0063_abra/abra", "ground_idle")
-                //bedrock("0063_abra/abra", "ground_walk")
+                bedrock("abra", "ground_idle")
+                //bedrock("abra", "ground_walk")
             )
         )
     }
@@ -57,5 +57,5 @@ class AbraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0063_abra/abra", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("abra", "faint") else null
 }

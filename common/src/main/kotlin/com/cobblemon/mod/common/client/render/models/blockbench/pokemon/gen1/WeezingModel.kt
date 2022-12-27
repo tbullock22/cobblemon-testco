@@ -32,7 +32,7 @@ class WeezingModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0110_weezing/weezing", "ground_idle")
+                bedrock("weezing", "ground_idle")
             )
         )
 
@@ -40,7 +40,7 @@ class WeezingModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0110_weezing/weezing", "ground_walk")
+                bedrock("weezing", "ground_walk")
             )
         )
     }
@@ -48,5 +48,5 @@ class WeezingModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0110_weezing/weezing", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("weezing", "faint") else null
 }

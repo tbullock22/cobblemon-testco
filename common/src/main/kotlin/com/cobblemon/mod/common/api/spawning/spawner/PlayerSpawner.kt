@@ -13,15 +13,15 @@ import com.cobblemon.mod.common.api.spawning.SpawnCause
 import com.cobblemon.mod.common.api.spawning.SpawnerManager
 import com.cobblemon.mod.common.api.spawning.detail.SpawnPool
 import com.cobblemon.mod.common.util.getPlayer
+import com.cobblemon.mod.common.util.nextBetween
 import java.util.UUID
 import kotlin.math.atan
 import kotlin.math.cos
 import kotlin.math.sin
+import kotlin.random.Random
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.math.MathHelper.PI
 import net.minecraft.util.math.MathHelper.ceil
-import net.minecraft.util.math.MathHelper.nextBetween
-import net.minecraft.util.math.random.Random
 
 /**
  * A spawner that works around a single player. It will do basic tracking of a player's speed
@@ -39,12 +39,12 @@ class PlayerSpawner(player: ServerPlayerEntity, spawns: SpawnPool, manager: Spaw
         val sliceDiameter = config.worldSliceDiameter
         val sliceHeight = config.worldSliceHeight
 
-        val rand = Random.create()
+        val rand = Random.Default
 
         val center = player.pos
 
-        val r = nextBetween(rand, config.minimumSliceDistanceFromPlayer, config.maximumSliceDistanceFromPlayer)
-        val thetatemp = atan(player.velocity.z / player.velocity.x) + nextBetween(rand, -PI/2, PI/2 )
+        val r = rand.nextBetween(config.minimumSliceDistanceFromPlayer, config.maximumSliceDistanceFromPlayer)
+        val thetatemp = atan(player.velocity.z / player.velocity.x) + rand.nextBetween(-PI/2, PI/2 )
         val theta = if (player.velocity.horizontalLength() < 0.1) {
             rand.nextDouble() * 2 * PI
         } else if (player.velocity.x < 0) {

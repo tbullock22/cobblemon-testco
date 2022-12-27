@@ -19,6 +19,7 @@ tasks {
         archiveClassifier.set("dev-shadow")
         archiveBaseName.set("Cobblemon-${project.name}")
         configurations = listOf(bundle)
+        mergeServiceFiles()
     }
 
     remapJar {

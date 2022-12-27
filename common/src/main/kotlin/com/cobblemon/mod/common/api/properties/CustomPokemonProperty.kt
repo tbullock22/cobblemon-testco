@@ -48,6 +48,10 @@ interface CustomPokemonProperty {
             this.triggerSyncAttempt()
         }
 
+        fun unregister(property: CustomPokemonPropertyType<*>) {
+            properties.remove(property)
+        }
+
         // We do this every time a new property is registered if the server is running in order to synchronize all players with the new property for tab completion purposes
         private fun triggerSyncAttempt() {
             val server = getServer() ?: return

@@ -35,7 +35,7 @@ class LickitungModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0108_lickitung/lickitung", "ground_idle")
+                bedrock("lickitung", "ground_idle")
             )
         )
 
@@ -44,8 +44,8 @@ class LickitungModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0108_lickitung/lickitung", "ground_idle")
-                //bedrock("0108_lickitung/lickitung", "ground_walk")
+                bedrock("lickitung", "ground_idle")
+                //bedrock("lickitung", "ground_walk")
             )
         )
     }
@@ -53,5 +53,5 @@ class LickitungModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0108_lickitung/lickitung", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("lickitung", "faint") else null
 }

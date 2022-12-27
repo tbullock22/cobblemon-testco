@@ -20,7 +20,7 @@
             "canSleep": true,
             "willSleepOnBed": true,
             "depth": "normal",
-            "light": "0-2"
+            "light": "0-4"
         }
     },
     "catchRate": 45,
@@ -173,7 +173,7 @@
             ]
         }
     ],
-    "baseScale": "0.7",
+    "baseScale": 0.7,
     "hitbox": {
         "width": 0.7,
         "height": 1.1,

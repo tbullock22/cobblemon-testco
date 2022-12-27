@@ -33,7 +33,8 @@ class BestSpawnerConfig {
     val replaceWithNewVersion = true
     val contextWeights = mutableMapOf(
         "grounded" to 1F,
-        "submerged" to 0.7F
+        "submerged" to 0.95F,
+        "surface" to 0.05F
     )
     val buckets = mutableListOf(
         SpawnBucket("common", 94.4F),
@@ -54,7 +55,7 @@ class BestSpawnerConfig {
 
         fun load(): BestSpawnerConfig {
             val internal = loadInternal()
-            if (Cobblemon.config.exportSpawnConfigToConfig) {
+            if (Cobblemon.config.exportSpawnConfig) {
                 val external = loadExternal()
                 return if (external == null) {
                     saveExternal()

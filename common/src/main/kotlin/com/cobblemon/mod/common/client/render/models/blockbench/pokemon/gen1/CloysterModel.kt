@@ -33,7 +33,7 @@ class CloysterModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0091_cloyster/cloyster", "ground_idle")
+                bedrock("cloyster", "ground_idle")
             )
         )
 
@@ -42,7 +42,7 @@ class CloysterModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0091_cloyster/cloyster", "ground_walk")
+                //bedrock("cloyster", "ground_walk")
             )
         )
     }
@@ -50,5 +50,5 @@ class CloysterModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0091_cloyster/cloyster", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("cloyster", "faint") else null
 }

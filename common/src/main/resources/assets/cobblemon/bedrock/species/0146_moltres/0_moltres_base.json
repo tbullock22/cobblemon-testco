@@ -1,0 +1,19 @@
+{
+  "species": "cobblemon:moltres",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:moltres",
+      "model": "cobblemon:moltres.geo",
+      "texture": "cobblemon:textures/pokemon/0146_moltres/moltres.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0146_moltres/moltres_shiny.png"
+    }
+  ]
+}

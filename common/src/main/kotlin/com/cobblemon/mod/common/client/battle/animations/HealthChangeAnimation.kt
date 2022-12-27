@@ -9,22 +9,28 @@
 package com.cobblemon.mod.common.client.battle.animations
 
 import com.cobblemon.mod.common.client.battle.ActiveClientBattlePokemon
-class HealthChangeAnimation(val newHealthRatio: Float, val duration: Float = 1F) : TileAnimation {
+class HealthChangeAnimation(val newHealthRatio: Float, val newHealth: Int, val duration: Float = 1F) : TileAnimation {
     var passedSeconds = 0F
-    var initialHealth = -1F
-    var difference = 0F
+    var initialHealthRatio = -1F
+    var ratioDifference = 0F
+    var initialHealth = -1
+    var healthDifference = 0
 
     override fun shouldHoldUntilNextAnimation() = false
     override fun invoke(activeBattlePokemon: ActiveClientBattlePokemon, deltaTicks: Float): Boolean {
         val pokemon = activeBattlePokemon.battlePokemon ?: return true
-        if (initialHealth == -1F) {
-            initialHealth = pokemon.hpRatio
-            difference = newHealthRatio - initialHealth
+        if (initialHealthRatio == -1F) {
+            initialHealthRatio = pokemon.hpRatio
+            ratioDifference = newHealthRatio - initialHealthRatio
+        }
+
+        if (initialHealth == -1) {
+            healthDifference = newHealth - initialHealth
         }
 
         passedSeconds += deltaTicks / 20
         passedSeconds = passedSeconds.coerceAtMost(duration)
-        pokemon.hpRatio = initialHealth + (passedSeconds / duration) * difference
+        pokemon.hpRatio = initialHealthRatio + (passedSeconds / duration) * ratioDifference
         return passedSeconds == duration
     }
 }

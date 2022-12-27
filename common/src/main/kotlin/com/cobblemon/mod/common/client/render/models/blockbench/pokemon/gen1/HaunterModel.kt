@@ -32,7 +32,7 @@ class HaunterModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0093_haunter/haunter", "ground_idle")
+                bedrock("haunter", "ground_idle")
             )
         )
 
@@ -40,8 +40,8 @@ class HaunterModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0093_haunter/haunter", "ground_idle")
-                //bedrock("0093_haunter/haunter", "ground_walk")
+                bedrock("haunter", "ground_idle")
+                //bedrock("haunter", "ground_walk")
             )
         )
     }
@@ -49,5 +49,5 @@ class HaunterModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0093_haunter/haunter", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("haunter", "faint") else null
 }

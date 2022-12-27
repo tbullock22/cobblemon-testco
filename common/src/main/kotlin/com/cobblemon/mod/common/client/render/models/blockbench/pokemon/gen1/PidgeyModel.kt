@@ -49,7 +49,7 @@ class PidgeyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             poseTypes = SHOULDER_POSES + UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0016_pidgey/pidgey", "ground_idle")
+                bedrock("pidgey", "ground_idle")
             )
         )
 
@@ -58,7 +58,7 @@ class PidgeyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             poseType = PoseType.HOVER,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0016_pidgey/pidgey", "air_idle")
+                bedrock("pidgey", "air_idle")
             )
         )
 
@@ -67,7 +67,7 @@ class PidgeyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             poseType = PoseType.FLY,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0016_pidgey/pidgey", "air_fly")
+                bedrock("pidgey", "air_fly")
             )
         )
 
@@ -76,7 +76,7 @@ class PidgeyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0016_pidgey/pidgey", "ground_idle"),
+                bedrock("pidgey", "ground_idle"),
                 rootPart.translation(
                     function = parabolaFunction(
                         peak = -4F,

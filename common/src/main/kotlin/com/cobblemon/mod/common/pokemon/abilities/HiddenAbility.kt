@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.pokemon.abilities
 
+import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.api.Priority
 import com.cobblemon.mod.common.api.abilities.Abilities
 import com.cobblemon.mod.common.api.abilities.AbilityTemplate
@@ -19,10 +20,12 @@ object HiddenAbilityType : PotentialAbilityType<HiddenAbility> {
     override fun parseFromJSON(element: JsonElement): HiddenAbility? {
         val str = if (element.isJsonPrimitive) element.asString else null
         return if (str?.startsWith("h:") == true) {
-            val ability = Abilities.get(str.substringAfter("h:"))
+            val abilityString = str.substringAfter("h:")
+            val ability = Abilities.get(abilityString)
             if (ability != null) {
                 HiddenAbility(ability)
             } else {
+                Cobblemon.LOGGER.error("Hidden ability referred to unknown ability: $abilityString")
                 null
             }
         } else {

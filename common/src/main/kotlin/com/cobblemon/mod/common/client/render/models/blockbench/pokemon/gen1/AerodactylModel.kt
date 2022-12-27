@@ -36,7 +36,7 @@ class AerodactylModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0142_aerodactyl/aerodactyl", "ground_idle")
+                bedrock("aerodactyl", "ground_idle")
             )
         )
 
@@ -45,7 +45,7 @@ class AerodactylModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.HOVER + PoseType.FLOAT,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0142_aerodactyl/aerodactyl", "air_idle")
+                bedrock("aerodactyl", "air_idle")
             )
         )
 
@@ -54,7 +54,7 @@ class AerodactylModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = setOf(PoseType.FLY, PoseType.SWIM),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0142_aerodactyl/aerodactyl", "air_fly")
+                bedrock("aerodactyl", "air_fly")
             )
         )
     }
@@ -62,5 +62,5 @@ class AerodactylModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0142_aerodactyl/aerodactyl", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("aerodactyl", "faint") else null
 }

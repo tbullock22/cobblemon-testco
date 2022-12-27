@@ -44,7 +44,7 @@ class BattleGUI : Screen(battleLang("gui.title")) {
 
     override fun init() {
         super.init()
-        addDrawableChild(BattleMessagePane(this, CobblemonClient.battle!!.messages))
+        addDrawableChild(BattleMessagePane(CobblemonClient.battle!!.messages))
     }
 
     fun changeActionSelection(newSelection: BattleActionSelection?) {
@@ -70,6 +70,7 @@ class BattleGUI : Screen(battleLang("gui.title")) {
 
     override fun render(poseStack: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
         opacity = CobblemonClient.battleOverlay.opacityRatio.toFloat()
+        children().filterIsInstance<BattleMessagePane>().forEach { it.opacity = opacity.coerceAtLeast(0.3F) }
 
         queuedActions.forEach { it() }
         queuedActions.clear()
@@ -102,7 +103,7 @@ class BattleGUI : Screen(battleLang("gui.title")) {
                 matrixStack = poseStack,
                 text = battleLang("ui.hide_label", PartySendBinding.boundKey().localizedText),
                 x = MinecraftClient.getInstance().window.scaledWidth / 2,
-                y = (MinecraftClient.getInstance().window.scaledHeight / 2) - 25,
+                y = (MinecraftClient.getInstance().window.scaledHeight / 5),
                 opacity = 0.75F * opacity,
                 centered = true
             )

@@ -128,7 +128,7 @@
         {
           "id": "meowth_persian_alola",
           "variant": "level_up",
-          "result": "persian form=alola",
+          "result": "persian alolan",
           "consumeHeldItem": false,
           "learnableMoves": [],
           "requirements": [

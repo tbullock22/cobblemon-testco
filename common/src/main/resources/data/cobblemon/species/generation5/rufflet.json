@@ -90,7 +90,7 @@
     {
       "id": "rufflet_braviary_hisui",
       "variant": "level_up",
-      "result": "braviary form=hisui",
+      "result": "braviary hisuian",
       "consumeHeldItem": false,
       "learnableMoves": [],
       "requirements": [

@@ -13,6 +13,7 @@ import com.cobblemon.mod.common.api.spawning.context.FlooredSpawningContext
 import com.cobblemon.mod.common.api.spawning.context.GroundedSpawningContext
 import com.cobblemon.mod.common.api.spawning.context.LavafloorSpawningContext
 import com.cobblemon.mod.common.api.spawning.context.SeafloorSpawningContext
+import com.cobblemon.mod.common.api.spawning.context.SurfaceSpawningContext
 import com.cobblemon.mod.common.api.spawning.context.calculators.SpawningContextCalculator.Companion.isAirCondition
 import com.cobblemon.mod.common.api.spawning.context.calculators.SpawningContextCalculator.Companion.isLavaCondition
 import com.cobblemon.mod.common.api.spawning.context.calculators.SpawningContextCalculator.Companion.isSolidCondition
@@ -121,3 +122,33 @@ object LavafloorSpawningContextCalculator : FlooredSpawningContextCalculator<Lav
         )
     }
 }
+
+
+/**
+ * The context calculator used for [SurfaceSpawningContext]s. Requires a fluid block below it and
+ * air blocks in its surroundings.
+ *
+ * @author Hiroku
+ * @since December 15th, 2022
+ */
+object SurfaceSpawningContextCalculator : FlooredSpawningContextCalculator<SurfaceSpawningContext> {
+    override val baseCondition: (BlockState) -> Boolean = { !it.fluidState.isEmpty }
+    override val surroundingCondition: (BlockState) -> Boolean = isAirCondition
+
+    override fun calculate(input: AreaSpawningInput): SurfaceSpawningContext {
+        return SurfaceSpawningContext(
+            cause = input.cause,
+            world = input.world,
+            position = input.position.toImmutable(),
+            light = getLight(input),
+            canSeeSky = getCanSeeSky(input),
+            influences = input.spawner.copyInfluences(),
+            width = getHorizontalSpace(input, surroundingCondition, config.maxHorizontalSpace, offsetY = 1),
+            height = getHeight(input, surroundingCondition, config.maxVerticalSpace / 2, offsetY = 1),
+            depth = getDepth(input, baseCondition, config.maxVerticalSpace / 2),
+            slice = input.slice,
+            nearbyBlocks = getNearbyBlocks(input)
+        )
+    }
+}
+

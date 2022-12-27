@@ -25,13 +25,20 @@
 					"parent": "body",
 					"pivot": [0, 5.5, 0],
 					"cubes": [
-						{"origin": [-4.5, 1.5, -4], "size": [9, 8, 8], "uv": [0, 0]},
+						{"origin": [-4.5, 1.5, -4], "size": [9, 8, 8], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "neck",
+					"parent": "torso",
+					"pivot": [0, 9.5, 0],
+					"cubes": [
 						{"origin": [-3.5, 9.5, -2.5], "size": [7, 3, 5], "uv": [40, 19]}
 					]
 				},
 				{
 					"name": "head",
-					"parent": "torso",
+					"parent": "neck",
 					"pivot": [0, 12.5, 0]
 				},
 				{

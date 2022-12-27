@@ -44,7 +44,7 @@ class SlowpokeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0079_slowpoke/slowpoke", "ground_idle")
+                bedrock("slowpoke", "ground_idle")
             )
         )
 
@@ -54,8 +54,8 @@ class SlowpokeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             idleAnimations = arrayOf(
                 QuadrupedWalkAnimation(this, periodMultiplier = 1.1F),
                 singleBoneLook(),
-                bedrock("0079_slowbro/slowpoke", "ground_idle")
-                //bedrock("0079_slowpoke/slowpoke", "ground_walk")
+                bedrock("slowpoke", "ground_idle")
+                //bedrock("slowpoke", "ground_walk")
             )
         )
 
@@ -64,7 +64,7 @@ class SlowpokeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             poseType = PoseType.FLOAT,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0079_slowpoke/slowpoke", "water_idle")
+                bedrock("slowpoke", "water_idle")
             )
         )
 
@@ -73,7 +73,7 @@ class SlowpokeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             poseType = PoseType.SWIM,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0079_slowpoke/slowpoke", "water_swim")
+                bedrock("slowpoke", "water_swim")
             )
         )
     }
@@ -81,5 +81,5 @@ class SlowpokeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0079_slowpoke/slowpoke", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("slowpoke", "faint") else null
 }

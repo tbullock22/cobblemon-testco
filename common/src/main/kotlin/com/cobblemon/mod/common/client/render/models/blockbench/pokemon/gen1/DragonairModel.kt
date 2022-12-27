@@ -37,7 +37,7 @@ class DragonairModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0148_dragonair/dragonair", "ground_idle")
+                bedrock("dragonair", "ground_idle")
             )
         )
     }
@@ -45,5 +45,5 @@ class DragonairModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0148_dragonair/dragonair", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("dragonair", "faint") else null
 }

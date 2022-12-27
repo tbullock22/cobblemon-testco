@@ -20,14 +20,11 @@ import java.nio.file.Path
  * @since January 27th, 2022
  */
 class SpawnSet : Iterable<SpawnDetail>, ModDependant {
-    var id = ""
-
     var enabled = true
-    var version = "1"
-    var preventOverwrite = false
     override var neededInstalledMods = listOf<String>()
     override var neededUninstalledMods = listOf<String>()
     var spawns = mutableListOf<SpawnDetail>()
+    @Transient
     lateinit var path: Path
 
     fun isEnabled(): Boolean = enabled && isModDependencySatisfied()

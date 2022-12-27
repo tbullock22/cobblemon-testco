@@ -40,14 +40,14 @@ class ZubatModel(root: ModelPart) : PokemonPoseableModel(), BiWingedFrame, Eared
     override val portraitScale = 1.8F
     override val portraitTranslation = Vec3d(-0.0, -0.3, 0.0)
     override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileTranslation = Vec3d(0.0, 0.2, 0.0)
 
     override fun registerPoses() {
         registerPose(
             poseName = "hover",
             poseTypes = ALL_POSES - SHOULDER_POSES - PoseType.FLY,
             idleAnimations = arrayOf(
-                bedrock("0041_zubat/zubat", "ground_idle")
+                bedrock("zubat", "ground_idle")
             )
         )
 
@@ -55,7 +55,7 @@ class ZubatModel(root: ModelPart) : PokemonPoseableModel(), BiWingedFrame, Eared
             poseName = "fly",
             poseType = PoseType.FLY,
             idleAnimations = arrayOf(
-                bedrock("0041_zubat/zubat", "ground_walk")
+                bedrock("zubat", "ground_walk")
             )
         )
 

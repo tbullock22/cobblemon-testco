@@ -10,7 +10,7 @@ package com.cobblemon.mod.common.pokemon.ai
 
 import com.cobblemon.mod.common.api.ai.SleepDepth
 import com.cobblemon.mod.common.api.conditional.RegistryLikeCondition
-import com.cobblemon.mod.common.api.spawning.condition.TimeRange
+import com.cobblemon.mod.common.api.spawning.TimeRange
 import net.minecraft.block.Block
 import net.minecraft.world.biome.Biome
 
@@ -22,7 +22,7 @@ import net.minecraft.world.biome.Biome
  */
 class RestBehaviour {
     val canSleep = false
-    val times = TimeRange.ranges["night"]!!
+    val times = TimeRange.timeRanges["night"]!!
     val sleepChance = 1 / 600F
     val blocks = mutableListOf<RegistryLikeCondition<Block>>()
     val biomes = mutableListOf<RegistryLikeCondition<Biome>>()

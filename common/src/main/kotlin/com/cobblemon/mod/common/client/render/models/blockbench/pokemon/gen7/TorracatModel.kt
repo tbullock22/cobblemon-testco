@@ -43,7 +43,7 @@ class TorracatModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0726_torracat/torracat", "ground_idle")
+                bedrock("torracat", "ground_idle")
             )
         )
 
@@ -52,9 +52,9 @@ class TorracatModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0726_torracat/torracat", "ground_idle"),
+                bedrock("torracat", "ground_idle"),
                 QuadrupedWalkAnimation(this, amplitudeMultiplier = 0.7F, periodMultiplier = 0.9F)
-                //bedrock("0726_torracat/torracat", "ground_walk")
+                //bedrock("torracat", "ground_walk")
             )
         )
     }
@@ -62,5 +62,5 @@ class TorracatModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0726_torracat/torracat", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("torracat", "faint") else null
 }

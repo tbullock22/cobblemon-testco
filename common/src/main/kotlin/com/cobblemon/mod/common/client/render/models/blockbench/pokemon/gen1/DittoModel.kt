@@ -34,7 +34,7 @@ class DittoModel(root: ModelPart) : PokemonPoseableModel() {
             transformTicks = 10,
             idleAnimations = arrayOf(
 //                singleBoneLook()
-                bedrock("0132_ditto/ditto", "ground_idle")
+                bedrock("ditto", "ground_idle")
             )
         )
 
@@ -44,7 +44,7 @@ class DittoModel(root: ModelPart) : PokemonPoseableModel() {
             transformTicks = 10,
             idleAnimations = arrayOf(
 //                singleBoneLook()
-                bedrock("0132_ditto/ditto", "ground_walk")
+                bedrock("ditto", "ground_walk")
             )
         )
     }
@@ -52,5 +52,5 @@ class DittoModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0132_ditto/ditto", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("ditto", "faint") else null
 }

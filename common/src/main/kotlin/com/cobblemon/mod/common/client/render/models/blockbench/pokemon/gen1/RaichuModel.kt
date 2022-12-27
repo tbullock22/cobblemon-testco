@@ -20,11 +20,11 @@ class RaichuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("raichu")
     override val head = getPart("head")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 1.4F
+    override val portraitTranslation = Vec3d(0.0, 0.6, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.65F
+    override val profileTranslation = Vec3d(0.0, 0.7, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
@@ -35,7 +35,7 @@ class RaichuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0026_raichu/raichu", "ground_idle")
+                bedrock("raichu", "ground_idle")
             )
         )
 
@@ -44,8 +44,8 @@ class RaichuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0026_raichu/raichu", "ground_idle")
-                //bedrock("0026_raichu/raichu", "ground_walk")
+                bedrock("raichu", "ground_idle")
+                //bedrock("raichu", "ground_walk")
             )
         )
     }
@@ -53,5 +53,5 @@ class RaichuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0026_raichu/raichu", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("raichu", "faint") else null
 }

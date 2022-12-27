@@ -41,7 +41,7 @@ class MaractusModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bima
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0556_maractus/maractus", "ground_idle")
+                bedrock("maractus", "ground_idle")
             )
         )
 
@@ -50,9 +50,9 @@ class MaractusModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bima
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0556_maractus/maractus", "ground_idle"),
+                bedrock("maractus", "ground_idle"),
                 BimanualSwingAnimation(this, swingPeriodMultiplier = 0.75F)
-                //bedrock("0556_maractus/maractus", "ground_walk")
+                //bedrock("maractus", "ground_walk")
             )
         )
     }
@@ -60,5 +60,5 @@ class MaractusModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bima
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0556_maractus/maractus", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("maractus", "faint") else null
 }

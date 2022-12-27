@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.MathHelper.floor
 class Nature(
     val name: Identifier,
-    val displayName: MutableText,
+    val displayName: String,
     val increasedStat: Stat?,
     val decreasedStat: Stat?,
     val favoriteFlavor: Flavor?,

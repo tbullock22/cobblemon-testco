@@ -37,7 +37,7 @@ class SeelModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0086_seel/seel", "ground_idle")
+                bedrock("seel", "ground_idle")
             )
         )
 
@@ -46,8 +46,8 @@ class SeelModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0086_seel/seel", "ground_idle")
-                //bedrock("0086_seel/seel", "ground_walk")
+                bedrock("seel", "ground_idle")
+                //bedrock("seel", "ground_walk")
             )
         )
 
@@ -56,7 +56,7 @@ class SeelModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.FLOAT,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0086_seel/seel", "water_idle")
+                bedrock("seel", "water_idle")
             )
         )
 
@@ -65,7 +65,7 @@ class SeelModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.SWIM,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0086_seel/seel", "water_swim")
+                bedrock("seel", "water_swim")
             )
         )
     }
@@ -73,5 +73,5 @@ class SeelModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0086_seel/seel", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("seel", "faint") else null
 }

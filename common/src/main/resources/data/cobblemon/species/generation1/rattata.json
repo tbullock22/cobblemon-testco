@@ -12,6 +12,7 @@
     "special_defence": 35,
     "speed": 72
   },
+  "features": ["alolan"],
   "catchRate": 255,
   "maleRatio": 0.5,
   "shoulderMountable": false,
@@ -20,7 +21,8 @@
       "name": "normal"
     },
     {
-      "name": "alola",
+      "name": "alolan",
+      "aspects": ["alolan"],
       "primaryType": "dark",
       "secondaryType": "normal",
       "abilities": ["gluttony", "hustle", "h:thickfat"],
@@ -101,7 +103,7 @@
         {
           "id": "rattata_raticate_alola",
           "variant": "level_up",
-          "result": "raticate form=alola",
+          "result": "raticate alolan",
           "consumeHeldItem": false,
           "learnableMoves": [],
           "requirements": [

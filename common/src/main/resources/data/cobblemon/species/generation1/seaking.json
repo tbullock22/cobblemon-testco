@@ -28,10 +28,16 @@
     ],
     "behaviour": {
         "moving": {
+            "canLook": false,
+            "walk": {
+                "avoidsLand": true
+            },
             "swim": {
+                "swimSpeed": 0.1,
                 "canSwimInWater": true,
                 "canBreatheUnderwater": true
-            }
+            },
+            "wanderChance": 1
         }
     },
     "drops": {

@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "honchkrow",
     "nationalPokedexNumber": 430,
     "primaryType": "dark",
@@ -15,6 +16,12 @@
         "special_attack": 105,
         "special_defence": 52,
         "speed": 71
+    },
+    "behaviour": {
+        "resting": {
+            "canSleep": true,
+            "times": "day"
+        }
     },
     "catchRate": 30,
     "maleRatio": 0.5,
@@ -110,7 +117,7 @@
     "evolutions": [],
     "baseScale": 1.0,
     "hitbox": {
-        "width": 1.0,
+        "width": 0.8,
         "height": 1.0,
         "fixed": false
     },

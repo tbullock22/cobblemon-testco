@@ -25,11 +25,11 @@ class DrowzeeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
     override val leftLeg = getPart("leftleg")
     override val rightLeg = getPart("rightleg")
 
-    override val portraitScale = 1.0F
+    override val portraitScale = 1.65F
     override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 1F
+    override val profileTranslation = Vec3d(0.0, 0.15, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
@@ -41,7 +41,7 @@ class DrowzeeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0096_drowzee/drowzee", "ground_idle")
+                bedrock("drowzee", "ground_idle")
             )
         )
 
@@ -52,8 +52,8 @@ class DrowzeeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this, periodMultiplier = 1.1F),
                 singleBoneLook(),
-                bedrock("0096_drowzee/drowzee", "ground_idle")
-                //bedrock("0096_drowzee/drowzee", "ground_walk")
+                bedrock("drowzee", "ground_idle")
+                //bedrock("drowzee", "ground_walk")
             )
         )
     }
@@ -61,5 +61,5 @@ class DrowzeeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0096_drowzee/drowzee", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("drowzee", "faint") else null
 }

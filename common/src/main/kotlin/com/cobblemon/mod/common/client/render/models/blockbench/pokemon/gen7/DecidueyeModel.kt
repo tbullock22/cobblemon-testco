@@ -45,7 +45,7 @@ class DecidueyeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0724_decidueye/decidueye", "ground_idle")
+                //bedrock("decidueye", "ground_idle")
             )
         )
 
@@ -56,7 +56,7 @@ class DecidueyeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
                 singleBoneLook(),
                 BimanualSwingAnimation(this),
                 BipedWalkAnimation(this)
-                //bedrock("0724_decidueye/decidueye", "ground_walk")
+                //bedrock("decidueye", "ground_walk")
             )
         )
     }
@@ -64,5 +64,5 @@ class DecidueyeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0724_decidueye/decidueye", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("decidueye", "faint") else null
 }

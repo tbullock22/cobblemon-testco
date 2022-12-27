@@ -2,10 +2,6 @@
   "replace": false,
   "values": [
     "#cobblemon:is_river",
-	"#cobblemon:is_swamp",
-	{
-      "id": "terralith:ice_marsh",
-      "required": false
-    }
+	"#cobblemon:is_swamp"
   ]
 }

@@ -58,7 +58,6 @@ class PokemonClientDelegate : PoseableEntityState<PokemonEntity>(), PokemonSideD
 
         entity.subscriptions.add(entity.labelLevel.subscribeIncludingCurrent { if (it > 0) entity.pokemon.level = it })
 
-        entity.subscriptions.add(entity.shiny.subscribeIncludingCurrent { entity.pokemon.shiny = it })
         entity.subscriptions.add(entity.phasingTargetId.subscribe {
             if (it != -1) {
                 setPhaseTarget(it)

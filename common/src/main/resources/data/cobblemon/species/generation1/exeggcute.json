@@ -130,7 +130,7 @@
     {
       "id": "exeggcute_exeggutor_alola",
       "variant": "item_interact",
-      "result": "exeggutor form=alola",
+      "result": "exeggutor alolan",
       "consumeHeldItem": false,
       "learnableMoves": [],
       "requirements": [

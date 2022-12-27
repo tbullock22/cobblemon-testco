@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.client.gui.battle.subscreen
 
+import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.gui.blitk
 import com.cobblemon.mod.common.api.moves.Moves
 import com.cobblemon.mod.common.api.text.bold
@@ -18,13 +19,18 @@ import com.cobblemon.mod.common.battles.InBattleMove
 import com.cobblemon.mod.common.battles.MoveActionResponse
 import com.cobblemon.mod.common.client.CobblemonResources
 import com.cobblemon.mod.common.client.battle.SingleActionRequest
+import com.cobblemon.mod.common.client.gui.MoveCategoryIcon
+import com.cobblemon.mod.common.client.gui.TypeIcon
 import com.cobblemon.mod.common.client.gui.battle.BattleGUI
 import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.util.battleLang
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.cobblemon.mod.common.util.math.toRGB
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.sound.PositionedSoundInstance
+import net.minecraft.client.sound.SoundManager
 import net.minecraft.client.util.math.MatrixStack
+import net.minecraft.text.Text
 import net.minecraft.util.math.MathHelper.floor
 
 class BattleMoveSelection(
@@ -44,13 +50,13 @@ class BattleMoveSelection(
         const val MOVE_HEIGHT = 24
         const val MOVE_VERTICAL_SPACING = 5F
         const val MOVE_HORIZONTAL_SPACING = 13F
-        const val TYPE_ICON_DIAMETER = 36
+
         val moveTexture = cobblemonResource("ui/battle/battle_move.png")
         val moveOverlayTexture = cobblemonResource("ui/battle/battle_move_overlay.png")
     }
 
     val moveSet = request.moveSet!!
-    val moveTiles = moveSet.moves.filterNot { it.disabled }.mapIndexed { index, inBattleMove ->
+    val moveTiles = moveSet.moves.mapIndexed { index, inBattleMove ->
         val isEven = index % 2 == 0
         val x = if (isEven) this.x.toFloat() else this.x + MOVE_HORIZONTAL_SPACING + MOVE_WIDTH
         val y = if (index > 1) this.y + MOVE_HEIGHT + MOVE_VERTICAL_SPACING else this.y.toFloat()
@@ -69,6 +75,10 @@ class BattleMoveSelection(
         val rgb = moveTemplate.elementalType.hue.toRGB()
 
         fun render(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
+
+            val unselectable = move.disabled
+            val selectConditionOpacity = moveSelection.opacity * if (unselectable) 0.5F else 1F
+
             blitk(
                 matrixStack = matrices,
                 texture = moveTexture,
@@ -76,12 +86,12 @@ class BattleMoveSelection(
                 y = y,
                 width = MOVE_WIDTH,
                 height = MOVE_HEIGHT,
-                vOffset = if (isHovered(mouseX.toDouble(), mouseY.toDouble())) MOVE_HEIGHT else 0,
+                vOffset = if (!unselectable && isHovered(mouseX.toDouble(), mouseY.toDouble())) MOVE_HEIGHT else 0,
                 textureHeight = MOVE_HEIGHT * 2,
                 red = rgb.first,
                 green = rgb.second,
                 blue = rgb.third,
-                alpha = moveSelection.opacity
+                alpha = selectConditionOpacity
             )
 
             blitk(
@@ -94,32 +104,21 @@ class BattleMoveSelection(
                 alpha = moveSelection.opacity
             )
 
-            blitk(
-                matrixStack = matrices,
-                texture = moveTemplate.elementalType.resourceLocation,
-                x = (x * 2) - (TYPE_ICON_DIAMETER / 2),
-                y = (y + 2) * 2,
-                height = TYPE_ICON_DIAMETER,
-                width = TYPE_ICON_DIAMETER,
-                uOffset = TYPE_ICON_DIAMETER * moveTemplate.elementalType.textureXMultiplier.toFloat() + 0.1,
-                textureWidth = TYPE_ICON_DIAMETER * 18,
-                alpha = moveSelection.opacity,
-                scale = 0.5F
-            )
+            // Type Icon
+            TypeIcon(
+                x = x - 9,
+                y = y + 2,
+                type = moveTemplate.elementalType,
+                opacity = moveSelection.opacity
+            ).render(matrices)
 
-            val categoryWidth = 24
-            val categoryHeight = 16
-            blitk(
-                matrixStack = matrices,
-                texture = moveTemplate.damageCategory.resourceLocation,
-                x = (x + 48) * 2,
-                y = (y + 14.5) * 2,
-                width = categoryWidth,
-                height = categoryHeight,
-                vOffset = categoryHeight * moveTemplate.damageCategory.textureXMultiplier,
-                textureHeight = categoryHeight * 3,
-                scale = 0.5F
-            )
+            // Move Category
+            MoveCategoryIcon(
+                x = x + 48,
+                y = y + 14.5,
+                category = moveTemplate.damageCategory,
+                opacity = moveSelection.opacity
+            ).render(matrices)
 
             drawScaledText(
                 matrixStack = matrices,
@@ -127,18 +126,18 @@ class BattleMoveSelection(
                 text = moveTemplate.displayName.bold(),
                 x = x + 17,
                 y = y + 2,
-                opacity = moveSelection.opacity,
+                opacity = selectConditionOpacity,
                 shadow = true
             )
 
-            var movePPText = (move.pp.toString() + "/" + move.maxpp.toString()).text().bold()
+            var movePPText = Text.literal("${move.pp}/${move.maxpp}").bold()
 
             if (move.pp <= floor(move.maxpp / 2F)) {
                 movePPText = if (move.pp == 0) movePPText.red() else movePPText.gold()
             }
 
             if (move.pp == 100 && move.maxpp == 100) {
-                movePPText = "-/-".text()
+                movePPText = "—/—".text().bold()
             }
 
             drawScaledText(
@@ -155,6 +154,9 @@ class BattleMoveSelection(
         fun isHovered(mouseX: Double, mouseY: Double) = mouseX >= x && mouseX <= x + MOVE_WIDTH && mouseY >= y && mouseY <= y + MOVE_HEIGHT
 
         fun onClick() {
+            if (move.disabled) {
+                return
+            }
             moveSelection.playDownSound(MinecraftClient.getInstance().soundManager)
             val targets = move.target.targetList(moveSelection.request.activePokemon)
             if (targets == null) {
@@ -185,5 +187,9 @@ class BattleMoveSelection(
             battleGUI.changeActionSelection(null)
         }
         return false
+    }
+
+    override fun playDownSound(soundManager: SoundManager) {
+        soundManager.play(PositionedSoundInstance.master(CobblemonSounds.GUI_CLICK.get(), 1.0F))
     }
 }

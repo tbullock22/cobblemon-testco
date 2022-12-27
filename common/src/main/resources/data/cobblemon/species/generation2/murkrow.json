@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "murkrow",
     "nationalPokedexNumber": 198,
     "primaryType": "dark",
@@ -15,6 +16,12 @@
         "special_attack": 85,
         "special_defence": 42,
         "speed": 91
+    },
+    "behaviour": {
+        "resting": {
+            "canSleep": true,
+            "times": "day"
+        }
     },
     "catchRate": 30,
     "maleRatio": 0.5,
@@ -138,10 +145,10 @@
             "requiredContext": "cobblemon:dusk_stone"
         }
     ],
-    "baseScale": 1.0,
+    "baseScale": 0.9,
     "hitbox": {
-        "width": 1.0,
-        "height": 1.0,
+        "width": 0.65,
+        "height": 1,
         "fixed": false
     },
     "baseFriendship": 35,

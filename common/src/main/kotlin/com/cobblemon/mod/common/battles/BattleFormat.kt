@@ -20,7 +20,7 @@ import net.minecraft.network.PacketByteBuf
  * @since March 9th, 2022
  */
 data class BattleFormat(
-    val mod: String = "Cobblemon",
+    val mod: String = "cobblemon",
     val battleType: BattleType = BattleTypes.SINGLES,
     val ruleSet: Set<String> = setOf()
 ) {

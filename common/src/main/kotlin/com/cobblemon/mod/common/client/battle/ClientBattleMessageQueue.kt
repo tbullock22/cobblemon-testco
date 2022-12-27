@@ -19,16 +19,16 @@ import net.minecraft.text.OrderedText
  * @since June 24th, 2022
  */
 class ClientBattleMessageQueue {
-    var listener: (OrderedText) -> Unit = {}
+    var listeners = mutableListOf<(OrderedText) -> Unit>()
     private val messages = mutableListOf<OrderedText>()
 
     fun add(messages: Iterable<OrderedText>) {
         this.messages.addAll(messages)
-        messages.forEach(listener)
+        listeners.forEach { listener -> messages.forEach(listener) }
     }
 
     fun subscribe(listener: (OrderedText) -> Unit) {
-        this.listener = listener
+        this.listeners.add(listener)
         messages.forEach(listener)
     }
 }

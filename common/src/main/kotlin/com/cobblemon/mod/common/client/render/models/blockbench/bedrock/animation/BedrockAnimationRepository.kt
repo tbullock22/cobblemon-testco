@@ -8,10 +8,11 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench.bedrock.animation
 
-import com.cobblemon.mod.common.Cobblemon
+import com.cobblemon.mod.common.Cobblemon.LOGGER
 import com.cobblemon.mod.common.util.fromJson
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
+import net.minecraft.resource.ResourceManager
 
 
 /**
@@ -28,22 +29,26 @@ object BedrockAnimationRepository {
         .registerTypeAdapter(BedrockAnimation::class.java, BedrockAnimationAdapter)
         .create()
 
-    private val animations: MutableMap<String, BedrockAnimation> = mutableMapOf()
+    private val animationGroups = mutableMapOf<String, BedrockAnimationGroup>()
+
+    fun loadAnimations(resourceManager: ResourceManager) {
+        LOGGER.info("Loading animations...")
+        var animationCount = 0
+        animationGroups.clear()
+        resourceManager.findResources("bedrock/animations", { it.path.endsWith(".animation.json") }).forEach { identifier, resource ->
+            val animationGroup = gson.fromJson<BedrockAnimationGroup>(resource.inputStream.reader())
+            val animationGroupName = identifier.path.substringAfterLast("/").replace(".animation.json", "")
+            animationGroups[animationGroupName] = animationGroup
+            animationCount += animationGroup.animations.size
+        }
+        LOGGER.info("Loaded $animationCount animations from ${animationGroups.size} animation groups.")
+    }
 
     fun getAnimation(fileName: String, animationName: String): BedrockAnimation {
-        if (animations[animationName] == null) {
-            loadAnimationsFromFile(fileName)
-        }
-        return animations[animationName] ?: throw IllegalArgumentException("animation is not in specified file")
-    }
+        val animationGroup = animationGroups[fileName]
+            ?: throw IllegalArgumentException("Unknown animation group: $fileName")
 
-    fun loadAnimationsFromFile(fileName: String) {
-        val stream = Cobblemon::class.java.getResourceAsStream("/assets/${Cobblemon.MODID}/bedrock/animations/$fileName") ?: throw IllegalStateException("animation file $fileName could not be found")
-        val animationGroup = gson.fromJson<BedrockAnimationGroup>(stream.reader())
-        animationGroup.animations.forEach { (name, animation) -> animations[name] = animation }
-    }
-
-    fun clear() {
-        animations.clear()
+        return animationGroup.animations[animationName]
+            ?: throw IllegalArgumentException("Animation $animationName not found in animation group $fileName")
     }
 }

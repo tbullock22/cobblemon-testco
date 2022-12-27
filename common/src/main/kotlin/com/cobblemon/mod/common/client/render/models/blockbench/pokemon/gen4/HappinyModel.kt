@@ -32,7 +32,7 @@ class HappinyModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0440_happiny/happiny", "ground_idle")
+                bedrock("happiny", "ground_idle")
             )
         )
 
@@ -40,8 +40,8 @@ class HappinyModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0440_happiny/happiny", "ground_idle")
-                //bedrock("0440_happiny/happiny", "ground_walk")
+                bedrock("happiny", "ground_idle")
+                //bedrock("happiny", "ground_walk")
             )
         )
     }
@@ -49,5 +49,5 @@ class HappinyModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0440_happiny/happiny", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("happiny", "faint") else null
 }

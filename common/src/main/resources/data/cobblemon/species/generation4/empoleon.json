@@ -27,6 +27,19 @@
         "water_1",
         "field"
     ],
+	"drops": {
+    "amount": "2",
+    "entries": [
+      {
+        "item": "minecraft:feather",
+        "quantityRange": "1-3",
+        "percentage": 75
+      },
+      {
+        "item": "minecraft:chicken"
+      }
+    ]
+  },
     "moves": [
         "0:aquajet",
         "1:tackle",

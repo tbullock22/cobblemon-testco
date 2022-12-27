@@ -8,10 +8,11 @@
 
 package com.cobblemon.mod.common.api.spawning.condition
 
+import com.cobblemon.mod.common.api.conditional.RegistryLikeCondition
 import com.cobblemon.mod.common.api.spawning.context.SubmergedSpawningContext
 import com.cobblemon.mod.common.api.spawning.detail.SpawnDetail
 import com.cobblemon.mod.common.util.Merger
-import net.minecraft.util.Identifier
+import net.minecraft.fluid.Fluid
 
 /**
  * Base type for a spawning condition that applies to some kind of [SubmergedSpawningContext]. This
@@ -24,7 +25,7 @@ abstract class SubmergedTypeSpawningCondition<T : SubmergedSpawningContext> : Ar
     var minDepth: Int? = null
     var maxDepth: Int? = null
     var fluidIsSource: Boolean? = null
-    var fluidBlock: Identifier? = null
+    var fluid: RegistryLikeCondition<Fluid>? = null
 
     override fun fits(ctx: T, detail: SpawnDetail): Boolean {
         return if (!super.fits(ctx, detail)) {
@@ -33,17 +34,18 @@ abstract class SubmergedTypeSpawningCondition<T : SubmergedSpawningContext> : Ar
             false
         } else if (maxDepth != null && ctx.depth > maxDepth!!) {
             false
-        } else if (fluidIsSource != null && ctx.fluidState.isStill != fluidIsSource!!) {
+        } else if (fluidIsSource != null && ctx.fluid.isStill != fluidIsSource!!) {
             false
-        } else !(fluidBlock != null && ctx.blockRegistry.getKey(ctx.fluidBlock).get().value != fluidBlock!!)
+        } else !(ctx.fluid.isEmpty || (fluid != null && !fluid!!.fits(ctx.fluid.fluid, ctx.fluidRegistry)))
     }
 
     override fun copyFrom(other: SpawningCondition<*>, merger: Merger) {
         super.copyFrom(other, merger)
         if (other is SubmergedTypeSpawningCondition) {
-            if (other.minDepth != null) minDepth = other.minDepth
-            if (other.fluidIsSource != null) fluidIsSource = other.fluidIsSource
-            if (other.fluidBlock != null) fluidBlock = other.fluidBlock
+            minDepth = merger.mergeSingle(minDepth, other.minDepth)
+            maxDepth = merger.mergeSingle(minDepth, other.minDepth)
+            fluidIsSource = merger.mergeSingle(fluidIsSource, other.fluidIsSource)
+            fluid = merger.mergeSingle(fluid, other.fluid)
         }
     }
 }

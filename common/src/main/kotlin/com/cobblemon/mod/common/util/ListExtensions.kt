@@ -17,11 +17,13 @@ fun <T> List<T>.random(amount: Int): List<T> {
 }
 
 fun <T> List<T>.randomNoCopy(amount: Int): List<T> {
+    val toChooseFrom = toMutableList()
     val values = mutableListOf<T>()
     var amountLeft = amount
-    while (amountLeft != 0) {
-        val random = random()
-        if (!values.contains(random)) {
+    while (amountLeft > 0 && toChooseFrom.isNotEmpty()) {
+        val random = toChooseFrom.random()
+        toChooseFrom.remove(random)
+        if (random !in values) {
             values.add(random)
             amountLeft--
         }

@@ -1,0 +1,54 @@
+{
+	"display": {
+		"icon": {
+			"item": "cobblemon:healing_machine"
+		},
+		"title": {
+			"translate": "advancements.cobblemon.healing_machine"
+		},
+		"description": {
+			"translate": "advancements.cobblemon.healing_machine.description"
+		},
+		"frame": "task"
+	},
+	"parent": "cobblemon:craft_poke_ball",
+	"criteria": {
+		"poke_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:poke_ball\"}}"}}},
+		"citrine_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:citrine_ball\"}}"}}},
+		"verdant_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:verdant_ball\"}}"}}},
+		"azure_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:azure_ball\"}}"}}},
+		"roseate_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:roseate_ball\"}}"}}},
+		"slate_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:slate_ball\"}}"}}},
+		"premier_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:premier_ball\"}}"}}},
+		"great_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:great_ball\"}}"}}},
+		"ultra_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:ultra_ball\"}}"}}},
+		"safari_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:safari_ball\"}}"}}},
+		"fast_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:fast_ball\"}}"}}},
+		"level_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:level_ball\"}}"}}},
+		"lure_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:lure_ball\"}}"}}},
+		"heavy_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:heavy_ball\"}}"}}},
+		"love_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:love_ball\"}}"}}},
+		"friend_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:friend_ball\"}}"}}},
+		"moon_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:moon_ball\"}}"}}},
+		"sport_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:sport_ball\"}}"}}},
+		"park_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:park_ball\"}}"}}},
+		"net_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:net_ball\"}}"}}},
+		"dive_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:dive_ball\"}}"}}},
+		"nest_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:nest_ball\"}}"}}},
+		"repeat_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:repeat_ball\"}}"}}},
+		"timer_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:timer_ball\"}}"}}},
+		"luxury_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:luxury_ball\"}}"}}},
+		"dusk_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:dusk_ball\"}}"}}},
+		"heal_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:heal_ball\"}}"}}},
+		"quick_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:quick_ball\"}}"}}},
+		"dream_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:dream_ball\"}}"}}},
+		"beast_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:beast_ball\"}}"}}},
+		"master_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:master_ball\"}}"}}},
+		"cherish_ball": {"trigger": "minecraft:item_used_on_block","conditions": {"location": {"block": {"blocks": ["cobblemon:healing_machine"]},"nbt": "{MachinePokeBalls:{Pokeball1:\"cobblemon:cherish_ball\"}}"}}}
+	},
+  "requirements": [
+    [
+      "poke_ball", "citrine_ball", "verdant_ball", "azure_ball", "roseate_ball", "slate_ball", "premier_ball", "great_ball", "ultra_ball", "safari_ball", "fast_ball", "level_ball", "lure_ball", "heavy_ball", "love_ball", "friend_ball", "moon_ball", "sport_ball", "park_ball", "net_ball", "dive_ball", "nest_ball", "repeat_ball", "timer_ball", "luxury_ball", "dusk_ball", "heal_ball", "quick_ball", "dream_ball", "beast_ball", "master_ball", "cherish_ball"
+    ]
+  ]
+}

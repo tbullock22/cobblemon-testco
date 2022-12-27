@@ -41,7 +41,7 @@ class PiplupModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0393_piplup/piplup", "ground_idle")
+                bedrock("piplup", "ground_idle")
             )
         )
 
@@ -50,9 +50,9 @@ class PiplupModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0393_piplup/piplup", "ground_idle"),
+                bedrock("piplup", "ground_idle"),
                 BipedWalkAnimation(this, periodMultiplier = 0.8F, amplitudeMultiplier = 0.7F)
-                //bedrock("0393_piplup/piplup", "ground_walk")
+                //bedrock("piplup", "ground_walk")
             )
         )
     }
@@ -60,5 +60,5 @@ class PiplupModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0393_piplup/piplup", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("piplup", "faint") else null
 }

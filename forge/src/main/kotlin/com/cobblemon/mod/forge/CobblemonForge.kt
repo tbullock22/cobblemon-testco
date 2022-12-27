@@ -49,7 +49,6 @@ class CobblemonForge : CobblemonImplementation {
                         .add(ForgeMod.ENTITY_GRAVITY.get())
                         .add(ForgeMod.NAMETAG_DISTANCE.get())
                         .add(ForgeMod.SWIM_SPEED.get())
-                        .add(ForgeMod.REACH_DISTANCE.get())
                 }
 
             addListener(this@CobblemonForge::initialize)

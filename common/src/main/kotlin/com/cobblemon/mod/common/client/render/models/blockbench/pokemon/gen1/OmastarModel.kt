@@ -34,7 +34,7 @@ class OmastarModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
-                bedrock("0139_omastar/omastar", "ground_idle")
+                bedrock("omastar", "ground_idle")
             )
         )
 
@@ -42,7 +42,7 @@ class OmastarModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
-                bedrock("0139_omastar/omastar", "ground_idle")
+                bedrock("omastar", "ground_idle")
             )
         )
 
@@ -50,7 +50,7 @@ class OmastarModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "float",
             poseTypes = setOf(PoseType.FLOAT, PoseType.HOVER),
             idleAnimations = arrayOf(
-                bedrock("0139_omastar/omastar", "water_idle")
+                bedrock("omastar", "water_idle")
             )
         )
 
@@ -58,7 +58,7 @@ class OmastarModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "swim",
             poseTypes = setOf(PoseType.SWIM, PoseType.FLY),
             idleAnimations = arrayOf(
-                bedrock("0139_omastar/omastar", "water_swim")
+                bedrock("omastar", "water_swim")
             )
         )
     }
@@ -66,5 +66,5 @@ class OmastarModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0139_omastar/omastar", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("omastar", "faint") else null
 }

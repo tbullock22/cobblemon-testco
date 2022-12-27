@@ -45,7 +45,6 @@
 		},
 		"animation.sandslash.ground_walk": {
 			"loop": true,
-			"animation_length": 20.05,
 			"bones": {
 				"body": {
 					"rotation": [

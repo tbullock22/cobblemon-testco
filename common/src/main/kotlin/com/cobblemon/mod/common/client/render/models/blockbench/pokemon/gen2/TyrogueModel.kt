@@ -35,7 +35,7 @@ class TyrogueModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0236_tyrogue/tyrogue", "ground_idle")
+                bedrock("tyrogue", "ground_idle")
             )
         )
 
@@ -44,7 +44,7 @@ class TyrogueModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0236_tyrogue/tyrogue", "ground_idle")
+                bedrock("tyrogue", "ground_idle")
             )
         )
     }
@@ -52,5 +52,5 @@ class TyrogueModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0236_tyrogue/tyrogue", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("tyrogue", "faint") else null
 }

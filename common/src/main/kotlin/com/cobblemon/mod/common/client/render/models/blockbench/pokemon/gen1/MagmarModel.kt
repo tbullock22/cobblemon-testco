@@ -35,7 +35,7 @@ class MagmarModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0126_magmar/magmar", "ground_idle")
+                bedrock("magmar", "ground_idle")
             )
         )
 
@@ -44,7 +44,7 @@ class MagmarModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0126_magmar/magmar", "ground_idle")
+                bedrock("magmar", "ground_idle")
             )
         )
     }
@@ -52,5 +52,5 @@ class MagmarModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0126_magmar/magmar", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("magmar", "faint") else null
 }

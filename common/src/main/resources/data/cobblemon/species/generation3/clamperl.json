@@ -14,6 +14,15 @@
         "special_defence": 55,
         "speed": 32
     },
+    "behaviour": {
+        "moving": {
+            "swim": {
+                "swimSpeed": 0.1,
+                "canSwimInWater": false,
+                "canBreatheUnderwater": true
+            }
+        }
+    },
     "catchRate": 255,
     "maleRatio": 0.5,
     "shoulderMountable": false,

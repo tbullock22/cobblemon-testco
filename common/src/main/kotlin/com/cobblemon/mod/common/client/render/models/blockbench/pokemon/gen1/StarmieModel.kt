@@ -33,7 +33,7 @@ class StarmieModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0121_starmie/starmie", "ground_idle")
+                //bedrock("starmie", "ground_idle")
             )
         )
 
@@ -42,7 +42,7 @@ class StarmieModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0121_starmie/starmie", "ground_walk")
+                //bedrock("starmie", "ground_walk")
             )
         )
     }
@@ -50,5 +50,5 @@ class StarmieModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0121_starmie/starmie", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("starmie", "faint") else null
 }

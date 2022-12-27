@@ -32,7 +32,7 @@ class GeodudeModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0074_geodude/geodude", "ground_idle")
+                bedrock("geodude", "ground_idle")
             )
         )
 
@@ -40,8 +40,8 @@ class GeodudeModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0074_geodude/geodude", "ground_idle")
-                //bedrock("0074_geodude/geodude", "ground_walk")
+                bedrock("geodude", "ground_idle")
+                //bedrock("geodude", "ground_walk")
             )
         )
     }
@@ -49,5 +49,5 @@ class GeodudeModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0074_geodude/geodude", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("geodude", "faint") else null
 }

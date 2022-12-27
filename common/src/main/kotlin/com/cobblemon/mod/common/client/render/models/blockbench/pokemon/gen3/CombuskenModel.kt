@@ -41,7 +41,7 @@ class CombuskenModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0256_combusken/combusken", "ground_idle")
+                bedrock("combusken", "ground_idle")
             )
         )
 
@@ -50,9 +50,9 @@ class CombuskenModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0256_combusken/combusken", "ground_idle"),
+                bedrock("combusken", "ground_idle"),
                 BipedWalkAnimation(this, periodMultiplier = 0.7F)
-                //bedrock("0256_combusken/combusken", "ground_walk")
+                //bedrock("combusken", "ground_walk")
             )
         )
     }
@@ -60,5 +60,5 @@ class CombuskenModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0256_combusken/combusken", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("combusken", "faint") else null
 }

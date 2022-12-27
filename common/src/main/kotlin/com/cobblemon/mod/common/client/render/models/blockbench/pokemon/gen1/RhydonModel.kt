@@ -35,7 +35,7 @@ class RhydonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0112_rhydon/rhydon", "ground_idle")
+                bedrock("rhydon", "ground_idle")
             )
         )
 
@@ -44,8 +44,8 @@ class RhydonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0112_rhydon/rhydon", "ground_idle")
-                //bedrock("0112_rhydon/rhydon", "ground_walk")
+                bedrock("rhydon", "ground_idle")
+                //bedrock("rhydon", "ground_walk")
             )
         )
     }
@@ -53,5 +53,5 @@ class RhydonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0112_rhydon/rhydon", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("rhydon", "faint") else null
 }

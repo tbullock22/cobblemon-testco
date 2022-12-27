@@ -118,7 +118,7 @@
       ],
       "weight": 666,
       "labels": ["gen1", "alola_regional", "regional"],
-      "preEvolution": "diglett form=alola"
+      "preEvolution": "diglett alolan"
     }
   ],
   "baseExperienceYield": 149,

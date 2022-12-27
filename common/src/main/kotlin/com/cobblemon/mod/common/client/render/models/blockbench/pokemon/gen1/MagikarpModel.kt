@@ -36,7 +36,7 @@ class MagikarpModel(root: ModelPart) : PokemonPoseableModel() {
         registerPose(
             poseName = "land",
             poseTypes = STANDING_POSES + PoseType.PROFILE,
-            idleAnimations = arrayOf(bedrock("0129_magikarp/magikarp","flop")),
+            idleAnimations = arrayOf(bedrock("magikarp","flop")),
             transformedParts = arrayOf(
                 rootPart.asTransformed().addPosition(Y_AXIS, 6),
                 leftMustache.withRotation(Y_AXIS, (-75F).toRadians()),
@@ -48,7 +48,7 @@ class MagikarpModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "swimming",
             poseTypes = SWIMMING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0129_magikarp/magikarp", "water_swim")
+                bedrock("magikarp", "water_swim")
             )
         )
 
@@ -56,7 +56,7 @@ class MagikarpModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "fly",
             poseTypes = FLYING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0129_magikarp/magikarp", "air_idle")
+                bedrock("magikarp", "air_idle")
             )
         )
 

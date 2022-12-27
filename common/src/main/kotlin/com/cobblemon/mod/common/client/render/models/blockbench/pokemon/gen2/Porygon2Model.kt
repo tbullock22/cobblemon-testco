@@ -35,7 +35,7 @@ class Porygon2Model(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0233_porygon2/porygon2", "ground_idle")
+                bedrock("porygon2", "ground_idle")
             )
         )
 
@@ -44,7 +44,7 @@ class Porygon2Model(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0233_porygon2/porygon2", "ground_idle")
+                bedrock("porygon2", "ground_idle")
             )
         )
     }
@@ -52,5 +52,5 @@ class Porygon2Model(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0233_porygon2/porygon2", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("porygon2", "faint") else null
 }

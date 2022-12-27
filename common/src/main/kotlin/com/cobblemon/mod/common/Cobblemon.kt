@@ -10,6 +10,7 @@ package com.cobblemon.mod.common
 
 import com.cobblemon.mod.common.advancement.CobblemonCriteria
 import com.cobblemon.mod.common.api.Priority
+import com.cobblemon.mod.common.api.SeasonResolver
 import com.cobblemon.mod.common.api.data.DataProvider
 import com.cobblemon.mod.common.api.drop.CommandDropEntry
 import com.cobblemon.mod.common.api.drop.DropEntry
@@ -34,9 +35,10 @@ import com.cobblemon.mod.common.api.pokemon.effect.ShoulderEffectRegistry
 import com.cobblemon.mod.common.api.pokemon.experience.ExperienceCalculator
 import com.cobblemon.mod.common.api.pokemon.experience.ExperienceGroups
 import com.cobblemon.mod.common.api.pokemon.experience.StandardExperienceCalculator
-import com.cobblemon.mod.common.api.pokemon.feature.EnumSpeciesFeature
-import com.cobblemon.mod.common.api.pokemon.feature.FlagSpeciesFeature
-import com.cobblemon.mod.common.api.pokemon.feature.SpeciesFeature
+import com.cobblemon.mod.common.api.pokemon.feature.ChoiceSpeciesFeatureProvider
+import com.cobblemon.mod.common.api.pokemon.feature.FlagSpeciesFeatureProvider
+import com.cobblemon.mod.common.api.pokemon.feature.GlobalSpeciesFeatures
+import com.cobblemon.mod.common.api.pokemon.feature.SpeciesFeatures
 import com.cobblemon.mod.common.api.pokemon.stats.EvCalculator
 import com.cobblemon.mod.common.api.pokemon.stats.Generation8EvCalculator
 import com.cobblemon.mod.common.api.pokemon.stats.StatProvider
@@ -46,7 +48,6 @@ import com.cobblemon.mod.common.api.reactive.Observable.Companion.map
 import com.cobblemon.mod.common.api.reactive.Observable.Companion.takeFirst
 import com.cobblemon.mod.common.api.scheduling.ScheduledTaskTracker
 import com.cobblemon.mod.common.api.spawning.BestSpawner
-import com.cobblemon.mod.common.api.spawning.CobblemonSpawnPools
 import com.cobblemon.mod.common.api.spawning.CobblemonSpawningProspector
 import com.cobblemon.mod.common.api.spawning.context.AreaContextResolver
 import com.cobblemon.mod.common.api.spawning.prospecting.SpawningProspector
@@ -66,7 +67,6 @@ import com.cobblemon.mod.common.battles.BattleSide
 import com.cobblemon.mod.common.battles.ShowdownThread
 import com.cobblemon.mod.common.battles.actor.PokemonBattleActor
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
-import com.cobblemon.mod.common.battles.runner.ShowdownConnection
 import com.cobblemon.mod.common.config.CobblemonConfig
 import com.cobblemon.mod.common.config.constraint.IntConstraint
 import com.cobblemon.mod.common.config.starter.StarterConfig
@@ -78,17 +78,12 @@ import com.cobblemon.mod.common.net.messages.client.settings.ServerSettingsPacke
 import com.cobblemon.mod.common.net.serverhandling.ServerPacketRegistrar
 import com.cobblemon.mod.common.permission.LaxPermissionValidator
 import com.cobblemon.mod.common.pokemon.Pokemon
-import com.cobblemon.mod.common.pokemon.aspects.FishStripesAspect
 import com.cobblemon.mod.common.pokemon.aspects.GENDER_ASPECT
 import com.cobblemon.mod.common.pokemon.aspects.SHINY_ASPECT
-import com.cobblemon.mod.common.pokemon.aspects.SnakePatternAspect
 import com.cobblemon.mod.common.pokemon.evolution.variants.BlockClickEvolution
 import com.cobblemon.mod.common.pokemon.feature.BattleCriticalHitsFeature
 import com.cobblemon.mod.common.pokemon.feature.DamageTakenFeature
-import com.cobblemon.mod.common.pokemon.feature.FISH_STRIPES
-import com.cobblemon.mod.common.pokemon.feature.FishStripesFeature
-import com.cobblemon.mod.common.pokemon.feature.SNAKE_PATTERN
-import com.cobblemon.mod.common.pokemon.feature.SnakePatternFeature
+import com.cobblemon.mod.common.pokemon.feature.TagSeasonResolver
 import com.cobblemon.mod.common.pokemon.properties.HiddenAbilityPropertyType
 import com.cobblemon.mod.common.pokemon.properties.UncatchableProperty
 import com.cobblemon.mod.common.pokemon.properties.UntradeableProperty
@@ -96,7 +91,6 @@ import com.cobblemon.mod.common.pokemon.properties.tags.PokemonFlagProperty
 import com.cobblemon.mod.common.pokemon.stat.CobblemonStatProvider
 import com.cobblemon.mod.common.registry.CompletableRegistry
 import com.cobblemon.mod.common.starter.CobblemonStarterHandler
-import com.cobblemon.mod.common.util.DataKeys
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.cobblemon.mod.common.util.getServer
 import com.cobblemon.mod.common.util.ifDedicatedServer
@@ -127,12 +121,11 @@ import org.apache.logging.log4j.LogManager
 
 object Cobblemon {
     const val MODID = "cobblemon"
-    const val VERSION = "1.0.1"
+    const val VERSION = "1.2.0"
     const val CONFIG_PATH = "config/$MODID/main.json"
     val LOGGER = LogManager.getLogger()
 
     lateinit var implementation: CobblemonImplementation
-    lateinit var showdown: ShowdownConnection
     var captureCalculator: CaptureCalculator = CobblemonGen348CaptureCalculator
     var experienceCalculator: ExperienceCalculator = StandardExperienceCalculator
     var evYieldCalculator: EvCalculator = Generation8EvCalculator
@@ -150,13 +143,13 @@ object Cobblemon {
     val dataProvider: DataProvider = CobblemonDataProvider
     var permissionValidator: PermissionValidator by Delegates.observable(LaxPermissionValidator().also { it.initialize() }) { _, _, newValue -> newValue.initialize() }
     var statProvider: StatProvider = CobblemonStatProvider
+    var seasonResolver: SeasonResolver = TagSeasonResolver
 
     fun preinitialize(implementation: CobblemonImplementation) {
         DropEntry.register("command", CommandDropEntry::class.java)
         DropEntry.register("item", ItemDropEntry::class.java, isDefault = true)
 
         ExperienceGroups.registerDefaults()
-        PokemonSpecies.observable.subscribe { CobblemonSpawnPools.load() }
 
         this.loadConfig()
         this.implementation = implementation
@@ -219,19 +212,12 @@ object Cobblemon {
 
         SHINY_ASPECT.register()
         GENDER_ASPECT.register()
-        SnakePatternAspect.register()
-        FishStripesAspect.register()
 
-        config.flagSpeciesFeatures.forEach(FlagSpeciesFeature::registerWithPropertyAndAspect)
-        config.globalFlagSpeciesFeatures.forEach(FlagSpeciesFeature::registerWithPropertyAndAspect)
-        FlagSpeciesFeature.registerWithPropertyAndAspect(DataKeys.ALOLAN)
-        FlagSpeciesFeature.registerWithPropertyAndAspect(DataKeys.GALARIAN)
-        FlagSpeciesFeature.registerWithPropertyAndAspect(DataKeys.HISUIAN)
-        FlagSpeciesFeature.registerWithPropertyAndAspect(DataKeys.VALENCIAN)
-        SpeciesFeature.registerGlobalFeature(DamageTakenFeature.ID) { DamageTakenFeature() }
-        SpeciesFeature.registerGlobalFeature(BattleCriticalHitsFeature.ID) { BattleCriticalHitsFeature() }
-        EnumSpeciesFeature.registerWithProperty(SNAKE_PATTERN, SnakePatternFeature::class.java)
-        EnumSpeciesFeature.registerWithProperty(FISH_STRIPES, FishStripesFeature::class.java)
+        SpeciesFeatures.types["choice"] = ChoiceSpeciesFeatureProvider::class.java
+        SpeciesFeatures.types["flag"] = FlagSpeciesFeatureProvider::class.java
+
+        GlobalSpeciesFeatures.register(DamageTakenFeature.ID) { DamageTakenFeature() }
+        GlobalSpeciesFeatures.register(BattleCriticalHitsFeature.ID) { BattleCriticalHitsFeature() }
 
         CustomPokemonProperty.register(UntradeableProperty)
         CustomPokemonProperty.register(UncatchableProperty)
@@ -272,7 +258,6 @@ object Cobblemon {
         SERVER_STOPPED.subscribe {
             storage.unregisterAll()
             playerData.saveAll()
-            showdown.close()
         }
         SERVER_STARTED.subscribe {
             bestSpawner.onServerStarted()
@@ -362,19 +347,23 @@ object Cobblemon {
     }
 
     fun loadStarterConfig(): StarterConfig {
-        val file = File("config/cobblemon/starters.json")
-        file.parentFile.mkdirs()
-        if (!file.exists()) {
-            val config = StarterConfig()
-            val pw = PrintWriter(file)
-            StarterConfig.GSON.toJson(config, pw)
-            pw.close()
+        if (config.exportStarterConfig) {
+            val file = File("config/cobblemon/starters.json")
+            file.parentFile.mkdirs()
+            if (!file.exists()) {
+                val config = StarterConfig()
+                val pw = PrintWriter(file)
+                StarterConfig.GSON.toJson(config, pw)
+                pw.close()
+                return config
+            }
+            val reader = FileReader(file)
+            val config = StarterConfig.GSON.fromJson(reader, StarterConfig::class.java)
+            reader.close()
             return config
+        } else {
+            return StarterConfig()
         }
-        val reader = FileReader(file)
-        val config = StarterConfig.GSON.fromJson(reader, StarterConfig::class.java)
-        reader.close()
-        return config
     }
 
     fun saveConfig() {

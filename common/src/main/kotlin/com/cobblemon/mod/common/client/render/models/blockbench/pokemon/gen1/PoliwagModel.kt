@@ -34,7 +34,7 @@ class PoliwagModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STANDING_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0060_poliwag/poliwag", "ground_idle")
+                bedrock("poliwag", "ground_idle")
             )
         )
 
@@ -42,7 +42,7 @@ class PoliwagModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "float",
             poseType = PoseType.FLOAT,
             idleAnimations = arrayOf(
-                bedrock("0060_poliwag/poliwag", "water_idle")
+                bedrock("poliwag", "water_idle")
             )
         )
 
@@ -50,13 +50,13 @@ class PoliwagModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "swim",
             poseType = PoseType.SWIM,
             idleAnimations = arrayOf(
-                bedrock("0060_poliwag/poliwag", "water_swim")
+                bedrock("poliwag", "water_swim")
             )
         )
     }
 
 //    override fun getFaintAnimation(
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("poliwag", "faint") else null
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0060_poliwag/poliwag", "faint") else null
 }

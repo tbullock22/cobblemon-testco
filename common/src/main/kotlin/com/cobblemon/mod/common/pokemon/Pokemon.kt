@@ -41,6 +41,7 @@ import com.cobblemon.mod.common.api.pokemon.evolution.PreEvolution
 import com.cobblemon.mod.common.api.pokemon.experience.ExperienceGroup
 import com.cobblemon.mod.common.api.pokemon.experience.ExperienceSource
 import com.cobblemon.mod.common.api.pokemon.feature.SpeciesFeature
+import com.cobblemon.mod.common.api.pokemon.feature.SpeciesFeatures
 import com.cobblemon.mod.common.api.pokemon.friendship.FriendshipMutationCalculator
 import com.cobblemon.mod.common.api.pokemon.labels.CobblemonPokemonLabels
 import com.cobblemon.mod.common.api.pokemon.moves.LearnsetQuery
@@ -61,10 +62,12 @@ import com.cobblemon.mod.common.net.messages.client.pokemon.update.AbilityUpdate
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.AspectsUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.BenchedMovesUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.CaughtBallUpdatePacket
+import com.cobblemon.mod.common.net.messages.client.pokemon.update.EVsUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.ExperienceUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.FriendshipUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.GenderUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.HealthUpdatePacket
+import com.cobblemon.mod.common.net.messages.client.pokemon.update.IVsUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.MoveSetUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.NatureUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.PokemonStateUpdatePacket
@@ -79,6 +82,7 @@ import com.cobblemon.mod.common.pokemon.activestate.PokemonState
 import com.cobblemon.mod.common.pokemon.activestate.SentOutState
 import com.cobblemon.mod.common.pokemon.evolution.CobblemonEvolutionProxy
 import com.cobblemon.mod.common.pokemon.feature.DamageTakenFeature
+import com.cobblemon.mod.common.pokemon.feature.SeasonFeatureHandler
 import com.cobblemon.mod.common.pokemon.status.PersistentStatus
 import com.cobblemon.mod.common.pokemon.status.PersistentStatusContainer
 import com.cobblemon.mod.common.util.DataKeys
@@ -87,6 +91,7 @@ import com.cobblemon.mod.common.util.getServer
 import com.cobblemon.mod.common.util.lang
 import com.cobblemon.mod.common.util.playSoundServer
 import com.cobblemon.mod.common.util.setPositionSafely
+import com.cobblemon.mod.common.util.toBlockPos
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonPrimitive
@@ -120,13 +125,10 @@ open class Pokemon {
                 throw IllegalArgumentException("Cannot set a species that isn't registered")
             }
             val quotient = clamp(currentHealth / hp.toFloat(), 0F, 1F)
-            val previousFeatureKeys = features.map { it.name }.toSet()
             field = value
-            val newFeatureKeys = species.features + Cobblemon.config.globalFlagSpeciesFeatures + SpeciesFeature.globalFeatures().keys
-            val addedFeatures = newFeatureKeys - previousFeatureKeys
-            val removedFeatures = previousFeatureKeys - newFeatureKeys
-            features.addAll(addedFeatures.mapNotNull { SpeciesFeature.get(it)?.invoke() })
-            features.removeAll { it.name in removedFeatures }
+            val newFeatures = SpeciesFeatures.getFeaturesFor(species).mapNotNull { it.invoke(this) }
+            features.clear()
+            features.addAll(newFeatures)
             this.evolutionProxy.current().clear()
             updateAspects()
             updateForm()
@@ -359,6 +361,7 @@ open class Pokemon {
     open fun getStat(stat: Stat) = Cobblemon.statProvider.getStatForPokemon(this, stat)
 
     fun sendOut(level: ServerWorld, position: Vec3d, mutation: (PokemonEntity) -> Unit = {}): PokemonEntity {
+        SeasonFeatureHandler.updateSeason(this, level, position.toBlockPos())
         val entity = PokemonEntity(level, this)
         entity.setPositionSafely(position)
         mutation(entity)
@@ -370,7 +373,7 @@ open class Pokemon {
     fun sendOutWithAnimation(source: LivingEntity, level: ServerWorld, position: Vec3d, battleId: UUID? = null, mutation: (PokemonEntity) -> Unit = {}): CompletableFuture<PokemonEntity> {
         val future = CompletableFuture<PokemonEntity>()
         sendOut(level, position) {
-            level.playSoundServer(position, CobblemonSounds.SEND_OUT.get(), volume = 0.2F)
+            level.playSoundServer(position, CobblemonSounds.POKE_BALL_SEND_OUT.get(), volume = 0.2F)
             it.phasingTargetId.set(source.id)
             it.beamModeEmitter.set(1)
             it.battleId.set(Optional.ofNullable(battleId))
@@ -497,7 +500,9 @@ open class Pokemon {
         scaleModifier = nbt.getFloat(DataKeys.POKEMON_SCALE_MODIFIER)
         val abilityNBT = nbt.getCompound(DataKeys.POKEMON_ABILITY) ?: NbtCompound()
         val abilityName = abilityNBT.getString(DataKeys.POKEMON_ABILITY_NAME).takeIf { it.isNotEmpty() } ?: "runaway"
-        ability = Abilities.getOrException(abilityName).create(abilityNBT)
+        if (abilityName != "dummy") {
+            ability = Abilities.getOrException(abilityName).create(abilityNBT)
+        }
         shiny = nbt.getBoolean(DataKeys.POKEMON_SHINY)
         if (nbt.contains(DataKeys.POKEMON_STATE)) {
             val stateNBT = nbt.getCompound(DataKeys.POKEMON_STATE)
@@ -522,6 +527,9 @@ open class Pokemon {
         features.forEach { it.loadFromNBT(nbt) }
         this.nature = nbt.getString(DataKeys.POKEMON_NATURE).takeIf { it.isNotBlank() }?.let { Natures.getNature(Identifier(it))!! } ?: Natures.getRandomNature()
         updateAspects()
+        if (abilityName == "dummy") {
+            ability = form.abilities.select(species, aspects)
+        }
         return this
     }
 
@@ -574,7 +582,10 @@ open class Pokemon {
         moveSet.loadFromJSON(json.get(DataKeys.POKEMON_MOVESET).asJsonObject)
         scaleModifier = json.get(DataKeys.POKEMON_SCALE_MODIFIER).asFloat
         val abilityJSON = json.get(DataKeys.POKEMON_ABILITY)?.asJsonObject ?: JsonObject()
-        ability = Abilities.getOrException(abilityJSON.get(DataKeys.POKEMON_ABILITY_NAME)?.asString ?: "drought").create(abilityJSON)
+        val abilityName = abilityJSON.get(DataKeys.POKEMON_ABILITY_NAME)?.asString
+        if (abilityName != "dummy" && abilityName != null) {
+            ability = Abilities.getOrException(abilityName).create(abilityJSON)
+        }
         shiny = json.get(DataKeys.POKEMON_SHINY).asBoolean
         if (json.has(DataKeys.POKEMON_STATE)) {
             val stateJson = json.get(DataKeys.POKEMON_STATE).asJsonObject
@@ -599,6 +610,9 @@ open class Pokemon {
         features.forEach { it.loadFromJSON(json) }
         this.nature = json.get(DataKeys.POKEMON_NATURE).asString?.let { Natures.getNature(Identifier(it))!! } ?: Natures.getRandomNature()
         updateAspects()
+        if (abilityName == "dummy") {
+            ability = form.abilities.select(species, aspects)
+        }
         return this
     }
 
@@ -718,6 +732,7 @@ open class Pokemon {
     }
 
     fun initialize(): Pokemon {
+        species = species
         checkGender()
         initializeMoveset()
         return this
@@ -921,6 +936,10 @@ open class Pokemon {
     private val observables = mutableListOf<Observable<*>>()
     private val anyChangeObservable = SimpleObservable<Pokemon>()
 
+    fun markFeatureDirty(feature: SpeciesFeature) {
+        _features.emit(feature)
+    }
+
     fun getAllObservables() = observables.asIterable()
     /** Returns an [Observable] that emits Unit whenever any change is made to this Pokémon. The change itself is not included. */
     fun getChangeObservable(): Observable<Pokemon> = anyChangeObservable
@@ -970,11 +989,13 @@ open class Pokemon {
     private val _status = registerObservable(SimpleObservable<String>()) { StatusUpdatePacket(this, it) }
     private val _caughtBall = registerObservable(SimpleObservable<String>()) { CaughtBallUpdatePacket(this, it) }
     private val _benchedMoves = registerObservable(benchedMoves.observable) { BenchedMovesUpdatePacket(this, it) }
-    private val _ivs = registerObservable(ivs.observable) // TODO consider a packet for it for changed ivs
-    private val _evs = registerObservable(evs.observable) // TODO needs a packet
+    private val _ivs = registerObservable(ivs.observable) { IVsUpdatePacket(this, it as IVs) }
+    private val _evs = registerObservable(evs.observable) { EVsUpdatePacket(this, it as EVs) }
     private val _aspects = registerObservable(SimpleObservable<Set<String>>()) { AspectsUpdatePacket(this, it) }
     private val _gender = registerObservable(SimpleObservable<Gender>()) { GenderUpdatePacket(this, it) }
     private val _ability = registerObservable(SimpleObservable<Ability>()) { AbilityUpdatePacket(this, it.template) }
+
+    private val _features = registerObservable(SimpleObservable<SpeciesFeature>())
 
     companion object {
 

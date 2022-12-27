@@ -49,7 +49,7 @@ class EeveeModel(root: ModelPart) : PokemonPoseableModel(), EaredFrame, HeadedFr
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0133_eevee/eevee", "ground_idle")
+                bedrock("eevee", "ground_idle")
             )
         )
 
@@ -58,7 +58,7 @@ class EeveeModel(root: ModelPart) : PokemonPoseableModel(), EaredFrame, HeadedFr
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0133_eevee/eevee", "ground_walk")
+                bedrock("eevee", "ground_walk")
             )
         )
 

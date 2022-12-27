@@ -26,10 +26,10 @@ open class Ability internal constructor(var template: AbilityTemplate) {
     val name: String
         get() = template.name
 
-    val displayName: MutableText
+    val displayName: String
         get() = template.displayName
 
-    val description: MutableText
+    val description: String
         get() = template.description
 
     open fun saveToNBT(nbt: NbtCompound): NbtCompound {

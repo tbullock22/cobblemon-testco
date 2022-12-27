@@ -1,0 +1,36 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "ekans-1",
+            "pokemon": "ekans",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "common",
+            "level": "9-29",
+            "weight": 5.4,
+            "condition": {
+                "canSeeSky": true,
+                "biomes": [
+                    "#cobblemon:is_arid"
+                ]
+            }
+        },
+        {
+            "id": "ekans-dark-1",
+            "pokemon": "ekans snake-pattern=dark",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "common",
+            "level": "9-29",
+            "weight": 5.4,
+            "condition": {
+                "biomes": [
+                    "minecraft:soul_sand_valley"
+                ]
+            }
+        }
+    ]
+}

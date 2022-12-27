@@ -64,9 +64,33 @@ fun Entity.setPositionSafely(pos: Vec3d): Boolean {
     }
 
     if (conflicts.size >= 3) {
-        return false
+        this.setPosition(pos)
     }
 
     this.setPosition(result)
     return true
+}
+
+fun Entity.distanceTo(pos: BlockPos): Double {
+    val difference = pos.toVec3d().subtract(this.pos)
+    return difference.length()
+}
+
+fun Entity.closestPosition(positions: Iterable<BlockPos>, filter: (BlockPos) -> Boolean = { true }): BlockPos? {
+    var closest: BlockPos? = null
+    var closestDistance = Double.MAX_VALUE
+
+    val iterator = positions.iterator()
+    while (iterator.hasNext()) {
+        val position = iterator.next()
+        if (filter(position)) {
+            val distance = distanceTo(position)
+            if (distance < closestDistance) {
+                closest = BlockPos(position)
+                closestDistance = distance
+            }
+        }
+    }
+
+    return closest
 }

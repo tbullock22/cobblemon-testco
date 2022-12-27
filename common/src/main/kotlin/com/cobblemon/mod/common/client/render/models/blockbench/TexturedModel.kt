@@ -8,10 +8,10 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench
 
-import com.cobblemon.mod.common.Cobblemon
 import com.google.gson.GsonBuilder
 import com.google.gson.annotations.SerializedName
 import net.minecraft.client.model.*
+
 class TexturedModel {
     @SerializedName("format_version")
     val formatVersion: String = "0"
@@ -142,11 +142,11 @@ class TexturedModel {
             .setLenient()
             .create()
 
-        fun from(path: String) : TexturedModel {
+        fun from(json: String) : TexturedModel {
             try {
-                return GSON.fromJson(Cobblemon::class.java.getResourceAsStream("/assets/cobblemon/$path")!!.reader(), TexturedModel::class.java)
+                return GSON.fromJson(json, TexturedModel::class.java)
             } catch (exception: Exception) {
-                throw IllegalStateException("Issue loading pokemon geo: $path", exception)
+                throw IllegalStateException("Issue loading pokemon geo: $json", exception)
             }
         }
     }

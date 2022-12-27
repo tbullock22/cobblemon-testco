@@ -63,7 +63,7 @@ class MudkipModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
             poseTypes = setOf(PoseType.FLOAT, PoseType.HOVER),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0258_mudkip/mudkip", "water_swim")
+                bedrock("mudkip", "water_swim")
             )
         )
 
@@ -72,7 +72,7 @@ class MudkipModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
             poseTypes = setOf(PoseType.SWIM, PoseType.FLY),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0258_mudkip/mudkip", "water_swim")
+                bedrock("mudkip", "water_swim")
             )
         )
     }
@@ -80,5 +80,5 @@ class MudkipModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0258_mudkip/mudkip", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("mudkip", "faint") else null
 }

@@ -32,7 +32,7 @@ class WeepinbellModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0070_weepinbell/weepinbell", "ground_idle")
+                bedrock("weepinbell", "ground_idle")
             )
         )
 
@@ -40,8 +40,8 @@ class WeepinbellModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0070_weepinbell/weepinbell", "ground_idle")
-                //bedrock("0070_weepinbell/weepinbell", "ground_walk")
+                bedrock("weepinbell", "ground_idle")
+                //bedrock("weepinbell", "ground_walk")
             )
         )
     }
@@ -49,5 +49,5 @@ class WeepinbellModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0070_weepinbell/weepinbell", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("weepinbell", "faint") else null
 }

@@ -45,7 +45,7 @@ class EmolgaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0587_emolga/emolga", "ground_idle")
+                bedrock("emolga", "ground_idle")
             )
         )
 
@@ -54,10 +54,10 @@ class EmolgaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0587_emolga/emolga", "ground_idle"),
+                bedrock("emolga", "ground_idle"),
                 BipedWalkAnimation(this, periodMultiplier = 1F, amplitudeMultiplier = 0.7F),
                 BimanualSwingAnimation(this, swingPeriodMultiplier = 1F, amplitudeMultiplier = 0.7F)
-                //bedrock("0587_emolga/emolga", "ground_walk")
+                //bedrock("emolga", "ground_walk")
             )
         )
     }
@@ -65,5 +65,5 @@ class EmolgaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0587_emolga/emolga", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("emolga", "faint") else null
 }

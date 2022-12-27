@@ -53,7 +53,7 @@ class YanmaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0193_yanma/yanma", "ground_idle"),
+                bedrock("yanma", "ground_idle"),
                 wingFrame1.wingFlap(
                     flapFunction = triangleFunction(period = 0.2F, amplitude = 0.4F),
                     timeVariable = { state, _, ageInTicks -> state?.animationSeconds ?: ageInTicks },
@@ -75,7 +75,7 @@ class YanmaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0193_yanma/yanma", "ground_idle"),
+                bedrock("yanma", "ground_idle"),
                 wingFrame1.wingFlap(
                     flapFunction = triangleFunction(period = 0.2F, amplitude = 0.4F),
                     timeVariable = { state, _, ageInTicks -> state?.animationSeconds ?: ageInTicks },
@@ -86,7 +86,7 @@ class YanmaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
                     timeVariable = { state, _, ageInTicks -> 0.01F + (state?.animationSeconds ?: (ageInTicks / 20)) },
                     axis = Z_AXIS
                 )
-                //bedrock("0193_yanma/yanma", "ground_walk")
+                //bedrock("yanma", "ground_walk")
             ),
             transformedParts = arrayOf(
                 rootPart.asTransformed().addPosition(Y_AXIS, -4)
@@ -97,5 +97,5 @@ class YanmaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0193_yanma/yanma", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("yanma", "faint") else null
 }

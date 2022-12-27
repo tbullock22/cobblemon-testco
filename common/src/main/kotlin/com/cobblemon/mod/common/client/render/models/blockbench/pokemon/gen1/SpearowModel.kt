@@ -37,7 +37,7 @@ class SpearowModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0021_spearow/spearow", "ground_idle")
+                //bedrock("spearow", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class SpearowModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0021_spearow/spearow", "ground_walk")
+                //bedrock("spearow", "ground_walk")
             )
         )
 
@@ -55,7 +55,7 @@ class SpearowModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.HOVER,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0021_spearow/spearow", "air_idle")
+                bedrock("spearow", "air_idle")
             )
         )
 
@@ -64,7 +64,7 @@ class SpearowModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.FLY,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0021_spearow/spearow", "air_fly")
+                bedrock("spearow", "air_fly")
             )
         )
     }
@@ -72,5 +72,5 @@ class SpearowModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0021_spearow/spearow", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("spearow", "faint") else null
 }

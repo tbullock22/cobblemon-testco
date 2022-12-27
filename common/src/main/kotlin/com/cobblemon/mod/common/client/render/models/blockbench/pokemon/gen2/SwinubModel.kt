@@ -33,7 +33,7 @@ class SwinubModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                //bedrock("0220_swinub/swinub", "ground_idle")
+                //bedrock("swinub", "ground_idle")
             )
         )
 
@@ -41,7 +41,7 @@ class SwinubModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                //bedrock("0220_swinub/swinub", "ground_walk")
+                //bedrock("swinub", "ground_walk")
             )
         )
     }
@@ -49,5 +49,5 @@ class SwinubModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0220_swinub/swinub", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("swinub", "faint") else null
 }

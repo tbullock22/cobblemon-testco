@@ -25,11 +25,11 @@ class HypnoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFr
     override val leftLeg = getPart("leftleg")
     override val rightLeg = getPart("rightleg")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 1.7F
+    override val portraitTranslation = Vec3d(-0.1, 0.2, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.85F
+    override val profileTranslation = Vec3d(0.0, 0.4, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
@@ -40,7 +40,7 @@ class HypnoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFr
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0097_hypno/hypno", "ground_idle")
+                bedrock("hypno", "ground_idle")
             )
         )
 
@@ -48,10 +48,10 @@ class HypnoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFr
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                BipedWalkAnimation(this, periodMultiplier = 1.1F),
+                BipedWalkAnimation(this, periodMultiplier = 0.7F, amplitudeMultiplier = 0.85F),
                 singleBoneLook(),
-                bedrock("0097_hypno/hypno", "ground_idle")
-                //bedrock("0097_hypno/hypno", "ground_walk")
+                bedrock("hypno", "ground_idle")
+                //bedrock("hypno", "ground_walk")
             )
         )
     }
@@ -59,5 +59,5 @@ class HypnoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFr
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0097_hypno/hypno", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("hypno", "faint") else null
 }

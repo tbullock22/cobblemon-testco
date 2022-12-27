@@ -34,7 +34,7 @@ class PolitoedModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0186_politoed/politoed", "ground_idle")
+                bedrock("politoed", "ground_idle")
             )
         )
 
@@ -43,7 +43,7 @@ class PolitoedModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0186_politoed/politoed", "ground_idle")
+                bedrock("politoed", "ground_idle")
             )
         )
 
@@ -52,7 +52,7 @@ class PolitoedModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = setOf(PoseType.FLOAT, PoseType.HOVER),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0186_politoed/politoed", "water_idle")
+                bedrock("politoed", "water_idle")
             )
         )
 
@@ -61,7 +61,7 @@ class PolitoedModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = setOf(PoseType.SWIM, PoseType.FLY),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0186_politoed/politoed", "water_swim")
+                bedrock("politoed", "water_swim")
             )
         )
     }
@@ -69,5 +69,5 @@ class PolitoedModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
     //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0186_politoed/politoed", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("politoed", "faint") else null
 }

@@ -3,7 +3,6 @@
 	"animations": {
 		"animation.metapod.ground_idle": {
 			"loop": true,
-			"animation_length": 2,
 			"bones": {
 				"body": {
 					"rotation": [

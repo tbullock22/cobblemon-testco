@@ -1329,7 +1329,7 @@
     {
       "id": "pikachu_raichu_alola",
       "variant": "item_interact",
-      "result": "raichu form=alola",
+      "result": "raichu alolan",
       "consumeHeldItem": false,
       "learnableMoves": [],
       "requirements": [

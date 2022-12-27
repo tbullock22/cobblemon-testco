@@ -2,10 +2,6 @@
   "replace": false,
   "values": [
     "#cobblemon:is_plains",
-    "#cobblemon:is_savanna",
-	{
-      "id": "terralith:brushland",
-      "required": false
-    }
+    "#cobblemon:is_savanna"
   ]
 }

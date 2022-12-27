@@ -36,7 +36,7 @@ class EspeonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0196_espeon/espeon", "ground_idle")
+                bedrock("espeon", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class EspeonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0196_espeon/espeon", "ground_run")
+                bedrock("espeon", "ground_run")
             )
         )
     }
@@ -54,5 +54,5 @@ class EspeonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0196_espeon/espeon", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("espeon", "faint") else null
 }

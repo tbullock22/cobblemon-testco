@@ -134,7 +134,7 @@
         {
           "id": "sandshrew_sandslash_alola",
           "variant": "item_interact",
-          "result": "sandslash form=alola",
+          "result": "sandslash alolan",
           "consumeHeldItem": false,
           "learnableMoves": [],
           "requirements": [],

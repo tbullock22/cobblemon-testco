@@ -42,7 +42,7 @@ class PersianModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0053_persian/persian", "ground_idle")
+                bedrock("persian", "ground_idle")
             )
         )
 
@@ -52,8 +52,8 @@ class PersianModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
             idleAnimations = arrayOf(
                 QuadrupedWalkAnimation(this, periodMultiplier = 0.5F, amplitudeMultiplier = 1.1F),
                 singleBoneLook(),
-                bedrock("0053_persian/persian", "ground_idle")
-                //bedrock("0053_persian/persian", "ground_walk")
+                bedrock("persian", "ground_idle")
+                //bedrock("persian", "ground_walk")
             )
         )
     }
@@ -61,5 +61,5 @@ class PersianModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0053_persian/persian", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("persian", "faint") else null
 }

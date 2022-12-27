@@ -36,7 +36,7 @@ class SandslashModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0028_sandslash/sandslash", "ground_idle")
+                bedrock("sandslash", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class SandslashModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0028_sandslash/sandslash", "ground_walk")
+                bedrock("sandslash", "ground_walk")
             )
         )
     }
@@ -54,5 +54,5 @@ class SandslashModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0028_sandslash/sandslash", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("sandslash", "faint") else null
 }

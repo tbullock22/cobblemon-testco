@@ -37,7 +37,7 @@ class GengarModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0094_gengar/gengar", "ground_idle")
+                bedrock("gengar", "ground_idle")
             )
         )
 
@@ -46,8 +46,8 @@ class GengarModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this, periodMultiplier = 1.0F, amplitudeMultiplier = 0.9f),
-                bedrock("0094_gengar/gengar", "ground_idle")
-                //bedrock("0094_gengar/gengar", "ground_walk")
+                bedrock("gengar", "ground_idle")
+                //bedrock("gengar", "ground_walk")
             )
         )
     }
@@ -55,5 +55,5 @@ class GengarModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0094_gengar/gengar", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("gengar", "faint") else null
 }

@@ -33,7 +33,7 @@ class GoldeenModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseType = PoseType.STAND,
             idleAnimations = arrayOf(
-                bedrock("0118_goldeen/goldeen", "ground_idle")
+                bedrock("goldeen", "ground_idle")
             )
         )
 
@@ -41,7 +41,7 @@ class GoldeenModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
-                bedrock("0118_goldeen/goldeen", "ground_idle")
+                bedrock("goldeen", "ground_idle")
             )
         )
 
@@ -49,7 +49,7 @@ class GoldeenModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "float",
             poseType = PoseType.FLOAT,
             idleAnimations = arrayOf(
-                bedrock("0118_goldeen/goldeen", "water_idle")
+                bedrock("goldeen", "water_idle")
             )
         )
 
@@ -57,7 +57,7 @@ class GoldeenModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "swim",
             poseType = PoseType.SWIM,
             idleAnimations = arrayOf(
-                bedrock("0118_goldeen/goldeen", "water_swim")
+                bedrock("goldeen", "water_swim")
             )
         )
     }
@@ -65,5 +65,5 @@ class GoldeenModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0118_goldeen/goldeen", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("goldeen", "faint") else null
 }

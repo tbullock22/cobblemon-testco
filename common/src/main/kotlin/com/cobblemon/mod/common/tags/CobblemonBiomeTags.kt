@@ -49,6 +49,10 @@ object CobblemonBiomeTags {
     val IS_TUNDRA = create("is_tundra")
     val IS_UNDERGROUND = create("is_underground")
     val IS_VOID = create("is_void")
+    val IS_SUMMER = create("is_summer")
+    val IS_AUTUMN = create("is_fall")
+    val IS_WINTER = create("is_winter")
+    val IS_SPRING = create("is_spring")
 
     // Has Ore tags
     val HAS_DAWN_STONE_ORE = create("has_ore/ore_dawn_stone_normal")

@@ -32,7 +32,7 @@ class KrabbyModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0098_krabby/krabby", "ground_idle")
+                bedrock("krabby", "ground_idle")
             )
         )
 
@@ -40,8 +40,8 @@ class KrabbyModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0098_krabby/krabby", "ground_idle")
-                //bedrock("0098_krabby/krabby", "ground_walk")
+                bedrock("krabby", "ground_idle")
+                //bedrock("krabby", "ground_walk")
             )
         )
     }
@@ -49,5 +49,5 @@ class KrabbyModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0098_krabby/krabby", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("krabby", "faint") else null
 }

@@ -3,7 +3,6 @@
 	"animations": {
 		"animation.charmander.ground_idle": {
 			"loop": true,
-			"animation_length": 282.55,
 			"bones": {
 				"tail": {
 					"rotation": [-20, "8*(math.sin(q.anim_time*90*3)*1)+4*(math.sin(q.anim_time*90*3/2)*1)", 0]
@@ -801,7 +800,7 @@
 			}
 		},
 		"animation.charmander.sleep": {
-			"animation_length": 282.55,
+			"loop": true,
 			"bones": {
 				"tail": {
 					"rotation": ["-110-math.sin(q.anim_time*90*2)*0.25", 0, -1.25],
@@ -922,7 +921,6 @@
 		},
 		"animation.charmander.ground_pulse1": {
 			"loop": true,
-			"animation_length": 71.7,
 			"bones": {
 				"tail": {
 					"rotation": [10, 0, 0]
@@ -953,10 +951,7 @@
 				},
 				"torso": {
 					"rotation": [25, 0, 0],
-					"position": {
-						"0.0": [0, 0, -1.5],
-						"71.7": [0, -0.5, -1.75]
-					}
+					"position": [0, 0, -1.5]
 				}
 			}
 		}

@@ -41,7 +41,7 @@ class TorchicModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0255_torchic/torchic", "ground_idle")
+                //bedrock("torchic", "ground_idle")
             )
         )
 
@@ -51,7 +51,7 @@ class TorchicModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 BipedWalkAnimation(this, amplitudeMultiplier = 0.9F, periodMultiplier = 1F)
-                //bedrock("0255_torchic/torchic", "ground_walk")
+                //bedrock("torchic", "ground_walk")
             )
         )
     }
@@ -59,5 +59,5 @@ class TorchicModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0255_torchic/torchic", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("torchic", "faint") else null
 }

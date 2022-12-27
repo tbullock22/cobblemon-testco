@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "wailmer",
     "nationalPokedexNumber": 320,
     "primaryType": "water",
@@ -14,6 +15,14 @@
         "special_attack": 70,
         "special_defence": 35,
         "speed": 60
+    },
+    "behaviour": {
+        "moving": {
+            "swim": {
+                "canBreatheUnderwater": true,
+                "swimSpeed": 0.1
+            }
+        }
     },
     "catchRate": 125,
     "maleRatio": 0.5,
@@ -127,7 +136,7 @@
             ]
         }
     ],
-    "baseScale": 1.0,
+    "baseScale": 1.8,
     "hitbox": {
         "width": 1.0,
         "height": 1.0,

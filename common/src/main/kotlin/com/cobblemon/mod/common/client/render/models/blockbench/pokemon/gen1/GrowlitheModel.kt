@@ -43,7 +43,7 @@ class GrowlitheModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Qua
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0058_growlithe/growlithe", "ground_idle")
+                //bedrock("growlithe", "ground_idle")
             )
         )
 
@@ -54,7 +54,7 @@ class GrowlitheModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Qua
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 QuadrupedWalkAnimation(this, periodMultiplier = 0.9F, amplitudeMultiplier = 0.8F)
-                //bedrock("0058_growlithe/growlithe", "ground_walk")
+                //bedrock("growlithe", "ground_walk")
             )
         )
     }
@@ -62,5 +62,5 @@ class GrowlitheModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Qua
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0058_growlithe/growlithe", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("growlithe", "faint") else null
 }

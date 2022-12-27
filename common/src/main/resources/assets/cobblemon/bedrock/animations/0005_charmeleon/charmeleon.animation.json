@@ -3,7 +3,6 @@
 	"animations": {
 		"animation.charmeleon.ground_idle": {
 			"loop": true,
-			"animation_length": 8,
 			"bones": {
 				"torso": {
 					"rotation": [5, 0, 0],
@@ -69,7 +68,6 @@
 		},
 		"animation.charmeleon.ground_walk": {
 			"loop": true,
-			"animation_length": 8,
 			"bones": {
 				"leg_left": {
 					"rotation": [

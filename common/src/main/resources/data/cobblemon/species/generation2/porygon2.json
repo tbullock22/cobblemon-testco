@@ -26,6 +26,15 @@
     "eggGroups": [
         "mineral"
     ],
+	"drops": {
+        "amount": "1",
+        "entries": [
+            {
+                "item": "cobblemon:dubious_disc",
+                "percentage": 50
+            }
+        ]
+    },
     "behaviour": {
         "moving": {
             "fly": {

@@ -36,7 +36,7 @@ class MimikyuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0778_mimikyu/mimikyu", "ground_idle")
+                bedrock("mimikyu", "ground_idle")
             )
         )
 
@@ -45,8 +45,8 @@ class MimikyuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0778_mimikyu/mimikyu", "ground_idle")
-                //bedrock("0778_mimikyu/mimikyu", "ground_walk")
+                bedrock("mimikyu", "ground_idle")
+                //bedrock("mimikyu", "ground_walk")
             )
         )
     }
@@ -54,5 +54,5 @@ class MimikyuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0778_mimikyu/mimikyu", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("mimikyu", "faint") else null
 }

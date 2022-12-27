@@ -35,7 +35,7 @@ class ScytherModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0123_scyther/scyther", "ground_idle")
+                bedrock("scyther", "ground_idle")
             )
         )
 
@@ -44,8 +44,8 @@ class ScytherModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0123_scyther/scyther", "ground_idle")
-                //bedrock("0123_scyther/scyther", "ground_walk")
+                bedrock("scyther", "ground_idle")
+                //bedrock("scyther", "ground_walk")
             )
         )
     }
@@ -53,5 +53,5 @@ class ScytherModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0123_scyther/scyther", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("scyther", "faint") else null
 }

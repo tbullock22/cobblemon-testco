@@ -37,7 +37,7 @@ class GravelerModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0075_graveler/graveler", "ground_idle")
+                bedrock("graveler", "ground_idle")
             )
         )
 
@@ -46,8 +46,8 @@ class GravelerModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 BipedWalkAnimation(this, periodMultiplier = 1.1F),
-                bedrock("0075_graveler/graveler", "ground_idle")
-                //bedrock("0075_graveler/graveler", "ground_walk")
+                bedrock("graveler", "ground_idle")
+                //bedrock("graveler", "ground_walk")
             )
         )
     }
@@ -55,5 +55,5 @@ class GravelerModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0075_graveler/graveler", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("graveler", "faint") else null
 }

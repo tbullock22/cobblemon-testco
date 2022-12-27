@@ -43,7 +43,7 @@ class RapidashModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0078_rapidash/rapidash", "ground_idle")
+                //bedrock("rapidash", "ground_idle")
             )
         )
 
@@ -54,7 +54,7 @@ class RapidashModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 QuadrupedWalkAnimation(this)
-                //bedrock("0078_rapidash/rapidash", "ground_walk")
+                //bedrock("rapidash", "ground_walk")
             )
         )
     }
@@ -62,5 +62,5 @@ class RapidashModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0078_rapidash/rapidash", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("rapidash", "faint") else null
 }

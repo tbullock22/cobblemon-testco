@@ -36,7 +36,7 @@ class WooperModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0194_wooper/wooper", "ground_idle")
+                bedrock("wooper", "ground_idle")
             )
         )
 
@@ -45,8 +45,8 @@ class WooperModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0194_wooper/wooper", "ground_idle")
-                //bedrock("0194_wooper/wooper", "ground_walk")
+                bedrock("wooper", "ground_idle")
+                //bedrock("wooper", "ground_walk")
             )
         )
     }
@@ -54,5 +54,5 @@ class WooperModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0194_wooper/wooper", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("wooper", "faint") else null
 }

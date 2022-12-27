@@ -50,7 +50,7 @@ class PokeBallItem(
     }
 
     override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
-        tooltip.add("${this.pokeBall.name.namespace}.pokeball.${this.pokeBall.name.path}.tooltip".asTranslated().gray())
+        tooltip.add("item.${this.pokeBall.name.namespace}.${this.pokeBall.name.path}.tooltip".asTranslated().gray())
     }
 
 }

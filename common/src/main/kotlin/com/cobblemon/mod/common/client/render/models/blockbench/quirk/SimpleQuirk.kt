@@ -33,19 +33,19 @@ class SimpleQuirk<T : Entity>(
         if (data.remainingLoops > 0) {
             data.animations.addAll(animations(state))
             data.remainingLoops--
-            return
         }
 
-
-        if (data.nextOccurrenceSeconds > 0F) {
-            // Is it time?
-            if (data.nextOccurrenceSeconds <= state.animationSeconds) {
-                data.remainingLoops = loopTimes.random()
-                data.animations.addAll(animations(state))
-                data.nextOccurrenceSeconds = -1F
+        if (data.remainingLoops == 0) {
+            if (data.nextOccurrenceSeconds > 0F) {
+                // Is it time?
+                if (data.nextOccurrenceSeconds <= state.animationSeconds) {
+                    data.remainingLoops = loopTimes.random() - 1
+                    data.animations.addAll(animations(state))
+                    data.nextOccurrenceSeconds = -1F
+                }
+            } else {
+                data.nextOccurrenceSeconds = state.animationSeconds + Random.nextFloat() * secondsBetweenOccurrences.random()
             }
-        } else {
-            data.nextOccurrenceSeconds = state.animationSeconds + Random.nextFloat() * secondsBetweenOccurrences.random()
         }
     }
 }

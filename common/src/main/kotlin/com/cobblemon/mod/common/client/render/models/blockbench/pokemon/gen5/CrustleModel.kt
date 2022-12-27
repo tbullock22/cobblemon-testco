@@ -36,7 +36,7 @@ class CrustleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0558_crustle/crustle", "ground_idle")
+                bedrock("crustle", "ground_idle")
             )
         )
 
@@ -45,8 +45,8 @@ class CrustleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0558_crustle/crustle", "ground_idle")
-                //bedrock("0558_crustle/crustle", "ground_walk")
+                bedrock("crustle", "ground_idle")
+                //bedrock("crustle", "ground_walk")
             )
         )
     }
@@ -54,5 +54,5 @@ class CrustleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0558_crustle/crustle", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("crustle", "faint") else null
 }

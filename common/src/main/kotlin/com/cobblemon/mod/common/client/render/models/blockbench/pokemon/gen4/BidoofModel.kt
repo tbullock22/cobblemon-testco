@@ -43,7 +43,7 @@ class BidoofModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0399_bidoof/bidoof", "ground_idle")
+                //bedrock("bidoof", "ground_idle")
             )
         )
 
@@ -53,7 +53,7 @@ class BidoofModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 QuadrupedWalkAnimation(this, periodMultiplier = 0.8F, amplitudeMultiplier = 0.6F)
-                //bedrock("0399_bidoof/bidoof", "ground_walk")
+                //bedrock("bidoof", "ground_walk")
             )
         )
     }
@@ -61,5 +61,5 @@ class BidoofModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0399_bidoof/bidoof", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("bidoof", "faint") else null
 }

@@ -36,7 +36,7 @@ class GlaceonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0471_glaceon/glaceon", "ground_idle")
+                bedrock("glaceon", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class GlaceonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0471_glaceon/glaceon", "ground_run")
+                bedrock("glaceon", "ground_run")
             )
         )
     }
@@ -54,5 +54,5 @@ class GlaceonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0471_glaceon/glaceon", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("glaceon", "faint") else null
 }

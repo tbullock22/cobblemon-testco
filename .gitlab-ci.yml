@@ -10,7 +10,7 @@ stages:
 build-job:
   stage: build
   script:
-      - export GRADLE_OPTS="-Xmx3G -Xms3G"
+      - export GRADLE_OPTS="-Xmx4G -Xms4G"
       - chmod +x ./gradlew
       - ./gradlew build
   cache:

@@ -3,7 +3,6 @@
 	"animations": {
 		"animation.glaceon.ground_idle": {
 			"loop": true,
-			"animation_length": 385.4,
 			"override_previous_animation": true,
 			"bones": {
 				"head": {
@@ -44,7 +43,6 @@
 		},
 		"animation.glaceon.ground_walk": {
 			"loop": true,
-			"animation_length": 342.05,
 			"override_previous_animation": true,
 			"bones": {
 				"body": {
@@ -199,7 +197,6 @@
 		},
 		"animation.glaceon.ground_run": {
 			"loop": true,
-			"animation_length": 8.66667,
 			"override_previous_animation": true,
 			"bones": {
 				"body": {

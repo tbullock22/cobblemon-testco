@@ -33,7 +33,7 @@ class PoliwrathModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = PoseType.STANDING_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0062_poliwrath/poliwrath", "ground_idle")
+                bedrock("poliwrath", "ground_idle")
             )
         )
 
@@ -41,7 +41,7 @@ class PoliwrathModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "float",
             poseType = PoseType.FLOAT,
             idleAnimations = arrayOf(
-                bedrock("0062_poliwrath/poliwrath", "water_idle")
+                bedrock("poliwrath", "water_idle")
             )
         )
 
@@ -49,7 +49,7 @@ class PoliwrathModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "swim",
             poseType = PoseType.SWIM,
             idleAnimations = arrayOf(
-                bedrock("0062_poliwrath/poliwrath", "water_swim")
+                bedrock("poliwrath", "water_swim")
             )
         )
     }
@@ -58,5 +58,5 @@ class PoliwrathModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0062_poliwrath/poliwrath", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("poliwrath", "faint") else null
 }

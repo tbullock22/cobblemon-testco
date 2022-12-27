@@ -62,10 +62,10 @@ class SlowFallEffect : ShoulderEffect {
 
         override fun update(entity: LivingEntity, overwriteCallback: Runnable?): Boolean {
             entity as ServerPlayerEntity
-            if (isShoulderedPokemon(entity.shoulderEntityLeft) || isShoulderedPokemon(entity.shoulderEntityRight)) {
-                duration = 10
+            duration = if (isShoulderedPokemon(entity.shoulderEntityLeft) || isShoulderedPokemon(entity.shoulderEntityRight)) {
+                10
             } else {
-                duration = 0
+                0
             }
             return super.update(entity, overwriteCallback)
         }

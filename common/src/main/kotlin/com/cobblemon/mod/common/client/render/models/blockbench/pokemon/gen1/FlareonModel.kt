@@ -36,7 +36,7 @@ class FlareonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0136_flareon/flareon", "ground_idle")
+                bedrock("flareon", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class FlareonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0136_flareon/flareon", "ground_run")
+                bedrock("flareon", "ground_run")
             )
         )
     }
@@ -54,5 +54,5 @@ class FlareonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0136_flareon/flareon", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("flareon", "faint") else null
 }

@@ -41,19 +41,26 @@ class BlastoiseModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
     override val profileScale = 0.6F
     override val profileTranslation = Vec3d(0.0, 0.8, 0.0)
 
+    lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose
     lateinit var swimIdle: PokemonPose
     lateinit var swimMove: PokemonPose
     lateinit var walk: PokemonPose
 
     override fun registerPoses() {
+        sleep = registerPose(
+            poseType = PoseType.SLEEP,
+            transformTicks = 10,
+            idleAnimations = arrayOf(bedrock("blastoise", "sleep"))
+        )
+
         standing = registerPose(
             poseName = "standing",
             poseTypes = setOf(PoseType.NONE, PoseType.PROFILE, PoseType.PORTRAIT, PoseType.STAND),
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0009_blastoise/blastoise", "ground_idle")
+                bedrock("blastoise", "ground_idle")
             )
         )
 
@@ -62,7 +69,7 @@ class BlastoiseModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             poseTypes = setOf(PoseType.FLOAT),
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0009_blastoise/blastoise", "water_idle"),
+                bedrock("blastoise", "water_idle"),
                 singleBoneLook()
             )
         )
@@ -73,7 +80,7 @@ class BlastoiseModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0009_blastoise/blastoise", "water_swim")
+                bedrock("blastoise", "water_swim")
             )
         )
 
@@ -82,7 +89,7 @@ class BlastoiseModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0009_blastoise/blastoise", "ground_walk")
+                bedrock("blastoise", "ground_walk")
             )
         )
     }
@@ -90,5 +97,5 @@ class BlastoiseModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isNotPosedIn(swimMove, swimIdle)) bedrockStateful("0009_blastoise/blastoise", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("blastoise", "faint") else null
 }

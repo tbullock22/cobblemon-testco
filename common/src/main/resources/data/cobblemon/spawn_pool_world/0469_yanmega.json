@@ -1,0 +1,24 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "yanmega-1",
+            "pokemon": "yanmega",
+            "presets": [
+                "freshwater"
+            ],
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "common",
+            "level": "33-51",
+            "weight": 0.6,
+            "condition": {
+                "canSeeSky": true,
+                "timeRange": "day",
+                "isRaining": false
+            }
+        }
+    ]
+}

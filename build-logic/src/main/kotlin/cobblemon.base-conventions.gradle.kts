@@ -30,6 +30,10 @@ architectury {
 loom {
     silentMojangMappingsLicense()
     accessWidenerPath.set(project(":common").file(ACCESS_WIDENER))
+
+    mixin {
+        defaultRefmapName.set("cobblemon-${project.name}-refmap.json")
+    }
 }
 
 dependencies {

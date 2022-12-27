@@ -43,7 +43,7 @@ class NinetalesModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Qua
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                // bedrock("0038_ninetales/ninetales", "ground_idle")
+                // bedrock("ninetales", "ground_idle")
             )
         )
 
@@ -54,7 +54,7 @@ class NinetalesModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Qua
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 QuadrupedWalkAnimation(this, periodMultiplier = 0.5F, amplitudeMultiplier = 1.1F)
-                // bedrock("0038_ninetales/ninetales", "ground_walk")
+                // bedrock("ninetales", "ground_walk")
             )
         )
     }
@@ -62,5 +62,5 @@ class NinetalesModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Qua
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0038_ninetales/ninetales", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("ninetales", "faint") else null
 }

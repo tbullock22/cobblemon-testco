@@ -35,7 +35,7 @@ class HitmonchanModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0107_hitmonchan/hitmonchan", "ground_idle")
+                bedrock("hitmonchan", "ground_idle")
             )
         )
 
@@ -44,8 +44,8 @@ class HitmonchanModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0107_hitmonchan/hitmonchan", "ground_idle")
-                //bedrock("0107_hitmonchan/hitmonchan", "ground_walk")
+                bedrock("hitmonchan", "ground_idle")
+                //bedrock("hitmonchan", "ground_walk")
             )
         )
     }
@@ -53,5 +53,5 @@ class HitmonchanModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0107_hitmonchan/hitmonchan", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("hitmonchan", "faint") else null
 }

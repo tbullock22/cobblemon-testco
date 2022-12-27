@@ -33,7 +33,7 @@ class StaryuModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0120_staryu/staryu", "ground_idle")
+                //bedrock("staryu", "ground_idle")
             )
         )
 
@@ -42,7 +42,7 @@ class StaryuModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0120_staryu/staryu", "ground_walk")
+                //bedrock("staryu", "ground_walk")
             )
         )
     }
@@ -50,5 +50,5 @@ class StaryuModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0120_staryu/staryu", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("staryu", "faint") else null
 }

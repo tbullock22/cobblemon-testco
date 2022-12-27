@@ -44,6 +44,10 @@ object CheckSpawnsCommand {
     }
 
     private fun execute(context: CommandContext<ServerCommandSource>, player: ServerPlayerEntity) : Int {
+        if (!config.enableSpawning) {
+            return 0
+        }
+
         val spawner = CobblemonWorldSpawnerManager.spawnersForPlayers[player.uuid] ?: return Command.SINGLE_SUCCESS
         val bucket = SpawnBucketArgumentType.getSpawnBucket(context, "bucket")
         val cause = SpawnCause(spawner, bucket, player)

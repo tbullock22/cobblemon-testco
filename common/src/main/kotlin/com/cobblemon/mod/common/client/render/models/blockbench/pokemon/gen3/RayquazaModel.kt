@@ -36,7 +36,7 @@ class RayquazaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0384_rayquaza/rayquaza", "ground_idle")
+                bedrock("rayquaza", "ground_idle")
             )
         )
 
@@ -45,8 +45,8 @@ class RayquazaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0384_rayquaza/rayquaza", "ground_idle")
-                //bedrock("0384_rayquaza/rayquaza", "ground_walk")
+                bedrock("rayquaza", "ground_idle")
+                //bedrock("rayquaza", "ground_walk")
             )
         )
     }
@@ -54,5 +54,5 @@ class RayquazaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0384_rayquaza/rayquaza", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("rayquaza", "faint") else null
 }

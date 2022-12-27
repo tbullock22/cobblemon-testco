@@ -134,7 +134,7 @@
       "height": 12,
       "weight": 550,
       "labels": ["gen1", "alola_regional", "regional"],
-      "preEvolution": "sandshrew form=alola"
+      "preEvolution": "sandshrew alolan"
     }
   ],
   "baseExperienceYield": 158,

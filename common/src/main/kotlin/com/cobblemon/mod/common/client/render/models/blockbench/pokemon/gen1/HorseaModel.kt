@@ -18,8 +18,8 @@ import net.minecraft.util.math.Vec3d
 class HorseaModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("horsea")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 1.6F
+    override val portraitTranslation = Vec3d(0.125, 0.1, 0.0)
 
     override val profileScale = 1.0F
     override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
@@ -32,9 +32,9 @@ class HorseaModel(root: ModelPart) : PokemonPoseableModel() {
     override fun registerPoses() {
         standing = registerPose(
             poseName = "standing",
-            poseTypes = UI_POSES + PoseType.STAND,
+            poseType = PoseType.STAND,
             idleAnimations = arrayOf(
-                bedrock("0116_horsea/horsea", "ground_idle")
+                bedrock("horsea", "ground_idle")
             )
         )
 
@@ -42,15 +42,15 @@ class HorseaModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
-                bedrock("0116_horsea/horsea", "ground_walk")
+                bedrock("horsea", "ground_walk")
             )
         )
 
         float = registerPose(
             poseName = "float",
-            poseType = PoseType.FLOAT,
+            poseTypes = UI_POSES + PoseType.FLOAT,
             idleAnimations = arrayOf(
-                bedrock("0116_horsea/horsea", "water_idle")
+                bedrock("horsea", "water_idle")
             )
         )
 
@@ -58,7 +58,7 @@ class HorseaModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "swim",
             poseType = PoseType.SWIM,
             idleAnimations = arrayOf(
-                bedrock("0116_horsea/horsea", "water_swim")
+                bedrock("horsea", "water_swim")
             )
         )
     }
@@ -66,5 +66,5 @@ class HorseaModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0116_horsea/horsea", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("horsea", "faint") else null
 }

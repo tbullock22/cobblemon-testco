@@ -45,7 +45,7 @@ class SteeneeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biman
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0762_steenee/steenee", "ground_idle")
+                bedrock("steenee", "ground_idle")
             )
         )
 
@@ -54,10 +54,10 @@ class SteeneeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biman
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0762_steenee/steenee", "ground_idle"),
+                bedrock("steenee", "ground_idle"),
                 BimanualSwingAnimation(this, swingPeriodMultiplier = 0.8F, amplitudeMultiplier = 0.7F),
                 BipedWalkAnimation(this, periodMultiplier = 0.8F, amplitudeMultiplier = 1F)
-                //bedrock("0762_steenee/steenee", "ground_walk")
+                //bedrock("steenee", "ground_walk")
             )
         )
     }
@@ -65,5 +65,5 @@ class SteeneeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biman
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0762_steenee/steenee", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("steenee", "faint") else null
 }

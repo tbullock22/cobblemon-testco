@@ -37,7 +37,7 @@ class FearowModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0022_fearow/fearow", "ground_idle")
+                bedrock("fearow", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class FearowModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0022_fearow/fearow", "ground_idle")
+                bedrock("fearow", "ground_idle")
             )
         )
 
@@ -55,8 +55,8 @@ class FearowModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.HOVER,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0022_fearow/fearow", "air_idle")
-                //bedrock("0022_fearow/fearow", "ground_walk")
+                bedrock("fearow", "air_idle")
+                //bedrock("fearow", "ground_walk")
             )
         )
 
@@ -65,8 +65,8 @@ class FearowModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.FLY,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0022_fearow/fearow", "air_fly")
-                //bedrock("0022_fearow/fearow", "ground_walk")
+                bedrock("fearow", "air_fly")
+                //bedrock("fearow", "ground_walk")
             )
         )
     }
@@ -74,5 +74,5 @@ class FearowModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0022_fearow/fearow", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("fearow", "faint") else null
 }

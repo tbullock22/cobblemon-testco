@@ -3,7 +3,6 @@
 	"animations": {
 		"animation.beedrill.air_idle": {
 			"loop": true,
-			"animation_length": 19.95,
 			"bones": {
 				"body": {
 					"rotation": ["math.sin(q.anim_time*90*2)*2+22.5", 0, 0],

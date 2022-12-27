@@ -2,6 +2,7 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"animation.hitmonchan.ground_idle": {
+			"loop": true,
 			"bones": {
 				"leftarm": {
 					"rotation": [-10, 10, -50]

@@ -9,5 +9,6 @@
 package com.cobblemon.mod.common.pokemon.ai
 class WalkBehaviour {
     val canWalk = true
+    val avoidsLand = false
     val walkSpeed = 0.35F
 }

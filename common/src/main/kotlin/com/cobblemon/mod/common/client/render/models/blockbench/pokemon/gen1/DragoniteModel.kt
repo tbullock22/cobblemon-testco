@@ -39,7 +39,7 @@ class DragoniteModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0149_dragonite/dragonite", "ground_idle")
+                bedrock("dragonite", "ground_idle")
             )
         )
 
@@ -48,7 +48,7 @@ class DragoniteModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0149_dragonite/dragonite", "ground_idle")
+                bedrock("dragonite", "ground_idle")
             )
         )
 
@@ -57,7 +57,7 @@ class DragoniteModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = setOf(PoseType.HOVER, PoseType.FLOAT),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0149_dragonite/dragonite", "air_idle")
+                bedrock("dragonite", "air_idle")
             )
         )
 
@@ -66,7 +66,7 @@ class DragoniteModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = setOf(PoseType.FLY, PoseType.SWIM),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0149_dragonite/dragonite", "air_fly")
+                bedrock("dragonite", "air_fly")
             )
         )
     }
@@ -74,5 +74,5 @@ class DragoniteModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0149_dragonite/dragonite", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("dragonite", "faint") else null
 }

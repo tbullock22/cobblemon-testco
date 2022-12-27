@@ -36,7 +36,6 @@
 		},
 		"animation.wartortle.ground_walk": {
 			"loop": true,
-			"animation_length": 5.65,
 			"bones": {
 				"body": {
 					"rotation": [
@@ -100,7 +99,6 @@
 		},
 		"animation.wartortle.water_idle": {
 			"loop": true,
-			"animation_length": 22.9,
 			"bones": {
 				"body": {
 					"rotation": ["89.5-math.clamp(math.sin(q.anim_time*90*2+80)*2,0,2)-math.clamp(math.sin(q.anim_time*90*2+80)*2,-2,0)", 0, 0],
@@ -159,10 +157,7 @@
 				},
 				"head": {
 					"rotation": ["-180+math.clamp(math.sin(q.anim_time*90*2+25)*2,0,2)+math.clamp(math.sin(q.anim_time*90*2+25)*2,-2,0)", 0, 0],
-					"position": {
-						"0.0": [0, 1.5, -5.5],
-						"15.4": [0, 1.25, -5.75]
-					}
+					"position": [0, 1.25, -5.75]
 				}
 			}
 		},

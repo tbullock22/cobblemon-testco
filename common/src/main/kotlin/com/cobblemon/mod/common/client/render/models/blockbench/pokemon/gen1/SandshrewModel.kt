@@ -38,7 +38,7 @@ class SandshrewModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0027_sandshrew/sandshrew", "ground_idle")
+                bedrock("sandshrew", "ground_idle")
             )
         )
 
@@ -48,7 +48,7 @@ class SandshrewModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0027_sandshrew/sandshrew", "ground_walk")
+                bedrock("sandshrew", "ground_walk")
             )
         )
     }
@@ -56,5 +56,5 @@ class SandshrewModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0027_sandshrew/sandshrew", "faint") else null
+    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("sandshrew", "faint") else null
 }

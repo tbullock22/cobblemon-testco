@@ -1,9 +1,0 @@
-{
-  "name": "freshwater",
-  "condition": {
-    "biomes": [ "#cobblemon:is_freshwater" ]
-  },
-  "anticondition": {
-    "biomes": [ "#cobblemon:is_freezing" ]
-  }
-}

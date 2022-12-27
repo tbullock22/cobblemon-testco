@@ -41,7 +41,7 @@ class SlowkingModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0199_slowking/slowking", "ground_idle")
+                bedrock("slowking", "ground_idle")
             )
         )
 
@@ -50,9 +50,9 @@ class SlowkingModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0199_slowking/slowking", "ground_idle"),
+                bedrock("slowking", "ground_idle"),
                 BipedWalkAnimation(this, periodMultiplier = 0.72F, amplitudeMultiplier = 1F)
-                //bedrock("0199_slowking/slowking", "ground_walk")
+                //bedrock("slowking", "ground_walk")
             )
         )
     }
@@ -60,5 +60,5 @@ class SlowkingModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0199_slowking/slowking", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("slowking", "faint") else null
 }

@@ -28,7 +28,6 @@ import com.cobblemon.mod.common.battles.dispatch.GO
 import com.cobblemon.mod.common.battles.dispatch.UntilDispatch
 import com.cobblemon.mod.common.battles.dispatch.WaitDispatch
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
-import com.cobblemon.mod.common.battles.runner.ShowdownConnection
 import com.cobblemon.mod.common.net.messages.client.battle.BattleFaintPacket
 import com.cobblemon.mod.common.net.messages.client.battle.BattleHealthChangePacket
 import com.cobblemon.mod.common.net.messages.client.battle.BattleInitializePacket
@@ -149,18 +148,15 @@ object ShowdownInterpreter {
         else -> "HUH!?"
     }
 
-    fun interpretMessage(message: String) {
+    fun interpretMessage(battleId: UUID, message: String) {
         // Check key map and use function if matching
-        val battleId = message.split(ShowdownConnection.LINE_START)[0]
-        val rawMessage = message.replace(battleId + ShowdownConnection.LINE_START, "")
-
-        if (rawMessage.startsWith("{\"winner\":\"")) {
+        if (message.startsWith("{\"winner\":\"")) {
             // The post-win message is something we don't care about just yet. It's basically a summary of what happened in the battle.
             // Check /docs/example-post-win-message.json for its format.
             return
         }
 
-        val battle = BattleRegistry.getBattle(UUID.fromString(battleId))
+        val battle = BattleRegistry.getBattle(battleId)
 
         if (battle == null) {
             LOGGER.info("No battle could be found with the id: $battleId")
@@ -169,7 +165,7 @@ object ShowdownInterpreter {
 
         runOnServer {
             battle.showdownMessages.add(message)
-            interpret(battle, rawMessage)
+            interpret(battle, message)
         }
     }
 
@@ -714,8 +710,9 @@ object ShowdownInterpreter {
 //            if ("|confusion" in message) { // Don't even say anything about it, it's too spammy
 //                battle.broadcastChatMessage(battleLang("confusion_continues_idk", pokemon.battlePokemon!!.getName()))
 //            }
-            if ("|protect" in message) {
-                battle.broadcastChatMessage(battleLang("protect_activate",pokemon.battlePokemon!!.getName()))
+            when {
+                "|protect" in message -> battle.broadcastChatMessage(battleLang("protect_activate",pokemon.battlePokemon!!.getName()))
+                "move: Magnitude" in message -> battle.broadcastChatMessage(battleLang("magnitude_level", message.substringAfterLast("|").toIntOrNull() ?: 1))
             }
             GO
         }
@@ -854,6 +851,7 @@ object ShowdownInterpreter {
 
         battle.dispatch {
             val newHealthRatio: Float
+            val remainingHealth = newHealth.split("/")[0].toInt()
             if (newHealth == "0") {
                 newHealthRatio = 0F
                 battle.dispatch {
@@ -863,7 +861,6 @@ object ShowdownInterpreter {
                 }
             } else {
                 val maxHealth = newHealth.split("/")[1].toInt()
-                val remainingHealth = newHealth.split("/")[0].toInt()
                 val difference = maxHealth - remainingHealth
                 newHealthRatio = remainingHealth.toFloat() / maxHealth
                 battle.dispatch {
@@ -875,7 +872,7 @@ object ShowdownInterpreter {
                     GO
                 }
             }
-            battle.sendUpdate(BattleHealthChangePacket(pnx, newHealthRatio))
+            battle.sendUpdate(BattleHealthChangePacket(pnx, newHealthRatio, remainingHealth))
             if (cause != null) {
                 when (cause) {
                     "confusion" -> battle.broadcastChatMessage(battleLang("confusion_activate", activePokemon.battlePokemon?.getName()!!))

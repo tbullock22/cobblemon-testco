@@ -55,6 +55,7 @@ abstract class EvolutionUpdatePacket : EvolutionLikeUpdatePacket<Evolution, Evol
                 shiny = pokemon.shiny
                 form = pokemon.form
                 gender = pokemon.gender
+                aspects = pokemon.aspects
             }
             evolution.result.apply(result)
             val expectedDisplay = CobblemonEvolutionDisplay(evolution.id, result)

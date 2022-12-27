@@ -52,7 +52,7 @@ class YanmegaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0469_yanmega/yanmega", "ground_idle"),
+                bedrock("yanmega", "ground_idle"),
                 wingFrame1.wingFlap(
                     flapFunction = triangleFunction(period = 0.3F, amplitude = 0.4F),
                     timeVariable = { state, _, ageInTicks -> state?.animationSeconds ?: ageInTicks },
@@ -74,7 +74,7 @@ class YanmegaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0469_yanmega/yanmega", "ground_idle"),
+                bedrock("yanmega", "ground_idle"),
                 wingFrame1.wingFlap(
                     flapFunction = triangleFunction(period = 0.3F, amplitude = 0.4F),
                     timeVariable = { state, _, ageInTicks -> state?.animationSeconds ?: ageInTicks },
@@ -85,7 +85,7 @@ class YanmegaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
                     timeVariable = { state, _, ageInTicks -> 0.01F + (state?.animationSeconds ?: (ageInTicks / 20)) },
                     axis = TransformedModelPart.Z_AXIS
                 )
-                //bedrock("0469_yanmega/yanmega", "ground_walk")
+                //bedrock("yanmega", "ground_walk")
             ),
             transformedParts = arrayOf(
                 rootPart.asTransformed().addPosition(TransformedModelPart.Y_AXIS, -4)
@@ -96,5 +96,5 @@ class YanmegaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0469_yanmega/yanmega", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("yanmega", "faint") else null
 }

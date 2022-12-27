@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "xatu",
     "nationalPokedexNumber": 178,
     "primaryType": "psychic",
@@ -15,6 +16,17 @@
         "special_attack": 95,
         "special_defence": 70,
         "speed": 95
+    },
+    "behaviour": {
+        "resting": {
+            "canSleep": true
+        },
+        "moving": {
+            "walk": {
+                "canWalk": false
+            },
+            "canLook": false
+        }
     },
     "catchRate": 75,
     "maleRatio": 0.5,
@@ -135,10 +147,10 @@
     ],
     "preEvolution": "natu",
     "evolutions": [],
-    "baseScale": 1.0,
+    "baseScale": 1.1,
     "hitbox": {
-        "width": 1.0,
-        "height": 1.0,
+        "width": 0.55,
+        "height": 1.3,
         "fixed": false
     },
     "baseFriendship": 50,

@@ -35,7 +35,7 @@ class SeakingModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseType = PoseType.STAND,
             idleAnimations = arrayOf(
-                bedrock("0119_seaking/seaking", "ground_idle")
+                bedrock("seaking", "ground_idle")
             )
         )
 
@@ -43,7 +43,7 @@ class SeakingModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseType = PoseType.WALK,
             idleAnimations = arrayOf(
-                bedrock("0119_seaking/seaking", "ground_idle")
+                bedrock("seaking", "ground_idle")
             )
         )
 
@@ -51,7 +51,7 @@ class SeakingModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "float",
             poseTypes = setOf(PoseType.FLOAT, PoseType.HOVER),
             idleAnimations = arrayOf(
-                bedrock("0119_seaking/seaking", "water_idle")
+                bedrock("seaking", "water_idle")
             )
         )
 
@@ -59,7 +59,7 @@ class SeakingModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "swim",
             poseTypes = setOf(PoseType.SWIM, PoseType.FLY),
             idleAnimations = arrayOf(
-                bedrock("0119_seaking/seaking", "water_swim")
+                bedrock("seaking", "water_swim")
             )
         )
     }
@@ -67,5 +67,5 @@ class SeakingModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0119_seaking/seaking", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("seaking", "faint") else null
 }

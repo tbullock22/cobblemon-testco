@@ -36,7 +36,7 @@ class JolteonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0135_jolteon/jolteon", "ground_idle")
+                bedrock("jolteon", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class JolteonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0135_jolteon/jolteon", "ground_run")
+                bedrock("jolteon", "ground_run")
             )
         )
     }
@@ -54,5 +54,5 @@ class JolteonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0135_jolteon/jolteon", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("jolteon", "faint") else null
 }

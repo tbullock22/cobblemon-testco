@@ -12,6 +12,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.PoseableEntitySt
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.ALL_POSES
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import net.minecraft.client.model.ModelPart
@@ -25,17 +26,21 @@ class KakunaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val profileScale = 1.0F
     override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
 
+    lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose
 
     override fun registerPoses() {
+        sleep = registerPose(
+            poseType = PoseType.SLEEP,
+            idleAnimations = arrayOf(bedrock("kakuna", "sleep"))
+        )
+
         standing = registerPose(
             poseName = "standing",
-            poseTypes = ALL_POSES,
-            transformTicks = 10,
-            condition = { true },
+            poseTypes = ALL_POSES - PoseType.SLEEP,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0014_kakuna/kakuna", "ground_idle")
+                bedrock("kakuna", "ground_idle")
             )
         )
     }
@@ -43,5 +48,5 @@ class KakunaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override fun getFaintAnimation(
         pokemonEntity: PokemonEntity,
         state: PoseableEntityState<PokemonEntity>
-    ) = bedrockStateful("0014_kakuna/kakuna", "faint")
+    ) = if (state.isPosedIn(standing)) bedrockStateful("kakuna", "faint") else null
 }

@@ -148,7 +148,7 @@ class BattleInitializePacket() : NetworkPacket {
                         PokemonPropertyExtractor.ASPECTS
                     ),
                     status = status?.status,
-                    hpRatio = battlePokemon.health / battlePokemon.maxHealth.toFloat(),
+                    hpRatio = currentHealth.toFloat() / hp,
                     statChanges = battlePokemon.statChanges
                 )
             }

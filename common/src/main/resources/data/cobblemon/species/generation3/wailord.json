@@ -1,4 +1,5 @@
 {
+    "implemented": true,
     "name": "wailord",
     "nationalPokedexNumber": 321,
     "primaryType": "water",
@@ -14,6 +15,18 @@
         "special_attack": 90,
         "special_defence": 45,
         "speed": 60
+    },
+    "behaviour": {
+        "moving": {
+            "looksAtEntities": false,
+            "swim": {
+                "canBreatheUnderwater": true,
+                "swimSpeed": 0.05
+            },
+            "walk": {
+                "canWalk": false
+            }
+        }
     },
     "catchRate": 60,
     "maleRatio": 0.5,
@@ -115,10 +128,10 @@
     ],
     "preEvolution": "wailmer",
     "evolutions": [],
-    "baseScale": 1.0,
+    "baseScale": 1.3,
     "hitbox": {
-        "width": 1.0,
-        "height": 1.0,
+        "width": 3.5,
+        "height": 2.3,
         "fixed": false
     },
     "baseFriendship": 50,

@@ -32,7 +32,7 @@ class HitmonleeModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0106_hitmonlee/hitmonlee", "ground_idle")
+                bedrock("hitmonlee", "ground_idle")
             )
         )
 
@@ -40,8 +40,8 @@ class HitmonleeModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0106_hitmonlee/hitmonlee", "ground_idle")
-                //bedrock("0106_hitmonlee/hitmonlee", "ground_walk")
+                bedrock("hitmonlee", "ground_idle")
+                //bedrock("hitmonlee", "ground_walk")
             )
         )
     }
@@ -49,5 +49,5 @@ class HitmonleeModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0106_hitmonlee/hitmonlee", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("hitmonlee", "faint") else null
 }

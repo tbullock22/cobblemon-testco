@@ -35,7 +35,7 @@ class NidokingModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0034_nidoking/nidoking", "ground_idle")
+                bedrock("nidoking", "ground_idle")
             )
         )
 
@@ -44,8 +44,8 @@ class NidokingModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0034_nidoking/nidoking", "ground_idle")
-                //bedrock("0034_nidoking/nidoking", "ground_walk")
+                bedrock("nidoking", "ground_idle")
+                //bedrock("nidoking", "ground_walk")
             )
         )
     }
@@ -53,5 +53,5 @@ class NidokingModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0034_nidoking/nidoking", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("nidoking", "faint") else null
 }

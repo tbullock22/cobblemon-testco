@@ -32,7 +32,7 @@ class TangrowthModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0465_tangrowth/tangrowth", "ground_idle")
+                bedrock("tangrowth", "ground_idle")
             )
         )
 
@@ -40,7 +40,7 @@ class TangrowthModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0465_tangrowth/tangrowth", "ground_idle")
+                bedrock("tangrowth", "ground_idle")
             )
         )
     }
@@ -48,5 +48,5 @@ class TangrowthModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0465_tangrowth/tangrowth", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("tangrowth", "faint") else null
 }

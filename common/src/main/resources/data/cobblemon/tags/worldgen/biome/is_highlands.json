@@ -2,8 +2,7 @@
   "replace": false,
   "values": [
     "minecraft:meadow",
-    "#cobblemon:is_hills",
-    {
+	{
       "id": "terralith:alpine_highlands",
       "required": false
     },

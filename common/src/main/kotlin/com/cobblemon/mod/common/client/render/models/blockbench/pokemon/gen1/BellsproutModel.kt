@@ -36,7 +36,7 @@ class BellsproutModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0069_bellsprout/bellsprout", "ground_idle")
+                bedrock("bellsprout", "ground_idle")
             )
         )
 
@@ -46,8 +46,8 @@ class BellsproutModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0069_bellsprout/bellsprout", "ground_idle")
-                //bedrock("0069_bellsprout/bellsprout", "ground_walk")
+                bedrock("bellsprout", "ground_idle")
+                //bedrock("bellsprout", "ground_walk")
             )
         )
     }
@@ -55,5 +55,5 @@ class BellsproutModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0069_bellsprout/bellsprout", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("bellsprout", "faint") else null
 }

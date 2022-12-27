@@ -36,7 +36,7 @@ class NidoranfModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0029_nidoranf/nidoranf", "ground_idle")
+                //bedrock("nidoranf", "ground_idle")
             )
         )
 
@@ -46,7 +46,7 @@ class NidoranfModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             transformTicks = 10,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0029_nidoranf/nidoranf", "ground_walk")
+                //bedrock("nidoranf", "ground_walk")
             )
         )
     }
@@ -54,5 +54,5 @@ class NidoranfModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0029_nidoranf/nidoranf", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("nidoranf", "faint") else null
 }

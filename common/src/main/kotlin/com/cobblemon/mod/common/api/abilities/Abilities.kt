@@ -22,7 +22,6 @@ import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
-import kotlin.io.path.Path
 import net.minecraft.resource.ResourceType
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.text.MutableText
@@ -83,6 +82,6 @@ object Abilities : JsonDataRegistry<AbilityTemplate> {
     fun all() = allAbilities.toList()
     fun first() = allAbilities.first()
     fun get(name: String) = abilityMap[name.lowercase()]
-    fun getOrException(name: String) = get(name)!!
+    fun getOrException(name: String) = get(name) ?: throw IllegalArgumentException("Unable to find ability of name: $name")
     fun count() = allAbilities.size
 }

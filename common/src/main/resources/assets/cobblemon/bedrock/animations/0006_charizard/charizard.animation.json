@@ -3,7 +3,6 @@
 	"animations": {
 		"animation.charizard.ground_idle": {
 			"loop": true,
-			"animation_length": 194.8,
 			"bones": {
 				"torso": {
 					"rotation": [5, 0, 0],

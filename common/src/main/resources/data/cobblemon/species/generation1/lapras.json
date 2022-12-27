@@ -52,7 +52,8 @@
                 "canSwimInWater": true,
                 "canBreatheUnderwater": true,
                 "canWalkOnWater": true
-            }
+            },
+            "wanderChance": 120
         }
     },
     "drops": {

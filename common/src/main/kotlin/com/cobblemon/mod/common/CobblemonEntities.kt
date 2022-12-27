@@ -32,15 +32,8 @@ object CobblemonEntities : CompletableRegistry<EntityType<*>>(Registry.ENTITY_TY
         EntityAttributeRegistry.register(
             { POKEMON.get() },
             {
-                DefaultAttributeContainer
-                    .builder()
+                LivingEntity.createLivingAttributes()
                     .add(EntityAttributes.GENERIC_FOLLOW_RANGE)
-                    .add(EntityAttributes.GENERIC_MAX_HEALTH)
-                    .add(EntityAttributes.GENERIC_MOVEMENT_SPEED)
-                    .add(EntityAttributes.HORSE_JUMP_STRENGTH)
-                    .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE)
-                    .add(EntityAttributes.GENERIC_ARMOR)
-                    .add(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)
                     .also { CobblemonEvents.ENTITY_ATTRIBUTE.post(EntityAttributeEvent(POKEMON.get(), it)) }
             }
         )

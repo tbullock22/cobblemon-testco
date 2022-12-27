@@ -1,0 +1,19 @@
+{
+  "species": "cobblemon:magnezone",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:magnezone",
+      "model": "cobblemon:magnezone.geo",
+      "texture": "cobblemon:textures/pokemon/0462_magnezone/magnezone.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0462_magnezone/magnezone_shiny.png"
+    }
+  ]
+}

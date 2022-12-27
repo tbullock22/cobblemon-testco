@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#minecraft:is_hill",
+	"#cobblemon:is_highlands",
     {
       "id": "terralith:blooming_valley",
       "required": false

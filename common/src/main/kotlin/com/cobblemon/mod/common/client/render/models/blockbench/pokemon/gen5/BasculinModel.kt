@@ -35,7 +35,7 @@ class BasculinModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0550_basculin/basculin", "ground_idle")
+                //bedrock("basculin", "ground_idle")
             )
         )
 
@@ -44,7 +44,7 @@ class BasculinModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook()
-                //bedrock("0550_basculin/basculin", "ground_walk")
+                //bedrock("basculin", "ground_walk")
             )
         )
     }
@@ -52,5 +52,5 @@ class BasculinModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0550_basculin/basculin", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("basculin", "faint") else null
 }

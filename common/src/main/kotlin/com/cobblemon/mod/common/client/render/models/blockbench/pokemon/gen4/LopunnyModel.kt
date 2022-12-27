@@ -29,8 +29,8 @@ class LopunnyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
     override val portraitScale = 1.5F
     override val portraitTranslation = Vec3d(-.05, 1.9, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.5F
+    override val profileTranslation = Vec3d(0.0, 1.0, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
@@ -41,7 +41,7 @@ class LopunnyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0428_lopunny/lopunny", "ground_idle")
+                bedrock("lopunny", "ground_idle")
             )
         )
 
@@ -50,9 +50,9 @@ class LopunnyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0428_lopunny/lopunny", "ground_idle"),
+                bedrock("lopunny", "ground_idle"),
                 BipedWalkAnimation(this, amplitudeMultiplier = 0.7F, periodMultiplier = 0.7F),
-                //bedrock("0428_lopunny/lopunny", "ground_walk")
+                //bedrock("lopunny", "ground_walk")
             )
         )
     }
@@ -60,5 +60,5 @@ class LopunnyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0428_lopunny/lopunny", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("lopunny", "faint") else null
 }

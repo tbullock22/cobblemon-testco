@@ -151,7 +151,7 @@ object CobblemonClient {
 
     fun reloadCodedAssets(resourceManager: ResourceManager) {
         LOGGER.info("Reloading assets")
-        BedrockAnimationRepository.clear()
+        BedrockAnimationRepository.loadAnimations(resourceManager)
         PokemonModelRepository.reload(resourceManager)
         LOGGER.info("Loaded assets")
 //        PokeBallModelRepository.reload(resourceManager)

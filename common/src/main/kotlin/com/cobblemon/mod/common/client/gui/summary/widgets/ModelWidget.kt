@@ -17,11 +17,14 @@ import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.text.Text
 import net.minecraft.util.math.Quaternion
 import net.minecraft.util.math.Vec3f
+
 class ModelWidget(
     pX: Int, pY: Int,
     pWidth: Int, pHeight: Int,
     var pokemon: RenderablePokemon,
-    val baseScale: Float = 2.7F
+    val baseScale: Float = 2.7F,
+    var rotationY: Float = 35F,
+    var offsetY: Double = 0.0
 ): SoundlessWidget(pX, pY, pWidth, pHeight, Text.literal("Summary - ModelWidget")) {
 
     companion object {
@@ -30,7 +33,7 @@ class ModelWidget(
 
     var state = PokemonFloatingState()
     private val minecraft = MinecraftClient.getInstance()
-    private var rotVec = Vec3f(13F, 35F, 0F)
+    private var rotVec = Vec3f(13F, rotationY, 0F)
 
     override fun render(pMatrixStack: MatrixStack, pMouseX: Int, pMouseY: Int, pPartialTicks: Float) {
         if (!render) {
@@ -50,7 +53,7 @@ class ModelWidget(
             (height * minecraft.window.scaleFactor).toInt()
         )
 
-        poseStack.translate(x + width * 0.5, y.toDouble(), 0.0)
+        poseStack.translate(x + width * 0.5, y.toDouble() + offsetY, 0.0)
         poseStack.scale(baseScale, baseScale, baseScale)
         poseStack.push()
 

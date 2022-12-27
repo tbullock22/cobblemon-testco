@@ -41,7 +41,7 @@ class TsareenaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0763_tsareena/tsareena", "ground_idle")
+                bedrock("tsareena", "ground_idle")
             )
         )
 
@@ -50,9 +50,9 @@ class TsareenaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0763_tsareena/tsareena", "ground_idle"),
+                bedrock("tsareena", "ground_idle"),
                 BipedWalkAnimation(this, periodMultiplier = 0.8F, amplitudeMultiplier = 0.6F)
-                //bedrock("0763_tsareena/tsareena", "ground_walk")
+                //bedrock("tsareena", "ground_walk")
             )
         )
     }
@@ -60,5 +60,5 @@ class TsareenaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0763_tsareena/tsareena", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("tsareena", "faint") else null
 }

@@ -38,7 +38,7 @@ class DartrixModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                bedrock("0723_dartrix/dartrix", "ground_idle")
+                bedrock("dartrix", "ground_idle")
             )
         )
 
@@ -46,9 +46,9 @@ class DartrixModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("0723_dartrix/dartrix", "ground_idle"),
+                bedrock("dartrix", "ground_idle"),
                 BipedWalkAnimation(this, periodMultiplier = 0.75F, amplitudeMultiplier = 0.7F)
-                //bedrock("0723_dartrix/dartrix", "ground_walk")
+                //bedrock("dartrix", "ground_walk")
             )
         )
     }
@@ -56,5 +56,5 @@ class DartrixModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0723_dartrix/dartrix", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("dartrix", "faint") else null
 }

@@ -33,7 +33,7 @@ class ChanseyModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0113_chansey/chansey", "ground_idle")
+                bedrock("chansey", "ground_idle")
             )
         )
 
@@ -42,8 +42,8 @@ class ChanseyModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                bedrock("0113_chansey/chansey", "ground_idle")
-                //bedrock("0113_chansey/chansey", "ground_walk")
+                bedrock("chansey", "ground_idle")
+                //bedrock("chansey", "ground_walk")
             )
         )
     }
@@ -51,5 +51,5 @@ class ChanseyModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0113_chansey/chansey", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("chansey", "faint") else null
 }

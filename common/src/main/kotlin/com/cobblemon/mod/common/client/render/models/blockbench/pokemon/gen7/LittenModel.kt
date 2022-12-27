@@ -43,7 +43,7 @@ class LittenModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0725_litten/litten", "ground_idle")
+                bedrock("litten", "ground_idle")
             )
         )
 
@@ -52,9 +52,9 @@ class LittenModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("0725_litten/litten", "ground_idle"),
+                bedrock("litten", "ground_idle"),
                 QuadrupedWalkAnimation(this, amplitudeMultiplier = 0.7F, periodMultiplier = 0.9F)
-                //bedrock("0725_litten/litten", "ground_walk")
+                //bedrock("litten", "ground_walk")
             )
         )
     }
@@ -62,5 +62,5 @@ class LittenModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0725_litten/litten", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("litten", "faint") else null
 }

@@ -1,0 +1,23 @@
+{
+    "enabled": true,
+    "neededInstalledMods": [],
+    "neededUninstalledMods": [],
+    "spawns": [
+        {
+            "id": "lopunny-1",
+            "pokemon": "lopunny",
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "common",
+            "level": "36-48",
+            "weight": 0.1,
+            "condition": {
+                "canSeeSky": true,
+                "biomes": [
+                    "#cobblemon:is_forest",
+                    "#cobblemon:is_hills"
+                ]
+            }
+        }
+    ]
+}

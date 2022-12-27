@@ -33,7 +33,7 @@ class ExeggcuteModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0102_exeggcute/exeggcute", "ground_idle")
+                //bedrock("exeggcute", "ground_idle")
             )
         )
 
@@ -42,7 +42,7 @@ class ExeggcuteModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             transformTicks = 10,
             idleAnimations = arrayOf(
-                //bedrock("0102_exeggcute/exeggcute", "ground_walk")
+                //bedrock("exeggcute", "ground_walk")
             )
         )
     }
@@ -50,5 +50,5 @@ class ExeggcuteModel(root: ModelPart) : PokemonPoseableModel() {
 //    override fun getFaintAnimation(
 //        pokemonEntity: PokemonEntity,
 //        state: PoseableEntityState<PokemonEntity>
-//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("0102_exeggcute/exeggcute", "faint") else null
+//    ) = if (state.isPosedIn(standing, walk)) bedrockStateful("exeggcute", "faint") else null
 }
