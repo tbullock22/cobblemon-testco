@@ -11,6 +11,7 @@
 - Added emissive texture support to Pokémon render layers.
 - Added new sounds for GUIs and item uses.
 - Added `nature` and `pokeball` options to commands such as `/spawnpokemon` and `/givepokemon`.
+- Added compatibility for Adorn ([CurseForge-Fabric/Quilt](https://www.curseforge.com/minecraft/mc-mods/adorn), [CurseForge-Forge](https://www.curseforge.com/minecraft/mc-mods/adorn-for-forge), [Modrinth](https://modrinth.com/mod/adorn)) you can now craft furniture with Apricorn wood.
 
 ### Changes
 - Changed the healer advancements to make the healing machine's mechanics more obvious.
@@ -38,6 +39,7 @@
 - Fixed dropped item forms of all Pokéballs and the Healing Machine, and minorly adjusted all other display settings
 - Fixed issues with forms not showing the correct evolution in the evolution menu.
 - Fixed some alternate forms not having the alternate stats and types.
+- Fixed an incompatibility with [Kotlin For Forge](https://www.curseforge.com/minecraft/mc-mods/kotlin-for-forge).
 
 ## 1.1.1 (November 27th, 2022)
 ### Fixes
