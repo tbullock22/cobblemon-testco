@@ -7,11 +7,12 @@ issueTrackerURL="https://gitlab.com/cable-mc/cobblemon/-/issues"
 modId="cobblemon" #mandatory
 version="${version}" #mandatory
 displayName="Cobblemon" #mandatory
+displayURL="https://cobblemon.com/"
 #logoFile="examplemod.png" #optional
 credits="Thanks to Mojang, Blockbench, Smogon, Sam Cao, and the many community contributors"
 authors="The Cobblemon Team"
 description='''
- This is a Pokémon mod
+ Adds Pokémon to the world, letting you find, battle, capture, and evolve them.
 '''
 
 # A URL for the "homepage" for this mod, displayed in the mod UI

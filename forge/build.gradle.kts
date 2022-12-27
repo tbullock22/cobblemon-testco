@@ -49,7 +49,7 @@ dependencies {
     ).forEach {
         forgeRuntimeLibrary(it)
         bundle(it) {
-            exclude("com.ibm.icu", "icu4j")
+            //exclude("com.ibm.icu", "icu4j")
         }
     }
 }
@@ -57,7 +57,10 @@ dependencies {
 tasks {
     shadowJar {
         exclude("architectury-common.accessWidener")
+
+        relocate ("com.ibm.icu", "com.cobblemon.mod.relocations.ibm.icu")
     }
+
     processResources {
         inputs.property("version", rootProject.version)
 
