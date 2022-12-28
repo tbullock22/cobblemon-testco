@@ -10,12 +10,19 @@ val bundle: Configuration by configurations.creating {
 
 tasks {
 
+
+    val relocateShadowJar = register<ExcludingConfigureShadowRelocation>("excludingConfigureShadowRelocation") {
+        target = tasks.shadowJar.get()
+        prefix = "com.cobblemon.mod.relocations"
+    }
+
     jar {
         archiveBaseName.set("Cobblemon-${project.name}")
         archiveClassifier.set("dev-slim")
     }
 
     shadowJar {
+        dependsOn(relocateShadowJar)
         archiveClassifier.set("dev-shadow")
         archiveBaseName.set("Cobblemon-${project.name}")
         configurations = listOf(bundle)
