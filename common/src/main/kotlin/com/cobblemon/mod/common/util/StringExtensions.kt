@@ -8,6 +8,9 @@
 
 package com.cobblemon.mod.common.util
 
+import com.cobblemon.mod.common.Cobblemon
+import java.lang.NumberFormatException
+
 const val QUOTE = '"'
 
 fun String.splitMap(delimiter: String, assigner: String) : MutableList<Pair<String, String?>>
@@ -58,4 +61,33 @@ fun String.splitMap(delimiter: String, assigner: String) : MutableList<Pair<Stri
     }
 
     return result
+}
+
+fun String.isLaterVersion(otherVersion: String): Boolean {
+    if (this === otherVersion) {
+        return false
+    }
+
+    val splits1 = this.split(".")
+    val splits2 = otherVersion.split(".")
+
+    var smaller = if (splits1.size > splits2.size) this else otherVersion
+
+    for (i in 0 until smaller.split(".").size) {
+        try {
+            val v1 = splits1[i].toInt()
+            val v2 = splits2[i].toInt()
+
+            if (v1 > v2) {
+                return true;
+            } else if (v2 > v1) {
+                return false;
+            }
+        } catch (e: NumberFormatException) {
+            Cobblemon.LOGGER.error("Tried comparing versions $this and $otherVersion but at least one of them isn't formatted like a version.")
+            return false
+        }
+    }
+
+    return smaller != this
 }

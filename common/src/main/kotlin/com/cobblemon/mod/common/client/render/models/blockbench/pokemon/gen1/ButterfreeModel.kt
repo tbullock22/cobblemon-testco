@@ -25,11 +25,11 @@ class ButterfreeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
     val leftWingBack = getPart("wing_left2")
     val rightWingBack = getPart("wing_right2")
 
-    override val portraitScale = 1.5F
-    override val portraitTranslation = Vec3d(0.1, 0.2, 0.0)
+    override val portraitScale = 1.7F
+    override val portraitTranslation = Vec3d(0.1, 0.1, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.8F
+    override val profileTranslation = Vec3d(0.05, 0.45, 0.0)
 
     lateinit var sleep: PokemonPose
 

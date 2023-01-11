@@ -85,6 +85,7 @@ import java.util.Optional
 import java.util.UUID
 import java.util.concurrent.CompletableFuture
 import kotlin.math.absoluteValue
+import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
 import kotlin.random.Random
@@ -182,7 +183,7 @@ open class Pokemon {
             if (value <= 0) {
                 entity?.health = 0F
             }
-            field = min(hp, value)
+            field = max(min(hp, value), 0)
             _currentHealth.emit(field)
 
             // If the Pokémon is fainted, give it a timer for it to wake back up
@@ -478,6 +479,7 @@ open class Pokemon {
     }
 
     fun saveToNBT(nbt: NbtCompound): NbtCompound {
+        nbt.putString(DataKeys.POKEMON_LAST_SAVED_VERSION, Cobblemon.VERSION)
         nbt.putUuid(DataKeys.POKEMON_UUID, uuid)
         nbt.putString(DataKeys.POKEMON_SPECIES_IDENTIFIER, species.resourceIdentifier.toString())
         nbt.putString(DataKeys.POKEMON_FORM_ID, form.name)
@@ -511,6 +513,7 @@ open class Pokemon {
     }
 
     fun loadFromNBT(nbt: NbtCompound): Pokemon {
+        val version = nbt.getString(DataKeys.POKEMON_LAST_SAVED_VERSION).takeIf { it.isNotBlank() } ?: "1.1.1"
         uuid = nbt.getUuid(DataKeys.POKEMON_UUID)
         try {
             val rawID = nbt.getString(DataKeys.POKEMON_SPECIES_IDENTIFIER).replace("pokemonCobblemon", "cobblemon")
@@ -554,9 +557,14 @@ open class Pokemon {
         val properties = PokemonProperties.parse(propertiesList.joinToString(separator = " ") { it.asString() }, " ")
         this.customProperties.clear()
         this.customProperties.addAll(properties.customProperties)
-        features.forEach { it.loadFromNBT(nbt) }
+        SpeciesFeatures.getFeaturesFor(species).forEach {
+            val feature = it(nbt) ?: return@forEach
+            features.removeIf { it.name == feature.name }
+            features.add(feature)
+        }
         this.nature = nbt.getString(DataKeys.POKEMON_NATURE).takeIf { it.isNotBlank() }?.let { Natures.getNature(Identifier(it))!! } ?: Natures.getRandomNature()
         updateAspects()
+        checkAbility()
         nbt.get(DataKeys.POKEMON_EVOLUTIONS)?.let { tag -> this.evolutionProxy.loadFromNBT(tag) }
         if (nbt.contains(DataKeys.HELD_ITEM)) {
             this.heldItem = ItemStack.fromNbt(nbt.getCompound(DataKeys.HELD_ITEM))
@@ -565,6 +573,7 @@ open class Pokemon {
     }
 
     fun saveToJSON(json: JsonObject): JsonObject {
+        json.addProperty(DataKeys.POKEMON_LAST_SAVED_VERSION, Cobblemon.VERSION)
         json.addProperty(DataKeys.POKEMON_UUID, uuid.toString())
         json.addProperty(DataKeys.POKEMON_SPECIES_IDENTIFIER, species.resourceIdentifier.toString())
         json.addProperty(DataKeys.POKEMON_FORM_ID, form.name)
@@ -597,6 +606,7 @@ open class Pokemon {
     }
 
     fun loadFromJSON(json: JsonObject): Pokemon {
+        val version = json.get(DataKeys.POKEMON_LAST_SAVED_VERSION)?.asString ?: "1.1.1"
         uuid = UUID.fromString(json.get(DataKeys.POKEMON_UUID).asString)
         try {
             val rawID = json.get(DataKeys.POKEMON_SPECIES_IDENTIFIER).asString.replace("pokemonCobblemon", "cobblemon")
@@ -640,12 +650,14 @@ open class Pokemon {
         val properties = PokemonProperties.parse(propertyList.joinToString(" "), " ")
         this.customProperties.clear()
         this.customProperties.addAll(properties.customProperties)
-        features.forEach { it.loadFromJSON(json) }
+        SpeciesFeatures.getFeaturesFor(species).forEach {
+            val feature = it(json) ?: return@forEach
+            features.removeIf { it.name == feature.name }
+            features.add(feature)
+        }
         this.nature = json.get(DataKeys.POKEMON_NATURE).asString?.let { Natures.getNature(Identifier(it))!! } ?: Natures.getRandomNature()
         updateAspects()
-        if (abilityName == "dummy") {
-            ability = form.abilities.select(species, aspects)
-        }
+        checkAbility()
         json.get(DataKeys.POKEMON_EVOLUTIONS)?.let { this.evolutionProxy.loadFromJson(it) }
         if (json.has(DataKeys.HELD_ITEM)) {
             ItemStack.CODEC.decode(JsonOps.INSTANCE, json.get(DataKeys.HELD_ITEM)).result().ifPresent {

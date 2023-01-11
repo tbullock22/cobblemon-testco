@@ -12,6 +12,7 @@ import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.api.reactive.SimpleObservable
 import com.cobblemon.mod.common.api.storage.BottomlessStore
 import com.cobblemon.mod.common.api.storage.PokemonStore
+import com.cobblemon.mod.common.api.storage.StoreCoordinates
 import com.cobblemon.mod.common.net.messages.client.storage.RemoveClientPokemonPacket
 import com.cobblemon.mod.common.net.messages.client.storage.SwapClientPokemonPacket
 import com.cobblemon.mod.common.net.messages.client.storage.pc.InitializePCPacket
@@ -195,6 +196,15 @@ open class PCStore(
             tryRestoreBackedUpPokemon()
         }
         return this
+    }
+
+    override fun loadPositionFromNBT(nbt: NbtCompound): StoreCoordinates<PCPosition> {
+        return StoreCoordinates(this, PCPosition(nbt.getShort(DataKeys.STORE_BOX).toInt(), nbt.getByte(DataKeys.STORE_SLOT).toInt()))
+    }
+
+    override fun savePositionToNBT(position: PCPosition, nbt: NbtCompound) {
+        nbt.putShort(DataKeys.STORE_BOX, position.box.toShort())
+        nbt.putByte(DataKeys.STORE_SLOT, position.slot.toByte())
     }
 
     override fun getAnyChangeObservable() = pcChangeObservable

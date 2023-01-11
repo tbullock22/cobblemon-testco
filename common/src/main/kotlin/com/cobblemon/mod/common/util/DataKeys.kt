@@ -9,6 +9,7 @@
 package com.cobblemon.mod.common.util
 
 object DataKeys {
+    const val POKEMON_LAST_SAVED_VERSION = "CobblemonVersion"
     const val POKEMON = "Pokemon"
     const val POKEMON_UUID = "UUID"
     const val POKEMON_SPECIES_IDENTIFIER = "Species"
@@ -48,12 +49,19 @@ object DataKeys {
     const val POKEMON_STATE_PLAYER_UUID = "PlayerUUID"
     const val POKEMON_STATE_POKEMON_UUID = "PokemonUUID"
 
+    const val POKEMON_BATTLE_ID = "BattleId"
+    const val POKEMON_POSE_TYPE = "PoseType"
+    const val POKEMON_BEHAVIOUR_FLAGS = "BehaviourFlags"
+    const val POKEMON_OWNER_ID = "PokemonOwnerId"
+
     // Evolution stuff
     const val POKEMON_EVOLUTIONS = "Evolutions"
     const val POKEMON_PENDING_EVOLUTIONS = "Pending"
 
     const val BENCHED_MOVES = "BenchedMoves"
 
+    const val OWNED_BY_PLAYER = "OwnedByPlayer"
+    const val STORE_IS_PARTY = "IsParty"
     const val STORE_SLOT = "Slot"
     const val STORE_SLOT_COUNT = "SlotCount"
     const val STORE_BOX = "Box"

@@ -11,8 +11,8 @@ package com.cobblemon.mod.common.client.gui.startselection.widgets.preview
 import com.cobblemon.mod.common.client.gui.drawProfilePokemon
 import com.cobblemon.mod.common.client.gui.summary.widgets.SoundlessWidget
 import com.cobblemon.mod.common.pokemon.RenderablePokemon
-import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.text.Text
 import net.minecraft.util.math.Quaternion
@@ -45,19 +45,6 @@ class StarterRoundabout(
 
     override fun render(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
         matrices.push()
-        RenderSystem.enableScissor(
-            (x * minecraft.window.scaleFactor).toInt(),
-            (minecraft.window.height - y * minecraft.window.scaleFactor).toInt(),
-            (MODEL_WIDTH * minecraft.window.scaleFactor).toInt(),
-            (MODEL_HEIGHT * minecraft.window.scaleFactor).toInt()
-        )
-        // Use a big red blit to debug whether you have the scissor placed correctly
-//        blitk(
-//            matrices,
-//            CobblemonResources.RED,
-//            0, 0, 1000, 1000
-//        )
-
         /*
          * This correction term is due to where scaling comes from in a render. We are giving the drawProfilePokemon
          * a different scale to usual, which means our position offsets that were used in the summary GUI (which is
@@ -70,6 +57,13 @@ class StarterRoundabout(
         val correctionTerm = -3.0
         matrices.translate(x.toDouble() + MODEL_WIDTH / 2.0, y.toDouble() - MODEL_HEIGHT.toDouble() + correctionTerm, 0.0)
 
+        // This uses more weird x and y because the component is in an abnormal position, could fix it but also who cares at this point
+        DrawableHelper.enableScissor(
+            x,
+            y - MODEL_HEIGHT,
+            x + MODEL_WIDTH,
+            y
+        )
         drawProfilePokemon(
             renderablePokemon = pokemon,
             matrixStack = matrices,
@@ -78,7 +72,7 @@ class StarterRoundabout(
             scale = 18F
         )
 
-        RenderSystem.disableScissor()
+        DrawableHelper.disableScissor()
 
         matrices.pop()
     }

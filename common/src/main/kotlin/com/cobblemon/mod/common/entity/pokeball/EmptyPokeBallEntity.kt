@@ -74,8 +74,8 @@ class EmptyPokeBallEntity(
         private val HIT_VELOCITY = DataTracker.registerData(EmptyPokeBallEntity::class.java, Vec3DataSerializer)
         private val SHAKE = DataTracker.registerData(EmptyPokeBallEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
 
-        const val SECONDS_BETWEEN_SHAKES = 2F
-        const val SECONDS_BEFORE_SHAKE = 0.5F
+        const val SECONDS_BETWEEN_SHAKES = 1.25F
+        const val SECONDS_BEFORE_SHAKE = 0.3F
     }
 
     val DIMENSIONS = EntityDimensions(0.4F, 0.4F, true)
@@ -258,6 +258,7 @@ class EmptyPokeBallEntity(
                                     captureFuture.complete(true)
                                     val party = Cobblemon.storage.getParty(player.uuid)
                                     pokemon.pokemon.caughtBall = pokeBall
+                                    pokeBall.effects.forEach { effect -> effect.apply(player, pokemon.pokemon) }
                                     party.add(pokemon.pokemon)
                                     CobblemonEvents.POKEMON_CAPTURED.post(PokemonCapturedEvent(pokemon.pokemon, player))
                                 }

@@ -99,6 +99,18 @@ class FlagSpeciesFeatureProvider : SpeciesFeatureProvider<FlagSpeciesFeature>, C
             }
     }
 
+    override fun invoke(nbt: NbtCompound): FlagSpeciesFeature? {
+        return if (nbt.contains(keys.first())) {
+            FlagSpeciesFeature(keys.first(), false).also { it.loadFromNBT(nbt) }
+        } else null
+    }
+
+    override fun invoke(json: JsonObject): FlagSpeciesFeature? {
+        return if (json.has(keys.first())) {
+            FlagSpeciesFeature(keys.first(), false).also { it.loadFromJSON(json) }
+        } else null
+    }
+
     override fun fromString(value: String?): FlagSpeciesFeature? {
         val isWeirdValue = value != null && value !in examples()
 

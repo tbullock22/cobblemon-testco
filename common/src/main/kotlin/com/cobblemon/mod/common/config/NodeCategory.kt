@@ -8,6 +8,8 @@
 
 package com.cobblemon.mod.common.config
 
+@Target(AnnotationTarget.FIELD)
+@Retention(AnnotationRetention.RUNTIME)
 annotation class NodeCategory(
     val category: Category
 )

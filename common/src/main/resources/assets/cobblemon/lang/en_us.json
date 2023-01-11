@@ -365,6 +365,8 @@
   "cobblemon.battle.flinched": "%1$s flinched and couldn't move!",
   "cobblemon.battle.immune": "But %1$s is immune!",
   "cobblemon.battle.missed": "But it missed.",
+  "cobblemon.battle.hit_count": "Hit %1$s times!",
+  "cobblemon.battle.hit_count_singular": "Hit 1 time!",
 
   "cobblemon.battle.item.air_balloon.start": "%1$s floats in the air with its Air Balloon!",
   "cobblemon.battle.item.recycle_or_pickup.start": "%1$s found one %2$s!",

@@ -20,6 +20,7 @@
     },
     {
       "name": "hisui",
+      "aspects": ["hisuian"],
       "primaryType": "steel",
       "secondaryType": "dragon",
       "abilities": ["sapsipper", "overcoat", "h:gooey"],

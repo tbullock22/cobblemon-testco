@@ -13,6 +13,8 @@ import com.cobblemon.mod.common.api.pokemon.aspect.AspectProvider
 import com.cobblemon.mod.common.api.properties.CustomPokemonPropertyType
 import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.util.substitute
+import com.google.gson.JsonObject
+import net.minecraft.nbt.NbtCompound
 
 /**
  * A [SpeciesFeatureProvider] which is a string value selected from a fixed list of choices. Parameters exist
@@ -53,6 +55,18 @@ open class ChoiceSpeciesFeatureProvider(
 
             fromString(value)
         }
+    }
+
+    override fun invoke(nbt: NbtCompound): StringSpeciesFeature? {
+        return if (nbt.contains(keys.first())) {
+            StringSpeciesFeature(keys.first(), "").also { it.loadFromNBT(nbt) }
+        } else null
+    }
+
+    override fun invoke(json: JsonObject): StringSpeciesFeature? {
+        return if (json.has(keys.first())) {
+            StringSpeciesFeature(keys.first(), "").also { it.loadFromJSON(json) }
+        } else null
     }
 
     override fun fromString(value: String?): StringSpeciesFeature? {

@@ -39,6 +39,7 @@ import java.lang.Double.min
 import java.util.UUID
 import kotlin.math.roundToInt
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.gui.hud.InGameHud
 import net.minecraft.client.gui.screen.ChatScreen
 import net.minecraft.client.render.DiffuseLighting
@@ -163,7 +164,7 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
             reversed = !left,
             species = battlePokemon.species,
             level = battlePokemon.level,
-            aspects = battlePokemon.properties.aspects,
+            aspects = battlePokemon.aspects,
             displayName = battlePokemon.displayName,
             gender = battlePokemon.gender,
             status = battlePokemon.status,
@@ -212,11 +213,11 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
         )
 
         // Second render the Pokémon through the scissors
-        RenderSystem.enableScissor(
-            scaleIt(portraitStartX),
-            mc.window.height - scaleIt(y + PORTRAIT_DIAMETER + PORTRAIT_OFFSET_Y),
-            scaleIt(PORTRAIT_DIAMETER),
-            scaleIt(PORTRAIT_DIAMETER)
+        DrawableHelper.enableScissor(
+            portraitStartX.toInt(),
+            (y + PORTRAIT_OFFSET_Y).toInt(),
+            (portraitStartX + PORTRAIT_DIAMETER).toInt(),
+            (y + PORTRAIT_DIAMETER + PORTRAIT_OFFSET_Y).toInt(),
         )
         val matrixStack = MatrixStack()
         matrixStack.translate(
@@ -243,7 +244,7 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
             matrixStack.pop()
         }
         matrixStack.pop()
-        RenderSystem.disableScissor()
+        DrawableHelper.disableScissor()
 
         // Third render the tile
         blitk(

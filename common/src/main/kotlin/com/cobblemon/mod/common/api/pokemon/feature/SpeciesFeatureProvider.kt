@@ -9,6 +9,8 @@
 package com.cobblemon.mod.common.api.pokemon.feature
 
 import com.cobblemon.mod.common.pokemon.Pokemon
+import com.google.gson.JsonObject
+import net.minecraft.nbt.NbtCompound
 
 /**
  * A provider of [SpeciesFeature]s. These must be registered via [SpeciesFeatures] either programmatically or
@@ -19,7 +21,7 @@ import com.cobblemon.mod.common.pokemon.Pokemon
  * @author Hiroku
  * @since November 29th, 2022
  */
-fun interface SpeciesFeatureProvider<T : SpeciesFeature> {
+interface SpeciesFeatureProvider<T : SpeciesFeature> {
     /**
      * Attempts to create a species feature for the given [Pokemon]. It is appropriate to check for an existing feature
      * that is compatible with this type and transfer / retain that feature instead of constructing a new one. For example
@@ -27,4 +29,6 @@ fun interface SpeciesFeatureProvider<T : SpeciesFeature> {
      * occurs whenever a species changes.
      */
     operator fun invoke(pokemon: Pokemon): T?
+    operator fun invoke(nbt: NbtCompound): T?
+    operator fun invoke(json: JsonObject): T?
 }

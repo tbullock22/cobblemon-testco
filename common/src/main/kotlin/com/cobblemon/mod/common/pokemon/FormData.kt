@@ -120,8 +120,9 @@ class FormData(
     val primaryType: ElementalType
         get() = _primaryType ?: species.primaryType
 
+    // Don't fall back to the species unless both types in the form are null
     val secondaryType: ElementalType?
-        get() = _secondaryType ?: species.secondaryType
+        get() = if (_secondaryType == null && _primaryType == null) species.secondaryType else _secondaryType
 
     val shoulderMountable: Boolean
         get() = _shoulderMountable ?: species.shoulderMountable

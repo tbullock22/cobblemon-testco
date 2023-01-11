@@ -29,3 +29,8 @@ versionRange="[1.19.2]"
 modId="forge" #mandatory
 mandatory=true #mandatory
 versionRange="[40,)" #mandatory
+
+[[dependencies.cobblemon]]
+modId="architectury"
+mandatory=true
+versionRange="[6.0.37,)"

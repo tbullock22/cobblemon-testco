@@ -96,8 +96,7 @@ object ShowdownInterpreter {
         updateInstructions["|-status|"] = this::handleStatusInstruction
         updateInstructions["|-end|"] = this::handleEndInstruction
         updateInstructions["|-miss|"] = this::handleMissInstruction
-        updateInstructions["|-item|"] = this::handleItemInstruction
-        updateInstructions["|-enditem|"] = this::handleEndItemInstruction
+        updateInstructions["|-hitcount|"] = this::handleHitCountInstruction
 
         sideUpdateInstructions["|request|"] = this::handleRequestInstruction
         splitUpdateInstructions["|switch|"] = this::handleSwitchInstruction
@@ -905,19 +904,12 @@ object ShowdownInterpreter {
 
     }
 
-    fun handleItemInstruction(battle: PokemonBattle, baseMessage: String, remainingLines: MutableList<String>) {
+    // |-hitcount|POKEMON|NUM
+    fun handleHitCountInstruction(battle: PokemonBattle, message: String, remainingLines: MutableList<String>) {
         battle.dispatchGo {
-            val battleMessage = BattleMessage(baseMessage)
-            val battlePokemon = battleMessage.actorAndActivePokemon(0, battle)?.second?.battlePokemon ?: return@dispatchGo
-            battlePokemon.heldItemManager.handleStartInstruction(battlePokemon, battle, battleMessage)
-        }
-    }
-
-    fun handleEndItemInstruction(battle: PokemonBattle, baseMessage: String, remainingLines: MutableList<String>) {
-        battle.dispatchGo {
-            val battleMessage = BattleMessage(baseMessage)
-            val battlePokemon = battleMessage.actorAndActivePokemon(0, battle)?.second?.battlePokemon ?: return@dispatchGo
-            battlePokemon.heldItemManager.handleEndInstruction(battlePokemon, battle, battleMessage)
+            val hitCount = message.substringAfterLast("|").toIntOrNull() ?: -1
+            val lang = if (hitCount == 1) battleLang("hit_count_singular") else battleLang("hit_count", hitCount)
+            battle.broadcastChatMessage(lang)
         }
     }
 

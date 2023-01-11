@@ -14,6 +14,9 @@ import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.drop.DropTable
 import com.cobblemon.mod.common.api.entity.Despawner
 import com.cobblemon.mod.common.api.events.CobblemonEvents
+import com.cobblemon.mod.common.api.events.entity.PokemonEntityLoadEvent
+import com.cobblemon.mod.common.api.events.entity.PokemonEntitySaveEvent
+import com.cobblemon.mod.common.api.events.entity.PokemonEntitySaveToWorldEvent
 import com.cobblemon.mod.common.api.events.pokemon.ShoulderMountEvent
 import com.cobblemon.mod.common.api.net.serializers.PoseTypeDataSerializer
 import com.cobblemon.mod.common.api.net.serializers.StringSetDataSerializer
@@ -22,8 +25,12 @@ import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.api.reactive.ObservableSubscription
 import com.cobblemon.mod.common.api.reactive.SimpleObservable
 import com.cobblemon.mod.common.api.scheduling.afterOnMain
+import com.cobblemon.mod.common.api.storage.party.PartyStore
+import com.cobblemon.mod.common.api.storage.party.PlayerPartyStore
+import com.cobblemon.mod.common.api.storage.pc.PCStore
 import com.cobblemon.mod.common.api.types.ElementalTypes
 import com.cobblemon.mod.common.api.types.ElementalTypes.FIRE
+import com.cobblemon.mod.common.battles.BattleRegistry
 import com.cobblemon.mod.common.entity.EntityProperty
 import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.Poseable
@@ -37,6 +44,7 @@ import com.cobblemon.mod.common.pokemon.FormData
 import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.pokemon.activestate.ActivePokemonState
 import com.cobblemon.mod.common.pokemon.activestate.InactivePokemonState
+import com.cobblemon.mod.common.pokemon.activestate.SentOutState
 import com.cobblemon.mod.common.pokemon.activestate.ShoulderedState
 import com.cobblemon.mod.common.pokemon.ai.FormPokemonBehaviour
 import com.cobblemon.mod.common.pokemon.evolution.variants.ItemInteractionEvolution
@@ -160,6 +168,12 @@ class PokemonEntity(
                 }
             }
         )
+
+        subscriptions.add(
+            species.subscribe {
+                calculateDimensions()
+            }
+        )
     }
 
     companion object {
@@ -237,13 +251,8 @@ class PokemonEntity(
     }
 
     override fun saveNbt(nbt: NbtCompound): Boolean {
-        nbt.put(DataKeys.POKEMON, pokemon.saveToNBT(NbtCompound()))
+//        nbt.put(DataKeys.POKEMON, pokemon.saveToNBT(NbtCompound()))
         return super.saveNbt(nbt)
-    }
-
-    override fun writeNbt(nbt: NbtCompound): NbtCompound {
-        nbt.put(DataKeys.POKEMON, pokemon.saveToNBT(NbtCompound()))
-        return super.writeNbt(nbt)
     }
 
     override fun isInvulnerableTo(damageSource: DamageSource): Boolean {
@@ -274,11 +283,86 @@ class PokemonEntity(
         return future
     }
 
+    override fun writeNbt(nbt: NbtCompound): NbtCompound {
+        val ownerId = ownerUuid
+        if (ownerId != null) {
+            nbt.putUuid(DataKeys.POKEMON_OWNER_ID, ownerId)
+        }
+
+        val storeCoordinates = pokemon.storeCoordinates.get()
+        if (storeCoordinates != null) {
+            // This could be improved to be generalized and API-able
+            val (store, position) = storeCoordinates
+            nbt.putBoolean(DataKeys.OWNED_BY_PLAYER, store is PlayerPartyStore)
+            if (store is PCStore) {
+                nbt.putBoolean(DataKeys.STORE_IS_PARTY, false)
+            } else if (store is PartyStore) {
+                nbt.putBoolean(DataKeys.STORE_IS_PARTY, true)
+            }
+            storeCoordinates.saveToNBT(nbt)
+        } else {
+            nbt.put(DataKeys.POKEMON, pokemon.saveToNBT(NbtCompound()))
+        }
+        val battleIdToSave = battleId.get().orElse(null)
+        if (battleIdToSave != null) {
+            nbt.putUuid(DataKeys.POKEMON_BATTLE_ID, battleIdToSave)
+        }
+        nbt.putString(DataKeys.POKEMON_POSE_TYPE, poseType.get().name)
+        nbt.putByte(DataKeys.POKEMON_BEHAVIOUR_FLAGS, behaviourFlags.get())
+
+        CobblemonEvents.POKEMON_ENTITY_SAVE.post(PokemonEntitySaveEvent(this, nbt))
+
+        return super.writeNbt(nbt)
+    }
+
     override fun readNbt(nbt: NbtCompound) {
         super.readNbt(nbt)
-        pokemon = Pokemon().loadFromNBT(nbt.getCompound(DataKeys.POKEMON))
+        if (nbt.containsUuid(DataKeys.POKEMON_OWNER_ID)) {
+            ownerUuid = nbt.getUuid(DataKeys.POKEMON_OWNER_ID)
+        }
+        if (nbt.contains(DataKeys.OWNED_BY_PLAYER)) {
+            val isParty = nbt.getBoolean(DataKeys.STORE_IS_PARTY)
+            val store = if (isParty) {
+                Cobblemon.storage.getParty(ownerUuid!!)
+            } else {
+                Cobblemon.storage.getPC(ownerUuid!!)
+            }
+            val coordinates = store.loadPositionFromNBT(nbt)
+            val pokemon = coordinates.get()
+            if (pokemon == null) {
+                discard()
+                return
+            } else {
+                this.pokemon = pokemon
+                // Link it back up
+                val state = pokemon.state
+                if (state is SentOutState) {
+                    state.update(this)
+                } else {
+                    pokemon.state = SentOutState(this)
+                }
+            }
+
+        } else {
+            pokemon = Pokemon().loadFromNBT(nbt.getCompound(DataKeys.POKEMON))
+        }
         species.set(pokemon.species.resourceIdentifier.toString())
         labelLevel.set(pokemon.level)
+        val savedBattleId = if (nbt.containsUuid(DataKeys.POKEMON_BATTLE_ID)) nbt.getUuid(DataKeys.POKEMON_BATTLE_ID) else null
+        if (savedBattleId != null) {
+            val battle = BattleRegistry.getBattle(savedBattleId)
+            if (battle != null) {
+                battleId.set(Optional.of(savedBattleId))
+            }
+        }
+        poseType.set(PoseType.valueOf(nbt.getString(DataKeys.POKEMON_POSE_TYPE)))
+        behaviourFlags.set(nbt.getByte(DataKeys.POKEMON_BEHAVIOUR_FLAGS))
+        this.setBehaviourFlag(PokemonBehaviourFlag.EXCITED, true)
+        CobblemonEvents.POKEMON_ENTITY_LOAD.postThen(
+            event = PokemonEntityLoadEvent(this, nbt),
+            ifSucceeded = {},
+            ifCanceled = { this.discard() }
+        )
     }
 
     override fun createSpawnPacket() = NetworkManager.createAddEntityPacket(this)
@@ -383,6 +467,11 @@ class PokemonEntity(
     }
 
     override fun shouldSave(): Boolean {
+        if (ownerUuid == null && Cobblemon.config.savePokemonToWorld) {
+            CobblemonEvents.POKEMON_ENTITY_SAVE_TO_WORLD.postThen(PokemonEntitySaveToWorldEvent(this)) {
+                return true
+            }
+        }
         return false
     }
 
@@ -494,9 +583,23 @@ class PokemonEntity(
 
             (stack.item as? PokemonInteractiveItem)?.let {
                 if (it.onInteraction(player, this, stack)) {
-                    this.world.playSoundServer(position = this.pos, sound = CobblemonSounds.ITEM_USE.get(), volume = 1F, pitch = 1F)
+                    this.world.playSoundServer(
+                        position = this.pos,
+                        sound = CobblemonSounds.ITEM_USE.get(),
+                        volume = 1F,
+                        pitch = 1F
+                    )
                     return true
                 }
+            }
+        }
+
+        shouldSave()
+
+        (stack.item as? PokemonInteractiveItem)?.let {
+            if (it.onInteraction(player, this, stack)) {
+                this.world.playSoundServer(position = this.pos, sound = CobblemonSounds.ITEM_USE.get(), volume = 1F, pitch = 1F)
+                return true
             }
         }
         return false
@@ -529,7 +632,7 @@ class PokemonEntity(
     override fun remove(reason: RemovalReason?) {
         val stateEntity = (pokemon.state as? ActivePokemonState)?.entity
         super.remove(reason)
-        if (stateEntity == this) {
+        if (stateEntity == this || stateEntity == null) {
             pokemon.state = InactivePokemonState()
         }
         subscriptions.forEach(ObservableSubscription<*>::unsubscribe)

@@ -22,6 +22,7 @@ class ClientBattlePokemon(
     val uuid: UUID,
     var displayName: MutableText,
     var properties: PokemonProperties,
+    var aspects: Set<String>,
     var hpRatio: Float,
     var status: PersistentStatus?,
     var statChanges: MutableMap<Stat, Int>

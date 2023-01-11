@@ -16,16 +16,15 @@ import com.cobblemon.mod.common.client.CobblemonResources
 import com.cobblemon.mod.common.client.gui.battle.BattleGUI
 import com.cobblemon.mod.common.client.keybind.boundKey
 import com.cobblemon.mod.common.client.keybind.keybinds.HidePartyBinding
-import com.cobblemon.mod.common.client.keybind.keybinds.PokeNavigatorBinding
 import com.cobblemon.mod.common.client.keybind.keybinds.SummaryBinding
 import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.client.render.getDepletableRedGreen
 import com.cobblemon.mod.common.pokemon.Gender
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.cobblemon.mod.common.util.lang
-import com.mojang.blaze3d.systems.RenderSystem
 import kotlin.math.roundToInt
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.gui.hud.InGameHud
 import net.minecraft.client.gui.screen.ChatScreen
 import net.minecraft.client.gui.screen.Screen
@@ -117,14 +116,11 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
                     width = PORTRAIT_DIAMETER
                 )
 
-                val height = minecraft.window.height
-                val scaledTotalHeight = downscaleIt(totalHeight)
-
-                RenderSystem.enableScissor(
-                    ((panelX + portraitFrameOffsetX + selectedOffsetX) * minecraft.window.scaleFactor).roundToInt(),
-                    height / 2 + scaledTotalHeight * 2 + scaleIt(8) - scaleIt(((11 * index) + ((PORTRAIT_DIAMETER + 2) * (index + 1))) - 2),
-                    (PORTRAIT_DIAMETER * minecraft.window.scaleFactor).roundToInt(),
-                    (PORTRAIT_DIAMETER * minecraft.window.scaleFactor).roundToInt()
+                DrawableHelper.enableScissor(
+                    panelX + portraitFrameOffsetX + selectedOffsetX,
+                    y,
+                    panelX + portraitFrameOffsetX + selectedOffsetX + PORTRAIT_DIAMETER,
+                    y + PORTRAIT_DIAMETER
                 )
 
                 val matrixStack = MatrixStack()
@@ -137,7 +133,7 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
 
                 drawPortraitPokemon(pokemon.species, pokemon.aspects, matrixStack)
 
-                RenderSystem.disableScissor()
+                DrawableHelper.disableScissor()
             }
         }
 

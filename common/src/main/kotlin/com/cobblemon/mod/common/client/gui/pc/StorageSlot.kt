@@ -15,8 +15,7 @@ import com.cobblemon.mod.common.pokemon.Gender
 import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.cobblemon.mod.common.util.lang
-import com.mojang.blaze3d.systems.RenderSystem
-import net.minecraft.client.MinecraftClient
+import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.gui.widget.ButtonWidget
 import net.minecraft.client.sound.SoundManager
 import net.minecraft.client.util.math.MatrixStack
@@ -50,12 +49,11 @@ open class StorageSlot(
     fun renderSlot(matrices: MatrixStack, posX: Int, posY: Int) {
         val pokemon = getPokemon() ?: return
 
-        val minecraft = MinecraftClient.getInstance()
-        RenderSystem.enableScissor(
-            ((posX - 2) * minecraft.window.scaleFactor).toInt(),
-            (minecraft.window.height - (posY + SIZE + 2) * minecraft.window.scaleFactor).toInt(),
-            ((SIZE + 4) * minecraft.window.scaleFactor).toInt(),
-            ((SIZE + 4) * minecraft.window.scaleFactor).toInt()
+        DrawableHelper.enableScissor(
+            posX - 2,
+            posY + 2,
+            posX + SIZE + 4,
+            posY + SIZE + 4
         )
 
         // Render Pokémon
@@ -71,7 +69,7 @@ open class StorageSlot(
         )
         matrices.pop()
 
-        RenderSystem.disableScissor()
+        DrawableHelper.disableScissor()
 
         // Ensure labels are not hidden behind Pokémon render
         matrices.push()

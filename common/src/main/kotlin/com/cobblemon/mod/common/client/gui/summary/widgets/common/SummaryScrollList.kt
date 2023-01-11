@@ -13,8 +13,8 @@ import com.cobblemon.mod.common.api.text.bold
 import com.cobblemon.mod.common.client.CobblemonResources
 import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.util.cobblemonResource
-import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.gui.widget.AlwaysSelectedEntryListWidget
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.text.MutableText
@@ -68,14 +68,14 @@ abstract class SummaryScrollList<T : AlwaysSelectedEntryListWidget.Entry<T>>(
             width = WIDTH
         )
 
-        RenderSystem.enableScissor(
-            scaleIt(left),
-            scaleIt(client.window.scaledHeight - (top + HEIGHT + 1)),
-            scaleIt(width),
-            scaleIt(height + 1)
+        DrawableHelper.enableScissor(
+            left,
+            top + 1,
+            left + width,
+            top + 1 + height
         )
         super.render(poseStack, mouseX, mouseY, partialTicks)
-        RenderSystem.disableScissor()
+        DrawableHelper.disableScissor()
 
         // Scroll Overlay
         val scrollOverlayOffset = 4

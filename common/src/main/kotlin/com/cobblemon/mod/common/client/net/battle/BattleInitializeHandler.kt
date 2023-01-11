@@ -14,6 +14,7 @@ import com.cobblemon.mod.common.client.battle.ActiveClientBattlePokemon
 import com.cobblemon.mod.common.client.battle.ClientBattle
 import com.cobblemon.mod.common.client.battle.ClientBattleActor
 import com.cobblemon.mod.common.client.battle.ClientBattlePokemon
+import com.cobblemon.mod.common.client.gui.battle.BattleGUI
 import com.cobblemon.mod.common.client.net.ClientPacketHandler
 import com.cobblemon.mod.common.net.messages.client.battle.BattleInitializePacket
 import net.minecraft.client.MinecraftClient
@@ -45,7 +46,10 @@ object BattleInitializeHandler : ClientPacketHandler<BattleInitializePacket> {
                     }
                 }
             }
+            minimised = false
         }
+
+        MinecraftClient.getInstance().setScreen(BattleGUI())
     }
 
     fun actorFromDTO(actorDTO: BattleInitializePacket.BattleActorDTO): ClientBattleActor {
@@ -60,6 +64,7 @@ object BattleInitializeHandler : ClientPacketHandler<BattleInitializePacket> {
                     ClientBattlePokemon(
                         uuid = it.uuid,
                         properties = it.properties,
+                        aspects = it.aspects,
                         displayName = it.displayName,
                         hpRatio = it.hpRatio,
                         status = it.status,

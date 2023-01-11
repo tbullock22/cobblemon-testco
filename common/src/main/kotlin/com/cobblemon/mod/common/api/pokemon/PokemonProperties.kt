@@ -373,6 +373,7 @@ open class PokemonProperties {
         val custom = JsonArray()
         customProperties.map { it.asString() }.forEach { custom.add(it) }
         json.add(DataKeys.POKEMON_PROPERTIES_CUSTOM, custom)
+
         return json
     }
 
