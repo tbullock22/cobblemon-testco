@@ -13,6 +13,7 @@ import com.cobblemon.mod.common.CobblemonConfiguredFeatures
 import com.cobblemon.mod.common.CobblemonImplementation
 import com.cobblemon.mod.common.CobblemonNetwork
 import com.cobblemon.mod.common.CobblemonPlacements
+import com.cobblemon.mod.fabric.compat.FTBChunksCompat
 import com.cobblemon.mod.fabric.net.CobblemonFabricNetworkDelegate
 import com.cobblemon.mod.fabric.permission.FabricPermissionValidator
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents
@@ -35,6 +36,9 @@ object CobblemonFabric : CobblemonImplementation {
          */
         if (FabricLoader.getInstance().getModContainer("fabric-permissions-api-v0").isPresent) {
             Cobblemon.permissionValidator = FabricPermissionValidator()
+        }
+        if (this.isModInstalled("ftbchunks")) {
+            FTBChunksCompat.hook()
         }
         ServerLifecycleEvents.SYNC_DATA_PACK_CONTENTS.register { player, isLogin ->
             if (isLogin) {

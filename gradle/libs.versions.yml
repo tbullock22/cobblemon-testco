@@ -33,6 +33,9 @@ versions:
   #
   fabric-permissions-api: 0.2-SNAPSHOT
 
+  # FTB Chunks
+  ftb-chunks: 1902.3.14-build.218
+
 dependencies:
 
   # build-logic
@@ -119,6 +122,10 @@ dependencies:
     group: me.lucko
     name: fabric-permissions-api
     version: { ref: fabric-permissions-api }
+  fabricFtbChunks:
+    group: dev.ftb.mods
+    name: ftb-chunks-fabric
+    version: { ref: ftb-chunks }
 
   # forge
   forge:
@@ -129,6 +136,10 @@ dependencies:
     group: dev.architectury
     name: architectury-forge
     version: { ref: architectury }
+  forgeFtbChunks:
+    group: dev.ftb.mods
+    name: ftb-chunks-forge
+    version: { ref: ftb-chunks }
 
   # test
   junitEngine:

@@ -20,6 +20,20 @@ sourceSets {
 repositories {
     maven("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
     maven("https://oss.sonatype.org/content/repositories/snapshots")
+    maven {
+        url = uri("https://www.cursemaven.com")
+        content {
+            includeGroup("curse.maven")
+        }
+    }
+    maven {
+        url = uri("https://maven.saps.dev/minecraft")
+        content {
+            includeGroup("dev.latvian.mods")
+            includeGroup("dev.ftb.mods")
+        }
+    }
+    maven("https://maven.blamejared.com")
 }
 
 dependencies {
@@ -37,6 +51,8 @@ dependencies {
     modApi(libs.fabricKotlin)
     modApi(libs.architecturyFabric)
     modApi(libs.fabricPermissionsApi)
+    // ToDo this shouldn't remain modApi, just useful for testing while in-dev
+    modApi(libs.fabricFtbChunks)
 
     listOf(
         libs.stdlib,
