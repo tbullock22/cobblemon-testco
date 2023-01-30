@@ -189,7 +189,7 @@ object PokeBalls : JsonDataRegistry<PokeBall> {
         modifiers: List<CatchRateModifier> = emptyList(),
         effects: List<CaptureEffect> = emptyList(),
         model2d: String = "${Cobblemon.MODID}:${name}#inventory",
-        model3d: String = "${Cobblemon.MODID}:${name}_in_hand#inventory",
+        model3d: String = "${Cobblemon.MODID}:${name}_model#inventory",
         appendUltraBeastPenalty: Boolean = true
     ): PokeBall {
         val identifier = cobblemonResource(name)

@@ -13,6 +13,7 @@ import com.cobblemon.mod.common.CobblemonNetwork.sendToPlayers
 import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.abilities.Abilities
 import com.cobblemon.mod.common.api.abilities.Ability
+import com.cobblemon.mod.common.api.data.ShowdownIdentifiable
 import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.events.CobblemonEvents.FRIENDSHIP_UPDATED
 import com.cobblemon.mod.common.api.events.CobblemonEvents.POKEMON_FAINTED
@@ -58,22 +59,7 @@ import com.cobblemon.mod.common.api.types.ElementalType
 import com.cobblemon.mod.common.config.CobblemonConfig
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import com.cobblemon.mod.common.net.messages.client.PokemonUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.AbilityUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.AspectsUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.BenchedMovesUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.CaughtBallUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.EVsUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.ExperienceUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.FriendshipUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.GenderUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.HealthUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.IVsUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.MoveSetUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.NatureUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.PokemonStateUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.ShinyUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.SpeciesUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.StatusUpdatePacket
+import com.cobblemon.mod.common.net.messages.client.pokemon.update.*
 import com.cobblemon.mod.common.net.serverhandling.storage.SEND_OUT_DURATION
 import com.cobblemon.mod.common.pokeball.PokeBall
 import com.cobblemon.mod.common.pokemon.activestate.ActivePokemonState
@@ -81,7 +67,8 @@ import com.cobblemon.mod.common.pokemon.activestate.InactivePokemonState
 import com.cobblemon.mod.common.pokemon.activestate.PokemonState
 import com.cobblemon.mod.common.pokemon.activestate.SentOutState
 import com.cobblemon.mod.common.pokemon.evolution.CobblemonEvolutionProxy
-import com.cobblemon.mod.common.pokemon.feature.DamageTakenFeature
+import com.cobblemon.mod.common.pokemon.evolution.progress.DamageTakenEvolutionProgress
+import com.cobblemon.mod.common.pokemon.evolution.progress.RecoilEvolutionProgress
 import com.cobblemon.mod.common.pokemon.feature.SeasonFeatureHandler
 import com.cobblemon.mod.common.pokemon.status.PersistentStatus
 import com.cobblemon.mod.common.pokemon.status.PersistentStatusContainer
@@ -95,6 +82,7 @@ import com.cobblemon.mod.common.util.toBlockPos
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonPrimitive
+import com.mojang.serialization.JsonOps
 import java.util.Optional
 import java.util.UUID
 import java.util.concurrent.CompletableFuture
@@ -105,6 +93,7 @@ import kotlin.math.roundToInt
 import kotlin.random.Random
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement.COMPOUND_TYPE
 import net.minecraft.nbt.NbtList
@@ -118,7 +107,7 @@ import net.minecraft.util.math.MathHelper.ceil
 import net.minecraft.util.math.MathHelper.clamp
 import net.minecraft.util.math.Vec3d
 
-open class Pokemon {
+open class Pokemon : ShowdownIdentifiable {
     var uuid = UUID.randomUUID()
     var species = PokemonSpecies.random()
         set(value) {
@@ -203,10 +192,13 @@ open class Pokemon {
             if (this.isFainted()) {
                 decrementFriendship(1)
                 val faintTime = Cobblemon.config.defaultFaintTimer
-                this.getFeature<DamageTakenFeature>(DamageTakenFeature.ID)?.reset()
                 POKEMON_FAINTED.post(PokemonFaintedEvent(this, faintTime)) {
                     this.faintedTimer = it.faintedTimer
                 }
+                // These are meant to reset on faint
+                this.evolutionProxy.current().progress()
+                    .filter { it is RecoilEvolutionProgress || it is DamageTakenEvolutionProgress }
+                    .forEach { it.reset() }
             }
             this.healTimer = Cobblemon.config.healTimer
         }
@@ -362,7 +354,25 @@ open class Pokemon {
 
     val customProperties = mutableListOf<CustomPokemonProperty>()
 
+    /**
+     * The [ItemStack] this Pokémon is holding.
+     */
+    private var heldItem: ItemStack = ItemStack.EMPTY
+
     open fun getStat(stat: Stat) = Cobblemon.statProvider.getStatForPokemon(this, stat)
+
+    /**
+     * The literal Showdown ID of this Pokémon.
+     * This will either use [Species.showdownId] or [FormData.showdownId] depending on if the [form] is the base one or not.
+     *
+     * @return The literal Showdown ID of this Pokémon.
+     */
+    override fun showdownId(): String {
+        if (this.form == this.species.standardForm) {
+            return this.species.showdownId()
+        }
+        return this.form.showdownId()
+    }
 
     fun sendOut(level: ServerWorld, position: Vec3d, mutation: (PokemonEntity) -> Unit = {}): PokemonEntity {
         SeasonFeatureHandler.updateSeason(this, level, position.toBlockPos())
@@ -402,7 +412,6 @@ open class Pokemon {
         this.status = null
         this.faintedTimer = -1
         this.healTimer = -1
-        this.getFeature<DamageTakenFeature>(DamageTakenFeature.ID)?.reset()
         val entity = entity
         entity?.heal(entity.maxHealth - entity.health)
     }
@@ -453,11 +462,56 @@ open class Pokemon {
      */
     fun hasLabels(vararg labels: String) = labels.all { label -> this.form.labels.any { it.equals(label, true) } }
 
+    /**
+     * Returns a copy of the held item.
+     * In order to change the [ItemStack] use [swapHeldItem].
+     *
+     * @return A copy of the [ItemStack] held by this Pokémon.
+     */
+    fun heldItem(): ItemStack = this.heldItem.copy()
+
+
+    /**
+     * Returns the backing held item, this is intended to skip the unnecessary copy operation for our internal use.
+     * No mutations should be done to it and expected to synchronize.
+     * If you wish to do so remember to set it with [swapHeldItem].
+     *
+     * @return The [ItemStack] held by this Pokémon.
+     */
+    internal fun heldItemNoCopy(): ItemStack = this.heldItem
+
+    /**
+     * Swaps out the current [heldItem] for the given [stack].
+     * The assigned [heldItem] will always have the [ItemStack.count] of 1.
+     *
+     * @param stack The new [ItemStack] being set as the held item.
+     * @param decrement If the given [stack] should have [ItemStack.decrement] invoked with the parameter of 1. Default is true.
+     * @return The existing [ItemStack] being held.
+     */
+    fun swapHeldItem(stack: ItemStack, decrement: Boolean = true): ItemStack {
+        var giving = stack
+        if (decrement) {
+            stack.decrement(1)
+            giving = stack.copy().apply { count = 1 }
+        }
+        val existing = this.heldItem()
+        this.heldItem = giving
+        this._heldItem.emit(giving)
+        return existing
+    }
+
+    /**
+     * Swaps out the current [heldItem] for an [ItemStack.EMPTY].
+     *
+     * @return The existing [ItemStack] being held.
+     */
+    fun removeHeldItem(): ItemStack = this.swapHeldItem(ItemStack.EMPTY)
+
     fun saveToNBT(nbt: NbtCompound): NbtCompound {
         nbt.putString(DataKeys.POKEMON_LAST_SAVED_VERSION, Cobblemon.VERSION)
         nbt.putUuid(DataKeys.POKEMON_UUID, uuid)
         nbt.putString(DataKeys.POKEMON_SPECIES_IDENTIFIER, species.resourceIdentifier.toString())
-        nbt.putString(DataKeys.POKEMON_FORM_ID, form.name)
+        nbt.putString(DataKeys.POKEMON_FORM_ID, form.formOnlyShowdownId())
         nbt.putInt(DataKeys.POKEMON_EXPERIENCE, experience)
         nbt.putShort(DataKeys.POKEMON_LEVEL, level.toShort())
         nbt.putShort(DataKeys.POKEMON_FRIENDSHIP, friendship.toShort())
@@ -481,6 +535,9 @@ open class Pokemon {
         nbt.put(DataKeys.POKEMON_DATA, NbtList().also { it.addAll(propertyList) })
         nbt.putString(DataKeys.POKEMON_NATURE, nature.name.toString())
         features.forEach { it.saveToNBT(nbt) }
+        if (!this.heldItem.isEmpty) {
+            nbt.put(DataKeys.HELD_ITEM, this.heldItem.writeNbt(NbtCompound()))
+        }
         return nbt
     }
 
@@ -494,7 +551,7 @@ open class Pokemon {
         } catch (e: InvalidIdentifierException) {
             throw IllegalStateException("Failed to read a species identifier from NBT")
         }
-        form = species.forms.find { it.name == nbt.getString(DataKeys.POKEMON_FORM_ID) } ?: species.standardForm
+        form = species.forms.find { it.formOnlyShowdownId() == nbt.getString(DataKeys.POKEMON_FORM_ID) } ?: species.standardForm
         level = nbt.getShort(DataKeys.POKEMON_LEVEL).toInt()
         experience = nbt.getInt(DataKeys.POKEMON_EXPERIENCE).takeIf { experienceGroup.getLevel(experience) != level } ?: experienceGroup.getExperience(level)
         friendship = nbt.getShort(DataKeys.POKEMON_FRIENDSHIP).toInt().coerceIn(0, if (this.isClient) Int.MAX_VALUE else Cobblemon.config.maxPokemonLevel)
@@ -538,6 +595,9 @@ open class Pokemon {
         updateAspects()
         checkAbility()
         nbt.get(DataKeys.POKEMON_EVOLUTIONS)?.let { tag -> this.evolutionProxy.loadFromNBT(tag) }
+        if (nbt.contains(DataKeys.HELD_ITEM)) {
+            this.heldItem = ItemStack.fromNbt(nbt.getCompound(DataKeys.HELD_ITEM))
+        }
         return this
     }
 
@@ -545,7 +605,7 @@ open class Pokemon {
         json.addProperty(DataKeys.POKEMON_LAST_SAVED_VERSION, Cobblemon.VERSION)
         json.addProperty(DataKeys.POKEMON_UUID, uuid.toString())
         json.addProperty(DataKeys.POKEMON_SPECIES_IDENTIFIER, species.resourceIdentifier.toString())
-        json.addProperty(DataKeys.POKEMON_FORM_ID, form.name)
+        json.addProperty(DataKeys.POKEMON_FORM_ID, form.formOnlyShowdownId())
         json.addProperty(DataKeys.POKEMON_EXPERIENCE, experience)
         json.addProperty(DataKeys.POKEMON_LEVEL, level)
         json.addProperty(DataKeys.POKEMON_FRIENDSHIP, friendship)
@@ -568,6 +628,9 @@ open class Pokemon {
         json.add(DataKeys.POKEMON_DATA, JsonArray().also { propertyList.forEach(it::add) })
         json.addProperty(DataKeys.POKEMON_NATURE, nature.name.toString())
         features.forEach { it.saveToJSON(json) }
+        if (!this.heldItem.isEmpty) {
+            ItemStack.CODEC.encodeStart(JsonOps.INSTANCE, this.heldItem).result().ifPresent { json.add(DataKeys.HELD_ITEM, it) }
+        }
         return json
     }
 
@@ -581,7 +644,7 @@ open class Pokemon {
         } catch (e: InvalidIdentifierException) {
             throw IllegalStateException("Failed to deserialize a species identifier")
         }
-        form = species.forms.find { it.name == json.get(DataKeys.POKEMON_FORM_ID).asString } ?: species.standardForm
+        form = species.forms.find { it.formOnlyShowdownId() == json.get(DataKeys.POKEMON_FORM_ID).asString } ?: species.standardForm
         level = json.get(DataKeys.POKEMON_LEVEL).asInt
         experience = json.get(DataKeys.POKEMON_EXPERIENCE).asInt.takeIf { experienceGroup.getLevel(experience) != level } ?: experienceGroup.getExperience(level)
         friendship = json.get(DataKeys.POKEMON_FRIENDSHIP).asInt.coerceIn(0, if (this.isClient) Int.MAX_VALUE else Cobblemon.config.maxPokemonLevel)
@@ -625,6 +688,11 @@ open class Pokemon {
         updateAspects()
         checkAbility()
         json.get(DataKeys.POKEMON_EVOLUTIONS)?.let { this.evolutionProxy.loadFromJson(it) }
+        if (json.has(DataKeys.HELD_ITEM)) {
+            ItemStack.CODEC.decode(JsonOps.INSTANCE, json.get(DataKeys.HELD_ITEM)).result().ifPresent {
+                this.heldItem = it.first
+            }
+        }
         return this
     }
 
@@ -1019,6 +1087,7 @@ open class Pokemon {
     private val _aspects = registerObservable(SimpleObservable<Set<String>>()) { AspectsUpdatePacket(this, it) }
     private val _gender = registerObservable(SimpleObservable<Gender>()) { GenderUpdatePacket(this, it) }
     private val _ability = registerObservable(SimpleObservable<Ability>()) { AbilityUpdatePacket(this, it.template) }
+    private val _heldItem = registerObservable(SimpleObservable<ItemStack>()) { HeldItemUpdatePacket(this, it) }
 
     private val _features = registerObservable(SimpleObservable<SpeciesFeature>())
 

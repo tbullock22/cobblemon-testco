@@ -1,127 +1,141 @@
 {
-    "name": "shroomish",
-    "nationalPokedexNumber": 285,
-    "primaryType": "grass",
-    "abilities": [
-        "effectspore",
-        "poisonheal",
-        "h:quickfeet"
-    ],
-    "baseStats": {
-        "hp": 60,
-        "attack": 40,
-        "defence": 60,
-        "special_attack": 40,
-        "special_defence": 60,
-        "speed": 35
-    },
-    "catchRate": 255,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 59,
-    "experienceGroup": "fluctuating",
-    "eggCycles": 15,
-    "eggGroups": [
-        "fairy",
-        "grass"
-    ],
-    "moves": [
-        "1:tackle",
-        "1:absorb",
-        "5:stunspore",
-        "8:leechseed",
-        "12:megadrain",
-        "15:headbutt",
-        "19:poisonpowder",
-        "22:worryseed",
-        "26:gigadrain",
-        "29:growth",
-        "33:toxic",
-        "36:seedbomb",
-        "40:spore",
-        "egg:bulletseed",
-        "egg:charm",
-        "egg:drainpunch",
-        "egg:faketears",
-        "egg:focuspunch",
-        "egg:helpinghand",
-        "egg:naturalgift",
-        "egg:seedbomb",
-        "egg:wakeupslap",
-        "egg:worryseed",
-        "tm:attract",
-        "tm:captivate",
-        "tm:confide",
-        "tm:doubleteam",
-        "tm:endure",
-        "tm:energyball",
-        "tm:facade",
-        "tm:falseswipe",
-        "tm:flash",
-        "tm:frustration",
-        "tm:grassknot",
-        "tm:hiddenpower",
-        "tm:protect",
-        "tm:rest",
-        "tm:return",
-        "tm:round",
-        "tm:safeguard",
-        "tm:secretpower",
-        "tm:sleeptalk",
-        "tm:sludgebomb",
-        "tm:solarbeam",
-        "tm:substitute",
-        "tm:sunnyday",
-        "tm:swagger",
-        "tm:swordsdance",
-        "tm:toxic",
-        "tm:venoshock",
-        "tutor:bodyslam",
-        "tutor:doubleedge",
-        "tutor:drainpunch",
-        "tutor:focuspunch",
-        "tutor:gigadrain",
-        "tutor:helpinghand",
-        "tutor:mimic",
-        "tutor:seedbomb",
-        "tutor:snatch",
-        "tutor:snore",
-        "tutor:synthesis",
-        "tutor:worryseed"
-    ],
-    "labels": [
-        "gen3"
-    ],
-    "pokedex": [
-        "cobblemon.species.shroomish.desc1",
-        "cobblemon.species.shroomish.desc2"
-    ],
-    "evolutions": [
+  "name": "Shroomish",
+  "nationalPokedexNumber": 285,
+  "primaryType": "grass",
+  "abilities": [
+    "effectspore",
+    "poisonheal",
+    "h:quickfeet"
+  ],
+  "baseStats": {
+    "hp": 60,
+    "attack": 40,
+    "defence": 60,
+    "special_attack": 40,
+    "special_defence": 60,
+    "speed": 35
+  },
+  "catchRate": 255,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "baseExperienceYield": 59,
+  "experienceGroup": "fluctuating",
+  "eggCycles": 15,
+  "eggGroups": [
+    "fairy",
+    "grass"
+  ],
+  "moves": [
+    "1:absorb",
+    "1:tackle",
+    "5:stunspore",
+    "8:leechseed",
+    "12:megadrain",
+    "15:headbutt",
+    "19:poisonpowder",
+    "26:gigadrain",
+    "29:growth",
+    "33:toxic",
+    "36:seedbomb",
+    "40:spore",
+    "egg:charm",
+    "egg:faketears",
+    "egg:focuspunch",
+    "egg:helpinghand",
+    "egg:naturalgift",
+    "egg:wakeupslap",
+    "egg:worryseed",
+    "tm:attract",
+    "tm:bodyslam",
+    "tm:bulletseed",
+    "tm:captivate",
+    "tm:charm",
+    "tm:confide",
+    "tm:doubleteam",
+    "tm:drainpunch",
+    "tm:endure",
+    "tm:energyball",
+    "tm:facade",
+    "tm:faketears",
+    "tm:falseswipe",
+    "tm:flash",
+    "tm:frustration",
+    "tm:gigadrain",
+    "tm:grassknot",
+    "tm:grassyterrain",
+    "tm:gunkshot",
+    "tm:helpinghand",
+    "tm:hiddenpower",
+    "tm:magicalleaf",
+    "tm:pounce",
+    "tm:protect",
+    "tm:raindance",
+    "tm:rest",
+    "tm:return",
+    "tm:round",
+    "tm:safeguard",
+    "tm:secretpower",
+    "tm:seedbomb",
+    "tm:sleeptalk",
+    "tm:sludgebomb",
+    "tm:solarbeam",
+    "tm:substitute",
+    "tm:sunnyday",
+    "tm:swagger",
+    "tm:swift",
+    "tm:swordsdance",
+    "tm:takedown",
+    "tm:terablast",
+    "tm:venoshock",
+    "tm:zenheadbutt",
+    "tutor:doubleedge",
+    "tutor:focuspunch",
+    "tutor:mimic",
+    "tutor:refresh",
+    "tutor:snatch",
+    "tutor:snore",
+    "tutor:synthesis"
+  ],
+  "labels": [
+    "gen3"
+  ],
+  "pokedex": [
+    "cobblemon.species.shroomish.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "shroomish_breloom",
+      "variant": "level_up",
+      "result": "breloom",
+      "consumeHeldItem": false,
+      "learnableMoves": [
+        "machpunch"
+      ],
+      "requirements": [
         {
-            "id": "shroomish_breloom",
-            "variant": "level_up",
-            "result": "breloom",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "level",
-                    "minLevel": 23
-                }
-            ]
+          "variant": "level",
+          "amount": 23
         }
-    ],
-    "baseScale": 1.0,
-    "hitbox": {
-        "width": 1.0,
-        "height": 1.0,
-        "fixed": false
-    },
-    "baseFriendship": 70,
-    "evYield": {
-        "hp": 1
-    },
-    "height": 4,
-    "weight": 45
+      ]
+    }
+  ],
+  "baseScale": 1,
+  "hitbox": {
+    "width": 1,
+    "height": 1,
+    "fixed": false
+  },
+  "baseFriendship": 70,
+  "evYield": {
+    "hp": 1,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
+  },
+  "height": 4,
+  "weight": 45,
+  "aspects": [],
+  "cannotDynamax": false
 }

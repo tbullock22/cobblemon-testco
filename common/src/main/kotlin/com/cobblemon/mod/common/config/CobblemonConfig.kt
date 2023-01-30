@@ -112,6 +112,12 @@ class CobblemonConfig {
     @NodeCategory(category = Category.Battles)
     var allowExperienceFromPvP = true
 
+    @NodeCategory(category = Category.Battles)
+    var experienceShareMultiplier = .5
+
+    @NodeCategory(category = Category.Battles)
+    var luckyEggMultiplier = 1.5
+
     @NodeCategory(category = Category.Pokemon)
     var experienceMultiplier = 2F
 

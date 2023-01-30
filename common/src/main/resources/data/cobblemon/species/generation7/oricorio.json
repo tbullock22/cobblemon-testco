@@ -1,124 +1,255 @@
 {
-    "name": "oricorio",
-    "nationalPokedexNumber": 741,
-    "primaryType": "fire",
-    "secondaryType": "flying",
-    "abilities": [
+  "name": "Oricorio",
+  "nationalPokedexNumber": 741,
+  "primaryType": "fire",
+  "secondaryType": "flying",
+  "abilities": [
+    "dancer"
+  ],
+  "baseStats": {
+    "hp": 75,
+    "attack": 70,
+    "defence": 70,
+    "special_attack": 98,
+    "special_defence": 70,
+    "speed": 93
+  },
+  "catchRate": 45,
+  "maleRatio": 0.25,
+  "shoulderMountable": false,
+  "baseExperienceYield": 167,
+  "baseFriendship": 70,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 2,
+    "special_defence": 0,
+    "speed": 0
+  },
+  "experienceGroup": "medium_fast",
+  "eggCycles": 20,
+  "eggGroups": [
+    "flying"
+  ],
+  "moves": [
+    "1:pound",
+    "4:growl",
+    "6:peck",
+    "10:helpinghand",
+    "13:aircutter",
+    "16:batonpass",
+    "20:featherdance",
+    "23:acrobatics",
+    "23:doubleslap",
+    "26:teeterdance",
+    "30:roost",
+    "33:captivate",
+    "33:flatter",
+    "36:airslash",
+    "40:revelationdance",
+    "43:agility",
+    "43:mirrormove",
+    "47:hurricane",
+    "egg:attract",
+    "egg:captivate",
+    "egg:defog",
+    "egg:pluck",
+    "egg:quiverdance",
+    "egg:safeguard",
+    "tm:acrobatics",
+    "tm:aerialace",
+    "tm:agility",
+    "tm:aircutter",
+    "tm:airslash",
+    "tm:batonpass",
+    "tm:calmmind",
+    "tm:charm",
+    "tm:confide",
+    "tm:doubleteam",
+    "tm:embargo",
+    "tm:endure",
+    "tm:facade",
+    "tm:fly",
+    "tm:frustration",
+    "tm:helpinghand",
+    "tm:hiddenpower",
+    "tm:hurricane",
+    "tm:icywind",
+    "tm:protect",
+    "tm:quash",
+    "tm:raindance",
+    "tm:rest",
+    "tm:return",
+    "tm:reversal",
+    "tm:round",
+    "tm:sandstorm",
+    "tm:sleeptalk",
+    "tm:steelwing",
+    "tm:substitute",
+    "tm:sunnyday",
+    "tm:swagger",
+    "tm:swift",
+    "tm:swordsdance",
+    "tm:tailwind",
+    "tm:takedown",
+    "tm:taunt",
+    "tm:terablast",
+    "tm:toxic",
+    "tm:trailblaze",
+    "tm:uturn",
+    "tm:workup",
+    "tutor:covet",
+    "tutor:roleplay",
+    "tutor:skyattack",
+    "tutor:snore"
+  ],
+  "labels": [
+    "gen7"
+  ],
+  "pokedex": [
+    "cobblemon.species.oricorio.desc"
+  ],
+  "height": 6,
+  "weight": 34,
+  "evolutions": [],
+  "forms": [
+    {
+      "name": "Pom-Pom",
+      "primaryType": "electric",
+      "secondaryType": "flying",
+      "abilities": [
         "dancer"
-    ],
-    "baseStats": {
+      ],
+      "baseStats": {
         "hp": 75,
         "attack": 70,
         "defence": 70,
         "special_attack": 98,
         "special_defence": 70,
         "speed": 93
-    },
-    "catchRate": 45,
-    "maleRatio": 0.25,
-    "shoulderMountable": false,
-    "baseExperienceYield": 167,
-    "baseFriendship": 70,
-    "evYield": {
-        "special_attack": 2
-    },
-    "experienceGroup": "mediumfast",
-    "eggCycles": 20,
-    "eggGroups": [
+      },
+      "catchRate": 45,
+      "maleRatio": 0.25,
+      "baseExperienceYield": 167,
+      "baseFriendship": 70,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 2,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
         "flying"
-    ],
-    "moves": [
-        "1:pound",
-        "4:growl",
-        "6:peck",
-        "10:helpinghand",
-        "13:aircutter",
-        "16:batonpass",
-        "20:featherdance",
-        "23:doubleslap",
-        "26:teeterdance",
-        "30:roost",
-        "33:captivate",
-        "36:airslash",
-        "40:revelationdance",
-        "43:mirrormove",
-        "46:agility",
-        "50:hurricane",
-        "egg:captivate",
-        "egg:pluck",
-        "egg:safeguard",
-        "egg:tailwind",
-        "tm:acrobatics",
-        "tm:aerialace",
-        "tm:attract",
-        "tm:calmmind",
-        "tm:confide",
-        "tm:doubleteam",
-        "tm:embargo",
-        "tm:facade",
-        "tm:fly",
-        "tm:frustration",
-        "tm:hiddenpower",
-        "tm:protect",
-        "tm:quash",
-        "tm:rest",
-        "tm:return",
-        "tm:roost",
-        "tm:round",
-        "tm:safeguard",
-        "tm:sandstorm",
-        "tm:sleeptalk",
-        "tm:steelwing",
-        "tm:substitute",
-        "tm:swagger",
-        "tm:swordsdance",
-        "tm:taunt",
-        "tm:toxic",
-        "tm:uturn",
-        "tm:workup",
-        "tutor:covet",
-        "tutor:defog",
-        "tutor:helpinghand",
-        "tutor:icywind",
-        "tutor:roleplay",
-        "tutor:skyattack",
-        "tutor:snore",
-        "tutor:tailwind"
-    ],
-    "labels": [
+      ],
+      "moves": [],
+      "labels": [
         "gen7"
-    ],
-    "pokedex": [
-        "cobblemon.species.oricorio.desc1",
-        "cobblemon.species.oricorio.desc2"
-    ],
-    "height": 6,
-    "weight": 34,
-    "evolutions": [],
-    "forms": [
-        {
-            "name": "pom-pom",
-            "primaryType": "electric",
-            "pokedex": [
-                "cobblemon.form.oricorio-pom-pom.desc1",
-                "cobblemon.form.oricorio-pom-pom.desc2"
-            ]
-        },
-        {
-            "name": "pau",
-            "primaryType": "psychic",
-            "pokedex": [
-                "cobblemon.form.oricorio-pau.desc1",
-                "cobblemon.form.oricorio-pau.desc2"
-            ]
-        },
-        {
-            "name": "sensu",
-            "primaryType": "ghost",
-            "pokedex": [
-                "cobblemon.form.oricorio-sensu.desc1",
-                "cobblemon.form.oricorio-sensu.desc2"
-            ]
-        }
-    ]
+      ],
+      "aspects": [
+        "pom-pom"
+      ],
+      "height": 6,
+      "weight": 34,
+      "evolutions": [],
+      "cannotDynamax": false,
+      "battleOnly": false
+    },
+    {
+      "name": "Pa'u",
+      "primaryType": "psychic",
+      "secondaryType": "flying",
+      "abilities": [
+        "dancer"
+      ],
+      "baseStats": {
+        "hp": 75,
+        "attack": 70,
+        "defence": 70,
+        "special_attack": 98,
+        "special_defence": 70,
+        "speed": 93
+      },
+      "catchRate": 45,
+      "maleRatio": 0.25,
+      "baseExperienceYield": 167,
+      "baseFriendship": 70,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 2,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "flying"
+      ],
+      "moves": [],
+      "labels": [
+        "gen7"
+      ],
+      "aspects": [
+        "pa'u"
+      ],
+      "height": 6,
+      "weight": 34,
+      "evolutions": [],
+      "cannotDynamax": false,
+      "battleOnly": false
+    },
+    {
+      "name": "Sensu",
+      "primaryType": "ghost",
+      "secondaryType": "flying",
+      "abilities": [
+        "dancer"
+      ],
+      "baseStats": {
+        "hp": 75,
+        "attack": 70,
+        "defence": 70,
+        "special_attack": 98,
+        "special_defence": 70,
+        "speed": 93
+      },
+      "catchRate": 45,
+      "maleRatio": 0.25,
+      "baseExperienceYield": 167,
+      "baseFriendship": 70,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 2,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "flying"
+      ],
+      "moves": [],
+      "labels": [
+        "gen7"
+      ],
+      "aspects": [
+        "sensu"
+      ],
+      "height": 6,
+      "weight": 34,
+      "evolutions": [],
+      "cannotDynamax": false,
+      "battleOnly": false
+    }
+  ],
+  "aspects": [],
+  "cannotDynamax": false
 }

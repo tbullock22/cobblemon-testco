@@ -9,7 +9,6 @@
 package com.cobblemon.mod.common.item
 
 import com.cobblemon.mod.common.api.text.gray
-import com.cobblemon.mod.common.api.text.red
 import com.cobblemon.mod.common.entity.pokeball.EmptyPokeBallEntity
 import com.cobblemon.mod.common.item.CobblemonItemGroups.POKE_BALL_GROUP
 import com.cobblemon.mod.common.pokeball.PokeBall

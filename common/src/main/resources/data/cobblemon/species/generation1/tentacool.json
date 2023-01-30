@@ -1,177 +1,206 @@
 {
-    "implemented": true,
-    "name": "tentacool",
-    "nationalPokedexNumber": 72,
-    "primaryType": "water",
-    "secondaryType": "poison",
-    "abilities": [
-        "clearbody",
-        "liquidooze",
-        "h:raindish"
-    ],
-    "baseStats": {
-        "hp": 40,
-        "attack": 40,
-        "defence": 35,
-        "special_attack": 50,
-        "special_defence": 100,
-        "speed": 70
-    },
-    "catchRate": 190,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 67,
-    "experienceGroup": "slow",
-    "eggCycles": 20,
-    "eggGroups": [
-        "water_3"
-    ],
-    "behaviour": {
-        "moving": {
-            "swim": {
-                "canSwimInWater": true,
-                "canBreatheUnderwater": true
-            }
-        }
-    },
-    "drops": {
-        "amount": "1",
-        "entries": [
-            {
-                "item": "minecraft:glow_ink_sac",
-                "quantityRange": "1-3",
-                "percentage": 10
-            },
-            {
-                "item": "minecraft:ink_sac",
-                "quantityRange": "1-3"
-            }
-        ]
-    },
-    "moves": [
-        "1:poisonsting",
-        "1:watergun",
-        "4:acid",
-        "4:constrict",
-        "8:wrap",
-        "12:supersonic",
-        "16:waterpulse",
-        "20:screech",
-        "22:acidspray",
-        "24:bubblebeam",
-        "28:hex",
-        "31:barrier",
-        "32:acidarmor",
-        "36:poisonjab",
-        "40:surf",
-        "44:sludgewave",
-        "48:hydropump",
-        "49:wringout",
-        "egg:acupressure",
-        "egg:aquaring",
-        "egg:aurorabeam",
-        "egg:bubble",
-        "egg:confuseray",
-        "egg:haze",
-        "egg:knockoff",
-        "egg:mirrorcoat",
-        "egg:rapidspin",
-        "egg:tickle",
-        "tm:attract",
-        "tm:bide",
-        "tm:blizzard",
-        "tm:brine",
-        "tm:brutalswing",
-        "tm:captivate",
-        "tm:confide",
-        "tm:crosspoison",
-        "tm:curse",
-        "tm:cut",
-        "tm:dazzlinggleam",
-        "tm:dive",
-        "tm:doubleteam",
-        "tm:endure",
-        "tm:facade",
-        "tm:frustration",
-        "tm:gigadrain",
-        "tm:hail",
-        "tm:headbutt",
-        "tm:hex",
-        "tm:hiddenpower",
-        "tm:hydropump",
-        "tm:icebeam",
-        "tm:icywind",
-        "tm:infestation",
-        "tm:megadrain",
-        "tm:muddywater",
-        "tm:naturalgift",
-        "tm:payback",
-        "tm:poisonjab",
-        "tm:protect",
-        "tm:rage",
-        "tm:raindance",
-        "tm:reflect",
-        "tm:rest",
-        "tm:return",
-        "tm:round",
-        "tm:safeguard",
-        "tm:scald",
-        "tm:screech",
-        "tm:secretpower",
-        "tm:skullbash",
-        "tm:sleeptalk",
-        "tm:sludgebomb",
-        "tm:sludgewave",
-        "tm:snore",
-        "tm:substitute",
-        "tm:surf",
-        "tm:swagger",
-        "tm:swordsdance",
-        "tm:takedown",
-        "tm:thief",
-        "tm:toxic",
-        "tm:toxicspikes",
-        "tm:venoshock",
-        "tm:waterfall",
-        "tm:whirlpool",
-        "tutor:bind",
-        "tutor:doubleedge",
-        "tutor:magiccoat",
-        "tutor:mimic"
-    ],
-    "labels": [
-        "gen1"
-    ],
-    "pokedex": [
-        "cobblemon.species.tentacool.desc1",
-        "cobblemon.species.tentacool.desc2"
-    ],
-    "evolutions": [
+  "implemented": true,
+  "name": "Tentacool",
+  "nationalPokedexNumber": 72,
+  "primaryType": "water",
+  "secondaryType": "poison",
+  "abilities": [
+    "clearbody",
+    "liquidooze",
+    "h:raindish"
+  ],
+  "baseStats": {
+    "hp": 40,
+    "attack": 40,
+    "defence": 35,
+    "special_attack": 50,
+    "special_defence": 100,
+    "speed": 70
+  },
+  "catchRate": 190,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "baseExperienceYield": 67,
+  "experienceGroup": "slow",
+  "eggCycles": 20,
+  "eggGroups": [
+    "water_3"
+  ],
+  "behaviour": {
+    "moving": {
+      "swim": {
+        "canSwimInWater": true,
+        "canBreatheUnderwater": true
+      }
+    }
+  },
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:glow_ink_sac",
+        "quantityRange": "1-3",
+        "percentage": 10
+      },
+      {
+        "item": "minecraft:ink_sac",
+        "quantityRange": "1-3"
+      }
+    ]
+  },
+  "moves": [
+    "1:poisonsting",
+    "1:watergun",
+    "4:acid",
+    "8:wrap",
+    "12:supersonic",
+    "16:waterpulse",
+    "20:screech",
+    "22:acidspray",
+    "24:bubblebeam",
+    "28:hex",
+    "32:acidarmor",
+    "36:poisonjab",
+    "40:surf",
+    "44:sludgewave",
+    "48:hydropump",
+    "49:wringout",
+    "egg:acupressure",
+    "egg:aquaring",
+    "egg:aurorabeam",
+    "egg:bubble",
+    "egg:confuseray",
+    "egg:haze",
+    "egg:knockoff",
+    "egg:mirrorcoat",
+    "egg:rapidspin",
+    "egg:tickle",
+    "tm:attract",
+    "tm:blizzard",
+    "tm:brine",
+    "tm:brutalswing",
+    "tm:captivate",
+    "tm:confide",
+    "tm:crosspoison",
+    "tm:dazzlinggleam",
+    "tm:dive",
+    "tm:doubleteam",
+    "tm:endure",
+    "tm:facade",
+    "tm:frustration",
+    "tm:gigadrain",
+    "tm:hail",
+    "tm:hex",
+    "tm:hiddenpower",
+    "tm:hydropump",
+    "tm:icebeam",
+    "tm:icywind",
+    "tm:infestation",
+    "tm:muddywater",
+    "tm:naturalgift",
+    "tm:payback",
+    "tm:poisonjab",
+    "tm:protect",
+    "tm:raindance",
+    "tm:rest",
+    "tm:return",
+    "tm:round",
+    "tm:safeguard",
+    "tm:scald",
+    "tm:screech",
+    "tm:secretpower",
+    "tm:sleeptalk",
+    "tm:sludgebomb",
+    "tm:sludgewave",
+    "tm:snore",
+    "tm:substitute",
+    "tm:surf",
+    "tm:swagger",
+    "tm:swordsdance",
+    "tm:thief",
+    "tm:toxicspikes",
+    "tm:venoshock",
+    "tm:waterfall",
+    "tm:whirlpool",
+    "tutor:acid",
+    "tutor:barrier",
+    "tutor:bide",
+    "tutor:bind",
+    "tutor:blizzard",
+    "tutor:bubblebeam",
+    "tutor:constrict",
+    "tutor:curse",
+    "tutor:cut",
+    "tutor:dazzlinggleam",
+    "tutor:doubleedge",
+    "tutor:doubleteam",
+    "tutor:facade",
+    "tutor:frustration",
+    "tutor:headbutt",
+    "tutor:hiddenpower",
+    "tutor:hydropump",
+    "tutor:icebeam",
+    "tutor:magiccoat",
+    "tutor:megadrain",
+    "tutor:mimic",
+    "tutor:poisonjab",
+    "tutor:poisonsting",
+    "tutor:protect",
+    "tutor:rage",
+    "tutor:reflect",
+    "tutor:rest",
+    "tutor:return",
+    "tutor:scald",
+    "tutor:screech",
+    "tutor:skullbash",
+    "tutor:sludgebomb",
+    "tutor:substitute",
+    "tutor:supersonic",
+    "tutor:surf",
+    "tutor:swagger",
+    "tutor:takedown",
+    "tutor:toxic",
+    "tutor:waterfall",
+    "tutor:wrap"
+  ],
+  "labels": [
+    "gen1"
+  ],
+  "pokedex": [
+    "cobblemon.species.tentacool.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "tentacool_tentacruel",
+      "variant": "level_up",
+      "result": "tentacruel",
+      "consumeHeldItem": false,
+      "learnableMoves": [],
+      "requirements": [
         {
-            "id": "tentacool_tentacruel",
-            "variant": "level_up",
-            "result": "tentacruel",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "level",
-                    "minLevel": 30
-                }
-            ]
+          "variant": "level",
+          "amount": 30
         }
-    ],
-    "baseScale": 1.1,
-    "hitbox": {
-        "width": 0.4,
-        "height": 1.1,
-        "fixed": false
-    },
-    "baseFriendship": 50,
-    "evYield": {
-        "special_defence": 1
-    },
-    "height": 9,
-    "weight": 455
+      ]
+    }
+  ],
+  "baseScale": 1.1,
+  "hitbox": {
+    "width": 0.4,
+    "height": 1.1,
+    "fixed": false
+  },
+  "baseFriendship": 50,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 1,
+    "speed": 0
+  },
+  "height": 9,
+  "weight": 455,
+  "aspects": [],
+  "cannotDynamax": false
 }

@@ -21,13 +21,16 @@ import net.minecraft.text.MutableText
  * This class represents the base of a Move.
  * To build a Move you need to use its template
  *
- * @param name The English name used to load / find it (spaces -> _)
- * @param elementalType The Type of the Move (e.g. ElementalTypes.FIRE)
- * @param damageCategory The Damage Category of the move (e.g. DamageCategories.SPECIAL)
- * @param power The power of the Move (loaded from its JSON)
- * @param accuracy The accuracy of the Move (loaded from its JSON)
- * @param effectChance The effect chance of the Move (loaded from its JSON) (-1 if not applicable)
- * @param maxPp The maximum PP the Move can have (loaded from its JSON)
+ * @param name The name in Showdown ID form.
+ * @param elementalType The [ElementalType] of this move.
+ * @param damageCategory The [DamageCategory] of this move.
+ * @param power The base power of this move.
+ * @param target The [MoveTarget] of this move.
+ * @param accuracy The accuracy of this move.
+ * @param pp The power points of this move, these mean how many times the move can be used before some manner of restoration is required.
+ * @param priority The priority of this move.
+ * @param critRatio The ratio at which this move will land a critical hit.
+ * @param effectChances The effect chances if any ordered by effect.
  */
 open class MoveTemplate(
     val name: String,
@@ -40,8 +43,7 @@ open class MoveTemplate(
     val pp: Int,
     val priority: Int,
     val critRatio: Double,
-    val effectChance: Double,
-    val effectStatus: String
+    val effectChances: Array<Double>
 ) {
     /** Don't change this from 0. It was -1, but then the data JSON reader was making this 0 instead of -1, ignoring our original video. */
     var id = 0
@@ -61,8 +63,7 @@ open class MoveTemplate(
         pp = 5,
         priority = 0,
         critRatio = 0.0,
-        effectChance = 0.0,
-        effectStatus = ""
+        effectChances = emptyArray()
     )
 
     companion object {

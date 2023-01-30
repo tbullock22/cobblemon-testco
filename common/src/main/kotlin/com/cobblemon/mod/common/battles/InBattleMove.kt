@@ -27,7 +27,7 @@ class InBattleMove {
                 move = buffer.readString()
                 pp = buffer.readSizedInt(IntSize.U_BYTE)
                 maxpp = buffer.readSizedInt(IntSize.U_BYTE)
-                target = MoveTarget.values()[buffer.readSizedInt(IntSize.U_BYTE)]
+                target = buffer.readEnumConstant(MoveTarget::class.java)
                 disabled = buffer.readBoolean()
             }
         }
@@ -41,7 +41,7 @@ class InBattleMove {
         buffer.writeString(move)
         buffer.writeSizedInt(IntSize.U_BYTE, pp)
         buffer.writeSizedInt(IntSize.U_BYTE, maxpp)
-        buffer.writeSizedInt(IntSize.U_BYTE, target.ordinal)
+        buffer.writeEnumConstant(target)
         buffer.writeBoolean(disabled)
     }
 }

@@ -9,6 +9,7 @@
 package com.cobblemon.mod.common.battles
 
 import com.cobblemon.mod.common.api.battles.model.PokemonBattle
+import com.cobblemon.mod.common.api.pokemon.helditem.HeldItemProvider
 import com.cobblemon.mod.common.api.pokemon.stats.Stats
 import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
@@ -50,9 +51,7 @@ object BattleRegistry {
             val pk = pokemon.effectedPokemon
             val packedTeamBuilder = StringBuilder()
             // If no nickname, write species first and leave next blank
-            // We convert the species + form here into our custom format
-            val species = "${pk.species.resourceIdentifier.namespace}:${pk.species.name}${if (pk.form.name.equals(pk.species.standardForm.name, true)) "" else "-${pk.form.name}"}"
-            packedTeamBuilder.append("$species|")
+            packedTeamBuilder.append("${pk.showdownId()}|")
             // Species, left empty if no nickname
             packedTeamBuilder.append("|")
 
@@ -68,8 +67,10 @@ object BattleRegistry {
                 packedTeamBuilder.append("-1|")
             }
 
-            // Held item, empty if non TODO: Replace with actual held item
-            packedTeamBuilder.append("|")
+            // Held item, empty if none
+            pokemon.heldItemManager = HeldItemProvider.provide(pokemon)
+            val heldItemID = pokemon.heldItemManager.showdownId(pokemon) ?: ""
+            packedTeamBuilder.append("$heldItemID|")
             // Ability, our showdown has edits here to trust whatever we tell it, this was needed to support more than 4 abilities.
             packedTeamBuilder.append("${pk.ability.name.replace("_", "")}|")
             // Moves
@@ -100,8 +101,10 @@ object BattleRegistry {
             packedTeamBuilder.append("${pk.level}|")
             // Happiness
             packedTeamBuilder.append("${pk.friendship}|")
-            // Caught Ball TODO: Replace with actual pokeball variable
-            packedTeamBuilder.append("|")
+            // Caught Ball
+            // This is safe to do as all our pokeballs that have showdown item equivalents are the same IDs they use for the pokeball attribute
+            val pokeball = pokemon.effectedPokemon.caughtBall.name.path.replace("_", "")
+            packedTeamBuilder.append("$pokeball|")
             // Hidden Power Type
             packedTeamBuilder.append("|")
 

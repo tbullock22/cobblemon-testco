@@ -1,179 +1,211 @@
 {
-    "implemented": true,
-    "name": "poliwhirl",
-    "nationalPokedexNumber": 61,
-    "primaryType": "water",
-    "abilities": [
-        "waterabsorb",
-        "damp",
-        "h:swiftswim"
-    ],
-    "baseStats": {
-        "hp": 65,
-        "attack": 65,
-        "defence": 65,
-        "special_attack": 50,
-        "special_defence": 50,
-        "speed": 90
+  "implemented": true,
+  "name": "Poliwhirl",
+  "nationalPokedexNumber": 61,
+  "primaryType": "water",
+  "abilities": [
+    "waterabsorb",
+    "damp",
+    "h:swiftswim"
+  ],
+  "baseStats": {
+    "hp": 65,
+    "attack": 65,
+    "defence": 65,
+    "special_attack": 50,
+    "special_defence": 50,
+    "speed": 90
+  },
+  "catchRate": 120,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "baseExperienceYield": 135,
+  "experienceGroup": "medium_slow",
+  "eggCycles": 20,
+  "eggGroups": [
+    "water_1"
+  ],
+  "behaviour": {
+    "moving": {
+      "swim": {
+        "canSwimInWater": true,
+        "canBreatheUnderwater": true
+      }
+    }
+  },
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:kings_rock",
+        "percentage": 5
+      }
+    ]
+  },
+  "moves": [
+    "1:hypnosis",
+    "1:mudshot",
+    "1:pound",
+    "1:watergun",
+    "1:watersport",
+    "18:bubblebeam",
+    "24:raindance",
+    "32:bodyslam",
+    "40:earthpower",
+    "43:wakeupslap",
+    "48:hydropump",
+    "53:mudbomb",
+    "56:bellydrum",
+    "66:doubleedge",
+    "tm:attract",
+    "tm:blizzard",
+    "tm:bodyslam",
+    "tm:brickbreak",
+    "tm:bulldoze",
+    "tm:captivate",
+    "tm:confide",
+    "tm:dig",
+    "tm:dive",
+    "tm:doubleteam",
+    "tm:earthpower",
+    "tm:earthquake",
+    "tm:encore",
+    "tm:endure",
+    "tm:facade",
+    "tm:fling",
+    "tm:frustration",
+    "tm:hail",
+    "tm:helpinghand",
+    "tm:hiddenpower",
+    "tm:hydropump",
+    "tm:icebeam",
+    "tm:icepunch",
+    "tm:icywind",
+    "tm:megakick",
+    "tm:megapunch",
+    "tm:metronome",
+    "tm:muddywater",
+    "tm:mudshot",
+    "tm:naturalgift",
+    "tm:poweruppunch",
+    "tm:protect",
+    "tm:psychic",
+    "tm:raindance",
+    "tm:rest",
+    "tm:return",
+    "tm:round",
+    "tm:scald",
+    "tm:secretpower",
+    "tm:sleeptalk",
+    "tm:snore",
+    "tm:substitute",
+    "tm:surf",
+    "tm:swagger",
+    "tm:thief",
+    "tm:waterfall",
+    "tm:whirlpool",
+    "tutor:amnesia",
+    "tutor:bide",
+    "tutor:blizzard",
+    "tutor:bodyslam",
+    "tutor:brickbreak",
+    "tutor:bubble",
+    "tutor:bubblebeam",
+    "tutor:counter",
+    "tutor:curse",
+    "tutor:defensecurl",
+    "tutor:detect",
+    "tutor:dig",
+    "tutor:doubleslap",
+    "tutor:doubleteam",
+    "tutor:earthquake",
+    "tutor:endeavor",
+    "tutor:facade",
+    "tutor:fissure",
+    "tutor:focuspunch",
+    "tutor:frustration",
+    "tutor:headbutt",
+    "tutor:helpinghand",
+    "tutor:hiddenpower",
+    "tutor:hydropump",
+    "tutor:hypnosis",
+    "tutor:icebeam",
+    "tutor:icepunch",
+    "tutor:lowkick",
+    "tutor:mimic",
+    "tutor:mudslap",
+    "tutor:pound",
+    "tutor:protect",
+    "tutor:psychic",
+    "tutor:psywave",
+    "tutor:rage",
+    "tutor:rest",
+    "tutor:return",
+    "tutor:rocksmash",
+    "tutor:scald",
+    "tutor:seismictoss",
+    "tutor:skullbash",
+    "tutor:strength",
+    "tutor:submission",
+    "tutor:substitute",
+    "tutor:surf",
+    "tutor:swagger",
+    "tutor:takedown",
+    "tutor:toxic",
+    "tutor:waterfall",
+    "tutor:watergun",
+    "tutor:waterpulse"
+  ],
+  "labels": [
+    "gen1"
+  ],
+  "pokedex": [
+    "cobblemon.species.poliwhirl.desc"
+  ],
+  "preEvolution": "poliwag",
+  "evolutions": [
+    {
+      "id": "poliwhirl_poliwrath",
+      "variant": "item_interact",
+      "result": "poliwrath",
+      "consumeHeldItem": false,
+      "learnableMoves": [
+        "submission"
+      ],
+      "requirements": [],
+      "requiredContext": "cobblemon:water_stone"
     },
-    "catchRate": 120,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 135,
-    "experienceGroup": "mediumslow",
-    "eggCycles": 20,
-    "eggGroups": [
-        "water_1"
-    ],
-    "behaviour": {
-        "moving": {
-            "swim": {
-                "canSwimInWater": true,
-                "canBreatheUnderwater": true
-            }
-        }
-    },
-    "drops": {
-        "amount": "1",
-        "entries": [
-            {
-                "item": "cobblemon:kings_rock",
-                "percentage": 5
-            }
-        ]
-    },
-    "moves": [
-        "1:pound",
-        "1:watergun",
-        "1:hypnosis",
-        "1:bubble",
-        "1:mudshot",
-        "1:watersport",
-        "16:doubleslap",
-        "18:bubblebeam",
-        "24:raindance",
-        "30:lowkick",
-        "32:bodyslam",
-        "40:earthpower",
-        "41:amnesia",
-        "43:wakeupslap",
-        "48:hydropump",
-        "53:mudbomb",
-        "56:bellydrum",
-        "66:doubleedge",
-        "tm:attract",
-        "tm:bide",
-        "tm:blizzard",
-        "tm:bodyslam",
-        "tm:brickbreak",
-        "tm:bulldoze",
-        "tm:captivate",
-        "tm:confide",
-        "tm:curse",
-        "tm:detect",
-        "tm:dig",
-        "tm:dive",
-        "tm:doubleteam",
-        "tm:earthpower",
-        "tm:earthquake",
-        "tm:encore",
-        "tm:endure",
-        "tm:facade",
-        "tm:fissure",
-        "tm:fling",
-        "tm:frustration",
-        "tm:hail",
-        "tm:headbutt",
-        "tm:helpinghand",
-        "tm:hiddenpower",
-        "tm:hydropump",
-        "tm:icebeam",
-        "tm:icepunch",
-        "tm:icywind",
-        "tm:megakick",
-        "tm:megapunch",
-        "tm:metronome",
-        "tm:muddywater",
-        "tm:mudshot",
-        "tm:naturalgift",
-        "tm:poweruppunch",
-        "tm:protect",
-        "tm:psychic",
-        "tm:psywave",
-        "tm:rage",
-        "tm:raindance",
-        "tm:rest",
-        "tm:return",
-        "tm:rocksmash",
-        "tm:round",
-        "tm:scald",
-        "tm:secretpower",
-        "tm:seismictoss",
-        "tm:skullbash",
-        "tm:sleeptalk",
-        "tm:snore",
-        "tm:strength",
-        "tm:submission",
-        "tm:substitute",
-        "tm:surf",
-        "tm:swagger",
-        "tm:takedown",
-        "tm:thief",
-        "tm:toxic",
-        "tm:waterfall",
-        "tm:whirlpool",
-        "tutor:counter",
-        "tutor:defensecurl",
-        "tutor:endeavor",
-        "tutor:focuspunch",
-        "tutor:mimic",
-        "tutor:mudslap",
-        "tutor:waterpulse"
-    ],
-    "labels": [
-        "gen1"
-    ],
-    "pokedex": [
-        "cobblemon.species.poliwhirl.desc1",
-        "cobblemon.species.poliwhirl.desc2"
-    ],
-    "preEvolution": "poliwag",
-    "evolutions": [
+    {
+      "id": "poliwhirl_politoed",
+      "variant": "trade",
+      "result": "politoed",
+      "consumeHeldItem": true,
+      "learnableMoves": [],
+      "requirements": [
         {
-            "id": "poliwhirl_poliwrath",
-            "variant": "item_interact",
-            "result": "poliwrath",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [],
-            "requiredContext": "cobblemon:water_stone"
-        },
-        {
-            "id": "poliwhirl_politoed",
-            "variant": "trade",
-            "result": "politoed",
-            "consumeHeldItem": true,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "held_item",
-                    "item": "cobblemon:kings_rock"
-                }
-            ],
-            "requiredContext": null
+          "variant": "held_item",
+          "item": "cobblemon:kings_rock"
         }
-    ],
-    "baseScale": 0.8,
-    "hitbox": {
-        "width": 1.0,
-        "height": 1.1,
-        "fixed": false
-    },
-    "baseFriendship": 50,
-    "evYield": {
-        "speed": 2
-    },
-    "height": 10,
-    "weight": 200
+      ]
+    }
+  ],
+  "baseScale": 0.8,
+  "hitbox": {
+    "width": 1,
+    "height": 1.1,
+    "fixed": false
+  },
+  "baseFriendship": 50,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 2
+  },
+  "height": 10,
+  "weight": 200,
+  "aspects": [],
+  "cannotDynamax": false
 }

@@ -8,7 +8,7 @@
 
 package com.cobblemon.mod.common.item
 
-import com.cobblemon.mod.common.world.block.ApricornSaplingBlock
+import com.cobblemon.mod.common.block.ApricornSaplingBlock
 import net.minecraft.block.ComposterBlock
 import net.minecraft.item.AliasedBlockItem
 import net.minecraft.item.ItemGroup

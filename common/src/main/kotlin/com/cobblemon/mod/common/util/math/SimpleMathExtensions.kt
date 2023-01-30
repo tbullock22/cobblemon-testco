@@ -40,3 +40,71 @@ fun IntRange.intersection(other: IntRange): IntRange {
 }
 
 fun Pair<Float, Float>.random() = Random.nextFloat() * (second - first) + first
+
+fun Float.remap(from: Pair<Float, Float>, to: Pair<Float, Float>): Float {
+    val (fromMin, fromMax) = from
+    val (toMin, toMax) = to
+    return (this - fromMin) / (fromMax - fromMin) * (toMax - toMin) + toMin
+}
+
+fun Float.remap(start: FloatRange, end: FloatRange): Float{
+    val (fromMin, fromMax) = start.start to start.endInclusive
+    val (toMin, toMax) = end.start to end.endInclusive
+    return (this - fromMin) / (fromMax - fromMin) * (toMax - toMin) + toMin
+}
+
+fun Int.remap(from: Pair<Int, Int>, to: Pair<Int, Int>): Int {
+    val (fromMin, fromMax) = from
+    val (toMin, toMax) = to
+    return (this - fromMin) / (fromMax - fromMin) * (toMax - toMin) + toMin
+}
+
+fun Int.remap(start: IntRange, end: IntRange): Int{
+    val (fromMin, fromMax) = start.first to start.last
+    val (toMin, toMax) = end.first to end.last
+    return (this - fromMin) / (fromMax - fromMin) * (toMax - toMin) + toMin
+}
+
+fun Double.remap(from: Pair<Double, Double>, to: Pair<Double, Double>): Double {
+    val (fromMin, fromMax) = from
+    val (toMin, toMax) = to
+    return (this - fromMin) / (fromMax - fromMin) * (toMax - toMin) + toMin
+}
+
+fun Double.remap(start: DoubleRange, end: DoubleRange): Double{
+    val (fromMin, fromMax) = start.start to start.endInclusive
+    val (toMin, toMax) = end.start to end.endInclusive
+    return (this - fromMin) / (fromMax - fromMin) * (toMax - toMin) + toMin
+}
+
+
+
+class FloatRange(override val start: Float, override val endInclusive: Float) : ClosedFloatingPointRange<Float>, Iterable<Float> {
+    override fun contains(value: Float): Boolean = value in start..endInclusive
+    override fun isEmpty(): Boolean = start > endInclusive
+    override fun lessThanOrEquals(a: Float, b: Float): Boolean {
+        TODO("Not yet implemented")
+    }
+    override fun equals(other: Any?): Boolean = other is FloatRange && start == other.start && endInclusive == other.endInclusive
+    override fun hashCode(): Int = 31 * start.hashCode() + endInclusive.hashCode()
+    override fun iterator(): Iterator<Float> {
+        TODO("Not yet implemented")
+    }
+
+    override fun toString(): String = "$start..$endInclusive"
+}
+
+class DoubleRange(override val start: Double, override val endInclusive: Double) : ClosedFloatingPointRange<Double>, Iterable<Double> {
+    override fun contains(value: Double): Boolean = value in start..endInclusive
+    override fun isEmpty(): Boolean = start > endInclusive
+    override fun lessThanOrEquals(a: Double, b: Double): Boolean {
+        TODO("Not yet implemented")
+    }
+    override fun equals(other: Any?): Boolean = other is DoubleRange && start == other.start && endInclusive == other.endInclusive
+    override fun hashCode(): Int = 31 * start.hashCode() + endInclusive.hashCode()
+    override fun iterator(): Iterator<Double> {
+        TODO("Not yet implemented")
+    }
+
+    override fun toString(): String = "$start..$endInclusive"
+}

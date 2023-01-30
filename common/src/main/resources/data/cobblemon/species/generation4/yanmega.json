@@ -1,134 +1,135 @@
 {
-    "implemented": true,
-    "name": "yanmega",
-    "nationalPokedexNumber": 469,
-    "primaryType": "bug",
-    "secondaryType": "flying",
-    "abilities": [
-        "speedboost",
-        "tintedlens",
-        "h:frisk"
-    ],
-    "baseStats": {
-        "hp": 86,
-        "attack": 76,
-        "defence": 86,
-        "special_attack": 116,
-        "special_defence": 56,
-        "speed": 95
-    },
-    "catchRate": 30,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 180,
-    "experienceGroup": "mediumfast",
-    "eggCycles": 20,
-    "eggGroups": [
-        "bug"
-    ],
-    "behaviour": {
-        "moving": {
-            "swim": {
-                "canWalkOnWater": true
-            },
-            "fly": {
-                "canFly": true
-            }
-        }
-    },
-    "moves": [
-        "1:tackle",
-        "1:quickattack",
-        "1:doubleteam",
-        "1:foresight",
-        "1:nightslash",
-        "1:airslash",
-        "1:bugbuzz",
-        "1:bugbite",
-        "6:quickattack",
-        "11:doubleteam",
-        "14:sonicboom",
-        "17:detect",
-        "22:supersonic",
-        "27:uproar",
-        "30:pursuit",
-        "33:ancientpower",
-        "38:feint",
-        "43:slash",
-        "46:screech",
-        "49:uturn",
-        "54:airslash",
-        "57:bugbuzz",
-        "tm:aerialace",
-        "tm:attract",
-        "tm:captivate",
-        "tm:confide",
-        "tm:doubleteam",
-        "tm:dreameater",
-        "tm:endure",
-        "tm:facade",
-        "tm:flash",
-        "tm:frustration",
-        "tm:gigaimpact",
-        "tm:hiddenpower",
-        "tm:hyperbeam",
-        "tm:leechlife",
-        "tm:naturalgift",
-        "tm:protect",
-        "tm:psychic",
-        "tm:psychup",
-        "tm:rest",
-        "tm:return",
-        "tm:roost",
-        "tm:round",
-        "tm:secretpower",
-        "tm:shadowball",
-        "tm:silverwind",
-        "tm:sleeptalk",
-        "tm:solarbeam",
-        "tm:steelwing",
-        "tm:strugglebug",
-        "tm:substitute",
-        "tm:sunnyday",
-        "tm:swagger",
-        "tm:thief",
-        "tm:toxic",
-        "tm:uturn",
-        "tutor:aircutter",
-        "tutor:bugbite",
-        "tutor:defog",
-        "tutor:gigadrain",
-        "tutor:headbutt",
-        "tutor:laserfocus",
-        "tutor:mudslap",
-        "tutor:ominouswind",
-        "tutor:signalbeam",
-        "tutor:snore",
-        "tutor:stringshot",
-        "tutor:swift",
-        "tutor:tailwind",
-        "tutor:uproar"
-    ],
-    "labels": [
-        "gen4"
-    ],
-    "pokedex": [
-        "cobblemon.species.yanmega.desc1",
-        "cobblemon.species.yanmega.desc2"
-    ],
-    "preEvolution": "yanma",
-    "evolutions": [],
-    "baseScale": 1.0,
-    "hitbox": {
-        "width": 1.6,
-        "height": 1.4,
-        "fixed": false
-    },
-    "baseFriendship": 70,
-    "evYield": {
-        "attack": 2
-    },
-    "height": 19,
-    "weight": 515
+  "implemented": true,
+  "name": "Yanmega",
+  "nationalPokedexNumber": 469,
+  "primaryType": "bug",
+  "secondaryType": "flying",
+  "abilities": [
+    "speedboost",
+    "tintedlens",
+    "h:frisk"
+  ],
+  "baseStats": {
+    "hp": 86,
+    "attack": 76,
+    "defence": 86,
+    "special_attack": 116,
+    "special_defence": 56,
+    "speed": 95
+  },
+  "catchRate": 30,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "baseExperienceYield": 180,
+  "experienceGroup": "medium_fast",
+  "eggCycles": 20,
+  "eggGroups": [
+    "bug"
+  ],
+  "behaviour": {
+    "moving": {
+      "swim": {
+        "canWalkOnWater": true
+      },
+      "fly": {
+        "canFly": true
+      }
+    }
+  },
+  "moves": [
+    "1:airslash",
+    "1:bugbite",
+    "1:bugbuzz",
+    "1:doubleteam",
+    "1:foresight",
+    "1:nightslash",
+    "1:quickattack",
+    "1:tackle",
+    "14:sonicboom",
+    "17:detect",
+    "22:supersonic",
+    "27:uproar",
+    "30:pursuit",
+    "33:ancientpower",
+    "38:feint",
+    "43:slash",
+    "46:screech",
+    "49:uturn",
+    "tm:aerialace",
+    "tm:attract",
+    "tm:captivate",
+    "tm:confide",
+    "tm:doubleteam",
+    "tm:dreameater",
+    "tm:endure",
+    "tm:facade",
+    "tm:flash",
+    "tm:frustration",
+    "tm:gigaimpact",
+    "tm:hiddenpower",
+    "tm:hyperbeam",
+    "tm:leechlife",
+    "tm:naturalgift",
+    "tm:protect",
+    "tm:psychic",
+    "tm:psychup",
+    "tm:rest",
+    "tm:return",
+    "tm:roost",
+    "tm:round",
+    "tm:secretpower",
+    "tm:shadowball",
+    "tm:silverwind",
+    "tm:sleeptalk",
+    "tm:solarbeam",
+    "tm:steelwing",
+    "tm:strugglebug",
+    "tm:substitute",
+    "tm:sunnyday",
+    "tm:swagger",
+    "tm:thief",
+    "tm:toxic",
+    "tm:uturn",
+    "tutor:aircutter",
+    "tutor:bugbite",
+    "tutor:defog",
+    "tutor:gigadrain",
+    "tutor:headbutt",
+    "tutor:laserfocus",
+    "tutor:mudslap",
+    "tutor:ominouswind",
+    "tutor:signalbeam",
+    "tutor:snore",
+    "tutor:stringshot",
+    "tutor:swift",
+    "tutor:tailwind",
+    "tutor:uproar"
+  ],
+  "labels": [
+    "gen4"
+  ],
+  "pokedex": [
+    "cobblemon.species.yanmega.desc"
+  ],
+  "preEvolution": "yanma",
+  "evolutions": [],
+  "baseScale": 1,
+  "hitbox": {
+    "width": 1.6,
+    "height": 1.4,
+    "fixed": false
+  },
+  "baseFriendship": 70,
+  "evYield": {
+    "hp": 0,
+    "attack": 2,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
+  },
+  "height": 19,
+  "weight": 515,
+  "aspects": [],
+  "cannotDynamax": false
 }

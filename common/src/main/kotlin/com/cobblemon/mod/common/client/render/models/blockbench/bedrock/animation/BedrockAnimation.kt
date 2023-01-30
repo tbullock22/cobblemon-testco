@@ -12,6 +12,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.PoseableEntityMo
 import com.cobblemon.mod.common.client.render.models.blockbench.PoseableEntityState
 import com.cobblemon.mod.common.util.math.geometry.toRadians
 import com.eliotlash.molang.expressions.MolangExpression
+import net.minecraft.client.MinecraftClient
 import java.util.SortedMap
 import net.minecraft.util.math.Vec3d
 
@@ -84,6 +85,12 @@ class MolangBoneValue(
         for (n in arrayOf(x, y, z)) {
             n.context.setValue("q.anim_time", time)
             n.context.setValue("query.anim_time", time)
+            val xRot = MinecraftClient.getInstance().gameRenderer.camera.rotation.x.toDouble()
+            val yRot = MinecraftClient.getInstance().gameRenderer.camera.rotation.y.toDouble()
+            n.context.setValue("q.camera_rotation(0)", xRot)
+            n.context.setValue("query.camera_rotation(0)",xRot)
+            n.context.setValue("q.camera_rotation(1)", yRot)
+            n.context.setValue("query.camera_rotation(1)",yRot)
         }
         return Vec3d(x.get(), y.get() * yMul, z.get())
     }

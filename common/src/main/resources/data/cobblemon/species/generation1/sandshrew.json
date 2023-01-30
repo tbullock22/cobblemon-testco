@@ -1,9 +1,12 @@
 {
   "implemented": true,
-  "name": "sandshrew",
+  "name": "Sandshrew",
   "nationalPokedexNumber": 27,
   "primaryType": "ground",
-  "abilities": ["sandveil", "h:sandrush"],
+  "abilities": [
+    "sandveil",
+    "h:sandrush"
+  ],
   "baseStats": {
     "hp": 50,
     "attack": 75,
@@ -17,14 +20,13 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "alola",
-      "aspects": ["alolan"],
+      "name": "Alola",
       "primaryType": "ice",
       "secondaryType": "steel",
-      "abilities": ["snowcloak", "h:slushrush"],
+      "abilities": [
+        "snowcloak",
+        "h:slushrush"
+      ],
       "baseStats": {
         "hp": 50,
         "attack": 75,
@@ -33,18 +35,32 @@
         "special_defence": 35,
         "speed": 40
       },
+      "catchRate": 255,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 60,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 1,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "field"
+      ],
       "moves": [
-        "1:scratch",
         "1:defensecurl",
+        "1:scratch",
         "3:mist",
-        "4:bide",
         "6:powdersnow",
         "7:iceball",
-        "8:iceshard",
         "9:rollout",
         "12:furycutter",
         "15:rapidspin",
-        "16:mirrorcoat",
         "18:metalclaw",
         "21:swift",
         "24:furyswipes",
@@ -83,9 +99,7 @@
         "tm:frustration",
         "tm:gyroball",
         "tm:hail",
-        "tm:headbutt",
         "tm:hiddenpower",
-        "tm:icebeam",
         "tm:icepunch",
         "tm:iciclespear",
         "tm:icywind",
@@ -101,7 +115,6 @@
         "tm:rocktomb",
         "tm:round",
         "tm:safeguard",
-        "tm:seismictoss",
         "tm:shadowclaw",
         "tm:sleeptalk",
         "tm:snore",
@@ -113,45 +126,80 @@
         "tm:swordsdance",
         "tm:thief",
         "tm:throatchop",
-        "tm:toxic",
         "tm:workup",
         "tm:xscissor",
         "tutor:aquatail",
+        "tutor:bide",
+        "tutor:blizzard",
+        "tutor:brickbreak",
         "tutor:covet",
+        "tutor:defensecurl",
+        "tutor:dig",
+        "tutor:earthquake",
+        "tutor:facade",
         "tutor:focuspunch",
+        "tutor:furyswipes",
+        "tutor:headbutt",
+        "tutor:iceball",
+        "tutor:icebeam",
+        "tutor:icepunch",
+        "tutor:iceshard",
+        "tutor:irontail",
         "tutor:knockoff",
+        "tutor:mirrorcoat",
+        "tutor:poisonjab",
+        "tutor:protect",
+        "tutor:rest",
+        "tutor:rockslide",
+        "tutor:scratch",
+        "tutor:seismictoss",
+        "tutor:slash",
+        "tutor:stealthrock",
         "tutor:steelbeam",
         "tutor:steelroller",
+        "tutor:substitute",
         "tutor:superfang",
-        "tutor:tripleaxel"
+        "tutor:swift",
+        "tutor:swordsdance",
+        "tutor:toxic",
+        "tutor:tripleaxel",
+        "tutor:xscissor"
       ],
-      "pokedex": [
-        "cobblemon.form.sandshrew-alola.desc1",
-        "cobblemon.form.sandshrew-alola.desc2"
+      "labels": [
+        "gen7",
+        "alola_regional"
+      ],
+      "aspects": [
+        "alolan"
       ],
       "height": 7,
       "weight": 400,
       "evolutions": [
         {
-          "id": "sandshrew_sandslash_alola",
+          "id": "sandshrew_sandslash",
           "variant": "item_interact",
-          "result": "sandslash alolan",
+          "result": "sandslash form=alola",
           "consumeHeldItem": false,
-          "learnableMoves": [],
+          "learnableMoves": [
+            "iciclespear"
+          ],
           "requirements": [],
           "requiredContext": "cobblemon:ice_stone"
         }
       ],
-      "labels": ["gen1", "alola_regional", "regional"]
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 60,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 20,
-  "eggGroups": ["field"],
+  "eggGroups": [
+    "field"
+  ],
   "moves": [
-    "1:scratch",
     "1:defensecurl",
+    "1:scratch",
     "3:poisonsting",
     "6:sandattack",
     "9:rollout",
@@ -182,26 +230,20 @@
     "tm:agility",
     "tm:amnesia",
     "tm:attract",
-    "tm:bide",
     "tm:bodyslam",
     "tm:brickbreak",
     "tm:bulldoze",
     "tm:captivate",
     "tm:confide",
-    "tm:curse",
-    "tm:cut",
-    "tm:detect",
     "tm:dig",
     "tm:doubleteam",
     "tm:earthpower",
     "tm:earthquake",
     "tm:endure",
     "tm:facade",
-    "tm:fissure",
     "tm:fling",
     "tm:frustration",
     "tm:gyroball",
-    "tm:headbutt",
     "tm:hiddenpower",
     "tm:irontail",
     "tm:leechlife",
@@ -209,51 +251,84 @@
     "tm:naturalgift",
     "tm:poisonjab",
     "tm:protect",
-    "tm:rage",
     "tm:rest",
     "tm:return",
     "tm:rockslide",
-    "tm:rocksmash",
     "tm:rocktomb",
     "tm:round",
     "tm:safeguard",
     "tm:sandstorm",
     "tm:sandtomb",
     "tm:secretpower",
-    "tm:seismictoss",
     "tm:shadowclaw",
-    "tm:skullbash",
     "tm:sleeptalk",
     "tm:snore",
     "tm:stealthrock",
     "tm:stompingtantrum",
-    "tm:strength",
-    "tm:submission",
     "tm:substitute",
     "tm:sunnyday",
     "tm:swagger",
     "tm:swift",
     "tm:swordsdance",
-    "tm:takedown",
     "tm:thief",
     "tm:throatchop",
-    "tm:toxic",
     "tm:workup",
     "tm:xscissor",
+    "tutor:bide",
+    "tutor:brickbreak",
     "tutor:covet",
+    "tutor:curse",
+    "tutor:cut",
+    "tutor:defensecurl",
+    "tutor:detect",
+    "tutor:dig",
     "tutor:doubleedge",
+    "tutor:doubleteam",
     "tutor:dynamicpunch",
+    "tutor:earthquake",
+    "tutor:facade",
+    "tutor:fissure",
     "tutor:focuspunch",
+    "tutor:frustration",
+    "tutor:furyswipes",
+    "tutor:headbutt",
+    "tutor:hiddenpower",
+    "tutor:irontail",
     "tutor:knockoff",
     "tutor:mimic",
+    "tutor:poisonjab",
+    "tutor:poisonsting",
+    "tutor:protect",
+    "tutor:rage",
+    "tutor:rest",
+    "tutor:return",
+    "tutor:rockslide",
+    "tutor:rocksmash",
+    "tutor:sandattack",
     "tutor:scorchingsands",
+    "tutor:scratch",
+    "tutor:seismictoss",
+    "tutor:skullbash",
+    "tutor:slash",
+    "tutor:stealthrock",
     "tutor:steelroller",
-    "tutor:superfang"
+    "tutor:strength",
+    "tutor:submission",
+    "tutor:substitute",
+    "tutor:superfang",
+    "tutor:swagger",
+    "tutor:swift",
+    "tutor:swordsdance",
+    "tutor:takedown",
+    "tutor:toxic",
+    "tutor:xscissor"
   ],
-  "labels": ["gen1", "kanto_regional", "regional"],
+  "labels": [
+    "gen1",
+    "kanto_regional"
+  ],
   "pokedex": [
-    "cobblemon.species.sandshrew.desc1",
-    "cobblemon.species.sandshrew.desc2"
+    "cobblemon.species.sandshrew.desc"
   ],
   "evolutions": [
     {
@@ -265,7 +340,7 @@
       "requirements": [
         {
           "variant": "level",
-          "minLevel": 22
+          "amount": 22
         }
       ]
     }
@@ -273,13 +348,20 @@
   "baseScale": 0.7,
   "hitbox": {
     "width": 0.8,
-    "height": 1.0,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 50,
   "evYield": {
-    "defence": 1
+    "hp": 0,
+    "attack": 0,
+    "defence": 1,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 6,
-  "weight": 120
+  "weight": 120,
+  "aspects": [],
+  "cannotDynamax": false
 }

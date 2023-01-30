@@ -1,9 +1,13 @@
 {
   "implemented": true,
-  "name": "rapidash",
+  "name": "Rapidash",
   "nationalPokedexNumber": 78,
   "primaryType": "fire",
-  "abilities": ["runaway", "flashfire", "h:flamebody"],
+  "abilities": [
+    "runaway",
+    "flashfire",
+    "h:flamebody"
+  ],
   "baseStats": {
     "hp": 65,
     "attack": 100,
@@ -17,23 +21,46 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "galar",
-      "aspects": ["galarian"],
+      "name": "Galar",
       "primaryType": "psychic",
       "secondaryType": "fairy",
-      "abilities": ["runaway", "pastelveil", "h:anticipation"],
+      "abilities": [
+        "runaway",
+        "pastelveil",
+        "h:anticipation"
+      ],
+      "baseStats": {
+        "hp": 65,
+        "attack": 100,
+        "defence": 70,
+        "special_attack": 80,
+        "special_defence": 80,
+        "speed": 105
+      },
+      "catchRate": 60,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 175,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 2
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "field"
+      ],
       "moves": [
-        "0:psychocut",
+        "1:confusion",
+        "1:growl",
+        "1:megahorn",
+        "1:quickattack",
         "1:tackle",
         "1:tailwhip",
-        "1:growl",
-        "1:confusion",
-        "1:quickattack",
-        "1:megahorn",
-        "1:psychocut",
         "15:fairywind",
         "20:agility",
         "25:psybeam",
@@ -88,19 +115,27 @@
         "tm:zenheadbutt",
         "tutor:expandingforce"
       ],
-      "pokedex": [
-        "cobblemon.form.rapidash-galar.desc1",
-        "cobblemon.form.rapidash-galar.desc2"
+      "labels": [
+        "gen8",
+        "galar_regional"
       ],
+      "aspects": [
+        "galarian"
+      ],
+      "height": 17,
       "weight": 800,
-      "labels": ["gen1", "galar_regional", "regional"],
-      "preEvolution": "ponyta form=galar"
+      "preEvolution": "ponyta form=galar",
+      "evolutions": [],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 175,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 20,
-  "eggGroups": ["field"],
+  "eggGroups": [
+    "field"
+  ],
   "drops": {
     "amount": "1",
     "entries": [
@@ -112,20 +147,13 @@
     ]
   },
   "moves": [
-    "0:furyattack",
-    "0:smartstrike",
-    "1:furyattack",
-    "1:horndrill",
-    "1:tackle",
-    "1:tailwhip",
-    "1:growl",
     "1:ember",
-    "1:hypnosis",
-    "1:quickattack",
+    "1:growl",
     "1:megahorn",
     "1:poisonjab",
-    "1:smartstrike",
-    "15:doublekick",
+    "1:quickattack",
+    "1:tackle",
+    "1:tailwhip",
     "15:flamecharge",
     "20:agility",
     "25:flamewheel",
@@ -139,13 +167,11 @@
     "tm:allyswitch",
     "tm:attract",
     "tm:batonpass",
-    "tm:bide",
     "tm:bodyslam",
     "tm:bounce",
     "tm:captivate",
     "tm:charm",
     "tm:confide",
-    "tm:curse",
     "tm:doubleteam",
     "tm:drillrun",
     "tm:echoedvoice",
@@ -157,7 +183,6 @@
     "tm:flareblitz",
     "tm:frustration",
     "tm:gigaimpact",
-    "tm:headbutt",
     "tm:heatwave",
     "tm:hiddenpower",
     "tm:highhorsepower",
@@ -173,13 +198,10 @@
     "tm:playrough",
     "tm:poisonjab",
     "tm:protect",
-    "tm:rage",
-    "tm:reflect",
     "tm:rest",
     "tm:return",
     "tm:round",
     "tm:secretpower",
-    "tm:skullbash",
     "tm:sleeptalk",
     "tm:smartstrike",
     "tm:snore",
@@ -192,30 +214,77 @@
     "tm:swift",
     "tm:swordsdance",
     "tm:throatchop",
-    "tm:toxic",
     "tm:wildcharge",
     "tm:willowisp",
+    "tutor:agility",
+    "tutor:bide",
+    "tutor:curse",
     "tutor:doubleedge",
+    "tutor:doublekick",
+    "tutor:doubleteam",
+    "tutor:drillrun",
+    "tutor:ember",
+    "tutor:facade",
+    "tutor:fireblast",
+    "tutor:firespin",
+    "tutor:flamethrower",
+    "tutor:flareblitz",
+    "tutor:frustration",
+    "tutor:furyattack",
+    "tutor:growl",
+    "tutor:headbutt",
+    "tutor:hiddenpower",
+    "tutor:horndrill",
+    "tutor:hyperbeam",
+    "tutor:hypnosis",
+    "tutor:irontail",
+    "tutor:megahorn",
     "tutor:mimic",
-    "tutor:scorchingsands"
+    "tutor:poisonjab",
+    "tutor:protect",
+    "tutor:quickattack",
+    "tutor:rage",
+    "tutor:reflect",
+    "tutor:rest",
+    "tutor:return",
+    "tutor:scorchingsands",
+    "tutor:skullbash",
+    "tutor:solarbeam",
+    "tutor:stomp",
+    "tutor:substitute",
+    "tutor:swagger",
+    "tutor:tackle",
+    "tutor:tailwhip",
+    "tutor:takedown",
+    "tutor:toxic",
+    "tutor:willowisp"
   ],
-  "labels": ["gen1", "kanto_regional", "regional"],
+  "labels": [
+    "gen1",
+    "kanto_regional"
+  ],
   "pokedex": [
-    "cobblemon.species.rapidash.desc1",
-    "cobblemon.species.rapidash.desc2"
+    "cobblemon.species.rapidash.desc"
   ],
   "preEvolution": "ponyta",
   "evolutions": [],
   "baseScale": 1.3,
   "hitbox": {
-    "width": 1.0,
+    "width": 1,
     "height": 1.6,
     "fixed": false
   },
   "baseFriendship": 50,
   "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
     "speed": 2
   },
   "height": 17,
-  "weight": 950
+  "weight": 950,
+  "aspects": [],
+  "cannotDynamax": false
 }

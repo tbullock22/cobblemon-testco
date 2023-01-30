@@ -1,10 +1,14 @@
 {
   "implemented": true,
-  "name": "farfetchd",
+  "name": "Farfetch’d",
   "nationalPokedexNumber": 83,
   "primaryType": "normal",
   "secondaryType": "flying",
-  "abilities": ["keeneye", "innerfocus", "h:defiant"],
+  "abilities": [
+    "keeneye",
+    "innerfocus",
+    "h:defiant"
+  ],
   "baseStats": {
     "hp": 52,
     "attack": 90,
@@ -18,13 +22,12 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "galar",
-      "aspects": ["galarian"],
+      "name": "Galar",
       "primaryType": "fighting",
-      "abilities": ["steadfast", "h:scrappy"],
+      "abilities": [
+        "steadfast",
+        "h:scrappy"
+      ],
       "baseStats": {
         "hp": 52,
         "attack": 95,
@@ -33,9 +36,27 @@
         "special_defence": 62,
         "speed": 55
       },
+      "catchRate": 45,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 132,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "flying",
+        "field"
+      ],
       "moves": [
-        "1:sandattack",
         "1:peck",
+        "1:sandattack",
         "5:leer",
         "10:furycutter",
         "15:rocksmash",
@@ -90,16 +111,19 @@
         "tm:workup",
         "tutor:dualwingbeat"
       ],
-      "pokedex": [
-        "cobblemon.form.farfetchd-galar.desc1",
-        "cobblemon.form.farfetchd-galar.desc2"
+      "labels": [
+        "gen8",
+        "galar_regional"
       ],
-      "weight": 420,
-      "labels": ["gen1", "galar_regional", "regional"],
+      "aspects": [
+        "galarian"
+      ],
+      "height": 8,
+      "weight": 150,
       "evolutions": [
         {
           "id": "farfetchd_sirfetchd",
-          "variant": "passive",
+          "variant": "level_up",
           "result": "sirfetchd",
           "consumeHeldItem": false,
           "learnableMoves": [],
@@ -110,13 +134,18 @@
             }
           ]
         }
-      ]
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 132,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 20,
-  "eggGroups": ["flying", "field"],
+  "eggGroups": [
+    "flying",
+    "field"
+  ],
   "behaviour": {
     "moving": {
       "fly": {
@@ -137,14 +166,11 @@
     ]
   },
   "moves": [
-    "1:sandattack",
     "1:peck",
-    "1:mirrormove",
+    "1:sandattack",
     "5:leer",
     "10:furycutter",
-    "13:razorleaf",
     "15:cut",
-    "18:furyattack",
     "20:aerialace",
     "25:aircutter",
     "30:knockoff",
@@ -176,14 +202,12 @@
     "tm:airslash",
     "tm:attract",
     "tm:batonpass",
-    "tm:bide",
     "tm:bodyslam",
     "tm:bravebird",
     "tm:brutalswing",
     "tm:captivate",
     "tm:closecombat",
     "tm:confide",
-    "tm:detect",
     "tm:doubleteam",
     "tm:endure",
     "tm:facade",
@@ -191,7 +215,6 @@
     "tm:fly",
     "tm:focusenergy",
     "tm:frustration",
-    "tm:headbutt",
     "tm:heatwave",
     "tm:helpinghand",
     "tm:hiddenpower",
@@ -202,16 +225,12 @@
     "tm:poisonjab",
     "tm:protect",
     "tm:psychup",
-    "tm:rage",
-    "tm:razorwind",
-    "tm:reflect",
     "tm:rest",
     "tm:retaliate",
     "tm:return",
     "tm:revenge",
     "tm:round",
     "tm:secretpower",
-    "tm:skullbash",
     "tm:sleeptalk",
     "tm:snore",
     "tm:solarblade",
@@ -221,30 +240,74 @@
     "tm:swagger",
     "tm:swift",
     "tm:swordsdance",
-    "tm:takedown",
     "tm:thief",
     "tm:throatchop",
-    "tm:toxic",
     "tm:uproar",
     "tm:uturn",
-    "tm:whirlwind",
     "tm:workup",
+    "tutor:agility",
+    "tutor:airslash",
+    "tutor:bide",
+    "tutor:cut",
     "tutor:defog",
+    "tutor:detect",
     "tutor:doubleedge",
+    "tutor:doubleteam",
     "tutor:dualwingbeat",
+    "tutor:facade",
+    "tutor:feint",
+    "tutor:fly",
+    "tutor:focusenergy",
+    "tutor:foresight",
+    "tutor:frustration",
+    "tutor:furyattack",
+    "tutor:headbutt",
+    "tutor:helpinghand",
+    "tutor:hiddenpower",
+    "tutor:irontail",
     "tutor:laserfocus",
     "tutor:lastresort",
+    "tutor:leer",
     "tutor:mimic",
+    "tutor:mirrormove",
+    "tutor:mudslap",
     "tutor:ominouswind",
+    "tutor:peck",
+    "tutor:poisonjab",
+    "tutor:protect",
+    "tutor:psychup",
+    "tutor:quickattack",
+    "tutor:rage",
+    "tutor:razorleaf",
+    "tutor:razorwind",
+    "tutor:reflect",
+    "tutor:rest",
+    "tutor:return",
+    "tutor:roost",
+    "tutor:sandattack",
+    "tutor:skullbash",
+    "tutor:skyattack",
+    "tutor:slash",
+    "tutor:substitute",
+    "tutor:swagger",
+    "tutor:swordsdance",
     "tutor:tailwind",
-    "tutor:twister"
+    "tutor:takedown",
+    "tutor:toxic",
+    "tutor:twister",
+    "tutor:uturn",
+    "tutor:whirlwind",
+    "tutor:wish",
+    "tutor:yawn"
   ],
-  "labels": ["gen1", "kanto_regional", "regional"],
+  "labels": [
+    "gen1",
+    "kanto_regional"
+  ],
   "pokedex": [
-    "cobblemon.species.farfetchd.desc1",
-    "cobblemon.species.farfetchd.desc2"
+    "cobblemon.species.farfetchd.desc"
   ],
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
     "width": 0.4,
     "height": 0.8,
@@ -252,8 +315,16 @@
   },
   "baseFriendship": 50,
   "evYield": {
-    "attack": 1
+    "hp": 0,
+    "attack": 1,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 8,
-  "weight": 150
+  "weight": 150,
+  "aspects": [],
+  "evolutions": [],
+  "cannotDynamax": false
 }

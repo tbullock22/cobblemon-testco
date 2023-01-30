@@ -17,6 +17,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pose.Transformed
 import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
+import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
 class BeedrillModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BiWingedFrame {
@@ -46,7 +47,7 @@ class BeedrillModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BiWi
 
         standing = registerPose(
             poseName = "standing",
-            poseTypes = STATIONARY_POSES,
+            poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("beedrill", "air_idle")

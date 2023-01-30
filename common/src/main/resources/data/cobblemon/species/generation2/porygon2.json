@@ -1,165 +1,181 @@
 {
-    "implemented": true,
-    "name": "porygon2",
-    "nationalPokedexNumber": 233,
-    "primaryType": "normal",
-    "abilities": [
-        "trace",
-        "download",
-        "h:analytic"
-    ],
-    "baseStats": {
-        "hp": 85,
-        "attack": 80,
-        "defence": 90,
-        "special_attack": 105,
-        "special_defence": 95,
-        "speed": 60
-    },
-    "catchRate": 45,
-    "maleRatio": -1,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 180,
-    "experienceGroup": "mediumfast",
-    "eggCycles": 20,
-    "eggGroups": [
-        "mineral"
-    ],
-	"drops": {
-        "amount": "1",
-        "entries": [
-            {
-                "item": "cobblemon:dubious_disc",
-                "percentage": 50
-            }
-        ]
-    },
-    "behaviour": {
-        "moving": {
-            "fly": {
-                "canFly": true
-            },
-            "walk": {
-                "canWalk": false
-            }
-        }
-    },
-    "moves": [
-        "1:tackle",
-        "1:defensecurl",
-        "1:conversion",
-        "1:recycle",
-        "1:magnetrise",
-        "15:thundershock",
-        "20:psybeam",
-        "25:conversion2",
-        "29:signalbeam",
-        "30:agility",
-        "35:recover",
-        "40:discharge",
-        "45:triattack",
-        "50:magiccoat",
-        "55:lockon",
-        "60:zapcannon",
-        "65:hyperbeam",
-        "tm:aerialace",
-        "tm:agility",
-        "tm:allyswitch",
-        "tm:blizzard",
-        "tm:chargebeam",
-        "tm:confide",
-        "tm:curse",
-        "tm:doubleteam",
-        "tm:dreameater",
-        "tm:eerieimpulse",
-        "tm:electroweb",
-        "tm:endure",
-        "tm:facade",
-        "tm:flash",
-        "tm:foulplay",
-        "tm:frustration",
-        "tm:gigaimpact",
-        "tm:guardswap",
-        "tm:hiddenpower",
-        "tm:hyperbeam",
-        "tm:icebeam",
-        "tm:icywind",
-        "tm:irontail",
-        "tm:naturalgift",
-        "tm:powerswap",
-        "tm:protect",
-        "tm:psychic",
-        "tm:psychup",
-        "tm:psyshock",
-        "tm:raindance",
-        "tm:rest",
-        "tm:return",
-        "tm:round",
-        "tm:secretpower",
-        "tm:shadowball",
-        "tm:sleeptalk",
-        "tm:snore",
-        "tm:solarbeam",
-        "tm:speedswap",
-        "tm:substitute",
-        "tm:sunnyday",
-        "tm:swagger",
-        "tm:swift",
-        "tm:thief",
-        "tm:thunder",
-        "tm:thunderbolt",
-        "tm:thunderwave",
-        "tm:toxic",
-        "tm:triattack",
-        "tm:trick",
-        "tm:trickroom",
-        "tm:wonderroom",
-        "tm:zenheadbutt",
-        "tutor:doubleedge",
-        "tutor:gravity",
-        "tutor:lastresort",
-        "tutor:mimic",
-        "tutor:nightmare",
-        "tutor:painsplit",
-        "tutor:shockwave",
-        "tutor:signalbeam",
-        "tutor:telekinesis"
-    ],
-    "labels": [
-        "gen2"
-    ],
-    "pokedex": [
-        "cobblemon.species.porygon2.desc1",
-        "cobblemon.species.porygon2.desc2"
-    ],
-    "preEvolution": "porygon",
-    "evolutions": [
+  "implemented": true,
+  "name": "Porygon2",
+  "nationalPokedexNumber": 233,
+  "primaryType": "normal",
+  "abilities": [
+    "trace",
+    "download",
+    "h:analytic"
+  ],
+  "baseStats": {
+    "hp": 85,
+    "attack": 80,
+    "defence": 90,
+    "special_attack": 105,
+    "special_defence": 95,
+    "speed": 60
+  },
+  "catchRate": 45,
+  "maleRatio": -1,
+  "shoulderMountable": false,
+  "baseExperienceYield": 180,
+  "experienceGroup": "medium_fast",
+  "eggCycles": 20,
+  "eggGroups": [
+    "mineral"
+  ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:dubious_disc",
+        "percentage": 50
+      }
+    ]
+  },
+  "behaviour": {
+    "moving": {
+      "fly": {
+        "canFly": true
+      },
+      "walk": {
+        "canWalk": false
+      }
+    }
+  },
+  "moves": [
+    "1:conversion",
+    "1:defensecurl",
+    "1:magnetrise",
+    "1:recycle",
+    "1:tackle",
+    "15:thundershock",
+    "20:psybeam",
+    "25:conversion2",
+    "29:signalbeam",
+    "30:agility",
+    "35:recover",
+    "40:discharge",
+    "45:triattack",
+    "50:magiccoat",
+    "55:lockon",
+    "60:zapcannon",
+    "65:hyperbeam",
+    "tm:aerialace",
+    "tm:agility",
+    "tm:allyswitch",
+    "tm:blizzard",
+    "tm:chargebeam",
+    "tm:confide",
+    "tm:doubleteam",
+    "tm:dreameater",
+    "tm:eerieimpulse",
+    "tm:electroweb",
+    "tm:endure",
+    "tm:facade",
+    "tm:foulplay",
+    "tm:frustration",
+    "tm:gigaimpact",
+    "tm:guardswap",
+    "tm:hiddenpower",
+    "tm:hyperbeam",
+    "tm:icebeam",
+    "tm:icywind",
+    "tm:irontail",
+    "tm:naturalgift",
+    "tm:powerswap",
+    "tm:protect",
+    "tm:psychic",
+    "tm:psychup",
+    "tm:psyshock",
+    "tm:raindance",
+    "tm:rest",
+    "tm:return",
+    "tm:round",
+    "tm:secretpower",
+    "tm:shadowball",
+    "tm:sleeptalk",
+    "tm:snore",
+    "tm:solarbeam",
+    "tm:speedswap",
+    "tm:substitute",
+    "tm:sunnyday",
+    "tm:swagger",
+    "tm:swift",
+    "tm:thief",
+    "tm:thunder",
+    "tm:thunderbolt",
+    "tm:thunderwave",
+    "tm:toxic",
+    "tm:triattack",
+    "tm:trick",
+    "tm:trickroom",
+    "tm:wonderroom",
+    "tm:zenheadbutt",
+    "tutor:curse",
+    "tutor:doubleedge",
+    "tutor:doubleteam",
+    "tutor:dreameater",
+    "tutor:flash",
+    "tutor:frustration",
+    "tutor:gravity",
+    "tutor:hiddenpower",
+    "tutor:icebeam",
+    "tutor:lastresort",
+    "tutor:mimic",
+    "tutor:nightmare",
+    "tutor:painsplit",
+    "tutor:psychup",
+    "tutor:recover",
+    "tutor:return",
+    "tutor:shockwave",
+    "tutor:signalbeam",
+    "tutor:swagger",
+    "tutor:telekinesis",
+    "tutor:thunderbolt",
+    "tutor:toxic",
+    "tutor:trickroom"
+  ],
+  "labels": [
+    "gen2"
+  ],
+  "pokedex": [
+    "cobblemon.species.porygon2.desc"
+  ],
+  "preEvolution": "porygon",
+  "evolutions": [
+    {
+      "id": "porygon2_porygonz",
+      "variant": "trade",
+      "result": "porygonz",
+      "consumeHeldItem": true,
+      "learnableMoves": [],
+      "requirements": [
         {
-            "id": "porygon2_porygonz",
-            "variant": "trade",
-            "result": "porygonz",
-            "consumeHeldItem": true,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "held_item",
-                    "item": "cobblemon:dubious_disc"
-                }
-            ],
-            "requiredContext": null
+          "variant": "held_item",
+          "item": "cobblemon:dubious_disc"
         }
-    ],
-    "baseScale": 0.6,
-    "hitbox": {
-        "width": 0.9,
-        "height": 0.9,
-        "fixed": false
-    },
-    "baseFriendship": 50,
-    "evYield": {
-        "special_attack": 2
-    },
-    "height": 6,
-    "weight": 325
+      ]
+    }
+  ],
+  "baseScale": 0.6,
+  "hitbox": {
+    "width": 0.9,
+    "height": 0.9,
+    "fixed": false
+  },
+  "baseFriendship": 50,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 2,
+    "special_defence": 0,
+    "speed": 0
+  },
+  "height": 6,
+  "weight": 325,
+  "aspects": [],
+  "cannotDynamax": false
 }

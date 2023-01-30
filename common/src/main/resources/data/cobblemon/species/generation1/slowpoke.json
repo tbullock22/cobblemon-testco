@@ -1,10 +1,14 @@
 {
   "implemented": true,
-  "name": "slowpoke",
+  "name": "Slowpoke",
   "nationalPokedexNumber": 79,
   "primaryType": "water",
   "secondaryType": "psychic",
-  "abilities": ["oblivious", "owntempo", "h:regenerator"],
+  "abilities": [
+    "oblivious",
+    "owntempo",
+    "h:regenerator"
+  ],
   "baseStats": {
     "hp": 90,
     "attack": 65,
@@ -18,16 +22,42 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "galar",
-      "aspects": ["galarian"],
+      "name": "Galar",
       "primaryType": "psychic",
-      "abilities": ["gluttony", "owntempo", "h:regenerator"],
+      "abilities": [
+        "gluttony",
+        "owntempo",
+        "h:regenerator"
+      ],
+      "baseStats": {
+        "hp": 90,
+        "attack": 65,
+        "defence": 65,
+        "special_attack": 40,
+        "special_defence": 40,
+        "speed": 15
+      },
+      "catchRate": 190,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 63,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 1,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "monster",
+        "water_1"
+      ],
       "moves": [
-        "1:tackle",
         "1:curse",
+        "1:tackle",
         "3:growl",
         "6:acid",
         "9:yawn",
@@ -49,11 +79,13 @@
         "egg:stomp",
         "tm:amnesia",
         "tm:attract",
+        "tm:avalanche",
         "tm:blizzard",
         "tm:bodyslam",
         "tm:brine",
         "tm:bulldoze",
         "tm:calmmind",
+        "tm:chillingwater",
         "tm:dig",
         "tm:dive",
         "tm:earthquake",
@@ -65,6 +97,7 @@
         "tm:futuresight",
         "tm:grassknot",
         "tm:hail",
+        "tm:helpinghand",
         "tm:hydropump",
         "tm:icebeam",
         "tm:icywind",
@@ -75,6 +108,7 @@
         "tm:mudshot",
         "tm:payday",
         "tm:protect",
+        "tm:psybeam",
         "tm:psychic",
         "tm:psychicterrain",
         "tm:psyshock",
@@ -87,52 +121,68 @@
         "tm:skillswap",
         "tm:sleeptalk",
         "tm:snore",
+        "tm:snowscape",
         "tm:storedpower",
         "tm:substitute",
         "tm:sunnyday",
         "tm:surf",
         "tm:swift",
+        "tm:takedown",
+        "tm:terablast",
         "tm:thunderwave",
         "tm:triattack",
         "tm:trick",
         "tm:trickroom",
+        "tm:waterfall",
+        "tm:waterpulse",
         "tm:weatherball",
         "tm:whirlpool",
         "tm:wonderroom",
         "tm:zenheadbutt",
         "tutor:expandingforce"
       ],
-      "pokedex": [
-        "cobblemon.form.slowpoke-galar.desc1",
-        "cobblemon.form.slowpoke-galar.desc2"
+      "labels": [
+        "gen8",
+        "galar_regional"
       ],
-      "labels": ["gen1", "galar_regional", "regional"],
+      "aspects": [
+        "galarian"
+      ],
+      "height": 12,
+      "weight": 360,
       "evolutions": [
         {
-          "id": "slowpoke_slowbro_galar",
+          "id": "slowpoke_slowbro",
           "variant": "item_interact",
-          "result": "slowbro",
+          "result": "slowbro form=galar",
           "consumeHeldItem": false,
-          "learnableMoves": [],
+          "learnableMoves": [
+            "shellsidearm"
+          ],
           "requirements": [],
           "requiredContext": "cobblemon:galarica_cuff"
         },
         {
-          "id": "slowpoke_slowking_galar",
+          "id": "slowpoke_slowking",
           "variant": "item_interact",
-          "result": "slowking",
+          "result": "slowking form=galar",
           "consumeHeldItem": false,
           "learnableMoves": [],
           "requirements": [],
           "requiredContext": "cobblemon:galarica_wreath"
         }
-      ]
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 63,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 20,
-  "eggGroups": ["monster", "water_1"],
+  "eggGroups": [
+    "monster",
+    "water_1"
+  ],
   "behaviour": {
     "moving": {
       "swim": {
@@ -142,8 +192,8 @@
     }
   },
   "moves": [
-    "1:tackle",
     "1:curse",
+    "1:tackle",
     "3:growl",
     "6:watergun",
     "9:yawn",
@@ -167,31 +217,30 @@
     "egg:stomp",
     "tm:amnesia",
     "tm:attract",
-    "tm:bide",
+    "tm:avalanche",
     "tm:blizzard",
     "tm:bodyslam",
     "tm:brine",
-    "tm:bubblebeam",
     "tm:bulldoze",
     "tm:calmmind",
     "tm:captivate",
+    "tm:chillingwater",
     "tm:confide",
     "tm:dig",
     "tm:dive",
     "tm:doubleteam",
-    "tm:dreameater",
     "tm:earthquake",
     "tm:echoedvoice",
     "tm:endure",
     "tm:facade",
     "tm:fireblast",
-    "tm:fissure",
     "tm:flamethrower",
-    "tm:flash",
+    "tm:foulplay",
     "tm:frustration",
     "tm:futuresight",
     "tm:grassknot",
     "tm:hail",
+    "tm:helpinghand",
     "tm:hiddenpower",
     "tm:hydropump",
     "tm:icebeam",
@@ -205,13 +254,11 @@
     "tm:naturalgift",
     "tm:payday",
     "tm:protect",
+    "tm:psybeam",
     "tm:psychic",
     "tm:psychicterrain",
     "tm:psyshock",
-    "tm:psywave",
-    "tm:rage",
     "tm:raindance",
-    "tm:reflect",
     "tm:rest",
     "tm:return",
     "tm:round",
@@ -220,44 +267,67 @@
     "tm:secretpower",
     "tm:shadowball",
     "tm:skillswap",
-    "tm:skullbash",
     "tm:sleeptalk",
     "tm:snore",
+    "tm:snowscape",
     "tm:storedpower",
-    "tm:strength",
     "tm:substitute",
     "tm:sunnyday",
     "tm:surf",
     "tm:swagger",
     "tm:swift",
     "tm:takedown",
-    "tm:teleport",
+    "tm:terablast",
     "tm:thunderwave",
-    "tm:toxic",
     "tm:triattack",
     "tm:trick",
     "tm:trickroom",
+    "tm:waterfall",
+    "tm:waterpulse",
     "tm:weatherball",
     "tm:whirlpool",
     "tm:wonderroom",
-    "tm:zapcannon",
     "tm:zenheadbutt",
     "tutor:afteryou",
     "tutor:aquatail",
+    "tutor:bide",
+    "tutor:bubblebeam",
     "tutor:doubleedge",
+    "tutor:doubleteam",
+    "tutor:dreameater",
     "tutor:expandingforce",
+    "tutor:fissure",
+    "tutor:flash",
+    "tutor:frustration",
+    "tutor:hiddenpower",
+    "tutor:irontail",
     "tutor:magiccoat",
     "tutor:mimic",
     "tutor:mudslap",
     "tutor:nightmare",
+    "tutor:payday",
+    "tutor:psywave",
+    "tutor:rage",
     "tutor:recycle",
+    "tutor:reflect",
+    "tutor:return",
+    "tutor:scald",
     "tutor:signalbeam",
-    "tutor:telekinesis"
+    "tutor:skullbash",
+    "tutor:strength",
+    "tutor:swagger",
+    "tutor:telekinesis",
+    "tutor:teleport",
+    "tutor:toxic",
+    "tutor:triattack",
+    "tutor:zapcannon"
   ],
-  "labels": ["gen1", "kanto_regional", "regional"],
+  "labels": [
+    "gen1",
+    "kanto_regional"
+  ],
   "pokedex": [
-    "cobblemon.species.slowpoke.desc1",
-    "cobblemon.species.slowpoke.desc2"
+    "cobblemon.species.slowpoke.desc"
   ],
   "evolutions": [
     {
@@ -269,7 +339,7 @@
       "requirements": [
         {
           "variant": "level",
-          "minLevel": 37
+          "amount": 37
         }
       ]
     },
@@ -284,20 +354,26 @@
           "variant": "held_item",
           "item": "cobblemon:kings_rock"
         }
-      ],
-      "requiredContext": null
+      ]
     }
   ],
   "baseScale": 0.7,
   "hitbox": {
-    "width": 1.0,
+    "width": 1,
     "height": 0.8,
     "fixed": false
   },
   "baseFriendship": 50,
   "evYield": {
-    "hp": 1
+    "hp": 1,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 12,
-  "weight": 360
+  "weight": 360,
+  "aspects": [],
+  "cannotDynamax": false
 }

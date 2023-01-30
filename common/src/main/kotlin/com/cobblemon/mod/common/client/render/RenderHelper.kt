@@ -11,15 +11,14 @@ package com.cobblemon.mod.common.client.render
 import com.cobblemon.mod.common.api.gui.drawText
 import com.cobblemon.mod.common.api.text.font
 import com.cobblemon.mod.common.client.CobblemonResources
+import com.mojang.blaze3d.platform.GlStateManager
+import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.MinecraftClient
-import net.minecraft.client.render.OverlayTexture
-import net.minecraft.client.render.RenderLayer
-import net.minecraft.client.render.Tessellator
-import net.minecraft.client.render.VertexConsumer
-import net.minecraft.client.render.VertexConsumerProvider
-import net.minecraft.client.render.VertexFormat
-import net.minecraft.client.render.VertexFormats
+import net.minecraft.client.render.*
+import net.minecraft.client.render.model.json.ModelTransformation
+import net.minecraft.client.texture.SpriteAtlasTexture
 import net.minecraft.client.util.math.MatrixStack
+import net.minecraft.item.ItemStack
 import net.minecraft.text.MutableText
 import net.minecraft.text.OrderedText
 import net.minecraft.util.Identifier
@@ -40,6 +39,47 @@ fun renderImage(texture: Identifier, x: Double, y: Double, height: Double, width
     buffer.vertex(x, y, 0.0).texture(0f, 0f).next()
 
     Tessellator.getInstance().draw()
+}
+
+fun renderScaledGuiItemIcon(itemStack: ItemStack, x: Double, y: Double, scale: Double = 1.0) {
+    val itemRenderer = MinecraftClient.getInstance().itemRenderer
+    val textureManager = MinecraftClient.getInstance().textureManager
+    val model = itemRenderer.getModel(itemStack, null, null, 0)
+
+    textureManager.getTexture(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).setFilter(false, false)
+    RenderSystem.setShaderTexture(0, SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE)
+    RenderSystem.enableBlend()
+    RenderSystem.blendFunc(GlStateManager.SrcFactor.SRC_ALPHA, GlStateManager.DstFactor.ONE_MINUS_SRC_ALPHA)
+    RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F)
+    val modelViewStack = RenderSystem.getModelViewStack()
+    modelViewStack.push()
+    modelViewStack.translate(x, y, (100.0F + itemRenderer.zOffset).toDouble())
+    modelViewStack.translate(8.0 * scale, 8.0 * scale, 0.0)
+    modelViewStack.scale(1.0F, -1.0F, 1.0F)
+    modelViewStack.scale(16.0F * scale.toFloat(), 16.0F * scale.toFloat(), 16.0F * scale.toFloat())
+    RenderSystem.applyModelViewMatrix()
+    val matrixStack = MatrixStack()
+    val immediate = MinecraftClient.getInstance().bufferBuilders.entityVertexConsumers
+    val bl = !model.isSideLit
+    if (bl) DiffuseLighting.disableGuiDepthLighting()
+
+    itemRenderer.renderItem(
+        itemStack,
+        ModelTransformation.Mode.GUI,
+        false,
+        matrixStack,
+        immediate,
+        15728880,
+        OverlayTexture.DEFAULT_UV,
+        model
+    )
+
+    immediate.draw()
+    RenderSystem.enableDepthTest()
+    if (bl) DiffuseLighting.enableGuiDepthLighting()
+
+    modelViewStack.pop()
+    RenderSystem.applyModelViewMatrix()
 }
 
 fun getDepletableRedGreen(

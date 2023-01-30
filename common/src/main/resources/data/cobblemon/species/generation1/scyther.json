@@ -1,172 +1,197 @@
 {
-    "implemented": true,
-    "name": "scyther",
-    "nationalPokedexNumber": 123,
-    "primaryType": "bug",
-    "secondaryType": "flying",
-    "abilities": [
-        "swarm",
-        "technician",
-        "h:steadfast"
-    ],
-    "baseStats": {
-        "hp": 70,
-        "attack": 110,
-        "defence": 80,
-        "special_attack": 55,
-        "special_defence": 80,
-        "speed": 105
-    },
-    "catchRate": 45,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 100,
-    "experienceGroup": "mediumfast",
-    "eggCycles": 25,
-    "eggGroups": [
-        "bug"
-    ],
-    "behaviour": {
-        "moving": {
-            "fly": {
-                "canFly": true
-            }
-        }
-    },
-    "drops": {
-        "amount": "1",
-        "entries": [
-            {
-                "item": "cobblemon:metal_coat",
-                "percentage": 5
-            },
-            {
-                "item": "cobblemon:black_augurite",
-                "percentage": 5
-            }
-        ]
-    },
-    "moves": [
-        "1:leer",
-        "1:quickattack",
-        "1:vacuumwave",
-        "4:furycutter",
-        "8:falseswipe",
-        "9:pursuit",
-        "12:wingattack",
-        "16:doubleteam",
-        "20:doublehit",
-        "24:slash",
-        "28:focusenergy",
-        "32:razorwind",
-        "32:agility",
-        "36:airslash",
-        "40:xscissor",
-        "44:laserfocus",
-        "48:swordsdance",
-        "egg:counter",
-        "egg:defog",
-        "egg:feint",
-        "egg:nightslash",
-        "egg:quickguard",
-        "egg:silverwind",
-        "tm:acrobatics",
-        "tm:aerialace",
-        "tm:agility",
-        "tm:airslash",
-        "tm:assurance",
-        "tm:attract",
-        "tm:batonpass",
-        "tm:bide",
-        "tm:brickbreak",
-        "tm:brutalswing",
-        "tm:bugbuzz",
-        "tm:captivate",
-        "tm:confide",
-        "tm:crosspoison",
-        "tm:curse",
-        "tm:cut",
-        "tm:detect",
-        "tm:endure",
-        "tm:facade",
-        "tm:falseswipe",
-        "tm:focusenergy",
-        "tm:frustration",
-        "tm:gigaimpact",
-        "tm:headbutt",
-        "tm:hiddenpower",
-        "tm:hyperbeam",
-        "tm:lightscreen",
-        "tm:naturalgift",
-        "tm:protect",
-        "tm:psychocut",
-        "tm:rage",
-        "tm:raindance",
-        "tm:rest",
-        "tm:return",
-        "tm:reversal",
-        "tm:rocksmash",
-        "tm:roost",
-        "tm:round",
-        "tm:safeguard",
-        "tm:secretpower",
-        "tm:skullbash",
-        "tm:sleeptalk",
-        "tm:snore",
-        "tm:steelwing",
-        "tm:strugglebug",
-        "tm:substitute",
-        "tm:sunnyday",
-        "tm:swagger",
-        "tm:swift",
-        "tm:swordsdance",
-        "tm:takedown",
-        "tm:thief",
-        "tm:toxic",
-        "tm:uturn",
-        "tm:xscissor",
-        "tutor:bugbite",
-        "tutor:doubleedge",
-        "tutor:dualwingbeat",
-        "tutor:knockoff",
-        "tutor:mimic",
-        "tutor:ominouswind",
-        "tutor:tailwind"
-    ],
-    "labels": [
-        "gen1"
-    ],
-    "pokedex": [
-        "cobblemon.species.scyther.desc1",
-        "cobblemon.species.scyther.desc2"
-    ],
-    "evolutions": [
+  "implemented": true,
+  "name": "Scyther",
+  "nationalPokedexNumber": 123,
+  "primaryType": "bug",
+  "secondaryType": "flying",
+  "abilities": [
+    "swarm",
+    "technician",
+    "h:steadfast"
+  ],
+  "baseStats": {
+    "hp": 70,
+    "attack": 110,
+    "defence": 80,
+    "special_attack": 55,
+    "special_defence": 80,
+    "speed": 105
+  },
+  "catchRate": 45,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "baseExperienceYield": 100,
+  "experienceGroup": "medium_fast",
+  "eggCycles": 25,
+  "eggGroups": [
+    "bug"
+  ],
+  "behaviour": {
+    "moving": {
+      "fly": {
+        "canFly": true
+      }
+    }
+  },
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:metal_coat",
+        "percentage": 5
+      },
+      {
+        "item": "cobblemon:black_augurite",
+        "percentage": 5
+      }
+    ]
+  },
+  "moves": [
+    "1:leer",
+    "1:quickattack",
+    "1:vacuumwave",
+    "4:furycutter",
+    "8:falseswipe",
+    "9:pursuit",
+    "12:wingattack",
+    "16:doubleteam",
+    "20:doublehit",
+    "24:slash",
+    "28:focusenergy",
+    "32:agility",
+    "36:airslash",
+    "40:xscissor",
+    "44:laserfocus",
+    "44:swordsdance",
+    "egg:counter",
+    "egg:defog",
+    "egg:feint",
+    "egg:nightslash",
+    "egg:quickguard",
+    "egg:silverwind",
+    "tm:acrobatics",
+    "tm:aerialace",
+    "tm:agility",
+    "tm:aircutter",
+    "tm:airslash",
+    "tm:assurance",
+    "tm:attract",
+    "tm:batonpass",
+    "tm:brickbreak",
+    "tm:brutalswing",
+    "tm:bugbuzz",
+    "tm:captivate",
+    "tm:closecombat",
+    "tm:confide",
+    "tm:crosspoison",
+    "tm:endure",
+    "tm:facade",
+    "tm:falseswipe",
+    "tm:frustration",
+    "tm:gigaimpact",
+    "tm:helpinghand",
+    "tm:hiddenpower",
+    "tm:hyperbeam",
+    "tm:lightscreen",
+    "tm:naturalgift",
+    "tm:pounce",
+    "tm:protect",
+    "tm:psychocut",
+    "tm:raindance",
+    "tm:rest",
+    "tm:return",
+    "tm:reversal",
+    "tm:round",
+    "tm:safeguard",
+    "tm:scaryface",
+    "tm:secretpower",
+    "tm:sleeptalk",
+    "tm:snore",
+    "tm:steelwing",
+    "tm:strugglebug",
+    "tm:substitute",
+    "tm:sunnyday",
+    "tm:swagger",
+    "tm:swift",
+    "tm:swordsdance",
+    "tm:tailwind",
+    "tm:takedown",
+    "tm:terablast",
+    "tm:thief",
+    "tm:trailblaze",
+    "tm:uturn",
+    "tm:xscissor",
+    "tutor:bide",
+    "tutor:bugbite",
+    "tutor:curse",
+    "tutor:cut",
+    "tutor:detect",
+    "tutor:doubleedge",
+    "tutor:dualwingbeat",
+    "tutor:frustration",
+    "tutor:headbutt",
+    "tutor:hiddenpower",
+    "tutor:knockoff",
+    "tutor:mimic",
+    "tutor:morningsun",
+    "tutor:ominouswind",
+    "tutor:pursuit",
+    "tutor:rage",
+    "tutor:razorwind",
+    "tutor:return",
+    "tutor:rocksmash",
+    "tutor:roost",
+    "tutor:skullbash",
+    "tutor:swagger",
+    "tutor:toxic"
+  ],
+  "labels": [
+    "gen1"
+  ],
+  "pokedex": [
+    "cobblemon.species.scyther.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "scyther_scizor",
+      "variant": "trade",
+      "result": "scizor",
+      "consumeHeldItem": true,
+      "learnableMoves": [],
+      "requirements": [
         {
-            "id": "scyther_scizor",
-            "variant": "trade",
-            "result": "scizor",
-            "consumeHeldItem": true,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "held_item",
-                    "item": "cobblemon:metal_coat"
-                }
-            ],
-            "requiredContext": null
+          "variant": "held_item",
+          "item": "cobblemon:metal_coat"
         }
-    ],
-    "baseScale": 0.8,
-    "hitbox": {
-        "width": 0.9,
-        "height": 2,
-        "fixed": false
+      ]
     },
-    "baseFriendship": 50,
-    "evYield": {
-        "attack": 1
-    },
-    "height": 15,
-    "weight": 560
+    {
+      "id": "scyther_kleavor",
+      "variant": "item_interact",
+      "result": "kleavor",
+      "consumeHeldItem": false,
+      "learnableMoves": [],
+      "requirements": [],
+      "requiredContext": "cobblemon:black_augurite"
+    }
+  ],
+  "baseScale": 0.8,
+  "hitbox": {
+    "width": 0.9,
+    "height": 2,
+    "fixed": false
+  },
+  "baseFriendship": 50,
+  "evYield": {
+    "hp": 0,
+    "attack": 1,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
+  },
+  "height": 15,
+  "weight": 560,
+  "aspects": [],
+  "cannotDynamax": false
 }

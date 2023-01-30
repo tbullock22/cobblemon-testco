@@ -9,8 +9,8 @@
 package com.cobblemon.mod.common
 
 import com.cobblemon.mod.common.registry.CompletableRegistry
-import com.cobblemon.mod.common.world.block.entity.HealingMachineBlockEntity
-import com.cobblemon.mod.common.world.block.entity.PCBlockEntity
+import com.cobblemon.mod.common.block.entity.HealingMachineBlockEntity
+import com.cobblemon.mod.common.block.entity.PCBlockEntity
 import dev.architectury.registry.registries.RegistrySupplier
 import java.util.function.Supplier
 import net.minecraft.block.entity.BlockEntityType

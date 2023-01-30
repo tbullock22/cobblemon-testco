@@ -1,121 +1,167 @@
 {
-    "name": "eternatus",
-    "nationalPokedexNumber": 890,
-    "primaryType": "poison",
-    "secondaryType": "dragon",
-    "abilities": [
+  "name": "Eternatus",
+  "nationalPokedexNumber": 890,
+  "primaryType": "poison",
+  "secondaryType": "dragon",
+  "abilities": [
+    "pressure"
+  ],
+  "baseStats": {
+    "hp": 140,
+    "attack": 85,
+    "defence": 95,
+    "special_attack": 145,
+    "special_defence": 95,
+    "speed": 130
+  },
+  "catchRate": 255,
+  "maleRatio": -1,
+  "shoulderMountable": false,
+  "forms": [
+    {
+      "name": "Eternamax",
+      "primaryType": "poison",
+      "secondaryType": "dragon",
+      "abilities": [
         "pressure"
-    ],
-    "baseStats": {
-        "hp": 140,
-        "attack": 85,
-        "defence": 95,
-        "special_attack": 145,
-        "special_defence": 95,
+      ],
+      "baseStats": {
+        "hp": 255,
+        "attack": 115,
+        "defence": 250,
+        "special_attack": 125,
+        "special_defence": 250,
         "speed": 130
-    },
-    "catchRate": 255,
-    "maleRatio": -1,
-    "shoulderMountable": false,
-    "forms": [
-        {
-            "name": "eternamax",
-            "baseStats": {
-                "hp": 255,
-                "attack": 115,
-                "defence": 250,
-                "special_attack": 125,
-                "special_defence": 250,
-                "speed": 130
-            },
-            "baseExperienceYield": 563,
-            "pokedex": [
-                "cobblemon.form.eternatus-eternamax.desc1",
-                "cobblemon.form.eternatus-eternamax.desc2"
-            ],
-            "height": 1000,
-            "weight": 0
-        }
-    ],
-    "baseExperienceYield": 345,
-    "experienceGroup": "slow",
-    "eggCycles": 120,
-    "eggGroups": [
+      },
+      "catchRate": 255,
+      "maleRatio": -1,
+      "baseExperienceYield": 563,
+      "baseFriendship": 0,
+      "evYield": {
+        "hp": 3,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "slow",
+      "eggCycles": 120,
+      "eggGroups": [
         "undiscovered"
-    ],
-    "moves": [
-        "1:agility",
-        "1:confuseray",
-        "1:poisontail",
-        "1:dragontail",
-        "8:toxic",
-        "16:venoshock",
-        "24:dragondance",
-        "32:crosspoison",
-        "40:dragonpulse",
-        "48:flamethrower",
-        "56:dynamaxcannon",
-        "64:cosmicpower",
-        "72:recover",
-        "80:hyperbeam",
-        "88:eternabeam",
-        "tm:agility",
-        "tm:assurance",
-        "tm:brutalswing",
-        "tm:cosmicpower",
-        "tm:crosspoison",
-        "tm:dragondance",
-        "tm:dragonpulse",
-        "tm:endure",
-        "tm:facade",
-        "tm:flamethrower",
-        "tm:flashcannon",
-        "tm:fly",
-        "tm:gigaimpact",
-        "tm:hyperbeam",
-        "tm:lightscreen",
-        "tm:mysticalfire",
-        "tm:payback",
-        "tm:poisonjab",
-        "tm:protect",
-        "tm:reflect",
-        "tm:rest",
-        "tm:round",
-        "tm:scaryface",
-        "tm:screech",
-        "tm:shadowball",
-        "tm:sleeptalk",
-        "tm:sludgebomb",
-        "tm:sludgewave",
-        "tm:snore",
-        "tm:solarbeam",
-        "tm:substitute",
-        "tm:toxicspikes",
-        "tm:venomdrench",
-        "tm:venoshock",
-        "tutor:dracometeor",
-        "tutor:meteorbeam"
-    ],
-    "labels": [
+      ],
+      "moves": [],
+      "labels": [
         "gen8",
         "legendary"
-    ],
-    "pokedex": [
-        "cobblemon.species.eternatus.desc1",
-        "cobblemon.species.eternatus.desc2"
-    ],
-    "evolutions": [],
-    "baseScale": 1.0,
-    "hitbox": {
-        "width": 1.0,
-        "height": 1.0,
-        "fixed": false
-    },
-    "baseFriendship": 0,
-    "evYield": {
-        "hp": 3
-    },
-    "height": 200,
-    "weight": 9500,
-    "dynamaxBlocked": true
+      ],
+      "aspects": [
+        "eternamax"
+      ],
+      "height": 1000,
+      "weight": 0,
+      "evolutions": [],
+      "cannotDynamax": true,
+      "battleOnly": false
+    }
+  ],
+  "baseExperienceYield": 345,
+  "experienceGroup": "slow",
+  "eggCycles": 120,
+  "eggGroups": [
+    "undiscovered"
+  ],
+  "moves": [
+    "1:agility",
+    "1:confuseray",
+    "1:dragontail",
+    "1:poisontail",
+    "8:toxic",
+    "16:venoshock",
+    "24:dragondance",
+    "32:crosspoison",
+    "40:dragonpulse",
+    "48:flamethrower",
+    "56:dynamaxcannon",
+    "64:cosmicpower",
+    "72:recover",
+    "80:hyperbeam",
+    "88:eternabeam",
+    "88:outrage",
+    "tm:agility",
+    "tm:assurance",
+    "tm:bodyslam",
+    "tm:brutalswing",
+    "tm:confuseray",
+    "tm:dracometeor",
+    "tm:dragondance",
+    "tm:dragonpulse",
+    "tm:dragontail",
+    "tm:endure",
+    "tm:facade",
+    "tm:fireblast",
+    "tm:firespin",
+    "tm:flamethrower",
+    "tm:flashcannon",
+    "tm:fly",
+    "tm:gigaimpact",
+    "tm:gunkshot",
+    "tm:hyperbeam",
+    "tm:lightscreen",
+    "tm:mysticalfire",
+    "tm:outrage",
+    "tm:payback",
+    "tm:poisonjab",
+    "tm:poisontail",
+    "tm:protect",
+    "tm:raindance",
+    "tm:reflect",
+    "tm:rest",
+    "tm:round",
+    "tm:scaryface",
+    "tm:screech",
+    "tm:shadowball",
+    "tm:sleeptalk",
+    "tm:sludgebomb",
+    "tm:sludgewave",
+    "tm:snore",
+    "tm:solarbeam",
+    "tm:substitute",
+    "tm:sunnyday",
+    "tm:takedown",
+    "tm:terablast",
+    "tm:toxicspikes",
+    "tm:venomdrench",
+    "tm:venoshock",
+    "tutor:eternabeam",
+    "tutor:meteorbeam"
+  ],
+  "labels": [
+    "gen8",
+    "legendary"
+  ],
+  "pokedex": [
+    "cobblemon.species.eternatus.desc"
+  ],
+  "evolutions": [],
+  "baseScale": 1,
+  "hitbox": {
+    "width": 1,
+    "height": 1,
+    "fixed": false
+  },
+  "baseFriendship": 0,
+  "evYield": {
+    "hp": 3,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
+  },
+  "height": 200,
+  "weight": 9500,
+  "dynamaxBlocked": true,
+  "aspects": [],
+  "cannotDynamax": true
 }

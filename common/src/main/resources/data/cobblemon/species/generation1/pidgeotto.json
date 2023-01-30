@@ -1,152 +1,166 @@
 {
-    "implemented": true,
-    "name": "pidgeotto",
-    "nationalPokedexNumber": 17,
-    "primaryType": "normal",
-    "secondaryType": "flying",
-    "abilities": [
-        "keeneye",
-        "tangledfeet",
-        "h:bigpecks"
-    ],
-    "baseStats": {
-        "hp": 63,
-        "attack": 60,
-        "defence": 55,
-        "special_attack": 50,
-        "special_defence": 50,
-        "speed": 71
-    },
-    "catchRate": 120,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 122,
-    "experienceGroup": "mediumslow",
-    "eggCycles": 15,
-    "eggGroups": [
-        "flying"
-    ],
-    "behaviour": {
-        "moving": {
-            "fly": {
-                "canFly": true
-            }
-        }
-    },
-    "drops": {
-        "amount": "2",
-        "entries": [
-            {
-                "item": "minecraft:feather",
-                "quantityRange": "1-2",
-                "percentage": 66
-            },
-            {
-                "item": "minecraft:chicken"
-            }
-        ]
-    },
-    "moves": [
-        "1:gust",
-        "1:sandattack",
-        "1:tackle",
-        "1:quickattack",
-        "3:sandattack",
-        "5:gust",
-        "9:quickattack",
-        "11:mirrormove",
-        "15:wingattack",
-        "17:roost",
-        "22:twister",
-        "25:whirlwind",
-        "27:featherdance",
-        "31:agility",
-        "39:airslash",
-        "45:razorwind",
-        "47:tailwind",
-        "62:hurricane",
-        "tm:aerialace",
-        "tm:attract",
-        "tm:bide",
-        "tm:captivate",
-        "tm:confide",
-        "tm:curse",
-        "tm:detect",
-        "tm:doubleteam",
-        "tm:endure",
-        "tm:facade",
-        "tm:fly",
-        "tm:frustration",
-        "tm:headbutt",
-        "tm:hiddenpower",
-        "tm:naturalgift",
-        "tm:pluck",
-        "tm:protect",
-        "tm:rage",
-        "tm:raindance",
-        "tm:reflect",
-        "tm:rest",
-        "tm:return",
-        "tm:roost",
-        "tm:round",
-        "tm:secretpower",
-        "tm:sleeptalk",
-        "tm:steelwing",
-        "tm:substitute",
-        "tm:sunnyday",
-        "tm:swagger",
-        "tm:takedown",
-        "tm:thief",
-        "tm:toxic",
-        "tm:uturn",
-        "tm:workup",
-        "tutor:aircutter",
-        "tutor:defog",
-        "tutor:doubleedge",
-        "tutor:heatwave",
-        "tutor:mimic",
-        "tutor:mudslap",
-        "tutor:ominouswind",
-        "tutor:skyattack",
-        "tutor:snore",
-        "tutor:swift",
-        "tutor:tailwind",
-        "tutor:uproar"
-    ],
-    "labels": [
-        "gen1"
-    ],
-    "pokedex": [
-        "cobblemon.species.pidgeotto.desc1",
-        "cobblemon.species.pidgeotto.desc2"
-    ],
-    "preEvolution": "pidgey",
-    "evolutions": [
+  "implemented": true,
+  "name": "Pidgeotto",
+  "nationalPokedexNumber": 17,
+  "primaryType": "normal",
+  "secondaryType": "flying",
+  "abilities": [
+    "keeneye",
+    "tangledfeet",
+    "h:bigpecks"
+  ],
+  "baseStats": {
+    "hp": 63,
+    "attack": 60,
+    "defence": 55,
+    "special_attack": 50,
+    "special_defence": 50,
+    "speed": 71
+  },
+  "catchRate": 120,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "baseExperienceYield": 122,
+  "experienceGroup": "medium_slow",
+  "eggCycles": 15,
+  "eggGroups": [
+    "flying"
+  ],
+  "behaviour": {
+    "moving": {
+      "fly": {
+        "canFly": true
+      }
+    }
+  },
+  "drops": {
+    "amount": "2",
+    "entries": [
+      {
+        "item": "minecraft:feather",
+        "quantityRange": "1-2",
+        "percentage": 66
+      },
+      {
+        "item": "minecraft:chicken"
+      }
+    ]
+  },
+  "moves": [
+    "22:twister",
+    "27:featherdance",
+    "47:tailwind",
+    "62:hurricane",
+    "tm:aerialace",
+    "tm:attract",
+    "tm:captivate",
+    "tm:confide",
+    "tm:doubleteam",
+    "tm:frustration",
+    "tm:hiddenpower",
+    "tm:naturalgift",
+    "tm:pluck",
+    "tm:raindance",
+    "tm:return",
+    "tm:round",
+    "tm:secretpower",
+    "tm:sleeptalk",
+    "tm:steelwing",
+    "tm:sunnyday",
+    "tm:swagger",
+    "tm:thief",
+    "tm:workup",
+    "tutor:agility",
+    "tutor:aircutter",
+    "tutor:airslash",
+    "tutor:attract",
+    "tutor:bide",
+    "tutor:curse",
+    "tutor:defog",
+    "tutor:detect",
+    "tutor:doubleedge",
+    "tutor:doubleteam",
+    "tutor:endure",
+    "tutor:facade",
+    "tutor:fly",
+    "tutor:frustration",
+    "tutor:gust",
+    "tutor:headbutt",
+    "tutor:heatwave",
+    "tutor:hiddenpower",
+    "tutor:mimic",
+    "tutor:mirrormove",
+    "tutor:mudslap",
+    "tutor:ominouswind",
+    "tutor:protect",
+    "tutor:quickattack",
+    "tutor:rage",
+    "tutor:razorwind",
+    "tutor:reflect",
+    "tutor:refresh",
+    "tutor:rest",
+    "tutor:return",
+    "tutor:roost",
+    "tutor:sandattack",
+    "tutor:skyattack",
+    "tutor:skyattack",
+    "tutor:sleeptalk",
+    "tutor:snore",
+    "tutor:snore",
+    "tutor:steelwing",
+    "tutor:substitute",
+    "tutor:sunnyday",
+    "tutor:swagger",
+    "tutor:swift",
+    "tutor:tackle",
+    "tutor:tailwind",
+    "tutor:takedown",
+    "tutor:thief",
+    "tutor:toxic",
+    "tutor:uproar",
+    "tutor:uturn",
+    "tutor:whirlwind",
+    "tutor:wingattack"
+  ],
+  "labels": [
+    "gen1"
+  ],
+  "pokedex": [
+    "cobblemon.species.pidgeotto.desc"
+  ],
+  "preEvolution": "pidgey",
+  "evolutions": [
+    {
+      "id": "pidgeotto_pidgeot",
+      "variant": "level_up",
+      "result": "pidgeot",
+      "consumeHeldItem": false,
+      "learnableMoves": [],
+      "requirements": [
         {
-            "id": "pidgeotto_pidgeot",
-            "variant": "level_up",
-            "result": "pidgeot",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "level",
-                    "minLevel": 36
-                }
-            ]
+          "variant": "level",
+          "amount": 36
         }
-    ],
-    "baseScale": 1.1,
-    "hitbox": {
-        "width": 0.6,
-        "height": 1.0,
-        "fixed": false
-    },
-    "baseFriendship": 70,
-    "evYield": {
-        "speed": 2
-    },
-    "height": 11,
-    "weight": 300
+      ]
+    }
+  ],
+  "baseScale": 1.1,
+  "hitbox": {
+    "width": 0.6,
+    "height": 1,
+    "fixed": false
+  },
+  "baseFriendship": 70,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 2
+  },
+  "height": 11,
+  "weight": 300,
+  "aspects": [],
+  "cannotDynamax": false
 }

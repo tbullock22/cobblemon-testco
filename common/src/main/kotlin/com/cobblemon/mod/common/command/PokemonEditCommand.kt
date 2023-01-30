@@ -39,20 +39,27 @@ object PokemonEditCommand {
             .permission(CobblemonPermissions.POKEMON_EDIT_SELF)
             .then(argument(SLOT, PartySlotArgumentType.partySlot())
                 .then(argument(PROPERTIES, PokemonPropertiesArgumentType.properties())
-                    .executes{ execute(it, it.source.playerOrThrow) })))
+                    .executes{ execute(it, it.source.playerOrThrow) }
+                )
+            )
+        )
         dispatcher.register(selfCommand.alias(ALIAS))
 
         val otherCommand = dispatcher.register(literal(NAME_OTHER)
             .permission(CobblemonPermissions.POKEMON_EDIT_OTHER)
-            .then(argument(PLAYER, EntityArgumentType.player()))
+            .then(argument(PLAYER, EntityArgumentType.player())
                 .then(argument(SLOT, PartySlotArgumentType.partySlot())
                     .then(argument(PROPERTIES, PokemonPropertiesArgumentType.properties())
-                        .executes{ execute(it, it.player()) })))
+                        .executes { execute(it, it.player()) }
+                    )
+                )
+            )
+        )
         dispatcher.register(otherCommand.alias(ALIAS_OTHER))
     }
 
     private fun execute(context: CommandContext<ServerCommandSource>, player: ServerPlayerEntity): Int {
-        val pokemon = PartySlotArgumentType.getPokemon(context, SLOT)
+        val pokemon = PartySlotArgumentType.getPokemonOf(context, SLOT, player)
         val oldName = pokemon.species.translatedName
         val properties = PokemonPropertiesArgumentType.getPokemonProperties(context, PROPERTIES)
         properties.apply(pokemon)

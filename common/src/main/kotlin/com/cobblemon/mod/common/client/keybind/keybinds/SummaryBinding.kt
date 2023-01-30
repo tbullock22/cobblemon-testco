@@ -22,6 +22,8 @@ object SummaryBinding : CobblemonPartyLockedKeyBinding(
     KeybindCategories.COBBLEMON_CATEGORY
 ) {
     override fun onPress() {
-        MinecraftClient.getInstance().setScreen(Summary(CobblemonClient.storage.myParty))
+        if (CobblemonClient.storage.selectedSlot >= 0) {
+            MinecraftClient.getInstance().setScreen(Summary(CobblemonClient.storage.myParty))
+        }
     }
 }

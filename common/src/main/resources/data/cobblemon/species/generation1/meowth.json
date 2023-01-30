@@ -1,9 +1,13 @@
 {
   "implemented": true,
-  "name": "meowth",
+  "name": "Meowth",
   "nationalPokedexNumber": 52,
   "primaryType": "normal",
-  "abilities": ["pickup", "technician", "h:unnerve"],
+  "abilities": [
+    "pickup",
+    "technician",
+    "h:unnerve"
+  ],
   "baseStats": {
     "hp": 40,
     "attack": 45,
@@ -17,13 +21,13 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "alola",
-      "aspects": ["alolan"],
+      "name": "Alola",
       "primaryType": "dark",
-      "abilities": ["pickup", "technician", "h:rattled"],
+      "abilities": [
+        "pickup",
+        "technician",
+        "h:rattled"
+      ],
       "baseStats": {
         "hp": 40,
         "attack": 35,
@@ -32,9 +36,26 @@
         "special_defence": 40,
         "speed": 90
       },
+      "catchRate": 255,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 58,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 1
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "field"
+      ],
       "moves": [
-        "1:growl",
         "1:fakeout",
+        "1:growl",
         "4:feint",
         "8:scratch",
         "12:payday",
@@ -42,7 +63,6 @@
         "20:taunt",
         "22:feintattack",
         "24:assurance",
-        "27:slash",
         "29:furyswipes",
         "32:screech",
         "36:nightslash",
@@ -59,32 +79,35 @@
         "egg:snatch",
         "egg:spite",
         "tm:aerialace",
+        "tm:agility",
         "tm:amnesia",
-        "tm:assurance",
         "tm:attract",
         "tm:bodyslam",
         "tm:charm",
+        "tm:chillingwater",
         "tm:confide",
+        "tm:confuseray",
         "tm:darkpulse",
         "tm:dig",
         "tm:doubleteam",
-        "tm:dreameater",
         "tm:echoedvoice",
         "tm:embargo",
         "tm:endure",
         "tm:facade",
+        "tm:faketears",
         "tm:foulplay",
         "tm:frustration",
         "tm:gunkshot",
-        "tm:headbutt",
+        "tm:helpinghand",
         "tm:hiddenpower",
         "tm:hypervoice",
         "tm:icywind",
         "tm:irontail",
+        "tm:metalclaw",
         "tm:nastyplot",
         "tm:payback",
-        "tm:payday",
         "tm:playrough",
+        "tm:powergem",
         "tm:protect",
         "tm:psychup",
         "tm:quash",
@@ -93,45 +116,59 @@
         "tm:retaliate",
         "tm:return",
         "tm:round",
-        "tm:screech",
         "tm:seedbomb",
         "tm:shadowball",
         "tm:shadowclaw",
         "tm:sleeptalk",
+        "tm:snarl",
         "tm:snore",
         "tm:substitute",
         "tm:sunnyday",
         "tm:swagger",
         "tm:swift",
+        "tm:takedown",
         "tm:taunt",
+        "tm:terablast",
         "tm:thief",
         "tm:throatchop",
         "tm:thunder",
         "tm:thunderbolt",
+        "tm:thunderwave",
         "tm:torment",
-        "tm:toxic",
+        "tm:trailblaze",
         "tm:uproar",
         "tm:uturn",
         "tm:workup",
+        "tutor:dreameater",
+        "tutor:headbutt",
+        "tutor:irontail",
         "tutor:knockoff",
         "tutor:lashout",
         "tutor:lastresort",
         "tutor:shockwave",
+        "tutor:slash",
         "tutor:snatch",
+        "tutor:toxic",
         "tutor:waterpulse"
       ],
-      "pokedex": [
-        "cobblemon.form.meowth-alola.desc1",
-        "cobblemon.form.meowth-alola.desc2"
+      "labels": [
+        "gen7",
+        "alola_regional"
       ],
-      "labels": ["gen1", "alola_regional", "regional"],
+      "aspects": [
+        "alolan"
+      ],
+      "height": 4,
+      "weight": 42,
       "evolutions": [
         {
-          "id": "meowth_persian_alola",
+          "id": "meowth_persian",
           "variant": "level_up",
-          "result": "persian alolan",
+          "result": "persian form=alola",
           "consumeHeldItem": false,
-          "learnableMoves": [],
+          "learnableMoves": [
+            "powergem"
+          ],
           "requirements": [
             {
               "variant": "friendship",
@@ -139,12 +176,18 @@
             }
           ]
         }
-      ]
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     },
     {
-      "name": "galar",
+      "name": "Galar",
       "primaryType": "steel",
-      "abilities": ["pickup", "toughclaws", "h:unnerve"],
+      "abilities": [
+        "pickup",
+        "toughclaws",
+        "h:unnerve"
+      ],
       "baseStats": {
         "hp": 50,
         "attack": 65,
@@ -153,12 +196,26 @@
         "special_defence": 40,
         "speed": 40
       },
+      "catchRate": 255,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 58,
+      "baseFriendship": 50,
       "evYield": {
-        "attack": 1
+        "hp": 0,
+        "attack": 1,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
       },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "field"
+      ],
       "moves": [
-        "1:growl",
         "1:fakeout",
+        "1:growl",
         "4:honeclaws",
         "8:scratch",
         "12:payday",
@@ -176,57 +233,73 @@
         "egg:flail",
         "egg:nightslash",
         "egg:spite",
+        "tm:aerialace",
         "tm:amnesia",
         "tm:assurance",
         "tm:attract",
         "tm:bodyslam",
+        "tm:brickbreak",
+        "tm:charm",
         "tm:crunch",
         "tm:darkpulse",
         "tm:dig",
         "tm:endure",
         "tm:facade",
+        "tm:faketears",
+        "tm:falseswipe",
+        "tm:flashcannon",
+        "tm:fling",
         "tm:foulplay",
         "tm:gunkshot",
         "tm:gyroball",
+        "tm:helpinghand",
         "tm:hypervoice",
         "tm:irondefense",
         "tm:ironhead",
         "tm:irontail",
+        "tm:metalclaw",
+        "tm:metronome",
         "tm:nastyplot",
         "tm:payback",
-        "tm:payday",
         "tm:playrough",
         "tm:protect",
         "tm:raindance",
         "tm:rest",
         "tm:retaliate",
         "tm:round",
-        "tm:screech",
         "tm:seedbomb",
         "tm:shadowball",
         "tm:shadowclaw",
         "tm:sleeptalk",
         "tm:snore",
+        "tm:stealthrock",
+        "tm:steelbeam",
         "tm:substitute",
         "tm:sunnyday",
         "tm:swordsdance",
+        "tm:takedown",
         "tm:taunt",
+        "tm:terablast",
         "tm:thief",
         "tm:throatchop",
         "tm:thunder",
         "tm:thunderbolt",
+        "tm:trailblaze",
         "tm:uproar",
         "tm:uturn",
         "tm:workup",
-        "tutor:lashout",
-        "tutor:steelbeam"
+        "tm:xscissor",
+        "tutor:lashout"
       ],
-      "pokedex": [
-        "cobblemon.form.meowth-galar.desc1",
-        "cobblemon.form.meowth-galar.desc2"
+      "labels": [
+        "gen8",
+        "galar_regional"
       ],
+      "aspects": [
+        "galarian"
+      ],
+      "height": 4,
       "weight": 75,
-      "labels": ["gen1", "galar_regional", "regional"],
       "evolutions": [
         {
           "id": "meowth_perrserker",
@@ -237,29 +310,68 @@
           "requirements": [
             {
               "variant": "level",
-              "minLevel": 28
+              "amount": 28
             }
           ]
         }
-      ]
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     },
     {
-      "name": "gmax",
-      "aspects": ["gmax"],
+      "name": "Gmax",
+      "primaryType": "normal",
+      "abilities": [
+        "pickup",
+        "technician",
+        "h:unnerve"
+      ],
+      "baseStats": {
+        "hp": 40,
+        "attack": 45,
+        "defence": 35,
+        "special_attack": 40,
+        "special_defence": 40,
+        "speed": 90
+      },
+      "catchRate": 255,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 58,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 1
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "field"
+      ],
       "moves": [],
-      "labels": ["gen1", "gmax"],
-      "pokedex": [
-        "cobblemon.form.meowth-gmax.desc1",
-        "cobblemon.form.meowth-gmax.desc2"
+      "labels": [
+        "gen8",
+        "gmax"
+      ],
+      "aspects": [
+        "gmax"
       ],
       "height": 330,
-      "weight": 10000
+      "weight": 0,
+      "evolutions": [],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 58,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 20,
-  "eggGroups": ["field"],
+  "eggGroups": [
+    "field"
+  ],
   "drops": {
     "amount": "1",
     "entries": [
@@ -271,8 +383,8 @@
     ]
   },
   "moves": [
-    "1:growl",
     "1:fakeout",
+    "1:growl",
     "4:feint",
     "8:scratch",
     "12:payday",
@@ -298,54 +410,52 @@
     "egg:spite",
     "egg:tailwhip",
     "tm:aerialace",
+    "tm:agility",
     "tm:amnesia",
-    "tm:assurance",
     "tm:attract",
-    "tm:bide",
     "tm:bodyslam",
-    "tm:bubblebeam",
     "tm:charm",
+    "tm:chillingwater",
     "tm:confide",
-    "tm:curse",
     "tm:cut",
     "tm:darkpulse",
-    "tm:detect",
     "tm:dig",
     "tm:doubleteam",
     "tm:dreameater",
     "tm:echoedvoice",
     "tm:endure",
     "tm:facade",
+    "tm:faketears",
+    "tm:falseswipe",
     "tm:flash",
     "tm:foulplay",
     "tm:frustration",
     "tm:gunkshot",
-    "tm:headbutt",
+    "tm:helpinghand",
     "tm:hiddenpower",
     "tm:honeclaws",
     "tm:hypervoice",
     "tm:icywind",
     "tm:irontail",
+    "tm:metalclaw",
     "tm:nastyplot",
     "tm:naturalgift",
     "tm:payback",
-    "tm:payday",
     "tm:playrough",
+    "tm:powergem",
     "tm:protect",
     "tm:psychup",
-    "tm:rage",
     "tm:raindance",
     "tm:rest",
     "tm:retaliate",
     "tm:return",
     "tm:round",
-    "tm:screech",
     "tm:secretpower",
     "tm:seedbomb",
     "tm:shadowball",
     "tm:shadowclaw",
-    "tm:skullbash",
     "tm:sleeptalk",
+    "tm:snarl",
     "tm:snore",
     "tm:substitute",
     "tm:sunnyday",
@@ -353,30 +463,58 @@
     "tm:swift",
     "tm:takedown",
     "tm:taunt",
+    "tm:terablast",
     "tm:thief",
     "tm:throatchop",
     "tm:thunder",
     "tm:thunderbolt",
+    "tm:thunderwave",
     "tm:torment",
-    "tm:toxic",
+    "tm:trailblaze",
     "tm:uproar",
     "tm:uturn",
-    "tm:watergun",
     "tm:workup",
-    "tm:zapcannon",
+    "tutor:bide",
+    "tutor:bubblebeam",
+    "tutor:curse",
     "tutor:defensecurl",
+    "tutor:detect",
     "tutor:doubleedge",
+    "tutor:doubleteam",
+    "tutor:dreameater",
+    "tutor:feintattack",
+    "tutor:frustration",
+    "tutor:happyhour",
+    "tutor:headbutt",
+    "tutor:hiddenpower",
+    "tutor:irontail",
     "tutor:knockoff",
     "tutor:lashout",
     "tutor:mimic",
     "tutor:mudslap",
     "tutor:nightmare",
+    "tutor:petaldance",
+    "tutor:psychup",
+    "tutor:rage",
+    "tutor:return",
     "tutor:shockwave",
+    "tutor:sing",
+    "tutor:skullbash",
     "tutor:snatch",
-    "tutor:waterpulse"
+    "tutor:swagger",
+    "tutor:toxic",
+    "tutor:watergun",
+    "tutor:waterpulse",
+    "tutor:zapcannon"
   ],
-  "labels": ["gen1", "kanto_regional", "regional"],
-  "pokedex": ["cobblemon.species.meowth.desc1", "cobblemon.species.meowth.desc2"],
+  "labels": [
+    "gen1",
+    "kanto_regional",
+    "kanto_regional"
+  ],
+  "pokedex": [
+    "cobblemon.species.meowth.desc"
+  ],
   "baseScale": 0.7,
   "hitbox": {
     "width": 0.6,
@@ -385,6 +523,11 @@
   },
   "baseFriendship": 50,
   "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
     "speed": 1
   },
   "height": 4,
@@ -395,13 +538,17 @@
       "variant": "level_up",
       "result": "persian",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "powergem"
+      ],
       "requirements": [
         {
           "variant": "level",
-          "minLevel": 28
+          "amount": 28
         }
       ]
     }
-  ]
+  ],
+  "aspects": [],
+  "cannotDynamax": false
 }

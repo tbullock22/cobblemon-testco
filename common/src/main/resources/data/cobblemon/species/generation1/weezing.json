@@ -1,9 +1,13 @@
 {
   "implemented": true,
-  "name": "weezing",
+  "name": "Weezing",
   "nationalPokedexNumber": 110,
   "primaryType": "poison",
-  "abilities": ["levitate", "neutralizinggas", "h:stench"],
+  "abilities": [
+    "levitate",
+    "neutralizinggas",
+    "h:stench"
+  ],
   "baseStats": {
     "hp": 65,
     "attack": 90,
@@ -15,29 +19,55 @@
   "catchRate": 60,
   "maleRatio": 0.5,
   "shoulderMountable": false,
-  "features": ["galarian"],
+  "features": [
+    "galarian"
+  ],
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "galar",
-      "aspects": ["galarian"],
+      "name": "Galar",
+      "primaryType": "poison",
       "secondaryType": "fairy",
-      "abilities": ["levitate", "neutralizinggas", "h:mistysurge"],
+      "abilities": [
+        "levitate",
+        "neutralizinggas",
+        "h:mistysurge"
+      ],
+      "baseStats": {
+        "hp": 65,
+        "attack": 90,
+        "defence": 120,
+        "special_attack": 85,
+        "special_defence": 70,
+        "speed": 60
+      },
+      "catchRate": 60,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 172,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 2,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "amorphous"
+      ],
       "moves": [
-        "0:doublehit",
-        "1:tackle",
-        "1:smokescreen",
-        "1:haze",
-        "1:smog",
-        "1:poisongas",
-        "1:heatwave",
-        "1:defog",
-        "1:doublehit",
-        "1:fairywind",
         "1:aromaticmist",
+        "1:defog",
+        "1:fairywind",
+        "1:haze",
+        "1:heatwave",
+        "1:poisongas",
+        "1:smog",
+        "1:smokescreen",
         "1:strangesteam",
+        "1:tackle",
         "12:clearsmog",
         "16:assurance",
         "20:sludge",
@@ -93,19 +123,27 @@
         "tutor:corrosivegas",
         "tutor:mistyexplosion"
       ],
-      "pokedex": [
-        "cobblemon.form.weezing-galar.desc1",
-        "cobblemon.form.weezing-galar.desc2"
+      "labels": [
+        "gen8",
+        "galar_regional"
+      ],
+      "aspects": [
+        "galarian"
       ],
       "height": 30,
       "weight": 160,
-      "labels": ["gen1", "galar_regional", "regional"]
+      "preEvolution": "koffing",
+      "evolutions": [],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 172,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 20,
-  "eggGroups": ["amorphous"],
+  "eggGroups": [
+    "amorphous"
+  ],
   "behaviour": {
     "moving": {
       "fly": {
@@ -117,14 +155,11 @@
     }
   },
   "moves": [
-    "0:doublehit",
-    "1:tackle",
-    "1:psybeam",
-    "1:smokescreen",
-    "1:smog",
-    "1:poisongas",
     "1:heatwave",
-    "1:doublehit",
+    "1:poisongas",
+    "1:smog",
+    "1:smokescreen",
+    "1:tackle",
     "12:clearsmog",
     "16:assurance",
     "20:sludge",
@@ -138,10 +173,8 @@
     "62:destinybond",
     "tm:assurance",
     "tm:attract",
-    "tm:bide",
     "tm:captivate",
     "tm:confide",
-    "tm:curse",
     "tm:darkpulse",
     "tm:doubleteam",
     "tm:endure",
@@ -152,7 +185,6 @@
     "tm:frustration",
     "tm:gigaimpact",
     "tm:gyroball",
-    "tm:headbutt",
     "tm:heatwave",
     "tm:hiddenpower",
     "tm:hyperbeam",
@@ -161,7 +193,6 @@
     "tm:naturalgift",
     "tm:payback",
     "tm:protect",
-    "tm:rage",
     "tm:raindance",
     "tm:rest",
     "tm:return",
@@ -187,16 +218,55 @@
     "tm:venomdrench",
     "tm:venoshock",
     "tm:willowisp",
-    "tm:zapcannon",
+    "tutor:bide",
+    "tutor:clearsmog",
     "tutor:corrosivegas",
+    "tutor:curse",
+    "tutor:darkpulse",
+    "tutor:doubleteam",
+    "tutor:explosion",
+    "tutor:facade",
+    "tutor:fireblast",
+    "tutor:flamethrower",
+    "tutor:frustration",
+    "tutor:haze",
+    "tutor:headbutt",
+    "tutor:hiddenpower",
+    "tutor:hyperbeam",
     "tutor:mimic",
     "tutor:painsplit",
+    "tutor:poisongas",
+    "tutor:protect",
+    "tutor:psybeam",
+    "tutor:rage",
+    "tutor:rest",
+    "tutor:return",
     "tutor:rollout",
+    "tutor:screech",
+    "tutor:selfdestruct",
+    "tutor:shadowball",
     "tutor:shockwave",
-    "tutor:spite"
+    "tutor:sludge",
+    "tutor:sludgebomb",
+    "tutor:smog",
+    "tutor:spite",
+    "tutor:substitute",
+    "tutor:swagger",
+    "tutor:tackle",
+    "tutor:taunt",
+    "tutor:thunder",
+    "tutor:thunderbolt",
+    "tutor:toxic",
+    "tutor:willowisp",
+    "tutor:zapcannon"
   ],
-  "labels": ["gen1", "kanto_regional", "regional"],
-  "pokedex": ["cobblemon.species.weezing.desc1", "cobblemon.species.weezing.desc2"],
+  "labels": [
+    "gen1",
+    "kanto_regional"
+  ],
+  "pokedex": [
+    "cobblemon.species.weezing.desc"
+  ],
   "preEvolution": "koffing",
   "evolutions": [],
   "baseScale": 1.2,
@@ -207,8 +277,15 @@
   },
   "baseFriendship": 50,
   "evYield": {
-    "defence": 2
+    "hp": 0,
+    "attack": 0,
+    "defence": 2,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 12,
-  "weight": 95
+  "weight": 95,
+  "aspects": [],
+  "cannotDynamax": false
 }

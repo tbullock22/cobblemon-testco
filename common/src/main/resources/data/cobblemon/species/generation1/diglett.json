@@ -1,9 +1,13 @@
 {
   "implemented": true,
-  "name": "diglett",
+  "name": "Diglett",
   "nationalPokedexNumber": 50,
   "primaryType": "ground",
-  "abilities": ["sandveil", "arenatrap", "h:sandforce"],
+  "abilities": [
+    "sandveil",
+    "arenatrap",
+    "h:sandforce"
+  ],
   "baseStats": {
     "hp": 10,
     "attack": 55,
@@ -17,13 +21,14 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "alola",
-      "aspects": ["alolan"],
+      "name": "Alola",
+      "primaryType": "ground",
       "secondaryType": "steel",
-      "abilities": ["sandveil", "tanglinghair", "h:sandforce"],
+      "abilities": [
+        "sandveil",
+        "tanglinghair",
+        "h:sandforce"
+      ],
       "baseStats": {
         "hp": 10,
         "attack": 55,
@@ -32,18 +37,32 @@
         "special_defence": 45,
         "speed": 90
       },
+      "catchRate": 255,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 53,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 1
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "field"
+      ],
       "moves": [
-        "1:scratch",
-        "1:sandattack",
         "1:metalclaw",
+        "1:sandattack",
         "4:growl",
         "8:astonish",
         "12:mudslap",
         "14:magnitude",
-        "15:furyswipes",
         "16:bulldoze",
         "20:suckerpunch",
-        "21:slash",
         "24:ironhead",
         "25:mudbomb",
         "28:sandstorm",
@@ -68,6 +87,7 @@
         "tm:beatup",
         "tm:bodyslam",
         "tm:bulldoze",
+        "tm:charm",
         "tm:confide",
         "tm:dig",
         "tm:doubleteam",
@@ -77,62 +97,85 @@
         "tm:endure",
         "tm:facade",
         "tm:flashcannon",
+        "tm:foulplay",
         "tm:frustration",
+        "tm:helpinghand",
         "tm:hiddenpower",
         "tm:irondefense",
         "tm:ironhead",
+        "tm:metalclaw",
+        "tm:mudshot",
+        "tm:mudslap",
         "tm:protect",
         "tm:rest",
         "tm:return",
         "tm:reversal",
+        "tm:rockblast",
         "tm:rockslide",
         "tm:rocktomb",
         "tm:round",
         "tm:sandstorm",
+        "tm:scaryface",
         "tm:screech",
         "tm:shadowclaw",
         "tm:sleeptalk",
         "tm:sludgebomb",
         "tm:snore",
         "tm:stealthrock",
+        "tm:steelbeam",
         "tm:stompingtantrum",
+        "tm:stoneedge",
         "tm:substitute",
         "tm:sunnyday",
         "tm:swagger",
+        "tm:swordsdance",
+        "tm:takedown",
+        "tm:terablast",
         "tm:thief",
-        "tm:toxic",
         "tm:uproar",
         "tm:workup",
+        "tutor:furyswipes",
         "tutor:scorchingsands",
-        "tutor:steelbeam"
+        "tutor:scratch",
+        "tutor:slash",
+        "tutor:toxic"
       ],
-      "pokedex": [
-        "cobblemon.form.diglett-alola.desc1",
-        "cobblemon.form.diglett-alola.desc2"
+      "labels": [
+        "gen7",
+        "alola_regional"
       ],
+      "aspects": [
+        "alolan"
+      ],
+      "height": 2,
       "weight": 10,
-      "labels": ["gen1", "alola_regional", "regional"],
       "evolutions": [
         {
-          "id": "diglett_dugtrio_alola",
+          "id": "diglett_dugtrio",
           "variant": "level_up",
-          "result": "dugtrio alolan",
+          "result": "dugtrio form=alola",
           "consumeHeldItem": false,
-          "learnableMoves": [],
+          "learnableMoves": [
+            "sandtomb"
+          ],
           "requirements": [
             {
               "variant": "level",
-              "minLevel": 26
+              "amount": 26
             }
           ]
         }
-      ]
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 53,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 20,
-  "eggGroups": ["field"],
+  "eggGroups": [
+    "field"
+  ],
   "drops": {
     "amount": "1",
     "entries": [
@@ -143,13 +186,12 @@
     ]
   },
   "moves": [
-    "1:scratch",
     "1:sandattack",
+    "1:scratch",
     "4:growl",
     "8:astonish",
     "12:mudslap",
     "14:magnitude",
-    "15:furyswipes",
     "16:bulldoze",
     "20:suckerpunch",
     "24:slash",
@@ -173,13 +215,11 @@
     "tm:assurance",
     "tm:attract",
     "tm:beatup",
-    "tm:bide",
     "tm:bodyslam",
     "tm:bulldoze",
     "tm:captivate",
+    "tm:charm",
     "tm:confide",
-    "tm:curse",
-    "tm:cut",
     "tm:dig",
     "tm:doubleteam",
     "tm:earthpower",
@@ -187,16 +227,19 @@
     "tm:echoedvoice",
     "tm:endure",
     "tm:facade",
+    "tm:foulplay",
     "tm:frustration",
+    "tm:helpinghand",
     "tm:hiddenpower",
+    "tm:mudshot",
+    "tm:mudslap",
     "tm:naturalgift",
     "tm:protect",
-    "tm:rage",
     "tm:rest",
     "tm:return",
     "tm:reversal",
+    "tm:rockblast",
     "tm:rockslide",
-    "tm:rocksmash",
     "tm:rocktomb",
     "tm:round",
     "tm:sandstorm",
@@ -208,31 +251,55 @@
     "tm:snore",
     "tm:stealthrock",
     "tm:stompingtantrum",
+    "tm:stoneedge",
     "tm:substitute",
     "tm:sunnyday",
     "tm:swagger",
+    "tm:swordsdance",
     "tm:takedown",
+    "tm:terablast",
     "tm:thief",
-    "tm:toxic",
     "tm:uproar",
     "tm:workup",
+    "tutor:bide",
+    "tutor:curse",
+    "tutor:cut",
     "tutor:doubleedge",
+    "tutor:doubleteam",
+    "tutor:feintattack",
+    "tutor:frustration",
+    "tutor:furyswipes",
+    "tutor:hiddenpower",
+    "tutor:magnitude",
     "tutor:mimic",
-    "tutor:scorchingsands"
+    "tutor:pursuit",
+    "tutor:rage",
+    "tutor:return",
+    "tutor:rocksmash",
+    "tutor:scorchingsands",
+    "tutor:swagger",
+    "tutor:toxic"
   ],
-  "labels": ["gen1", "kanto_regional", "regional"],
-  "pokedex": ["cobblemon.species.diglett.desc1", "cobblemon.species.diglett.desc2"],
+  "labels": [
+    "gen1",
+    "kanto_regional"
+  ],
+  "pokedex": [
+    "cobblemon.species.diglett.desc"
+  ],
   "evolutions": [
     {
       "id": "diglett_dugtrio",
       "variant": "level_up",
       "result": "dugtrio",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "sandtomb"
+      ],
       "requirements": [
         {
           "variant": "level",
-          "minLevel": 26
+          "amount": 26
         }
       ]
     }
@@ -245,8 +312,15 @@
   },
   "baseFriendship": 50,
   "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
     "speed": 1
   },
   "height": 2,
-  "weight": 8
+  "weight": 8,
+  "aspects": [],
+  "cannotDynamax": false
 }

@@ -1,4 +1,7 @@
 {
+  "healing_machine.active": {
+    "sounds": [ "cobblemon:block/healing_machine_active" ]
+  },
   "pc.on": {
     "sounds": [ "cobblemon:pc/pc_on" ]
   },
@@ -739,7 +742,7 @@
     "sounds": [ "cobblemon:pokemon/donphan/donphan_ambient" ]
   },
   "pokemon.porygon2.ambient": {
-    "sounds": [ "cobblemon:pokemon/porygon2_ambient" ]
+    "sounds": [ "cobblemon:pokemon/porygon2/porygon2_ambient" ]
   },
   "pokemon.stantler.ambient": {
     "sounds": [ "cobblemon:pokemon/stantler/stantler_ambient" ]

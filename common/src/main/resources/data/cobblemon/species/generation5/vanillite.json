@@ -1,125 +1,130 @@
 {
-    "name": "vanillite",
-    "nationalPokedexNumber": 582,
-    "primaryType": "ice",
-    "abilities": [
-        "icebody",
-        "snowcloak",
-        "h:weakarmor"
-    ],
-    "baseStats": {
-        "hp": 36,
-        "attack": 50,
-        "defence": 50,
-        "special_attack": 65,
-        "special_defence": 60,
-        "speed": 44
-    },
-    "catchRate": 255,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 61,
-    "experienceGroup": "slow",
-    "eggCycles": 20,
-    "eggGroups": [
-        "mineral"
-    ],
-    "moves": [
-        "1:harden",
-        "1:astonish",
-        "4:taunt",
-        "8:mist",
-        "12:icywind",
-        "16:avalanche",
-        "20:hail",
-        "24:iciclespear",
-        "26:mirrorshot",
-        "28:uproar",
-        "32:acidarmor",
-        "36:mirrorcoat",
-        "40:icebeam",
-        "44:blizzard",
-        "48:sheercold",
-        "egg:auroraveil",
-        "egg:autotomize",
-        "egg:explosion",
-        "egg:iceshard",
-        "egg:iciclecrash",
-        "egg:magnetrise",
-        "egg:naturalgift",
-        "egg:powdersnow",
-        "egg:waterpulse",
-        "tm:allyswitch",
-        "tm:attract",
-        "tm:avalanche",
-        "tm:blizzard",
-        "tm:confide",
-        "tm:doubleteam",
-        "tm:endure",
-        "tm:facade",
-        "tm:flashcannon",
-        "tm:frostbreath",
-        "tm:frustration",
-        "tm:hail",
-        "tm:hiddenpower",
-        "tm:hypervoice",
-        "tm:icebeam",
-        "tm:iciclespear",
-        "tm:icywind",
-        "tm:imprison",
-        "tm:irondefense",
-        "tm:lightscreen",
-        "tm:protect",
-        "tm:raindance",
-        "tm:rest",
-        "tm:return",
-        "tm:round",
-        "tm:secretpower",
-        "tm:selfdestruct",
-        "tm:sleeptalk",
-        "tm:snore",
-        "tm:substitute",
-        "tm:swagger",
-        "tm:taunt",
-        "tm:toxic",
-        "tm:uproar",
-        "tutor:magiccoat",
-        "tutor:signalbeam",
-        "tutor:waterpulse"
-    ],
-    "labels": [
-        "gen5"
-    ],
-    "pokedex": [
-        "cobblemon.species.vanillite.desc1",
-        "cobblemon.species.vanillite.desc2"
-    ],
-    "evolutions": [
+  "name": "Vanillite",
+  "nationalPokedexNumber": 582,
+  "primaryType": "ice",
+  "abilities": [
+    "icebody",
+    "snowcloak",
+    "h:weakarmor"
+  ],
+  "baseStats": {
+    "hp": 36,
+    "attack": 50,
+    "defence": 50,
+    "special_attack": 65,
+    "special_defence": 60,
+    "speed": 44
+  },
+  "catchRate": 255,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "baseExperienceYield": 61,
+  "experienceGroup": "slow",
+  "eggCycles": 20,
+  "eggGroups": [
+    "mineral"
+  ],
+  "moves": [
+    "1:astonish",
+    "1:harden",
+    "4:taunt",
+    "8:mist",
+    "12:icywind",
+    "16:avalanche",
+    "20:hail",
+    "24:iciclespear",
+    "26:mirrorshot",
+    "28:uproar",
+    "32:acidarmor",
+    "36:mirrorcoat",
+    "40:icebeam",
+    "44:blizzard",
+    "48:sheercold",
+    "egg:auroraveil",
+    "egg:autotomize",
+    "egg:explosion",
+    "egg:iceshard",
+    "egg:iciclecrash",
+    "egg:magnetrise",
+    "egg:naturalgift",
+    "egg:powdersnow",
+    "egg:waterpulse",
+    "tm:allyswitch",
+    "tm:attract",
+    "tm:avalanche",
+    "tm:blizzard",
+    "tm:confide",
+    "tm:doubleteam",
+    "tm:endure",
+    "tm:facade",
+    "tm:flashcannon",
+    "tm:frostbreath",
+    "tm:frustration",
+    "tm:hail",
+    "tm:hiddenpower",
+    "tm:hypervoice",
+    "tm:icebeam",
+    "tm:iciclespear",
+    "tm:icywind",
+    "tm:imprison",
+    "tm:irondefense",
+    "tm:lightscreen",
+    "tm:protect",
+    "tm:raindance",
+    "tm:rest",
+    "tm:return",
+    "tm:round",
+    "tm:secretpower",
+    "tm:selfdestruct",
+    "tm:sleeptalk",
+    "tm:snore",
+    "tm:substitute",
+    "tm:swagger",
+    "tm:taunt",
+    "tm:toxic",
+    "tm:uproar",
+    "tutor:magiccoat",
+    "tutor:signalbeam",
+    "tutor:waterpulse"
+  ],
+  "labels": [
+    "gen5"
+  ],
+  "pokedex": [
+    "cobblemon.species.vanillite.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "vanillite_vanillish",
+      "variant": "level_up",
+      "result": "vanillish",
+      "consumeHeldItem": false,
+      "learnableMoves": [],
+      "requirements": [
         {
-            "id": "vanillite_vanillish",
-            "variant": "level_up",
-            "result": "vanillish",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "level",
-                    "minLevel": 35
-                }
-            ]
+          "variant": "level",
+          "amount": 35
         }
-    ],
-    "baseScale": 1.0,
-    "hitbox": {
-        "width": 1.0,
-        "height": 1.0,
-        "fixed": false
-    },
-    "baseFriendship": 50,
-    "evYield": {
-        "special_attack": 1
-    },
-    "height": 4,
-    "weight": 57
+      ]
+    }
+  ],
+  "baseScale": 1,
+  "hitbox": {
+    "width": 1,
+    "height": 1,
+    "fixed": false
+  },
+  "baseFriendship": 50,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 1,
+    "special_defence": 0,
+    "speed": 0
+  },
+  "height": 4,
+  "weight": 57,
+  "aspects": [],
+  "cannotDynamax": false
 }

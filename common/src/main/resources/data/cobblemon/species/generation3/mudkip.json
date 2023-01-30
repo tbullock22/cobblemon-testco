@@ -1,167 +1,174 @@
 {
-    "implemented": true,
-    "name": "mudkip",
-    "nationalPokedexNumber": 258,
-    "primaryType": "water",
-    "abilities": [
-        "torrent",
-        "h:damp"
-    ],
-    "baseStats": {
-        "hp": 50,
-        "attack": 70,
-        "defence": 50,
-        "special_attack": 50,
-        "special_defence": 50,
-        "speed": 40
-    },
-    "catchRate": 45,
-    "maleRatio": 0.875,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 62,
-    "experienceGroup": "mediumslow",
-    "eggCycles": 20,
-    "eggGroups": [
-        "monster",
-        "water_1"
-    ],
-    "behaviour": {
-        "moving": {
-            "swim": {
-                "canSwimInWater": true,
-                "canBreatheUnderwater": true
-            }
-        }
-    },
-    "drops": {
-        "amount": "1",
-        "entries": [
-            {
-                "item": "minecraft:clay_ball",
-                "percentage": 50
-            }
-        ]
-    },
-    "moves": [
-        "1:tackle",
-        "1:growl",
-        "3:watergun",
-        "6:rocksmash",
-        "9:rockthrow",
-        "12:protect",
-        "12:foresight",
-        "15:supersonic",
-        "17:bide",
-        "18:waterpulse",
-        "20:mudsport",
-        "21:rockslide",
-        "24:takedown",
-        "27:amnesia",
-        "30:surf",
-        "33:screech",
-        "36:endeavor",
-        "39:hydropump",
-        "egg:ancientpower",
-        "egg:barrier",
-        "egg:bite",
-        "egg:counter",
-        "egg:curse",
-        "egg:doubleedge",
-        "egg:iceball",
-        "egg:mirrorcoat",
-        "egg:mudbomb",
-        "egg:mudslap",
-        "egg:refresh",
-        "egg:sludge",
-        "egg:stomp",
-        "egg:wideguard",
-        "egg:yawn",
-        "tm:amnesia",
-        "tm:attract",
-        "tm:avalanche",
-        "tm:blizzard",
-        "tm:bodyslam",
-        "tm:captivate",
-        "tm:confide",
-        "tm:dig",
-        "tm:dive",
-        "tm:doubleteam",
-        "tm:earthpower",
-        "tm:echoedvoice",
-        "tm:endure",
-        "tm:facade",
-        "tm:frustration",
-        "tm:hail",
-        "tm:hiddenpower",
-        "tm:hydropump",
-        "tm:icebeam",
-        "tm:icywind",
-        "tm:irontail",
-        "tm:lowkick",
-        "tm:naturalgift",
-        "tm:protect",
-        "tm:raindance",
-        "tm:rest",
-        "tm:return",
-        "tm:rockslide",
-        "tm:rocktomb",
-        "tm:round",
-        "tm:scald",
-        "tm:screech",
-        "tm:secretpower",
-        "tm:sleeptalk",
-        "tm:sludgewave",
-        "tm:snore",
-        "tm:strength",
-        "tm:substitute",
-        "tm:superpower",
-        "tm:surf",
-        "tm:swagger",
-        "tm:toxic",
-        "tm:uproar",
-        "tm:waterfall",
-        "tm:whirlpool",
-        "tm:workup",
-        "tutor:aquatail",
-        "tutor:defensecurl",
-        "tutor:headbutt",
-        "tutor:mimic",
-        "tutor:rollout",
-        "tutor:waterpledge"
-    ],
-    "labels": [
-        "gen3"
-    ],
-    "pokedex": [
-        "cobblemon.species.mudkip.desc1",
-        "cobblemon.species.mudkip.desc2"
-    ],
-    "evolutions": [
+  "implemented": true,
+  "name": "Mudkip",
+  "nationalPokedexNumber": 258,
+  "primaryType": "water",
+  "abilities": [
+    "torrent",
+    "h:damp"
+  ],
+  "baseStats": {
+    "hp": 50,
+    "attack": 70,
+    "defence": 50,
+    "special_attack": 50,
+    "special_defence": 50,
+    "speed": 40
+  },
+  "catchRate": 45,
+  "maleRatio": 0.875,
+  "shoulderMountable": false,
+  "baseExperienceYield": 62,
+  "experienceGroup": "medium_slow",
+  "eggCycles": 20,
+  "eggGroups": [
+    "monster",
+    "water_1"
+  ],
+  "behaviour": {
+    "moving": {
+      "swim": {
+        "canSwimInWater": true,
+        "canBreatheUnderwater": true
+      }
+    }
+  },
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:clay_ball",
+        "percentage": 50
+      }
+    ]
+  },
+  "moves": [
+    "1:growl",
+    "1:tackle",
+    "3:watergun",
+    "6:rocksmash",
+    "9:rockthrow",
+    "12:foresight",
+    "12:protect",
+    "15:supersonic",
+    "17:bide",
+    "18:waterpulse",
+    "20:mudsport",
+    "21:rockslide",
+    "24:takedown",
+    "27:amnesia",
+    "30:surf",
+    "33:screech",
+    "36:endeavor",
+    "39:hydropump",
+    "egg:ancientpower",
+    "egg:barrier",
+    "egg:bite",
+    "egg:counter",
+    "egg:curse",
+    "egg:doubleedge",
+    "egg:iceball",
+    "egg:mirrorcoat",
+    "egg:mudbomb",
+    "egg:mudslap",
+    "egg:refresh",
+    "egg:sludge",
+    "egg:stomp",
+    "egg:wideguard",
+    "egg:yawn",
+    "tm:amnesia",
+    "tm:attract",
+    "tm:avalanche",
+    "tm:blizzard",
+    "tm:bodyslam",
+    "tm:captivate",
+    "tm:confide",
+    "tm:dig",
+    "tm:dive",
+    "tm:doubleteam",
+    "tm:earthpower",
+    "tm:echoedvoice",
+    "tm:endure",
+    "tm:facade",
+    "tm:frustration",
+    "tm:hail",
+    "tm:hiddenpower",
+    "tm:hydropump",
+    "tm:icebeam",
+    "tm:icywind",
+    "tm:irontail",
+    "tm:lowkick",
+    "tm:naturalgift",
+    "tm:protect",
+    "tm:raindance",
+    "tm:rest",
+    "tm:return",
+    "tm:rockslide",
+    "tm:rocktomb",
+    "tm:round",
+    "tm:scald",
+    "tm:screech",
+    "tm:secretpower",
+    "tm:sleeptalk",
+    "tm:sludgewave",
+    "tm:snore",
+    "tm:strength",
+    "tm:substitute",
+    "tm:superpower",
+    "tm:surf",
+    "tm:swagger",
+    "tm:toxic",
+    "tm:uproar",
+    "tm:waterfall",
+    "tm:whirlpool",
+    "tm:workup",
+    "tutor:aquatail",
+    "tutor:defensecurl",
+    "tutor:headbutt",
+    "tutor:mimic",
+    "tutor:rollout",
+    "tutor:waterpledge"
+  ],
+  "labels": [
+    "gen3"
+  ],
+  "pokedex": [
+    "cobblemon.species.mudkip.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "mudkip_marshtomp",
+      "variant": "level_up",
+      "result": "marshtomp",
+      "consumeHeldItem": false,
+      "learnableMoves": [
+        "mudshot"
+      ],
+      "requirements": [
         {
-            "id": "mudkip_marshtomp",
-            "variant": "level_up",
-            "result": "marshtomp",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "level",
-                    "minLevel": 16
-                }
-            ]
+          "variant": "level",
+          "amount": 16
         }
-    ],
-    "baseScale": 0.7,
-    "hitbox": {
-        "width": 0.9,
-        "height": 0.8,
-        "fixed": false
-    },
-    "baseFriendship": 50,
-    "evYield": {
-        "attack": 1
-    },
-    "height": 4,
-    "weight": 76
+      ]
+    }
+  ],
+  "baseScale": 0.7,
+  "hitbox": {
+    "width": 0.9,
+    "height": 0.8,
+    "fixed": false
+  },
+  "baseFriendship": 50,
+  "evYield": {
+    "hp": 0,
+    "attack": 1,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
+  },
+  "height": 4,
+  "weight": 76,
+  "aspects": [],
+  "cannotDynamax": false
 }

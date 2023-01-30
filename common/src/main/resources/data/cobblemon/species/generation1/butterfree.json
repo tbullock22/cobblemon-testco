@@ -1,181 +1,238 @@
 {
-    "implemented": true,
-    "name": "butterfree",
-    "nationalPokedexNumber": 12,
-    "primaryType": "bug",
-    "secondaryType": "flying",
-    "abilities": [
+  "implemented": true,
+  "name": "Butterfree",
+  "nationalPokedexNumber": 12,
+  "primaryType": "bug",
+  "secondaryType": "flying",
+  "abilities": [
+    "compoundeyes",
+    "h:tintedlens"
+  ],
+  "baseStats": {
+    "hp": 60,
+    "attack": 45,
+    "defence": 50,
+    "special_attack": 90,
+    "special_defence": 80,
+    "speed": 70
+  },
+  "catchRate": 45,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "forms": [
+    {
+      "name": "Gmax",
+      "primaryType": "bug",
+      "secondaryType": "flying",
+      "abilities": [
         "compoundeyes",
         "h:tintedlens"
-    ],
-    "baseStats": {
+      ],
+      "baseStats": {
         "hp": 60,
         "attack": 45,
         "defence": 50,
         "special_attack": 90,
         "special_defence": 80,
         "speed": 70
-    },
-    "catchRate": 45,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "forms": [
-        {
-            "name": "normal"
-        },
-        {
-            "name": "gmax",
-            "aspects": ["gmax"],
-            "baseExperienceYield": 178,
-            "moves": [],
-            "labels": [
-                "gen1",
-                "gmax"
-            ],
-            "pokedex": [
-                "cobblemon.form.butterfree-gmax.desc1",
-                "cobblemon.form.butterfree-gmax.desc2"
-            ],
-            "height": 170,
-            "weight": 10000
-        }
-    ],
-    "features": [
-        "valencian"
-    ],
-    "baseExperienceYield": 198,
-    "experienceGroup": "mediumfast",
-    "eggCycles": 15,
-    "eggGroups": [
-        "bug"
-    ],
-    "behaviour": {
-        "resting": {
-            "canSleep": true,
-            "depth": "normal",
-            "light": "0-4"
-        },
-        "moving": {
-            "swim": {
-                "canWalkOnWater": true
-            },
-            "fly": {
-                "canFly": true
-            }
-        }
-    },
-    "moves": [
-        "0:gust",
-        "1:gust",
-        "1:tackle",
-        "1:stringshot",
-        "1:harden",
-        "1:bugbite",
-        "4:supersonic",
-        "8:confusion",
-        "12:poisonpowder",
-        "12:stunspore",
-        "12:sleeppowder",
-        "16:psybeam",
-        "19:silverwind",
-        "20:whirlwind",
-        "24:airslash",
-        "28:safeguard",
-        "32:bugbuzz",
-        "36:tailwind",
-        "37:captivate",
-        "40:ragepowder",
-        "44:quiverdance",
-        "tm:acrobatics",
-        "tm:aerialace",
-        "tm:airslash",
-        "tm:attract",
-        "tm:batonpass",
-        "tm:bide",
-        "tm:bugbuzz",
-        "tm:confide",
-        "tm:curse",
-        "tm:doubleteam",
-        "tm:drainingkiss",
-        "tm:dreameater",
-        "tm:electroweb",
-        "tm:endure",
-        "tm:energyball",
-        "tm:facade",
-        "tm:flash",
-        "tm:frustration",
-        "tm:gigadrain",
-        "tm:gigaimpact",
-        "tm:headbutt",
-        "tm:hiddenpower",
-        "tm:hurricane",
-        "tm:hyperbeam",
-        "tm:infestation",
-        "tm:irondefense",
-        "tm:megadrain",
-        "tm:naturalgift",
-        "tm:pollenpuff",
-        "tm:protect",
-        "tm:psychic",
-        "tm:psychup",
-        "tm:psywave",
-        "tm:rage",
-        "tm:raindance",
-        "tm:razorwind",
-        "tm:reflect",
-        "tm:rest",
-        "tm:return",
-        "tm:roost",
-        "tm:round",
-        "tm:safeguard",
-        "tm:secretpower",
-        "tm:shadowball",
-        "tm:skillswap",
-        "tm:sleeptalk",
-        "tm:snore",
-        "tm:solarbeam",
-        "tm:strugglebug",
-        "tm:substitute",
-        "tm:sunnyday",
-        "tm:swagger",
-        "tm:sweetscent",
-        "tm:swift",
-        "tm:takedown",
-        "tm:teleport",
-        "tm:thief",
-        "tm:toxic",
-        "tm:uturn",
-        "tm:venoshock",
-        "tutor:aircutter",
-        "tutor:defog",
-        "tutor:doubleedge",
-        "tutor:dualwingbeat",
-        "tutor:mimic",
-        "tutor:nightmare",
-        "tutor:ominouswind",
-        "tutor:signalbeam",
-        "tutor:twister"
-    ],
-    "labels": [
-        "gen1"
-    ],
-    "pokedex": [
-        "cobblemon.species.butterfree.desc1",
-        "cobblemon.species.butterfree.desc2"
-    ],
-    "preEvolution": "metapod",
-    "evolutions": [],
-    "baseScale": 0.6,
-    "hitbox": {
-        "width": 0.5,
-        "height": 1.3,
-        "fixed": false
-    },
-    "baseFriendship": 50,
-    "evYield": {
+      },
+      "catchRate": 45,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 178,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
         "special_attack": 2,
-        "special_defence": 1
+        "special_defence": 1,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 15,
+      "eggGroups": [
+        "bug"
+      ],
+      "moves": [],
+      "labels": [
+        "gen8",
+        "gmax"
+      ],
+      "aspects": [
+        "gmax"
+      ],
+      "height": 170,
+      "weight": 0,
+      "evolutions": [],
+      "cannotDynamax": false,
+      "battleOnly": false
+    }
+  ],
+  "features": [
+    "valencian"
+  ],
+  "baseExperienceYield": 198,
+  "experienceGroup": "medium_fast",
+  "eggCycles": 15,
+  "eggGroups": [
+    "bug"
+  ],
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "depth": "normal",
+      "light": "0-4"
     },
-    "height": 11,
-    "weight": 320
+    "moving": {
+      "swim": {
+        "canWalkOnWater": true
+      },
+      "fly": {
+        "canFly": true
+      }
+    }
+  },
+  "moves": [
+    "1:bugbite",
+    "1:harden",
+    "1:stringshot",
+    "1:tackle",
+    "4:supersonic",
+    "8:confusion",
+    "12:poisonpowder",
+    "12:sleeppowder",
+    "12:stunspore",
+    "16:psybeam",
+    "19:silverwind",
+    "20:whirlwind",
+    "24:airslash",
+    "28:safeguard",
+    "32:bugbuzz",
+    "36:tailwind",
+    "37:captivate",
+    "40:ragepowder",
+    "44:quiverdance",
+    "tm:acrobatics",
+    "tm:aerialace",
+    "tm:airslash",
+    "tm:attract",
+    "tm:batonpass",
+    "tm:bugbuzz",
+    "tm:confide",
+    "tm:doubleteam",
+    "tm:drainingkiss",
+    "tm:electroweb",
+    "tm:endure",
+    "tm:energyball",
+    "tm:facade",
+    "tm:frustration",
+    "tm:gigadrain",
+    "tm:gigaimpact",
+    "tm:hiddenpower",
+    "tm:hurricane",
+    "tm:hyperbeam",
+    "tm:infestation",
+    "tm:irondefense",
+    "tm:naturalgift",
+    "tm:pollenpuff",
+    "tm:protect",
+    "tm:psychic",
+    "tm:psychup",
+    "tm:raindance",
+    "tm:rest",
+    "tm:return",
+    "tm:round",
+    "tm:safeguard",
+    "tm:secretpower",
+    "tm:shadowball",
+    "tm:skillswap",
+    "tm:sleeptalk",
+    "tm:snore",
+    "tm:solarbeam",
+    "tm:strugglebug",
+    "tm:substitute",
+    "tm:sunnyday",
+    "tm:swagger",
+    "tm:swift",
+    "tm:thief",
+    "tm:uturn",
+    "tm:venoshock",
+    "tutor:aircutter",
+    "tutor:airslash",
+    "tutor:bide",
+    "tutor:bugbuzz",
+    "tutor:confusion",
+    "tutor:curse",
+    "tutor:defog",
+    "tutor:doubleedge",
+    "tutor:doubleteam",
+    "tutor:dreameater",
+    "tutor:dualwingbeat",
+    "tutor:facade",
+    "tutor:flash",
+    "tutor:frustration",
+    "tutor:gust",
+    "tutor:headbutt",
+    "tutor:hiddenpower",
+    "tutor:hyperbeam",
+    "tutor:megadrain",
+    "tutor:mimic",
+    "tutor:morningsun",
+    "tutor:nightmare",
+    "tutor:ominouswind",
+    "tutor:poisonpowder",
+    "tutor:protect",
+    "tutor:psybeam",
+    "tutor:psychic",
+    "tutor:psywave",
+    "tutor:quiverdance",
+    "tutor:rage",
+    "tutor:razorwind",
+    "tutor:reflect",
+    "tutor:rest",
+    "tutor:return",
+    "tutor:roost",
+    "tutor:shadowball",
+    "tutor:signalbeam",
+    "tutor:sleeppowder",
+    "tutor:solarbeam",
+    "tutor:stunspore",
+    "tutor:substitute",
+    "tutor:supersonic",
+    "tutor:swagger",
+    "tutor:sweetscent",
+    "tutor:takedown",
+    "tutor:teleport",
+    "tutor:toxic",
+    "tutor:twister",
+    "tutor:uturn",
+    "tutor:whirlwind"
+  ],
+  "labels": [
+    "gen1"
+  ],
+  "pokedex": [
+    "cobblemon.species.butterfree.desc"
+  ],
+  "preEvolution": "metapod",
+  "evolutions": [],
+  "baseScale": 0.6,
+  "hitbox": {
+    "width": 0.5,
+    "height": 1.3,
+    "fixed": false
+  },
+  "baseFriendship": 50,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 2,
+    "special_defence": 1,
+    "speed": 0
+  },
+  "height": 11,
+  "weight": 320,
+  "aspects": [],
+  "cannotDynamax": false
 }

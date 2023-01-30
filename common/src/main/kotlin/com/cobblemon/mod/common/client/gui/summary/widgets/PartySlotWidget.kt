@@ -15,6 +15,7 @@ import com.cobblemon.mod.common.client.gui.drawProfilePokemon
 import com.cobblemon.mod.common.client.gui.summary.Summary
 import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.client.render.getDepletableRedGreen
+import com.cobblemon.mod.common.client.render.renderScaledGuiItemIcon
 import com.cobblemon.mod.common.pokemon.Gender
 import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.util.cobblemonResource
@@ -147,7 +148,7 @@ class PartySlotWidget(
 
             // Render Pokémon
             matrices.push()
-            matrices.translate(x + (PORTRAIT_DIAMETER / 2.0), y - 1.0, 0.0)
+            matrices.translate(x + (PORTRAIT_DIAMETER / 2.0), y - 3.0, 0.0)
             matrices.scale(2.5F, 2.5F, 1F)
             drawProfilePokemon(
                 species = slotPokemon.species,
@@ -188,6 +189,17 @@ class PartySlotWidget(
                 shadow = true,
                 scale = halfScale
             )
+
+            // Held Item
+            val heldItem = slotPokemon.heldItemNoCopy()
+            if (!heldItem.isEmpty) {
+                renderScaledGuiItemIcon(
+                    itemStack = heldItem,
+                    x = x + 14.0,
+                    y = y + 9.5,
+                    scale = 0.5
+                )
+            }
         }
     }
 

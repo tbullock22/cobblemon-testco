@@ -16,6 +16,7 @@ import com.cobblemon.mod.common.command.GetNBT
 import com.cobblemon.mod.common.command.GiveAllPokemon
 import com.cobblemon.mod.common.command.GivePokemon
 import com.cobblemon.mod.common.command.HealPokemonCommand
+import com.cobblemon.mod.common.command.HeldItemCommand
 import com.cobblemon.mod.common.command.LevelUp
 import com.cobblemon.mod.common.command.OpenStarterScreenCommand
 import com.cobblemon.mod.common.command.PokemonEditCommand
@@ -49,5 +50,6 @@ object CobblemonCommands {
         SpawnAllPokemon.register(dispatcher)
         FriendshipCommand.register(dispatcher)
         GiveAllPokemon.register(dispatcher)
+        HeldItemCommand.register(dispatcher, registry)
     }
 }

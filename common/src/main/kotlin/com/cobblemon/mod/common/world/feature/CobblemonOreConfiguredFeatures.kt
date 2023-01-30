@@ -9,7 +9,7 @@
 package com.cobblemon.mod.common.world.feature
 
 import com.cobblemon.mod.common.CobblemonBlocks
-import com.cobblemon.mod.common.tags.CobblemonBlockTags
+import com.cobblemon.mod.common.api.tags.CobblemonBlockTags
 import com.cobblemon.mod.common.util.cobblemonResource
 import dev.architectury.registry.registries.RegistrySupplier
 import net.minecraft.block.OreBlock

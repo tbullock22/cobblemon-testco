@@ -1,8 +1,12 @@
 {
-  "name": "sliggoo",
+  "name": "Sliggoo",
   "nationalPokedexNumber": 705,
   "primaryType": "dragon",
-  "abilities": ["sapsipper", "hydration", "h:gooey"],
+  "abilities": [
+    "sapsipper",
+    "hydration",
+    "h:gooey"
+  ],
   "baseStats": {
     "hp": 68,
     "attack": 75,
@@ -16,14 +20,14 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "hisui",
-      "aspects": ["hisuian"],
+      "name": "Hisui",
       "primaryType": "steel",
       "secondaryType": "dragon",
-      "abilities": ["sapsipper", "overcoat", "h:gooey"],
+      "abilities": [
+        "sapsipper",
+        "shellarmor",
+        "h:gooey"
+      ],
       "baseStats": {
         "hp": 58,
         "attack": 75,
@@ -32,48 +36,114 @@
         "special_defence": 113,
         "speed": 40
       },
-      "moves": [
-        "1:bubble",
-        "6:acidspray",
-        "11:acidarmor",
-        "18:waterpulse",
-        "25:dragonpulse",
-        "25:ironhead",
-        "34:shelter",
-        "43:hydropump",
-        "tutor:dracometeor",
-        "tutor:icebeam",
-        "tutor:ironhead",
-        "tutor:irontail",
-        "tutor:outrage",
-        "tutor:rest",
-        "tutor:rockslide",
-        "tutor:sludgebomb",
-        "tutor:steelbeam",
-        "tutor:thunderbolt",
-        "tutor:waterpulse"
+      "catchRate": 45,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 0,
+      "baseFriendship": 35,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 2,
+        "speed": 0
+      },
+      "experienceGroup": "slow",
+      "eggCycles": 40,
+      "eggGroups": [
+        "dragon"
       ],
-      "pokedex": [
-        "cobblemon.form.sliggoo-hisui.desc1",
-        "cobblemon.form.sliggoo-hisui.desc2"
+      "moves": [
+        "1:absorb",
+        "1:acidarmor",
+        "1:dragonbreath",
+        "1:tackle",
+        "1:watergun",
+        "15:protect",
+        "20:flail",
+        "25:waterpulse",
+        "30:raindance",
+        "35:dragonpulse",
+        "43:curse",
+        "49:ironhead",
+        "56:muddywater",
+        "tm:acidspray",
+        "tm:blizzard",
+        "tm:bodyslam",
+        "tm:charm",
+        "tm:chillingwater",
+        "tm:dracometeor",
+        "tm:dragonpulse",
+        "tm:endure",
+        "tm:facade",
+        "tm:flashcannon",
+        "tm:heavyslam",
+        "tm:icebeam",
+        "tm:icespinner",
+        "tm:ironhead",
+        "tm:mudshot",
+        "tm:outrage",
+        "tm:protect",
+        "tm:raindance",
+        "tm:rest",
+        "tm:rockslide",
+        "tm:rocktomb",
+        "tm:sandstorm",
+        "tm:sleeptalk",
+        "tm:sludgebomb",
+        "tm:steelbeam",
+        "tm:substitute",
+        "tm:sunnyday",
+        "tm:takedown",
+        "tm:terablast",
+        "tm:thunder",
+        "tm:thunderbolt",
+        "tm:waterpulse"
+      ],
+      "labels": [
+        "gen8",
+        "hisui_regional"
+      ],
+      "aspects": [
+        "hisuian"
       ],
       "height": 7,
       "weight": 685,
-      "labels": ["gen6", "hisui_regional", "regional"]
+      "preEvolution": "goomy",
+      "evolutions": [
+        {
+          "id": "sliggoo_goodra",
+          "variant": "level_up",
+          "result": "goodra form=hisui",
+          "consumeHeldItem": false,
+          "learnableMoves": [
+            "irontail"
+          ],
+          "requirements": [
+            {
+              "variant": "level",
+              "amount": 50
+            }
+          ]
+        }
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 158,
   "experienceGroup": "slow",
   "eggCycles": 40,
-  "eggGroups": ["dragon"],
+  "eggGroups": [
+    "dragon"
+  ],
   "moves": [
-    "0:acidspray",
-    "1:tackle",
-    "1:watergun",
     "1:absorb",
+    "1:acidarmor",
     "1:bubble",
     "1:dragonbreath",
-    "1:acidspray",
+    "1:tackle",
+    "1:watergun",
     "13:bide",
     "15:protect",
     "20:flail",
@@ -83,11 +153,15 @@
     "43:curse",
     "49:bodyslam",
     "56:muddywater",
+    "tm:acidspray",
     "tm:attract",
     "tm:blizzard",
     "tm:bodyslam",
+    "tm:charm",
+    "tm:chillingwater",
     "tm:confide",
     "tm:doubleteam",
+    "tm:dracometeor",
     "tm:dragonpulse",
     "tm:endure",
     "tm:facade",
@@ -96,7 +170,6 @@
     "tm:icebeam",
     "tm:infestation",
     "tm:irontail",
-    "tm:muddywater",
     "tm:mudshot",
     "tm:outrage",
     "tm:protect",
@@ -113,14 +186,22 @@
     "tm:substitute",
     "tm:sunnyday",
     "tm:swagger",
+    "tm:takedown",
+    "tm:terablast",
+    "tm:thunder",
     "tm:thunderbolt",
     "tm:toxic",
-    "tutor:dracometeor",
+    "tm:waterpulse",
     "tutor:shockwave",
     "tutor:skittersmack"
   ],
-  "labels": ["gen6", "kalos_regional", "regional"],
-  "pokedex": ["cobblemon.species.sliggoo.desc1", "cobblemon.species.sliggoo.desc2"],
+  "labels": [
+    "gen6",
+    "kalos_regional"
+  ],
+  "pokedex": [
+    "cobblemon.species.sliggoo.desc"
+  ],
   "preEvolution": "goomy",
   "evolutions": [
     {
@@ -128,29 +209,34 @@
       "variant": "level_up",
       "result": "goodra",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "aquatail"
+      ],
       "requirements": [
         {
           "variant": "level",
-          "minLevel": 50
-        },
-        {
-          "variant": "weather",
-          "isRaining": true
+          "amount": 50
         }
       ]
     }
   ],
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
-    "width": 1.0,
-    "height": 1.0,
+    "width": 1,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 35,
   "evYield": {
-    "special_defence": 2
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 2,
+    "speed": 0
   },
   "height": 8,
-  "weight": 175
+  "weight": 175,
+  "aspects": [],
+  "cannotDynamax": false
 }

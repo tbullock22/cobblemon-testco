@@ -13,7 +13,7 @@ import com.cobblemon.mod.common.api.storage.PokemonStoreManager
 import com.cobblemon.mod.common.api.storage.StorePosition
 import com.cobblemon.mod.common.api.storage.party.PlayerPartyStore
 import com.cobblemon.mod.common.api.storage.pc.PCStore
-import com.cobblemon.mod.common.world.block.entity.PCBlockEntity
+import com.cobblemon.mod.common.block.entity.PCBlockEntity
 import java.util.UUID
 import net.minecraft.server.network.ServerPlayerEntity
 

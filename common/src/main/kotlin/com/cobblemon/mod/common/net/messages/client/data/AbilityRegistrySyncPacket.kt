@@ -32,6 +32,6 @@ class AbilityRegistrySyncPacket : DataRegistrySyncPacket<AbilityTemplate> {
     }
 
     override fun synchronizeDecoded(entries: Collection<AbilityTemplate>) {
-        Abilities.reload(entries.associateBy { cobblemonResource(it.name.lowercase()) })
+        Abilities.receiveSyncPacket(entries)
     }
 }

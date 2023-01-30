@@ -15,7 +15,7 @@ import com.cobblemon.mod.common.api.types.ElementalType
 import com.cobblemon.mod.common.battles.BattleRegistry
 import com.cobblemon.mod.common.pokemon.Gender
 import com.cobblemon.mod.common.pokemon.Pokemon
-import com.cobblemon.mod.common.tags.CobblemonBiomeTags
+import com.cobblemon.mod.common.api.tags.CobblemonBiomeTags
 import net.minecraft.entity.LivingEntity
 
 /**

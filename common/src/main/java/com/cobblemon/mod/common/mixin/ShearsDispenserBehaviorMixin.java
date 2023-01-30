@@ -8,7 +8,7 @@
 
 package com.cobblemon.mod.common.mixin;
 
-import com.cobblemon.mod.common.world.block.ApricornBlock;
+import com.cobblemon.mod.common.block.ApricornBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.dispenser.ShearsDispenserBehavior;
 import net.minecraft.server.world.ServerWorld;

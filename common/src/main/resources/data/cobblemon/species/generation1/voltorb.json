@@ -1,9 +1,13 @@
 {
   "implemented": true,
-  "name": "voltorb",
+  "name": "Voltorb",
   "nationalPokedexNumber": 100,
   "primaryType": "electric",
-  "abilities": ["soundproof", "static", "h:aftermath"],
+  "abilities": [
+    "soundproof",
+    "static",
+    "h:aftermath"
+  ],
   "baseStats": {
     "hp": 40,
     "attack": 30,
@@ -17,53 +21,124 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "hisui",
-      "aspects": ["hisuian"],
+      "name": "Hisui",
+      "primaryType": "electric",
       "secondaryType": "grass",
+      "abilities": [
+        "soundproof",
+        "static",
+        "h:aftermath"
+      ],
+      "baseStats": {
+        "hp": 40,
+        "attack": 30,
+        "defence": 50,
+        "special_attack": 55,
+        "special_defence": 55,
+        "speed": 100
+      },
+      "catchRate": 190,
+      "maleRatio": -1,
+      "baseExperienceYield": 0,
+      "baseFriendship": 70,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 1
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "mineral"
+      ],
       "moves": [
-        "1:thundershock",
-        "5:tackle",
-        "9:thunderwave",
-        "15:spark",
-        "21:energyball",
-        "29:thunderbolt",
-        "37:thunder",
-        "47:selfdestruct",
-        "tutor:chargebeam",
-        "tutor:energyball",
-        "tutor:iceball",
-        "tutor:magicalleaf",
-        "tutor:rest",
-        "tutor:swift",
-        "tutor:thunderbolt",
-        "tutor:wildcharge"
+        "1:charge",
+        "1:tackle",
+        "4:thundershock",
+        "6:stunspore",
+        "9:bulletseed",
+        "11:rollout",
+        "13:screech",
+        "16:chargebeam",
+        "20:swift",
+        "22:electroball",
+        "26:selfdestruct",
+        "29:energyball",
+        "34:discharge",
+        "34:seedbomb",
+        "41:explosion",
+        "46:gyroball",
+        "50:grassyterrain",
+        "egg:leechseed",
+        "egg:recycle",
+        "egg:worryseed",
+        "tm:agility",
+        "tm:bulletseed",
+        "tm:chargebeam",
+        "tm:electricterrain",
+        "tm:electroball",
+        "tm:endure",
+        "tm:energyball",
+        "tm:facade",
+        "tm:foulplay",
+        "tm:gigadrain",
+        "tm:grassknot",
+        "tm:grassyterrain",
+        "tm:leafstorm",
+        "tm:protect",
+        "tm:raindance",
+        "tm:reflect",
+        "tm:rest",
+        "tm:seedbomb",
+        "tm:sleeptalk",
+        "tm:solarbeam",
+        "tm:substitute",
+        "tm:swift",
+        "tm:takedown",
+        "tm:taunt",
+        "tm:terablast",
+        "tm:thief",
+        "tm:thunder",
+        "tm:thunderbolt",
+        "tm:thunderwave",
+        "tm:voltswitch",
+        "tm:wildcharge"
       ],
-      "pokedex": [
-        "cobblemon.form.voltorb-hisui.desc1",
-        "cobblemon.form.voltorb-hisui.desc2"
+      "labels": [
+        "gen8",
+        "hisui_regional"
       ],
+      "aspects": [
+        "hisuian"
+      ],
+      "height": 5,
       "weight": 130,
-      "labels": ["gen1", "hisui_regional", "regional"],
       "evolutions": [
         {
-          "id": "voltorb_electrode_hisui",
+          "id": "voltorb_electrode",
           "variant": "item_interact",
-          "result": "electrode hisuian",
+          "result": "electrode form=hisui",
           "consumeHeldItem": false,
-          "learnableMoves": [],
+          "learnableMoves": [
+            "chloroblast"
+          ],
           "requirements": [],
           "requiredContext": "cobblemon:leaf_stone"
         }
-      ]
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 66,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 20,
-  "eggGroups": ["mineral"],
+  "eggGroups": [
+    "mineral"
+  ],
   "drops": {
     "amount": "1",
     "entries": [
@@ -74,74 +149,91 @@
     ]
   },
   "moves": [
-    "1:tackle",
     "1:charge",
-    "3:lightscreen",
-    "6:sonicboom",
+    "1:tackle",
+    "4:thundershock",
     "6:eerieimpulse",
-    "9:thundershock",
     "9:spark",
     "11:rollout",
-    "14:swift",
+    "13:screech",
     "16:chargebeam",
-    "19:selfdestruct",
+    "20:swift",
     "22:electroball",
-    "24:screech",
-    "31:thunderbolt",
+    "26:selfdestruct",
+    "29:lightscreen",
     "34:magnetrise",
     "37:discharge",
-    "38:mirrorcoat",
-    "45:explosion",
+    "41:explosion",
     "46:gyroball",
-    "tm:bide",
+    "50:mirrorcoat",
+    "egg:metalsound",
+    "egg:recycle",
+    "tm:agility",
     "tm:chargebeam",
     "tm:confide",
-    "tm:curse",
     "tm:doubleteam",
+    "tm:eerieimpulse",
+    "tm:electricterrain",
+    "tm:electroball",
     "tm:endure",
     "tm:facade",
-    "tm:flash",
     "tm:foulplay",
     "tm:frustration",
-    "tm:gyroball",
-    "tm:headbutt",
+    "tm:helpinghand",
     "tm:hiddenpower",
     "tm:lightscreen",
-    "tm:naturalgift",
     "tm:protect",
-    "tm:rage",
     "tm:raindance",
-    "tm:reflect",
     "tm:rest",
     "tm:return",
     "tm:round",
     "tm:secretpower",
-    "tm:selfdestruct",
     "tm:sleeptalk",
     "tm:substitute",
     "tm:swagger",
+    "tm:swift",
     "tm:takedown",
     "tm:taunt",
-    "tm:teleport",
+    "tm:terablast",
     "tm:thief",
     "tm:thunder",
     "tm:thunderbolt",
     "tm:thunderwave",
     "tm:torment",
-    "tm:toxic",
     "tm:voltswitch",
     "tm:wildcharge",
-    "tm:zapcannon",
+    "tutor:bide",
+    "tutor:curse",
+    "tutor:doubleteam",
+    "tutor:flash",
+    "tutor:frustration",
+    "tutor:headbutt",
+    "tutor:hiddenpower",
     "tutor:magiccoat",
-    "tutor:magnetrise",
     "tutor:mimic",
+    "tutor:naturalgift",
+    "tutor:rage",
+    "tutor:reflect",
+    "tutor:refresh",
+    "tutor:return",
     "tutor:shockwave",
     "tutor:signalbeam",
     "tutor:snore",
-    "tutor:suckerpunch"
+    "tutor:snore",
+    "tutor:sonicboom",
+    "tutor:suckerpunch",
+    "tutor:swagger",
+    "tutor:teleport",
+    "tutor:toxic",
+    "tutor:zapcannon"
   ],
-  "labels": ["gen1", "kanto_regional", "regional"],
-  "pokedex": ["cobblemon.species.voltorb.desc1", "cobblemon.species.voltorb.desc2"],
+  "labels": [
+    "gen1",
+    "kanto_regional"
+  ],
+  "pokedex": [
+    "cobblemon.species.voltorb.desc"
+  ],
   "evolutions": [
     {
       "id": "voltorb_electrode",
@@ -152,7 +244,7 @@
       "requirements": [
         {
           "variant": "level",
-          "minLevel": 30
+          "amount": 30
         }
       ]
     }
@@ -165,8 +257,15 @@
   },
   "baseFriendship": 70,
   "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
     "speed": 1
   },
   "height": 5,
-  "weight": 104
+  "weight": 104,
+  "aspects": [],
+  "cannotDynamax": false
 }

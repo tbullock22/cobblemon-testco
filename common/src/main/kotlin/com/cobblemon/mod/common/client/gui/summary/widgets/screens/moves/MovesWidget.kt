@@ -155,7 +155,7 @@ class MovesWidget(
             shadow = true
         )
 
-        val moveEffect = if (selectedMove != null) format(selectedMove!!.effectChance).text() else "—".text()
+        val moveEffect = if (selectedMove != null) format(selectedMove!!.effectChances.firstOrNull() ?: 0.0).text() else "—".text()
         drawScaledText(
             matrixStack = pMatrixStack,
             text = moveEffect,

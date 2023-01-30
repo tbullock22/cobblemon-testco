@@ -84,6 +84,13 @@ class PokemonServerDelegate : PokemonSideDelegate {
     }
 
     override fun tick(entity: PokemonEntity) {
+        val state = entity.pokemon.state
+        if (state !is ActivePokemonState || state.entity != entity) {
+            if (!entity.isDead && entity.health > 0) {
+                entity.pokemon.state = SentOutState(entity)
+            }
+        }
+
         if (!entity.behaviour.moving.walk.canWalk && entity.behaviour.moving.fly.canFly && !entity.getBehaviourFlag(PokemonBehaviourFlag.FLYING)) {
             entity.setBehaviourFlag(PokemonBehaviourFlag.FLYING, true)
         }

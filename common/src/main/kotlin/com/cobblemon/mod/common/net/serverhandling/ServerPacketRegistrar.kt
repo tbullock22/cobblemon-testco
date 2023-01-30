@@ -13,6 +13,7 @@ import com.cobblemon.mod.common.net.SidedPacketRegistrar
 import com.cobblemon.mod.common.net.messages.server.pokemon.update.evolution.AcceptEvolutionPacket
 import com.cobblemon.mod.common.net.serverhandling.battle.BattleSelectActionsHandler
 import com.cobblemon.mod.common.net.serverhandling.evolution.EvolutionDisplayUpdatePacketHandler
+import com.cobblemon.mod.common.net.serverhandling.pokemon.interact.InteractPokemonHandler
 import com.cobblemon.mod.common.net.serverhandling.starter.RequestStarterScreenHandler
 import com.cobblemon.mod.common.net.serverhandling.starter.SelectStarterPacketHandler
 import com.cobblemon.mod.common.net.serverhandling.storage.BenchMoveHandler
@@ -22,11 +23,7 @@ import com.cobblemon.mod.common.net.serverhandling.storage.SwapPCPartyPokemonHan
 import com.cobblemon.mod.common.net.serverhandling.storage.party.MovePartyPokemonHandler
 import com.cobblemon.mod.common.net.serverhandling.storage.party.ReleasePCPokemonHandler
 import com.cobblemon.mod.common.net.serverhandling.storage.party.SwapPartyPokemonHandler
-import com.cobblemon.mod.common.net.serverhandling.storage.pc.MovePCPokemonHandler
-import com.cobblemon.mod.common.net.serverhandling.storage.pc.MovePCPokemonToPartyHandler
-import com.cobblemon.mod.common.net.serverhandling.storage.pc.MovePartyPokemonToPCHandler
-import com.cobblemon.mod.common.net.serverhandling.storage.pc.ReleasePartyPokemonHandler
-import com.cobblemon.mod.common.net.serverhandling.storage.pc.SwapPCPokemonHandler
+import com.cobblemon.mod.common.net.serverhandling.storage.pc.*
 
 /**
  * Registers packet handlers that the server will need. This is separated from the client ones
@@ -48,12 +45,15 @@ object ServerPacketRegistrar : SidedPacketRegistrar() {
         registerHandler(BattleSelectActionsHandler)
         registerHandler(SelectStarterPacketHandler)
 
+        registerHandler(InteractPokemonHandler)
+
         // PC actions
         registerHandler(MovePCPokemonHandler)
         registerHandler(SwapPCPokemonHandler)
         registerHandler(MovePCPokemonToPartyHandler)
         registerHandler(MovePartyPokemonToPCHandler)
         registerHandler(ReleasePCPokemonHandler)
+        registerHandler(UnlinkPlayerFromPCHandler)
 
         // Party actions
         registerHandler(MovePartyPokemonHandler)

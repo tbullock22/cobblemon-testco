@@ -27,6 +27,8 @@ import com.cobblemon.mod.common.battles.dispatch.DispatchResult
 import com.cobblemon.mod.common.battles.dispatch.GO
 import com.cobblemon.mod.common.battles.dispatch.UntilDispatch
 import com.cobblemon.mod.common.battles.dispatch.WaitDispatch
+import com.cobblemon.mod.common.api.battles.interpreter.BattleMessage
+import com.cobblemon.mod.common.api.moves.Moves
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
 import com.cobblemon.mod.common.net.messages.client.battle.BattleFaintPacket
 import com.cobblemon.mod.common.net.messages.client.battle.BattleHealthChangePacket
@@ -36,8 +38,9 @@ import com.cobblemon.mod.common.net.messages.client.battle.BattlePersistentStatu
 import com.cobblemon.mod.common.net.messages.client.battle.BattleQueueRequestPacket
 import com.cobblemon.mod.common.net.messages.client.battle.BattleSetTeamPokemonPacket
 import com.cobblemon.mod.common.net.messages.client.battle.BattleSwitchPokemonPacket
-import com.cobblemon.mod.common.pokemon.feature.BattleCriticalHitsFeature
-import com.cobblemon.mod.common.pokemon.feature.DamageTakenFeature
+import com.cobblemon.mod.common.pokemon.evolution.progress.DamageTakenEvolutionProgress
+import com.cobblemon.mod.common.pokemon.evolution.progress.RecoilEvolutionProgress
+import com.cobblemon.mod.common.pokemon.evolution.progress.UseMoveEvolutionProgress
 import com.cobblemon.mod.common.pokemon.status.PersistentStatus
 import com.cobblemon.mod.common.util.asTranslated
 import com.cobblemon.mod.common.util.battleLang
@@ -49,6 +52,7 @@ import java.util.UUID
 import java.util.concurrent.CompletableFuture
 import net.minecraft.entity.LivingEntity
 import net.minecraft.server.world.ServerWorld
+import kotlin.math.roundToInt
 
 object ShowdownInterpreter {
     private val updateInstructions = mutableMapOf<String, (PokemonBattle, String, MutableList<String>) -> Unit>()
@@ -96,6 +100,8 @@ object ShowdownInterpreter {
         updateInstructions["|-end|"] = this::handleEndInstruction
         updateInstructions["|-miss|"] = this::handleMissInstruction
         updateInstructions["|-hitcount|"] = this::handleHitCountInstruction
+        updateInstructions["|-item|"] = this::handleItemInstruction
+        updateInstructions["|-enditem|"] = this::handleEndItemInstruction
 
         sideUpdateInstructions["|request|"] = this::handleRequestInstruction
         splitUpdateInstructions["|switch|"] = this::handleSwitchInstruction
@@ -452,7 +458,7 @@ object ShowdownInterpreter {
     private fun handleFaintInstruction(battle: PokemonBattle, message: String, remainingLines: MutableList<String>) {
         battle.dispatch {
             val pnx = message.split("|faint|")[1].substring(0, 3)
-            val (_, pokemon) = battle.getActorAndActiveSlotFromPNX(pnx)
+            val (actor, pokemon) = battle.getActorAndActiveSlotFromPNX(pnx)
             battle.sendUpdate(BattleFaintPacket(pnx, battleLang("fainted", pokemon.battlePokemon?.getName() ?: "ALREADY DEAD")))
             pokemon.battlePokemon?.effectedPokemon?.currentHealth = 0
             pokemon.battlePokemon?.sendUpdate()
@@ -531,6 +537,15 @@ object ShowdownInterpreter {
                 battle.getActorAndActiveSlotFromPNX(targetPNX)
             } else {
                 null
+            }
+            userPokemon.battlePokemon?.effectedPokemon?.let { pokemon ->
+                Moves.getByName(move)?.let { moveTemplate ->
+                    val progress = UseMoveEvolutionProgress()
+                    if (progress.shouldKeep(pokemon)) {
+                        val created = pokemon.evolutionProxy.current().progressFirstOrCreate({ it is UseMoveEvolutionProgress && it.currentProgress().move == moveTemplate }) { progress }
+                        created.updateProgress(UseMoveEvolutionProgress.Progress(created.currentProgress().move, created.currentProgress().amount + 1))
+                    }
+                }
             }
             if (targetPokemon != null && targetPokemon.second != userPokemon) {
                 val targetPNX = editMessaged.split("|")[2].split(":")[0]
@@ -631,8 +646,8 @@ object ShowdownInterpreter {
             this.lastMover[battle.battleId]?.let { message ->
                 val editMessaged = message.replace("|move|", "")
                 val userPNX = editMessaged.split("|")[0].split(":")[0].trim()
-                val pokemon = battle.getActorAndActiveSlotFromPNX(userPNX).second.battlePokemon?.effectedPokemon ?: return@let
-                pokemon.getFeature<BattleCriticalHitsFeature>(BattleCriticalHitsFeature.ID)?.let { it.currentValue++ }
+                val battlePokemon = battle.getActorAndActiveSlotFromPNX(userPNX).second.battlePokemon ?: return@let
+                battlePokemon.criticalHits++
             }
             GO
         }
@@ -700,6 +715,9 @@ object ShowdownInterpreter {
             if (message.contains("|protect")){
                 battle.broadcastChatMessage(battleLang("protect_start",pokemon.battlePokemon?.getName() ?: ""))
             }
+            if (message.contains("move: Bide")){
+                battle.broadcastChatMessage(battleLang("bide_start",pokemon.battlePokemon?.getName() ?: ""))
+            }
             WaitDispatch(2F)
         }
     }
@@ -714,6 +732,8 @@ object ShowdownInterpreter {
             when {
                 "|protect" in message -> battle.broadcastChatMessage(battleLang("protect_activate",pokemon.battlePokemon!!.getName()))
                 "move: Magnitude" in message -> battle.broadcastChatMessage(battleLang("magnitude_level", message.substringAfterLast("|").toIntOrNull() ?: 1))
+                "move: Bide" in message -> battle.broadcastChatMessage(battleLang("bide_activate",pokemon.battlePokemon!!.getName()))
+                // ToDo Focus Band, use battleLang("item.hung_on.end", battlerName, itemName)
             }
             GO
         }
@@ -728,6 +748,7 @@ object ShowdownInterpreter {
 
             when (fromWhat) {
                 "confusion" -> battle.broadcastChatMessage(battleLang("confusion_snapped", pokemon.battlePokemon!!.getName()))
+                "move: Bide" -> battle.broadcastChatMessage(battleLang("bide_end", pokemon.battlePokemon!!.getName()))
                 else -> battle.broadcastChatMessage(editedMessage.text())
             }
 
@@ -846,7 +867,23 @@ object ShowdownInterpreter {
 
     fun handleDamageInstruction(battle: PokemonBattle, actor: BattleActor, publicMessage: String, privateMessage: String) {
         val pnx = publicMessage.split("|")[2].split(":")[0]
-        val (_, activePokemon) = battle.getActorAndActiveSlotFromPNX(pnx)
+        val battleMessage = BattleMessage(publicMessage)
+        val (_, activePokemon) = battleMessage.actorAndActivePokemon(0, battle)!!
+        if (battleMessage.optionalArgument("from")?.equals("recoil", true) == true) {
+            activePokemon.battlePokemon?.effectedPokemon?.let { pokemon ->
+                val recoilProgress = RecoilEvolutionProgress()
+                // Lazy cheat to see if it's necessary to use this
+                if (recoilProgress.shouldKeep(pokemon)) {
+                    val progress = pokemon.evolutionProxy.current().progressFirstOrCreate({ it is RecoilEvolutionProgress }) { recoilProgress }
+                    val newPercentage = battleMessage.argumentAt(1)?.split("/")?.getOrNull(0)?.toIntOrNull() ?: 0
+                    val newHealth = (pokemon.hp * (newPercentage / 100.0)).roundToInt()
+                    val difference = pokemon.currentHealth - newHealth
+                    if (difference > 0) {
+                        progress.updateProgress(RecoilEvolutionProgress.Progress(progress.currentProgress().recoil + difference))
+                    }
+                }
+            }
+        }
         val newHealth = privateMessage.split("|")[3].split(" ")[0]
         val cause = if ("[from]" in publicMessage) publicMessage.substringAfter("[from]").trim() else null
 
@@ -867,7 +904,14 @@ object ShowdownInterpreter {
                 battle.dispatch {
                     activePokemon.battlePokemon?.effectedPokemon?.currentHealth = remainingHealth
                     if (difference > 0) {
-                        activePokemon.battlePokemon?.effectedPokemon?.getFeature<DamageTakenFeature>(DamageTakenFeature.ID)?.let { it.currentValue += difference }
+                        activePokemon.battlePokemon?.effectedPokemon?.let { pokemon ->
+                            val damageProgress = DamageTakenEvolutionProgress()
+                            // Lazy cheat to see if it's necessary to use this
+                            if (damageProgress.shouldKeep(pokemon)) {
+                                val progress = pokemon.evolutionProxy.current().progressFirstOrCreate({ it is DamageTakenEvolutionProgress }) { damageProgress }
+                                progress.updateProgress(DamageTakenEvolutionProgress.Progress(progress.currentProgress().amount + difference))
+                            }
+                        }
                     }
                     activePokemon.battlePokemon?.sendUpdate()
                     GO
@@ -908,6 +952,23 @@ object ShowdownInterpreter {
             val hitCount = message.substringAfterLast("|").toIntOrNull() ?: -1
             val lang = if (hitCount == 1) battleLang("hit_count_singular") else battleLang("hit_count", hitCount)
             battle.broadcastChatMessage(lang)
+        }
+    }
+
+
+    fun handleItemInstruction(battle: PokemonBattle, baseMessage: String, remainingLines: MutableList<String>) {
+        battle.dispatchGo {
+            val battleMessage = BattleMessage(baseMessage)
+            val battlePokemon = battleMessage.actorAndActivePokemon(0, battle)?.second?.battlePokemon ?: return@dispatchGo
+            battlePokemon.heldItemManager.handleStartInstruction(battlePokemon, battle, battleMessage)
+        }
+    }
+
+    fun handleEndItemInstruction(battle: PokemonBattle, baseMessage: String, remainingLines: MutableList<String>) {
+        battle.dispatchGo {
+            val battleMessage = BattleMessage(baseMessage)
+            val battlePokemon = battleMessage.actorAndActivePokemon(0, battle)?.second?.battlePokemon ?: return@dispatchGo
+            battlePokemon.heldItemManager.handleEndInstruction(battlePokemon, battle, battleMessage)
         }
     }
 

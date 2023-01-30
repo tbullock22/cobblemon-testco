@@ -1,9 +1,13 @@
 {
-  "name": "obstagoon",
+  "name": "Obstagoon",
   "nationalPokedexNumber": 862,
   "primaryType": "dark",
   "secondaryType": "normal",
-  "abilities": ["reckless", "guts", "h:defiant"],
+  "abilities": [
+    "reckless",
+    "guts",
+    "h:defiant"
+  ],
   "baseStats": {
     "hp": 93,
     "attack": 90,
@@ -15,24 +19,23 @@
   "catchRate": 45,
   "maleRatio": 0.5,
   "shoulderMountable": false,
-  "forms": [],
   "baseExperienceYield": 260,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 15,
-  "eggGroups": ["field"],
+  "eggGroups": [
+    "field"
+  ],
   "moves": [
-    "0:obstruct",
-    "1:sandattack",
-    "1:tackle",
-    "1:pinmissile",
-    "1:leer",
-    "1:submission",
-    "1:lick",
-    "1:crosschop",
-    "1:nightslash",
-    "1:switcheroo",
     "1:babydolleyes",
-    "1:obstruct",
+    "1:crosschop",
+    "1:leer",
+    "1:lick",
+    "1:nightslash",
+    "1:pinmissile",
+    "1:sandattack",
+    "1:submission",
+    "1:switcheroo",
+    "1:tackle",
     "9:snarl",
     "12:headbutt",
     "15:honeclaws",
@@ -109,23 +112,31 @@
     "tm:xscissor",
     "tutor:lashout"
   ],
-  "labels": ["gen8"],
+  "labels": [
+    "gen8"
+  ],
   "pokedex": [
-    "cobblemon.species.obstagoon.desc1",
-    "cobblemon.species.obstagoon.desc2"
+    "cobblemon.species.obstagoon.desc"
   ],
   "preEvolution": "linoone form=galar",
   "evolutions": [],
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
-    "width": 1.0,
-    "height": 1.0,
+    "width": 1,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 50,
   "evYield": {
-    "defence": 3
+    "hp": 0,
+    "attack": 0,
+    "defence": 3,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 16,
-  "weight": 460
+  "weight": 460,
+  "aspects": [],
+  "cannotDynamax": false
 }

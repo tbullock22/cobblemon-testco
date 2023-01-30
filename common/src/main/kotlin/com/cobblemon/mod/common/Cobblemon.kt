@@ -39,6 +39,7 @@ import com.cobblemon.mod.common.api.pokemon.feature.ChoiceSpeciesFeatureProvider
 import com.cobblemon.mod.common.api.pokemon.feature.FlagSpeciesFeatureProvider
 import com.cobblemon.mod.common.api.pokemon.feature.GlobalSpeciesFeatures
 import com.cobblemon.mod.common.api.pokemon.feature.SpeciesFeatures
+import com.cobblemon.mod.common.api.pokemon.helditem.HeldItemProvider
 import com.cobblemon.mod.common.api.pokemon.stats.EvCalculator
 import com.cobblemon.mod.common.api.pokemon.stats.Generation8EvCalculator
 import com.cobblemon.mod.common.api.pokemon.stats.StatProvider
@@ -81,10 +82,11 @@ import com.cobblemon.mod.common.permission.LaxPermissionValidator
 import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.pokemon.aspects.GENDER_ASPECT
 import com.cobblemon.mod.common.pokemon.aspects.SHINY_ASPECT
+import com.cobblemon.mod.common.pokemon.evolution.requirements.DamageTakenRequirement
+import com.cobblemon.mod.common.pokemon.evolution.requirements.UseMoveRequirement
 import com.cobblemon.mod.common.pokemon.evolution.variants.BlockClickEvolution
-import com.cobblemon.mod.common.pokemon.feature.BattleCriticalHitsFeature
-import com.cobblemon.mod.common.pokemon.feature.DamageTakenFeature
-import com.cobblemon.mod.common.pokemon.feature.TagSeasonResolver
+import com.cobblemon.mod.common.pokemon.feature.*
+import com.cobblemon.mod.common.pokemon.helditem.CobblemonHeldItemManager
 import com.cobblemon.mod.common.pokemon.properties.HiddenAbilityPropertyType
 import com.cobblemon.mod.common.pokemon.properties.UncatchableProperty
 import com.cobblemon.mod.common.pokemon.properties.UntradeableProperty
@@ -180,6 +182,7 @@ object Cobblemon {
             BattleRegistry.getBattleByParticipatingPlayer(it)?.stop()
         }
         LIVING_DEATH.pipe(filter { it is ServerPlayerEntity }, map { it as ServerPlayerEntity }).subscribe {
+            PCLinkManager.removeLink(it.uuid)
             battleRegistry.getBattleByParticipatingPlayer(it)?.stop()
         }
 
@@ -198,6 +201,8 @@ object Cobblemon {
         TrackedDataHandlerRegistry.register(Vec3DataSerializer)
         TrackedDataHandlerRegistry.register(StringSetDataSerializer)
         TrackedDataHandlerRegistry.register(PoseTypeDataSerializer)
+
+        HeldItemProvider.register(CobblemonHeldItemManager, Priority.LOWEST)
     }
 
     fun initialize() {
@@ -218,9 +223,6 @@ object Cobblemon {
 
         SpeciesFeatures.types["choice"] = ChoiceSpeciesFeatureProvider::class.java
         SpeciesFeatures.types["flag"] = FlagSpeciesFeatureProvider::class.java
-
-        GlobalSpeciesFeatures.register(DamageTakenFeature.ID) { DamageTakenFeature() }
-        GlobalSpeciesFeatures.register(BattleCriticalHitsFeature.ID) { BattleCriticalHitsFeature() }
 
         CustomPokemonProperty.register(UntradeableProperty)
         CustomPokemonProperty.register(UncatchableProperty)

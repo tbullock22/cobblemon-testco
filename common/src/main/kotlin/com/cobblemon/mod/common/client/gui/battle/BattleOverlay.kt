@@ -416,4 +416,11 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
 
         DiffuseLighting.enableGuiDepthLighting()
     }
+
+    fun onLogout() {
+        this.opacity = MIN_OPACITY
+        this.passedSeconds = 0F
+        this.lastKnownBattle = null
+    }
+
 }

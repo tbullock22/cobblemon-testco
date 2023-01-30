@@ -1,9 +1,13 @@
 {
-  "name": "stunfisk",
+  "name": "Stunfisk",
   "nationalPokedexNumber": 618,
   "primaryType": "ground",
   "secondaryType": "electric",
-  "abilities": ["static", "limber", "h:sandveil"],
+  "abilities": [
+    "static",
+    "limber",
+    "h:sandveil"
+  ],
   "baseStats": {
     "hp": 109,
     "attack": 66,
@@ -17,12 +21,12 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "galar",
+      "name": "Galar",
+      "primaryType": "ground",
       "secondaryType": "steel",
-      "abilities": ["mimicry"],
+      "abilities": [
+        "mimicry"
+      ],
       "baseStats": {
         "hp": 109,
         "attack": 81,
@@ -31,11 +35,29 @@
         "special_defence": 84,
         "speed": 32
       },
+      "catchRate": 75,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 165,
+      "baseFriendship": 70,
+      "evYield": {
+        "hp": 2,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "water_1",
+        "amorphous"
+      ],
       "moves": [
+        "1:metalclaw",
+        "1:mudslap",
         "1:tackle",
         "1:watergun",
-        "1:mudslap",
-        "1:metalclaw",
         "5:endure",
         "10:mudshot",
         "15:revenge",
@@ -96,24 +118,33 @@
         "tutor:steelbeam",
         "tutor:terrainpulse"
       ],
-      "pokedex": [
-        "cobblemon.form.stunfisk-galar.desc1",
-        "cobblemon.form.stunfisk-galar.desc2"
+      "labels": [
+        "gen8",
+        "galar_regional"
       ],
+      "aspects": [
+        "galarian"
+      ],
+      "height": 7,
       "weight": 205,
-      "labels": ["gen5", "galar_regional", "regional"]
+      "evolutions": [],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 165,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 20,
-  "eggGroups": ["water_1", "amorphous"],
+  "eggGroups": [
+    "water_1",
+    "amorphous"
+  ],
   "moves": [
-    "1:tackle",
-    "1:watergun",
-    "1:thundershock",
     "1:mudslap",
     "1:mudsport",
+    "1:tackle",
+    "1:thundershock",
+    "1:watergun",
     "5:bide",
     "5:endure",
     "10:mudshot",
@@ -191,22 +222,31 @@
     "tutor:shockwave",
     "tutor:waterpulse"
   ],
-  "labels": ["gen5", "unova_regional", "regional"],
+  "labels": [
+    "gen5",
+    "unova_regional"
+  ],
   "pokedex": [
-    "cobblemon.species.stunfisk.desc1",
-    "cobblemon.species.stunfisk.desc2"
+    "cobblemon.species.stunfisk.desc"
   ],
   "evolutions": [],
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
-    "width": 1.0,
-    "height": 1.0,
+    "width": 1,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 70,
   "evYield": {
-    "hp": 2
+    "hp": 2,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 7,
-  "weight": 110
+  "weight": 110,
+  "aspects": [],
+  "cannotDynamax": false
 }

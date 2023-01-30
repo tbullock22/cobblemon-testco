@@ -10,7 +10,12 @@ package com.cobblemon.mod.common
 
 import com.cobblemon.mod.common.api.pokeball.PokeBalls
 import com.cobblemon.mod.common.api.pokemon.stats.Stats
-import com.cobblemon.mod.common.item.*
+import com.cobblemon.mod.common.item.ApricornItem
+import com.cobblemon.mod.common.item.ApricornSeedItem
+import com.cobblemon.mod.common.item.CobblemonItem
+import com.cobblemon.mod.common.item.CobblemonItemGroups
+import com.cobblemon.mod.common.item.PokeBallItem
+import com.cobblemon.mod.common.item.PokemonItem
 import com.cobblemon.mod.common.item.interactive.CandyItem
 import com.cobblemon.mod.common.item.interactive.LinkCableItem
 import com.cobblemon.mod.common.item.interactive.VitaminItem
@@ -159,6 +164,24 @@ object CobblemonItems : CompletableRegistry<Item>(Registry.ITEM_KEY) {
     val THUNDER_STONE = queue("thunder_stone") { evolutionItem() }
     val WATER_STONE = queue("water_stone") { evolutionItem() }
 
+    // Held Items
+    val ASSAULT_VEST = this.heldItem("assault_vest")
+    val BLACK_GLASSES = this.heldItem("black_glasses")
+    val CHOICE_BAND = this.heldItem("choice_band")
+    val CHOICE_SPECS = this.heldItem("choice_specs")
+    val EXP_SHARE = this.heldItem("exp_share")
+    val FOCUS_BAND = this.heldItem("focus_band")
+    val HARD_STONE = this.heldItem("hard_stone")
+    val HEAVY_DUTY_BOOTS = this.heldItem("heavy_duty_boots")
+    val LUCKY_EGG = this.heldItem("lucky_egg")
+    val MUSCLE_BAND = this.heldItem("muscle_band")
+    val ROCKY_HELMET = this.heldItem("rocky_helmet")
+    val SAFETY_GOGGLES = this.heldItem("safety_goggles")
+    val WISE_GLASSES = this.heldItem("wise_glasses")
+
+    // Misc
+    val POKEMON_MODEL = queue("pokemon_model") { PokemonItem() }
+
     fun pokeballs(): List<RegistrySupplier<PokeBallItem>> = this.pokeballs
 
     private fun blockItem(block: Block, tab: ItemGroup) : BlockItem {
@@ -179,5 +202,7 @@ object CobblemonItems : CompletableRegistry<Item>(Registry.ITEM_KEY) {
         this.pokeballs.add(supplier)
         return supplier
     }
+
+    private fun heldItem(name: String): RegistrySupplier<CobblemonItem> = queue(name) { CobblemonItem(Item.Settings().group(CobblemonItemGroups.HELD_ITEM_GROUP)) }
 
 }

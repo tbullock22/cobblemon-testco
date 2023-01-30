@@ -1,168 +1,185 @@
 {
-    "implemented": true,
-    "name": "seel",
-    "nationalPokedexNumber": 86,
-    "primaryType": "water",
-    "abilities": [
-        "thickfat",
-        "hydration",
-        "h:icebody"
-    ],
-    "baseStats": {
-        "hp": 65,
-        "attack": 45,
-        "defence": 55,
-        "special_attack": 45,
-        "special_defence": 70,
-        "speed": 45
-    },
-    "catchRate": 190,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 65,
-    "experienceGroup": "mediumfast",
-    "eggCycles": 20,
-    "eggGroups": [
-        "water_1",
-        "field"
-    ],
-    "behaviour": {
-        "moving": {
-            "swim": {
-                "canSwimInWater": true,
-                "canBreatheUnderwater": true
-            }
-        }
-    },
-    "drops": {
-        "amount": "1",
-        "entries": [
-            {
-                "item": "minecraft:cod",
-                "percentage": 50
-            }
-        ]
-    },
-    "moves": [
-        "1:headbutt",
-        "4:growl",
-        "7:watersport",
-        "8:encore",
-        "11:icywind",
-        "12:aquajet",
-        "16:iceshard",
-        "20:rest",
-        "23:aquaring",
-        "26:aurorabeam",
-        "32:waterfall",
-        "33:brine",
-        "38:takedown",
-        "41:dive",
-        "43:aquatail",
-        "44:icebeam",
-        "50:doubleedge",
-        "51:safeguard",
-        "53:hail",
-        "egg:belch",
-        "egg:disable",
-        "egg:entrainment",
-        "egg:fakeout",
-        "egg:horndrill",
-        "egg:iciclespear",
-        "egg:lick",
-        "egg:peck",
-        "egg:perishsong",
-        "egg:signalbeam",
-        "egg:slam",
-        "egg:sleeptalk",
-        "egg:spitup",
-        "egg:stockpile",
-        "egg:swallow",
-        "egg:waterpulse",
-        "tm:attract",
-        "tm:bide",
-        "tm:blizzard",
-        "tm:bubblebeam",
-        "tm:captivate",
-        "tm:confide",
-        "tm:curse",
-        "tm:doubleteam",
-        "tm:drillrun",
-        "tm:echoedvoice",
-        "tm:endure",
-        "tm:facade",
-        "tm:fling",
-        "tm:frustration",
-        "tm:hail",
-        "tm:headbutt",
-        "tm:helpinghand",
-        "tm:hiddenpower",
-        "tm:icebeam",
-        "tm:irontail",
-        "tm:megahorn",
-        "tm:naturalgift",
-        "tm:payday",
-        "tm:protect",
-        "tm:rage",
-        "tm:raindance",
-        "tm:rest",
-        "tm:return",
-        "tm:round",
-        "tm:safeguard",
-        "tm:secretpower",
-        "tm:skullbash",
-        "tm:sleeptalk",
-        "tm:smartstrike",
-        "tm:strength",
-        "tm:substitute",
-        "tm:surf",
-        "tm:swagger",
-        "tm:thief",
-        "tm:toxic",
-        "tm:waterfall",
-        "tm:watergun",
-        "tm:whirlpool",
-        "tutor:aquatail",
-        "tutor:bodyslam",
-        "tutor:icywind",
-        "tutor:mimic",
-        "tutor:signalbeam",
-        "tutor:snore",
-        "tutor:waterpulse"
-    ],
-    "labels": [
-        "gen1"
-    ],
-    "pokedex": [
-        "cobblemon.species.seel.desc1",
-        "cobblemon.species.seel.desc2"
-    ],
-    "evolutions": [
+  "implemented": true,
+  "name": "Seel",
+  "nationalPokedexNumber": 86,
+  "primaryType": "water",
+  "abilities": [
+    "thickfat",
+    "hydration",
+    "h:icebody"
+  ],
+  "baseStats": {
+    "hp": 65,
+    "attack": 45,
+    "defence": 55,
+    "special_attack": 45,
+    "special_defence": 70,
+    "speed": 45
+  },
+  "catchRate": 190,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "baseExperienceYield": 65,
+  "experienceGroup": "medium_fast",
+  "eggCycles": 20,
+  "eggGroups": [
+    "water_1",
+    "field"
+  ],
+  "behaviour": {
+    "moving": {
+      "swim": {
+        "canSwimInWater": true,
+        "canBreatheUnderwater": true
+      }
+    }
+  },
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:cod",
+        "percentage": 50
+      }
+    ]
+  },
+  "moves": [
+    "7:watersport",
+    "11:icywind",
+    "23:aquaring",
+    "33:brine",
+    "41:dive",
+    "43:aquatail",
+    "51:safeguard",
+    "53:hail",
+    "egg:belch",
+    "egg:disable",
+    "egg:entrainment",
+    "egg:fakeout",
+    "egg:horndrill",
+    "egg:iciclespear",
+    "egg:lick",
+    "egg:perishsong",
+    "egg:signalbeam",
+    "egg:slam",
+    "egg:sleeptalk",
+    "egg:spitup",
+    "egg:stockpile",
+    "egg:swallow",
+    "egg:waterpulse",
+    "tm:attract",
+    "tm:captivate",
+    "tm:confide",
+    "tm:doubleteam",
+    "tm:echoedvoice",
+    "tm:fling",
+    "tm:frustration",
+    "tm:hail",
+    "tm:hiddenpower",
+    "tm:naturalgift",
+    "tm:raindance",
+    "tm:return",
+    "tm:round",
+    "tm:safeguard",
+    "tm:secretpower",
+    "tm:sleeptalk",
+    "tm:smartstrike",
+    "tm:swagger",
+    "tm:thief",
+    "tutor:aquajet",
+    "tutor:aquatail",
+    "tutor:attract",
+    "tutor:aurorabeam",
+    "tutor:bide",
+    "tutor:blizzard",
+    "tutor:bodyslam",
+    "tutor:bubblebeam",
+    "tutor:curse",
+    "tutor:disable",
+    "tutor:doubleedge",
+    "tutor:doubleteam",
+    "tutor:drillrun",
+    "tutor:encore",
+    "tutor:endure",
+    "tutor:facade",
+    "tutor:frustration",
+    "tutor:growl",
+    "tutor:headbutt",
+    "tutor:helpinghand",
+    "tutor:hiddenpower",
+    "tutor:horndrill",
+    "tutor:icebeam",
+    "tutor:iceshard",
+    "tutor:icywind",
+    "tutor:icywind",
+    "tutor:irontail",
+    "tutor:lick",
+    "tutor:megahorn",
+    "tutor:mimic",
+    "tutor:payday",
+    "tutor:peck",
+    "tutor:perishsong",
+    "tutor:protect",
+    "tutor:rage",
+    "tutor:raindance",
+    "tutor:rest",
+    "tutor:return",
+    "tutor:safeguard",
+    "tutor:signalbeam",
+    "tutor:skullbash",
+    "tutor:slam",
+    "tutor:sleeptalk",
+    "tutor:snore",
+    "tutor:snore",
+    "tutor:strength",
+    "tutor:substitute",
+    "tutor:surf",
+    "tutor:swagger",
+    "tutor:takedown",
+    "tutor:toxic",
+    "tutor:waterfall",
+    "tutor:watergun",
+    "tutor:waterpulse",
+    "tutor:whirlpool"
+  ],
+  "labels": [
+    "gen1"
+  ],
+  "pokedex": [
+    "cobblemon.species.seel.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "seel_dewgong",
+      "variant": "level_up",
+      "result": "dewgong",
+      "consumeHeldItem": false,
+      "learnableMoves": [],
+      "requirements": [
         {
-            "id": "seel_dewgong",
-            "variant": "level_up",
-            "result": "dewgong",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "level",
-                    "minLevel": 34
-                }
-            ]
+          "variant": "level",
+          "amount": 34
         }
-    ],
-    "baseScale": 1.0,
-    "hitbox": {
-        "width": 0.9,
-        "height": 0.5,
-        "fixed": false
-    },
-    "baseFriendship": 70,
-    "evYield": {
-        "special_defence": 1
-    },
-    "height": 11,
-    "weight": 900
+      ]
+    }
+  ],
+  "baseScale": 1,
+  "hitbox": {
+    "width": 0.9,
+    "height": 0.5,
+    "fixed": false
+  },
+  "baseFriendship": 70,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 1,
+    "speed": 0
+  },
+  "height": 11,
+  "weight": 900,
+  "aspects": [],
+  "cannotDynamax": false
 }

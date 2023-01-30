@@ -24,6 +24,8 @@ object CobblemonSounds : CompletableRegistry<SoundEvent>(Registry.SOUND_EVENT_KE
     val PC_DROP = queue("pc.drop")
     val PC_RELEASE = queue("pc.release")
 
+    val HEALING_MACHINE_ACTIVE = queue("healing_machine.active")
+
     val POKE_BALL_CAPTURE_STARTED = queue("poke_ball.capture_started")
     val POKE_BALL_CAPTURE_SUCCEEDED = queue("poke_ball.capture_succeeded")
     val POKE_BALL_SHAKE = queue("poke_ball.shake")

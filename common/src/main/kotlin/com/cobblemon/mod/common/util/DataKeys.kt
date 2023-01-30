@@ -40,6 +40,7 @@ object DataKeys {
     const val POKEMON_HEALING_TIMER = "HealingTimer"
     const val POKEMON_DATA = "PokemonData"
     const val POKEMON_NATURE = "Nature"
+    const val HELD_ITEM = "HeldItem"
 
     const val POKEMON_STATE = "State"
     const val POKEMON_STATE_TYPE = "StateType"
@@ -88,5 +89,9 @@ object DataKeys {
     const val HEALER_MACHINE_CHARGE = "MachineCharge"
     const val HEALER_MACHINE_INFINITE = "MachineInfinite"
     /* ----------- */
+
+    // Pokemon Item
+    const val POKEMON_ITEM_SPECIES = "species"
+    const val POKEMON_ITEM_ASPECTS = "aspects"
 
 }

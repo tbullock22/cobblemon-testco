@@ -19,6 +19,7 @@ import com.cobblemon.mod.common.client.keybind.keybinds.HidePartyBinding
 import com.cobblemon.mod.common.client.keybind.keybinds.SummaryBinding
 import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.client.render.getDepletableRedGreen
+import com.cobblemon.mod.common.client.render.renderScaledGuiItemIcon
 import com.cobblemon.mod.common.pokemon.Gender
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.cobblemon.mod.common.util.lang
@@ -34,7 +35,7 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
 
     companion object {
         private const val SLOT_HEIGHT = 30
-        private const val SLOT_WIDTH = 57
+        private const val SLOT_WIDTH = 62
         private const val SLOT_SPACING = 4
         private const val PORTRAIT_DIAMETER = 21
         private const val SCALE = 0.5F
@@ -94,12 +95,9 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
         val totalHeight = party.slots.size * SLOT_HEIGHT
         val midY = minecraft.window.scaledHeight / 2
         val startY = (midY - totalHeight / 2) - ((SLOT_SPACING * 5) / 2)
-        val portraitFrameOffsetX = 17
+        val portraitFrameOffsetX = 22
         val portraitFrameOffsetY = 2
         val selectedSlot = CobblemonClient.storage.selectedSlot
-
-        val scaleIt: (Int) -> Int = { (it * minecraft.window.scaleFactor).toInt() }
-        val downscaleIt: (Number) -> Int = { (it.toFloat() / 4F * minecraft.window.scaleFactor).roundToInt() }
 
         party.forEachIndexed { index, pokemon ->
             if (pokemon != null) {
@@ -123,35 +121,28 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
                     y + PORTRAIT_DIAMETER
                 )
 
-                val matrixStack = MatrixStack()
+                matrixStack.push()
                 matrixStack.translate(
                     panelX + portraitFrameOffsetX + selectedOffsetX + PORTRAIT_DIAMETER / 2.0 - 1.0,
                     y.toDouble() - 12,
                     0.0
                 )
-                matrixStack.scale(1F, 1F, 1F)
 
                 drawPortraitPokemon(pokemon.species, pokemon.aspects, matrixStack)
-
+                matrixStack.pop()
                 DrawableHelper.disableScissor()
             }
-        }
 
-        // Some long models end up translated such that the text ends up behind the invisible viewport rendered bits.
-        // Kinda messed up but pushing these next elements forward seems a cheap enough fix.
-        matrixStack.push()
-        matrixStack.translate(0.0, 0.0, 300.0)
-        party.slots.forEachIndexed { index, pokemon ->
             val selectedOffsetX = if (selectedSlot == index) 6 else 0
             val indexOffsetY = (SLOT_HEIGHT + SLOT_SPACING) * index
             val indexY = startY + indexOffsetY
 
             val slotTexture = if (pokemon != null)
-                    if (pokemon.isFainted())
-                        if (selectedSlot == index) partySlotFaintedActive else partySlotFainted
-                    else
-                        if (selectedSlot == index) partySlotActive else partySlot
-                else partySlotCollapsed
+                if (pokemon.isFainted())
+                    if (selectedSlot == index) partySlotFaintedActive else partySlotFainted
+                else
+                    if (selectedSlot == index) partySlotActive else partySlot
+            else partySlotCollapsed
 
             blitk(
                 matrixStack = matrixStack,
@@ -168,7 +159,7 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
                     blitk(
                         matrixStack = matrixStack,
                         texture = stateIcon,
-                        x = (panelX + selectedOffsetX + 2.5) / SCALE,
+                        x = (panelX + selectedOffsetX + 8) / SCALE,
                         y = (indexY + portraitFrameOffsetY + 1) / SCALE,
                         height = 17,
                         width = 24,
@@ -179,8 +170,8 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
                 drawScaledText(
                     matrixStack = matrixStack,
                     text = lang("ui.lv"),
-                    x = panelX + selectedOffsetX + 8.5F,
-                    y = indexY + 14,
+                    x = panelX + selectedOffsetX + 6.5F,
+                    y = indexY + 13.5,
                     scale = SCALE,
                     centered = true,
                     shadow = true
@@ -189,8 +180,8 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
                 drawScaledText(
                     matrixStack = matrixStack,
                     text = pokemon.level.toString().text(),
-                    x = panelX + selectedOffsetX + 8.5F,
-                    y = indexY + 18.5,
+                    x = panelX + selectedOffsetX + 6.5F,
+                    y = indexY + 18,
                     scale = SCALE,
                     centered = true,
                     shadow = true
@@ -208,7 +199,7 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
                     blitk(
                         matrixStack = matrixStack,
                         texture = if (pokemon.gender == Gender.MALE) genderIconMale else genderIconFemale,
-                        x = (panelX + selectedOffsetX + 35) / SCALE,
+                        x = (panelX + selectedOffsetX + 40) / SCALE,
                         y = (indexY + 25)  / SCALE,
                         height = 7,
                         width = 5,
@@ -226,7 +217,7 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
                 blitk(
                     matrixStack = matrixStack,
                     texture = CobblemonResources.WHITE,
-                    x = panelX + selectedOffsetX + 41,
+                    x = panelX + selectedOffsetX + 46,
                     y = indexY + (barHeightMax - hpBarHeight) + 5,
                     width = hpBarWidth,
                     height = hpBarHeight,
@@ -247,7 +238,7 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
                 blitk(
                     matrixStack = matrixStack,
                     texture = CobblemonResources.WHITE,
-                    x = panelX + selectedOffsetX + 44,
+                    x = panelX + selectedOffsetX + 49,
                     y = indexY + (barHeightMax - expBarHeight) + 5,
                     width = expBarWidth,
                     height = expBarHeight,
@@ -263,7 +254,7 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
                 blitk(
                     matrixStack = matrixStack,
                     texture = ballIcon,
-                    x = (panelX + selectedOffsetX + 38.5) / SCALE,
+                    x = (panelX + selectedOffsetX + 43.5) / SCALE,
                     y = (indexY + 22) / SCALE,
                     height = ballHeight,
                     width = 18,
@@ -278,14 +269,24 @@ class PartyOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.ge
                     blitk(
                         matrixStack = matrixStack,
                         texture = cobblemonResource("ui/party/status_$statusName.png"),
-                        x = panelX + selectedOffsetX + 46,
+                        x = panelX + selectedOffsetX + 51,
                         y = indexY + 8,
                         height = 14,
                         width = 4
                     )
                 }
+
+                // Held Item
+                val heldItem = pokemon.heldItemNoCopy()
+                if (!heldItem.isEmpty) {
+                    renderScaledGuiItemIcon(
+                        itemStack = heldItem,
+                        x = panelX + selectedOffsetX + 12.0,
+                        y = indexY + 14.0,
+                        scale = 0.5
+                    )
+                }
             }
         }
-        matrixStack.pop()
     }
 }
