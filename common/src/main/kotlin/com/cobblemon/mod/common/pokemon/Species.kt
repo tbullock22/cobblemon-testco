@@ -118,10 +118,10 @@ class Species : ClientDataSynchronizer<Species>, ShowdownIdentifiable {
 
     fun initialize() {
         Cobblemon.statProvider.provide(this)
+        this.forms.forEach { it.initialize(this) }
         if (this.forms.isNotEmpty() && this.forms.none { it == this.standardForm }) {
             this.forms.add(0, this.standardForm)
         }
-        this.forms.forEach { it.initialize(this) }
         // These properties are lazy, these need all species to be reloaded but SpeciesAdditions is what will eventually trigger this after all species have been loaded
         this.preEvolution?.species
         this.preEvolution?.form
