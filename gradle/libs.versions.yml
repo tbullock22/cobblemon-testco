@@ -14,14 +14,13 @@ versions:
   loom: 0.12.0-SNAPSHOT
   fabric-loader: 0.14.9
   fabric-api: 0.59.0+1.19.2
-  fabric-kotlin: 1.8.2+kotlin.1.7.10
   architectury-plugin: 3.4-SNAPSHOT
 
   # forge
   forge: 1.19.2-43.2.2
 
   # common
-  graal: 22.3.0
+  graal: 22.3.1
   eliotlash: 18
   architectury: 6.3.49
 
@@ -30,7 +29,7 @@ versions:
   mockito: 3.3.3
   mockk: 1.12.1
 
-  #
+  # fabric perms API
   fabric-permissions-api: 0.2-SNAPSHOT
 
   # adorn
@@ -82,9 +81,21 @@ dependencies:
     group: org.jetbrains.kotlinx
     name: kotlinx-serialization-json-jvm
     version: { ref: serialization }
-  graal:
+  graalJs:
     group: org.graalvm.js
     name: js
+    version: { ref: graal }
+  graalSdk:
+    group: org.graalvm.sdk
+    name: graal-sdk
+    version: { ref: graal }
+  graalTruffle:
+    group: org.graalvm.truffle
+    name: truffle-api
+    version: { ref: graal }
+  graalRegex:
+    group: org.graalvm.regex
+    name: regex
     version: { ref: graal }
   molang:
     group: com.eliotlash.molang
@@ -111,10 +122,6 @@ dependencies:
     group: net.fabricmc.fabric-api
     name: fabric-api
     version: { ref: fabric-api }
-  fabricKotlin:
-    group: net.fabricmc
-    name: fabric-language-kotlin
-    version: { ref: fabric-kotlin }
   architecturyFabric:
     group: dev.architectury
     name: architectury-fabric

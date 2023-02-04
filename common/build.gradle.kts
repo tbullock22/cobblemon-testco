@@ -21,7 +21,7 @@ dependencies {
     modApi(libs.mclib)
 
     // For Showdown
-    modCompileOnly(libs.graal)
+    modCompileOnly(libs.graalJs)
 
     //shadowCommon group: 'commons-io', name: 'commons-io', version: '2.6'
 

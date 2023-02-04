@@ -44,12 +44,15 @@ dependencies {
         libs.jetbrainsAnnotations,
         libs.serializationCore,
         libs.serializationJson,
-        libs.graal,
+        libs.graalJs,
+        libs.graalSdk,
+        libs.graalTruffle,
+        libs.graalRegex,
         libs.molang,
         libs.mclib
     ).forEach {
-        forgeRuntimeLibrary(it)
-        bundle(it)
+        include(forgeRuntimeLibrary(it.get())!!)
+        //bundle(it)
     }
 }
 

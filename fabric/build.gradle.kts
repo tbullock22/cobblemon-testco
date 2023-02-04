@@ -36,7 +36,6 @@ dependencies {
     }
 
     modApi(libs.fabricApi)
-    modApi(libs.fabricKotlin)
     modApi(libs.architecturyFabric)
     modApi(libs.fabricPermissionsApi)
     modCompileOnly(libs.adornFabric)
@@ -47,16 +46,15 @@ dependencies {
         libs.jetbrainsAnnotations,
         libs.serializationCore,
         libs.serializationJson,
-        libs.graal,
+        libs.graalJs,
+        libs.graalSdk,
+        libs.graalTruffle,
+        libs.graalRegex,
         libs.molang,
         libs.mclib
     ).forEach {
         include(modImplementation(it.get())!!)
     }
-    // graal seems to need the different dependencies to be manually imported here
-    include("org.graalvm.regex:regex:${libs.graal.get().version}")
-    include("org.graalvm.sdk:graal-sdk:${libs.graal.get().version}")
-    include("org.graalvm.truffle:truffle-api:${libs.graal.get().version}")
 }
 
 tasks {
