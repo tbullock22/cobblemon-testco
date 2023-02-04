@@ -32,7 +32,7 @@ class TentacoolModel(root: ModelPart) : PokemonPoseableModel() {
     override fun registerPoses() {
         standing = registerPose(
             poseName = "standing",
-            poseTypes = PoseType.STAND,
+            poseType = PoseType.STAND,
             idleAnimations = arrayOf(
                 bedrock("tentacool", "ground_idle")
             )
@@ -49,7 +49,7 @@ class TentacoolModel(root: ModelPart) : PokemonPoseableModel() {
 
         float = registerPose(
             poseName = "float",
-            poseType = UI_POSES + PoseType.FLOAT,
+            poseTypes = UI_POSES + PoseType.FLOAT,
             idleAnimations = arrayOf(
                 bedrock("tentacool", "water_idle")
             )

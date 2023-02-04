@@ -34,7 +34,7 @@ class ArticunoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override fun registerPoses() {
         standing = registerPose(
             poseName = "standing",
-            poseType = UI_POSES + PoseType.STAND,
+            poseTypes = UI_POSES + PoseType.STAND,
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("articuno", "ground_idle")
@@ -52,7 +52,7 @@ class ArticunoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
 
         hover = registerPose(
             poseName = "hover",
-            poseTypes = PoseType.HOVER + PoseType.FLOAT,
+            poseTypes = setOf(PoseType.HOVER, PoseType.FLOAT),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("articuno", "air_idle")
