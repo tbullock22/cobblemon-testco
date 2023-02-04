@@ -51,10 +51,12 @@ dependencies {
         libs.molang,
         libs.mclib
     ).forEach {
-        bundle(it)
-        runtimeOnly(it)
+        include(modImplementation(it.get())!!)
     }
-
+    // graal seems to need the different dependencies to be manually imported here
+    include("org.graalvm.regex:regex:${libs.graal.get().version}")
+    include("org.graalvm.sdk:graal-sdk:${libs.graal.get().version}")
+    include("org.graalvm.truffle:truffle-api:${libs.graal.get().version}")
 }
 
 tasks {
@@ -63,8 +65,6 @@ tasks {
         from(loom.accessWidenerPath)
         into(generatedResources)
     }
-
-    shadowJar {}
 
     processResources {
         dependsOn(copyAccessWidener)

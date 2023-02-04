@@ -4,7 +4,7 @@ plugins {
 }
 
 architectury {
-    common()
+    common("fabric", "forge")
 }
 
 repositories {
@@ -30,6 +30,4 @@ dependencies {
     testImplementation(libs.junitParams)
     testImplementation(libs.mockito)
     testImplementation(libs.mockk)
-
-    compileOnly("net.luckperms:api:${rootProject.property("luckperms_version")}")
 }

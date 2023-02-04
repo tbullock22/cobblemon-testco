@@ -34,8 +34,8 @@ versions:
   fabric-permissions-api: 0.2-SNAPSHOT
 
   # adorn
-  adorn-fabric: 3.7.0-fabric
-  adorn-forge: 3.7.0-forge
+  adorn-fabric: 3.8.1-fabric
+  adorn-forge: 3.8.1-forge
 
 dependencies:
 
