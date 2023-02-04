@@ -1,69 +1,77 @@
 {
-    "name": "tynamo",
-    "nationalPokedexNumber": 602,
-    "primaryType": "electric",
-    "abilities": [
-        "levitate"
-    ],
-    "baseStats": {
-        "hp": 35,
-        "attack": 55,
-        "defence": 40,
-        "special_attack": 45,
-        "special_defence": 40,
-        "speed": 60
-    },
-    "catchRate": 190,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 55,
-    "experienceGroup": "slow",
-    "eggCycles": 20,
-    "eggGroups": [
-        "amorphous"
-    ],
-    "moves": [
-        "1:tackle",
-        "1:thunderwave",
-        "1:spark",
-        "1:chargebeam",
-        "tm:chargebeam",
-        "tm:thunderwave",
-        "tutor:magnetrise"
-    ],
-    "labels": [
-        "gen5"
-    ],
-    "pokedex": [
-        "cobblemon.species.tynamo.desc1",
-        "cobblemon.species.tynamo.desc2"
-    ],
-    "evolutions": [
+  "name": "Tynamo",
+  "nationalPokedexNumber": 602,
+  "primaryType": "electric",
+  "abilities": [
+    "levitate"
+  ],
+  "baseStats": {
+    "hp": 35,
+    "attack": 55,
+    "defence": 40,
+    "special_attack": 45,
+    "special_defence": 40,
+    "speed": 60
+  },
+  "catchRate": 190,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "baseExperienceYield": 55,
+  "experienceGroup": "slow",
+  "eggCycles": 20,
+  "eggGroups": [
+    "amorphous"
+  ],
+  "moves": [
+    "1:chargebeam",
+    "1:spark",
+    "1:tackle",
+    "1:thunderwave",
+    "tm:chargebeam",
+    "tm:terablast",
+    "tm:thunderwave",
+    "tutor:magnetrise"
+  ],
+  "labels": [
+    "gen5"
+  ],
+  "pokedex": [
+    "cobblemon.species.tynamo.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "tynamo_eelektrik",
+      "variant": "level_up",
+      "result": "eelektrik",
+      "consumeHeldItem": false,
+      "learnableMoves": [
+        "crunch"
+      ],
+      "requirements": [
         {
-            "id": "tynamo_eelektrik",
-            "variant": "level_up",
-            "result": "eelektrik",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "level",
-                    "minLevel": 39
-                }
-            ]
+          "variant": "level",
+          "minLevel": 39
         }
-    ],
-    "baseScale": 1.0,
-    "hitbox": {
-        "width": 1.0,
-        "height": 1.0,
-        "fixed": false
-    },
-    "baseFriendship": 70,
-    "evYield": {
-        "speed": 1
-    },
-    "height": 2,
-    "weight": 3
+      ]
+    }
+  ],
+  "baseScale": 1,
+  "hitbox": {
+    "width": 1,
+    "height": 1,
+    "fixed": false
+  },
+  "baseFriendship": 70,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 1
+  },
+  "height": 2,
+  "weight": 3,
+  "aspects": [],
+  "cannotDynamax": false
 }

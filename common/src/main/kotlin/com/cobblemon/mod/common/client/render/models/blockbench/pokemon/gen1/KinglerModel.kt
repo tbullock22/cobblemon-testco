@@ -18,11 +18,11 @@ import net.minecraft.util.math.Vec3d
 class KinglerModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("kingler")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 1.8F
+    override val portraitTranslation = Vec3d(-0.14, -0.66, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.76F
+    override val profileTranslation = Vec3d(0.0, 0.5, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

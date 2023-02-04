@@ -18,11 +18,11 @@ import net.minecraft.util.math.Vec3d
 class PoliwrathModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("poliwrath")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 1.3F
+    override val portraitTranslation = Vec3d(-0.1, 0.36, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.85F
+    override val profileTranslation = Vec3d(0.0, 0.42, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var float: PokemonPose

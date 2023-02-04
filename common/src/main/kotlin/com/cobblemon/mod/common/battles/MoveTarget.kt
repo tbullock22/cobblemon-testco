@@ -96,5 +96,22 @@ enum class MoveTarget(val targetList: (Targetable) -> List<Targetable>? = { null
     adjacentAllyOrSelf({ pokemon -> pokemon.getAdjacentAllies() + pokemon }),
     adjacentFoe({ pokemon -> pokemon.getAdjacentOpponents() }),
     foeSide,
-    scripted
+    scripted;
+
+
+    companion object {
+
+        private val VALUES = values()
+
+        /**
+         * Attempts to parse a [MoveTarget] from the given [showdownId].
+         *
+         * @param showdownId The showdown ID fo the move target.
+         *
+         * @throws NoSuchElementException if the value cannot be found.
+         */
+        fun fromShowdownId(showdownId: String): MoveTarget = VALUES.first { target -> target.name.equals(showdownId, true) }
+
+    }
+
 }

@@ -20,11 +20,11 @@ class SpearowModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("spearow")
     override val head = getPart("head")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 2.4F
+    override val portraitTranslation = Vec3d(0.0, -1.0, 0.0)
 
     override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileTranslation = Vec3d(0.0, 0.25, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

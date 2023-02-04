@@ -29,7 +29,8 @@ import com.cobblemon.mod.common.api.net.serializers.StringSetDataSerializer
 import com.cobblemon.mod.common.api.net.serializers.Vec3DataSerializer
 import com.cobblemon.mod.common.api.permission.PermissionValidator
 import com.cobblemon.mod.common.api.pokeball.catching.calculators.CaptureCalculator
-import com.cobblemon.mod.common.api.pokeball.catching.calculators.CobblemonGen348CaptureCalculator
+import com.cobblemon.mod.common.api.pokeball.catching.calculators.CaptureCalculators
+import com.cobblemon.mod.common.pokeball.catching.calculators.CobblemonCaptureCalculator
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies
 import com.cobblemon.mod.common.api.pokemon.effect.ShoulderEffectRegistry
 import com.cobblemon.mod.common.api.pokemon.experience.ExperienceCalculator
@@ -37,8 +38,8 @@ import com.cobblemon.mod.common.api.pokemon.experience.ExperienceGroups
 import com.cobblemon.mod.common.api.pokemon.experience.StandardExperienceCalculator
 import com.cobblemon.mod.common.api.pokemon.feature.ChoiceSpeciesFeatureProvider
 import com.cobblemon.mod.common.api.pokemon.feature.FlagSpeciesFeatureProvider
-import com.cobblemon.mod.common.api.pokemon.feature.GlobalSpeciesFeatures
 import com.cobblemon.mod.common.api.pokemon.feature.SpeciesFeatures
+import com.cobblemon.mod.common.api.pokemon.helditem.HeldItemProvider
 import com.cobblemon.mod.common.api.pokemon.stats.EvCalculator
 import com.cobblemon.mod.common.api.pokemon.stats.Generation8EvCalculator
 import com.cobblemon.mod.common.api.pokemon.stats.StatProvider
@@ -68,6 +69,7 @@ import com.cobblemon.mod.common.battles.ShowdownThread
 import com.cobblemon.mod.common.battles.actor.PokemonBattleActor
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
 import com.cobblemon.mod.common.config.CobblemonConfig
+import com.cobblemon.mod.common.config.LastChangedVersion
 import com.cobblemon.mod.common.config.constraint.IntConstraint
 import com.cobblemon.mod.common.config.starter.StarterConfig
 import com.cobblemon.mod.common.data.CobblemonDataProvider
@@ -81,9 +83,8 @@ import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.pokemon.aspects.GENDER_ASPECT
 import com.cobblemon.mod.common.pokemon.aspects.SHINY_ASPECT
 import com.cobblemon.mod.common.pokemon.evolution.variants.BlockClickEvolution
-import com.cobblemon.mod.common.pokemon.feature.BattleCriticalHitsFeature
-import com.cobblemon.mod.common.pokemon.feature.DamageTakenFeature
-import com.cobblemon.mod.common.pokemon.feature.TagSeasonResolver
+import com.cobblemon.mod.common.pokemon.feature.*
+import com.cobblemon.mod.common.pokemon.helditem.CobblemonHeldItemManager
 import com.cobblemon.mod.common.pokemon.properties.HiddenAbilityPropertyType
 import com.cobblemon.mod.common.pokemon.properties.UncatchableProperty
 import com.cobblemon.mod.common.pokemon.properties.UntradeableProperty
@@ -94,9 +95,10 @@ import com.cobblemon.mod.common.starter.CobblemonStarterHandler
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.cobblemon.mod.common.util.getServer
 import com.cobblemon.mod.common.util.ifDedicatedServer
+import com.cobblemon.mod.common.util.isLaterVersion
 import com.cobblemon.mod.common.util.party
 import com.cobblemon.mod.common.util.removeAmountIf
-import com.cobblemon.mod.common.world.CobblemonGameRules
+import com.cobblemon.mod.common.world.gamerules.CobblemonGameRules
 import com.cobblemon.mod.common.world.feature.CobblemonOrePlacedFeatures
 import com.cobblemon.mod.common.world.placement.CobblemonPlacementTypes
 import dev.architectury.event.EventResult
@@ -109,8 +111,9 @@ import java.io.FileWriter
 import java.io.PrintWriter
 import java.util.UUID
 import kotlin.properties.Delegates
-import kotlin.reflect.KMutableProperty
 import kotlin.reflect.full.memberProperties
+import kotlin.reflect.jvm.isAccessible
+import kotlin.reflect.jvm.javaField
 import net.minecraft.client.MinecraftClient
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.server.network.ServerPlayerEntity
@@ -126,7 +129,12 @@ object Cobblemon {
     val LOGGER = LogManager.getLogger()
 
     lateinit var implementation: CobblemonImplementation
-    var captureCalculator: CaptureCalculator = CobblemonGen348CaptureCalculator
+    @Deprecated("This field is now a config value", ReplaceWith("Cobblemon.config.captureCalculator"))
+    var captureCalculator: CaptureCalculator
+        get() = this.config.captureCalculator
+        set(value) {
+            this.config.captureCalculator = value
+        }
     var experienceCalculator: ExperienceCalculator = StandardExperienceCalculator
     var evYieldCalculator: EvCalculator = Generation8EvCalculator
     var starterHandler: StarterHandler = CobblemonStarterHandler()
@@ -150,6 +158,7 @@ object Cobblemon {
         DropEntry.register("item", ItemDropEntry::class.java, isDefault = true)
 
         ExperienceGroups.registerDefaults()
+        CaptureCalculators.registerDefaults()
 
         this.loadConfig()
         this.implementation = implementation
@@ -177,6 +186,7 @@ object Cobblemon {
             BattleRegistry.getBattleByParticipatingPlayer(it)?.stop()
         }
         LIVING_DEATH.pipe(filter { it is ServerPlayerEntity }, map { it as ServerPlayerEntity }).subscribe {
+            PCLinkManager.removeLink(it.uuid)
             battleRegistry.getBattleByParticipatingPlayer(it)?.stop()
         }
 
@@ -195,6 +205,8 @@ object Cobblemon {
         TrackedDataHandlerRegistry.register(Vec3DataSerializer)
         TrackedDataHandlerRegistry.register(StringSetDataSerializer)
         TrackedDataHandlerRegistry.register(PoseTypeDataSerializer)
+
+        HeldItemProvider.register(CobblemonHeldItemManager, Priority.LOWEST)
     }
 
     fun initialize() {
@@ -215,9 +227,6 @@ object Cobblemon {
 
         SpeciesFeatures.types["choice"] = ChoiceSpeciesFeatureProvider::class.java
         SpeciesFeatures.types["flag"] = FlagSpeciesFeatureProvider::class.java
-
-        GlobalSpeciesFeatures.register(DamageTakenFeature.ID) { DamageTakenFeature() }
-        GlobalSpeciesFeatures.register(BattleCriticalHitsFeature.ID) { BattleCriticalHitsFeature() }
 
         CustomPokemonProperty.register(UntradeableProperty)
         CustomPokemonProperty.register(UncatchableProperty)
@@ -322,25 +331,36 @@ object Cobblemon {
                 exception.printStackTrace()
             }
 
-            this.config::class.memberProperties.forEach {
-                // Member must have annotations and must be mutable
-                if (it.annotations.isEmpty() || it !is KMutableProperty<*>) return@forEach
+            val defaultConfig = CobblemonConfig()
 
-                var value = it.getter.call(config)
-                for (annotation in it.annotations) {
-                    when (annotation) {
+            CobblemonConfig::class.memberProperties.forEach {
+                val field = it.javaField!!
+                it.isAccessible = true
+                field.annotations.forEach {
+                    when (it) {
+                        is LastChangedVersion -> {
+                            val defaultChangedVersion = it.version
+                            val lastSavedVersion = config.lastSavedVersion
+                            if (defaultChangedVersion.isLaterVersion(lastSavedVersion)) {
+                                field.set(config, field.get(defaultConfig))
+                            }
+                        }
                         is IntConstraint -> {
-                            if (value !is Int) break
-                            value = value.coerceIn(annotation.min, annotation.max)
-                            it.setter.call(config, value)
+                            var value = field.get(config)
+                            if (value is Int) {
+                                value = value.coerceIn(it.min, it.max)
+                                field.set(config, value)
+                            }
                         }
                     }
                 }
             }
         } else {
             this.config = CobblemonConfig()
-            this.saveConfig()
         }
+
+        config.lastSavedVersion = VERSION
+        this.saveConfig()
 
         bestSpawner.loadConfig()
         PokemonSpecies.observable.subscribe { starterConfig = this.loadStarterConfig() }

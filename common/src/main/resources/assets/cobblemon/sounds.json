@@ -1,4 +1,7 @@
 {
+  "healing_machine.active": {
+    "sounds": [ "cobblemon:block/healing_machine_active" ]
+  },
   "pc.on": {
     "sounds": [ "cobblemon:pc/pc_on" ]
   },
@@ -41,5 +44,2720 @@
   },
   "gui.click": {
     "sounds": [ "cobblemon:click" ]
+  },
+  "pokemon.bulbasaur.ambient": {
+    "sounds": [ "cobblemon:pokemon/bulbasaur/bulbasaur_ambient" ]
+  },
+  "pokemon.ivysaur.ambient": {
+    "sounds": [ "cobblemon:pokemon/ivysaur/ivysaur_ambient" ]
+  },
+  "pokemon.venusaur.ambient": {
+    "sounds": [ "cobblemon:pokemon/venusaur/venusaur_ambient" ]
+  },
+  "pokemon.charmander.ambient": {
+    "sounds": [ "cobblemon:pokemon/charmander/charmander_ambient" ]
+  },
+  "pokemon.charmeleon.ambient": {
+    "sounds": [ "cobblemon:pokemon/charmeleon/charmeleon_ambient" ]
+  },
+  "pokemon.charizard.ambient": {
+    "sounds": [ "cobblemon:pokemon/charizard/charizard_ambient" ]
+  },
+  "pokemon.squirtle.ambient": {
+    "sounds": [ "cobblemon:pokemon/squirtle/squirtle_ambient" ]
+  },
+  "pokemon.wartortle.ambient": {
+    "sounds": [ "cobblemon:pokemon/wartortle/wartortle_ambient" ]
+  },
+  "pokemon.blastoise.ambient": {
+    "sounds": [ "cobblemon:pokemon/blastoise/blastoise_ambient" ]
+  },
+  "pokemon.caterpie.ambient": {
+    "sounds": [ "cobblemon:pokemon/caterpie/caterpie_ambient" ]
+  },
+  "pokemon.metapod.ambient": {
+    "sounds": [ "cobblemon:pokemon/metapod/metapod_ambient" ]
+  },
+  "pokemon.butterfree.ambient": {
+    "sounds": [ "cobblemon:pokemon/butterfree/butterfree_ambient" ]
+  },
+  "pokemon.weedle.ambient": {
+    "sounds": [ "cobblemon:pokemon/weedle/weedle_ambient" ]
+  },
+  "pokemon.kakuna.ambient": {
+    "sounds": [ "cobblemon:pokemon/kakuna/kakuna_ambient" ]
+  },
+  "pokemon.beedrill.ambient": {
+    "sounds": [ "cobblemon:pokemon/beedrill/beedrill_ambient" ]
+  },
+  "pokemon.pidgey.ambient": {
+    "sounds": [ "cobblemon:pokemon/pidgey/pidgey_ambient" ]
+  },
+  "pokemon.pidgeotto.ambient": {
+    "sounds": [ "cobblemon:pokemon/pidgeotto/pidgeotto_ambient" ]
+  },
+  "pokemon.pidgeot.ambient": {
+    "sounds": [ "cobblemon:pokemon/pidgeot/pidgeot_ambient" ]
+  },
+  "pokemon.rattata.ambient": {
+    "sounds": [ "cobblemon:pokemon/rattata/rattata_ambient" ]
+  },
+  "pokemon.raticate.ambient": {
+    "sounds": [ "cobblemon:pokemon/raticate/raticate_ambient" ]
+  },
+  "pokemon.spearow.ambient": {
+    "sounds": [ "cobblemon:pokemon/spearow/spearow_ambient" ]
+  },
+  "pokemon.fearow.ambient": {
+    "sounds": [ "cobblemon:pokemon/fearow/fearow_ambient" ]
+  },
+  "pokemon.ekans.ambient": {
+    "sounds": [ "cobblemon:pokemon/ekans/ekans_ambient" ]
+  },
+  "pokemon.arbok.ambient": {
+    "sounds": [ "cobblemon:pokemon/arbok/arbok_ambient" ]
+  },
+  "pokemon.pikachu.ambient": {
+    "sounds": [ "cobblemon:pokemon/pikachu/pikachu_ambient" ]
+  },
+  "pokemon.raichu.ambient": {
+    "sounds": [ "cobblemon:pokemon/raichu/raichu_ambient" ]
+  },
+  "pokemon.sandshrew.ambient": {
+    "sounds": [ "cobblemon:pokemon/sandshrew/sandshrew_ambient" ]
+  },
+  "pokemon.sandslash.ambient": {
+    "sounds": [ "cobblemon:pokemon/sandslash/sandslash_ambient" ]
+  },
+  "pokemon.nidoranf.ambient": {
+    "sounds": [ "cobblemon:pokemon/nidoranf/nidoranf_ambient" ]
+  },
+  "pokemon.nidorina.ambient": {
+    "sounds": [ "cobblemon:pokemon/nidorina/nidorina_ambient" ]
+  },
+  "pokemon.nidoqueen.ambient": {
+    "sounds": [ "cobblemon:pokemon/nidoqueen/nidoqueen_ambient" ]
+  },
+  "pokemon.nidoranm.ambient": {
+    "sounds": [ "cobblemon:pokemon/nidoranm/nidoranm_ambient" ]
+  },
+  "pokemon.nidorino.ambient": {
+    "sounds": [ "cobblemon:pokemon/nidorino/nidorino_ambient" ]
+  },
+  "pokemon.nidoking.ambient": {
+    "sounds": [ "cobblemon:pokemon/nidoking/nidoking_ambient" ]
+  },
+  "pokemon.clefairy.ambient": {
+    "sounds": [ "cobblemon:pokemon/clefairy/clefairy_ambient" ]
+  },
+  "pokemon.clefable.ambient": {
+    "sounds": [ "cobblemon:pokemon/clefable/clefable_ambient" ]
+  },
+  "pokemon.vulpix.ambient": {
+    "sounds": [ "cobblemon:pokemon/vulpix/vulpix_ambient" ]
+  },
+  "pokemon.ninetales.ambient": {
+    "sounds": [ "cobblemon:pokemon/ninetales/ninetales_ambient" ]
+  },
+  "pokemon.jigglypuff.ambient": {
+    "sounds": [ "cobblemon:pokemon/jigglypuff/jigglypuff_ambient" ]
+  },
+  "pokemon.wigglytuff.ambient": {
+    "sounds": [ "cobblemon:pokemon/wigglytuff/wigglytuff_ambient" ]
+  },
+  "pokemon.zubat.ambient": {
+    "sounds": [ "cobblemon:pokemon/zubat/zubat_ambient" ]
+  },
+  "pokemon.golbat.ambient": {
+    "sounds": [ "cobblemon:pokemon/golbat/golbat_ambient" ]
+  },
+  "pokemon.oddish.ambient": {
+    "sounds": [ "cobblemon:pokemon/oddish/oddish_ambient" ]
+  },
+  "pokemon.gloom.ambient": {
+    "sounds": [ "cobblemon:pokemon/gloom/gloom_ambient" ]
+  },
+  "pokemon.vileplume.ambient": {
+    "sounds": [ "cobblemon:pokemon/vileplume/vileplume_ambient" ]
+  },
+  "pokemon.paras.ambient": {
+    "sounds": [ "cobblemon:pokemon/paras/paras_ambient" ]
+  },
+  "pokemon.parasect.ambient": {
+    "sounds": [ "cobblemon:pokemon/parasect/parasect_ambient" ]
+  },
+  "pokemon.venonat.ambient": {
+    "sounds": [ "cobblemon:pokemon/venonat/venonat_ambient" ]
+  },
+  "pokemon.venomoth.ambient": {
+    "sounds": [ "cobblemon:pokemon/venomoth/venomoth_ambient" ]
+  },
+  "pokemon.diglett.ambient": {
+    "sounds": [ "cobblemon:pokemon/diglett/diglett_ambient" ]
+  },
+  "pokemon.dugtrio.ambient": {
+    "sounds": [ "cobblemon:pokemon/dugtrio/dugtrio_ambient" ]
+  },
+  "pokemon.meowth.ambient": {
+    "sounds": [ "cobblemon:pokemon/meowth/meowth_ambient" ]
+  },
+  "pokemon.persian.ambient": {
+    "sounds": [ "cobblemon:pokemon/persian/persian_ambient" ]
+  },
+  "pokemon.psyduck.ambient": {
+    "sounds": [ "cobblemon:pokemon/psyduck/psyduck_ambient" ]
+  },
+  "pokemon.golduck.ambient": {
+    "sounds": [ "cobblemon:pokemon/golduck/golduck_ambient" ]
+  },
+  "pokemon.mankey.ambient": {
+    "sounds": [ "cobblemon:pokemon/mankey/mankey_ambient" ]
+  },
+  "pokemon.primeape.ambient": {
+    "sounds": [ "cobblemon:pokemon/primeape/primeape_ambient" ]
+  },
+  "pokemon.growlithe.ambient": {
+    "sounds": [ "cobblemon:pokemon/growlithe/growlithe_ambient" ]
+  },
+  "pokemon.arcanine.ambient": {
+    "sounds": [ "cobblemon:pokemon/arcanine/arcanine_ambient" ]
+  },
+  "pokemon.poliwag.ambient": {
+    "sounds": [ "cobblemon:pokemon/poliwag/poliwag_ambient" ]
+  },
+  "pokemon.poliwhirl.ambient": {
+    "sounds": [ "cobblemon:pokemon/poliwhirl/poliwhirl_ambient" ]
+  },
+  "pokemon.poliwrath.ambient": {
+    "sounds": [ "cobblemon:pokemon/poliwrath/poliwrath_ambient" ]
+  },
+  "pokemon.abra.ambient": {
+    "sounds": [ "cobblemon:pokemon/abra/abra_ambient" ]
+  },
+  "pokemon.kadabra.ambient": {
+    "sounds": [ "cobblemon:pokemon/kadabra/kadabra_ambient" ]
+  },
+  "pokemon.alakazam.ambient": {
+    "sounds": [ "cobblemon:pokemon/alakazam/alakazam_ambient" ]
+  },
+  "pokemon.machop.ambient": {
+    "sounds": [ "cobblemon:pokemon/machop/machop_ambient" ]
+  },
+  "pokemon.machoke.ambient": {
+    "sounds": [ "cobblemon:pokemon/machoke/machoke_ambient" ]
+  },
+  "pokemon.machamp.ambient": {
+    "sounds": [ "cobblemon:pokemon/machamp/machamp_ambient" ]
+  },
+  "pokemon.bellsprout.ambient": {
+    "sounds": [ "cobblemon:pokemon/bellsprout/bellsprout_ambient" ]
+  },
+  "pokemon.weepinbell.ambient": {
+    "sounds": [ "cobblemon:pokemon/weepinbell/weepinbell_ambient" ]
+  },
+  "pokemon.victreebel.ambient": {
+    "sounds": [ "cobblemon:pokemon/victreebel/victreebel_ambient" ]
+  },
+  "pokemon.tentacool.ambient": {
+    "sounds": [ "cobblemon:pokemon/tentacool/tentacool_ambient" ]
+  },
+  "pokemon.tentacruel.ambient": {
+    "sounds": [ "cobblemon:pokemon/tentacruel/tentacruel_ambient" ]
+  },
+  "pokemon.geodude.ambient": {
+    "sounds": [ "cobblemon:pokemon/geodude/geodude_ambient" ]
+  },
+  "pokemon.graveler.ambient": {
+    "sounds": [ "cobblemon:pokemon/graveler/graveler_ambient" ]
+  },
+  "pokemon.golem.ambient": {
+    "sounds": [ "cobblemon:pokemon/golem/golem_ambient" ]
+  },
+  "pokemon.ponyta.ambient": {
+    "sounds": [ "cobblemon:pokemon/ponyta/ponyta_ambient" ]
+  },
+  "pokemon.rapidash.ambient": {
+    "sounds": [ "cobblemon:pokemon/rapidash/rapidash_ambient" ]
+  },
+  "pokemon.slowpoke.ambient": {
+    "sounds": [ "cobblemon:pokemon/slowpoke/slowpoke_ambient" ]
+  },
+  "pokemon.slowbro.ambient": {
+    "sounds": [ "cobblemon:pokemon/slowbro/slowbro_ambient" ]
+  },
+  "pokemon.magnemite.ambient": {
+    "sounds": [ "cobblemon:pokemon/magnemite/magnemite_ambient" ]
+  },
+  "pokemon.magneton.ambient": {
+    "sounds": [ "cobblemon:pokemon/magneton/magneton_ambient" ]
+  },
+  "pokemon.farfetchd.ambient": {
+    "sounds": [ "cobblemon:pokemon/farfetchd/farfetchd_ambient" ]
+  },
+  "pokemon.doduo.ambient": {
+    "sounds": [ "cobblemon:pokemon/doduo/doduo_ambient" ]
+  },
+  "pokemon.dodrio.ambient": {
+    "sounds": [ "cobblemon:pokemon/dodrio/dodrio_ambient" ]
+  },
+  "pokemon.seel.ambient": {
+    "sounds": [ "cobblemon:pokemon/seel/seel_ambient" ]
+  },
+  "pokemon.dewgong.ambient": {
+    "sounds": [ "cobblemon:pokemon/dewgong/dewgong_ambient" ]
+  },
+  "pokemon.grimer.ambient": {
+    "sounds": [ "cobblemon:pokemon/grimer/grimer_ambient" ]
+  },
+  "pokemon.muk.ambient": {
+    "sounds": [ "cobblemon:pokemon/muk/muk_ambient" ]
+  },
+  "pokemon.shellder.ambient": {
+    "sounds": [ "cobblemon:pokemon/shellder/shellder_ambient" ]
+  },
+  "pokemon.cloyster.ambient": {
+    "sounds": [ "cobblemon:pokemon/cloyster/cloyster_ambient" ]
+  },
+  "pokemon.gastly.ambient": {
+    "sounds": [ "cobblemon:pokemon/gastly/gastly_ambient" ]
+  },
+  "pokemon.haunter.ambient": {
+    "sounds": [ "cobblemon:pokemon/haunter/haunter_ambient" ]
+  },
+  "pokemon.gengar.ambient": {
+    "sounds": [ "cobblemon:pokemon/gengar/gengar_ambient" ]
+  },
+  "pokemon.onix.ambient": {
+    "sounds": [ "cobblemon:pokemon/onix/onix_ambient" ]
+  },
+  "pokemon.drowzee.ambient": {
+    "sounds": [ "cobblemon:pokemon/drowzee/drowzee_ambient" ]
+  },
+  "pokemon.hypno.ambient": {
+    "sounds": [ "cobblemon:pokemon/hypno/hypno_ambient" ]
+  },
+  "pokemon.krabby.ambient": {
+    "sounds": [ "cobblemon:pokemon/krabby/krabby_ambient" ]
+  },
+  "pokemon.kingler.ambient": {
+    "sounds": [ "cobblemon:pokemon/kingler/kingler_ambient" ]
+  },
+  "pokemon.voltorb.ambient": {
+    "sounds": [ "cobblemon:pokemon/voltorb/voltorb_ambient" ]
+  },
+  "pokemon.electrode.ambient": {
+    "sounds": [ "cobblemon:pokemon/electrode/electrode_ambient" ]
+  },
+  "pokemon.exeggcute.ambient": {
+    "sounds": [ "cobblemon:pokemon/exeggcute/exeggcute_ambient" ]
+  },
+  "pokemon.exeggutor.ambient": {
+    "sounds": [ "cobblemon:pokemon/exeggutor/exeggutor_ambient" ]
+  },
+  "pokemon.cubone.ambient": {
+    "sounds": [ "cobblemon:pokemon/cubone/cubone_ambient" ]
+  },
+  "pokemon.marowak.ambient": {
+    "sounds": [ "cobblemon:pokemon/marowak/marowak_ambient" ]
+  },
+  "pokemon.hitmonlee.ambient": {
+    "sounds": [ "cobblemon:pokemon/hitmonlee/hitmonlee_ambient" ]
+  },
+  "pokemon.hitmonchan.ambient": {
+    "sounds": [ "cobblemon:pokemon/hitmonchan/hitmonchan_ambient" ]
+  },
+  "pokemon.lickitung.ambient": {
+    "sounds": [ "cobblemon:pokemon/lickitung/lickitung_ambient" ]
+  },
+  "pokemon.koffing.ambient": {
+    "sounds": [ "cobblemon:pokemon/koffing/koffing_ambient" ]
+  },
+  "pokemon.weezing.ambient": {
+    "sounds": [ "cobblemon:pokemon/weezing/weezing_ambient" ]
+  },
+  "pokemon.rhyhorn.ambient": {
+    "sounds": [ "cobblemon:pokemon/rhyhorn/rhyhorn_ambient" ]
+  },
+  "pokemon.rhydon.ambient": {
+    "sounds": [ "cobblemon:pokemon/rhydon/rhydon_ambient" ]
+  },
+  "pokemon.chansey.ambient": {
+    "sounds": [ "cobblemon:pokemon/chansey/chansey_ambient" ]
+  },
+  "pokemon.tangela.ambient": {
+    "sounds": [ "cobblemon:pokemon/tangela/tangela_ambient" ]
+  },
+  "pokemon.kangaskhan.ambient": {
+    "sounds": [ "cobblemon:pokemon/kangaskhan/kangaskhan_ambient" ]
+  },
+  "pokemon.horsea.ambient": {
+    "sounds": [ "cobblemon:pokemon/horsea/horsea_ambient" ]
+  },
+  "pokemon.seadra.ambient": {
+    "sounds": [ "cobblemon:pokemon/seadra/seadra_ambient" ]
+  },
+  "pokemon.goldeen.ambient": {
+    "sounds": [ "cobblemon:pokemon/goldeen/goldeen_ambient" ]
+  },
+  "pokemon.seaking.ambient": {
+    "sounds": [ "cobblemon:pokemon/seaking/seaking_ambient" ]
+  },
+  "pokemon.staryu.ambient": {
+    "sounds": [ "cobblemon:pokemon/staryu/staryu_ambient" ]
+  },
+  "pokemon.starmie.ambient": {
+    "sounds": [ "cobblemon:pokemon/starmie/starmie_ambient" ]
+  },
+  "pokemon.mrmime.ambient": {
+    "sounds": [ "cobblemon:pokemon/mrmime/mrmime_ambient" ]
+  },
+  "pokemon.scyther.ambient": {
+    "sounds": [ "cobblemon:pokemon/scyther/scyther_ambient" ]
+  },
+  "pokemon.jynx.ambient": {
+    "sounds": [ "cobblemon:pokemon/jynx/jynx_ambient" ]
+  },
+  "pokemon.electabuzz.ambient": {
+    "sounds": [ "cobblemon:pokemon/electabuzz/electabuzz_ambient" ]
+  },
+  "pokemon.magmar.ambient": {
+    "sounds": [ "cobblemon:pokemon/magmar/magmar_ambient" ]
+  },
+  "pokemon.pinsir.ambient": {
+    "sounds": [ "cobblemon:pokemon/pinsir/pinsir_ambient" ]
+  },
+  "pokemon.tauros.ambient": {
+    "sounds": [ "cobblemon:pokemon/tauros/tauros_ambient" ]
+  },
+  "pokemon.magikarp.ambient": {
+    "sounds": [ "cobblemon:pokemon/magikarp/magikarp_ambient" ]
+  },
+  "pokemon.gyarados.ambient": {
+    "sounds": [ "cobblemon:pokemon/gyarados/gyarados_ambient" ]
+  },
+  "pokemon.lapras.ambient": {
+    "sounds": [ "cobblemon:pokemon/lapras/lapras_ambient" ]
+  },
+  "pokemon.ditto.ambient": {
+    "sounds": [ "cobblemon:pokemon/ditto/ditto_ambient" ]
+  },
+  "pokemon.eevee.ambient": {
+    "sounds": [ "cobblemon:pokemon/eevee/eevee_ambient" ]
+  },
+  "pokemon.vaporeon.ambient": {
+    "sounds": [ "cobblemon:pokemon/vaporeon/vaporeon_ambient" ]
+  },
+  "pokemon.jolteon.ambient": {
+    "sounds": [ "cobblemon:pokemon/jolteon/jolteon_ambient" ]
+  },
+  "pokemon.flareon.ambient": {
+    "sounds": [ "cobblemon:pokemon/flareon/flareon_ambient" ]
+  },
+  "pokemon.porygon.ambient": {
+    "sounds": [ "cobblemon:pokemon/porygon/porygon_ambient" ]
+  },
+  "pokemon.omanyte.ambient": {
+    "sounds": [ "cobblemon:pokemon/omanyte/omanyte_ambient" ]
+  },
+  "pokemon.omastar.ambient": {
+    "sounds": [ "cobblemon:pokemon/omastar/omastar_ambient" ]
+  },
+  "pokemon.kabuto.ambient": {
+    "sounds": [ "cobblemon:pokemon/kabuto/kabuto_ambient" ]
+  },
+  "pokemon.kabutops.ambient": {
+    "sounds": [ "cobblemon:pokemon/kabutops/kabutops_ambient" ]
+  },
+  "pokemon.aerodactyl.ambient": {
+    "sounds": [ "cobblemon:pokemon/aerodactyl/aerodactyl_ambient" ]
+  },
+  "pokemon.snorlax.ambient": {
+    "sounds": [ "cobblemon:pokemon/snorlax/snorlax_ambient" ]
+  },
+  "pokemon.articuno.ambient": {
+    "sounds": [ "cobblemon:pokemon/articuno/articuno_ambient" ]
+  },
+  "pokemon.zapdos.ambient": {
+    "sounds": [ "cobblemon:pokemon/zapdos/zapdos_ambient" ]
+  },
+  "pokemon.moltres.ambient": {
+    "sounds": [ "cobblemon:pokemon/moltres/moltres_ambient" ]
+  },
+  "pokemon.dratini.ambient": {
+    "sounds": [ "cobblemon:pokemon/dratini/dratini_ambient" ]
+  },
+  "pokemon.dragonair.ambient": {
+    "sounds": [ "cobblemon:pokemon/dragonair/dragonair_ambient" ]
+  },
+  "pokemon.dragonite.ambient": {
+    "sounds": [ "cobblemon:pokemon/dragonite/dragonite_ambient" ]
+  },
+  "pokemon.mewtwo.ambient": {
+    "sounds": [ "cobblemon:pokemon/mewtwo/mewtwo_ambient" ]
+  },
+  "pokemon.mew.ambient": {
+    "sounds": [ "cobblemon:pokemon/mew/mew_ambient" ]
+  },
+  "pokemon.chikorita.ambient": {
+    "sounds": [ "cobblemon:pokemon/chikorita/chikorita_ambient" ]
+  },
+  "pokemon.bayleef.ambient": {
+    "sounds": [ "cobblemon:pokemon/bayleef/bayleef_ambient" ]
+  },
+  "pokemon.meganium.ambient": {
+    "sounds": [ "cobblemon:pokemon/meganium/meganium_ambient" ]
+  },
+  "pokemon.cyndaquil.ambient": {
+    "sounds": [ "cobblemon:pokemon/cyndaquil/cyndaquil_ambient" ]
+  },
+  "pokemon.quilava.ambient": {
+    "sounds": [ "cobblemon:pokemon/quilava/quilava_ambient" ]
+  },
+  "pokemon.typhlosion.ambient": {
+    "sounds": [ "cobblemon:pokemon/typhlosion/typhlosion_ambient" ]
+  },
+  "pokemon.totodile.ambient": {
+    "sounds": [ "cobblemon:pokemon/totodile/totodile_ambient" ]
+  },
+  "pokemon.croconaw.ambient": {
+    "sounds": [ "cobblemon:pokemon/croconaw/croconaw_ambient" ]
+  },
+  "pokemon.feraligatr.ambient": {
+    "sounds": [ "cobblemon:pokemon/feraligatr/feraligatr_ambient" ]
+  },
+  "pokemon.sentret.ambient": {
+    "sounds": [ "cobblemon:pokemon/sentret/sentret_ambient" ]
+  },
+  "pokemon.furret.ambient": {
+    "sounds": [ "cobblemon:pokemon/furret/furret_ambient" ]
+  },
+  "pokemon.hoothoot.ambient": {
+    "sounds": [ "cobblemon:pokemon/hoothoot/hoothoot_ambient" ]
+  },
+  "pokemon.noctowl.ambient": {
+    "sounds": [ "cobblemon:pokemon/noctowl/noctowl_ambient" ]
+  },
+  "pokemon.ledyba.ambient": {
+    "sounds": [ "cobblemon:pokemon/ledyba/ledyba_ambient" ]
+  },
+  "pokemon.ledian.ambient": {
+    "sounds": [ "cobblemon:pokemon/ledian/ledian_ambient" ]
+  },
+  "pokemon.spinarak.ambient": {
+    "sounds": [ "cobblemon:pokemon/spinarak/spinarak_ambient" ]
+  },
+  "pokemon.ariados.ambient": {
+    "sounds": [ "cobblemon:pokemon/ariados/ariados_ambient" ]
+  },
+  "pokemon.crobat.ambient": {
+    "sounds": [ "cobblemon:pokemon/crobat/crobat_ambient" ]
+  },
+  "pokemon.chinchou.ambient": {
+    "sounds": [ "cobblemon:pokemon/chinchou/chinchou_ambient" ]
+  },
+  "pokemon.lanturn.ambient": {
+    "sounds": [ "cobblemon:pokemon/lanturn/lanturn_ambient" ]
+  },
+  "pokemon.pichu.ambient": {
+    "sounds": [ "cobblemon:pokemon/pichu/pichu_ambient" ]
+  },
+  "pokemon.cleffa.ambient": {
+    "sounds": [ "cobblemon:pokemon/cleffa/cleffa_ambient" ]
+  },
+  "pokemon.igglybuff.ambient": {
+    "sounds": [ "cobblemon:pokemon/igglybuff/igglybuff_ambient" ]
+  },
+  "pokemon.togepi.ambient": {
+    "sounds": [ "cobblemon:pokemon/togepi/togepi_ambient" ]
+  },
+  "pokemon.togetic.ambient": {
+    "sounds": [ "cobblemon:pokemon/togetic/togetic_ambient" ]
+  },
+  "pokemon.natu.ambient": {
+    "sounds": [ "cobblemon:pokemon/natu/natu_ambient" ]
+  },
+  "pokemon.xatu.ambient": {
+    "sounds": [ "cobblemon:pokemon/xatu/xatu_ambient" ]
+  },
+  "pokemon.mareep.ambient": {
+    "sounds": [ "cobblemon:pokemon/mareep/mareep_ambient" ]
+  },
+  "pokemon.flaaffy.ambient": {
+    "sounds": [ "cobblemon:pokemon/flaaffy/flaaffy_ambient" ]
+  },
+  "pokemon.ampharos.ambient": {
+    "sounds": [ "cobblemon:pokemon/ampharos/ampharos_ambient" ]
+  },
+  "pokemon.bellossom.ambient": {
+    "sounds": [ "cobblemon:pokemon/bellossom/bellossom_ambient" ]
+  },
+  "pokemon.marill.ambient": {
+    "sounds": [ "cobblemon:pokemon/marill/marill_ambient" ]
+  },
+  "pokemon.azumarill.ambient": {
+    "sounds": [ "cobblemon:pokemon/azumarill/azumarill_ambient" ]
+  },
+  "pokemon.sudowoodo.ambient": {
+    "sounds": [ "cobblemon:pokemon/sudowoodo/sudowoodo_ambient" ]
+  },
+  "pokemon.politoed.ambient": {
+    "sounds": [ "cobblemon:pokemon/politoed/politoed_ambient" ]
+  },
+  "pokemon.hoppip.ambient": {
+    "sounds": [ "cobblemon:pokemon/hoppip/hoppip_ambient" ]
+  },
+  "pokemon.skiploom.ambient": {
+    "sounds": [ "cobblemon:pokemon/skiploom/skiploom_ambient" ]
+  },
+  "pokemon.jumpluff.ambient": {
+    "sounds": [ "cobblemon:pokemon/jumpluff/jumpluff_ambient" ]
+  },
+  "pokemon.aipom.ambient": {
+    "sounds": [ "cobblemon:pokemon/aipom/aipom_ambient" ]
+  },
+  "pokemon.sunkern.ambient": {
+    "sounds": [ "cobblemon:pokemon/sunkern/sunkern_ambient" ]
+  },
+  "pokemon.sunflora.ambient": {
+    "sounds": [ "cobblemon:pokemon/sunflora/sunflora_ambient" ]
+  },
+  "pokemon.yanma.ambient": {
+    "sounds": [ "cobblemon:pokemon/yanma/yanma_ambient" ]
+  },
+  "pokemon.wooper.ambient": {
+    "sounds": [ "cobblemon:pokemon/wooper/wooper_ambient" ]
+  },
+  "pokemon.quagsire.ambient": {
+    "sounds": [ "cobblemon:pokemon/quagsire/quagsire_ambient" ]
+  },
+  "pokemon.espeon.ambient": {
+    "sounds": [ "cobblemon:pokemon/espeon/espeon_ambient" ]
+  },
+  "pokemon.umbreon.ambient": {
+    "sounds": [ "cobblemon:pokemon/umbreon/umbreon_ambient" ]
+  },
+  "pokemon.murkrow.ambient": {
+    "sounds": [ "cobblemon:pokemon/murkrow/murkrow_ambient" ]
+  },
+  "pokemon.slowking.ambient": {
+    "sounds": [ "cobblemon:pokemon/slowking/slowking_ambient" ]
+  },
+  "pokemon.misdreavus.ambient": {
+    "sounds": [ "cobblemon:pokemon/misdreavus/misdreavus_ambient" ]
+  },
+  "pokemon.unown.ambient": {
+    "sounds": [ "cobblemon:pokemon/unown/unown_ambient" ]
+  },
+  "pokemon.wobbuffet.ambient": {
+    "sounds": [ "cobblemon:pokemon/wobbuffet/wobbuffet_ambient" ]
+  },
+  "pokemon.girafarig.ambient": {
+    "sounds": [ "cobblemon:pokemon/girafarig/girafarig_ambient" ]
+  },
+  "pokemon.pineco.ambient": {
+    "sounds": [ "cobblemon:pokemon/pineco/pineco_ambient" ]
+  },
+  "pokemon.forretress.ambient": {
+    "sounds": [ "cobblemon:pokemon/forretress/forretress_ambient" ]
+  },
+  "pokemon.dunsparce.ambient": {
+    "sounds": [ "cobblemon:pokemon/dunsparce/dunsparce_ambient" ]
+  },
+  "pokemon.gligar.ambient": {
+    "sounds": [ "cobblemon:pokemon/gligar/gligar_ambient" ]
+  },
+  "pokemon.steelix.ambient": {
+    "sounds": [ "cobblemon:pokemon/steelix/steelix_ambient" ]
+  },
+  "pokemon.snubbull.ambient": {
+    "sounds": [ "cobblemon:pokemon/snubbull/snubbull_ambient" ]
+  },
+  "pokemon.granbull.ambient": {
+    "sounds": [ "cobblemon:pokemon/granbull/granbull_ambient" ]
+  },
+  "pokemon.qwilfish.ambient": {
+    "sounds": [ "cobblemon:pokemon/qwilfish/qwilfish_ambient" ]
+  },
+  "pokemon.scizor.ambient": {
+    "sounds": [ "cobblemon:pokemon/scizor/scizor_ambient" ]
+  },
+  "pokemon.shuckle.ambient": {
+    "sounds": [ "cobblemon:pokemon/shuckle/shuckle_ambient" ]
+  },
+  "pokemon.heracross.ambient": {
+    "sounds": [ "cobblemon:pokemon/heracross/heracross_ambient" ]
+  },
+  "pokemon.sneasel.ambient": {
+    "sounds": [ "cobblemon:pokemon/sneasel/sneasel_ambient" ]
+  },
+  "pokemon.teddiursa.ambient": {
+    "sounds": [ "cobblemon:pokemon/teddiursa/teddiursa_ambient" ]
+  },
+  "pokemon.ursaring.ambient": {
+    "sounds": [ "cobblemon:pokemon/ursaring/ursaring_ambient" ]
+  },
+  "pokemon.slugma.ambient": {
+    "sounds": [ "cobblemon:pokemon/slugma/slugma_ambient" ]
+  },
+  "pokemon.magcargo.ambient": {
+    "sounds": [ "cobblemon:pokemon/magcargo/magcargo_ambient" ]
+  },
+  "pokemon.swinub.ambient": {
+    "sounds": [ "cobblemon:pokemon/swinub/swinub_ambient" ]
+  },
+  "pokemon.piloswine.ambient": {
+    "sounds": [ "cobblemon:pokemon/piloswine/piloswine_ambient" ]
+  },
+  "pokemon.corsola.ambient": {
+    "sounds": [ "cobblemon:pokemon/corsola/corsola_ambient" ]
+  },
+  "pokemon.remoraid.ambient": {
+    "sounds": [ "cobblemon:pokemon/remoraid/remoraid_ambient" ]
+  },
+  "pokemon.octillery.ambient": {
+    "sounds": [ "cobblemon:pokemon/octillery/octillery_ambient" ]
+  },
+  "pokemon.delibird.ambient": {
+    "sounds": [ "cobblemon:pokemon/delibird/delibird_ambient" ]
+  },
+  "pokemon.mantine.ambient": {
+    "sounds": [ "cobblemon:pokemon/mantine/mantine_ambient" ]
+  },
+  "pokemon.skarmory.ambient": {
+    "sounds": [ "cobblemon:pokemon/skarmory/skarmory_ambient" ]
+  },
+  "pokemon.houndour.ambient": {
+    "sounds": [ "cobblemon:pokemon/houndour/houndour_ambient" ]
+  },
+  "pokemon.houndoom.ambient": {
+    "sounds": [ "cobblemon:pokemon/houndoom/houndoom_ambient" ]
+  },
+  "pokemon.kingdra.ambient": {
+    "sounds": [ "cobblemon:pokemon/kingdra/kingdra_ambient" ]
+  },
+  "pokemon.phanpy.ambient": {
+    "sounds": [ "cobblemon:pokemon/phanpy/phanpy_ambient" ]
+  },
+  "pokemon.donphan.ambient": {
+    "sounds": [ "cobblemon:pokemon/donphan/donphan_ambient" ]
+  },
+  "pokemon.porygon2.ambient": {
+    "sounds": [ "cobblemon:pokemon/porygon2/porygon2_ambient" ]
+  },
+  "pokemon.stantler.ambient": {
+    "sounds": [ "cobblemon:pokemon/stantler/stantler_ambient" ]
+  },
+  "pokemon.smeargle.ambient": {
+    "sounds": [ "cobblemon:pokemon/smeargle/smeargle_ambient" ]
+  },
+  "pokemon.tyrogue.ambient": {
+    "sounds": [ "cobblemon:pokemon/tyrogue/tyrogue_ambient" ]
+  },
+  "pokemon.hitmontop.ambient": {
+    "sounds": [ "cobblemon:pokemon/hitmontop/hitmontop_ambient" ]
+  },
+  "pokemon.smoochum.ambient": {
+    "sounds": [ "cobblemon:pokemon/smoochum/smoochum_ambient" ]
+  },
+  "pokemon.elekid.ambient": {
+    "sounds": [ "cobblemon:pokemon/elekid/elekid_ambient" ]
+  },
+  "pokemon.magby.ambient": {
+    "sounds": [ "cobblemon:pokemon/magby/magby_ambient" ]
+  },
+  "pokemon.miltank.ambient": {
+    "sounds": [ "cobblemon:pokemon/miltank/miltank_ambient" ]
+  },
+  "pokemon.blissey.ambient": {
+    "sounds": [ "cobblemon:pokemon/blissey/blissey_ambient" ]
+  },
+  "pokemon.raikou.ambient": {
+    "sounds": [ "cobblemon:pokemon/raikou/raikou_ambient" ]
+  },
+  "pokemon.entei.ambient": {
+    "sounds": [ "cobblemon:pokemon/entei/entei_ambient" ]
+  },
+  "pokemon.suicune.ambient": {
+    "sounds": [ "cobblemon:pokemon/suicune/suicune_ambient" ]
+  },
+  "pokemon.larvitar.ambient": {
+    "sounds": [ "cobblemon:pokemon/larvitar/larvitar_ambient" ]
+  },
+  "pokemon.pupitar.ambient": {
+    "sounds": [ "cobblemon:pokemon/pupitar/pupitar_ambient" ]
+  },
+  "pokemon.tyranitar.ambient": {
+    "sounds": [ "cobblemon:pokemon/tyranitar/tyranitar_ambient" ]
+  },
+  "pokemon.lugia.ambient": {
+    "sounds": [ "cobblemon:pokemon/lugia/lugia_ambient" ]
+  },
+  "pokemon.hooh.ambient": {
+    "sounds": [ "cobblemon:pokemon/hooh/hooh_ambient" ]
+  },
+  "pokemon.celebi.ambient": {
+    "sounds": [ "cobblemon:pokemon/celebi/celebi_ambient" ]
+  },
+  "pokemon.treecko.ambient": {
+    "sounds": [ "cobblemon:pokemon/treecko/treecko_ambient" ]
+  },
+  "pokemon.grovyle.ambient": {
+    "sounds": [ "cobblemon:pokemon/grovyle/grovyle_ambient" ]
+  },
+  "pokemon.sceptile.ambient": {
+    "sounds": [ "cobblemon:pokemon/sceptile/sceptile_ambient" ]
+  },
+  "pokemon.torchic.ambient": {
+    "sounds": [ "cobblemon:pokemon/torchic/torchic_ambient" ]
+  },
+  "pokemon.combusken.ambient": {
+    "sounds": [ "cobblemon:pokemon/combusken/combusken_ambient" ]
+  },
+  "pokemon.blaziken.ambient": {
+    "sounds": [ "cobblemon:pokemon/blaziken/blaziken_ambient" ]
+  },
+  "pokemon.mudkip.ambient": {
+    "sounds": [ "cobblemon:pokemon/mudkip/mudkip_ambient" ]
+  },
+  "pokemon.marshtomp.ambient": {
+    "sounds": [ "cobblemon:pokemon/marshtomp/marshtomp_ambient" ]
+  },
+  "pokemon.swampert.ambient": {
+    "sounds": [ "cobblemon:pokemon/swampert/swampert_ambient" ]
+  },
+  "pokemon.poochyena.ambient": {
+    "sounds": [ "cobblemon:pokemon/poochyena/poochyena_ambient" ]
+  },
+  "pokemon.mightyena.ambient": {
+    "sounds": [ "cobblemon:pokemon/mightyena/mightyena_ambient" ]
+  },
+  "pokemon.zigzagoon.ambient": {
+    "sounds": [ "cobblemon:pokemon/zigzagoon/zigzagoon_ambient" ]
+  },
+  "pokemon.linoone.ambient": {
+    "sounds": [ "cobblemon:pokemon/linoone/linoone_ambient" ]
+  },
+  "pokemon.wurmple.ambient": {
+    "sounds": [ "cobblemon:pokemon/wurmple/wurmple_ambient" ]
+  },
+  "pokemon.silcoon.ambient": {
+    "sounds": [ "cobblemon:pokemon/silcoon/silcoon_ambient" ]
+  },
+  "pokemon.beautifly.ambient": {
+    "sounds": [ "cobblemon:pokemon/beautifly/beautifly_ambient" ]
+  },
+  "pokemon.cascoon.ambient": {
+    "sounds": [ "cobblemon:pokemon/cascoon/cascoon_ambient" ]
+  },
+  "pokemon.dustox.ambient": {
+    "sounds": [ "cobblemon:pokemon/dustox/dustox_ambient" ]
+  },
+  "pokemon.lotad.ambient": {
+    "sounds": [ "cobblemon:pokemon/lotad/lotad_ambient" ]
+  },
+  "pokemon.lombre.ambient": {
+    "sounds": [ "cobblemon:pokemon/lombre/lombre_ambient" ]
+  },
+  "pokemon.ludicolo.ambient": {
+    "sounds": [ "cobblemon:pokemon/ludicolo/ludicolo_ambient" ]
+  },
+  "pokemon.seedot.ambient": {
+    "sounds": [ "cobblemon:pokemon/seedot/seedot_ambient" ]
+  },
+  "pokemon.nuzleaf.ambient": {
+    "sounds": [ "cobblemon:pokemon/nuzleaf/nuzleaf_ambient" ]
+  },
+  "pokemon.shiftry.ambient": {
+    "sounds": [ "cobblemon:pokemon/shiftry/shiftry_ambient" ]
+  },
+  "pokemon.taillow.ambient": {
+    "sounds": [ "cobblemon:pokemon/taillow/taillow_ambient" ]
+  },
+  "pokemon.swellow.ambient": {
+    "sounds": [ "cobblemon:pokemon/swellow/swellow_ambient" ]
+  },
+  "pokemon.wingull.ambient": {
+    "sounds": [ "cobblemon:pokemon/wingull/wingull_ambient" ]
+  },
+  "pokemon.pelipper.ambient": {
+    "sounds": [ "cobblemon:pokemon/pelipper/pelipper_ambient" ]
+  },
+  "pokemon.ralts.ambient": {
+    "sounds": [ "cobblemon:pokemon/ralts/ralts_ambient" ]
+  },
+  "pokemon.kirlia.ambient": {
+    "sounds": [ "cobblemon:pokemon/kirlia/kirlia_ambient" ]
+  },
+  "pokemon.gardevoir.ambient": {
+    "sounds": [ "cobblemon:pokemon/gardevoir/gardevoir_ambient" ]
+  },
+  "pokemon.surskit.ambient": {
+    "sounds": [ "cobblemon:pokemon/surskit/surskit_ambient" ]
+  },
+  "pokemon.masquerain.ambient": {
+    "sounds": [ "cobblemon:pokemon/masquerain/masquerain_ambient" ]
+  },
+  "pokemon.shroomish.ambient": {
+    "sounds": [ "cobblemon:pokemon/shroomish/shroomish_ambient" ]
+  },
+  "pokemon.breloom.ambient": {
+    "sounds": [ "cobblemon:pokemon/breloom/breloom_ambient" ]
+  },
+  "pokemon.slakoth.ambient": {
+    "sounds": [ "cobblemon:pokemon/slakoth/slakoth_ambient" ]
+  },
+  "pokemon.vigoroth.ambient": {
+    "sounds": [ "cobblemon:pokemon/vigoroth/vigoroth_ambient" ]
+  },
+  "pokemon.slaking.ambient": {
+    "sounds": [ "cobblemon:pokemon/slaking/slaking_ambient" ]
+  },
+  "pokemon.nincada.ambient": {
+    "sounds": [ "cobblemon:pokemon/nincada/nincada_ambient" ]
+  },
+  "pokemon.ninjask.ambient": {
+    "sounds": [ "cobblemon:pokemon/ninjask/ninjask_ambient" ]
+  },
+  "pokemon.shedinja.ambient": {
+    "sounds": [ "cobblemon:pokemon/shedinja/shedinja_ambient" ]
+  },
+  "pokemon.whismur.ambient": {
+    "sounds": [ "cobblemon:pokemon/whismur/whismur_ambient" ]
+  },
+  "pokemon.loudred.ambient": {
+    "sounds": [ "cobblemon:pokemon/loudred/loudred_ambient" ]
+  },
+  "pokemon.exploud.ambient": {
+    "sounds": [ "cobblemon:pokemon/exploud/exploud_ambient" ]
+  },
+  "pokemon.makuhita.ambient": {
+    "sounds": [ "cobblemon:pokemon/makuhita/makuhita_ambient" ]
+  },
+  "pokemon.hariyama.ambient": {
+    "sounds": [ "cobblemon:pokemon/hariyama/hariyama_ambient" ]
+  },
+  "pokemon.azurill.ambient": {
+    "sounds": [ "cobblemon:pokemon/azurill/azurill_ambient" ]
+  },
+  "pokemon.nosepass.ambient": {
+    "sounds": [ "cobblemon:pokemon/nosepass/nosepass_ambient" ]
+  },
+  "pokemon.skitty.ambient": {
+    "sounds": [ "cobblemon:pokemon/skitty/skitty_ambient" ]
+  },
+  "pokemon.delcatty.ambient": {
+    "sounds": [ "cobblemon:pokemon/delcatty/delcatty_ambient" ]
+  },
+  "pokemon.sableye.ambient": {
+    "sounds": [ "cobblemon:pokemon/sableye/sableye_ambient" ]
+  },
+  "pokemon.mawile.ambient": {
+    "sounds": [ "cobblemon:pokemon/mawile/mawile_ambient" ]
+  },
+  "pokemon.aron.ambient": {
+    "sounds": [ "cobblemon:pokemon/aron/aron_ambient" ]
+  },
+  "pokemon.lairon.ambient": {
+    "sounds": [ "cobblemon:pokemon/lairon/lairon_ambient" ]
+  },
+  "pokemon.aggron.ambient": {
+    "sounds": [ "cobblemon:pokemon/aggron/aggron_ambient" ]
+  },
+  "pokemon.meditite.ambient": {
+    "sounds": [ "cobblemon:pokemon/meditite/meditite_ambient" ]
+  },
+  "pokemon.medicham.ambient": {
+    "sounds": [ "cobblemon:pokemon/medicham/medicham_ambient" ]
+  },
+  "pokemon.electrike.ambient": {
+    "sounds": [ "cobblemon:pokemon/electrike/electrike_ambient" ]
+  },
+  "pokemon.manectric.ambient": {
+    "sounds": [ "cobblemon:pokemon/manectric/manectric_ambient" ]
+  },
+  "pokemon.plusle.ambient": {
+    "sounds": [ "cobblemon:pokemon/plusle/plusle_ambient" ]
+  },
+  "pokemon.minun.ambient": {
+    "sounds": [ "cobblemon:pokemon/minun/minun_ambient" ]
+  },
+  "pokemon.volbeat.ambient": {
+    "sounds": [ "cobblemon:pokemon/volbeat/volbeat_ambient" ]
+  },
+  "pokemon.illumise.ambient": {
+    "sounds": [ "cobblemon:pokemon/illumise/illumise_ambient" ]
+  },
+  "pokemon.roselia.ambient": {
+    "sounds": [ "cobblemon:pokemon/roselia/roselia_ambient" ]
+  },
+  "pokemon.gulpin.ambient": {
+    "sounds": [ "cobblemon:pokemon/gulpin/gulpin_ambient" ]
+  },
+  "pokemon.swalot.ambient": {
+    "sounds": [ "cobblemon:pokemon/swalot/swalot_ambient" ]
+  },
+  "pokemon.carvanha.ambient": {
+    "sounds": [ "cobblemon:pokemon/carvanha/carvanha_ambient" ]
+  },
+  "pokemon.sharpedo.ambient": {
+    "sounds": [ "cobblemon:pokemon/sharpedo/sharpedo_ambient" ]
+  },
+  "pokemon.wailmer.ambient": {
+    "sounds": [ "cobblemon:pokemon/wailmer/wailmer_ambient" ]
+  },
+  "pokemon.wailord.ambient": {
+    "sounds": [ "cobblemon:pokemon/wailord/wailord_ambient" ]
+  },
+  "pokemon.numel.ambient": {
+    "sounds": [ "cobblemon:pokemon/numel/numel_ambient" ]
+  },
+  "pokemon.camerupt.ambient": {
+    "sounds": [ "cobblemon:pokemon/camerupt/camerupt_ambient" ]
+  },
+  "pokemon.torkoal.ambient": {
+    "sounds": [ "cobblemon:pokemon/torkoal/torkoal_ambient" ]
+  },
+  "pokemon.spoink.ambient": {
+    "sounds": [ "cobblemon:pokemon/spoink/spoink_ambient" ]
+  },
+  "pokemon.grumpig.ambient": {
+    "sounds": [ "cobblemon:pokemon/grumpig/grumpig_ambient" ]
+  },
+  "pokemon.spinda.ambient": {
+    "sounds": [ "cobblemon:pokemon/spinda/spinda_ambient" ]
+  },
+  "pokemon.trapinch.ambient": {
+    "sounds": [ "cobblemon:pokemon/trapinch/trapinch_ambient" ]
+  },
+  "pokemon.vibrava.ambient": {
+    "sounds": [ "cobblemon:pokemon/vibrava/vibrava_ambient" ]
+  },
+  "pokemon.flygon.ambient": {
+    "sounds": [ "cobblemon:pokemon/flygon/flygon_ambient" ]
+  },
+  "pokemon.cacnea.ambient": {
+    "sounds": [ "cobblemon:pokemon/cacnea/cacnea_ambient" ]
+  },
+  "pokemon.cacturne.ambient": {
+    "sounds": [ "cobblemon:pokemon/cacturne/cacturne_ambient" ]
+  },
+  "pokemon.swablu.ambient": {
+    "sounds": [ "cobblemon:pokemon/swablu/swablu_ambient" ]
+  },
+  "pokemon.altaria.ambient": {
+    "sounds": [ "cobblemon:pokemon/altaria/altaria_ambient" ]
+  },
+  "pokemon.zangoose.ambient": {
+    "sounds": [ "cobblemon:pokemon/zangoose/zangoose_ambient" ]
+  },
+  "pokemon.seviper.ambient": {
+    "sounds": [ "cobblemon:pokemon/seviper/seviper_ambient" ]
+  },
+  "pokemon.lunatone.ambient": {
+    "sounds": [ "cobblemon:pokemon/lunatone/lunatone_ambient" ]
+  },
+  "pokemon.solrock.ambient": {
+    "sounds": [ "cobblemon:pokemon/solrock/solrock_ambient" ]
+  },
+  "pokemon.barboach.ambient": {
+    "sounds": [ "cobblemon:pokemon/barboach/barboach_ambient" ]
+  },
+  "pokemon.whiscash.ambient": {
+    "sounds": [ "cobblemon:pokemon/whiscash/whiscash_ambient" ]
+  },
+  "pokemon.corphish.ambient": {
+    "sounds": [ "cobblemon:pokemon/corphish/corphish_ambient" ]
+  },
+  "pokemon.crawdaunt.ambient": {
+    "sounds": [ "cobblemon:pokemon/crawdaunt/crawdaunt_ambient" ]
+  },
+  "pokemon.baltoy.ambient": {
+    "sounds": [ "cobblemon:pokemon/baltoy/baltoy_ambient" ]
+  },
+  "pokemon.claydol.ambient": {
+    "sounds": [ "cobblemon:pokemon/claydol/claydol_ambient" ]
+  },
+  "pokemon.lileep.ambient": {
+    "sounds": [ "cobblemon:pokemon/lileep/lileep_ambient" ]
+  },
+  "pokemon.cradily.ambient": {
+    "sounds": [ "cobblemon:pokemon/cradily/cradily_ambient" ]
+  },
+  "pokemon.anorith.ambient": {
+    "sounds": [ "cobblemon:pokemon/anorith/anorith_ambient" ]
+  },
+  "pokemon.armaldo.ambient": {
+    "sounds": [ "cobblemon:pokemon/armaldo/armaldo_ambient" ]
+  },
+  "pokemon.feebas.ambient": {
+    "sounds": [ "cobblemon:pokemon/feebas/feebas_ambient" ]
+  },
+  "pokemon.milotic.ambient": {
+    "sounds": [ "cobblemon:pokemon/milotic/milotic_ambient" ]
+  },
+  "pokemon.castform.ambient": {
+    "sounds": [ "cobblemon:pokemon/castform/castform_ambient" ]
+  },
+  "pokemon.kecleon.ambient": {
+    "sounds": [ "cobblemon:pokemon/kecleon/kecleon_ambient" ]
+  },
+  "pokemon.shuppet.ambient": {
+    "sounds": [ "cobblemon:pokemon/shuppet/shuppet_ambient" ]
+  },
+  "pokemon.banette.ambient": {
+    "sounds": [ "cobblemon:pokemon/banette/banette_ambient" ]
+  },
+  "pokemon.duskull.ambient": {
+    "sounds": [ "cobblemon:pokemon/duskull/duskull_ambient" ]
+  },
+  "pokemon.dusclops.ambient": {
+    "sounds": [ "cobblemon:pokemon/dusclops/dusclops_ambient" ]
+  },
+  "pokemon.tropius.ambient": {
+    "sounds": [ "cobblemon:pokemon/tropius/tropius_ambient" ]
+  },
+  "pokemon.chimecho.ambient": {
+    "sounds": [ "cobblemon:pokemon/chimecho/chimecho_ambient" ]
+  },
+  "pokemon.absol.ambient": {
+    "sounds": [ "cobblemon:pokemon/absol/absol_ambient" ]
+  },
+  "pokemon.wynaut.ambient": {
+    "sounds": [ "cobblemon:pokemon/wynaut/wynaut_ambient" ]
+  },
+  "pokemon.snorunt.ambient": {
+    "sounds": [ "cobblemon:pokemon/snorunt/snorunt_ambient" ]
+  },
+  "pokemon.glalie.ambient": {
+    "sounds": [ "cobblemon:pokemon/glalie/glalie_ambient" ]
+  },
+  "pokemon.spheal.ambient": {
+    "sounds": [ "cobblemon:pokemon/spheal/spheal_ambient" ]
+  },
+  "pokemon.sealeo.ambient": {
+    "sounds": [ "cobblemon:pokemon/sealeo/sealeo_ambient" ]
+  },
+  "pokemon.walrein.ambient": {
+    "sounds": [ "cobblemon:pokemon/walrein/walrein_ambient" ]
+  },
+  "pokemon.clamperl.ambient": {
+    "sounds": [ "cobblemon:pokemon/clamperl/clamperl_ambient" ]
+  },
+  "pokemon.huntail.ambient": {
+    "sounds": [ "cobblemon:pokemon/huntail/huntail_ambient" ]
+  },
+  "pokemon.gorebyss.ambient": {
+    "sounds": [ "cobblemon:pokemon/gorebyss/gorebyss_ambient" ]
+  },
+  "pokemon.relicanth.ambient": {
+    "sounds": [ "cobblemon:pokemon/relicanth/relicanth_ambient" ]
+  },
+  "pokemon.luvdisc.ambient": {
+    "sounds": [ "cobblemon:pokemon/luvdisc/luvdisc_ambient" ]
+  },
+  "pokemon.bagon.ambient": {
+    "sounds": [ "cobblemon:pokemon/bagon/bagon_ambient" ]
+  },
+  "pokemon.shelgon.ambient": {
+    "sounds": [ "cobblemon:pokemon/shelgon/shelgon_ambient" ]
+  },
+  "pokemon.salamence.ambient": {
+    "sounds": [ "cobblemon:pokemon/salamence/salamence_ambient" ]
+  },
+  "pokemon.beldum.ambient": {
+    "sounds": [ "cobblemon:pokemon/beldum/beldum_ambient" ]
+  },
+  "pokemon.metang.ambient": {
+    "sounds": [ "cobblemon:pokemon/metang/metang_ambient" ]
+  },
+  "pokemon.metagross.ambient": {
+    "sounds": [ "cobblemon:pokemon/metagross/metagross_ambient" ]
+  },
+  "pokemon.regirock.ambient": {
+    "sounds": [ "cobblemon:pokemon/regirock/regirock_ambient" ]
+  },
+  "pokemon.regice.ambient": {
+    "sounds": [ "cobblemon:pokemon/regice/regice_ambient" ]
+  },
+  "pokemon.registeel.ambient": {
+    "sounds": [ "cobblemon:pokemon/registeel/registeel_ambient" ]
+  },
+  "pokemon.latias.ambient": {
+    "sounds": [ "cobblemon:pokemon/latias/latias_ambient" ]
+  },
+  "pokemon.latios.ambient": {
+    "sounds": [ "cobblemon:pokemon/latios/latios_ambient" ]
+  },
+  "pokemon.kyogre.ambient": {
+    "sounds": [ "cobblemon:pokemon/kyogre/kyogre_ambient" ]
+  },
+  "pokemon.groudon.ambient": {
+    "sounds": [ "cobblemon:pokemon/groudon/groudon_ambient" ]
+  },
+  "pokemon.rayquaza.ambient": {
+    "sounds": [ "cobblemon:pokemon/rayquaza/rayquaza_ambient" ]
+  },
+  "pokemon.jirachi.ambient": {
+    "sounds": [ "cobblemon:pokemon/jirachi/jirachi_ambient" ]
+  },
+  "pokemon.deoxys.ambient": {
+    "sounds": [ "cobblemon:pokemon/deoxys/deoxys_ambient" ]
+  },
+  "pokemon.turtwig.ambient": {
+    "sounds": [ "cobblemon:pokemon/turtwig/turtwig_ambient" ]
+  },
+  "pokemon.grotle.ambient": {
+    "sounds": [ "cobblemon:pokemon/grotle/grotle_ambient" ]
+  },
+  "pokemon.torterra.ambient": {
+    "sounds": [ "cobblemon:pokemon/torterra/torterra_ambient" ]
+  },
+  "pokemon.chimchar.ambient": {
+    "sounds": [ "cobblemon:pokemon/chimchar/chimchar_ambient" ]
+  },
+  "pokemon.monferno.ambient": {
+    "sounds": [ "cobblemon:pokemon/monferno/monferno_ambient" ]
+  },
+  "pokemon.infernape.ambient": {
+    "sounds": [ "cobblemon:pokemon/infernape/infernape_ambient" ]
+  },
+  "pokemon.piplup.ambient": {
+    "sounds": [ "cobblemon:pokemon/piplup/piplup_ambient" ]
+  },
+  "pokemon.prinplup.ambient": {
+    "sounds": [ "cobblemon:pokemon/prinplup/prinplup_ambient" ]
+  },
+  "pokemon.empoleon.ambient": {
+    "sounds": [ "cobblemon:pokemon/empoleon/empoleon_ambient" ]
+  },
+  "pokemon.starly.ambient": {
+    "sounds": [ "cobblemon:pokemon/starly/starly_ambient" ]
+  },
+  "pokemon.staravia.ambient": {
+    "sounds": [ "cobblemon:pokemon/staravia/staravia_ambient" ]
+  },
+  "pokemon.staraptor.ambient": {
+    "sounds": [ "cobblemon:pokemon/staraptor/staraptor_ambient" ]
+  },
+  "pokemon.bidoof.ambient": {
+    "sounds": [ "cobblemon:pokemon/bidoof/bidoof_ambient" ]
+  },
+  "pokemon.bibarel.ambient": {
+    "sounds": [ "cobblemon:pokemon/bibarel/bibarel_ambient" ]
+  },
+  "pokemon.kricketot.ambient": {
+    "sounds": [ "cobblemon:pokemon/kricketot/kricketot_ambient" ]
+  },
+  "pokemon.kricketune.ambient": {
+    "sounds": [ "cobblemon:pokemon/kricketune/kricketune_ambient" ]
+  },
+  "pokemon.shinx.ambient": {
+    "sounds": [ "cobblemon:pokemon/shinx/shinx_ambient" ]
+  },
+  "pokemon.luxio.ambient": {
+    "sounds": [ "cobblemon:pokemon/luxio/luxio_ambient" ]
+  },
+  "pokemon.luxray.ambient": {
+    "sounds": [ "cobblemon:pokemon/luxray/luxray_ambient" ]
+  },
+  "pokemon.budew.ambient": {
+    "sounds": [ "cobblemon:pokemon/budew/budew_ambient" ]
+  },
+  "pokemon.roserade.ambient": {
+    "sounds": [ "cobblemon:pokemon/roserade/roserade_ambient" ]
+  },
+  "pokemon.cranidos.ambient": {
+    "sounds": [ "cobblemon:pokemon/cranidos/cranidos_ambient" ]
+  },
+  "pokemon.rampardos.ambient": {
+    "sounds": [ "cobblemon:pokemon/rampardos/rampardos_ambient" ]
+  },
+  "pokemon.shieldon.ambient": {
+    "sounds": [ "cobblemon:pokemon/shieldon/shieldon_ambient" ]
+  },
+  "pokemon.bastiodon.ambient": {
+    "sounds": [ "cobblemon:pokemon/bastiodon/bastiodon_ambient" ]
+  },
+  "pokemon.burmy.ambient": {
+    "sounds": [ "cobblemon:pokemon/burmy/burmy_ambient" ]
+  },
+  "pokemon.wormadam.ambient": {
+    "sounds": [ "cobblemon:pokemon/wormadam/wormadam_ambient" ]
+  },
+  "pokemon.mothim.ambient": {
+    "sounds": [ "cobblemon:pokemon/mothim/mothim_ambient" ]
+  },
+  "pokemon.combee.ambient": {
+    "sounds": [ "cobblemon:pokemon/combee/combee_ambient" ]
+  },
+  "pokemon.vespiquen.ambient": {
+    "sounds": [ "cobblemon:pokemon/vespiquen/vespiquen_ambient" ]
+  },
+  "pokemon.pachirisu.ambient": {
+    "sounds": [ "cobblemon:pokemon/pachirisu/pachirisu_ambient" ]
+  },
+  "pokemon.buizel.ambient": {
+    "sounds": [ "cobblemon:pokemon/buizel/buizel_ambient" ]
+  },
+  "pokemon.floatzel.ambient": {
+    "sounds": [ "cobblemon:pokemon/floatzel/floatzel_ambient" ]
+  },
+  "pokemon.cherubi.ambient": {
+    "sounds": [ "cobblemon:pokemon/cherubi/cherubi_ambient" ]
+  },
+  "pokemon.cherrim.ambient": {
+    "sounds": [ "cobblemon:pokemon/cherrim/cherrim_ambient" ]
+  },
+  "pokemon.shellos.ambient": {
+    "sounds": [ "cobblemon:pokemon/shellos/shellos_ambient" ]
+  },
+  "pokemon.gastrodon.ambient": {
+    "sounds": [ "cobblemon:pokemon/gastrodon/gastrodon_ambient" ]
+  },
+  "pokemon.ambipom.ambient": {
+    "sounds": [ "cobblemon:pokemon/ambipom/ambipom_ambient" ]
+  },
+  "pokemon.drifloon.ambient": {
+    "sounds": [ "cobblemon:pokemon/drifloon/drifloon_ambient" ]
+  },
+  "pokemon.drifblim.ambient": {
+    "sounds": [ "cobblemon:pokemon/drifblim/drifblim_ambient" ]
+  },
+  "pokemon.buneary.ambient": {
+    "sounds": [ "cobblemon:pokemon/buneary/buneary_ambient" ]
+  },
+  "pokemon.lopunny.ambient": {
+    "sounds": [ "cobblemon:pokemon/lopunny/lopunny_ambient" ]
+  },
+  "pokemon.mismagius.ambient": {
+    "sounds": [ "cobblemon:pokemon/mismagius/mismagius_ambient" ]
+  },
+  "pokemon.honchkrow.ambient": {
+    "sounds": [ "cobblemon:pokemon/honchkrow/honchkrow_ambient" ]
+  },
+  "pokemon.glameow.ambient": {
+    "sounds": [ "cobblemon:pokemon/glameow/glameow_ambient" ]
+  },
+  "pokemon.purugly.ambient": {
+    "sounds": [ "cobblemon:pokemon/purugly/purugly_ambient" ]
+  },
+  "pokemon.chingling.ambient": {
+    "sounds": [ "cobblemon:pokemon/chingling/chingling_ambient" ]
+  },
+  "pokemon.stunky.ambient": {
+    "sounds": [ "cobblemon:pokemon/stunky/stunky_ambient" ]
+  },
+  "pokemon.skuntank.ambient": {
+    "sounds": [ "cobblemon:pokemon/skuntank/skuntank_ambient" ]
+  },
+  "pokemon.bronzor.ambient": {
+    "sounds": [ "cobblemon:pokemon/bronzor/bronzor_ambient" ]
+  },
+  "pokemon.bronzong.ambient": {
+    "sounds": [ "cobblemon:pokemon/bronzong/bronzong_ambient" ]
+  },
+  "pokemon.bonsly.ambient": {
+    "sounds": [ "cobblemon:pokemon/bonsly/bonsly_ambient" ]
+  },
+  "pokemon.mimejr.ambient": {
+    "sounds": [ "cobblemon:pokemon/mimejr/mimejr_ambient" ]
+  },
+  "pokemon.happiny.ambient": {
+    "sounds": [ "cobblemon:pokemon/happiny/happiny_ambient" ]
+  },
+  "pokemon.chatot.ambient": {
+    "sounds": [ "cobblemon:pokemon/chatot/chatot_ambient" ]
+  },
+  "pokemon.spiritomb.ambient": {
+    "sounds": [ "cobblemon:pokemon/spiritomb/spiritomb_ambient" ]
+  },
+  "pokemon.gible.ambient": {
+    "sounds": [ "cobblemon:pokemon/gible/gible_ambient" ]
+  },
+  "pokemon.gabite.ambient": {
+    "sounds": [ "cobblemon:pokemon/gabite/gabite_ambient" ]
+  },
+  "pokemon.garchomp.ambient": {
+    "sounds": [ "cobblemon:pokemon/garchomp/garchomp_ambient" ]
+  },
+  "pokemon.munchlax.ambient": {
+    "sounds": [ "cobblemon:pokemon/munchlax/munchlax_ambient" ]
+  },
+  "pokemon.riolu.ambient": {
+    "sounds": [ "cobblemon:pokemon/riolu/riolu_ambient" ]
+  },
+  "pokemon.lucario.ambient": {
+    "sounds": [ "cobblemon:pokemon/lucario/lucario_ambient" ]
+  },
+  "pokemon.hippopotas.ambient": {
+    "sounds": [ "cobblemon:pokemon/hippopotas/hippopotas_ambient" ]
+  },
+  "pokemon.hippowdon.ambient": {
+    "sounds": [ "cobblemon:pokemon/hippowdon/hippowdon_ambient" ]
+  },
+  "pokemon.skorupi.ambient": {
+    "sounds": [ "cobblemon:pokemon/skorupi/skorupi_ambient" ]
+  },
+  "pokemon.drapion.ambient": {
+    "sounds": [ "cobblemon:pokemon/drapion/drapion_ambient" ]
+  },
+  "pokemon.croagunk.ambient": {
+    "sounds": [ "cobblemon:pokemon/croagunk/croagunk_ambient" ]
+  },
+  "pokemon.toxicroak.ambient": {
+    "sounds": [ "cobblemon:pokemon/toxicroak/toxicroak_ambient" ]
+  },
+  "pokemon.carnivine.ambient": {
+    "sounds": [ "cobblemon:pokemon/carnivine/carnivine_ambient" ]
+  },
+  "pokemon.finneon.ambient": {
+    "sounds": [ "cobblemon:pokemon/finneon/finneon_ambient" ]
+  },
+  "pokemon.lumineon.ambient": {
+    "sounds": [ "cobblemon:pokemon/lumineon/lumineon_ambient" ]
+  },
+  "pokemon.mantyke.ambient": {
+    "sounds": [ "cobblemon:pokemon/mantyke/mantyke_ambient" ]
+  },
+  "pokemon.snover.ambient": {
+    "sounds": [ "cobblemon:pokemon/snover/snover_ambient" ]
+  },
+  "pokemon.abomasnow.ambient": {
+    "sounds": [ "cobblemon:pokemon/abomasnow/abomasnow_ambient" ]
+  },
+  "pokemon.weavile.ambient": {
+    "sounds": [ "cobblemon:pokemon/weavile/weavile_ambient" ]
+  },
+  "pokemon.magnezone.ambient": {
+    "sounds": [ "cobblemon:pokemon/magnezone/magnezone_ambient" ]
+  },
+  "pokemon.lickilicky.ambient": {
+    "sounds": [ "cobblemon:pokemon/lickilicky/lickilicky_ambient" ]
+  },
+  "pokemon.rhyperior.ambient": {
+    "sounds": [ "cobblemon:pokemon/rhyperior/rhyperior_ambient" ]
+  },
+  "pokemon.tangrowth.ambient": {
+    "sounds": [ "cobblemon:pokemon/tangrowth/tangrowth_ambient" ]
+  },
+  "pokemon.electivire.ambient": {
+    "sounds": [ "cobblemon:pokemon/electivire/electivire_ambient" ]
+  },
+  "pokemon.magmortar.ambient": {
+    "sounds": [ "cobblemon:pokemon/magmortar/magmortar_ambient" ]
+  },
+  "pokemon.togekiss.ambient": {
+    "sounds": [ "cobblemon:pokemon/togekiss/togekiss_ambient" ]
+  },
+  "pokemon.yanmega.ambient": {
+    "sounds": [ "cobblemon:pokemon/yanmega/yanmega_ambient" ]
+  },
+  "pokemon.leafeon.ambient": {
+    "sounds": [ "cobblemon:pokemon/leafeon/leafeon_ambient" ]
+  },
+  "pokemon.glaceon.ambient": {
+    "sounds": [ "cobblemon:pokemon/glaceon/glaceon_ambient" ]
+  },
+  "pokemon.gliscor.ambient": {
+    "sounds": [ "cobblemon:pokemon/gliscor/gliscor_ambient" ]
+  },
+  "pokemon.mamoswine.ambient": {
+    "sounds": [ "cobblemon:pokemon/mamoswine/mamoswine_ambient" ]
+  },
+  "pokemon.porygonz.ambient": {
+    "sounds": [ "cobblemon:pokemon/porygonz/porygonz_ambient" ]
+  },
+  "pokemon.gallade.ambient": {
+    "sounds": [ "cobblemon:pokemon/gallade/gallade_ambient" ]
+  },
+  "pokemon.probopass.ambient": {
+    "sounds": [ "cobblemon:pokemon/probopass/probopass_ambient" ]
+  },
+  "pokemon.dusknoir.ambient": {
+    "sounds": [ "cobblemon:pokemon/dusknoir/dusknoir_ambient" ]
+  },
+  "pokemon.froslass.ambient": {
+    "sounds": [ "cobblemon:pokemon/froslass/froslass_ambient" ]
+  },
+  "pokemon.rotom.ambient": {
+    "sounds": [ "cobblemon:pokemon/rotom/rotom_ambient" ]
+  },
+  "pokemon.uxie.ambient": {
+    "sounds": [ "cobblemon:pokemon/uxie/uxie_ambient" ]
+  },
+  "pokemon.mesprit.ambient": {
+    "sounds": [ "cobblemon:pokemon/mesprit/mesprit_ambient" ]
+  },
+  "pokemon.azelf.ambient": {
+    "sounds": [ "cobblemon:pokemon/azelf/azelf_ambient" ]
+  },
+  "pokemon.dialga.ambient": {
+    "sounds": [ "cobblemon:pokemon/dialga/dialga_ambient" ]
+  },
+  "pokemon.palkia.ambient": {
+    "sounds": [ "cobblemon:pokemon/palkia/palkia_ambient" ]
+  },
+  "pokemon.heatran.ambient": {
+    "sounds": [ "cobblemon:pokemon/heatran/heatran_ambient" ]
+  },
+  "pokemon.regigigas.ambient": {
+    "sounds": [ "cobblemon:pokemon/regigigas/regigigas_ambient" ]
+  },
+  "pokemon.giratina.ambient": {
+    "sounds": [ "cobblemon:pokemon/giratina/giratina_ambient" ]
+  },
+  "pokemon.cresselia.ambient": {
+    "sounds": [ "cobblemon:pokemon/cresselia/cresselia_ambient" ]
+  },
+  "pokemon.phione.ambient": {
+    "sounds": [ "cobblemon:pokemon/phione/phione_ambient" ]
+  },
+  "pokemon.manaphy.ambient": {
+    "sounds": [ "cobblemon:pokemon/manaphy/manaphy_ambient" ]
+  },
+  "pokemon.darkrai.ambient": {
+    "sounds": [ "cobblemon:pokemon/darkrai/darkrai_ambient" ]
+  },
+  "pokemon.shaymin.ambient": {
+    "sounds": [ "cobblemon:pokemon/shaymin/shaymin_ambient" ]
+  },
+  "pokemon.arceus.ambient": {
+    "sounds": [ "cobblemon:pokemon/arceus/arceus_ambient" ]
+  },
+  "pokemon.victini.ambient": {
+    "sounds": [ "cobblemon:pokemon/victini/victini_ambient" ]
+  },
+  "pokemon.snivy.ambient": {
+    "sounds": [ "cobblemon:pokemon/snivy/snivy_ambient" ]
+  },
+  "pokemon.servine.ambient": {
+    "sounds": [ "cobblemon:pokemon/servine/servine_ambient" ]
+  },
+  "pokemon.serperior.ambient": {
+    "sounds": [ "cobblemon:pokemon/serperior/serperior_ambient" ]
+  },
+  "pokemon.tepig.ambient": {
+    "sounds": [ "cobblemon:pokemon/tepig/tepig_ambient" ]
+  },
+  "pokemon.pignite.ambient": {
+    "sounds": [ "cobblemon:pokemon/pignite/pignite_ambient" ]
+  },
+  "pokemon.emboar.ambient": {
+    "sounds": [ "cobblemon:pokemon/emboar/emboar_ambient" ]
+  },
+  "pokemon.oshawott.ambient": {
+    "sounds": [ "cobblemon:pokemon/oshawott/oshawott_ambient" ]
+  },
+  "pokemon.dewott.ambient": {
+    "sounds": [ "cobblemon:pokemon/dewott/dewott_ambient" ]
+  },
+  "pokemon.samurott.ambient": {
+    "sounds": [ "cobblemon:pokemon/samurott/samurott_ambient" ]
+  },
+  "pokemon.patrat.ambient": {
+    "sounds": [ "cobblemon:pokemon/patrat/patrat_ambient" ]
+  },
+  "pokemon.watchog.ambient": {
+    "sounds": [ "cobblemon:pokemon/watchog/watchog_ambient" ]
+  },
+  "pokemon.lillipup.ambient": {
+    "sounds": [ "cobblemon:pokemon/lillipup/lillipup_ambient" ]
+  },
+  "pokemon.herdier.ambient": {
+    "sounds": [ "cobblemon:pokemon/herdier/herdier_ambient" ]
+  },
+  "pokemon.stoutland.ambient": {
+    "sounds": [ "cobblemon:pokemon/stoutland/stoutland_ambient" ]
+  },
+  "pokemon.purrloin.ambient": {
+    "sounds": [ "cobblemon:pokemon/purrloin/purrloin_ambient" ]
+  },
+  "pokemon.liepard.ambient": {
+    "sounds": [ "cobblemon:pokemon/liepard/liepard_ambient" ]
+  },
+  "pokemon.pansage.ambient": {
+    "sounds": [ "cobblemon:pokemon/pansage/pansage_ambient" ]
+  },
+  "pokemon.simisage.ambient": {
+    "sounds": [ "cobblemon:pokemon/simisage/simisage_ambient" ]
+  },
+  "pokemon.pansear.ambient": {
+    "sounds": [ "cobblemon:pokemon/pansear/pansear_ambient" ]
+  },
+  "pokemon.simisear.ambient": {
+    "sounds": [ "cobblemon:pokemon/simisear/simisear_ambient" ]
+  },
+  "pokemon.panpour.ambient": {
+    "sounds": [ "cobblemon:pokemon/panpour/panpour_ambient" ]
+  },
+  "pokemon.simipour.ambient": {
+    "sounds": [ "cobblemon:pokemon/simipour/simipour_ambient" ]
+  },
+  "pokemon.munna.ambient": {
+    "sounds": [ "cobblemon:pokemon/munna/munna_ambient" ]
+  },
+  "pokemon.musharna.ambient": {
+    "sounds": [ "cobblemon:pokemon/musharna/musharna_ambient" ]
+  },
+  "pokemon.pidove.ambient": {
+    "sounds": [ "cobblemon:pokemon/pidove/pidove_ambient" ]
+  },
+  "pokemon.tranquill.ambient": {
+    "sounds": [ "cobblemon:pokemon/tranquill/tranquill_ambient" ]
+  },
+  "pokemon.unfezant.ambient": {
+    "sounds": [ "cobblemon:pokemon/unfezant/unfezant_ambient" ]
+  },
+  "pokemon.blitzle.ambient": {
+    "sounds": [ "cobblemon:pokemon/blitzle/blitzle_ambient" ]
+  },
+  "pokemon.zebstrika.ambient": {
+    "sounds": [ "cobblemon:pokemon/zebstrika/zebstrika_ambient" ]
+  },
+  "pokemon.roggenrola.ambient": {
+    "sounds": [ "cobblemon:pokemon/roggenrola/roggenrola_ambient" ]
+  },
+  "pokemon.boldore.ambient": {
+    "sounds": [ "cobblemon:pokemon/boldore/boldore_ambient" ]
+  },
+  "pokemon.gigalith.ambient": {
+    "sounds": [ "cobblemon:pokemon/gigalith/gigalith_ambient" ]
+  },
+  "pokemon.woobat.ambient": {
+    "sounds": [ "cobblemon:pokemon/woobat/woobat_ambient" ]
+  },
+  "pokemon.swoobat.ambient": {
+    "sounds": [ "cobblemon:pokemon/swoobat/swoobat_ambient" ]
+  },
+  "pokemon.drilbur.ambient": {
+    "sounds": [ "cobblemon:pokemon/drilbur/drilbur_ambient" ]
+  },
+  "pokemon.excadrill.ambient": {
+    "sounds": [ "cobblemon:pokemon/excadrill/excadrill_ambient" ]
+  },
+  "pokemon.audino.ambient": {
+    "sounds": [ "cobblemon:pokemon/audino/audino_ambient" ]
+  },
+  "pokemon.timburr.ambient": {
+    "sounds": [ "cobblemon:pokemon/timburr/timburr_ambient" ]
+  },
+  "pokemon.gurdurr.ambient": {
+    "sounds": [ "cobblemon:pokemon/gurdurr/gurdurr_ambient" ]
+  },
+  "pokemon.conkeldurr.ambient": {
+    "sounds": [ "cobblemon:pokemon/conkeldurr/conkeldurr_ambient" ]
+  },
+  "pokemon.tympole.ambient": {
+    "sounds": [ "cobblemon:pokemon/tympole/tympole_ambient" ]
+  },
+  "pokemon.palpitoad.ambient": {
+    "sounds": [ "cobblemon:pokemon/palpitoad/palpitoad_ambient" ]
+  },
+  "pokemon.seismitoad.ambient": {
+    "sounds": [ "cobblemon:pokemon/seismitoad/seismitoad_ambient" ]
+  },
+  "pokemon.throh.ambient": {
+    "sounds": [ "cobblemon:pokemon/throh/throh_ambient" ]
+  },
+  "pokemon.sawk.ambient": {
+    "sounds": [ "cobblemon:pokemon/sawk/sawk_ambient" ]
+  },
+  "pokemon.sewaddle.ambient": {
+    "sounds": [ "cobblemon:pokemon/sewaddle/sewaddle_ambient" ]
+  },
+  "pokemon.swadloon.ambient": {
+    "sounds": [ "cobblemon:pokemon/swadloon/swadloon_ambient" ]
+  },
+  "pokemon.leavanny.ambient": {
+    "sounds": [ "cobblemon:pokemon/leavanny/leavanny_ambient" ]
+  },
+  "pokemon.venipede.ambient": {
+    "sounds": [ "cobblemon:pokemon/venipede/venipede_ambient" ]
+  },
+  "pokemon.whirlipede.ambient": {
+    "sounds": [ "cobblemon:pokemon/whirlipede/whirlipede_ambient" ]
+  },
+  "pokemon.scolipede.ambient": {
+    "sounds": [ "cobblemon:pokemon/scolipede/scolipede_ambient" ]
+  },
+  "pokemon.cottonee.ambient": {
+    "sounds": [ "cobblemon:pokemon/cottonee/cottonee_ambient" ]
+  },
+  "pokemon.whimsicott.ambient": {
+    "sounds": [ "cobblemon:pokemon/whimsicott/whimsicott_ambient" ]
+  },
+  "pokemon.petilil.ambient": {
+    "sounds": [ "cobblemon:pokemon/petilil/petilil_ambient" ]
+  },
+  "pokemon.lilligant.ambient": {
+    "sounds": [ "cobblemon:pokemon/lilligant/lilligant_ambient" ]
+  },
+  "pokemon.basculin.ambient": {
+    "sounds": [ "cobblemon:pokemon/basculin/basculin_ambient" ]
+  },
+  "pokemon.sandile.ambient": {
+    "sounds": [ "cobblemon:pokemon/sandile/sandile_ambient" ]
+  },
+  "pokemon.krokorok.ambient": {
+    "sounds": [ "cobblemon:pokemon/krokorok/krokorok_ambient" ]
+  },
+  "pokemon.krookodile.ambient": {
+    "sounds": [ "cobblemon:pokemon/krookodile/krookodile_ambient" ]
+  },
+  "pokemon.darumaka.ambient": {
+    "sounds": [ "cobblemon:pokemon/darumaka/darumaka_ambient" ]
+  },
+  "pokemon.darmanitan.ambient": {
+    "sounds": [ "cobblemon:pokemon/darmanitan/darmanitan_ambient" ]
+  },
+  "pokemon.maractus.ambient": {
+    "sounds": [ "cobblemon:pokemon/maractus/maractus_ambient" ]
+  },
+  "pokemon.dwebble.ambient": {
+    "sounds": [ "cobblemon:pokemon/dwebble/dwebble_ambient" ]
+  },
+  "pokemon.crustle.ambient": {
+    "sounds": [ "cobblemon:pokemon/crustle/crustle_ambient" ]
+  },
+  "pokemon.scraggy.ambient": {
+    "sounds": [ "cobblemon:pokemon/scraggy/scraggy_ambient" ]
+  },
+  "pokemon.scrafty.ambient": {
+    "sounds": [ "cobblemon:pokemon/scrafty/scrafty_ambient" ]
+  },
+  "pokemon.sigilyph.ambient": {
+    "sounds": [ "cobblemon:pokemon/sigilyph/sigilyph_ambient" ]
+  },
+  "pokemon.yamask.ambient": {
+    "sounds": [ "cobblemon:pokemon/yamask/yamask_ambient" ]
+  },
+  "pokemon.cofagrigus.ambient": {
+    "sounds": [ "cobblemon:pokemon/cofagrigus/cofagrigus_ambient" ]
+  },
+  "pokemon.tirtouga.ambient": {
+    "sounds": [ "cobblemon:pokemon/tirtouga/tirtouga_ambient" ]
+  },
+  "pokemon.carracosta.ambient": {
+    "sounds": [ "cobblemon:pokemon/carracosta/carracosta_ambient" ]
+  },
+  "pokemon.archen.ambient": {
+    "sounds": [ "cobblemon:pokemon/archen/archen_ambient" ]
+  },
+  "pokemon.archeops.ambient": {
+    "sounds": [ "cobblemon:pokemon/archeops/archeops_ambient" ]
+  },
+  "pokemon.trubbish.ambient": {
+    "sounds": [ "cobblemon:pokemon/trubbish/trubbish_ambient" ]
+  },
+  "pokemon.garbodor.ambient": {
+    "sounds": [ "cobblemon:pokemon/garbodor/garbodor_ambient" ]
+  },
+  "pokemon.zorua.ambient": {
+    "sounds": [ "cobblemon:pokemon/zorua/zorua_ambient" ]
+  },
+  "pokemon.zoroark.ambient": {
+    "sounds": [ "cobblemon:pokemon/zoroark/zoroark_ambient" ]
+  },
+  "pokemon.minccino.ambient": {
+    "sounds": [ "cobblemon:pokemon/minccino/minccino_ambient" ]
+  },
+  "pokemon.cinccino.ambient": {
+    "sounds": [ "cobblemon:pokemon/cinccino/cinccino_ambient" ]
+  },
+  "pokemon.gothita.ambient": {
+    "sounds": [ "cobblemon:pokemon/gothita/gothita_ambient" ]
+  },
+  "pokemon.gothorita.ambient": {
+    "sounds": [ "cobblemon:pokemon/gothorita/gothorita_ambient" ]
+  },
+  "pokemon.gothitelle.ambient": {
+    "sounds": [ "cobblemon:pokemon/gothitelle/gothitelle_ambient" ]
+  },
+  "pokemon.solosis.ambient": {
+    "sounds": [ "cobblemon:pokemon/solosis/solosis_ambient" ]
+  },
+  "pokemon.duosion.ambient": {
+    "sounds": [ "cobblemon:pokemon/duosion/duosion_ambient" ]
+  },
+  "pokemon.reuniclus.ambient": {
+    "sounds": [ "cobblemon:pokemon/reuniclus/reuniclus_ambient" ]
+  },
+  "pokemon.ducklett.ambient": {
+    "sounds": [ "cobblemon:pokemon/ducklett/ducklett_ambient" ]
+  },
+  "pokemon.swanna.ambient": {
+    "sounds": [ "cobblemon:pokemon/swanna/swanna_ambient" ]
+  },
+  "pokemon.vanillite.ambient": {
+    "sounds": [ "cobblemon:pokemon/vanillite/vanillite_ambient" ]
+  },
+  "pokemon.vanillish.ambient": {
+    "sounds": [ "cobblemon:pokemon/vanillish/vanillish_ambient" ]
+  },
+  "pokemon.vanilluxe.ambient": {
+    "sounds": [ "cobblemon:pokemon/vanilluxe/vanilluxe_ambient" ]
+  },
+  "pokemon.deerling.ambient": {
+    "sounds": [ "cobblemon:pokemon/deerling/deerling_ambient" ]
+  },
+  "pokemon.sawsbuck.ambient": {
+    "sounds": [ "cobblemon:pokemon/sawsbuck/sawsbuck_ambient" ]
+  },
+  "pokemon.emolga.ambient": {
+    "sounds": [ "cobblemon:pokemon/emolga/emolga_ambient" ]
+  },
+  "pokemon.karrablast.ambient": {
+    "sounds": [ "cobblemon:pokemon/karrablast/karrablast_ambient" ]
+  },
+  "pokemon.escavalier.ambient": {
+    "sounds": [ "cobblemon:pokemon/escavalier/escavalier_ambient" ]
+  },
+  "pokemon.foongus.ambient": {
+    "sounds": [ "cobblemon:pokemon/foongus/foongus_ambient" ]
+  },
+  "pokemon.amoonguss.ambient": {
+    "sounds": [ "cobblemon:pokemon/amoonguss/amoonguss_ambient" ]
+  },
+  "pokemon.frillish.ambient": {
+    "sounds": [ "cobblemon:pokemon/frillish/frillish_ambient" ]
+  },
+  "pokemon.jellicent.ambient": {
+    "sounds": [ "cobblemon:pokemon/jellicent/jellicent_ambient" ]
+  },
+  "pokemon.alomomola.ambient": {
+    "sounds": [ "cobblemon:pokemon/alomomola/alomomola_ambient" ]
+  },
+  "pokemon.joltik.ambient": {
+    "sounds": [ "cobblemon:pokemon/joltik/joltik_ambient" ]
+  },
+  "pokemon.galvantula.ambient": {
+    "sounds": [ "cobblemon:pokemon/galvantula/galvantula_ambient" ]
+  },
+  "pokemon.ferroseed.ambient": {
+    "sounds": [ "cobblemon:pokemon/ferroseed/ferroseed_ambient" ]
+  },
+  "pokemon.ferrothorn.ambient": {
+    "sounds": [ "cobblemon:pokemon/ferrothorn/ferrothorn_ambient" ]
+  },
+  "pokemon.klink.ambient": {
+    "sounds": [ "cobblemon:pokemon/klink/klink_ambient" ]
+  },
+  "pokemon.klang.ambient": {
+    "sounds": [ "cobblemon:pokemon/klang/klang_ambient" ]
+  },
+  "pokemon.klinklang.ambient": {
+    "sounds": [ "cobblemon:pokemon/klinklang/klinklang_ambient" ]
+  },
+  "pokemon.tynamo.ambient": {
+    "sounds": [ "cobblemon:pokemon/tynamo/tynamo_ambient" ]
+  },
+  "pokemon.eelektrik.ambient": {
+    "sounds": [ "cobblemon:pokemon/eelektrik/eelektrik_ambient" ]
+  },
+  "pokemon.eelektross.ambient": {
+    "sounds": [ "cobblemon:pokemon/eelektross/eelektross_ambient" ]
+  },
+  "pokemon.elgyem.ambient": {
+    "sounds": [ "cobblemon:pokemon/elgyem/elgyem_ambient" ]
+  },
+  "pokemon.beheeyem.ambient": {
+    "sounds": [ "cobblemon:pokemon/beheeyem/beheeyem_ambient" ]
+  },
+  "pokemon.litwick.ambient": {
+    "sounds": [ "cobblemon:pokemon/litwick/litwick_ambient" ]
+  },
+  "pokemon.lampent.ambient": {
+    "sounds": [ "cobblemon:pokemon/lampent/lampent_ambient" ]
+  },
+  "pokemon.chandelure.ambient": {
+    "sounds": [ "cobblemon:pokemon/chandelure/chandelure_ambient" ]
+  },
+  "pokemon.axew.ambient": {
+    "sounds": [ "cobblemon:pokemon/axew/axew_ambient" ]
+  },
+  "pokemon.fraxure.ambient": {
+    "sounds": [ "cobblemon:pokemon/fraxure/fraxure_ambient" ]
+  },
+  "pokemon.haxorus.ambient": {
+    "sounds": [ "cobblemon:pokemon/haxorus/haxorus_ambient" ]
+  },
+  "pokemon.cubchoo.ambient": {
+    "sounds": [ "cobblemon:pokemon/cubchoo/cubchoo_ambient" ]
+  },
+  "pokemon.beartic.ambient": {
+    "sounds": [ "cobblemon:pokemon/beartic/beartic_ambient" ]
+  },
+  "pokemon.cryogonal.ambient": {
+    "sounds": [ "cobblemon:pokemon/cryogonal/cryogonal_ambient" ]
+  },
+  "pokemon.shelmet.ambient": {
+    "sounds": [ "cobblemon:pokemon/shelmet/shelmet_ambient" ]
+  },
+  "pokemon.accelgor.ambient": {
+    "sounds": [ "cobblemon:pokemon/accelgor/accelgor_ambient" ]
+  },
+  "pokemon.stunfisk.ambient": {
+    "sounds": [ "cobblemon:pokemon/stunfisk/stunfisk_ambient" ]
+  },
+  "pokemon.mienfoo.ambient": {
+    "sounds": [ "cobblemon:pokemon/mienfoo/mienfoo_ambient" ]
+  },
+  "pokemon.mienshao.ambient": {
+    "sounds": [ "cobblemon:pokemon/mienshao/mienshao_ambient" ]
+  },
+  "pokemon.druddigon.ambient": {
+    "sounds": [ "cobblemon:pokemon/druddigon/druddigon_ambient" ]
+  },
+  "pokemon.golett.ambient": {
+    "sounds": [ "cobblemon:pokemon/golett/golett_ambient" ]
+  },
+  "pokemon.golurk.ambient": {
+    "sounds": [ "cobblemon:pokemon/golurk/golurk_ambient" ]
+  },
+  "pokemon.pawniard.ambient": {
+    "sounds": [ "cobblemon:pokemon/pawniard/pawniard_ambient" ]
+  },
+  "pokemon.bisharp.ambient": {
+    "sounds": [ "cobblemon:pokemon/bisharp/bisharp_ambient" ]
+  },
+  "pokemon.bouffalant.ambient": {
+    "sounds": [ "cobblemon:pokemon/bouffalant/bouffalant_ambient" ]
+  },
+  "pokemon.rufflet.ambient": {
+    "sounds": [ "cobblemon:pokemon/rufflet/rufflet_ambient" ]
+  },
+  "pokemon.braviary.ambient": {
+    "sounds": [ "cobblemon:pokemon/braviary/braviary_ambient" ]
+  },
+  "pokemon.vullaby.ambient": {
+    "sounds": [ "cobblemon:pokemon/vullaby/vullaby_ambient" ]
+  },
+  "pokemon.mandibuzz.ambient": {
+    "sounds": [ "cobblemon:pokemon/mandibuzz/mandibuzz_ambient" ]
+  },
+  "pokemon.heatmor.ambient": {
+    "sounds": [ "cobblemon:pokemon/heatmor/heatmor_ambient" ]
+  },
+  "pokemon.durant.ambient": {
+    "sounds": [ "cobblemon:pokemon/durant/durant_ambient" ]
+  },
+  "pokemon.deino.ambient": {
+    "sounds": [ "cobblemon:pokemon/deino/deino_ambient" ]
+  },
+  "pokemon.zweilous.ambient": {
+    "sounds": [ "cobblemon:pokemon/zweilous/zweilous_ambient" ]
+  },
+  "pokemon.hydreigon.ambient": {
+    "sounds": [ "cobblemon:pokemon/hydreigon/hydreigon_ambient" ]
+  },
+  "pokemon.larvesta.ambient": {
+    "sounds": [ "cobblemon:pokemon/larvesta/larvesta_ambient" ]
+  },
+  "pokemon.volcarona.ambient": {
+    "sounds": [ "cobblemon:pokemon/volcarona/volcarona_ambient" ]
+  },
+  "pokemon.cobalion.ambient": {
+    "sounds": [ "cobblemon:pokemon/cobalion/cobalion_ambient" ]
+  },
+  "pokemon.terrakion.ambient": {
+    "sounds": [ "cobblemon:pokemon/terrakion/terrakion_ambient" ]
+  },
+  "pokemon.virizion.ambient": {
+    "sounds": [ "cobblemon:pokemon/virizion/virizion_ambient" ]
+  },
+  "pokemon.tornadus.ambient": {
+    "sounds": [ "cobblemon:pokemon/tornadus/tornadus_ambient" ]
+  },
+  "pokemon.thundurus.ambient": {
+    "sounds": [ "cobblemon:pokemon/thundurus/thundurus_ambient" ]
+  },
+  "pokemon.reshiram.ambient": {
+    "sounds": [ "cobblemon:pokemon/reshiram/reshiram_ambient" ]
+  },
+  "pokemon.zekrom.ambient": {
+    "sounds": [ "cobblemon:pokemon/zekrom/zekrom_ambient" ]
+  },
+  "pokemon.landorus.ambient": {
+    "sounds": [ "cobblemon:pokemon/landorus/landorus_ambient" ]
+  },
+  "pokemon.kyurem.ambient": {
+    "sounds": [ "cobblemon:pokemon/kyurem/kyurem_ambient" ]
+  },
+  "pokemon.keldeo.ambient": {
+    "sounds": [ "cobblemon:pokemon/keldeo/keldeo_ambient" ]
+  },
+  "pokemon.meloetta.ambient": {
+    "sounds": [ "cobblemon:pokemon/meloetta/meloetta_ambient" ]
+  },
+  "pokemon.genesect.ambient": {
+    "sounds": [ "cobblemon:pokemon/genesect/genesect_ambient" ]
+  },
+  "pokemon.chespin.ambient": {
+    "sounds": [ "cobblemon:pokemon/chespin/chespin_ambient" ]
+  },
+  "pokemon.quilladin.ambient": {
+    "sounds": [ "cobblemon:pokemon/quilladin/quilladin_ambient" ]
+  },
+  "pokemon.chesnaught.ambient": {
+    "sounds": [ "cobblemon:pokemon/chesnaught/chesnaught_ambient" ]
+  },
+  "pokemon.fennekin.ambient": {
+    "sounds": [ "cobblemon:pokemon/fennekin/fennekin_ambient" ]
+  },
+  "pokemon.braixen.ambient": {
+    "sounds": [ "cobblemon:pokemon/braixen/braixen_ambient" ]
+  },
+  "pokemon.delphox.ambient": {
+    "sounds": [ "cobblemon:pokemon/delphox/delphox_ambient" ]
+  },
+  "pokemon.froakie.ambient": {
+    "sounds": [ "cobblemon:pokemon/froakie/froakie_ambient" ]
+  },
+  "pokemon.frogadier.ambient": {
+    "sounds": [ "cobblemon:pokemon/frogadier/frogadier_ambient" ]
+  },
+  "pokemon.greninja.ambient": {
+    "sounds": [ "cobblemon:pokemon/greninja/greninja_ambient" ]
+  },
+  "pokemon.bunnelby.ambient": {
+    "sounds": [ "cobblemon:pokemon/bunnelby/bunnelby_ambient" ]
+  },
+  "pokemon.diggersby.ambient": {
+    "sounds": [ "cobblemon:pokemon/diggersby/diggersby_ambient" ]
+  },
+  "pokemon.fletchling.ambient": {
+    "sounds": [ "cobblemon:pokemon/fletchling/fletchling_ambient" ]
+  },
+  "pokemon.fletchinder.ambient": {
+    "sounds": [ "cobblemon:pokemon/fletchinder/fletchinder_ambient" ]
+  },
+  "pokemon.talonflame.ambient": {
+    "sounds": [ "cobblemon:pokemon/talonflame/talonflame_ambient" ]
+  },
+  "pokemon.scatterbug.ambient": {
+    "sounds": [ "cobblemon:pokemon/scatterbug/scatterbug_ambient" ]
+  },
+  "pokemon.spewpa.ambient": {
+    "sounds": [ "cobblemon:pokemon/spewpa/spewpa_ambient" ]
+  },
+  "pokemon.vivillon.ambient": {
+    "sounds": [ "cobblemon:pokemon/vivillon/vivillon_ambient" ]
+  },
+  "pokemon.litleo.ambient": {
+    "sounds": [ "cobblemon:pokemon/litleo/litleo_ambient" ]
+  },
+  "pokemon.pyroar.ambient": {
+    "sounds": [ "cobblemon:pokemon/pyroar/pyroar_ambient" ]
+  },
+  "pokemon.flabebe.ambient": {
+    "sounds": [ "cobblemon:pokemon/flabebe/flabebe_ambient" ]
+  },
+  "pokemon.floette.ambient": {
+    "sounds": [ "cobblemon:pokemon/floette/floette_ambient" ]
+  },
+  "pokemon.florges.ambient": {
+    "sounds": [ "cobblemon:pokemon/florges/florges_ambient" ]
+  },
+  "pokemon.skiddo.ambient": {
+    "sounds": [ "cobblemon:pokemon/skiddo/skiddo_ambient" ]
+  },
+  "pokemon.gogoat.ambient": {
+    "sounds": [ "cobblemon:pokemon/gogoat/gogoat_ambient" ]
+  },
+  "pokemon.pancham.ambient": {
+    "sounds": [ "cobblemon:pokemon/pancham/pancham_ambient" ]
+  },
+  "pokemon.pangoro.ambient": {
+    "sounds": [ "cobblemon:pokemon/pangoro/pangoro_ambient" ]
+  },
+  "pokemon.furfrou.ambient": {
+    "sounds": [ "cobblemon:pokemon/furfrou/furfrou_ambient" ]
+  },
+  "pokemon.espurr.ambient": {
+    "sounds": [ "cobblemon:pokemon/espurr/espurr_ambient" ]
+  },
+  "pokemon.meowstic.ambient": {
+    "sounds": [ "cobblemon:pokemon/meowstic/meowstic_ambient" ]
+  },
+  "pokemon.honedge.ambient": {
+    "sounds": [ "cobblemon:pokemon/honedge/honedge_ambient" ]
+  },
+  "pokemon.doublade.ambient": {
+    "sounds": [ "cobblemon:pokemon/doublade/doublade_ambient" ]
+  },
+  "pokemon.aegislash.ambient": {
+    "sounds": [ "cobblemon:pokemon/aegislash/aegislash_ambient" ]
+  },
+  "pokemon.spritzee.ambient": {
+    "sounds": [ "cobblemon:pokemon/spritzee/spritzee_ambient" ]
+  },
+  "pokemon.aromatisse.ambient": {
+    "sounds": [ "cobblemon:pokemon/aromatisse/aromatisse_ambient" ]
+  },
+  "pokemon.swirlix.ambient": {
+    "sounds": [ "cobblemon:pokemon/swirlix/swirlix_ambient" ]
+  },
+  "pokemon.slurpuff.ambient": {
+    "sounds": [ "cobblemon:pokemon/slurpuff/slurpuff_ambient" ]
+  },
+  "pokemon.inkay.ambient": {
+    "sounds": [ "cobblemon:pokemon/inkay/inkay_ambient" ]
+  },
+  "pokemon.malamar.ambient": {
+    "sounds": [ "cobblemon:pokemon/malamar/malamar_ambient" ]
+  },
+  "pokemon.binacle.ambient": {
+    "sounds": [ "cobblemon:pokemon/binacle/binacle_ambient" ]
+  },
+  "pokemon.barbaracle.ambient": {
+    "sounds": [ "cobblemon:pokemon/barbaracle/barbaracle_ambient" ]
+  },
+  "pokemon.skrelp.ambient": {
+    "sounds": [ "cobblemon:pokemon/skrelp/skrelp_ambient" ]
+  },
+  "pokemon.dragalge.ambient": {
+    "sounds": [ "cobblemon:pokemon/dragalge/dragalge_ambient" ]
+  },
+  "pokemon.clauncher.ambient": {
+    "sounds": [ "cobblemon:pokemon/clauncher/clauncher_ambient" ]
+  },
+  "pokemon.clawitzer.ambient": {
+    "sounds": [ "cobblemon:pokemon/clawitzer/clawitzer_ambient" ]
+  },
+  "pokemon.helioptile.ambient": {
+    "sounds": [ "cobblemon:pokemon/helioptile/helioptile_ambient" ]
+  },
+  "pokemon.heliolisk.ambient": {
+    "sounds": [ "cobblemon:pokemon/heliolisk/heliolisk_ambient" ]
+  },
+  "pokemon.tyrunt.ambient": {
+    "sounds": [ "cobblemon:pokemon/tyrunt/tyrunt_ambient" ]
+  },
+  "pokemon.tyrantrum.ambient": {
+    "sounds": [ "cobblemon:pokemon/tyrantrum/tyrantrum_ambient" ]
+  },
+  "pokemon.amaura.ambient": {
+    "sounds": [ "cobblemon:pokemon/amaura/amaura_ambient" ]
+  },
+  "pokemon.aurorus.ambient": {
+    "sounds": [ "cobblemon:pokemon/aurorus/aurorus_ambient" ]
+  },
+  "pokemon.sylveon.ambient": {
+    "sounds": [ "cobblemon:pokemon/sylveon/sylveon_ambient" ]
+  },
+  "pokemon.hawlucha.ambient": {
+    "sounds": [ "cobblemon:pokemon/hawlucha/hawlucha_ambient" ]
+  },
+  "pokemon.dedenne.ambient": {
+    "sounds": [ "cobblemon:pokemon/dedenne/dedenne_ambient" ]
+  },
+  "pokemon.carbink.ambient": {
+    "sounds": [ "cobblemon:pokemon/carbink/carbink_ambient" ]
+  },
+  "pokemon.goomy.ambient": {
+    "sounds": [ "cobblemon:pokemon/goomy/goomy_ambient" ]
+  },
+  "pokemon.sliggoo.ambient": {
+    "sounds": [ "cobblemon:pokemon/sliggoo/sliggoo_ambient" ]
+  },
+  "pokemon.goodra.ambient": {
+    "sounds": [ "cobblemon:pokemon/goodra/goodra_ambient" ]
+  },
+  "pokemon.klefki.ambient": {
+    "sounds": [ "cobblemon:pokemon/klefki/klefki_ambient" ]
+  },
+  "pokemon.phantump.ambient": {
+    "sounds": [ "cobblemon:pokemon/phantump/phantump_ambient" ]
+  },
+  "pokemon.trevenant.ambient": {
+    "sounds": [ "cobblemon:pokemon/trevenant/trevenant_ambient" ]
+  },
+  "pokemon.pumpkaboo.ambient": {
+    "sounds": [ "cobblemon:pokemon/pumpkaboo/pumpkaboo_ambient" ]
+  },
+  "pokemon.gourgeist.ambient": {
+    "sounds": [ "cobblemon:pokemon/gourgeist/gourgeist_ambient" ]
+  },
+  "pokemon.bergmite.ambient": {
+    "sounds": [ "cobblemon:pokemon/bergmite/bergmite_ambient" ]
+  },
+  "pokemon.avalugg.ambient": {
+    "sounds": [ "cobblemon:pokemon/avalugg/avalugg_ambient" ]
+  },
+  "pokemon.noibat.ambient": {
+    "sounds": [ "cobblemon:pokemon/noibat/noibat_ambient" ]
+  },
+  "pokemon.noivern.ambient": {
+    "sounds": [ "cobblemon:pokemon/noivern/noivern_ambient" ]
+  },
+  "pokemon.xerneas.ambient": {
+    "sounds": [ "cobblemon:pokemon/xerneas/xerneas_ambient" ]
+  },
+  "pokemon.yveltal.ambient": {
+    "sounds": [ "cobblemon:pokemon/yveltal/yveltal_ambient" ]
+  },
+  "pokemon.zygarde.ambient": {
+    "sounds": [ "cobblemon:pokemon/zygarde/zygarde_ambient" ]
+  },
+  "pokemon.diancie.ambient": {
+    "sounds": [ "cobblemon:pokemon/diancie/diancie_ambient" ]
+  },
+  "pokemon.hoopa.ambient": {
+    "sounds": [ "cobblemon:pokemon/hoopa/hoopa_ambient" ]
+  },
+  "pokemon.volcanion.ambient": {
+    "sounds": [ "cobblemon:pokemon/volcanion/volcanion_ambient" ]
+  },
+  "pokemon.rowlet.ambient": {
+    "sounds": [ "cobblemon:pokemon/rowlet/rowlet_ambient" ]
+  },
+  "pokemon.dartrix.ambient": {
+    "sounds": [ "cobblemon:pokemon/dartrix/dartrix_ambient" ]
+  },
+  "pokemon.decidueye.ambient": {
+    "sounds": [ "cobblemon:pokemon/decidueye/decidueye_ambient" ]
+  },
+  "pokemon.litten.ambient": {
+    "sounds": [ "cobblemon:pokemon/litten/litten_ambient" ]
+  },
+  "pokemon.torracat.ambient": {
+    "sounds": [ "cobblemon:pokemon/torracat/torracat_ambient" ]
+  },
+  "pokemon.incineroar.ambient": {
+    "sounds": [ "cobblemon:pokemon/incineroar/incineroar_ambient" ]
+  },
+  "pokemon.popplio.ambient": {
+    "sounds": [ "cobblemon:pokemon/popplio/popplio_ambient" ]
+  },
+  "pokemon.brionne.ambient": {
+    "sounds": [ "cobblemon:pokemon/brionne/brionne_ambient" ]
+  },
+  "pokemon.primarina.ambient": {
+    "sounds": [ "cobblemon:pokemon/primarina/primarina_ambient" ]
+  },
+  "pokemon.pikipek.ambient": {
+    "sounds": [ "cobblemon:pokemon/pikipek/pikipek_ambient" ]
+  },
+  "pokemon.trumbeak.ambient": {
+    "sounds": [ "cobblemon:pokemon/trumbeak/trumbeak_ambient" ]
+  },
+  "pokemon.toucannon.ambient": {
+    "sounds": [ "cobblemon:pokemon/toucannon/toucannon_ambient" ]
+  },
+  "pokemon.yungoos.ambient": {
+    "sounds": [ "cobblemon:pokemon/yungoos/yungoos_ambient" ]
+  },
+  "pokemon.gumshoos.ambient": {
+    "sounds": [ "cobblemon:pokemon/gumshoos/gumshoos_ambient" ]
+  },
+  "pokemon.grubbin.ambient": {
+    "sounds": [ "cobblemon:pokemon/grubbin/grubbin_ambient" ]
+  },
+  "pokemon.charjabug.ambient": {
+    "sounds": [ "cobblemon:pokemon/charjabug/charjabug_ambient" ]
+  },
+  "pokemon.vikavolt.ambient": {
+    "sounds": [ "cobblemon:pokemon/vikavolt/vikavolt_ambient" ]
+  },
+  "pokemon.crabrawler.ambient": {
+    "sounds": [ "cobblemon:pokemon/crabrawler/crabrawler_ambient" ]
+  },
+  "pokemon.crabominable.ambient": {
+    "sounds": [ "cobblemon:pokemon/crabominable/crabominable_ambient" ]
+  },
+  "pokemon.oricorio.ambient": {
+    "sounds": [ "cobblemon:pokemon/oricorio/oricorio_ambient" ]
+  },
+  "pokemon.cutiefly.ambient": {
+    "sounds": [ "cobblemon:pokemon/cutiefly/cutiefly_ambient" ]
+  },
+  "pokemon.ribombee.ambient": {
+    "sounds": [ "cobblemon:pokemon/ribombee/ribombee_ambient" ]
+  },
+  "pokemon.rockruff.ambient": {
+    "sounds": [ "cobblemon:pokemon/rockruff/rockruff_ambient" ]
+  },
+  "pokemon.lycanroc.ambient": {
+    "sounds": [ "cobblemon:pokemon/lycanroc/lycanroc_ambient" ]
+  },
+  "pokemon.wishiwashi.ambient": {
+    "sounds": [ "cobblemon:pokemon/wishiwashi/wishiwashi_ambient" ]
+  },
+  "pokemon.mareanie.ambient": {
+    "sounds": [ "cobblemon:pokemon/mareanie/mareanie_ambient" ]
+  },
+  "pokemon.toxapex.ambient": {
+    "sounds": [ "cobblemon:pokemon/toxapex/toxapex_ambient" ]
+  },
+  "pokemon.mudbray.ambient": {
+    "sounds": [ "cobblemon:pokemon/mudbray/mudbray_ambient" ]
+  },
+  "pokemon.mudsdale.ambient": {
+    "sounds": [ "cobblemon:pokemon/mudsdale/mudsdale_ambient" ]
+  },
+  "pokemon.dewpider.ambient": {
+    "sounds": [ "cobblemon:pokemon/dewpider/dewpider_ambient" ]
+  },
+  "pokemon.araquanid.ambient": {
+    "sounds": [ "cobblemon:pokemon/araquanid/araquanid_ambient" ]
+  },
+  "pokemon.fomantis.ambient": {
+    "sounds": [ "cobblemon:pokemon/fomantis/fomantis_ambient" ]
+  },
+  "pokemon.lurantis.ambient": {
+    "sounds": [ "cobblemon:pokemon/lurantis/lurantis_ambient" ]
+  },
+  "pokemon.morelull.ambient": {
+    "sounds": [ "cobblemon:pokemon/morelull/morelull_ambient" ]
+  },
+  "pokemon.shiinotic.ambient": {
+    "sounds": [ "cobblemon:pokemon/shiinotic/shiinotic_ambient" ]
+  },
+  "pokemon.salandit.ambient": {
+    "sounds": [ "cobblemon:pokemon/salandit/salandit_ambient" ]
+  },
+  "pokemon.salazzle.ambient": {
+    "sounds": [ "cobblemon:pokemon/salazzle/salazzle_ambient" ]
+  },
+  "pokemon.stufful.ambient": {
+    "sounds": [ "cobblemon:pokemon/stufful/stufful_ambient" ]
+  },
+  "pokemon.bewear.ambient": {
+    "sounds": [ "cobblemon:pokemon/bewear/bewear_ambient" ]
+  },
+  "pokemon.bounsweet.ambient": {
+    "sounds": [ "cobblemon:pokemon/bounsweet/bounsweet_ambient" ]
+  },
+  "pokemon.steenee.ambient": {
+    "sounds": [ "cobblemon:pokemon/steenee/steenee_ambient" ]
+  },
+  "pokemon.tsareena.ambient": {
+    "sounds": [ "cobblemon:pokemon/tsareena/tsareena_ambient" ]
+  },
+  "pokemon.comfey.ambient": {
+    "sounds": [ "cobblemon:pokemon/comfey/comfey_ambient" ]
+  },
+  "pokemon.oranguru.ambient": {
+    "sounds": [ "cobblemon:pokemon/oranguru/oranguru_ambient" ]
+  },
+  "pokemon.passimian.ambient": {
+    "sounds": [ "cobblemon:pokemon/passimian/passimian_ambient" ]
+  },
+  "pokemon.wimpod.ambient": {
+    "sounds": [ "cobblemon:pokemon/wimpod/wimpod_ambient" ]
+  },
+  "pokemon.golisopod.ambient": {
+    "sounds": [ "cobblemon:pokemon/golisopod/golisopod_ambient" ]
+  },
+  "pokemon.sandygast.ambient": {
+    "sounds": [ "cobblemon:pokemon/sandygast/sandygast_ambient" ]
+  },
+  "pokemon.palossand.ambient": {
+    "sounds": [ "cobblemon:pokemon/palossand/palossand_ambient" ]
+  },
+  "pokemon.pyukumuku.ambient": {
+    "sounds": [ "cobblemon:pokemon/pyukumuku/pyukumuku_ambient" ]
+  },
+  "pokemon.typenull.ambient": {
+    "sounds": [ "cobblemon:pokemon/typenull/typenull_ambient" ]
+  },
+  "pokemon.silvally.ambient": {
+    "sounds": [ "cobblemon:pokemon/silvally/silvally_ambient" ]
+  },
+  "pokemon.minior.ambient": {
+    "sounds": [ "cobblemon:pokemon/minior/minior_ambient" ]
+  },
+  "pokemon.komala.ambient": {
+    "sounds": [ "cobblemon:pokemon/komala/komala_ambient" ]
+  },
+  "pokemon.turtonator.ambient": {
+    "sounds": [ "cobblemon:pokemon/turtonator/turtonator_ambient" ]
+  },
+  "pokemon.togedemaru.ambient": {
+    "sounds": [ "cobblemon:pokemon/togedemaru/togedemaru_ambient" ]
+  },
+  "pokemon.mimikyu.ambient": {
+    "sounds": [ "cobblemon:pokemon/mimikyu/mimikyu_ambient" ]
+  },
+  "pokemon.bruxish.ambient": {
+    "sounds": [ "cobblemon:pokemon/bruxish/bruxish_ambient" ]
+  },
+  "pokemon.drampa.ambient": {
+    "sounds": [ "cobblemon:pokemon/drampa/drampa_ambient" ]
+  },
+  "pokemon.dhelmise.ambient": {
+    "sounds": [ "cobblemon:pokemon/dhelmise/dhelmise_ambient" ]
+  },
+  "pokemon.jangmoo.ambient": {
+    "sounds": [ "cobblemon:pokemon/jangmoo/jangmoo_ambient" ]
+  },
+  "pokemon.hakamoo.ambient": {
+    "sounds": [ "cobblemon:pokemon/hakamoo/hakamoo_ambient" ]
+  },
+  "pokemon.kommoo.ambient": {
+    "sounds": [ "cobblemon:pokemon/kommoo/kommoo_ambient" ]
+  },
+  "pokemon.tapukoko.ambient": {
+    "sounds": [ "cobblemon:pokemon/tapukoko/tapukoko_ambient" ]
+  },
+  "pokemon.tapulele.ambient": {
+    "sounds": [ "cobblemon:pokemon/tapulele/tapulele_ambient" ]
+  },
+  "pokemon.tapubulu.ambient": {
+    "sounds": [ "cobblemon:pokemon/tapubulu/tapubulu_ambient" ]
+  },
+  "pokemon.tapufini.ambient": {
+    "sounds": [ "cobblemon:pokemon/tapufini/tapufini_ambient" ]
+  },
+  "pokemon.cosmog.ambient": {
+    "sounds": [ "cobblemon:pokemon/cosmog/cosmog_ambient" ]
+  },
+  "pokemon.cosmoem.ambient": {
+    "sounds": [ "cobblemon:pokemon/cosmoem/cosmoem_ambient" ]
+  },
+  "pokemon.solgaleo.ambient": {
+    "sounds": [ "cobblemon:pokemon/solgaleo/solgaleo_ambient" ]
+  },
+  "pokemon.lunala.ambient": {
+    "sounds": [ "cobblemon:pokemon/lunala/lunala_ambient" ]
+  },
+  "pokemon.nihilego.ambient": {
+    "sounds": [ "cobblemon:pokemon/nihilego/nihilego_ambient" ]
+  },
+  "pokemon.buzzwole.ambient": {
+    "sounds": [ "cobblemon:pokemon/buzzwole/buzzwole_ambient" ]
+  },
+  "pokemon.pheromosa.ambient": {
+    "sounds": [ "cobblemon:pokemon/pheromosa/pheromosa_ambient" ]
+  },
+  "pokemon.xurkitree.ambient": {
+    "sounds": [ "cobblemon:pokemon/xurkitree/xurkitree_ambient" ]
+  },
+  "pokemon.celesteela.ambient": {
+    "sounds": [ "cobblemon:pokemon/celesteela/celesteela_ambient" ]
+  },
+  "pokemon.kartana.ambient": {
+    "sounds": [ "cobblemon:pokemon/kartana/kartana_ambient" ]
+  },
+  "pokemon.guzzlord.ambient": {
+    "sounds": [ "cobblemon:pokemon/guzzlord/guzzlord_ambient" ]
+  },
+  "pokemon.necrozma.ambient": {
+    "sounds": [ "cobblemon:pokemon/necrozma/necrozma_ambient" ]
+  },
+  "pokemon.magearna.ambient": {
+    "sounds": [ "cobblemon:pokemon/magearna/magearna_ambient" ]
+  },
+  "pokemon.marshadow.ambient": {
+    "sounds": [ "cobblemon:pokemon/marshadow/marshadow_ambient" ]
+  },
+  "pokemon.poipole.ambient": {
+    "sounds": [ "cobblemon:pokemon/poipole/poipole_ambient" ]
+  },
+  "pokemon.naganadel.ambient": {
+    "sounds": [ "cobblemon:pokemon/naganadel/naganadel_ambient" ]
+  },
+  "pokemon.stakataka.ambient": {
+    "sounds": [ "cobblemon:pokemon/stakataka/stakataka_ambient" ]
+  },
+  "pokemon.blacephalon.ambient": {
+    "sounds": [ "cobblemon:pokemon/blacephalon/blacephalon_ambient" ]
+  },
+  "pokemon.zeraora.ambient": {
+    "sounds": [ "cobblemon:pokemon/zeraora/zeraora_ambient" ]
+  },
+  "pokemon.meltan.ambient": {
+    "sounds": [ "cobblemon:pokemon/meltan/meltan_ambient" ]
+  },
+  "pokemon.melmetal.ambient": {
+    "sounds": [ "cobblemon:pokemon/melmetal/melmetal_ambient" ]
+  },
+  "pokemon.grookey.ambient": {
+    "sounds": [ "cobblemon:pokemon/grookey/grookey_ambient" ]
+  },
+  "pokemon.thwackey.ambient": {
+    "sounds": [ "cobblemon:pokemon/thwackey/thwackey_ambient" ]
+  },
+  "pokemon.rillaboom.ambient": {
+    "sounds": [ "cobblemon:pokemon/rillaboom/rillaboom_ambient" ]
+  },
+  "pokemon.scorbunny.ambient": {
+    "sounds": [ "cobblemon:pokemon/scorbunny/scorbunny_ambient" ]
+  },
+  "pokemon.raboot.ambient": {
+    "sounds": [ "cobblemon:pokemon/raboot/raboot_ambient" ]
+  },
+  "pokemon.cinderace.ambient": {
+    "sounds": [ "cobblemon:pokemon/cinderace/cinderace_ambient" ]
+  },
+  "pokemon.sobble.ambient": {
+    "sounds": [ "cobblemon:pokemon/sobble/sobble_ambient" ]
+  },
+  "pokemon.drizzile.ambient": {
+    "sounds": [ "cobblemon:pokemon/drizzile/drizzile_ambient" ]
+  },
+  "pokemon.inteleon.ambient": {
+    "sounds": [ "cobblemon:pokemon/inteleon/inteleon_ambient" ]
+  },
+  "pokemon.skwovet.ambient": {
+    "sounds": [ "cobblemon:pokemon/skwovet/skwovet_ambient" ]
+  },
+  "pokemon.greedent.ambient": {
+    "sounds": [ "cobblemon:pokemon/greedent/greedent_ambient" ]
+  },
+  "pokemon.rookidee.ambient": {
+    "sounds": [ "cobblemon:pokemon/rookidee/rookidee_ambient" ]
+  },
+  "pokemon.corvisquire.ambient": {
+    "sounds": [ "cobblemon:pokemon/corvisquire/corvisquire_ambient" ]
+  },
+  "pokemon.corviknight.ambient": {
+    "sounds": [ "cobblemon:pokemon/corviknight/corviknight_ambient" ]
+  },
+  "pokemon.blipbug.ambient": {
+    "sounds": [ "cobblemon:pokemon/blipbug/blipbug_ambient" ]
+  },
+  "pokemon.dottler.ambient": {
+    "sounds": [ "cobblemon:pokemon/dottler/dottler_ambient" ]
+  },
+  "pokemon.orbeetle.ambient": {
+    "sounds": [ "cobblemon:pokemon/orbeetle/orbeetle_ambient" ]
+  },
+  "pokemon.nickit.ambient": {
+    "sounds": [ "cobblemon:pokemon/nickit/nickit_ambient" ]
+  },
+  "pokemon.thievul.ambient": {
+    "sounds": [ "cobblemon:pokemon/thievul/thievul_ambient" ]
+  },
+  "pokemon.gossifleur.ambient": {
+    "sounds": [ "cobblemon:pokemon/gossifleur/gossifleur_ambient" ]
+  },
+  "pokemon.eldegoss.ambient": {
+    "sounds": [ "cobblemon:pokemon/eldegoss/eldegoss_ambient" ]
+  },
+  "pokemon.wooloo.ambient": {
+    "sounds": [ "cobblemon:pokemon/wooloo/wooloo_ambient" ]
+  },
+  "pokemon.dubwool.ambient": {
+    "sounds": [ "cobblemon:pokemon/dubwool/dubwool_ambient" ]
+  },
+  "pokemon.chewtle.ambient": {
+    "sounds": [ "cobblemon:pokemon/chewtle/chewtle_ambient" ]
+  },
+  "pokemon.drednaw.ambient": {
+    "sounds": [ "cobblemon:pokemon/drednaw/drednaw_ambient" ]
+  },
+  "pokemon.yamper.ambient": {
+    "sounds": [ "cobblemon:pokemon/yamper/yamper_ambient" ]
+  },
+  "pokemon.boltund.ambient": {
+    "sounds": [ "cobblemon:pokemon/boltund/boltund_ambient" ]
+  },
+  "pokemon.rolycoly.ambient": {
+    "sounds": [ "cobblemon:pokemon/rolycoly/rolycoly_ambient" ]
+  },
+  "pokemon.carkol.ambient": {
+    "sounds": [ "cobblemon:pokemon/carkol/carkol_ambient" ]
+  },
+  "pokemon.coalossal.ambient": {
+    "sounds": [ "cobblemon:pokemon/coalossal/coalossal_ambient" ]
+  },
+  "pokemon.applin.ambient": {
+    "sounds": [ "cobblemon:pokemon/applin/applin_ambient" ]
+  },
+  "pokemon.flapple.ambient": {
+    "sounds": [ "cobblemon:pokemon/flapple/flapple_ambient" ]
+  },
+  "pokemon.appletun.ambient": {
+    "sounds": [ "cobblemon:pokemon/appletun/appletun_ambient" ]
+  },
+  "pokemon.silicobra.ambient": {
+    "sounds": [ "cobblemon:pokemon/silicobra/silicobra_ambient" ]
+  },
+  "pokemon.sandaconda.ambient": {
+    "sounds": [ "cobblemon:pokemon/sandaconda/sandaconda_ambient" ]
+  },
+  "pokemon.cramorant.ambient": {
+    "sounds": [ "cobblemon:pokemon/cramorant/cramorant_ambient" ]
+  },
+  "pokemon.arrokuda.ambient": {
+    "sounds": [ "cobblemon:pokemon/arrokuda/arrokuda_ambient" ]
+  },
+  "pokemon.barraskewda.ambient": {
+    "sounds": [ "cobblemon:pokemon/barraskewda/barraskewda_ambient" ]
+  },
+  "pokemon.toxel.ambient": {
+    "sounds": [ "cobblemon:pokemon/toxel/toxel_ambient" ]
+  },
+  "pokemon.toxtricity.ambient": {
+    "sounds": [ "cobblemon:pokemon/toxtricity/toxtricity_ambient" ]
+  },
+  "pokemon.sizzlipede.ambient": {
+    "sounds": [ "cobblemon:pokemon/sizzlipede/sizzlipede_ambient" ]
+  },
+  "pokemon.centiskorch.ambient": {
+    "sounds": [ "cobblemon:pokemon/centiskorch/centiskorch_ambient" ]
+  },
+  "pokemon.clobbopus.ambient": {
+    "sounds": [ "cobblemon:pokemon/clobbopus/clobbopus_ambient" ]
+  },
+  "pokemon.grapploct.ambient": {
+    "sounds": [ "cobblemon:pokemon/grapploct/grapploct_ambient" ]
+  },
+  "pokemon.sinistea.ambient": {
+    "sounds": [ "cobblemon:pokemon/sinistea/sinistea_ambient" ]
+  },
+  "pokemon.polteageist.ambient": {
+    "sounds": [ "cobblemon:pokemon/polteageist/polteageist_ambient" ]
+  },
+  "pokemon.hatenna.ambient": {
+    "sounds": [ "cobblemon:pokemon/hatenna/hatenna_ambient" ]
+  },
+  "pokemon.hattrem.ambient": {
+    "sounds": [ "cobblemon:pokemon/hattrem/hattrem_ambient" ]
+  },
+  "pokemon.hatterene.ambient": {
+    "sounds": [ "cobblemon:pokemon/hatterene/hatterene_ambient" ]
+  },
+  "pokemon.impidimp.ambient": {
+    "sounds": [ "cobblemon:pokemon/impidimp/impidimp_ambient" ]
+  },
+  "pokemon.morgrem.ambient": {
+    "sounds": [ "cobblemon:pokemon/morgrem/morgrem_ambient" ]
+  },
+  "pokemon.grimmsnarl.ambient": {
+    "sounds": [ "cobblemon:pokemon/grimmsnarl/grimmsnarl_ambient" ]
+  },
+  "pokemon.obstagoon.ambient": {
+    "sounds": [ "cobblemon:pokemon/obstagoon/obstagoon_ambient" ]
+  },
+  "pokemon.perrserker.ambient": {
+    "sounds": [ "cobblemon:pokemon/perrserker/perrserker_ambient" ]
+  },
+  "pokemon.cursola.ambient": {
+    "sounds": [ "cobblemon:pokemon/cursola/cursola_ambient" ]
+  },
+  "pokemon.sirfetchd.ambient": {
+    "sounds": [ "cobblemon:pokemon/sirfetchd/sirfetchd_ambient" ]
+  },
+  "pokemon.mrrime.ambient": {
+    "sounds": [ "cobblemon:pokemon/mrrime/mrrime_ambient" ]
+  },
+  "pokemon.runerigus.ambient": {
+    "sounds": [ "cobblemon:pokemon/runerigus/runerigus_ambient" ]
+  },
+  "pokemon.milcery.ambient": {
+    "sounds": [ "cobblemon:pokemon/milcery/milcery_ambient" ]
+  },
+  "pokemon.alcremie.ambient": {
+    "sounds": [ "cobblemon:pokemon/alcremie/alcremie_ambient" ]
+  },
+  "pokemon.falinks.ambient": {
+    "sounds": [ "cobblemon:pokemon/falinks/falinks_ambient" ]
+  },
+  "pokemon.pincurchin.ambient": {
+    "sounds": [ "cobblemon:pokemon/pincurchin/pincurchin_ambient" ]
+  },
+  "pokemon.snom.ambient": {
+    "sounds": [ "cobblemon:pokemon/snom/snom_ambient" ]
+  },
+  "pokemon.frosmoth.ambient": {
+    "sounds": [ "cobblemon:pokemon/frosmoth/frosmoth_ambient" ]
+  },
+  "pokemon.stonjourner.ambient": {
+    "sounds": [ "cobblemon:pokemon/stonjourner/stonjourner_ambient" ]
+  },
+  "pokemon.eiscueice.ambient": {
+    "sounds": [ "cobblemon:pokemon/eiscueice/eiscueice_ambient" ]
+  },
+  "pokemon.indeedee.ambient": {
+    "sounds": [ "cobblemon:pokemon/indeedee/indeedee_ambient" ]
+  },
+  "pokemon.morpeko.ambient": {
+    "sounds": [ "cobblemon:pokemon/morpeko/morpeko_ambient" ]
+  },
+  "pokemon.cufant.ambient": {
+    "sounds": [ "cobblemon:pokemon/cufant/cufant_ambient" ]
+  },
+  "pokemon.copperajah.ambient": {
+    "sounds": [ "cobblemon:pokemon/copperajah/copperajah_ambient" ]
+  },
+  "pokemon.dracozolt.ambient": {
+    "sounds": [ "cobblemon:pokemon/dracozolt/dracozolt_ambient" ]
+  },
+  "pokemon.arctozolt.ambient": {
+    "sounds": [ "cobblemon:pokemon/arctozolt/arctozolt_ambient" ]
+  },
+  "pokemon.dracovish.ambient": {
+    "sounds": [ "cobblemon:pokemon/dracovish/dracovish_ambient" ]
+  },
+  "pokemon.arctovish.ambient": {
+    "sounds": [ "cobblemon:pokemon/arctovish/arctovish_ambient" ]
+  },
+  "pokemon.duraludon.ambient": {
+    "sounds": [ "cobblemon:pokemon/duraludon/duraludon_ambient" ]
+  },
+  "pokemon.dreepy.ambient": {
+    "sounds": [ "cobblemon:pokemon/dreepy/dreepy_ambient" ]
+  },
+  "pokemon.drakloak.ambient": {
+    "sounds": [ "cobblemon:pokemon/drakloak/drakloak_ambient" ]
+  },
+  "pokemon.dragapult.ambient": {
+    "sounds": [ "cobblemon:pokemon/dragapult/dragapult_ambient" ]
+  },
+  "pokemon.zacian.ambient": {
+    "sounds": [ "cobblemon:pokemon/zacian/zacian_ambient" ]
+  },
+  "pokemon.zamazenta.ambient": {
+    "sounds": [ "cobblemon:pokemon/zamazenta/zamazenta_ambient" ]
+  },
+  "pokemon.eternatus.ambient": {
+    "sounds": [ "cobblemon:pokemon/eternatus/eternatus_ambient" ]
+  },
+  "pokemon.kubfu.ambient": {
+    "sounds": [ "cobblemon:pokemon/kubfu/kubfu_ambient" ]
+  },
+  "pokemon.urshifu.ambient": {
+    "sounds": [ "cobblemon:pokemon/urshifu/urshifu_ambient" ]
+  },
+  "pokemon.zarude.ambient": {
+    "sounds": [ "cobblemon:pokemon/zarude/zarude_ambient" ]
+  },
+  "pokemon.regieleki.ambient": {
+    "sounds": [ "cobblemon:pokemon/regieleki/regieleki_ambient" ]
+  },
+  "pokemon.regidrago.ambient": {
+    "sounds": [ "cobblemon:pokemon/regidrago/regidrago_ambient" ]
+  },
+  "pokemon.glastrier.ambient": {
+    "sounds": [ "cobblemon:pokemon/glastrier/glastrier_ambient" ]
+  },
+  "pokemon.spectrier.ambient": {
+    "sounds": [ "cobblemon:pokemon/spectrier/spectrier_ambient" ]
+  },
+  "pokemon.calyrex.ambient": {
+    "sounds": [ "cobblemon:pokemon/calyrex/calyrex_ambient" ]
+  },
+  "pokemon.wyrdeer.ambient": {
+    "sounds": [ "cobblemon:pokemon/wyrdeer/wyrdeer_ambient" ]
+  },
+  "pokemon.kleavor.ambient": {
+    "sounds": [ "cobblemon:pokemon/kleavor/kleavor_ambient" ]
+  },
+  "pokemon.ursaluna.ambient": {
+    "sounds": [ "cobblemon:pokemon/ursaluna/ursaluna_ambient" ]
+  },
+  "pokemon.basculegion.ambient": {
+    "sounds": [ "cobblemon:pokemon/basculegion/basculegion_ambient" ]
+  },
+  "pokemon.sneasler.ambient": {
+    "sounds": [ "cobblemon:pokemon/sneasler/sneasler_ambient" ]
+  },
+  "pokemon.overqwil.ambient": {
+    "sounds": [ "cobblemon:pokemon/overqwil/overqwil_ambient" ]
+  },
+  "pokemon.enamorus.ambient": {
+    "sounds": [ "cobblemon:pokemon/enamorus/enamorus_ambient" ]
   }
 }

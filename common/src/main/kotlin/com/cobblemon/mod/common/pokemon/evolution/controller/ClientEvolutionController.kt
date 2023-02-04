@@ -11,6 +11,7 @@ package com.cobblemon.mod.common.pokemon.evolution.controller
 import com.cobblemon.mod.common.CobblemonNetwork.sendToServer
 import com.cobblemon.mod.common.api.pokemon.evolution.EvolutionController
 import com.cobblemon.mod.common.api.pokemon.evolution.EvolutionDisplay
+import com.cobblemon.mod.common.api.pokemon.evolution.progress.EvolutionProgress
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.evolution.EvolutionUpdatePacket
 import com.cobblemon.mod.common.net.messages.server.pokemon.update.evolution.AcceptEvolutionPacket
 import com.cobblemon.mod.common.pokemon.Pokemon
@@ -28,6 +29,21 @@ class ClientEvolutionController(override val pokemon: Pokemon) : EvolutionContro
 
     override fun start(evolution: EvolutionDisplay) {
         sendToServer(AcceptEvolutionPacket(this.pokemon, evolution))
+    }
+
+    override fun progress(): Collection<EvolutionProgress<*>> {
+        // Nothing is done on the client
+        return emptyList()
+    }
+
+    override fun <P : EvolutionProgress<*>> trackProgress(progress: P): P {
+        // Nothing is done on the client
+        return progress
+    }
+
+    override fun <P : EvolutionProgress<*>> progressFirstOrCreate(predicate: (progress: EvolutionProgress<*>) -> Boolean, progressFactory: () -> P): P {
+        // Nothing is done on the client
+        return progressFactory()
     }
 
     override fun saveToNBT(): NbtElement {

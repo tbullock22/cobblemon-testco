@@ -1,8 +1,12 @@
 {
-  "name": "petilil",
+  "name": "Petilil",
   "nationalPokedexNumber": 548,
   "primaryType": "grass",
-  "abilities": ["chlorophyll", "owntempo", "h:leafguard"],
+  "abilities": [
+    "chlorophyll",
+    "owntempo",
+    "h:leafguard"
+  ],
   "baseStats": {
     "hp": 45,
     "attack": 35,
@@ -12,13 +16,14 @@
     "speed": 30
   },
   "catchRate": 190,
-  "maleRatio": 0.0,
+  "maleRatio": 0,
   "shoulderMountable": false,
-  "forms": [],
   "baseExperienceYield": 56,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 20,
-  "eggGroups": ["grass"],
+  "eggGroups": [
+    "grass"
+  ],
   "moves": [
     "1:absorb",
     "1:growth",
@@ -26,6 +31,7 @@
     "6:stunspore",
     "9:megadrain",
     "12:aromatherapy",
+    "12:charm",
     "15:magicalleaf",
     "18:sleeppowder",
     "21:gigadrain",
@@ -44,6 +50,7 @@
     "egg:sweetscent",
     "egg:worryseed",
     "tm:attract",
+    "tm:bulletseed",
     "tm:charm",
     "tm:confide",
     "tm:cut",
@@ -76,49 +83,61 @@
     "tm:substitute",
     "tm:sunnyday",
     "tm:swagger",
+    "tm:terablast",
     "tm:toxic",
+    "tm:trailblaze",
     "tutor:covet",
     "tutor:grassyglide",
     "tutor:healbell",
     "tutor:laserfocus"
   ],
-  "labels": ["gen5"],
-  "pokedex": ["cobblemon.species.petilil.desc1", "cobblemon.species.petilil.desc2"],
+  "labels": [
+    "gen5"
+  ],
+  "pokedex": [
+    "cobblemon.species.petilil.desc"
+  ],
   "evolutions": [
-    {
-      "id": "petilil_lilligant_hisui",
-      "variant": "item_interact",
-      "result": "lilligant hisuian",
-      "consumeHeldItem": false,
-      "learnableMoves": [],
-      "requirements": [
-        {
-          "variant": "biome",
-          "biome": "#cobblemon:is_highlands"
-        }
-      ],
-      "requiredContext": "cobblemon:sun_stone"
-    },
     {
       "id": "petilil_lilligant",
       "variant": "item_interact",
       "result": "lilligant",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "petaldance"
+      ],
+      "requirements": [],
+      "requiredContext": "cobblemon:sun_stone"
+    },
+    {
+      "id": "petilil_lilligant",
+      "variant": "item_interact",
+      "result": "lilligant form=hisui",
+      "consumeHeldItem": false,
+      "learnableMoves": [
+        "victorydance"
+      ],
       "requirements": [],
       "requiredContext": "cobblemon:sun_stone"
     }
   ],
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
-    "width": 1.0,
-    "height": 1.0,
+    "width": 1,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 50,
   "evYield": {
-    "special_attack": 1
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 1,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 5,
-  "weight": 66
+  "weight": 66,
+  "aspects": [],
+  "cannotDynamax": false
 }

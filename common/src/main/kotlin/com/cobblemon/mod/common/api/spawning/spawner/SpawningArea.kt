@@ -10,6 +10,7 @@ package com.cobblemon.mod.common.api.spawning.spawner
 
 import com.cobblemon.mod.common.api.spawning.SpawnCause
 import com.cobblemon.mod.common.api.spawning.WorldSlice
+import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 
 /**
@@ -27,4 +28,10 @@ data class SpawningArea(
     val length: Int,
     val height: Int,
     val width: Int
-)
+) {
+    fun getCenter(): Vec3d = Vec3d(
+        baseX + length / 2.0,
+        baseY + height / 2.0,
+        baseZ + width / 2.0
+    )
+}

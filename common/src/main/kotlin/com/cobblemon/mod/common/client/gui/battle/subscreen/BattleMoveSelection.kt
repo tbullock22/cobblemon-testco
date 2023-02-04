@@ -159,7 +159,7 @@ class BattleMoveSelection(
             }
             moveSelection.playDownSound(MinecraftClient.getInstance().soundManager)
             val targets = move.target.targetList(moveSelection.request.activePokemon)
-            if (targets == null) {
+            if (targets.isNullOrEmpty()) {
                 moveSelection.battleGUI.selectAction(moveSelection.request, MoveActionResponse(move.id, null))
             } else if (targets.size == 1) {
                 moveSelection.battleGUI.selectAction(moveSelection.request, MoveActionResponse(move.id, targets[0].getPNX()))

@@ -32,26 +32,12 @@ import com.cobblemon.mod.common.net.messages.client.data.AbilityRegistrySyncPack
 import com.cobblemon.mod.common.net.messages.client.data.MovesRegistrySyncPacket
 import com.cobblemon.mod.common.net.messages.client.data.PropertiesCompletionRegistrySyncPacket
 import com.cobblemon.mod.common.net.messages.client.data.SpeciesRegistrySyncPacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.AbilityUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.AspectsUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.BenchedMovesUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.CaughtBallUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.EVsUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.ExperienceUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.FriendshipUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.GenderUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.HealthUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.IVsUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.MoveSetUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.NatureUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.PokemonStateUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.ShinyUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.SpeciesUpdatePacket
-import com.cobblemon.mod.common.net.messages.client.pokemon.update.StatusUpdatePacket
+import com.cobblemon.mod.common.net.messages.client.pokemon.update.*
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.evolution.AddEvolutionPacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.evolution.ClearEvolutionsPacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.evolution.RemoveEvolutionPacket
 import com.cobblemon.mod.common.net.messages.client.settings.ServerSettingsPacket
+import com.cobblemon.mod.common.net.messages.client.sound.UnvalidatedPlaySoundS2CPacket
 import com.cobblemon.mod.common.net.messages.client.starter.OpenStarterUIPacket
 import com.cobblemon.mod.common.net.messages.client.starter.SetClientPlayerDataPacket
 import com.cobblemon.mod.common.net.messages.client.storage.RemoveClientPokemonPacket
@@ -66,6 +52,7 @@ import com.cobblemon.mod.common.net.messages.client.storage.pc.MoveClientPCPokem
 import com.cobblemon.mod.common.net.messages.client.storage.pc.OpenPCPacket
 import com.cobblemon.mod.common.net.messages.client.storage.pc.SetPCBoxPokemonPacket
 import com.cobblemon.mod.common.net.messages.client.storage.pc.SetPCPokemonPacket
+import com.cobblemon.mod.common.net.messages.client.ui.InteractPokemonUIPacket
 import com.cobblemon.mod.common.net.messages.client.ui.SummaryUIPacket
 import com.cobblemon.mod.common.net.messages.server.BattleChallengePacket
 import com.cobblemon.mod.common.net.messages.server.BenchMovePacket
@@ -73,17 +60,14 @@ import com.cobblemon.mod.common.net.messages.server.RequestMoveSwapPacket
 import com.cobblemon.mod.common.net.messages.server.SelectStarterPacket
 import com.cobblemon.mod.common.net.messages.server.SendOutPokemonPacket
 import com.cobblemon.mod.common.net.messages.server.battle.BattleSelectActionsPacket
+import com.cobblemon.mod.common.net.messages.server.pokemon.interact.InteractPokemonPacket
 import com.cobblemon.mod.common.net.messages.server.pokemon.update.evolution.AcceptEvolutionPacket
 import com.cobblemon.mod.common.net.messages.server.starter.RequestStarterScreenPacket
 import com.cobblemon.mod.common.net.messages.server.storage.SwapPCPartyPokemonPacket
 import com.cobblemon.mod.common.net.messages.server.storage.party.MovePartyPokemonPacket
 import com.cobblemon.mod.common.net.messages.server.storage.party.ReleasePartyPokemonPacket
 import com.cobblemon.mod.common.net.messages.server.storage.party.SwapPartyPokemonPacket
-import com.cobblemon.mod.common.net.messages.server.storage.pc.MovePCPokemonPacket
-import com.cobblemon.mod.common.net.messages.server.storage.pc.MovePCPokemonToPartyPacket
-import com.cobblemon.mod.common.net.messages.server.storage.pc.MovePartyPokemonToPCPacket
-import com.cobblemon.mod.common.net.messages.server.storage.pc.ReleasePCPokemonPacket
-import com.cobblemon.mod.common.net.messages.server.storage.pc.SwapPCPokemonPacket
+import com.cobblemon.mod.common.net.messages.server.storage.pc.*
 import com.cobblemon.mod.common.util.getServer
 import java.util.concurrent.CompletableFuture
 import net.minecraft.server.network.ServerPlayerEntity
@@ -148,6 +132,7 @@ object CobblemonNetwork {
         buildClientMessage<AbilityUpdatePacket>()
         buildClientMessage<EVsUpdatePacket>()
         buildClientMessage<IVsUpdatePacket>()
+        buildClientMessage<HeldItemUpdatePacket>()
 
         // Evolution start
         buildClientMessage<AddEvolutionPacket>()
@@ -175,6 +160,7 @@ object CobblemonNetwork {
 
         // UI Packets
         buildClientMessage<SummaryUIPacket>()
+        buildClientMessage<InteractPokemonUIPacket>()
 
         // Starter packets
         buildClientMessage<OpenStarterUIPacket>()
@@ -207,6 +193,9 @@ object CobblemonNetwork {
         buildClientMessage<SpeciesRegistrySyncPacket>()
         buildClientMessage<PropertiesCompletionRegistrySyncPacket>()
 
+        // Hax
+        buildClientMessage<UnvalidatedPlaySoundS2CPacket>()
+
         /**
          * Server Packets
          */
@@ -215,6 +204,9 @@ object CobblemonNetwork {
         // Evolution start
         buildServerMessage<AcceptEvolutionPacket>()
         // Evolution End
+
+        // Interaction Packets
+        buildServerMessage<InteractPokemonPacket>()
 
         // Storage Packets
         buildServerMessage<SendOutPokemonPacket>()
@@ -226,6 +218,7 @@ object CobblemonNetwork {
         buildServerMessage<MovePartyPokemonToPCPacket>()
         buildServerMessage<ReleasePartyPokemonPacket>()
         buildServerMessage<ReleasePCPokemonPacket>()
+        buildServerMessage<UnlinkPlayerFromPCPacket>()
 
         // Starter packets
         buildServerMessage<SelectStarterPacket>()

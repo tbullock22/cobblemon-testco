@@ -15,10 +15,12 @@ import com.cobblemon.mod.common.api.text.text
 import com.cobblemon.mod.common.client.CobblemonResources
 import com.cobblemon.mod.common.client.gui.ExitButton
 import com.cobblemon.mod.common.client.gui.TypeIcon
+import com.cobblemon.mod.common.client.gui.summary.Summary
 import com.cobblemon.mod.common.client.gui.summary.widgets.ModelWidget
 import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.client.storage.ClientPC
 import com.cobblemon.mod.common.client.storage.ClientParty
+import com.cobblemon.mod.common.net.messages.server.storage.pc.UnlinkPlayerFromPCPacket
 import com.cobblemon.mod.common.pokemon.Gender
 import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.util.asTranslated
@@ -73,6 +75,7 @@ class PCGUI(
             ExitButton(pX = x + 320, pY = y + 186) {
                 playSound(CobblemonSounds.PC_OFF.get())
                 MinecraftClient.getInstance().setScreen(null)
+                UnlinkPlayerFromPCPacket().sendToServer()
             }
         )
 
@@ -254,6 +257,36 @@ class PCGUI(
                 )
             }
 
+            // Held Item
+            val heldItem = pokemon.heldItemNoCopy()
+            val itemX = x + 3
+            val itemY = y + 98
+            if (!heldItem.isEmpty) {
+                MinecraftClient.getInstance().itemRenderer.renderGuiItemIcon(heldItem, itemX, itemY)
+                MinecraftClient.getInstance().itemRenderer.renderGuiItemOverlay(MinecraftClient.getInstance().textRenderer, heldItem, itemX, itemY)
+            }
+
+            drawScaledText(
+                matrixStack = matrices,
+                text = lang("held_item"),
+                x = x + 27,
+                y = y + 108.5,
+                scale = SCALE
+            )
+
+            // Shiny Icon
+            if (pokemon.shiny) {
+                blitk(
+                    matrixStack = matrices,
+                    texture = Summary.iconShinyResource,
+                    x = (x + 63.5) / SCALE,
+                    y = (y + 28.5) / SCALE,
+                    width = 14,
+                    height = 14,
+                    scale = SCALE
+                )
+            }
+
             blitk(
                 matrixStack = matrices,
                 texture = if (pokemon.secondaryType != null) typeSpacerDoubleResource else typeSpacerSingleResource,
@@ -364,6 +397,22 @@ class PCGUI(
         )
 
         super.render(matrices, mouseX, mouseY, delta)
+
+        // Item Tooltip
+        if (pokemon != null && !pokemon.heldItemNoCopy().isEmpty) {
+            val itemX = x + 3
+            val itemY = y + 98
+            val itemHovered = mouseX.toFloat() in (itemX.toFloat()..(itemX.toFloat() + 16)) && mouseY.toFloat() in (itemY.toFloat()..(itemY.toFloat() + 16))
+            if (itemHovered) renderTooltip(matrices, pokemon.heldItemNoCopy(), mouseX, mouseY)
+        }
+    }
+
+    override fun keyPressed(keyCode: Int, scanCode: Int, modifiers: Int): Boolean {
+        if (keyCode == 256) {
+            playSound(CobblemonSounds.PC_OFF.get())
+            UnlinkPlayerFromPCPacket().sendToServer()
+        }
+        return super.keyPressed(keyCode, scanCode, modifiers)
     }
 
     /**

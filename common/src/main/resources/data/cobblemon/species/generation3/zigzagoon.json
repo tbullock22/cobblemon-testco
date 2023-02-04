@@ -1,8 +1,12 @@
 {
-  "name": "zigzagoon",
+  "name": "Zigzagoon",
   "nationalPokedexNumber": 263,
   "primaryType": "normal",
-  "abilities": ["pickup", "gluttony", "h:quickfeet"],
+  "abilities": [
+    "pickup",
+    "gluttony",
+    "h:quickfeet"
+  ],
   "baseStats": {
     "hp": 38,
     "attack": 30,
@@ -16,15 +20,42 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "galar",
+      "name": "Galar",
       "primaryType": "dark",
       "secondaryType": "normal",
+      "abilities": [
+        "pickup",
+        "gluttony",
+        "h:quickfeet"
+      ],
+      "baseStats": {
+        "hp": 38,
+        "attack": 30,
+        "defence": 41,
+        "special_attack": 30,
+        "special_defence": 41,
+        "speed": 60
+      },
+      "catchRate": 255,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 56,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 1
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 15,
+      "eggGroups": [
+        "field"
+      ],
       "moves": [
-        "1:tackle",
         "1:leer",
+        "1:tackle",
         "3:sandattack",
         "6:lick",
         "9:snarl",
@@ -85,18 +116,24 @@
         "tm:workup",
         "tutor:lashout"
       ],
-      "pokedex": [
-        "cobblemon.form.zigzagoon-galar.desc1",
-        "cobblemon.form.zigzagoon-galar.desc2"
+      "labels": [
+        "gen8",
+        "galar_regional"
       ],
-      "labels": ["gen3", "galar_regional", "regional"],
+      "aspects": [
+        "galarian"
+      ],
+      "height": 4,
+      "weight": 175,
       "evolutions": [
         {
-          "id": "zigzagoon_linoone_galar",
+          "id": "zigzagoon_linoone",
           "variant": "level_up",
           "result": "linoone form=galar",
           "consumeHeldItem": false,
-          "learnableMoves": [],
+          "learnableMoves": [
+            "nightslash"
+          ],
           "requirements": [
             {
               "variant": "level",
@@ -104,16 +141,20 @@
             }
           ]
         }
-      ]
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 56,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 15,
-  "eggGroups": ["field"],
+  "eggGroups": [
+    "field"
+  ],
   "moves": [
-    "1:tackle",
     "1:growl",
+    "1:tackle",
     "3:sandattack",
     "6:tailwhip",
     "9:covet",
@@ -197,10 +238,12 @@
     "tutor:superfang",
     "tutor:waterpulse"
   ],
-  "labels": ["gen3", "hoenn_regional", "regional"],
+  "labels": [
+    "gen3",
+    "hoenn_regional"
+  ],
   "pokedex": [
-    "cobblemon.species.zigzagoon.desc1",
-    "cobblemon.species.zigzagoon.desc2"
+    "cobblemon.species.zigzagoon.desc"
   ],
   "evolutions": [
     {
@@ -208,7 +251,9 @@
       "variant": "level_up",
       "result": "linoone",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "slash"
+      ],
       "requirements": [
         {
           "variant": "level",
@@ -217,16 +262,23 @@
       ]
     }
   ],
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
-    "width": 1.0,
-    "height": 1.0,
+    "width": 1,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 50,
   "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
     "speed": 1
   },
   "height": 4,
-  "weight": 175
+  "weight": 175,
+  "aspects": [],
+  "cannotDynamax": false
 }

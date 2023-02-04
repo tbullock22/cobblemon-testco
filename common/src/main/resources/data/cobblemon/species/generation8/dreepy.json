@@ -1,91 +1,101 @@
 {
-    "name": "dreepy",
-    "nationalPokedexNumber": 885,
-    "primaryType": "dragon",
-    "secondaryType": "ghost",
-    "abilities": [
-        "clearbody",
-        "infiltrator",
-        "h:cursedbody"
-    ],
-    "baseStats": {
-        "hp": 28,
-        "attack": 60,
-        "defence": 30,
-        "special_attack": 40,
-        "special_defence": 30,
-        "speed": 82
-    },
-    "catchRate": 45,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 54,
-    "experienceGroup": "slow",
-    "eggCycles": 40,
-    "eggGroups": [
-        "amorphous",
-        "dragon"
-    ],
-    "moves": [
-        "1:bite",
-        "1:quickattack",
-        "1:astonish",
-        "1:infestation",
-        "egg:confuseray",
-        "egg:curse",
-        "egg:disable",
-        "egg:doubleteam",
-        "egg:dragontail",
-        "egg:grudge",
-        "egg:suckerpunch",
-        "tm:attract",
-        "tm:batonpass",
-        "tm:endure",
-        "tm:facade",
-        "tm:helpinghand",
-        "tm:protect",
-        "tm:rest",
-        "tm:round",
-        "tm:sleeptalk",
-        "tm:snore",
-        "tm:substitute",
-        "tm:swift",
-        "tm:thunderwave",
-        "tutor:dracometeor"
-    ],
-    "labels": [
-        "gen8"
-    ],
-    "pokedex": [
-        "cobblemon.species.dreepy.desc1",
-        "cobblemon.species.dreepy.desc2"
-    ],
-    "evolutions": [
+  "name": "Dreepy",
+  "nationalPokedexNumber": 885,
+  "primaryType": "dragon",
+  "secondaryType": "ghost",
+  "abilities": [
+    "clearbody",
+    "infiltrator",
+    "h:cursedbody"
+  ],
+  "baseStats": {
+    "hp": 28,
+    "attack": 60,
+    "defence": 30,
+    "special_attack": 40,
+    "special_defence": 30,
+    "speed": 82
+  },
+  "catchRate": 45,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "baseExperienceYield": 54,
+  "experienceGroup": "slow",
+  "eggCycles": 40,
+  "eggGroups": [
+    "amorphous",
+    "dragon"
+  ],
+  "moves": [
+    "1:astonish",
+    "1:bite",
+    "1:infestation",
+    "1:quickattack",
+    "egg:confuseray",
+    "egg:curse",
+    "egg:disable",
+    "egg:doubleteam",
+    "egg:dragontail",
+    "egg:grudge",
+    "egg:suckerpunch",
+    "tm:attract",
+    "tm:batonpass",
+    "tm:confuseray",
+    "tm:dracometeor",
+    "tm:dragontail",
+    "tm:endure",
+    "tm:facade",
+    "tm:helpinghand",
+    "tm:protect",
+    "tm:rest",
+    "tm:round",
+    "tm:sleeptalk",
+    "tm:snore",
+    "tm:substitute",
+    "tm:swift",
+    "tm:terablast",
+    "tm:thunderwave"
+  ],
+  "labels": [
+    "gen8"
+  ],
+  "pokedex": [
+    "cobblemon.species.dreepy.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "dreepy_drakloak",
+      "variant": "level_up",
+      "result": "drakloak",
+      "consumeHeldItem": false,
+      "learnableMoves": [
+        "dragonpulse"
+      ],
+      "requirements": [
         {
-            "id": "dreepy_drakloak",
-            "variant": "level_up",
-            "result": "drakloak",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "level",
-                    "minLevel": 50
-                }
-            ]
+          "variant": "level",
+          "minLevel": 50
         }
-    ],
-    "baseScale": 1.0,
-    "hitbox": {
-        "width": 1.0,
-        "height": 1.0,
-        "fixed": false
-    },
-    "baseFriendship": 50,
-    "evYield": {
-        "speed": 1
-    },
-    "height": 5,
-    "weight": 20
+      ]
+    }
+  ],
+  "baseScale": 1,
+  "hitbox": {
+    "width": 1,
+    "height": 1,
+    "fixed": false
+  },
+  "baseFriendship": 50,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 1
+  },
+  "height": 5,
+  "weight": 20,
+  "aspects": [],
+  "cannotDynamax": false
 }

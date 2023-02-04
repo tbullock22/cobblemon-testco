@@ -22,11 +22,11 @@ import net.minecraft.util.math.Vec3d
 class MankeyModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("mankey")
 
-    override val portraitScale = 1.5F
-    override val portraitTranslation = Vec3d(0.1, 0.1, 0.0)
+    override val portraitScale = 1.72F
+    override val portraitTranslation = Vec3d(0.0, -0.4, 0.0)
 
-    override val profileScale = 0.8F
-    override val profileTranslation = Vec3d(0.0, 0.5, 0.0)
+    override val profileScale = 0.9F
+    override val profileTranslation = Vec3d(-0.03, 0.4, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

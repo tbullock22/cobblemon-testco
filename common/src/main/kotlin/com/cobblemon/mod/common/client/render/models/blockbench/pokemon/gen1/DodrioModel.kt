@@ -23,11 +23,11 @@ class DodrioModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
     override val leftLeg = getPart("leftleg")
     override val rightLeg = getPart("rightleg")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 1.5F
+    override val portraitTranslation = Vec3d(-0.15, 0.9, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.8F
+    override val profileTranslation = Vec3d(0.0, 0.6, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

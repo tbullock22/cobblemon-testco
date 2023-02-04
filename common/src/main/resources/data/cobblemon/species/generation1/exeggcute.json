@@ -1,10 +1,13 @@
 {
   "implemented": true,
-  "name": "exeggcute",
+  "name": "Exeggcute",
   "nationalPokedexNumber": 102,
   "primaryType": "grass",
   "secondaryType": "psychic",
-  "abilities": ["chlorophyll", "h:harvest"],
+  "abilities": [
+    "chlorophyll",
+    "h:harvest"
+  ],
   "baseStats": {
     "hp": 60,
     "attack": 40,
@@ -16,11 +19,12 @@
   "catchRate": 90,
   "maleRatio": 0.5,
   "shoulderMountable": false,
-  "forms": [],
   "baseExperienceYield": 65,
   "experienceGroup": "slow",
   "eggCycles": 20,
-  "eggGroups": ["grass"],
+  "eggGroups": [
+    "grass"
+  ],
   "drops": {
     "amount": "1",
     "entries": [
@@ -34,20 +38,18 @@
   "moves": [
     "1:absorb",
     "1:hypnosis",
-    "1:barrage",
     "5:reflect",
     "10:leechseed",
     "15:megadrain",
     "20:confusion",
     "25:synthesis",
-    "27:psybeam",
     "30:bulletseed",
     "35:gigadrain",
     "37:naturalgift",
     "40:extrasensory",
     "45:uproar",
-    "50:worryseed",
     "50:bestow",
+    "50:worryseed",
     "55:solarbeam",
     "egg:ancientpower",
     "egg:block",
@@ -61,23 +63,18 @@
     "egg:sleeppowder",
     "egg:stunspore",
     "tm:attract",
-    "tm:bide",
     "tm:bulletseed",
     "tm:captivate",
     "tm:confide",
     "tm:doubleteam",
-    "tm:dreameater",
-    "tm:eggbomb",
     "tm:endure",
     "tm:energyball",
     "tm:explosion",
     "tm:facade",
-    "tm:flash",
     "tm:frustration",
     "tm:gigadrain",
     "tm:grassknot",
     "tm:grassyterrain",
-    "tm:headbutt",
     "tm:hiddenpower",
     "tm:infestation",
     "tm:leafstorm",
@@ -87,8 +84,6 @@
     "tm:protect",
     "tm:psychic",
     "tm:psychup",
-    "tm:psywave",
-    "tm:rage",
     "tm:reflect",
     "tm:rest",
     "tm:return",
@@ -101,57 +96,94 @@
     "tm:sludgebomb",
     "tm:snore",
     "tm:solarbeam",
-    "tm:strength",
     "tm:substitute",
     "tm:sunnyday",
     "tm:swagger",
     "tm:swordsdance",
-    "tm:takedown",
-    "tm:teleport",
     "tm:thief",
-    "tm:toxic",
     "tm:trickroom",
     "tm:uproar",
+    "tutor:barrage",
+    "tutor:bide",
+    "tutor:confusion",
     "tutor:doubleedge",
+    "tutor:doubleteam",
+    "tutor:dreameater",
+    "tutor:eggbomb",
+    "tutor:explosion",
+    "tutor:facade",
+    "tutor:flash",
+    "tutor:frustration",
     "tutor:grassyglide",
     "tutor:gravity",
+    "tutor:headbutt",
+    "tutor:hiddenpower",
+    "tutor:hypnosis",
+    "tutor:leechseed",
+    "tutor:lightscreen",
+    "tutor:megadrain",
     "tutor:mimic",
     "tutor:nightmare",
+    "tutor:poisonpowder",
+    "tutor:protect",
+    "tutor:psybeam",
+    "tutor:psychic",
+    "tutor:psychup",
+    "tutor:psywave",
+    "tutor:rage",
+    "tutor:reflect",
+    "tutor:rest",
+    "tutor:return",
     "tutor:rollout",
-    "tutor:telekinesis"
+    "tutor:selfdestruct",
+    "tutor:sleeppowder",
+    "tutor:sludgebomb",
+    "tutor:solarbeam",
+    "tutor:strength",
+    "tutor:stunspore",
+    "tutor:substitute",
+    "tutor:swagger",
+    "tutor:sweetscent",
+    "tutor:takedown",
+    "tutor:telekinesis",
+    "tutor:teleport",
+    "tutor:toxic",
+    "tutor:wish"
   ],
-  "labels": ["gen1"],
+  "labels": [
+    "gen1"
+  ],
   "pokedex": [
-    "cobblemon.species.exeggcute.desc1",
-    "cobblemon.species.exeggcute.desc2"
+    "cobblemon.species.exeggcute.desc"
   ],
-  "features": ["alolan"],
+  "features": [
+    "alolan"
+  ],
   "evolutions": [
-    {
-      "id": "exeggcute_exeggutor_alola",
-      "variant": "item_interact",
-      "result": "exeggutor alolan",
-      "consumeHeldItem": false,
-      "learnableMoves": [],
-      "requirements": [
-        {
-          "variant": "biome",
-          "biomeCondition": "#minecraft:is_beach"
-        }
-      ],
-      "requiredContext": "cobblemon:leaf_stone"
-    },
     {
       "id": "exeggcute_exeggutor",
       "variant": "item_interact",
       "result": "exeggutor",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "stomp"
+      ],
+      "requirements": [],
+      "requiredContext": "cobblemon:leaf_stone"
+    },
+    {
+      "id": "exeggcute_exeggutor",
+      "variant": "item_interact",
+      "result": "exeggutor form=alola",
+      "consumeHeldItem": false,
+      "learnableMoves": [
+        "dragonhammer"
+      ],
       "requirements": [],
       "requiredContext": "cobblemon:leaf_stone"
     }
   ],
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
     "width": 1.1,
     "height": 0.5,
@@ -159,8 +191,15 @@
   },
   "baseFriendship": 50,
   "evYield": {
-    "defence": 1
+    "hp": 0,
+    "attack": 0,
+    "defence": 1,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 4,
-  "weight": 25
+  "weight": 25,
+  "aspects": [],
+  "cannotDynamax": false
 }

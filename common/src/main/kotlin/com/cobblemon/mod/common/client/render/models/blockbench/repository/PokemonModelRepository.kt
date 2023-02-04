@@ -607,7 +607,7 @@ object PokemonModelRepository : ModelRepository<PokemonEntity>() {
         return this.renders[cobblemonResource("substitute")]!!.getTexture(aspects)
     }
 
-    fun getLayers(species: Species, aspects: Set<String>): List<ModelLayer> {
+    fun getLayers(species: Species, aspects: Set<String>): Iterable<ModelLayer> {
         try {
             val layers = this.renders[species.resourceIdentifier]?.getLayers(aspects)
             if (layers != null) {

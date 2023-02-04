@@ -1,147 +1,162 @@
 {
-    "implemented": true,
-    "name": "swinub",
-    "nationalPokedexNumber": 220,
-    "primaryType": "ice",
-    "secondaryType": "ground",
-    "abilities": [
-        "oblivious",
-        "snowcloak",
-        "h:thickfat"
-    ],
-    "baseStats": {
-        "hp": 50,
-        "attack": 50,
-        "defence": 40,
-        "special_attack": 30,
-        "special_defence": 30,
-        "speed": 50
-    },
-    "catchRate": 225,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 50,
-    "experienceGroup": "slow",
-    "eggCycles": 20,
-    "eggGroups": [
-        "field"
-    ],
-    "drops": {
-        "amount": "1",
-        "entries": [
-            {
-                "item": "minecraft:brown_wool",
-                "percentage": 50
-            }
-        ]
-    },
-    "moves": [
-        "1:tackle",
-        "1:mudslap",
-        "1:odorsleuth",
-        "5:powdersnow",
-        "5:mudsport",
-        "10:flail",
-        "15:iceshard",
-        "18:mudbomb",
-        "20:mist",
-        "25:endure",
-        "30:icywind",
-        "35:amnesia",
-        "40:takedown",
-        "45:earthquake",
-        "50:blizzard",
-        "egg:ancientpower",
-        "egg:bite",
-        "egg:curse",
-        "egg:doubleedge",
-        "egg:fissure",
-        "egg:freezedry",
-        "egg:iciclecrash",
-        "tm:amnesia",
-        "tm:attract",
-        "tm:avalanche",
-        "tm:blizzard",
-        "tm:bodyslam",
-        "tm:bulldoze",
-        "tm:captivate",
-        "tm:confide",
-        "tm:detect",
-        "tm:dig",
-        "tm:doubleteam",
-        "tm:earthpower",
-        "tm:earthquake",
-        "tm:endure",
-        "tm:facade",
-        "tm:frustration",
-        "tm:hail",
-        "tm:hiddenpower",
-        "tm:icebeam",
-        "tm:iciclespear",
-        "tm:icywind",
-        "tm:lightscreen",
-        "tm:mudshot",
-        "tm:naturalgift",
-        "tm:protect",
-        "tm:raindance",
-        "tm:reflect",
-        "tm:rest",
-        "tm:return",
-        "tm:roar",
-        "tm:rockslide",
-        "tm:rocksmash",
-        "tm:rocktomb",
-        "tm:round",
-        "tm:sandstorm",
-        "tm:sandtomb",
-        "tm:scaryface",
-        "tm:secretpower",
-        "tm:sleeptalk",
-        "tm:snore",
-        "tm:stealthrock",
-        "tm:strength",
-        "tm:substitute",
-        "tm:superpower",
-        "tm:swagger",
-        "tm:toxic",
-        "tutor:defensecurl",
-        "tutor:endeavor",
-        "tutor:headbutt",
-        "tutor:mimic"
-    ],
-    "labels": [
-        "gen2"
-    ],
-    "pokedex": [
-        "cobblemon.species.swinub.desc1",
-        "cobblemon.species.swinub.desc2"
-    ],
-    "evolutions": [
+  "implemented": true,
+  "name": "Swinub",
+  "nationalPokedexNumber": 220,
+  "primaryType": "ice",
+  "secondaryType": "ground",
+  "abilities": [
+    "oblivious",
+    "snowcloak",
+    "h:thickfat"
+  ],
+  "baseStats": {
+    "hp": 50,
+    "attack": 50,
+    "defence": 40,
+    "special_attack": 30,
+    "special_defence": 30,
+    "speed": 50
+  },
+  "catchRate": 225,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "baseExperienceYield": 50,
+  "experienceGroup": "slow",
+  "eggCycles": 20,
+  "eggGroups": [
+    "field"
+  ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:brown_wool",
+        "percentage": 50
+      }
+    ]
+  },
+  "moves": [
+    "1:mudslap",
+    "1:odorsleuth",
+    "1:tackle",
+    "5:mudsport",
+    "5:powdersnow",
+    "10:flail",
+    "15:iceshard",
+    "18:mudbomb",
+    "20:mist",
+    "25:endure",
+    "30:icywind",
+    "35:amnesia",
+    "40:takedown",
+    "45:earthquake",
+    "50:blizzard",
+    "egg:ancientpower",
+    "egg:bite",
+    "egg:curse",
+    "egg:doubleedge",
+    "egg:fissure",
+    "egg:freezedry",
+    "egg:iciclecrash",
+    "tm:amnesia",
+    "tm:attract",
+    "tm:avalanche",
+    "tm:blizzard",
+    "tm:bodyslam",
+    "tm:bulldoze",
+    "tm:captivate",
+    "tm:confide",
+    "tm:dig",
+    "tm:doubleteam",
+    "tm:earthpower",
+    "tm:earthquake",
+    "tm:endure",
+    "tm:facade",
+    "tm:frustration",
+    "tm:hail",
+    "tm:hiddenpower",
+    "tm:icebeam",
+    "tm:iciclespear",
+    "tm:icywind",
+    "tm:lightscreen",
+    "tm:mudshot",
+    "tm:naturalgift",
+    "tm:protect",
+    "tm:raindance",
+    "tm:reflect",
+    "tm:rest",
+    "tm:return",
+    "tm:roar",
+    "tm:rockslide",
+    "tm:rocktomb",
+    "tm:round",
+    "tm:sandstorm",
+    "tm:sandtomb",
+    "tm:scaryface",
+    "tm:secretpower",
+    "tm:sleeptalk",
+    "tm:snore",
+    "tm:stealthrock",
+    "tm:substitute",
+    "tm:superpower",
+    "tm:swagger",
+    "tm:toxic",
+    "tutor:charm",
+    "tutor:defensecurl",
+    "tutor:detect",
+    "tutor:doubleteam",
+    "tutor:endeavor",
+    "tutor:frustration",
+    "tutor:headbutt",
+    "tutor:hiddenpower",
+    "tutor:mimic",
+    "tutor:return",
+    "tutor:roar",
+    "tutor:rocksmash",
+    "tutor:strength",
+    "tutor:swagger",
+    "tutor:toxic"
+  ],
+  "labels": [
+    "gen2"
+  ],
+  "pokedex": [
+    "cobblemon.species.swinub.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "swinub_piloswine",
+      "variant": "level_up",
+      "result": "piloswine",
+      "consumeHeldItem": false,
+      "learnableMoves": [
+        "icefang"
+      ],
+      "requirements": [
         {
-            "id": "swinub_piloswine",
-            "variant": "level_up",
-            "result": "piloswine",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "level",
-                    "minLevel": 33
-                }
-            ]
+          "variant": "level",
+          "minLevel": 33
         }
-    ],
-    "baseScale": 1.1,
-    "hitbox": {
-        "width": 0.7,
-        "height": 0.4,
-        "fixed": false
-    },
-    "baseFriendship": 50,
-    "evYield": {
-        "attack": 1
-    },
-    "height": 4,
-    "weight": 65
+      ]
+    }
+  ],
+  "baseScale": 1.1,
+  "hitbox": {
+    "width": 0.7,
+    "height": 0.4,
+    "fixed": false
+  },
+  "baseFriendship": 50,
+  "evYield": {
+    "hp": 0,
+    "attack": 1,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
+  },
+  "height": 4,
+  "weight": 65,
+  "aspects": [],
+  "cannotDynamax": false
 }

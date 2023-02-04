@@ -25,23 +25,26 @@ import net.minecraft.server.network.ServerPlayerEntity
  * @since May 7th, 2022
  */
 open class BattleModifier(
-    private val calculator: (currentCatchRate: Float, player: ServerPlayerEntity, playerPokemon: Iterable<ActiveBattlePokemon>, pokemon: Pokemon) -> Float
+    private val calculator: (player: ServerPlayerEntity, playerPokemon: Iterable<ActiveBattlePokemon>, pokemon: Pokemon) -> Float
 ) : CatchRateModifier {
 
-    final override fun modifyCatchRate(
-        currentCatchRate: Float,
-        thrower: LivingEntity,
-        pokemon: Pokemon,
-        host: Pokemon?
-    ): Float {
-        val player = thrower as? ServerPlayerEntity ?: return currentCatchRate
+    override fun isGuaranteed(): Boolean = false
+
+    override fun value(thrower: LivingEntity, pokemon: Pokemon): Float {
+        val player = thrower as? ServerPlayerEntity ?: return 1F
         val team = BattleRegistry
             .getBattleByParticipatingPlayer(player)
             ?.actors?.firstOrNull { actor -> actor is PlayerBattleActor && actor.uuid == player.uuid }?.activePokemon
-            ?: return currentCatchRate
-        return this.modifyCatchRate(currentCatchRate, player, team, pokemon)
+            ?: return 1F
+        return this.calculator(player, team, pokemon)
     }
 
-    open fun modifyCatchRate(currentCatchRate: Float, player: ServerPlayerEntity, playerPokemon: Iterable<ActiveBattlePokemon>, pokemon: Pokemon): Float = this.calculator.invoke(currentCatchRate, player, playerPokemon, pokemon)
+    override fun behavior(thrower: LivingEntity, pokemon: Pokemon): CatchRateModifier.Behavior = CatchRateModifier.Behavior.MULTIPLY
+
+    override fun isValid(thrower: LivingEntity, pokemon: Pokemon): Boolean = true
+
+    override fun modifyCatchRate(currentCatchRate: Float, thrower: LivingEntity, pokemon: Pokemon): Float = this.behavior(thrower, pokemon).mutator(currentCatchRate, this.value(thrower, pokemon))
+
+    open fun modifyCatchRate(currentCatchRate: Float, player: ServerPlayerEntity, playerPokemon: Iterable<ActiveBattlePokemon>, pokemon: Pokemon): Float = this.calculator.invoke(player, playerPokemon, pokemon)
 
 }

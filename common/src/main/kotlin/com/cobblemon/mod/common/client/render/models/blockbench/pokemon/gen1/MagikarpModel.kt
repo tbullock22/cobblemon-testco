@@ -27,10 +27,10 @@ class MagikarpModel(root: ModelPart) : PokemonPoseableModel() {
     val leftMustache = getPart("whisker_left")
     val rightMustache = getPart("whisker_right")
 
-    override val portraitScale = 1.65F
-    override val portraitTranslation = Vec3d(0.12, -0.45, 0.0)
-    override val profileScale = 1F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 2.0F
+    override val portraitTranslation = Vec3d(-0.1, -0.75, 0.0)
+    override val profileScale = 0.95F
+    override val profileTranslation = Vec3d(0.0, 0.65, 0.0)
 
     override fun registerPoses() {
         registerPose(

@@ -20,11 +20,11 @@ class DragonairModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("dragonair")
     override val head = getPart("head")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 2.3F
+    override val portraitTranslation = Vec3d(-0.3, 1.5, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.65F
+    override val profileTranslation = Vec3d(0.0, 0.8, 0.0)
 
     lateinit var standing: PokemonPose
 

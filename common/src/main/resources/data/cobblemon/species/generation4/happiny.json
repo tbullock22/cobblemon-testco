@@ -1,152 +1,160 @@
 {
-    "implemented": true,
-    "name": "happiny",
-    "nationalPokedexNumber": 440,
-    "primaryType": "normal",
-    "abilities": [
-        "naturalcure",
-        "serenegrace",
-        "h:friendguard"
-    ],
-    "baseStats": {
-        "hp": 100,
-        "attack": 5,
-        "defence": 5,
-        "special_attack": 15,
-        "special_defence": 65,
-        "speed": 30
-    },
-    "catchRate": 130,
-    "maleRatio": 0.0,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 110,
-    "experienceGroup": "fast",
-    "eggCycles": 40,
-    "eggGroups": [
-        "undiscovered"
-    ],
-    "drops": {
-        "amount": "1",
-        "entries": [
-            {
-                "item": "cobblemon:oval_stone",
-                "percentage": 25
-            }
-        ]
-    },
-    "moves": [
-        "1:pound",
-        "1:minimize",
-        "1:copycat",
-        "4:defensecurl",
-        "8:sweetkiss",
-        "9:refresh",
-        "12:disarmingvoice",
-        "16:covet",
-        "20:charm",
-        "egg:aromatherapy",
-        "egg:counter",
-        "egg:gravity",
-        "egg:healbell",
-        "egg:lastresort",
-        "egg:mudbomb",
-        "egg:naturalgift",
-        "egg:present",
-        "egg:seismictoss",
-        "tm:attract",
-        "tm:captivate",
-        "tm:charm",
-        "tm:confide",
-        "tm:doubleteam",
-        "tm:drainpunch",
-        "tm:dreameater",
-        "tm:echoedvoice",
-        "tm:endure",
-        "tm:facade",
-        "tm:fireblast",
-        "tm:flamethrower",
-        "tm:flash",
-        "tm:fling",
-        "tm:frustration",
-        "tm:grassknot",
-        "tm:hail",
-        "tm:helpinghand",
-        "tm:hiddenpower",
-        "tm:hypervoice",
-        "tm:icywind",
-        "tm:incinerate",
-        "tm:lightscreen",
-        "tm:metronome",
-        "tm:protect",
-        "tm:psychic",
-        "tm:psychup",
-        "tm:raindance",
-        "tm:rest",
-        "tm:return",
-        "tm:round",
-        "tm:safeguard",
-        "tm:secretpower",
-        "tm:shadowball",
-        "tm:sleeptalk",
-        "tm:snore",
-        "tm:solarbeam",
-        "tm:storedpower",
-        "tm:substitute",
-        "tm:sunnyday",
-        "tm:swagger",
-        "tm:thunderwave",
-        "tm:toxic",
-        "tm:uproar",
-        "tm:workup",
-        "tm:zenheadbutt",
-        "tutor:endeavor",
-        "tutor:headbutt",
-        "tutor:healbell",
-        "tutor:lastresort",
-        "tutor:mudslap",
-        "tutor:recycle",
-        "tutor:rollout",
-        "tutor:shockwave",
-        "tutor:waterpulse"
-    ],
-    "labels": [
-        "baby",
-        "gen4"
-    ],
-    "pokedex": [
-        "cobblemon.species.happiny.desc1",
-        "cobblemon.species.happiny.desc2"
-    ],
-    "evolutions": [
+  "implemented": true,
+  "name": "Happiny",
+  "nationalPokedexNumber": 440,
+  "primaryType": "normal",
+  "abilities": [
+    "naturalcure",
+    "serenegrace",
+    "h:friendguard"
+  ],
+  "baseStats": {
+    "hp": 100,
+    "attack": 5,
+    "defence": 5,
+    "special_attack": 15,
+    "special_defence": 65,
+    "speed": 30
+  },
+  "catchRate": 130,
+  "maleRatio": 0,
+  "shoulderMountable": false,
+  "baseExperienceYield": 110,
+  "experienceGroup": "fast",
+  "eggCycles": 40,
+  "eggGroups": [
+    "undiscovered"
+  ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:oval_stone",
+        "percentage": 25
+      }
+    ]
+  },
+  "moves": [
+    "1:copycat",
+    "1:minimize",
+    "1:pound",
+    "4:defensecurl",
+    "8:sweetkiss",
+    "9:refresh",
+    "12:disarmingvoice",
+    "16:covet",
+    "20:charm",
+    "egg:aromatherapy",
+    "egg:counter",
+    "egg:gravity",
+    "egg:healbell",
+    "egg:lastresort",
+    "egg:mudbomb",
+    "egg:naturalgift",
+    "egg:present",
+    "egg:seismictoss",
+    "tm:attract",
+    "tm:captivate",
+    "tm:charm",
+    "tm:confide",
+    "tm:disarmingvoice",
+    "tm:doubleteam",
+    "tm:drainpunch",
+    "tm:dreameater",
+    "tm:echoedvoice",
+    "tm:endure",
+    "tm:facade",
+    "tm:fireblast",
+    "tm:flamethrower",
+    "tm:flash",
+    "tm:fling",
+    "tm:frustration",
+    "tm:grassknot",
+    "tm:hail",
+    "tm:helpinghand",
+    "tm:hiddenpower",
+    "tm:hypervoice",
+    "tm:icywind",
+    "tm:incinerate",
+    "tm:lightscreen",
+    "tm:metronome",
+    "tm:protect",
+    "tm:psychic",
+    "tm:psychup",
+    "tm:raindance",
+    "tm:rest",
+    "tm:return",
+    "tm:round",
+    "tm:safeguard",
+    "tm:secretpower",
+    "tm:shadowball",
+    "tm:sleeptalk",
+    "tm:snore",
+    "tm:snowscape",
+    "tm:solarbeam",
+    "tm:storedpower",
+    "tm:substitute",
+    "tm:sunnyday",
+    "tm:swagger",
+    "tm:takedown",
+    "tm:terablast",
+    "tm:thunderwave",
+    "tm:toxic",
+    "tm:uproar",
+    "tm:workup",
+    "tm:zenheadbutt",
+    "tutor:endeavor",
+    "tutor:headbutt",
+    "tutor:lastresort",
+    "tutor:mudslap",
+    "tutor:recycle",
+    "tutor:rollout",
+    "tutor:shockwave",
+    "tutor:waterpulse"
+  ],
+  "labels": [
+    "gen4",
+    "baby"
+  ],
+  "pokedex": [
+    "cobblemon.species.happiny.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "happiny_chansey",
+      "variant": "level_up",
+      "result": "chansey",
+      "consumeHeldItem": true,
+      "learnableMoves": [],
+      "requirements": [
         {
-            "id": "happiny_chansey",
-            "variant": "level_up",
-            "result": "chansey",
-            "consumeHeldItem": true,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "time_range",
-                    "range": "day"
-                },
-                {
-                    "variant": "held_item",
-                    "item": "cobblemon:oval_stone"
-                }
-            ]
+          "variant": "held_item",
+          "itemCondition": "cobblemon:oval_stone"
+        },
+        {
+          "variant": "time_range",
+          "range": "day"
         }
-    ],
-    "baseScale": 0.8,
-    "hitbox": {
-        "width": 0.6,
-        "height": 0.7,
-        "fixed": false
-    },
-    "baseFriendship": 140,
-    "evYield": {
-        "hp": 1
-    },
-    "height": 6,
-    "weight": 244
+      ]
+    }
+  ],
+  "baseScale": 0.8,
+  "hitbox": {
+    "width": 0.6,
+    "height": 0.7,
+    "fixed": false
+  },
+  "baseFriendship": 140,
+  "evYield": {
+    "hp": 1,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
+  },
+  "height": 6,
+  "weight": 244,
+  "aspects": [],
+  "cannotDynamax": false
 }

@@ -18,11 +18,11 @@ import net.minecraft.util.math.Vec3d
 class MagnemiteModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("magnemite")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 2.0F
+    override val portraitTranslation = Vec3d(0.0, -1.5, 0.0)
 
     override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileTranslation = Vec3d(0.0, 0.18, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

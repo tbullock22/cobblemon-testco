@@ -27,11 +27,11 @@ class SlowpokeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
     override val hindLeftLeg = getPart("leftbackleg")
     override val hindRightLeg = getPart("rightbackleg")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 2.0F
+    override val portraitTranslation = Vec3d(-0.7, -1.07, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.8F
+    override val profileTranslation = Vec3d(0.0, 0.52, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

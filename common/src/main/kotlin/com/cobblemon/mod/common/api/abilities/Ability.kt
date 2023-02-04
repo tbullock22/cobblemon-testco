@@ -21,7 +21,7 @@ import net.minecraft.text.MutableText
  * @author Qu
  * @since January 9th, 2022
  */
-open class Ability internal constructor(var template: AbilityTemplate) {
+open class Ability internal constructor(var template: AbilityTemplate, var forced: Boolean) {
 
     val name: String
         get() = template.name
@@ -34,14 +34,22 @@ open class Ability internal constructor(var template: AbilityTemplate) {
 
     open fun saveToNBT(nbt: NbtCompound): NbtCompound {
         nbt.putString(DataKeys.POKEMON_ABILITY_NAME, name)
+        nbt.putBoolean(DataKeys.POKEMON_ABILITY_FORCED, forced)
         return nbt
     }
 
     open fun saveToJSON(json: JsonObject): JsonObject {
         json.addProperty(DataKeys.POKEMON_ABILITY_NAME, name)
+        json.addProperty(DataKeys.POKEMON_ABILITY_FORCED, forced)
         return json
     }
 
-    open fun loadFromNBT(nbt: NbtCompound) =  this
-    open fun loadFromJSON(json: JsonObject) = this
+    open fun loadFromNBT(nbt: NbtCompound): Ability {
+        forced = nbt.getBoolean(DataKeys.POKEMON_ABILITY_FORCED)
+        return this
+    }
+    open fun loadFromJSON(json: JsonObject): Ability {
+        forced = json.get(DataKeys.POKEMON_ABILITY_FORCED)?.asBoolean ?: false
+        return this
+    }
 }

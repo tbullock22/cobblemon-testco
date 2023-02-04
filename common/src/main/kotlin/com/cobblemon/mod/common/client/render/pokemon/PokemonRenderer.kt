@@ -24,10 +24,13 @@ import com.cobblemon.mod.common.entity.pokeball.EmptyPokeBallEntity
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import com.cobblemon.mod.common.util.isLookingAt
 import com.cobblemon.mod.common.util.lang
+import com.cobblemon.mod.common.util.math.DoubleRange
 import com.cobblemon.mod.common.util.math.geometry.toRadians
+import com.cobblemon.mod.common.util.math.remap
 import kotlin.math.min
 import kotlin.math.tan
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.render.LightmapTextureManager
 import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.VertexConsumerProvider
@@ -37,11 +40,14 @@ import net.minecraft.client.render.entity.model.EntityModel
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.MathConstants.PI
+import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Quaternion
 import net.minecraft.util.math.Vec3f
 import net.minecraft.util.math.Vector4f
+import kotlin.math.max
 
 class PokemonRenderer(
     context: EntityRendererFactory.Context
@@ -127,14 +133,6 @@ class PokemonRenderer(
                 )
             }
         }
-
-        if (!MinecraftClient.getInstance().options.hudHidden) {
-            MinecraftClient.getInstance().player?.let { player ->
-                if (player.isLookingAt(entity) && phaseTarget == null) {
-                    renderLabel(poseMatrix, partialTicks, entity, player, buffer)
-                }
-            }
-        }
     }
 
     override fun scale(pEntity: PokemonEntity, pMatrixStack: MatrixStack, pPartialTickTime: Float) {
@@ -205,49 +203,6 @@ class PokemonRenderer(
         matrixStack.pop()
     }
 
-    fun renderLabel(poseStack: MatrixStack, partialTicks: Float, entity: PokemonEntity, player: PlayerEntity, multiBufferSource: VertexConsumerProvider) {
-        if (entity.isInvisible) {
-            return
-        }
-
-        val mc = MinecraftClient.getInstance()
-
-        val stepMultiplier = 0.5F
-        val toPlayer = player.getCameraPosVec(partialTicks)
-            .subtract(entity.getLerpedPos(partialTicks).add(0.0, entity.boundingBox.yLength + 0.5, 0.0))
-            .multiply(stepMultiplier.toDouble())
-
-        poseStack.push()
-        poseStack.translate(0.0, entity.boundingBox.yLength + 0.5, 0.0)
-        poseStack.translate(toPlayer.x, toPlayer.y, toPlayer.z)
-        poseStack.multiply(dispatcher.rotation)
-        poseStack.scale(-0.025f * stepMultiplier, -0.025f * stepMultiplier, 1f)
-        val matrix4f = poseStack.peek().positionMatrix
-        val g = mc.options.getTextBackgroundOpacity(0.25f)
-        val k = (g * 255.0f).toInt() shl 24
-        var label = entity.pokemon.species.translatedName
-        if (ServerSettings.displayEntityLevelLabel && entity.labelLevel() > 0) {
-            val levelLabel = lang("label.lv", entity.labelLevel())
-            label = label.add(" ").append(levelLabel)
-        }
-        var h = (-textRenderer.getWidth(label) / 2).toFloat()
-        val y = 0F
-        val seeThrough = true
-        val packedLight = LightmapTextureManager.pack(15, 15)
-        textRenderer.draw(label, h, y, 0x20FFFFFF, false, matrix4f, multiBufferSource, seeThrough, k, packedLight)
-        textRenderer.draw(label, h, y, -1, false, matrix4f, multiBufferSource, false, 0, packedLight)
-
-        if (entity.canBattle(player)) {
-            val sendOutBinding = PartySendBinding.boundKey().localizedText
-            val battlePrompt = lang("challenge_label", sendOutBinding)
-            h = (-textRenderer.getWidth(battlePrompt) / 2).toFloat()
-            textRenderer.draw(battlePrompt, h, y + 10, 0x20FFFFFF, false, matrix4f, multiBufferSource, seeThrough, k, packedLight)
-            textRenderer.draw(battlePrompt, h, y + 10, -1, false, matrix4f, multiBufferSource, false, 0, packedLight)
-        }
-        poseStack.pop()
-
-    }
-
     fun renderGlow(
         matrixStack: MatrixStack,
         entity: PokemonEntity,
@@ -314,4 +269,45 @@ class PokemonRenderer(
     }
 
     override fun getLyingAngle(entity: PokemonEntity?) = 0F
+
+    override fun renderLabelIfPresent(entity: PokemonEntity, text: Text, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int) {
+        if (entity.isInvisible) {
+            return
+        }
+        val player = MinecraftClient.getInstance().player ?: return
+        val d = this.dispatcher.getSquaredDistanceToCamera(entity)
+        if(d <= 4096.0){
+            val scale = min(1.5, max(0.65, d.remap(DoubleRange(-16.0, 96.0), DoubleRange(0.0, 1.0))))
+            val sizeScale = MathHelper.lerp(scale.remap(DoubleRange(0.65, 1.5), DoubleRange(0.0,1.0)), 0.5, 1.0)
+            val offsetScale = MathHelper.lerp(scale.remap(DoubleRange(0.65, 1.5), DoubleRange(0.0,1.0)), 0.0,1.0)
+            val entityHeight = entity.boundingBox.yLength + 0.5f
+            matrices.push()
+            matrices.translate(0.0, entityHeight, 0.0)
+            matrices.multiply(dispatcher.rotation)
+            matrices.translate(0.0,0.0+(offsetScale/2),-(scale+offsetScale))
+            matrices.scale((-0.025*sizeScale).toFloat(), (-0.025*sizeScale).toFloat(), 1 * sizeScale.toFloat())
+            val matrix4f = matrices.peek().positionMatrix
+            val opacity = (MinecraftClient.getInstance().options.getTextBackgroundOpacity(0.25f) * 255.0f).toInt() shl 24
+            var label = entity.pokemon.species.translatedName
+            if (ServerSettings.displayEntityLevelLabel && entity.labelLevel() > 0) {
+                val levelLabel = lang("label.lv", entity.labelLevel())
+                label = label.add(" ").append(levelLabel)
+            }
+            var h = (-textRenderer.getWidth(label) / 2).toFloat()
+            val y = 0F
+            val seeThrough = true
+            val packedLight = LightmapTextureManager.pack(15, 15)
+            textRenderer.draw(label, h, y, 0x20FFFFFF, false, matrix4f, vertexConsumers, seeThrough, opacity, packedLight)
+            textRenderer.draw(label, h, y, -1, false, matrix4f, vertexConsumers, false, 0, packedLight)
+
+            if (entity.canBattle(player)) {
+                val sendOutBinding = PartySendBinding.boundKey().localizedText
+                val battlePrompt = lang("challenge_label", sendOutBinding)
+                h = (-textRenderer.getWidth(battlePrompt) / 2).toFloat()
+                textRenderer.draw(battlePrompt, h, y + 10, 0x20FFFFFF, false, matrix4f, vertexConsumers, seeThrough, opacity, packedLight)
+                textRenderer.draw(battlePrompt, h, y + 10, -1, false, matrix4f, vertexConsumers, false, 0, packedLight)
+            }
+            matrices.pop()
+        }
+    }
 }

@@ -8,7 +8,7 @@
 
 package com.cobblemon.mod.common.mixin;
 
-import com.cobblemon.mod.common.tags.CobblemonBlockTags;
+import com.cobblemon.mod.common.api.tags.CobblemonBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PointedDripstoneBlock;

@@ -11,7 +11,7 @@ package com.cobblemon.mod.common.api.spawning.influence
 import com.cobblemon.mod.common.api.spawning.context.SpawningContext
 import com.cobblemon.mod.common.api.spawning.detail.PokemonSpawnDetail
 import com.cobblemon.mod.common.api.spawning.detail.SpawnDetail
-import com.cobblemon.mod.common.world.CobblemonGameRules.DO_POKEMON_SPAWNING
+import com.cobblemon.mod.common.world.gamerules.CobblemonGameRules.DO_POKEMON_SPAWNING
 
 open class GameRuleInfluence : SpawningInfluence {
     override fun affectSpawnable(detail: SpawnDetail, ctx: SpawningContext): Boolean {

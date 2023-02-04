@@ -42,17 +42,17 @@ abstract class PokemonPoseableModel : PoseableEntityModel<PokemonEntity>() {
     var alpha = 1F
 
     @Transient
-    var currentLayers = listOf<ModelLayer>()
+    var currentLayers: Iterable<ModelLayer> = listOf()
     @Transient
     var bufferProvider: VertexConsumerProvider? = null
 
-    fun withLayerContext(buffer: VertexConsumerProvider, layers: List<ModelLayer>, action: () -> Unit) {
+    fun withLayerContext(buffer: VertexConsumerProvider, layers: Iterable<ModelLayer>, action: () -> Unit) {
         setLayerContext(buffer, layers)
         action()
         resetLayerContext()
     }
 
-    fun setLayerContext(buffer: VertexConsumerProvider, layers: List<ModelLayer>) {
+    fun setLayerContext(buffer: VertexConsumerProvider, layers: Iterable<ModelLayer>) {
         currentLayers = layers
         bufferProvider = buffer
     }

@@ -1,194 +1,318 @@
 {
-    "name": "pumpkaboo",
-    "nationalPokedexNumber": 710,
-    "primaryType": "ghost",
-    "secondaryType": "grass",
-    "abilities": [
+  "name": "Pumpkaboo",
+  "nationalPokedexNumber": 710,
+  "primaryType": "ghost",
+  "secondaryType": "grass",
+  "abilities": [
+    "pickup",
+    "frisk",
+    "h:insomnia"
+  ],
+  "baseStats": {
+    "hp": 49,
+    "attack": 66,
+    "defence": 70,
+    "special_attack": 44,
+    "special_defence": 55,
+    "speed": 51
+  },
+  "catchRate": 120,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "forms": [
+    {
+      "name": "Small",
+      "primaryType": "ghost",
+      "secondaryType": "grass",
+      "abilities": [
         "pickup",
         "frisk",
         "h:insomnia"
-    ],
-    "baseStats": {
-        "hp": 49,
+      ],
+      "baseStats": {
+        "hp": 44,
         "attack": 66,
         "defence": 70,
         "special_attack": 44,
         "special_defence": 55,
-        "speed": 51
-    },
-    "catchRate": 120,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "forms": [
-        {
-            "name": "small",
-            "baseStats": {
-                "hp": 44,
-                "attack": 66,
-                "defence": 70,
-                "special_attack": 44,
-                "special_defence": 55,
-                "speed": 56
-            },
-            "pokedex": [
-                "cobblemon.form.pumpkaboo-small.desc1",
-                "cobblemon.form.pumpkaboo-small.desc2"
-            ],
-            "height": 3,
-            "weight": 35
-        },
-        {
-            "name": "large",
-            "baseStats": {
-                "hp": 54,
-                "attack": 66,
-                "defence": 70,
-                "special_attack": 44,
-                "special_defence": 55,
-                "speed": 46
-            },
-            "pokedex": [
-                "cobblemon.form.pumpkaboo-large.desc1",
-                "cobblemon.form.pumpkaboo-large.desc2"
-            ],
-            "height": 5,
-            "weight": 75
-        },
-        {
-            "name": "super",
-            "baseStats": {
-                "hp": 59,
-                "attack": 66,
-                "defence": 70,
-                "special_attack": 44,
-                "special_defence": 55,
-                "speed": 41
-            },
-            "pokedex": [
-                "cobblemon.form.pumpkaboo-super.desc1",
-                "cobblemon.form.pumpkaboo-super.desc2"
-            ],
-            "height": 8,
-            "weight": 150
-        }
-    ],
-    "baseExperienceYield": 67,
-    "experienceGroup": "mediumfast",
-    "eggCycles": 20,
-    "eggGroups": [
+        "speed": 56
+      },
+      "catchRate": 120,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 67,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 1,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
         "amorphous"
-    ],
-    "moves": [
-        "1:astonish",
-        "1:trickortreat",
-        "4:shadowsneak",
-        "8:confuseray",
-        "12:razorleaf",
-        "12:trickortreat",
-        "16:leechseed",
-        "20:bulletseed",
-        "24:scaryface",
-        "24:trickortreat",
-        "28:worryseed",
-        "32:seedbomb",
-        "36:shadowball",
-        "36:trickortreat",
-        "40:trick",
-        "44:painsplit",
-        "egg:bestow",
-        "egg:curse",
-        "egg:destinybond",
-        "egg:disable",
-        "tm:allyswitch",
-        "tm:attract",
-        "tm:bulletseed",
-        "tm:chargebeam",
-        "tm:confide",
-        "tm:darkpulse",
-        "tm:doubleteam",
-        "tm:dreameater",
-        "tm:endure",
-        "tm:energyball",
-        "tm:explosion",
-        "tm:facade",
-        "tm:fireblast",
-        "tm:flamecharge",
-        "tm:flamethrower",
-        "tm:flash",
-        "tm:foulplay",
-        "tm:frustration",
-        "tm:gigadrain",
-        "tm:grassknot",
-        "tm:gyroball",
-        "tm:hex",
-        "tm:hiddenpower",
-        "tm:imprison",
-        "tm:incinerate",
-        "tm:lightscreen",
-        "tm:mysticalfire",
-        "tm:naturepower",
-        "tm:protect",
-        "tm:psychic",
-        "tm:rest",
-        "tm:return",
-        "tm:rockslide",
-        "tm:rocksmash",
-        "tm:round",
-        "tm:safeguard",
-        "tm:scaryface",
-        "tm:secretpower",
-        "tm:seedbomb",
-        "tm:shadowball",
-        "tm:skillswap",
-        "tm:sleeptalk",
-        "tm:sludgebomb",
-        "tm:snore",
-        "tm:solarbeam",
-        "tm:substitute",
-        "tm:sunnyday",
-        "tm:swagger",
-        "tm:thief",
-        "tm:toxic",
-        "tm:trick",
-        "tm:trickroom",
-        "tm:willowisp",
-        "tutor:grassyglide",
-        "tutor:magiccoat",
-        "tutor:poltergeist",
-        "tutor:roleplay",
-        "tutor:skittersmack",
-        "tutor:spite",
-        "tutor:synthesis",
-        "tutor:telekinesis"
-    ],
-    "labels": [
+      ],
+      "moves": [],
+      "labels": [
         "gen6"
-    ],
-    "pokedex": [
-        "cobblemon.species.pumpkaboo.desc1",
-        "cobblemon.species.pumpkaboo.desc2"
-    ],
-    "evolutions": [
+      ],
+      "aspects": [
+        "small"
+      ],
+      "height": 3,
+      "weight": 35,
+      "evolutions": [
         {
-            "id": "pumpkaboo_gourgeist",
-            "variant": "trade",
-            "result": "gourgeist",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [],
-            "requiredContext": null
+          "id": "pumpkaboo_gourgeist",
+          "variant": "trade",
+          "result": "gourgeist form=small",
+          "consumeHeldItem": false,
+          "learnableMoves": [],
+          "requirements": []
         }
-    ],
-    "baseScale": 1.0,
-    "hitbox": {
-        "width": 1.0,
-        "height": 1.0,
-        "fixed": false
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     },
-    "baseFriendship": 50,
-    "evYield": {
-        "defence": 1
+    {
+      "name": "Large",
+      "primaryType": "ghost",
+      "secondaryType": "grass",
+      "abilities": [
+        "pickup",
+        "frisk",
+        "h:insomnia"
+      ],
+      "baseStats": {
+        "hp": 54,
+        "attack": 66,
+        "defence": 70,
+        "special_attack": 44,
+        "special_defence": 55,
+        "speed": 46
+      },
+      "catchRate": 120,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 67,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 1,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "amorphous"
+      ],
+      "moves": [],
+      "labels": [
+        "gen6"
+      ],
+      "aspects": [
+        "large"
+      ],
+      "height": 5,
+      "weight": 75,
+      "evolutions": [
+        {
+          "id": "pumpkaboo_gourgeist",
+          "variant": "trade",
+          "result": "gourgeist form=large",
+          "consumeHeldItem": false,
+          "learnableMoves": [],
+          "requirements": []
+        }
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     },
-    "height": 4,
-    "weight": 50
+    {
+      "name": "Super",
+      "primaryType": "ghost",
+      "secondaryType": "grass",
+      "abilities": [
+        "pickup",
+        "frisk",
+        "h:insomnia"
+      ],
+      "baseStats": {
+        "hp": 59,
+        "attack": 66,
+        "defence": 70,
+        "special_attack": 44,
+        "special_defence": 55,
+        "speed": 41
+      },
+      "catchRate": 120,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 67,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 1,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 20,
+      "eggGroups": [
+        "amorphous"
+      ],
+      "moves": [
+        "tutor:astonish",
+        "tutor:scaryface",
+        "tutor:shadowsneak",
+        "tutor:trickortreat"
+      ],
+      "labels": [
+        "gen6"
+      ],
+      "aspects": [
+        "super"
+      ],
+      "height": 8,
+      "weight": 150,
+      "evolutions": [
+        {
+          "id": "pumpkaboo_gourgeist",
+          "variant": "trade",
+          "result": "gourgeist form=super",
+          "consumeHeldItem": false,
+          "learnableMoves": [],
+          "requirements": []
+        }
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
+    }
+  ],
+  "baseExperienceYield": 67,
+  "experienceGroup": "medium_fast",
+  "eggCycles": 20,
+  "eggGroups": [
+    "amorphous"
+  ],
+  "moves": [
+    "1:astonish",
+    "1:trickortreat",
+    "4:shadowsneak",
+    "8:confuseray",
+    "12:razorleaf",
+    "16:leechseed",
+    "20:bulletseed",
+    "24:scaryface",
+    "28:worryseed",
+    "32:seedbomb",
+    "36:shadowball",
+    "40:trick",
+    "44:painsplit",
+    "egg:bestow",
+    "egg:curse",
+    "egg:destinybond",
+    "egg:disable",
+    "tm:allyswitch",
+    "tm:attract",
+    "tm:bulletseed",
+    "tm:chargebeam",
+    "tm:confide",
+    "tm:darkpulse",
+    "tm:doubleteam",
+    "tm:dreameater",
+    "tm:endure",
+    "tm:energyball",
+    "tm:explosion",
+    "tm:facade",
+    "tm:fireblast",
+    "tm:flamecharge",
+    "tm:flamethrower",
+    "tm:flash",
+    "tm:foulplay",
+    "tm:frustration",
+    "tm:gigadrain",
+    "tm:grassknot",
+    "tm:gyroball",
+    "tm:hex",
+    "tm:hiddenpower",
+    "tm:imprison",
+    "tm:incinerate",
+    "tm:lightscreen",
+    "tm:mysticalfire",
+    "tm:naturepower",
+    "tm:protect",
+    "tm:psychic",
+    "tm:rest",
+    "tm:return",
+    "tm:rockslide",
+    "tm:rocksmash",
+    "tm:round",
+    "tm:safeguard",
+    "tm:scaryface",
+    "tm:secretpower",
+    "tm:seedbomb",
+    "tm:shadowball",
+    "tm:skillswap",
+    "tm:sleeptalk",
+    "tm:sludgebomb",
+    "tm:snore",
+    "tm:solarbeam",
+    "tm:substitute",
+    "tm:sunnyday",
+    "tm:swagger",
+    "tm:thief",
+    "tm:toxic",
+    "tm:trick",
+    "tm:trickroom",
+    "tm:willowisp",
+    "tutor:grassyglide",
+    "tutor:magiccoat",
+    "tutor:poltergeist",
+    "tutor:roleplay",
+    "tutor:skittersmack",
+    "tutor:spite",
+    "tutor:synthesis",
+    "tutor:telekinesis"
+  ],
+  "labels": [
+    "gen6"
+  ],
+  "pokedex": [
+    "cobblemon.species.pumpkaboo.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "pumpkaboo_gourgeist",
+      "variant": "trade",
+      "result": "gourgeist",
+      "consumeHeldItem": false,
+      "learnableMoves": [],
+      "requirements": []
+    }
+  ],
+  "baseScale": 1,
+  "hitbox": {
+    "width": 1,
+    "height": 1,
+    "fixed": false
+  },
+  "baseFriendship": 50,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 1,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
+  },
+  "height": 4,
+  "weight": 50,
+  "aspects": [],
+  "cannotDynamax": false
 }

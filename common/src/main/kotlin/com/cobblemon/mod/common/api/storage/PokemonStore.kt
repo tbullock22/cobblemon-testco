@@ -149,6 +149,8 @@ abstract class PokemonStore<T : StorePosition> : Iterable<Pokemon> {
     abstract fun loadFromNBT(nbt: NbtCompound): PokemonStore<T>
     abstract fun saveToJSON(json: JsonObject): JsonObject
     abstract fun loadFromJSON(json: JsonObject): PokemonStore<T>
+    abstract fun savePositionToNBT(position: T, nbt: NbtCompound)
+    abstract fun loadPositionFromNBT(nbt: NbtCompound): StoreCoordinates<T>
 
     /**
      * Returns an [Observable] that emits Unit whenever there is a change to this store. This includes any save-worthy

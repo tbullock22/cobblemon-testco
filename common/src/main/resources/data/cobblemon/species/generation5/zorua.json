@@ -1,8 +1,10 @@
 {
-  "name": "zorua",
+  "name": "Zorua",
   "nationalPokedexNumber": 570,
   "primaryType": "dark",
-  "abilities": ["illusion"],
+  "abilities": [
+    "illusion"
+  ],
   "baseStats": {
     "hp": 40,
     "attack": 65,
@@ -16,12 +18,12 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "hisui",
+      "name": "Hisui",
       "primaryType": "normal",
       "secondaryType": "ghost",
+      "abilities": [
+        "illusion"
+      ],
       "baseStats": {
         "hp": 35,
         "attack": 60,
@@ -30,39 +32,118 @@
         "special_defence": 40,
         "speed": 70
       },
-      "baseExperienceYield": null,
+      "catchRate": 75,
+      "maleRatio": 0.875,
+      "baseExperienceYield": 0,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 1,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "medium_slow",
+      "eggCycles": 25,
+      "eggGroups": [
+        "field"
+      ],
       "moves": [
-        "1:shadowsneak",
-        "6:snarl",
-        "11:swift",
-        "18:bittermalice",
-        "25:slash",
-        "34:shadowclaw",
-        "43:nastyplot",
-        "tutor:aerialace",
-        "tutor:calmmind",
-        "tutor:darkpulse",
-        "tutor:rest",
-        "tutor:shadowball",
-        "tutor:shadowclaw",
-        "tutor:sludgebomb",
-        "tutor:snarl",
-        "tutor:swift"
+        "1:leer",
+        "1:scratch",
+        "4:torment",
+        "8:honeclaws",
+        "12:shadowsneak",
+        "16:curse",
+        "20:taunt",
+        "24:knockoff",
+        "28:spite",
+        "32:agility",
+        "36:shadowball",
+        "40:bittermalice",
+        "44:nastyplot",
+        "48:foulplay",
+        "egg:comeuppance",
+        "egg:detect",
+        "egg:extrasensory",
+        "egg:memento",
+        "tm:agility",
+        "tm:calmmind",
+        "tm:confuseray",
+        "tm:darkpulse",
+        "tm:dig",
+        "tm:endure",
+        "tm:facade",
+        "tm:faketears",
+        "tm:fling",
+        "tm:foulplay",
+        "tm:gigaimpact",
+        "tm:hex",
+        "tm:hyperbeam",
+        "tm:icywind",
+        "tm:imprison",
+        "tm:nastyplot",
+        "tm:nightshade",
+        "tm:phantomforce",
+        "tm:protect",
+        "tm:raindance",
+        "tm:rest",
+        "tm:shadowball",
+        "tm:shadowclaw",
+        "tm:sleeptalk",
+        "tm:sludgebomb",
+        "tm:snarl",
+        "tm:snowscape",
+        "tm:substitute",
+        "tm:swift",
+        "tm:takedown",
+        "tm:taunt",
+        "tm:terablast",
+        "tm:thief",
+        "tm:trick",
+        "tm:uturn",
+        "tm:willowisp"
       ],
-      "pokedex": [
-        "cobblemon.form.zorua-hisui.desc1",
-        "cobblemon.form.zorua-hisui.desc2"
+      "labels": [
+        "gen8",
+        "hisui_regional"
       ],
-      "labels": ["gen5", "hisui_regional", "regional"]
+      "aspects": [
+        "hisuian"
+      ],
+      "height": 7,
+      "weight": 125,
+      "evolutions": [
+        {
+          "id": "zorua_zoroark",
+          "variant": "level_up",
+          "result": "zoroark form=hisui",
+          "consumeHeldItem": false,
+          "learnableMoves": [
+            "shadowclaw"
+          ],
+          "requirements": [
+            {
+              "variant": "level",
+              "minLevel": 30
+            }
+          ]
+        }
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 66,
-  "experienceGroup": "mediumslow",
+  "experienceGroup": "medium_slow",
   "eggCycles": 25,
-  "eggGroups": ["field"],
+  "eggGroups": [
+    "field"
+  ],
   "moves": [
-    "1:scratch",
     "1:leer",
+    "1:scratch",
     "4:torment",
     "5:pursuit",
     "8:honeclaws",
@@ -94,11 +175,13 @@
     "tm:bounce",
     "tm:calmmind",
     "tm:confide",
+    "tm:confuseray",
     "tm:cut",
     "tm:darkpulse",
     "tm:dig",
     "tm:doubleteam",
     "tm:embargo",
+    "tm:encore",
     "tm:endure",
     "tm:facade",
     "tm:faketears",
@@ -106,12 +189,14 @@
     "tm:foulplay",
     "tm:frustration",
     "tm:grassknot",
+    "tm:helpinghand",
     "tm:hex",
     "tm:hiddenpower",
     "tm:hypervoice",
     "tm:imprison",
     "tm:incinerate",
     "tm:nastyplot",
+    "tm:nightshade",
     "tm:payback",
     "tm:protect",
     "tm:psychup",
@@ -125,6 +210,7 @@
     "tm:scaryface",
     "tm:secretpower",
     "tm:shadowball",
+    "tm:shadowclaw",
     "tm:sleeptalk",
     "tm:sludgebomb",
     "tm:snarl",
@@ -134,7 +220,9 @@
     "tm:swagger",
     "tm:swift",
     "tm:swordsdance",
+    "tm:takedown",
     "tm:taunt",
+    "tm:terablast",
     "tm:thief",
     "tm:toxic",
     "tm:trick",
@@ -147,15 +235,22 @@
     "tutor:snatch",
     "tutor:spite"
   ],
-  "labels": ["gen5", "unova_regional", "regional"],
-  "pokedex": ["cobblemon.species.zorua.desc1", "cobblemon.species.zorua.desc2"],
+  "labels": [
+    "gen5",
+    "unova_regional"
+  ],
+  "pokedex": [
+    "cobblemon.species.zorua.desc"
+  ],
   "evolutions": [
     {
       "id": "zorua_zoroark",
       "variant": "level_up",
       "result": "zoroark",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "nightslash"
+      ],
       "requirements": [
         {
           "variant": "level",
@@ -164,16 +259,23 @@
       ]
     }
   ],
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
-    "width": 1.0,
-    "height": 1.0,
+    "width": 1,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 50,
   "evYield": {
-    "special_attack": 1
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 1,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 7,
-  "weight": 125
+  "weight": 125,
+  "aspects": [],
+  "cannotDynamax": false
 }

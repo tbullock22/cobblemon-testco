@@ -22,11 +22,11 @@ class ParasectModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("parasect")
     override val head = getPart("head")
 
-    override val portraitScale = 1.5F
-    override val portraitTranslation = Vec3d(-0.1, -0.2, 0.0)
+    override val portraitScale = 1.8F
+    override val portraitTranslation = Vec3d(-0.35, -0.8, 0.0)
 
-    override val profileScale = 0.5F
-    override val profileTranslation = Vec3d(0.0, 0.9, 0.0)
+    override val profileScale = 0.8F
+    override val profileTranslation = Vec3d(-0.05, 0.45, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

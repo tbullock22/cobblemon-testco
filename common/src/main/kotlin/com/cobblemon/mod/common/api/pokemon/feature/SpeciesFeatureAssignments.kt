@@ -49,5 +49,5 @@ object SpeciesFeatureAssignments : JsonDataRegistry<SpeciesFeatureAssignment> {
         }
     }
 
-    fun getFeatures(species: Species) = assignments[species.name] ?: emptySet()
+    fun getFeatures(species: Species) = assignments[species.showdownId()] ?: emptySet()
 }

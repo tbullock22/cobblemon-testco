@@ -28,10 +28,10 @@ class IvysaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadr
     override val hindLeftLeg = getPart("leg_back_left")
     override val hindRightLeg = getPart("leg_back_right")
 
-    override val portraitScale = 1.65F
-    override val portraitTranslation = Vec3d(-0.1, -0.5, 0.0)
+    override val portraitScale = 1.6F
+    override val portraitTranslation = Vec3d(-0.2, -0.6, 0.0)
     override val profileScale = 0.9F
-    override val profileTranslation = Vec3d(0.0, 0.35, 0.0)
+    override val profileTranslation = Vec3d(0.2, -0.6, 0.0)
 
     lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose

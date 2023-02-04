@@ -28,10 +28,10 @@ class CharmeleonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
     override val leftLeg = getPart("leg_left")
 
     override val portraitScale = 1.5F
-    override val portraitTranslation = Vec3d(0.05, 0.85,0.0)
+    override val portraitTranslation = Vec3d(0.07, 0.65,0.0)
 
-    override val profileScale = 0.75F
-    override val profileTranslation = Vec3d(0.0, 0.6, 0.0)
+    override val profileScale = 0.65F
+    override val profileTranslation = Vec3d(0.0, 0.79, 0.0)
 
     lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose

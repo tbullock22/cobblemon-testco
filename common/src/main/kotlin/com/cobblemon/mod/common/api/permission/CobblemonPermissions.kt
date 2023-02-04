@@ -38,6 +38,7 @@ object CobblemonPermissions {
     val POKEMON_EDIT_OTHER = this.create("$POKEMON_EDIT_BASE.other", PermissionLevel.CHEAT_COMMANDS_AND_COMMAND_BLOCKS)
 
     val SPAWN_ALL_POKEMON = this.create("${COMMAND_PREFIX}spawnallpokemon", PermissionLevel.ALL_COMMANDS)
+    val GIVE_ALL_POKEMON = this.create("${COMMAND_PREFIX}giveallpokemon", PermissionLevel.ALL_COMMANDS)
 
     val SPAWN_POKEMON = this.create("${COMMAND_PREFIX}spawnpokemon", PermissionLevel.CHEAT_COMMANDS_AND_COMMAND_BLOCKS)
 
@@ -48,6 +49,8 @@ object CobblemonPermissions {
     val TEACH = this.create("${COMMAND_PREFIX}teach", PermissionLevel.CHEAT_COMMANDS_AND_COMMAND_BLOCKS)
 
     val FRIENDSHIP = this.create("${COMMAND_PREFIX}friendship", PermissionLevel.CHEAT_COMMANDS_AND_COMMAND_BLOCKS)
+
+    val HELD_ITEM = this.create("${COMMAND_PREFIX}helditem", PermissionLevel.CHEAT_COMMANDS_AND_COMMAND_BLOCKS)
 
     fun all(): Iterable<Permission> = this.permissions
 

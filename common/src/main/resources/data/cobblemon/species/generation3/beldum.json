@@ -1,71 +1,80 @@
 {
-    "name": "beldum",
-    "nationalPokedexNumber": 374,
-    "primaryType": "steel",
-    "secondaryType": "psychic",
-    "abilities": [
-        "clearbody",
-        "h:lightmetal"
-    ],
-    "baseStats": {
-        "hp": 40,
-        "attack": 55,
-        "defence": 80,
-        "special_attack": 35,
-        "special_defence": 60,
-        "speed": 30
-    },
-    "catchRate": 3,
-    "maleRatio": -1,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 60,
-    "experienceGroup": "slow",
-    "eggCycles": 40,
-    "eggGroups": [
-        "mineral"
-    ],
-    "moves": [
-        "1:tackle",
-        "1:takedown",
-        "tm:irondefense",
-        "tm:ironhead",
-        "tm:zenheadbutt",
-        "tutor:headbutt",
-        "tutor:steelbeam"
-    ],
-    "labels": [
-        "gen3"
-    ],
-    "pokedex": [
-        "cobblemon.species.beldum.desc1",
-        "cobblemon.species.beldum.desc2"
-    ],
-    "evolutions": [
+  "name": "Beldum",
+  "nationalPokedexNumber": 374,
+  "primaryType": "steel",
+  "secondaryType": "psychic",
+  "abilities": [
+    "clearbody",
+    "h:lightmetal"
+  ],
+  "baseStats": {
+    "hp": 40,
+    "attack": 55,
+    "defence": 80,
+    "special_attack": 35,
+    "special_defence": 60,
+    "speed": 30
+  },
+  "catchRate": 3,
+  "maleRatio": -1,
+  "shoulderMountable": false,
+  "baseExperienceYield": 60,
+  "experienceGroup": "slow",
+  "eggCycles": 40,
+  "eggGroups": [
+    "mineral"
+  ],
+  "moves": [
+    "1:tackle",
+    "1:takedown",
+    "tm:irondefense",
+    "tm:ironhead",
+    "tm:zenheadbutt",
+    "tutor:headbutt",
+    "tutor:holdback",
+    "tutor:steelbeam"
+  ],
+  "labels": [
+    "gen3"
+  ],
+  "pokedex": [
+    "cobblemon.species.beldum.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "beldum_metang",
+      "variant": "level_up",
+      "result": "metang",
+      "consumeHeldItem": false,
+      "learnableMoves": [
+        "confusion",
+        "metalclaw"
+      ],
+      "requirements": [
         {
-            "id": "beldum_metang",
-            "variant": "level_up",
-            "result": "metang",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "level",
-                    "minLevel": 20
-                }
-            ]
+          "variant": "level",
+          "minLevel": 20
         }
-    ],
-    "baseScale": 1.0,
-    "hitbox": {
-        "width": 1.0,
-        "height": 1.0,
-        "fixed": false
-    },
-    "baseFriendship": 35,
-    "evYield": {
-        "defence": 1
-    },
-    "height": 6,
-    "weight": 952
+      ]
+    }
+  ],
+  "baseScale": 1,
+  "hitbox": {
+    "width": 1,
+    "height": 1,
+    "fixed": false
+  },
+  "baseFriendship": 35,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 1,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
+  },
+  "height": 6,
+  "weight": 952,
+  "aspects": [],
+  "cannotDynamax": false
 }

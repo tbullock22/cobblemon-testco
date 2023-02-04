@@ -8,7 +8,7 @@
 
 package com.cobblemon.mod.common.world.feature
 
-import com.cobblemon.mod.common.tags.CobblemonBiomeTags
+import com.cobblemon.mod.common.api.tags.CobblemonBiomeTags
 import com.cobblemon.mod.common.util.cobblemonResource
 import dev.architectury.registry.level.biome.BiomeModifications
 import net.minecraft.tag.TagKey

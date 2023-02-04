@@ -34,6 +34,7 @@ object BattleSwitchPokemonHandler : ClientPacketHandler<BattleSwitchPokemonPacke
                         uuid = uuid,
                         displayName = displayName,
                         properties = properties,
+                        aspects = aspects,
                         hpRatio = hpRatio,
                         status = status,
                         statChanges = statChanges

@@ -20,11 +20,11 @@ class MachopModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("machop")
     override val head = getPart("head")
 
-    override val portraitScale = 1.6F
-    override val portraitTranslation = Vec3d(0.1, 0.4, 0.0)
+    override val portraitScale = 1.8F
+    override val portraitTranslation = Vec3d(-0.05, 0.4, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.2, 0.0)
+    override val profileScale = 0.73F
+    override val profileTranslation = Vec3d(-0.03, 0.64, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

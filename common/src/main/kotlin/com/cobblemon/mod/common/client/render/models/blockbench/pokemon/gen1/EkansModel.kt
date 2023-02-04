@@ -42,11 +42,11 @@ class EkansModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     val tail5Segment = WaveSegment(modelPart = tail5, length = 10F)
     val tail6Segment = WaveSegment(modelPart = tail6, length = 10F)
 
-    override val portraitScale = 1.7F
-    override val portraitTranslation = Vec3d(-0.3, -0.45, 0.0)
+    override val portraitScale = 2.1F
+    override val portraitTranslation = Vec3d(-1.3, -1.8, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.75, -0.5, 0.0)
+    override val profileScale = 0.7F
+    override val profileTranslation = Vec3d(0.75, -0.05, 0.0)
 
     override fun registerPoses() {
         registerPose(

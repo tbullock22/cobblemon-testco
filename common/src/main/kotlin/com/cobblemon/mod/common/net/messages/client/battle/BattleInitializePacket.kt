@@ -132,6 +132,7 @@ class BattleInitializePacket() : NetworkPacket {
         val uuid: UUID,
         val displayName: MutableText,
         val properties: PokemonProperties,
+        val aspects: Set<String>,
         val status: PersistentStatus?,
         val hpRatio: Float,
         val statChanges: MutableMap<Stat, Int>
@@ -144,9 +145,9 @@ class BattleInitializePacket() : NetworkPacket {
                     properties = createPokemonProperties(
                         PokemonPropertyExtractor.SPECIES,
                         PokemonPropertyExtractor.LEVEL,
-                        PokemonPropertyExtractor.GENDER,
-                        PokemonPropertyExtractor.ASPECTS
+                        PokemonPropertyExtractor.GENDER
                     ),
+                    aspects = aspects,
                     status = status?.status,
                     hpRatio = currentHealth.toFloat() / hp,
                     statChanges = battlePokemon.statChanges
@@ -157,6 +158,7 @@ class BattleInitializePacket() : NetworkPacket {
                 val uuid = buffer.readUuid()
                 val pokemonDisplayName = buffer.readText().copy()
                 val properties = PokemonProperties.parse(buffer.readString(), delimiter = " ")
+                val aspects = buffer.readList { buffer.readString() }.toSet()
                 val status = if (buffer.readBoolean()) {
                     Statuses.getStatus(buffer.readIdentifier()) as? PersistentStatus
                 } else {
@@ -173,6 +175,7 @@ class BattleInitializePacket() : NetworkPacket {
                     uuid = uuid,
                     displayName = pokemonDisplayName,
                     properties = properties,
+                    aspects = aspects,
                     status = status,
                     hpRatio = hpRatio,
                     statChanges = statChanges
@@ -184,6 +187,7 @@ class BattleInitializePacket() : NetworkPacket {
             buffer.writeUuid(uuid)
             buffer.writeText(displayName)
             buffer.writeString(properties.asString())
+            buffer.writeCollection(aspects) { buf, it -> buf.writeString(it) }
             buffer.writeBoolean(status != null)
             status?.let { buffer.writeString(it.name.toString()) }
             buffer.writeFloat(hpRatio)

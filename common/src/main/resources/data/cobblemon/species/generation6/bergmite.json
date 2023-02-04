@@ -1,8 +1,12 @@
 {
-  "name": "bergmite",
+  "name": "Bergmite",
   "nationalPokedexNumber": 712,
   "primaryType": "ice",
-  "abilities": ["owntempo", "icebody", "h:sturdy"],
+  "abilities": [
+    "owntempo",
+    "icebody",
+    "h:sturdy"
+  ],
   "baseStats": {
     "hp": 55,
     "attack": 69,
@@ -14,11 +18,13 @@
   "catchRate": 190,
   "maleRatio": 0.5,
   "shoulderMountable": false,
-  "forms": [],
   "baseExperienceYield": 61,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 20,
-  "eggGroups": ["monster", "mineral"],
+  "eggGroups": [
+    "monster",
+    "mineral"
+  ],
   "moves": [
     "1:harden",
     "1:rapidspin",
@@ -32,8 +38,8 @@
     "21:bite",
     "24:icefang",
     "27:irondefense",
-    "30:recover",
     "30:iceball",
+    "30:recover",
     "33:crunch",
     "36:takedown",
     "39:blizzard",
@@ -45,6 +51,9 @@
     "tm:attract",
     "tm:avalanche",
     "tm:blizzard",
+    "tm:bodyslam",
+    "tm:bulldoze",
+    "tm:chillingwater",
     "tm:confide",
     "tm:crunch",
     "tm:doubleteam",
@@ -59,6 +68,7 @@
     "tm:hiddenpower",
     "tm:icebeam",
     "tm:icefang",
+    "tm:icespinner",
     "tm:iciclespear",
     "tm:icywind",
     "tm:irondefense",
@@ -75,44 +85,48 @@
     "tm:secretpower",
     "tm:sleeptalk",
     "tm:snore",
+    "tm:snowscape",
     "tm:stoneedge",
     "tm:strength",
     "tm:substitute",
     "tm:surf",
     "tm:swagger",
+    "tm:takedown",
+    "tm:terablast",
     "tm:toxic",
     "tutor:afteryou",
     "tutor:waterpulse"
   ],
-  "labels": ["gen6"],
+  "labels": [
+    "gen6"
+  ],
   "pokedex": [
-    "cobblemon.species.bergmite.desc1",
-    "cobblemon.species.bergmite.desc2"
+    "cobblemon.species.bergmite.desc"
   ],
   "evolutions": [
     {
-      "id": "bergmite_avalugg_hisui",
+      "id": "bergmite_avalugg",
       "variant": "level_up",
-      "result": "avalugg hisuian",
+      "result": "avalugg",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "bodyslam"
+      ],
       "requirements": [
         {
           "variant": "level",
           "minLevel": 37
-        },
-        {
-          "variant": "biome",
-          "biome": "#cobblemon:is_highlands"
         }
       ]
     },
     {
       "id": "bergmite_avalugg",
       "variant": "level_up",
-      "result": "avalugg",
+      "result": "avalugg form=hisui",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "rockslide"
+      ],
       "requirements": [
         {
           "variant": "level",
@@ -121,16 +135,23 @@
       ]
     }
   ],
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
-    "width": 1.0,
-    "height": 1.0,
+    "width": 1,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 50,
   "evYield": {
-    "defence": 1
+    "hp": 0,
+    "attack": 0,
+    "defence": 1,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 10,
-  "weight": 995
+  "weight": 995,
+  "aspects": [],
+  "cannotDynamax": false
 }

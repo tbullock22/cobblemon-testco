@@ -1,9 +1,13 @@
 {
-  "name": "mrrime",
+  "name": "Mr. Rime",
   "nationalPokedexNumber": 866,
   "primaryType": "ice",
   "secondaryType": "psychic",
-  "abilities": ["tangledfeet", "screencleaner", "h:icebody"],
+  "abilities": [
+    "tangledfeet",
+    "screencleaner",
+    "h:icebody"
+  ],
   "baseStats": {
     "hp": 80,
     "attack": 85,
@@ -15,31 +19,32 @@
   "catchRate": 45,
   "maleRatio": 0.5,
   "shoulderMountable": false,
-  "forms": [],
   "baseExperienceYield": 182,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 25,
-  "eggGroups": ["human_like"],
+  "eggGroups": [
+    "human_like"
+  ],
   "moves": [
-    "1:pound",
-    "1:mimic",
-    "1:lightscreen",
-    "1:reflect",
-    "1:protect",
-    "1:safeguard",
+    "1:afteryou",
     "1:batonpass",
-    "1:encore",
-    "1:rapidspin",
-    "1:roleplay",
-    "1:recycle",
-    "1:slackoff",
-    "1:faketears",
     "1:block",
     "1:copycat",
-    "1:iceshard",
-    "1:afteryou",
-    "1:mistyterrain",
     "1:dazzlinggleam",
+    "1:encore",
+    "1:faketears",
+    "1:iceshard",
+    "1:lightscreen",
+    "1:mimic",
+    "1:mistyterrain",
+    "1:pound",
+    "1:protect",
+    "1:rapidspin",
+    "1:recycle",
+    "1:reflect",
+    "1:roleplay",
+    "1:safeguard",
+    "1:slackoff",
     "12:confusion",
     "16:allyswitch",
     "20:icywind",
@@ -123,20 +128,31 @@
     "tutor:expandingforce",
     "tutor:tripleaxel"
   ],
-  "labels": ["gen8"],
-  "pokedex": ["cobblemon.species.mrrime.desc1", "cobblemon.species.mrrime.desc2"],
+  "labels": [
+    "gen8"
+  ],
+  "pokedex": [
+    "cobblemon.species.mrrime.desc"
+  ],
   "preEvolution": "mrmime form=galar",
   "evolutions": [],
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
-    "width": 1.0,
-    "height": 1.0,
+    "width": 1,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 50,
   "evYield": {
-    "special_attack": 3
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 3,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 15,
-  "weight": 582
+  "weight": 582,
+  "aspects": [],
+  "cannotDynamax": false
 }

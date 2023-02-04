@@ -57,7 +57,7 @@ class CobblemonEvolutionProxy(private val pokemon: Pokemon, private val clientSi
 
     override fun loadFromJson(json: JsonElement) {
         val jObject = json as? JsonObject ?: return
-        this.current().loadFromJson(jObject.get(DataKeys.POKEMON_PENDING_EVOLUTIONS))
+        this.current().loadFromJson(jObject.get(DataKeys.POKEMON_PENDING_EVOLUTIONS) ?: JsonObject())
     }
 
     override fun saveToBuffer(buffer: PacketByteBuf, toClient: Boolean) {

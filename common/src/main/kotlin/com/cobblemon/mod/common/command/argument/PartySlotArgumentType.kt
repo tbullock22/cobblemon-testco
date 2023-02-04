@@ -55,6 +55,12 @@ class PartySlotArgumentType : ArgumentType<Int> {
             val party = Cobblemon.storage.getParty(player)
             return party.get(slot - 1) ?: throw INVALID_SLOT.create(slot)
         }
+
+        fun <S> getPokemonOf(context: CommandContext<S>, name: String, player: ServerPlayerEntity): Pokemon {
+            val slot = context.getArgument(name, Int::class.java)
+            val party = Cobblemon.storage.getParty(player)
+            return party.get(slot - 1) ?: throw INVALID_SLOT.create(slot)
+        }
     }
 
 }

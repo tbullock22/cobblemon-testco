@@ -1,114 +1,125 @@
 {
-    "name": "scorbunny",
-    "nationalPokedexNumber": 813,
-    "primaryType": "fire",
-    "abilities": [
-        "blaze",
-        "h:libero"
-    ],
-    "baseStats": {
-        "hp": 50,
-        "attack": 71,
-        "defence": 40,
-        "special_attack": 40,
-        "special_defence": 40,
-        "speed": 69
-    },
-    "catchRate": 45,
-    "maleRatio": 0.875,
-    "shoulderMountable": false,
-    "forms": [],
-    "baseExperienceYield": 62,
-    "experienceGroup": "mediumslow",
-    "eggCycles": 20,
-    "eggGroups": [
-        "field",
-        "human_like"
-    ],
-    "moves": [
-        "1:tackle",
-        "1:growl",
-        "6:ember",
-        "8:quickattack",
-        "12:doublekick",
-        "17:flamecharge",
-        "20:agility",
-        "24:headbutt",
-        "28:counter",
-        "32:bounce",
-        "36:doubleedge",
-        "egg:highjumpkick",
-        "egg:sandattack",
-        "egg:suckerpunch",
-        "egg:superfang",
-        "tm:acrobatics",
-        "tm:agility",
-        "tm:allyswitch",
-        "tm:assurance",
-        "tm:attract",
-        "tm:batonpass",
-        "tm:blazekick",
-        "tm:bounce",
-        "tm:electroball",
-        "tm:endure",
-        "tm:facade",
-        "tm:fireblast",
-        "tm:firefang",
-        "tm:flamethrower",
-        "tm:focusenergy",
-        "tm:gunkshot",
-        "tm:heatwave",
-        "tm:lowkick",
-        "tm:lowsweep",
-        "tm:megakick",
-        "tm:mudshot",
-        "tm:overheat",
-        "tm:protect",
-        "tm:rest",
-        "tm:reversal",
-        "tm:round",
-        "tm:sleeptalk",
-        "tm:snore",
-        "tm:substitute",
-        "tm:sunnyday",
-        "tm:swift",
-        "tm:taunt",
-        "tm:uturn",
-        "tm:workup",
-        "tutor:firepledge"
-    ],
-    "labels": [
-        "gen8"
-    ],
-    "pokedex": [
-        "cobblemon.species.scorbunny.desc1",
-        "cobblemon.species.scorbunny.desc2"
-    ],
-    "evolutions": [
+  "name": "Scorbunny",
+  "nationalPokedexNumber": 813,
+  "primaryType": "fire",
+  "abilities": [
+    "blaze",
+    "h:libero"
+  ],
+  "baseStats": {
+    "hp": 50,
+    "attack": 71,
+    "defence": 40,
+    "special_attack": 40,
+    "special_defence": 40,
+    "speed": 69
+  },
+  "catchRate": 45,
+  "maleRatio": 0.875,
+  "shoulderMountable": false,
+  "baseExperienceYield": 62,
+  "experienceGroup": "medium_slow",
+  "eggCycles": 20,
+  "eggGroups": [
+    "field",
+    "human_like"
+  ],
+  "moves": [
+    "1:growl",
+    "1:tackle",
+    "6:ember",
+    "8:quickattack",
+    "12:doublekick",
+    "17:flamecharge",
+    "20:agility",
+    "24:headbutt",
+    "28:counter",
+    "32:bounce",
+    "36:doubleedge",
+    "egg:highjumpkick",
+    "egg:sandattack",
+    "egg:suckerpunch",
+    "egg:superfang",
+    "tm:acrobatics",
+    "tm:agility",
+    "tm:allyswitch",
+    "tm:assurance",
+    "tm:attract",
+    "tm:batonpass",
+    "tm:blazekick",
+    "tm:electroball",
+    "tm:endure",
+    "tm:facade",
+    "tm:fireblast",
+    "tm:firefang",
+    "tm:firepledge",
+    "tm:firespin",
+    "tm:flamecharge",
+    "tm:flamethrower",
+    "tm:flareblitz",
+    "tm:focusenergy",
+    "tm:gunkshot",
+    "tm:heatwave",
+    "tm:helpinghand",
+    "tm:lowkick",
+    "tm:lowsweep",
+    "tm:megakick",
+    "tm:mudshot",
+    "tm:overheat",
+    "tm:protect",
+    "tm:rest",
+    "tm:reversal",
+    "tm:round",
+    "tm:sleeptalk",
+    "tm:snore",
+    "tm:substitute",
+    "tm:sunnyday",
+    "tm:swift",
+    "tm:takedown",
+    "tm:taunt",
+    "tm:terablast",
+    "tm:trailblaze",
+    "tm:uturn",
+    "tm:workup"
+  ],
+  "labels": [
+    "gen8"
+  ],
+  "pokedex": [
+    "cobblemon.species.scorbunny.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "scorbunny_raboot",
+      "variant": "level_up",
+      "result": "raboot",
+      "consumeHeldItem": false,
+      "learnableMoves": [],
+      "requirements": [
         {
-            "id": "scorbunny_raboot",
-            "variant": "level_up",
-            "result": "raboot",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "level",
-                    "minLevel": 16
-                }
-            ]
+          "variant": "level",
+          "minLevel": 16
         }
-    ],
-    "baseScale": 1.0,
-    "hitbox": {
-        "width": 1.0,
-        "height": 1.0,
-        "fixed": false
-    },
-    "baseFriendship": 50,
-    "evYield": {
-        "speed": 1
-    },
-    "height": 3,
-    "weight": 45
+      ]
+    }
+  ],
+  "baseScale": 1,
+  "hitbox": {
+    "width": 1,
+    "height": 1,
+    "fixed": false
+  },
+  "baseFriendship": 50,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 1
+  },
+  "height": 3,
+  "weight": 45,
+  "aspects": [],
+  "cannotDynamax": false
 }

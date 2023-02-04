@@ -8,12 +8,28 @@
 
 package com.cobblemon.mod.common.pokemon.evolution.requirements
 
+import com.cobblemon.mod.common.api.conditional.RegistryLikeCondition
 import com.cobblemon.mod.common.api.pokemon.evolution.requirement.EvolutionRequirement
 import com.cobblemon.mod.common.pokemon.Pokemon
-class HeldItemRequirement : EvolutionRequirement {
+import com.cobblemon.mod.common.registry.ItemIdentifierCondition
+import net.minecraft.item.Item
+import net.minecraft.util.Identifier
+import net.minecraft.util.registry.Registry
 
-    // ToDo Pending impl of held items, this is here because stat scrapper already accounts for this to exist
-    override fun check(pokemon: Pokemon): Boolean = true
+/**
+ * An [EvolutionRequirement] for a [Pokemon.heldItem].
+ *
+ * @property itemCondition The [RegistryLikeCondition] of [Item] expected to match the [Pokemon.heldItem].
+ * @author Licious
+ * @since March 21st, 2022
+ */
+class HeldItemRequirement(itemCondition: RegistryLikeCondition<Item>) : EvolutionRequirement {
+
+    constructor() : this(ItemIdentifierCondition(Identifier("air")))
+
+    val itemCondition: RegistryLikeCondition<Item> = itemCondition
+
+    override fun check(pokemon: Pokemon): Boolean = this.itemCondition.fits(pokemon.heldItemNoCopy().item, Registry.ITEM)
 
     companion object {
         const val ADAPTER_VARIANT = "held_item"

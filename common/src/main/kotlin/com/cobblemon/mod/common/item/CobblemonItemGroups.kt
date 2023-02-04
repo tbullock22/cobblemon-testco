@@ -18,4 +18,5 @@ object CobblemonItemGroups {
     val POKE_BALL_GROUP: ItemGroup = create(cobblemonResource("pokeball")) { ItemStack(CobblemonItems.POKE_BALL.get()) }
     val EVOLUTION_ITEM_GROUP: ItemGroup = create(cobblemonResource("evolution_item")) { ItemStack(CobblemonItems.BLACK_AUGURITE.get()) }
     val MEDICINE_ITEM_GROUP: ItemGroup = create(cobblemonResource("medicine")) { ItemStack(CobblemonItems.RARE_CANDY.get()) }
+    val HELD_ITEM_GROUP: ItemGroup = create(cobblemonResource("held_item")) { ItemStack(CobblemonItems.EXP_SHARE.get()) }
 }

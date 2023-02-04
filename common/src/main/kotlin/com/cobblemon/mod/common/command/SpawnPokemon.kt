@@ -45,9 +45,8 @@ object SpawnPokemon {
                     entity.sendMessage(commandLang("${NAME}.nospecies").red())
                     return Command.SINGLE_SUCCESS
                 }
-                val pokemonEntity = pkm.createEntity(entity.world)
+                val pokemonEntity = pkm.createEntity(entity.world).apply { setPosition(entity.pos) }
                 entity.world.spawnEntity(pokemonEntity)
-                pokemonEntity.setPosition(entity.pos)
             } catch (e: Exception) {
                 e.printStackTrace()
             }

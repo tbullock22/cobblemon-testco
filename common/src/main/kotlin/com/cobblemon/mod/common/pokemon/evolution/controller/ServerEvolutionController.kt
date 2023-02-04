@@ -12,24 +12,30 @@ import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.events.pokemon.evolution.EvolutionAcceptedEvent
 import com.cobblemon.mod.common.api.pokemon.evolution.Evolution
 import com.cobblemon.mod.common.api.pokemon.evolution.EvolutionController
+import com.cobblemon.mod.common.api.pokemon.evolution.progress.EvolutionProgress
 import com.cobblemon.mod.common.api.text.green
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.evolution.AddEvolutionPacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.evolution.ClearEvolutionsPacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.evolution.EvolutionUpdatePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.evolution.RemoveEvolutionPacket
 import com.cobblemon.mod.common.pokemon.Pokemon
+import com.cobblemon.mod.common.api.pokemon.evolution.progress.EvolutionProgressFactory
 import com.cobblemon.mod.common.util.asTranslated
 import com.cobblemon.mod.common.util.toJsonArray
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import com.google.gson.JsonPrimitive
+import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtList
 import net.minecraft.nbt.NbtString
 import net.minecraft.network.PacketByteBuf
+
 class ServerEvolutionController(override val pokemon: Pokemon) : EvolutionController<Evolution> {
 
     private val evolutions = hashSetOf<Evolution>()
+    private val progress = arrayListOf<EvolutionProgress<*>>()
 
     override val size: Int
         get() = this.evolutions.size
@@ -44,34 +50,106 @@ class ServerEvolutionController(override val pokemon: Pokemon) : EvolutionContro
         )
     }
 
-    override fun saveToNBT(): NbtElement {
-        val list = NbtList()
-        this.evolutions.forEach { evolution ->
-            list += NbtString.of(evolution.id)
+    override fun progress(): Collection<EvolutionProgress<*>> = this.progress.toList()
+
+    override fun <P : EvolutionProgress<*>> trackProgress(progress: P): P {
+        this.progress.add(progress)
+        return progress
+    }
+
+    override fun <P : EvolutionProgress<*>> progressFirstOrCreate(predicate: (progress: EvolutionProgress<*>) -> Boolean, progressFactory: () -> P): P {
+        val existing = this.progress.firstOrNull(predicate)
+        if (existing == null) {
+            val created = progressFactory()
+            this.progress.add(created)
+            return created
         }
-        return list
+        return existing as P
+    }
+
+    override fun saveToNBT(): NbtElement {
+        val nbt = NbtCompound()
+        val pendingList = NbtList()
+        this.evolutions.forEach { evolution ->
+            pendingList += NbtString.of(evolution.id)
+        }
+        nbt.put(PENDING, pendingList)
+        val progressList = NbtList()
+        this.progress.forEach { progress ->
+            progressList += progress.saveToNBT().apply { putString(ID, progress.id().toString()) }
+        }
+        nbt.put(PROGRESS, progressList)
+        return nbt
     }
 
     override fun loadFromNBT(nbt: NbtElement) {
-        val list = nbt as? NbtList ?: return
         this.clear()
-        for (tag in list.filterIsInstance<NbtString>()) {
+        val pendingList: NbtList
+        val progressList: NbtList
+        if (nbt is NbtCompound) {
+            pendingList = nbt.getList(PENDING, NbtElement.STRING_TYPE.toInt())
+            progressList = nbt.getList(PROGRESS, NbtElement.COMPOUND_TYPE.toInt())
+        }
+        else {
+            pendingList = nbt as? NbtList ?: return
+            progressList = NbtList()
+        }
+        for (tag in pendingList.filterIsInstance<NbtString>()) {
             val id = tag.asString()
             val evolution = this.findEvolutionFromId(id) ?: continue
             this.add(evolution)
         }
+        for (tag in progressList.filterIsInstance<NbtCompound>()) {
+            EvolutionProgressFactory.create(tag.getString(ID))?.let { progress ->
+                progress.loadFromNBT(tag)
+                this.progress.add(progress)
+            }
+        }
+        this.verifyProgress()
     }
 
-    override fun saveToJson(): JsonElement = this.evolutions
-        .map { evolution -> evolution.id }
-        .toJsonArray()
+    override fun saveToJson(): JsonElement {
+        val json = JsonObject()
+        val pendingArray = this.evolutions
+            .map { evolution -> evolution.id }
+            .toJsonArray()
+        json.add(PENDING, pendingArray)
+        val progressArray = this.progress
+            .map { progress -> progress.saveToJson().apply { addProperty(ID, progress.id().toString()) } }
+            .toJsonArray()
+        json.add(PROGRESS, progressArray)
+        return json
+    }
 
     override fun loadFromJson(json: JsonElement) {
-        for (element in json as? JsonArray ?: return) {
+        this.clear()
+        val pendingArray: JsonArray
+        val progressArray: JsonArray
+        if (json is JsonObject) {
+            pendingArray = json.getAsJsonArray(PENDING)
+            progressArray = json.getAsJsonArray(PROGRESS)
+        }
+        else {
+            pendingArray = json as? JsonArray ?: return
+            progressArray = JsonArray()
+        }
+        for (element in pendingArray) {
             val id = (element as? JsonPrimitive)?.asString ?: continue
             val evolution = this.findEvolutionFromId(id) ?: continue
             this.add(evolution)
         }
+        for (element in progressArray) {
+            val jObject = element as? JsonObject ?: continue
+            EvolutionProgressFactory.create(jObject.get(ID).asString)?.let { progress ->
+                progress.loadFromJson(jObject)
+                this.progress.add(progress)
+            }
+        }
+        this.verifyProgress()
+    }
+
+    private fun verifyProgress() {
+        this.progress.removeIf { progress -> !progress.shouldKeep(this.pokemon) }
     }
 
     override fun saveToBuffer(buffer: PacketByteBuf, toClient: Boolean) {
@@ -114,6 +192,7 @@ class ServerEvolutionController(override val pokemon: Pokemon) : EvolutionContro
             this.evolutions.clear()
             this.pokemon.notify(ClearEvolutionsPacket(this.pokemon))
         }
+        this.progress.clear()
     }
 
     override fun contains(element: Evolution) = this.evolutions.contains(element)
@@ -158,5 +237,11 @@ class ServerEvolutionController(override val pokemon: Pokemon) : EvolutionContro
 
     private fun findEvolutionFromId(id: String) = this.pokemon.evolutions
         .firstOrNull { evolution -> evolution.id.equals(id, true) }
+
+    companion object {
+        private const val PENDING = "pending"
+        private const val PROGRESS = "progress"
+        private const val ID = "id"
+    }
 
 }

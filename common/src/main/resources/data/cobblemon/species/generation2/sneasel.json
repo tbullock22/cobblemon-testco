@@ -1,9 +1,13 @@
 {
-  "name": "sneasel",
+  "name": "Sneasel",
   "nationalPokedexNumber": 215,
   "primaryType": "dark",
   "secondaryType": "ice",
-  "abilities": ["innerfocus", "keeneye", "h:pickpocket"],
+  "abilities": [
+    "innerfocus",
+    "keeneye",
+    "h:pickpocket"
+  ],
   "baseStats": {
     "hp": 55,
     "attack": 95,
@@ -17,68 +21,144 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "hisui",
+      "name": "Hisui",
       "primaryType": "fighting",
       "secondaryType": "poison",
-      "abilities": ["innerfocus", "keeneye", "h:poisontouch"],
+      "abilities": [
+        "innerfocus",
+        "keeneye",
+        "h:pickpocket"
+      ],
+      "baseStats": {
+        "hp": 55,
+        "attack": 95,
+        "defence": 55,
+        "special_attack": 35,
+        "special_defence": 75,
+        "speed": 115
+      },
+      "catchRate": 60,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 0,
+      "baseFriendship": 35,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 1
+      },
+      "experienceGroup": "medium_slow",
+      "eggCycles": 20,
+      "eggGroups": [
+        "field"
+      ],
       "moves": [
-        "1:quickattack",
-        "6:rocksmash",
-        "11:swift",
-        "18:slash",
-        "25:poisonjab",
-        "34:swordsdance",
-        "43:closecombat",
-        "tutor:aerialace",
-        "tutor:bulkup",
-        "tutor:calmmind",
-        "tutor:drainpunch",
-        "tutor:falseswipe",
-        "tutor:focusenergy",
-        "tutor:irontail",
-        "tutor:poisonjab",
-        "tutor:rest",
-        "tutor:rocksmash",
-        "tutor:shadowball",
-        "tutor:shadowclaw",
-        "tutor:snarl",
-        "tutor:swift",
-        "tutor:xscissor"
+        "1:leer",
+        "1:rocksmash",
+        "1:scratch",
+        "6:taunt",
+        "12:quickattack",
+        "18:metalclaw",
+        "24:poisonjab",
+        "30:brickbreak",
+        "36:honeclaws",
+        "42:slash",
+        "48:agility",
+        "54:screech",
+        "60:closecombat",
+        "egg:counter",
+        "egg:doublehit",
+        "egg:fakeout",
+        "egg:feint",
+        "egg:nightslash",
+        "egg:quickguard",
+        "egg:switcheroo",
+        "tm:acidspray",
+        "tm:aerialace",
+        "tm:agility",
+        "tm:brickbreak",
+        "tm:bulkup",
+        "tm:calmmind",
+        "tm:closecombat",
+        "tm:dig",
+        "tm:endure",
+        "tm:facade",
+        "tm:falseswipe",
+        "tm:fling",
+        "tm:focusblast",
+        "tm:gigaimpact",
+        "tm:grassknot",
+        "tm:gunkshot",
+        "tm:lowkick",
+        "tm:lowsweep",
+        "tm:metalclaw",
+        "tm:nastyplot",
+        "tm:poisonjab",
+        "tm:poisontail",
+        "tm:protect",
+        "tm:raindance",
+        "tm:rest",
+        "tm:reversal",
+        "tm:shadowball",
+        "tm:shadowclaw",
+        "tm:sleeptalk",
+        "tm:sludgebomb",
+        "tm:substitute",
+        "tm:sunnyday",
+        "tm:swift",
+        "tm:swordsdance",
+        "tm:takedown",
+        "tm:taunt",
+        "tm:terablast",
+        "tm:thief",
+        "tm:toxicspikes",
+        "tm:trailblaze",
+        "tm:venoshock",
+        "tm:xscissor"
       ],
-      "pokedex": [
-        "cobblemon.form.sneasel-hisui.desc1",
-        "cobblemon.form.sneasel-hisui.desc2"
+      "labels": [
+        "gen8",
+        "hisui_regional"
       ],
+      "aspects": [
+        "hisuian"
+      ],
+      "height": 9,
       "weight": 270,
-      "labels": ["gen2", "hisui_regional", "regional"],
       "evolutions": [
         {
           "id": "sneasel_sneasler",
-          "variant": "item_interact",
+          "variant": "level_up",
           "result": "sneasler",
-          "consumeHeldItem": false,
+          "consumeHeldItem": true,
           "learnableMoves": [],
           "requirements": [
+            {
+              "variant": "held_item",
+              "itemCondition": "cobblemon:razor_claw"
+            },
             {
               "variant": "time_range",
               "range": "day"
             }
-          ],
-          "requiredContext": "cobblemon:razor_claw"
+          ]
         }
-      ]
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 86,
-  "experienceGroup": "mediumslow",
+  "experienceGroup": "medium_slow",
   "eggCycles": 20,
-  "eggGroups": ["field"],
+  "eggGroups": [
+    "field"
+  ],
   "moves": [
-    "1:scratch",
     "1:leer",
+    "1:scratch",
     "6:taunt",
     "10:feintattack",
     "12:quickattack",
@@ -109,16 +189,12 @@
     "tm:agility",
     "tm:attract",
     "tm:avalanche",
-    "tm:beatup",
     "tm:blizzard",
     "tm:brickbreak",
     "tm:calmmind",
     "tm:captivate",
     "tm:confide",
-    "tm:curse",
-    "tm:cut",
     "tm:darkpulse",
-    "tm:detect",
     "tm:dig",
     "tm:doubleteam",
     "tm:dreameater",
@@ -130,7 +206,9 @@
     "tm:fling",
     "tm:foulplay",
     "tm:frustration",
+    "tm:gigaimpact",
     "tm:hail",
+    "tm:helpinghand",
     "tm:hiddenpower",
     "tm:icebeam",
     "tm:icepunch",
@@ -140,6 +218,8 @@
     "tm:lowsweep",
     "tm:megakick",
     "tm:megapunch",
+    "tm:metalclaw",
+    "tm:nastyplot",
     "tm:naturalgift",
     "tm:payback",
     "tm:poisonjab",
@@ -152,46 +232,70 @@
     "tm:rest",
     "tm:retaliate",
     "tm:return",
-    "tm:rocksmash",
+    "tm:reversal",
     "tm:round",
-    "tm:screech",
+    "tm:scaryface",
     "tm:secretpower",
     "tm:shadowball",
     "tm:shadowclaw",
     "tm:sleeptalk",
     "tm:snarl",
     "tm:snore",
-    "tm:strength",
+    "tm:snowscape",
     "tm:substitute",
     "tm:sunnyday",
     "tm:surf",
     "tm:swagger",
     "tm:swift",
     "tm:swordsdance",
+    "tm:takedown",
     "tm:taunt",
+    "tm:terablast",
     "tm:thief",
     "tm:throatchop",
     "tm:torment",
     "tm:toxic",
+    "tm:trailblaze",
+    "tm:waterpulse",
     "tm:whirlpool",
     "tm:xscissor",
+    "tutor:curse",
+    "tutor:cut",
     "tutor:defensecurl",
+    "tutor:detect",
     "tutor:doubleedge",
+    "tutor:doubleteam",
+    "tutor:dreameater",
     "tutor:dynamicpunch",
+    "tutor:feintattack",
     "tutor:focuspunch",
+    "tutor:foresight",
+    "tutor:frustration",
     "tutor:furycutter",
     "tutor:headbutt",
+    "tutor:hiddenpower",
     "tutor:knockoff",
     "tutor:laserfocus",
     "tutor:lashout",
     "tutor:mimic",
     "tutor:mudslap",
     "tutor:nightmare",
+    "tutor:psychup",
+    "tutor:return",
+    "tutor:rocksmash",
     "tutor:snatch",
+    "tutor:strength",
+    "tutor:swagger",
+    "tutor:toxic",
     "tutor:tripleaxel"
   ],
-  "labels": ["gen2", "johto_regional", "regional"],
-  "pokedex": ["cobblemon.species.sneasel.desc1", "cobblemon.species.sneasel.desc2"],
+  "labels": [
+    "gen2",
+    "johto_regional"
+  ],
+  "pokedex": [
+    "cobblemon.species.sneasel.desc"
+  ],
   "evolutions": [
     {
       "id": "sneasel_weavile",
@@ -201,26 +305,33 @@
       "learnableMoves": [],
       "requirements": [
         {
-          "variant": "time_range",
-          "range": "night"
+          "variant": "held_item",
+          "itemCondition": "cobblemon:razor_claw"
         },
         {
-          "variant": "held_item",
-          "item": "cobblemon:razor_claw"
+          "variant": "time_range",
+          "range": "night"
         }
       ]
     }
   ],
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
-    "width": 1.0,
-    "height": 1.0,
+    "width": 1,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 35,
   "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
     "speed": 1
   },
   "height": 9,
-  "weight": 280
+  "weight": 280,
+  "aspects": [],
+  "cannotDynamax": false
 }

@@ -130,7 +130,7 @@ class EvolutionSelectScreen(
 
             // Render Pokémon
             poseStack.push()
-            poseStack.translate(x + (PORTRAIT_DIAMETER / 2) + 65.0, y + 0.0, 0.0)
+            poseStack.translate(x + (PORTRAIT_DIAMETER / 2) + 65.0, y - 5.0, 0.0)
             poseStack.scale(2.5F, 2.5F, 1F)
             drawProfilePokemon(
                 species = form.species,

@@ -205,6 +205,7 @@ fun drawPortraitPokemon(
         model.setupAnimStateful(null, state, 0F, 0F, 0F, 0F, 0F)
     }
 
+    matrixStack.push()
     matrixStack.translate(0.0, PORTRAIT_DIAMETER.toDouble() + 2.0, 0.0)
     matrixStack.scale(scale, scale, -scale)
     matrixStack.translate(0.0, -PORTRAIT_DIAMETER / 18.0, 0.0)
@@ -226,6 +227,8 @@ fun drawPortraitPokemon(
         model.render(matrixStack, buffer, packedLight, OverlayTexture.DEFAULT_UV, 1F, 1F, 1F, 1F)
         immediate.draw()
     }
+
+    matrixStack.pop()
 
     DiffuseLighting.enableGuiDepthLighting()
 }

@@ -10,6 +10,7 @@ package com.cobblemon.mod.common.battles.pokemon
 
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor
 import com.cobblemon.mod.common.api.moves.MoveSet
+import com.cobblemon.mod.common.api.pokemon.helditem.HeldItemManager
 import com.cobblemon.mod.common.api.pokemon.stats.Stat
 import com.cobblemon.mod.common.battles.actor.MultiPokemonBattleActor
 import com.cobblemon.mod.common.battles.actor.PokemonBattleActor
@@ -57,6 +58,16 @@ open class BattlePokemon(
 
     /** A set of all the BattlePokemon that they faced during the battle (for exp purposes) */
     val facedOpponents = mutableSetOf<BattlePokemon>()
+
+    /**
+     * A counter of critical hits during this battle, this is used for an evolution requirement.
+     */
+    var criticalHits: Int = 0
+
+    /**
+     * The [HeldItemManager] backing this [BattlePokemon].
+     */
+    lateinit var heldItemManager: HeldItemManager
 
     open fun getName(): MutableText {
         return if (actor is PokemonBattleActor || actor is MultiPokemonBattleActor) {

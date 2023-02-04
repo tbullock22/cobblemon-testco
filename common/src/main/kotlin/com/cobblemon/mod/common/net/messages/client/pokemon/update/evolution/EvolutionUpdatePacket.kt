@@ -50,13 +50,7 @@ abstract class EvolutionUpdatePacket : EvolutionLikeUpdatePacket<Evolution, Evol
         // Hacks for DRY, see CobblemonServerEvolutionController for context
 
         internal fun createSending(pokemon: Pokemon, evolution: Evolution): EvolutionDisplay {
-            val result = Pokemon().apply {
-                species = pokemon.species
-                shiny = pokemon.shiny
-                form = pokemon.form
-                gender = pokemon.gender
-                aspects = pokemon.aspects
-            }
+            val result = pokemon.clone()
             evolution.result.apply(result)
             val expectedDisplay = CobblemonEvolutionDisplay(evolution.id, result)
             val event = EvolutionDisplayEvent(result, expectedDisplay, evolution)

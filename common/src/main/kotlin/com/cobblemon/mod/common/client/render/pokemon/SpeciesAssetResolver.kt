@@ -50,19 +50,17 @@ class RegisteredSpeciesRendering(
         return variations.lastOrNull { it.aspects.all { it in aspects } && selector(it) != null }?.let(selector)
     }
 
-    fun getResolvedLayers(aspects: Set<String>): List<ModelLayer> {
-        val allLayers = mutableListOf<ModelLayer>()
-        variations[0].layers?.let(allLayers::addAll)
-
-        val variationLayers = variations.lastOrNull { it.aspects.all { it in aspects } && it.layers != null }?.layers ?: emptyList()
-        variationLayers.forEach { layer ->
-            allLayers.removeIf { it.name == layer.name }
-            if (layer.texture != null) {
-                allLayers.add(layer)
+    fun getResolvedLayers(aspects: Set<String>): Iterable<ModelLayer> {
+        val layerMaps = mutableMapOf<String, ModelLayer>()
+        for (variation in variations) {
+            val layers = variation.layers
+            if (layers != null && variation.aspects.all { it in aspects }) {
+                for (layer in layers) {
+                    layerMaps[layer.name] = layer
+                }
             }
         }
-
-        return allLayers
+        return layerMaps.values
     }
 
     fun getAllModels(): Set<Identifier> {
@@ -116,7 +114,7 @@ class RegisteredSpeciesRendering(
         return getResolvedTexture(aspects)
     }
 
-    fun getLayers(aspects: Set<String>): List<ModelLayer> {
+    fun getLayers(aspects: Set<String>): Iterable<ModelLayer> {
         PokemonModelRepository.posers[getResolvedPoser(aspects)] ?: throw IllegalStateException("No poser for $species")
         return getResolvedLayers(aspects)
     }

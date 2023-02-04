@@ -38,6 +38,12 @@ object CobblemonPokemonLabels {
     const val PSEUDO_LEGENDARY = "pseudo_legendary"
 
     /**
+     * Represents a baby Pokémon, this is not just a first stage Pokémon species, it is also unable to breed.
+     * For more information see this [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Baby_Pok%C3%A9mon) page.
+     */
+    const val BABY = "baby"
+
+    /**
      * Represents a Pokémon that has multiple forms depending on the region they're from.
      * In Cobblemon/Minecraft terms there are no regions, but we follow the official concept.
      */
@@ -89,21 +95,21 @@ object CobblemonPokemonLabels {
     const val REGIONAL_OF_HISUI = "hisui_regional"
 
     /**
-     * See [REGIONAL] and this [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Regional_form#Hisuian_Form) page.
+     * See [REGIONAL] and this [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Regional_form#Paldean_Form) page.
      */
     const val REGIONAL_OF_PALDEA = "paldea_regional"
-
-    /**
-     * Represents a Pokémon "baby", this is not just a first stage Pokémon species, it is also unable to breed.
-     * For more information see this [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Baby_Pok%C3%A9mon) page.
-     */
-    const val BABY = "baby"
 
     /**
      * Represents a mega evolution.
      * For more information see the [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Mega_Evolution) page.
      */
     const val MEGA = "mega"
+
+    /**
+     * Represents a primal reversion.
+     * For more information see the [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Primal_Reversion) page.
+     */
+    const val PRIMAL = "primal"
 
     /**
      * Represents a gmax form.
@@ -118,53 +124,72 @@ object CobblemonPokemonLabels {
     const val TOTEM = "totem"
 
     /**
+     * Represents a Paradox species.
+     * For more information see the [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Paradox_Pok%C3%A9mon) page.
+     */
+    const val PARADOX = "paradox"
+
+    /**
      * Pokémon from the national Pokédex of 1 to 151
+     * This may also include forms of Pokémon that had been previously introduced
      */
     const val GENERATION_1 = "gen1"
 
     /**
      * Pokémon from the national Pokédex of 152 to 251
+     * This may also include forms of Pokémon that had been previously introduced
      */
     const val GENERATION_2 = "gen2"
 
     /**
      * Pokémon from the national Pokédex of 252 to 386
+     * This may also include forms of Pokémon that had been previously introduced
      */
     const val GENERATION_3 = "gen3"
 
     /**
      * Pokémon from the national Pokédex of 387 to 493
+     * This may also include forms of Pokémon that had been previously introduced
      */
     const val GENERATION_4 = "gen4"
 
     /**
      * Pokémon from the national Pokédex of 494 to 649
+     * This may also include forms of Pokémon that had been previously introduced
      */
     const val GENERATION_5 = "gen5"
 
     /**
      * Pokémon from the national Pokédex of 650 to 721
+     * This may also include forms of Pokémon that had been previously introduced
      */
     const val GENERATION_6 = "gen6"
 
     /**
      * Pokémon from the national Pokédex of 722 to 809
+     * This may also include forms of Pokémon that had been previously introduced
      */
     const val GENERATION_7 = "gen7"
 
     /**
      * Pokémon from the national Pokédex of 810 to 905
+     * This may also include forms of Pokémon that had been previously introduced
      */
     const val GENERATION_8 = "gen8"
 
     /**
-     * Official Pokémon changed by a datapack, there is no guarantee authors will adhere to this principle
+     * Pokémon from the national Pokédex from 906 to 1008
+     * This may also include forms of Pokémon that had been previously introduced
+     */
+    const val GENERATION_9 = "gen9"
+
+    /**
+     * Official Pokémon changed by a data pack, there is no guarantee authors will adhere to this principle
      */
     const val CUSTOMIZED_OFFICIAL = "customized_official"
 
     /**
-     * Unofficial Pokémon created by a datapack, there is no guarantee authors will adhere to this principle
+     * Unofficial Pokémon created by a data pack, there is no guarantee authors will adhere to this principle
      */
-    const val FAKEMON = "fakemon"
-
+    const val CUSTOM = "custom"
 }

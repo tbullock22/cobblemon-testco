@@ -18,11 +18,11 @@ import net.minecraft.util.math.Vec3d
 class VoltorbModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("voltorb")
 
-    override val portraitScale = 2.0F
-    override val portraitTranslation = Vec3d(0.1, -1.2, 0.0)
+    override val portraitScale = 2.4F
+    override val portraitTranslation = Vec3d(0.0, -1.85, 0.0)
 
-    override val profileScale = 0.9F
-    override val profileTranslation = Vec3d(0.0, 0.3, 0.0)
+    override val profileScale = 1.4F
+    override val profileTranslation = Vec3d(0.0, -0.4, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

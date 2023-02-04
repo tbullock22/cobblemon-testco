@@ -14,9 +14,7 @@ import com.cobblemon.mod.common.api.pokemon.status.Status
 import com.cobblemon.mod.common.api.types.ElementalType
 import com.cobblemon.mod.common.battles.BattleRegistry
 import com.cobblemon.mod.common.pokemon.Gender
-import com.cobblemon.mod.common.pokemon.Pokemon
-import com.cobblemon.mod.common.tags.CobblemonBiomeTags
-import net.minecraft.entity.LivingEntity
+import com.cobblemon.mod.common.api.tags.CobblemonBiomeTags
 
 /**
  * A collection of some default usages of [CatchRateModifier]s.
@@ -29,40 +27,33 @@ object CatchRateModifiers {
     /**
      * Used by [PokeBalls.LEVEL_BALL].
      */
-    val LEVEL = BattleModifier { currentCatchRate, _, playerPokemon, pokemon ->
+    val LEVEL = BattleModifier { _, playerPokemon, pokemon ->
         val highestLevel = playerPokemon.maxOf { bp -> bp.battlePokemon?.originalPokemon?.level ?: 1 }
-        val multiplier = when {
+        when {
             highestLevel > (pokemon.level * 4) -> 4F
             highestLevel > (pokemon.level * 2) -> 3F
             highestLevel > pokemon.level -> 2F
             else -> 1F
         }
-        return@BattleModifier currentCatchRate * multiplier
     }
 
     /**
      * Used by [PokeBalls.DIVE_BALL].
      * This is the Minecraft interpretation of the generation 3 mechanic.
      */
-    val SUBMERGED_IN_WATER = WorldStateModifier { currentCatchRate, _, entity -> if (entity.isSubmergedInWater) currentCatchRate * 3.5F else currentCatchRate }
+    val SUBMERGED_IN_WATER = WorldStateModifier { _, entity -> if (entity.isSubmergedInWater) 3.5F else 1F }
 
     /**
      * Used by [PokeBalls.NEST_BALL].
      * See the [Bulbapedia article](https://bulbapedia.bulbagarden.net/wiki/Nest_Ball) for more info.
      */
-    val NEST: CatchRateModifier = BasicCatchRateModifier { currentCatchRate, _, pokemon, host ->
-        return@BasicCatchRateModifier if (pokemon.level >= 30) {
-            currentCatchRate
-        } else {
-            currentCatchRate * ((41 - pokemon.level) / 10F)
-        }
-    }
+    val NEST: CatchRateModifier = DynamicMultiplierModifier({ _, pokemon -> (41 - pokemon.level) / 10F }) { _, pokemon -> pokemon.level < 30 }
 
     /**
      * Used by [PokeBalls.LOVE_BALL].
      * Boosts the catch rate if the Pokémon is of the same species and opposite gender
      */
-    val LOVE = BattleModifier { currentCatchRate, _, playerPokemon, pokemon ->
+    val LOVE = BattleModifier { _, playerPokemon, pokemon ->
         if (
             pokemon.gender != Gender.GENDERLESS
             && playerPokemon.mapNotNull { it.battlePokemon?.originalPokemon }
@@ -72,10 +63,10 @@ object CatchRateModifiers {
                             it.gender != pokemon.gender
                 }
         ) {
-            currentCatchRate * (if (playerPokemon.any { it.battlePokemon?.originalPokemon?.species?.resourceIdentifier == pokemon.species.resourceIdentifier }) 8F else 2.5F)
+            if (playerPokemon.any { it.battlePokemon?.originalPokemon?.species?.resourceIdentifier == pokemon.species.resourceIdentifier }) 8F else 2.5F
         }
         else {
-            currentCatchRate
+            1F
         }
     }
 
@@ -86,14 +77,14 @@ object CatchRateModifiers {
      * 4× during Moon Phase 1 between the times of 12000 – 24000.
      * 1× otherwise.
      */
-    val MOON_PHASES: CatchRateModifier = WorldStateModifier { currentCatchRate, _, entity ->
+    val MOON_PHASES: CatchRateModifier = WorldStateModifier { _, entity ->
         if (entity.world.time in 12000..24000)
-            return@WorldStateModifier currentCatchRate
+            return@WorldStateModifier 1F
         when (entity.world.moonPhase) {
-            3, 7 -> currentCatchRate * 1.5F
-            2, 8 -> currentCatchRate * 2.5F
-            1 -> currentCatchRate * 4F
-            else -> currentCatchRate
+            3, 7 -> 1.5F
+            2, 8 -> 2.5F
+            1 -> 4F
+            else -> 1F
         }
     }
 
@@ -104,11 +95,11 @@ object CatchRateModifiers {
      * *1.5 on light level of 7 or lower, excluding 0.
      * *1 otherwise
      */
-    val LIGHT_LEVEL = WorldStateModifier { currentCatchRate, _, entity ->
+    val LIGHT_LEVEL = WorldStateModifier { _, entity ->
         when (entity.world.getLightLevel(entity.blockPos)) {
-            0 -> currentCatchRate * 3F
-            in 1..7 -> currentCatchRate * 1.5F
-            else -> currentCatchRate
+            0 -> 3F
+            in 1..7 -> 1.5F
+            else -> 1F
         }
     }
 
@@ -116,33 +107,33 @@ object CatchRateModifiers {
      * Used by [PokeBalls.SAFARI_BALL].
      * Checks if the target is not battling, if true boost by *1.5
      */
-    val SAFARI = WorldStateModifier { currentCatchRate, _, entity -> if (!entity.isBattling) currentCatchRate * 1.5F else currentCatchRate }
+    val SAFARI = WorldStateModifier { _, entity -> if (!entity.isBattling) 1.5F else 1F }
 
     /**
      * Used by [PokeBalls.PARK_BALL].
      * Checks if the entity is in a biome valid for the tag [CobblemonBiomeTags.IS_TEMPERATE].
      * If yes boosts the catch rate by *2.5
      */
-    val PARK = WorldStateModifier { currentCatchRate, _, entity ->
+    val PARK = WorldStateModifier { _, entity ->
         if (entity.world.getBiome(entity.blockPos).isIn(CobblemonBiomeTags.IS_TEMPERATE))
-            currentCatchRate * 2.5F
+            2.5F
         else
-            currentCatchRate
+            1F
     }
 
     /**
      * Used by [PokeBalls.HEAVY_BALL].
      * The base implementation of the heavy ball modifier mechanics.
      */
-    val WEIGHT_BASED: CatchRateModifier = BasicCatchRateModifier { currentCatchRate, _, pokemon, _ ->
+    val WEIGHT_BASED: CatchRateModifier = DynamicMultiplierModifier({ _, pokemon ->
         // Remember we use hectograms not kilograms
         when {
-            pokemon.form.weight >= 3000F -> currentCatchRate * 4F
-            pokemon.form.weight in 2000F..2999F -> currentCatchRate * 2.5F
-            pokemon.form.weight in 1000F..1999F -> currentCatchRate * 1.5F
-            else -> currentCatchRate
+            pokemon.form.weight >= 3000F -> 4F
+            pokemon.form.weight in 2000F..2999F -> 2.5F
+            pokemon.form.weight in 1000F..1999F -> 1.5F
+            else -> 1F
         }
-    }
+    }) { _, pokemon -> pokemon.form.weight >= 1000F }
 
     /**
      * Used by [PokeBalls.NET_BALL].
@@ -152,9 +143,7 @@ object CatchRateModifiers {
      * @param types The [ElementalType]s that will trigger the multiplier.
      * @return The multiplier modifier.
      */
-    fun typeBoosting(multiplier: Float, vararg types: ElementalType): CatchRateModifier = BasicCatchRateModifier { currentCatchRate, _, pokemon, host ->
-        return@BasicCatchRateModifier if (pokemon.form.types.any { types.contains(it) }) currentCatchRate * multiplier else currentCatchRate
-    }
+    fun typeBoosting(multiplier: Float, vararg types: ElementalType): CatchRateModifier = MultiplierModifier(multiplier) { _, pokemon -> pokemon.types.any { type -> types.contains(type) } }
 
     /**
      * Used by [PokeBalls.DREAM_BALL].
@@ -164,10 +153,7 @@ object CatchRateModifiers {
      * @param status The [Status]' that will trigger the multiplier.
      * @return The multiplier modifier.
      */
-    fun statusBoosting(multiplier: Float, vararg status: Status): CatchRateModifier = BasicCatchRateModifier { currentCatchRate, _, pokemon, host ->
-        val pokemonStatus = pokemon.status?.status ?: return@BasicCatchRateModifier currentCatchRate
-        return@BasicCatchRateModifier if (status.contains(pokemonStatus)) currentCatchRate * multiplier else currentCatchRate
-    }
+    fun statusBoosting(multiplier: Float, vararg status: Status): CatchRateModifier = MultiplierModifier(multiplier) { _, pokemon -> status.contains(pokemon.status?.status ?: return@MultiplierModifier false ) }
 
     /**
      * Used by [PokeBalls.QUICK_BALL] and [PokeBalls.TIMER_BALL].
@@ -176,15 +162,9 @@ object CatchRateModifiers {
      * @param multiplierCalculator Resolves the multiplier based on the number of turns.
      * @return The multiplier modifier.
      */
-    fun turnBased(multiplierCalculator: (turn: Int) -> Float) = BattleModifier { currentCatchRate, player, playerPokemon, pokemon ->
-        val battle = BattleRegistry.getBattleByParticipatingPlayer(player) ?: return@BattleModifier currentCatchRate
+    fun turnBased(multiplierCalculator: (turn: Int) -> Float) = BattleModifier {  player, _, _ ->
+        val battle = BattleRegistry.getBattleByParticipatingPlayer(player) ?: return@BattleModifier 1F
         multiplierCalculator.invoke(battle.turn)
-    }
-
-    private class BasicCatchRateModifier(private val calculator: (currentCatchRate: Float, thrower: LivingEntity, pokemon: Pokemon, host: Pokemon?) -> Float) : CatchRateModifier {
-
-        override fun modifyCatchRate(currentCatchRate: Float, thrower: LivingEntity, pokemon: Pokemon, host: Pokemon?) = this.calculator(currentCatchRate, thrower, pokemon, host)
-
     }
 
 }

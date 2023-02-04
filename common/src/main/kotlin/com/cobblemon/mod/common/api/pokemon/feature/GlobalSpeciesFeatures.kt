@@ -13,11 +13,14 @@ import com.cobblemon.mod.common.api.pokemon.aspect.AspectProvider
 import com.cobblemon.mod.common.api.properties.CustomPokemonProperty
 import com.cobblemon.mod.common.api.properties.CustomPokemonPropertyType
 import com.cobblemon.mod.common.api.reactive.SimpleObservable
+import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.util.adapters.SpeciesFeatureProviderAdapter
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
+import net.minecraft.nbt.NbtCompound
 import net.minecraft.resource.ResourceType
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Identifier
@@ -50,8 +53,8 @@ object GlobalSpeciesFeatures : JsonDataRegistry<SpeciesFeatureProvider<*>> {
         data.forEach(this::registerFromAssets)
     }
 
-    fun getCodeFeature(name: String) = resourceFeatures[name]
-    fun getResourceFeature(name: String) = codeFeatures[name]
+    fun getCodeFeature(name: String) = codeFeatures[name]
+    fun getResourceFeature(name: String) = resourceFeatures[name]
     fun getFeature(name: String) = getCodeFeature(name) ?: getResourceFeature(name)
 
     fun getFeatures() = (resourceFeatures.keys + codeFeatures.keys).mapNotNull(this::getFeature)
@@ -68,6 +71,13 @@ object GlobalSpeciesFeatures : JsonDataRegistry<SpeciesFeatureProvider<*>> {
     }
 
     fun register(name: String, provider: SpeciesFeatureProvider<*>) = register(name, provider, isCoded = true)
+    fun <T : SpeciesFeature> register(name: String, providerLambda: () -> T) {
+        register(name, object : SpeciesFeatureProvider<T> {
+            override fun invoke(pokemon: Pokemon) = providerLambda()
+            override fun invoke(nbt: NbtCompound) = providerLambda().apply { loadFromNBT(nbt) }
+            override fun invoke(json: JsonObject) = providerLambda().apply { loadFromJSON(json) }
+        })
+    }
     private fun registerFromAssets(identifier: Identifier, provider: SpeciesFeatureProvider<*>) = register(identifier.path, provider, isCoded = false)
 
     fun unregister(name: String) {

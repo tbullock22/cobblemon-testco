@@ -39,7 +39,6 @@ loom {
 dependencies {
     minecraft("net.minecraft:minecraft:${rootProject.property("mc_version")}")
     mappings("net.fabricmc:yarn:${rootProject.property("yarn_version")}")
-
 }
 
 tasks {

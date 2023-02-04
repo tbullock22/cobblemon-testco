@@ -1,10 +1,13 @@
 {
   "implemented": true,
-  "name": "moltres",
+  "name": "Moltres",
   "nationalPokedexNumber": 146,
   "primaryType": "fire",
   "secondaryType": "flying",
-  "abilities": ["pressure", "h:flamebody"],
+  "abilities": [
+    "pressure",
+    "h:flamebody"
+  ],
   "baseStats": {
     "hp": 90,
     "attack": 100,
@@ -18,12 +21,12 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "galar",
+      "name": "Galar",
       "primaryType": "dark",
-      "abilities": ["berserk"],
+      "secondaryType": "flying",
+      "abilities": [
+        "berserk"
+      ],
       "baseStats": {
         "hp": 90,
         "attack": 85,
@@ -32,9 +35,23 @@
         "special_defence": 125,
         "speed": 90
       },
+      "catchRate": 3,
+      "maleRatio": -1,
+      "baseExperienceYield": 290,
+      "baseFriendship": 35,
       "evYield": {
-        "special_defence": 3
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 3,
+        "speed": 0
       },
+      "experienceGroup": "slow",
+      "eggCycles": 80,
+      "eggGroups": [
+        "undiscovered"
+      ],
       "moves": [
         "1:gust",
         "1:leer",
@@ -52,6 +69,8 @@
         "60:endure",
         "65:memento",
         "70:skyattack",
+        "tm:acrobatics",
+        "tm:aerialace",
         "tm:agility",
         "tm:airslash",
         "tm:assurance",
@@ -62,17 +81,18 @@
         "tm:fly",
         "tm:foulplay",
         "tm:gigaimpact",
+        "tm:helpinghand",
         "tm:hex",
         "tm:hurricane",
         "tm:hyperbeam",
         "tm:hypervoice",
         "tm:imprison",
         "tm:nastyplot",
-        "tm:payback",
         "tm:protect",
+        "tm:raindance",
         "tm:rest",
         "tm:round",
-        "tm:safeguard",
+        "tm:sandstorm",
         "tm:scaryface",
         "tm:shadowball",
         "tm:sleeptalk",
@@ -80,24 +100,38 @@
         "tm:snore",
         "tm:steelwing",
         "tm:substitute",
+        "tm:sunnyday",
         "tm:swift",
+        "tm:tailwind",
+        "tm:takedown",
         "tm:taunt",
+        "tm:terablast",
+        "tm:thief",
         "tm:uturn",
         "tutor:dualwingbeat",
         "tutor:lashout"
       ],
-      "pokedex": [
-        "cobblemon.form.moltres-galar.desc1",
-        "cobblemon.form.moltres-galar.desc2"
+      "labels": [
+        "gen8",
+        "legendary",
+        "galar_regional"
       ],
+      "aspects": [
+        "galarian"
+      ],
+      "height": 20,
       "weight": 660,
-      "labels": ["gen1", "legendary", "galar_regional", "regional"]
+      "evolutions": [],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 290,
   "experienceGroup": "slow",
   "eggCycles": 80,
-  "eggGroups": ["undiscovered"],
+  "eggGroups": [
+    "undiscovered"
+  ],
   "behaviour": {
     "moving": {
       "fly": {
@@ -108,7 +142,6 @@
   "moves": [
     "1:gust",
     "1:leer",
-    "1:peck",
     "5:ember",
     "10:safeguard",
     "15:wingattack",
@@ -122,15 +155,15 @@
     "55:hurricane",
     "60:endure",
     "65:burnup",
+    "65:overheat",
     "70:skyattack",
+    "tm:acrobatics",
     "tm:aerialace",
     "tm:agility",
+    "tm:aircutter",
     "tm:airslash",
-    "tm:bide",
     "tm:bravebird",
     "tm:confide",
-    "tm:curse",
-    "tm:detect",
     "tm:doubleteam",
     "tm:endure",
     "tm:facade",
@@ -142,8 +175,8 @@
     "tm:fly",
     "tm:frustration",
     "tm:gigaimpact",
-    "tm:headbutt",
     "tm:heatwave",
+    "tm:helpinghand",
     "tm:hiddenpower",
     "tm:hurricane",
     "tm:hyperbeam",
@@ -152,16 +185,11 @@
     "tm:overheat",
     "tm:pluck",
     "tm:protect",
-    "tm:rage",
     "tm:raindance",
-    "tm:razorwind",
-    "tm:reflect",
     "tm:rest",
     "tm:return",
     "tm:roar",
-    "tm:rocksmash",
     "tm:round",
-    "tm:safeguard",
     "tm:sandstorm",
     "tm:secretpower",
     "tm:skydrop",
@@ -173,27 +201,50 @@
     "tm:sunnyday",
     "tm:swagger",
     "tm:swift",
+    "tm:tailwind",
     "tm:takedown",
-    "tm:toxic",
+    "tm:terablast",
     "tm:uturn",
     "tm:weatherball",
-    "tm:whirlwind",
     "tm:willowisp",
-    "tutor:aircutter",
+    "tutor:bide",
     "tutor:burningjealousy",
+    "tutor:curse",
     "tutor:defog",
+    "tutor:detect",
     "tutor:doubleedge",
+    "tutor:doubleteam",
     "tutor:dualwingbeat",
+    "tutor:extrasensory",
+    "tutor:frustration",
+    "tutor:headbutt",
+    "tutor:hiddenpower",
     "tutor:laserfocus",
     "tutor:mimic",
+    "tutor:morningsun",
     "tutor:mudslap",
     "tutor:ominouswind",
+    "tutor:peck",
+    "tutor:rage",
+    "tutor:razorwind",
+    "tutor:reflect",
+    "tutor:return",
+    "tutor:roar",
+    "tutor:rocksmash",
     "tutor:scorchingsands",
-    "tutor:tailwind",
-    "tutor:twister"
+    "tutor:swagger",
+    "tutor:toxic",
+    "tutor:twister",
+    "tutor:whirlwind"
   ],
-  "labels": ["gen1", "legendary", "kanto_regional", "regional"],
-  "pokedex": ["cobblemon.species.moltres.desc1", "cobblemon.species.moltres.desc2"],
+  "labels": [
+    "gen1",
+    "legendary",
+    "kanto_regional"
+  ],
+  "pokedex": [
+    "cobblemon.species.moltres.desc"
+  ],
   "evolutions": [],
   "baseScale": 1.6,
   "hitbox": {
@@ -203,8 +254,15 @@
   },
   "baseFriendship": 35,
   "evYield": {
-    "special_attack": 3
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 3,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 20,
-  "weight": 600
+  "weight": 600,
+  "aspects": [],
+  "cannotDynamax": false
 }

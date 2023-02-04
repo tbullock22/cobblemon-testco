@@ -75,6 +75,8 @@ class Summary private constructor(): Screen(Text.translatable("cobblemon.ui.summ
         private val typeSpacerDoubleResource = cobblemonResource("ui/summary/type_spacer_double.png")
         private val sideSpacerResource = cobblemonResource("ui/summary/summary_side_spacer.png")
         private val evolveButtonResource = cobblemonResource("ui/summary/summary_evolve_button.png")
+
+        val iconShinyResource = cobblemonResource("ui/summary/icon_shiny.png")
     }
 
     internal lateinit var selectedPokemon: Pokemon
@@ -485,6 +487,19 @@ class Summary private constructor(): Screen(Text.translatable("cobblemon.ui.summ
             shadow = true
         )
 
+        // Shiny Icon
+        if (selectedPokemon.shiny) {
+            blitk(
+                matrixStack = pMatrixStack,
+                texture = iconShinyResource,
+                x = (x + 63.5) / SCALE,
+                y = (y + 33.5) / SCALE,
+                width = 14,
+                height = 14,
+                scale = SCALE
+            )
+        }
+
         // Type Icon(s)
         blitk(
             matrixStack = pMatrixStack,
@@ -493,6 +508,23 @@ class Summary private constructor(): Screen(Text.translatable("cobblemon.ui.summ
             y = (y + 126) / SCALE,
             width = 134,
             height = 24,
+            scale = SCALE
+        )
+
+        // Held Item
+        val heldItem = selectedPokemon.heldItemNoCopy()
+        val itemX = x + 3
+        val itemY = y + 104
+        if (!heldItem.isEmpty) {
+            MinecraftClient.getInstance().itemRenderer.renderGuiItemIcon(heldItem, itemX, itemY)
+            MinecraftClient.getInstance().itemRenderer.renderGuiItemOverlay(MinecraftClient.getInstance().textRenderer, heldItem, itemX, itemY)
+        }
+
+        drawScaledText(
+            matrixStack = pMatrixStack,
+            text = lang("held_item"),
+            x = x + 27,
+            y = y + 114.5,
             scale = SCALE
         )
 
@@ -516,6 +548,12 @@ class Summary private constructor(): Screen(Text.translatable("cobblemon.ui.summ
 
         // Render all added Widgets
         super.render(pMatrixStack, pMouseX, pMouseY, pPartialTicks)
+
+        // Render Item Tooltip
+        if (!heldItem.isEmpty) {
+            val itemHovered = pMouseX.toFloat() in (itemX.toFloat()..(itemX.toFloat() + 16)) && pMouseY.toFloat() in (itemY.toFloat()..(itemY.toFloat() + 16))
+            if (itemHovered) renderTooltip(pMatrixStack, heldItem, pMouseX, pMouseY)
+        }
     }
 
     /**

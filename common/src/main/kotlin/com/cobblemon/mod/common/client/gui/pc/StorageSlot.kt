@@ -11,12 +11,12 @@ package com.cobblemon.mod.common.client.gui.pc
 import com.cobblemon.mod.common.api.gui.blitk
 import com.cobblemon.mod.common.client.gui.drawProfilePokemon
 import com.cobblemon.mod.common.client.render.drawScaledText
+import com.cobblemon.mod.common.client.render.renderScaledGuiItemIcon
 import com.cobblemon.mod.common.pokemon.Gender
 import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.cobblemon.mod.common.util.lang
-import com.mojang.blaze3d.systems.RenderSystem
-import net.minecraft.client.MinecraftClient
+import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.gui.widget.ButtonWidget
 import net.minecraft.client.sound.SoundManager
 import net.minecraft.client.util.math.MatrixStack
@@ -50,17 +50,16 @@ open class StorageSlot(
     fun renderSlot(matrices: MatrixStack, posX: Int, posY: Int) {
         val pokemon = getPokemon() ?: return
 
-        val minecraft = MinecraftClient.getInstance()
-        RenderSystem.enableScissor(
-            ((posX - 2) * minecraft.window.scaleFactor).toInt(),
-            (minecraft.window.height - (posY + SIZE + 2) * minecraft.window.scaleFactor).toInt(),
-            ((SIZE + 4) * minecraft.window.scaleFactor).toInt(),
-            ((SIZE + 4) * minecraft.window.scaleFactor).toInt()
+        DrawableHelper.enableScissor(
+            posX - 2,
+            posY + 2,
+            posX + SIZE + 4,
+            posY + SIZE + 4
         )
 
         // Render Pokémon
         matrices.push()
-        matrices.translate(posX + (SIZE / 2.0), posY + 3.0, 0.0)
+        matrices.translate(posX + (SIZE / 2.0), posY + 1.0, 0.0)
         matrices.scale(2.5F, 2.5F, 1F)
         drawProfilePokemon(
             renderablePokemon = pokemon.asRenderablePokemon(),
@@ -71,9 +70,9 @@ open class StorageSlot(
         )
         matrices.pop()
 
-        RenderSystem.disableScissor()
+        DrawableHelper.disableScissor()
 
-        // Ensure labels are not hidden behind Pokémon render
+        // Ensure elements are not hidden behind Pokémon render
         matrices.push()
         matrices.translate(0.0, 0.0, 100.0)
         // Level
@@ -108,6 +107,18 @@ open class StorageSlot(
                 width = 11,
                 height = 8,
                 scale = PCGUI.SCALE
+            )
+        }
+
+        // Held Item
+        val heldItem = pokemon.heldItemNoCopy()
+        if (!heldItem.isEmpty) {
+            renderScaledGuiItemIcon(
+                itemStack = heldItem,
+                x = posX + 16.0,
+                y = posY + 16.0,
+                scale = 0.5,
+                matrixStack = matrices
             )
         }
     }

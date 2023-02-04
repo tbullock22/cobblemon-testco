@@ -16,6 +16,7 @@ import com.cobblemon.mod.common.api.battles.model.actor.BattleActor
 import com.cobblemon.mod.common.api.battles.model.actor.EntityBackedBattleActor
 import com.cobblemon.mod.common.api.battles.model.actor.FleeableBattleActor
 import com.cobblemon.mod.common.api.net.NetworkPacket
+import com.cobblemon.mod.common.api.tags.CobblemonItemTags
 import com.cobblemon.mod.common.api.text.yellow
 import com.cobblemon.mod.common.battles.ActiveBattlePokemon
 import com.cobblemon.mod.common.battles.BattleCaptureAction
@@ -27,7 +28,7 @@ import com.cobblemon.mod.common.battles.dispatch.DispatchResult
 import com.cobblemon.mod.common.battles.dispatch.GO
 import com.cobblemon.mod.common.battles.runner.GraalShowdown
 import com.cobblemon.mod.common.net.messages.client.battle.BattleEndPacket
-import com.cobblemon.mod.common.pokemon.feature.BattleCriticalHitsFeature
+import com.cobblemon.mod.common.pokemon.evolution.progress.DefeatEvolutionProgress
 import com.cobblemon.mod.common.util.battleLang
 import com.cobblemon.mod.common.util.getPlayer
 import java.util.UUID
@@ -53,7 +54,7 @@ open class PokemonBattle(
         side2.battle = this
         this.actors.forEach { actor ->
             actor.pokemonList.forEach { battlePokemon ->
-                battlePokemon.effectedPokemon.getFeature<BattleCriticalHitsFeature>(BattleCriticalHitsFeature.ID)?.reset()
+                battlePokemon.criticalHits = 0
             }
         }
     }
@@ -164,15 +165,33 @@ open class PokemonBattle(
 
     fun end() {
         ended = true
-        for (actor in actors) {
-            for (pokemon in actor.pokemonList.filter { it.health > 0 }) {
-                if (pokemon.facedOpponents.isNotEmpty() /* TODO exp share held item check */) {
-                    val experience = Cobblemon.experienceCalculator.calculate(pokemon)
-                    if (experience > 0) {
-                        actor.awardExperience(pokemon, (experience * Cobblemon.config.experienceMultiplier).toInt())
-                    }
-                    Cobblemon.evYieldCalculator.calculate(pokemon).forEach { (stat, amount) ->
-                        pokemon.originalPokemon.evs.add(stat, amount)
+        this.actors.forEach { actor ->
+            val faintedPokemons = actor.pokemonList.filter { it.health <= 0 }
+            actor.getSide().getOppositeSide().actors.forEach { opponent ->
+                val opponentNonFaintedPokemons = opponent.pokemonList.filter { it.health > 0 }
+                faintedPokemons.forEach { faintedPokemon ->
+                    for (opponentPokemon in opponentNonFaintedPokemons) {
+                        val facedFainted = opponentPokemon.facedOpponents.contains(faintedPokemon)
+                        val defeatProgress = DefeatEvolutionProgress()
+                        val pokemon = opponentPokemon.effectedPokemon
+                        if (facedFainted && defeatProgress.shouldKeep(pokemon)) {
+                            val progress = pokemon.evolutionProxy.current().progressFirstOrCreate({ it is DefeatEvolutionProgress && it.currentProgress().target.matches(faintedPokemon.effectedPokemon) }) { defeatProgress }
+                            progress.updateProgress(DefeatEvolutionProgress.Progress(progress.currentProgress().target, progress.currentProgress().amount + 1))
+                        }
+                        val multiplier = when {
+                            // ToDo when Exp. All is implement if enabled && !facedFainted return 2.0, probably should be a configurable value too, this will have priority over the Exp. Share
+                            !facedFainted && pokemon.heldItemNoCopy().isIn(CobblemonItemTags.EXPERIENCE_SHARE) -> Cobblemon.config.experienceShareMultiplier
+                            // ToDo when Exp. All is implemented the facedFainted and else can be collapsed into the 1.0 return value
+                            facedFainted -> 1.0
+                            else -> continue
+                        }
+                        val experience = Cobblemon.experienceCalculator.calculate(opponentPokemon, faintedPokemon, multiplier)
+                        if (experience > 0) {
+                            opponent.awardExperience(opponentPokemon, (experience * Cobblemon.config.experienceMultiplier).toInt())
+                        }
+                        Cobblemon.evYieldCalculator.calculate(opponentPokemon).forEach { (stat, amount) ->
+                            pokemon.evs.add(stat, amount)
+                        }
                     }
                 }
             }
@@ -254,7 +273,7 @@ open class PokemonBattle(
             .filter { it.getWorldAndPosition() != null }
             .none { pokemonActor ->
                 val (world, pos) = pokemonActor.getWorldAndPosition()!!
-                val nearestPlayerActorDistance = actors
+                val nearestPlayerActorDistance = actors.asSequence()
                     .filter { it.type == ActorType.PLAYER }
                     .filterIsInstance<EntityBackedBattleActor<*>>()
                     .mapNotNull { it.entity }
@@ -282,4 +301,5 @@ open class PokemonBattle(
             actors.forEach { it.responses.clear() ; it.request = null }
         }
     }
+
 }

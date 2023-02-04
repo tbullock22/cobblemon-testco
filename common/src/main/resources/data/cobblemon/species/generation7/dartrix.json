@@ -1,10 +1,13 @@
 {
   "implemented": true,
-  "name": "dartrix",
+  "name": "Dartrix",
   "nationalPokedexNumber": 723,
   "primaryType": "grass",
   "secondaryType": "flying",
-  "abilities": ["overgrow", "h:longreach"],
+  "abilities": [
+    "overgrow",
+    "h:longreach"
+  ],
   "baseStats": {
     "hp": 78,
     "attack": 75,
@@ -16,11 +19,12 @@
   "catchRate": 45,
   "maleRatio": 0.875,
   "shoulderMountable": false,
-  "forms": [],
   "baseExperienceYield": 147,
-  "experienceGroup": "mediumslow",
+  "experienceGroup": "medium_slow",
   "eggCycles": 15,
-  "eggGroups": ["flying"],
+  "eggGroups": [
+    "flying"
+  ],
   "behaviour": {
     "moving": {
       "fly": {
@@ -42,10 +46,10 @@
     ]
   },
   "moves": [
-    "1:tackle",
-    "1:growl",
     "1:astonish",
+    "1:growl",
     "1:leafage",
+    "1:tackle",
     "9:peck",
     "12:shadowsneak",
     "15:razorleaf",
@@ -59,9 +63,13 @@
     "40:leafblade",
     "45:featherdance",
     "50:bravebird",
+    "tm:aerialace",
+    "tm:aircutter",
+    "tm:airslash",
     "tm:attract",
     "tm:batonpass",
     "tm:bravebird",
+    "tm:bulletseed",
     "tm:confide",
     "tm:doubleteam",
     "tm:echoedvoice",
@@ -72,12 +80,17 @@
     "tm:frustration",
     "tm:gigadrain",
     "tm:grassknot",
+    "tm:grasspledge",
+    "tm:grassyterrain",
+    "tm:helpinghand",
     "tm:hiddenpower",
-    "tm:leafblade",
+    "tm:leafstorm",
     "tm:lightscreen",
+    "tm:magicalleaf",
     "tm:nastyplot",
     "tm:naturepower",
     "tm:protect",
+    "tm:raindance",
     "tm:rest",
     "tm:return",
     "tm:roost",
@@ -94,47 +107,54 @@
     "tm:swagger",
     "tm:swift",
     "tm:swordsdance",
+    "tm:tailwind",
+    "tm:takedown",
+    "tm:terablast",
     "tm:toxic",
+    "tm:trailblaze",
     "tm:workup",
     "tutor:covet",
     "tutor:defog",
     "tutor:dualwingbeat",
-    "tutor:grasspledge",
     "tutor:grassyglide",
     "tutor:skyattack",
     "tutor:worryseed"
   ],
-  "labels": ["gen7"],
-  "pokedex": ["cobblemon.species.dartrix.desc1", "cobblemon.species.dartrix.desc2"],
+  "labels": [
+    "gen7"
+  ],
+  "pokedex": [
+    "cobblemon.species.dartrix.desc"
+  ],
   "preEvolution": "rowlet",
   "evolutions": [
     {
-      "id": "dartrix_decidueye_hisui",
+      "id": "dartrix_decidueye",
       "variant": "level_up",
-      "result": "decidueye hisuian",
+      "result": "decidueye",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "spiritshackle"
+      ],
       "requirements": [
         {
           "variant": "level",
           "minLevel": 34
-        },
-        {
-          "variant": "biome",
-          "biome": "#cobblemon:is_highlands"
         }
       ]
     },
     {
       "id": "dartrix_decidueye",
       "variant": "level_up",
-      "result": "decidueye",
+      "result": "decidueye form=hisui",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "triplearrows"
+      ],
       "requirements": [
         {
           "variant": "level",
-          "minLevel": 34
+          "minLevel": 36
         }
       ]
     }
@@ -142,13 +162,20 @@
   "baseScale": 0.7,
   "hitbox": {
     "width": 0.6,
-    "height": 1.0,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 50,
   "evYield": {
-    "hp": 2
+    "hp": 2,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 7,
-  "weight": 160
+  "weight": 160,
+  "aspects": [],
+  "cannotDynamax": false
 }

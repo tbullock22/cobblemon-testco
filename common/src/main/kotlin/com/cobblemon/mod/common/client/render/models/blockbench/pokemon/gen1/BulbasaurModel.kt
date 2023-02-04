@@ -25,10 +25,10 @@ class BulbasaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Qua
     override val hindLeftLeg = getPart("leg_back_left")
     override val hindRightLeg = getPart("leg_back_right")
 
-    override val portraitScale = 1.65F
-    override val portraitTranslation = Vec3d(0.0, -0.6, 0.0)
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.15, 0.0)
+    override val portraitScale = 1.7F
+    override val portraitTranslation = Vec3d(-0.14, -0.7, 0.0)
+    override val profileScale = 0.9F
+    override val profileTranslation = Vec3d(0.0, 0.4, 0.0)
 
     lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose

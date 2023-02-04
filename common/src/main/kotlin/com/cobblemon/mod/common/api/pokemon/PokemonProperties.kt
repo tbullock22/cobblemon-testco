@@ -173,14 +173,14 @@ open class PokemonProperties {
             val matchingKeyPair = getMatchedKeyPair(keyPairs, labels)
             if (matchingKeyPair != null) {
                 val value = matchingKeyPair.second?.lowercase()
-                if (value == null) {
-                    return null
+                return if (value == null) {
+                    null
                 } else {
                     val matched = find { stringer(it).lowercase() == value }
                     if (matched != null) {
                         keyPairs.remove(matchingKeyPair)
                     }
-                    return matched
+                    matched
                 }
             } else if (labelsOptional) {
                 val keyPair = keyPairs.firstOrNull { pair -> any { stringer(it).lowercase() == pair.first } }
@@ -230,7 +230,7 @@ open class PokemonProperties {
                 null
             }
         }?.let { pokemon.species = it }
-        form?.let { formID -> pokemon.species.forms.firstOrNull { it.name.equals(formID, true) } }?.let { form -> pokemon.form = form }
+        form?.let { formID -> pokemon.species.forms.firstOrNull { it.formOnlyShowdownId().equals(formID, true) } }?.let { form -> pokemon.form = form }
         shiny?.let { pokemon.shiny = it }
         gender?.let { pokemon.gender = it }
         level?.let { pokemon.level = it }
@@ -252,7 +252,7 @@ open class PokemonProperties {
                 null
             }
         }?.let { pokemonEntity.pokemon.species = it }
-        form?.let { formID -> pokemonEntity.pokemon.species.forms.firstOrNull { it.name.equals(formID, true) } }?.let { form -> pokemonEntity.pokemon.form = form }
+        form?.let { formID -> pokemonEntity.pokemon.species.forms.firstOrNull { it.formOnlyShowdownId().equals(formID, true) } }?.let { form -> pokemonEntity.pokemon.form = form }
         level?.let { pokemonEntity.pokemon.level = it }
         shiny?.let { pokemonEntity.pokemon.shiny = it }
         gender?.let { pokemonEntity.pokemon.gender = it }
@@ -315,9 +315,13 @@ open class PokemonProperties {
         apply(pokemon)
         // Force the setter to initialize it
         pokemon.species = pokemon.species
+        // This should only be a thing once we have moveset control in properties until then a creation should require a moveset init.
+        /*
         if (pokemon.moveSet.none { it != null }) {
             pokemon.initializeMoveset()
         }
+         */
+        pokemon.initializeMoveset()
         return pokemon
     }
 
@@ -373,6 +377,7 @@ open class PokemonProperties {
         val custom = JsonArray()
         customProperties.map { it.asString() }.forEach { custom.add(it) }
         json.add(DataKeys.POKEMON_PROPERTIES_CUSTOM, custom)
+
         return json
     }
 

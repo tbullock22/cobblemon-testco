@@ -27,11 +27,11 @@ class GrowlitheModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Qua
     override val hindLeftLeg = getPart("leg_back_left1")
     override val hindRightLeg = getPart("leg_back_right1")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 2.1F
+    override val portraitTranslation = Vec3d(-0.2, -0.6, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.9F
+    override val profileTranslation = Vec3d(0.0, 0.4, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

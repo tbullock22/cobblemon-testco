@@ -88,7 +88,7 @@ interface ExperienceGroup : LevelCurve {
  * @since March 21st, 2022
  */
 abstract class CachedExperienceGroup : ExperienceGroup {
-    private val thresholds = CachedLevelThresholds(experienceToLevel = this::getExperience)
+    private val thresholds = CachedLevelThresholds(experienceToLevel = ::getExperience)
     override fun getLevel(experience: Int) = thresholds.getLevel(experience)
 }
 
@@ -111,12 +111,12 @@ object Fast : CachedExperienceGroup() {
 }
 
 object MediumFast : CachedExperienceGroup() {
-    override val name = "mediumfast"
+    override val name = "medium_fast"
     override fun getExperience(level: Int) = if (level == 1) 0 else level.pow(3)
 }
 
 object MediumSlow : CachedExperienceGroup() {
-    override val name = "mediumslow"
+    override val name = "medium_slow"
     override fun getExperience(level: Int) = max(0, level.pow(3) * 6 / 5 - 15 * level.pow(2) + 100 * level - 140)
 }
 

@@ -1,301 +1,373 @@
 {
-    "implemented": true,
-    "name": "eevee",
-    "nationalPokedexNumber": 133,
-    "primaryType": "normal",
-    "abilities": [
+  "implemented": true,
+  "name": "Eevee",
+  "nationalPokedexNumber": 133,
+  "primaryType": "normal",
+  "abilities": [
+    "runaway",
+    "adaptability",
+    "h:anticipation"
+  ],
+  "baseStats": {
+    "hp": 55,
+    "attack": 55,
+    "defence": 50,
+    "special_attack": 45,
+    "special_defence": 65,
+    "speed": 55
+  },
+  "catchRate": 45,
+  "maleRatio": 0.875,
+  "shoulderMountable": true,
+  "forms": [
+    {
+      "name": "Starter",
+      "primaryType": "normal",
+      "abilities": [
         "runaway",
         "adaptability",
         "h:anticipation"
-    ],
-    "baseStats": {
+      ],
+      "baseStats": {
+        "hp": 65,
+        "attack": 75,
+        "defence": 70,
+        "special_attack": 65,
+        "special_defence": 85,
+        "speed": 75
+      },
+      "catchRate": 45,
+      "maleRatio": 0.875,
+      "baseExperienceYield": 87,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 1,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 35,
+      "eggGroups": [
+        "undiscovered"
+      ],
+      "moves": [
+        "tutor:baddybad",
+        "tutor:bite",
+        "tutor:bouncybubble",
+        "tutor:buzzybuzz",
+        "tutor:dig",
+        "tutor:doubleedge",
+        "tutor:doublekick",
+        "tutor:facade",
+        "tutor:freezyfrost",
+        "tutor:glitzyglow",
+        "tutor:growl",
+        "tutor:headbutt",
+        "tutor:helpinghand",
+        "tutor:irontail",
+        "tutor:payday",
+        "tutor:protect",
+        "tutor:quickattack",
+        "tutor:reflect",
+        "tutor:rest",
+        "tutor:sandattack",
+        "tutor:sappyseed",
+        "tutor:shadowball",
+        "tutor:sizzlyslide",
+        "tutor:sparklyswirl",
+        "tutor:substitute",
+        "tutor:swift",
+        "tutor:tackle",
+        "tutor:tailwhip",
+        "tutor:takedown",
+        "tutor:toxic",
+        "tutor:veeveevolley"
+      ],
+      "labels": [
+        "gen7"
+      ],
+      "aspects": [
+        "starter"
+      ],
+      "height": 3,
+      "weight": 65,
+      "evolutions": [],
+      "cannotDynamax": false,
+      "battleOnly": false
+    },
+    {
+      "name": "Gmax",
+      "primaryType": "normal",
+      "abilities": [
+        "runaway",
+        "adaptability",
+        "h:anticipation"
+      ],
+      "baseStats": {
         "hp": 55,
         "attack": 55,
         "defence": 50,
         "special_attack": 45,
         "special_defence": 65,
         "speed": 55
-    },
-    "catchRate": 45,
-    "maleRatio": 0.875,
-    "shoulderMountable": true,
-    "forms": [
-        {
-            "name": "normal"
-        },
-        {
-            "name": "starter",
-            "baseStats": {
-                "hp": 65,
-                "attack": 75,
-                "defence": 70,
-                "special_attack": 65,
-                "special_defence": 85,
-                "speed": 75
-            },
-            "baseExperienceYield": 87,
-            "moves": [
-                "1:tackle",
-                "1:growl",
-                "3:tailwhip",
-                "6:quickattack",
-                "10:doublekick",
-                "14:sandattack",
-                "17:bite",
-                "21:swift",
-                "24:takedown",
-                "28:doubleedge",
-                "31:helpinghand",
-                "tm:dig",
-                "tm:facade",
-                "tm:headbutt",
-                "tm:helpinghand",
-                "tm:irontail",
-                "tm:payday",
-                "tm:protect",
-                "tm:reflect",
-                "tm:rest",
-                "tm:shadowball",
-                "tm:substitute",
-                "tm:toxic",
-                "tutor:baddybad",
-                "tutor:bouncybubble",
-                "tutor:buzzybuzz",
-                "tutor:freezyfrost",
-                "tutor:glitzyglow",
-                "tutor:sappyseed",
-                "tutor:sizzlyslide",
-                "tutor:sparklyswirl"
-            ],
-            "pokedex": [
-                "cobblemon.form.eevee-starter.desc1",
-                "cobblemon.form.eevee-starter.desc2"
-            ]
-        },
-        {
-            "name": "gmax",
-            "moves": [],
-            "labels": [
-                "gen1",
-                "gmax"
-            ],
-            "pokedex": [
-                "cobblemon.form.eevee-gmax.desc1",
-                "cobblemon.form.eevee-gmax.desc2"
-            ],
-            "height": 180,
-            "weight": 10000
-        }
-    ],
-    "baseExperienceYield": 65,
-    "experienceGroup": "mediumfast",
-    "eggCycles": 35,
-    "eggGroups": [
+      },
+      "catchRate": 45,
+      "maleRatio": 0.875,
+      "baseExperienceYield": 65,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 1,
+        "speed": 0
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 35,
+      "eggGroups": [
         "field"
-    ],
-    "moves": [
-        "1:tackle",
-        "1:tailwhip",
-        "1:growl",
-        "1:helpinghand",
-        "1:covet",
-        "5:sandattack",
-        "10:quickattack",
-        "15:babydolleyes",
-        "20:swift",
-        "20:refresh",
-        "25:bite",
-        "30:copycat",
-        "35:batonpass",
-        "40:takedown",
-        "45:charm",
-        "45:trumpcard",
-        "50:doubleedge",
-        "55:lastresort",
-        "egg:captivate",
-        "egg:curse",
-        "egg:detect",
-        "egg:doublekick",
-        "egg:flail",
-        "egg:mudslap",
-        "egg:naturalgift",
-        "egg:synchronoise",
-        "egg:tickle",
-        "egg:wish",
-        "egg:yawn",
-        "tm:attract",
-        "tm:batonpass",
-        "tm:bide",
-        "tm:bodyslam",
-        "tm:charm",
-        "tm:confide",
-        "tm:dig",
-        "tm:doubleteam",
-        "tm:echoedvoice",
-        "tm:endure",
-        "tm:facade",
-        "tm:faketears",
-        "tm:focusenergy",
-        "tm:frustration",
-        "tm:headbutt",
-        "tm:helpinghand",
-        "tm:hiddenpower",
-        "tm:hypervoice",
-        "tm:irontail",
-        "tm:payday",
-        "tm:protect",
-        "tm:rage",
-        "tm:raindance",
-        "tm:reflect",
-        "tm:rest",
-        "tm:retaliate",
-        "tm:return",
-        "tm:round",
-        "tm:secretpower",
-        "tm:shadowball",
-        "tm:skullbash",
-        "tm:sleeptalk",
-        "tm:snore",
-        "tm:storedpower",
-        "tm:substitute",
-        "tm:sunnyday",
-        "tm:swagger",
-        "tm:swift",
-        "tm:toxic",
-        "tm:weatherball",
-        "tm:workup",
-        "tutor:healbell",
-        "tutor:laserfocus",
-        "tutor:mimic"
-    ],
-    "labels": [
-        "gen1"
-    ],
-    "pokedex": [
-        "cobblemon.species.eevee.desc1",
-        "cobblemon.species.eevee.desc2"
-    ],
-    "evolutions": [
+      ],
+      "moves": [],
+      "labels": [
+        "gen8",
+        "gmax"
+      ],
+      "aspects": [
+        "gmax"
+      ],
+      "height": 180,
+      "weight": 0,
+      "evolutions": [],
+      "cannotDynamax": false,
+      "battleOnly": false
+    }
+  ],
+  "baseExperienceYield": 65,
+  "experienceGroup": "medium_fast",
+  "eggCycles": 35,
+  "eggGroups": [
+    "field"
+  ],
+  "moves": [
+    "1:covet",
+    "1:growl",
+    "1:helpinghand",
+    "1:tackle",
+    "1:tailwhip",
+    "5:sandattack",
+    "10:quickattack",
+    "15:babydolleyes",
+    "20:refresh",
+    "20:swift",
+    "25:bite",
+    "30:copycat",
+    "35:batonpass",
+    "40:takedown",
+    "45:charm",
+    "45:trumpcard",
+    "50:doubleedge",
+    "55:lastresort",
+    "egg:captivate",
+    "egg:curse",
+    "egg:detect",
+    "egg:doublekick",
+    "egg:flail",
+    "egg:mudslap",
+    "egg:naturalgift",
+    "egg:synchronoise",
+    "egg:tickle",
+    "egg:wish",
+    "egg:yawn",
+    "tm:attract",
+    "tm:batonpass",
+    "tm:bodyslam",
+    "tm:calmmind",
+    "tm:charm",
+    "tm:confide",
+    "tm:dig",
+    "tm:doubleteam",
+    "tm:echoedvoice",
+    "tm:endure",
+    "tm:facade",
+    "tm:faketears",
+    "tm:focusenergy",
+    "tm:frustration",
+    "tm:helpinghand",
+    "tm:hiddenpower",
+    "tm:hypervoice",
+    "tm:irontail",
+    "tm:mudslap",
+    "tm:payday",
+    "tm:protect",
+    "tm:raindance",
+    "tm:rest",
+    "tm:retaliate",
+    "tm:return",
+    "tm:round",
+    "tm:secretpower",
+    "tm:shadowball",
+    "tm:sleeptalk",
+    "tm:snore",
+    "tm:storedpower",
+    "tm:substitute",
+    "tm:sunnyday",
+    "tm:swagger",
+    "tm:swift",
+    "tm:takedown",
+    "tm:terablast",
+    "tm:trailblaze",
+    "tm:weatherball",
+    "tm:workup",
+    "tutor:bide",
+    "tutor:celebrate",
+    "tutor:doubleteam",
+    "tutor:frustration",
+    "tutor:headbutt",
+    "tutor:healbell",
+    "tutor:hiddenpower",
+    "tutor:irontail",
+    "tutor:laserfocus",
+    "tutor:mimic",
+    "tutor:payday",
+    "tutor:rage",
+    "tutor:reflect",
+    "tutor:return",
+    "tutor:sing",
+    "tutor:skullbash",
+    "tutor:swagger",
+    "tutor:toxic"
+  ],
+  "labels": [
+    "gen1"
+  ],
+  "pokedex": [
+    "cobblemon.species.eevee.desc"
+  ],
+  "evolutions": [
+    {
+      "id": "eevee_vaporeon",
+      "variant": "item_interact",
+      "result": "vaporeon",
+      "consumeHeldItem": false,
+      "learnableMoves": [
+        "watergun"
+      ],
+      "requirements": [],
+      "requiredContext": "cobblemon:water_stone"
+    },
+    {
+      "id": "eevee_jolteon",
+      "variant": "item_interact",
+      "result": "jolteon",
+      "consumeHeldItem": false,
+      "learnableMoves": [
+        "thundershock"
+      ],
+      "requirements": [],
+      "requiredContext": "cobblemon:thunder_stone"
+    },
+    {
+      "id": "eevee_flareon",
+      "variant": "item_interact",
+      "result": "flareon",
+      "consumeHeldItem": false,
+      "learnableMoves": [
+        "ember"
+      ],
+      "requirements": [],
+      "requiredContext": "cobblemon:fire_stone"
+    },
+    {
+      "id": "eevee_espeon",
+      "variant": "level_up",
+      "result": "espeon",
+      "consumeHeldItem": false,
+      "learnableMoves": [],
+      "requirements": [
         {
-            "id": "eevee_vaporeon",
-            "variant": "item_interact",
-            "result": "vaporeon",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [],
-            "requiredContext": "cobblemon:water_stone"
+          "variant": "friendship",
+          "amount": 160
         },
         {
-            "id": "eevee_jolteon",
-            "variant": "item_interact",
-            "result": "jolteon",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [],
-            "requiredContext": "cobblemon:thunder_stone"
-        },
-        {
-            "id": "eevee_flareon",
-            "variant": "item_interact",
-            "result": "flareon",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [],
-            "requiredContext": "cobblemon:fire_stone"
-        },
-        {
-            "id": "eevee_espeon",
-            "variant": "level_up",
-            "result": "espeon",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "friendship",
-                    "amount": 160
-                },
-                {
-                    "variant": "time_range",
-                    "range": "day"
-                }
-            ]
-        },
-        {
-            "id": "eevee_umbreon",
-            "variant": "level_up",
-            "result": "umbreon",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "friendship",
-                    "amount": 160
-                },
-                {
-                    "variant": "time_range",
-                    "range": "night"
-                }
-            ]
-        },
-        {
-            "id": "eevee_leafeon",
-            "variant": "item_interact",
-            "result": "leafeon",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [],
-            "requiredContext": "cobblemon:leaf_stone"
-        },
-        {
-            "id": "eevee_glaceon",
-            "variant": "item_interact",
-            "result": "glaceon",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [],
-            "requiredContext": "cobblemon:ice_stone"
-        },
-        {
-            "id": "eevee_sylveon",
-            "variant": "level_up",
-            "result": "sylveon",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "has_move_type",
-                    "type": "fairy"
-                }
-            ]
-        },
-        {
-            "id": "eevee_sylveon",
-            "variant": "level_up",
-            "result": "sylveon",
-            "consumeHeldItem": false,
-            "learnableMoves": [],
-            "requirements": [
-                {
-                    "variant": "friendship",
-                    "amount": 160
-                },
-                {
-                    "variant": "has_move_type",
-                    "type": "fairy"
-                }
-            ]
+          "variant": "time_range",
+          "range": "day"
         }
-    ],
-    "baseScale": 0.5,
-    "hitbox": {
-        "width": 0.9,
-        "height": 1.0,
-        "fixed": false
+      ]
     },
-    "baseFriendship": 50,
-    "evYield": {
-        "special_defence": 1
+    {
+      "id": "eevee_umbreon",
+      "variant": "level_up",
+      "result": "umbreon",
+      "consumeHeldItem": false,
+      "learnableMoves": [],
+      "requirements": [
+        {
+          "variant": "friendship",
+          "amount": 160
+        },
+        {
+          "variant": "time_range",
+          "range": "night"
+        }
+      ]
     },
-    "height": 3,
-    "weight": 65
+    {
+      "id": "eevee_leafeon",
+      "variant": "item_interact",
+      "result": "leafeon",
+      "consumeHeldItem": false,
+      "learnableMoves": [],
+      "requirements": [],
+      "requiredContext": "cobblemon:leaf_stone"
+    },
+    {
+      "id": "eevee_glaceon",
+      "variant": "item_interact",
+      "result": "glaceon",
+      "consumeHeldItem": false,
+      "learnableMoves": [],
+      "requirements": [],
+      "requiredContext": "cobblemon:ice_stone"
+    },
+    {
+      "id": "eevee_sylveon",
+      "variant": "level_up",
+      "result": "sylveon",
+      "consumeHeldItem": false,
+      "learnableMoves": [],
+      "requirements": [
+        {
+          "variant": "friendship",
+          "amount": 160
+        },
+        {
+          "variant": "has_move_type",
+          "type": "fairy"
+        }
+      ]
+    }
+  ],
+  "baseScale": 0.5,
+  "hitbox": {
+    "width": 0.9,
+    "height": 1,
+    "fixed": false
+  },
+  "baseFriendship": 50,
+  "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 1,
+    "speed": 0
+  },
+  "height": 3,
+  "weight": 65,
+  "aspects": [],
+  "cannotDynamax": false
 }

@@ -1,8 +1,12 @@
 {
-  "name": "linoone",
+  "name": "Linoone",
   "nationalPokedexNumber": 264,
   "primaryType": "normal",
-  "abilities": ["pickup", "gluttony", "h:quickfeet"],
+  "abilities": [
+    "pickup",
+    "gluttony",
+    "h:quickfeet"
+  ],
   "baseStats": {
     "hp": 78,
     "attack": 70,
@@ -16,22 +20,47 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "galar",
+      "name": "Galar",
       "primaryType": "dark",
       "secondaryType": "normal",
+      "abilities": [
+        "pickup",
+        "gluttony",
+        "h:quickfeet"
+      ],
+      "baseStats": {
+        "hp": 78,
+        "attack": 70,
+        "defence": 61,
+        "special_attack": 50,
+        "special_defence": 61,
+        "speed": 100
+      },
+      "catchRate": 90,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 147,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 2
+      },
+      "experienceGroup": "medium_fast",
+      "eggCycles": 15,
+      "eggGroups": [
+        "field"
+      ],
       "moves": [
-        "0:nightslash",
-        "1:sandattack",
-        "1:tackle",
-        "1:pinmissile",
+        "1:babydolleyes",
         "1:leer",
         "1:lick",
-        "1:nightslash",
+        "1:pinmissile",
+        "1:sandattack",
         "1:switcheroo",
-        "1:babydolleyes",
+        "1:tackle",
         "9:snarl",
         "12:headbutt",
         "15:honeclaws",
@@ -93,11 +122,15 @@
         "tm:workup",
         "tutor:lashout"
       ],
-      "pokedex": [
-        "cobblemon.form.linoone-galar.desc1",
-        "cobblemon.form.linoone-galar.desc2"
+      "labels": [
+        "gen8",
+        "galar_regional"
       ],
-      "labels": ["gen3", "galar_regional", "regional"],
+      "aspects": [
+        "galarian"
+      ],
+      "height": 5,
+      "weight": 325,
       "preEvolution": "zigzagoon form=galar",
       "evolutions": [
         {
@@ -108,33 +141,35 @@
           "learnableMoves": [],
           "requirements": [
             {
-              "variant": "time_range",
-              "range": "night"
-            },
-            {
               "variant": "level",
               "minLevel": 35
+            },
+            {
+              "variant": "time_range",
+              "range": "night"
             }
           ]
         }
-      ]
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 147,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 15,
-  "eggGroups": ["field"],
+  "eggGroups": [
+    "field"
+  ],
   "moves": [
-    "0:slash",
+    "1:babydolleyes",
+    "1:growl",
+    "1:pinmissile",
+    "1:rototiller",
     "1:sandattack",
+    "1:switcheroo",
     "1:tackle",
     "1:tailwhip",
-    "1:pinmissile",
-    "1:growl",
-    "1:slash",
-    "1:switcheroo",
-    "1:rototiller",
-    "1:babydolleyes",
     "9:covet",
     "12:headbutt",
     "13:odorsleuth",
@@ -209,6 +244,7 @@
     "tm:whirlpool",
     "tm:workup",
     "tutor:defensecurl",
+    "tutor:extremespeed",
     "tutor:furycutter",
     "tutor:lastresort",
     "tutor:mimic",
@@ -218,19 +254,32 @@
     "tutor:superfang",
     "tutor:waterpulse"
   ],
-  "labels": ["gen3", "hoenn_regional", "regional"],
-  "pokedex": ["cobblemon.species.linoone.desc1", "cobblemon.species.linoone.desc2"],
+  "labels": [
+    "gen3",
+    "hoenn_regional"
+  ],
+  "pokedex": [
+    "cobblemon.species.linoone.desc"
+  ],
   "preEvolution": "zigzagoon",
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
-    "width": 1.0,
-    "height": 1.0,
+    "width": 1,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 50,
   "evYield": {
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
     "speed": 2
   },
   "height": 5,
-  "weight": 325
+  "weight": 325,
+  "aspects": [],
+  "evolutions": [],
+  "cannotDynamax": false
 }

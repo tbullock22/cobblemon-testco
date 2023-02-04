@@ -18,11 +18,14 @@ class PropertyBasedModifier(
     val multiplier: Float
 ) : CatchRateModifier {
 
-    override fun modifyCatchRate(
-        currentCatchRate: Float,
-        thrower: LivingEntity,
-        pokemon: Pokemon,
-        host: Pokemon?
-    ): Float = if (this.property.matches(pokemon)) currentCatchRate * this.multiplier else currentCatchRate
+    override fun isGuaranteed(): Boolean = false
+
+    override fun value(thrower: LivingEntity, pokemon: Pokemon): Float = this.multiplier
+
+    override fun behavior(thrower: LivingEntity, pokemon: Pokemon): CatchRateModifier.Behavior = CatchRateModifier.Behavior.MULTIPLY
+
+    override fun isValid(thrower: LivingEntity, pokemon: Pokemon): Boolean = this.property.matches(pokemon)
+
+    override fun modifyCatchRate(currentCatchRate: Float, thrower: LivingEntity, pokemon: Pokemon): Float = this.behavior(thrower, pokemon).mutator(currentCatchRate, this.value(thrower, pokemon))
 
 }

@@ -25,11 +25,11 @@ class MeowthModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
     override val leftLeg = getPart("leg_left")
     override val rightLeg = getPart("leg_right")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 1.6F
+    override val portraitTranslation = Vec3d(0.05, -0.1, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.8F
+    override val profileTranslation = Vec3d(0.0, 0.54, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

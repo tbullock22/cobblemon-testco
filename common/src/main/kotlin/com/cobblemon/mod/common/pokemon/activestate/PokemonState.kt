@@ -96,6 +96,11 @@ class SentOutState() : ActivePokemonState() {
         return this
     }
 
+    fun update(entity: PokemonEntity) {
+        entityId =  entity.id
+        dimension = entity.world.registryKey
+    }
+
     override fun recall() {
         entity?.discard()
     }

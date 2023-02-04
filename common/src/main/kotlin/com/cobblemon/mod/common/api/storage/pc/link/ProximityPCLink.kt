@@ -10,7 +10,7 @@ package com.cobblemon.mod.common.api.storage.pc.link
 
 import com.cobblemon.mod.common.api.storage.pc.PCStore
 import com.cobblemon.mod.common.util.toVec3d
-import com.cobblemon.mod.common.world.block.entity.PCBlockEntity
+import com.cobblemon.mod.common.block.entity.PCBlockEntity
 import java.util.UUID
 import net.minecraft.server.network.ServerPlayerEntity
 

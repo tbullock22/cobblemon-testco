@@ -28,6 +28,7 @@ import com.cobblemon.mod.common.pokemon.status.PersistentStatusContainer
 import com.cobblemon.mod.common.util.readSizedInt
 import com.cobblemon.mod.common.util.writeSizedInt
 import io.netty.buffer.Unpooled
+import net.minecraft.item.ItemStack
 import java.util.UUID
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.util.Identifier
@@ -63,6 +64,7 @@ class PokemonDTO : Encodable, Decodable {
     var aspects = setOf<String>()
     lateinit var evolutionBuffer: PacketByteBuf
     lateinit var nature: Identifier
+    var heldItem: ItemStack = ItemStack.EMPTY
 
     constructor()
     constructor(pokemon: Pokemon, toClient: Boolean) {
@@ -88,6 +90,7 @@ class PokemonDTO : Encodable, Decodable {
         evolutionBuffer = PacketByteBuf(Unpooled.buffer())
         pokemon.evolutionProxy.saveToBuffer(evolutionBuffer, toClient)
         this.nature = pokemon.nature.name
+        this.heldItem = pokemon.heldItemNoCopy()
     }
 
     override fun encode(buffer: PacketByteBuf) {
@@ -117,6 +120,7 @@ class PokemonDTO : Encodable, Decodable {
         buffer.writeBytes(evolutionBuffer)
         evolutionBuffer.release()
         buffer.writeIdentifier(nature)
+        buffer.writeItemStack(this.heldItem)
     }
 
     override fun decode(buffer: PacketByteBuf) {
@@ -147,6 +151,7 @@ class PokemonDTO : Encodable, Decodable {
         val bytesToRead = buffer.readSizedInt(IntSize.U_SHORT)
         evolutionBuffer = PacketByteBuf(buffer.readBytes(bytesToRead))
         nature = buffer.readIdentifier()
+        heldItem = buffer.readItemStack()
     }
 
     fun create(): Pokemon {
@@ -184,6 +189,7 @@ class PokemonDTO : Encodable, Decodable {
             it.evolutionProxy.loadFromBuffer(evolutionBuffer)
             evolutionBuffer.release()
             it.nature = Natures.getNature(nature)!!
+            it.swapHeldItem(heldItem, false)
         }
     }
 }

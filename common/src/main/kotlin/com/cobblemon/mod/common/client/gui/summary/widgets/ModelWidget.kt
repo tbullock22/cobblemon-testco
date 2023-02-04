@@ -11,8 +11,8 @@ package com.cobblemon.mod.common.client.gui.summary.widgets
 import com.cobblemon.mod.common.client.gui.drawProfilePokemon
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonFloatingState
 import com.cobblemon.mod.common.pokemon.RenderablePokemon
-import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.text.Text
 import net.minecraft.util.math.Quaternion
@@ -46,11 +46,11 @@ class ModelWidget(
     private fun renderPKM(poseStack: MatrixStack) {
         poseStack.push()
 
-        RenderSystem.enableScissor(
-            (x * minecraft.window.scaleFactor).toInt(),
-            (minecraft.window.height - (y * minecraft.window.scaleFactor) - (height * minecraft.window.scaleFactor)).toInt(),
-            (width * minecraft.window.scaleFactor).toInt(),
-            (height * minecraft.window.scaleFactor).toInt()
+        DrawableHelper.enableScissor(
+            x,
+            y,
+            x + width,
+            y +  height
         )
 
         poseStack.translate(x + width * 0.5, y.toDouble() + offsetY, 0.0)
@@ -65,7 +65,7 @@ class ModelWidget(
         )
 
         poseStack.pop()
-        RenderSystem.disableScissor()
+        DrawableHelper.disableScissor()
 
         poseStack.pop()
     }

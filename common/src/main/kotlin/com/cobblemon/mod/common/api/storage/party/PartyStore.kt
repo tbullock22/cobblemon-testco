@@ -189,6 +189,15 @@ open class PartyStore(override val uuid: UUID) : PokemonStore<PartyPosition>() {
         return this
     }
 
+    override fun loadPositionFromNBT(nbt: NbtCompound): StoreCoordinates<PartyPosition> {
+        val slot = nbt.getByte(DataKeys.STORE_SLOT).toInt()
+        return StoreCoordinates(this, PartyPosition(slot))
+    }
+
+    override fun savePositionToNBT(position: PartyPosition, nbt: NbtCompound) {
+        nbt.putByte(DataKeys.STORE_SLOT, position.slot.toByte())
+    }
+
     override fun getAnyChangeObservable(): Observable<Unit> = anyChangeObservable
 
     fun heal() {

@@ -128,34 +128,34 @@ object PokeBalls : JsonDataRegistry<PokeBall> {
         createDefault("verdant_ball")
         createDefault("roseate_ball")
         createDefault("citrine_ball")
-        createDefault("great_ball", listOf(MultiplierModifier(1.5F)))
-        createDefault("ultra_ball", listOf(MultiplierModifier(2F)))
-        createDefault("master_ball", listOf(GuaranteedModifier()), appendUltraBeastPenalty = false)
-        createDefault("safari_ball", listOf(CatchRateModifiers.SAFARI))
-        createDefault("fast_ball", listOf(BaseStatModifier(Stats.SPEED, { it >= 100 }, 4F)))
-        createDefault("level_ball", listOf(CatchRateModifiers.LEVEL))
+        createDefault("great_ball", MultiplierModifier(1.5F))
+        createDefault("ultra_ball", MultiplierModifier(2F))
+        createDefault("master_ball", GuaranteedModifier())
+        createDefault("safari_ball", CatchRateModifiers.SAFARI)
+        createDefault("fast_ball", BaseStatModifier(Stats.SPEED, { it >= 100 }, 4F))
+        createDefault("level_ball", CatchRateModifiers.LEVEL)
         // ToDo we will need fishing context here once fishing is implemented for a multiplier
-        createDefault("lure_ball", listOf(CatchRateModifiers.typeBoosting(2F, ElementalTypes.WATER)))
-        createDefault("heavy_ball", listOf(CatchRateModifiers.WEIGHT_BASED))
-        createDefault("love_ball", listOf(CatchRateModifiers.LOVE))
+        createDefault("lure_ball", CatchRateModifiers.typeBoosting(2F, ElementalTypes.WATER))
+        createDefault("heavy_ball", CatchRateModifiers.WEIGHT_BASED)
+        createDefault("love_ball", CatchRateModifiers.LOVE)
         createDefault("friend_ball", effects = listOf(CaptureEffects.friendshipSetter(150)))
-        createDefault("moon_ball", listOf(CatchRateModifiers.MOON_PHASES))
-        createDefault("sport_ball", listOf(MultiplierModifier(1.5F)))
-        createDefault("net_ball", listOf(CatchRateModifiers.typeBoosting(3F, ElementalTypes.BUG, ElementalTypes.WATER)))
-        createDefault("dive_ball", listOf(CatchRateModifiers.SUBMERGED_IN_WATER))
-        createDefault("nest_ball", listOf(CatchRateModifiers.NEST))
+        createDefault("moon_ball", CatchRateModifiers.MOON_PHASES)
+        createDefault("sport_ball", MultiplierModifier(1.5F))
+        createDefault("net_ball", CatchRateModifiers.typeBoosting(3F, ElementalTypes.BUG, ElementalTypes.WATER))
+        createDefault("dive_ball", CatchRateModifiers.SUBMERGED_IN_WATER)
+        createDefault("nest_ball", CatchRateModifiers.NEST)
         // ToDo implement effect once pokedex is implemented, we have a custom multiplier of 2.5 instead of the official pokeball
         createDefault("repeat_ball")
-        createDefault("timer_ball", listOf(CatchRateModifiers.turnBased { turn -> (1F * turn * (1229F / 4096F)).coerceAtMost(4F) }))
+        createDefault("timer_ball", CatchRateModifiers.turnBased { turn -> (1F * turn * (1229F / 4096F)).coerceAtMost(4F) })
         createDefault("luxury_ball", effects = listOf(FriendshipEarningBoostEffect(2F)))
         createDefault("premier_ball")
-        createDefault("dusk_ball", listOf(CatchRateModifiers.LIGHT_LEVEL))
+        createDefault("dusk_ball", CatchRateModifiers.LIGHT_LEVEL)
         createDefault("heal_ball", effects = listOf(CaptureEffects.FULL_RESTORE))
-        createDefault("quick_ball", listOf(CatchRateModifiers.turnBased { turn -> if (turn == 1) 5F else 1F }))
+        createDefault("quick_ball", CatchRateModifiers.turnBased { turn -> if (turn == 1) 5F else 1F })
         createDefault("cherish_ball")
-        createDefault("park_ball", listOf(CatchRateModifiers.PARK))
-        createDefault("dream_ball", listOf(CatchRateModifiers.statusBoosting(4F, Statuses.SLEEP)))
-        createDefault("beast_ball", listOf(LabelModifier(5F, true, CobblemonPokemonLabels.ULTRA_BEAST), LabelModifier(0.1F, false, CobblemonPokemonLabels.ULTRA_BEAST)), appendUltraBeastPenalty = false)
+        createDefault("park_ball", CatchRateModifiers.PARK)
+        createDefault("dream_ball", CatchRateModifiers.statusBoosting(4F, Statuses.SLEEP))
+        createDefault("beast_ball", LabelModifier(5F, true, CobblemonPokemonLabels.ULTRA_BEAST)/*, LabelModifier(0.1F, false, CobblemonPokemonLabels.ULTRA_BEAST))*/)
         // Luxury ball effect
         CobblemonEvents.FRIENDSHIP_UPDATED.subscribe(priority = Priority.LOWEST) { event ->
             var increment = (event.newFriendship - event.pokemon.friendship).toFloat()
@@ -186,15 +186,14 @@ object PokeBalls : JsonDataRegistry<PokeBall> {
 
     private fun createDefault(
         name: String,
-        modifiers: List<CatchRateModifier> = emptyList(),
+        modifier: CatchRateModifier = MultiplierModifier(1F) { _, _ -> true },
         effects: List<CaptureEffect> = emptyList(),
         model2d: String = "${Cobblemon.MODID}:${name}#inventory",
-        model3d: String = "${Cobblemon.MODID}:${name}_in_hand#inventory",
-        appendUltraBeastPenalty: Boolean = true
+        model3d: String = "${Cobblemon.MODID}:${name}_model#inventory"
     ): PokeBall {
         val identifier = cobblemonResource(name)
-        val finalModifiers = if (appendUltraBeastPenalty) modifiers + listOf(LabelModifier(0.1F, true, CobblemonPokemonLabels.ULTRA_BEAST)) else modifiers
-        val pokeball = PokeBall(identifier, finalModifiers, effects, model2d, model3d)
+        //val finalModifiers = if (appendUltraBeastPenalty) modifiers + listOf(LabelModifier(0.1F, true, CobblemonPokemonLabels.ULTRA_BEAST)) else modifiers
+        val pokeball = PokeBall(identifier, modifier, effects, model2d, model3d)
         this.defaults[identifier] = pokeball
         return pokeball
     }

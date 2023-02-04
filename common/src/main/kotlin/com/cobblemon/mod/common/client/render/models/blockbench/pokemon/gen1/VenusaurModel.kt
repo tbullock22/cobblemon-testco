@@ -28,11 +28,11 @@ class VenusaurModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
     override val hindLeftLeg = getPart("leg_back_left")
     override val hindRightLeg = getPart("leg_back_right")
 
-    override val portraitScale = 1.75F
-    override val portraitTranslation = Vec3d(-0.45, -0.8, 0.0)
+    override val portraitScale = 1.45F
+    override val portraitTranslation = Vec3d(-0.3, -0.6, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.2, 0.0)
+    override val profileScale = 0.95F
+    override val profileTranslation = Vec3d(0.05, 0.3, 0.0)
 
     lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose

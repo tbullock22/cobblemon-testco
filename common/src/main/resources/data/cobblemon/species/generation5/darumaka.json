@@ -1,8 +1,11 @@
 {
-  "name": "darumaka",
+  "name": "Darumaka",
   "nationalPokedexNumber": 554,
   "primaryType": "fire",
-  "abilities": ["hustle", "h:innerfocus"],
+  "abilities": [
+    "hustle",
+    "h:innerfocus"
+  ],
   "baseStats": {
     "hp": 70,
     "attack": 90,
@@ -16,14 +19,40 @@
   "shoulderMountable": false,
   "forms": [
     {
-      "name": "normal"
-    },
-    {
-      "name": "galar",
+      "name": "Galar",
       "primaryType": "ice",
+      "abilities": [
+        "hustle",
+        "h:innerfocus"
+      ],
+      "baseStats": {
+        "hp": 70,
+        "attack": 90,
+        "defence": 45,
+        "special_attack": 15,
+        "special_defence": 45,
+        "speed": 50
+      },
+      "catchRate": 120,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 63,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 0,
+        "attack": 1,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "medium_slow",
+      "eggCycles": 20,
+      "eggGroups": [
+        "field"
+      ],
       "moves": [
-        "1:tackle",
         "1:powdersnow",
+        "1:tackle",
         "4:taunt",
         "8:bite",
         "12:avalanche",
@@ -88,33 +117,41 @@
         "tm:workup",
         "tm:zenheadbutt"
       ],
-      "pokedex": [
-        "cobblemon.form.darumaka-galar.desc1",
-        "cobblemon.form.darumaka-galar.desc2"
+      "labels": [
+        "gen8",
+        "galar_regional"
+      ],
+      "aspects": [
+        "galarian"
       ],
       "height": 7,
       "weight": 400,
-      "labels": ["gen5", "galar_regional", "regional"],
       "evolutions": [
         {
-          "id": "darumaka_darmanitan_galar",
+          "id": "darumaka_darmanitan",
           "variant": "item_interact",
-          "result": "darmanitan",
+          "result": "darmanitan form=galar",
           "consumeHeldItem": false,
-          "learnableMoves": [],
+          "learnableMoves": [
+            "iciclecrash"
+          ],
           "requirements": [],
           "requiredContext": "cobblemon:ice_stone"
         }
-      ]
+      ],
+      "cannotDynamax": false,
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 63,
-  "experienceGroup": "mediumslow",
+  "experienceGroup": "medium_slow",
   "eggCycles": 20,
-  "eggGroups": ["field"],
+  "eggGroups": [
+    "field"
+  ],
   "moves": [
-    "1:tackle",
     "1:ember",
+    "1:tackle",
     "3:rollout",
     "4:taunt",
     "8:bite",
@@ -190,10 +227,12 @@
     "tutor:endeavor",
     "tutor:snatch"
   ],
-  "labels": ["gen5", "unova_regional", "regional"],
+  "labels": [
+    "gen5",
+    "unova_regional"
+  ],
   "pokedex": [
-    "cobblemon.species.darumaka.desc1",
-    "cobblemon.species.darumaka.desc2"
+    "cobblemon.species.darumaka.desc"
   ],
   "evolutions": [
     {
@@ -201,7 +240,9 @@
       "variant": "level_up",
       "result": "darmanitan",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "hammerarm"
+      ],
       "requirements": [
         {
           "variant": "level",
@@ -210,16 +251,23 @@
       ]
     }
   ],
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
-    "width": 1.0,
-    "height": 1.0,
+    "width": 1,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 50,
   "evYield": {
-    "attack": 1
+    "hp": 0,
+    "attack": 1,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 6,
-  "weight": 375
+  "weight": 375,
+  "aspects": [],
+  "cannotDynamax": false
 }

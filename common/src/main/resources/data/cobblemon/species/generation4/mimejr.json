@@ -1,10 +1,14 @@
 {
   "implemented": true,
-  "name": "mimejr",
+  "name": "Mime Jr.",
   "nationalPokedexNumber": 439,
   "primaryType": "psychic",
   "secondaryType": "fairy",
-  "abilities": ["soundproof", "filter", "h:technician"],
+  "abilities": [
+    "soundproof",
+    "filter",
+    "h:technician"
+  ],
   "baseStats": {
     "hp": 20,
     "attack": 25,
@@ -16,18 +20,19 @@
   "catchRate": 145,
   "maleRatio": 0.5,
   "shoulderMountable": false,
-  "forms": [],
   "baseExperienceYield": 62,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 25,
-  "eggGroups": ["undiscovered"],
+  "eggGroups": [
+    "undiscovered"
+  ],
   "moves": [
-    "1:pound",
     "1:barrier",
     "1:copycat",
+    "1:pound",
     "4:batonpass",
-    "8:meditate",
     "8:encore",
+    "8:meditate",
     "11:doubleslap",
     "12:confusion",
     "16:roleplay",
@@ -121,30 +126,31 @@
     "tutor:snatch",
     "tutor:telekinesis"
   ],
-  "labels": ["baby", "gen4"],
-  "pokedex": ["cobblemon.species.mimejr.desc1", "cobblemon.species.mimejr.desc2"],
+  "labels": [
+    "gen4",
+    "baby"
+  ],
+  "pokedex": [
+    "cobblemon.species.mimejr.desc"
+  ],
   "evolutions": [
     {
-      "id": "mimejr_mrmime_galar",
+      "id": "mimejr_mrmime",
       "variant": "level_up",
-      "result": "mrmime form=galar",
+      "result": "mrmime",
       "consumeHeldItem": false,
       "learnableMoves": [],
       "requirements": [
         {
           "variant": "has_move",
           "move": "mimic"
-        },
-        {
-          "variant": "biome",
-          "biome": "#cobblemon:is_cold"
         }
       ]
     },
     {
       "id": "mimejr_mrmime",
       "variant": "level_up",
-      "result": "mrmime",
+      "result": "mrmime form=galar",
       "consumeHeldItem": false,
       "learnableMoves": [],
       "requirements": [
@@ -163,8 +169,15 @@
   },
   "baseFriendship": 50,
   "evYield": {
-    "special_defence": 1
+    "hp": 0,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 1,
+    "speed": 0
   },
   "height": 6,
-  "weight": 130
+  "weight": 130,
+  "aspects": [],
+  "cannotDynamax": false
 }

@@ -1,9 +1,13 @@
 {
   "implemented": true,
-  "name": "koffing",
+  "name": "Koffing",
   "nationalPokedexNumber": 109,
   "primaryType": "poison",
-  "abilities": ["levitate", "neutralizinggas", "h:stench"],
+  "abilities": [
+    "levitate",
+    "neutralizinggas",
+    "h:stench"
+  ],
   "baseStats": {
     "hp": 40,
     "attack": 65,
@@ -15,11 +19,12 @@
   "catchRate": 190,
   "maleRatio": 0.5,
   "shoulderMountable": false,
-  "forms": [],
   "baseExperienceYield": 68,
-  "experienceGroup": "mediumfast",
+  "experienceGroup": "medium_fast",
   "eggCycles": 20,
-  "eggGroups": ["amorphous"],
+  "eggGroups": [
+    "amorphous"
+  ],
   "behaviour": {
     "moving": {
       "fly": {
@@ -31,8 +36,8 @@
     }
   },
   "moves": [
-    "1:tackle",
     "1:poisongas",
+    "1:tackle",
     "4:smog",
     "8:smokescreen",
     "12:clearsmog",
@@ -57,7 +62,6 @@
     "egg:swallow",
     "tm:assurance",
     "tm:attract",
-    "tm:bide",
     "tm:captivate",
     "tm:confide",
     "tm:darkpulse",
@@ -69,14 +73,12 @@
     "tm:flash",
     "tm:frustration",
     "tm:gyroball",
-    "tm:headbutt",
     "tm:hiddenpower",
     "tm:incinerate",
     "tm:infestation",
     "tm:naturalgift",
     "tm:payback",
     "tm:protect",
-    "tm:rage",
     "tm:raindance",
     "tm:rest",
     "tm:return",
@@ -102,38 +104,73 @@
     "tm:venomdrench",
     "tm:venoshock",
     "tm:willowisp",
-    "tm:zapcannon",
+    "tutor:bide",
+    "tutor:clearsmog",
     "tutor:corrosivegas",
+    "tutor:darkpulse",
+    "tutor:doubleteam",
+    "tutor:explosion",
+    "tutor:facade",
+    "tutor:fireblast",
+    "tutor:flamethrower",
+    "tutor:frustration",
+    "tutor:haze",
+    "tutor:headbutt",
+    "tutor:hiddenpower",
     "tutor:mimic",
+    "tutor:poisongas",
+    "tutor:protect",
+    "tutor:psywave",
+    "tutor:rage",
+    "tutor:rest",
+    "tutor:return",
     "tutor:rollout",
-    "tutor:shockwave"
+    "tutor:selfdestruct",
+    "tutor:shadowball",
+    "tutor:shockwave",
+    "tutor:sludge",
+    "tutor:sludgebomb",
+    "tutor:smog",
+    "tutor:substitute",
+    "tutor:swagger",
+    "tutor:tackle",
+    "tutor:taunt",
+    "tutor:thunder",
+    "tutor:thunderbolt",
+    "tutor:toxic",
+    "tutor:willowisp",
+    "tutor:zapcannon"
   ],
-  "labels": ["gen1", "kanto_regional", "regional"],
-  "pokedex": ["cobblemon.species.koffing.desc1", "cobblemon.species.koffing.desc2"],
+  "labels": [
+    "gen1"
+  ],
+  "pokedex": [
+    "cobblemon.species.koffing.desc"
+  ],
   "evolutions": [
     {
-      "id": "koffing_weezing_galar",
+      "id": "koffing_weezing",
       "variant": "level_up",
       "result": "weezing",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "doublehit"
+      ],
       "requirements": [
         {
           "variant": "level",
           "minLevel": 35
-        },
-        {
-          "variant": "biome",
-          "biome": "#cobblemon:is_magical"
         }
       ]
     },
     {
       "id": "koffing_weezing",
       "variant": "level_up",
-      "result": "weezing",
+      "result": "weezing form=galar",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "doublehit"
+      ],
       "requirements": [
         {
           "variant": "level",
@@ -142,7 +179,9 @@
       ]
     }
   ],
-  "features": ["galarian"],
+  "features": [
+    "galarian"
+  ],
   "baseScale": 0.8,
   "hitbox": {
     "width": 0.9,
@@ -151,8 +190,15 @@
   },
   "baseFriendship": 50,
   "evYield": {
-    "defence": 1
+    "hp": 0,
+    "attack": 0,
+    "defence": 1,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 6,
-  "weight": 10
+  "weight": 10,
+  "aspects": [],
+  "cannotDynamax": false
 }

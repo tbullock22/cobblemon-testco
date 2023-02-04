@@ -20,11 +20,11 @@ class MewtwoModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("mewtwo")
     override val head = getPart("head")
 
-    override val portraitScale = 1.0F
-    override val portraitTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val portraitScale = 3.0F
+    override val portraitTranslation = Vec3d(-0.15, 0.75, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.0, 0.0)
+    override val profileScale = 0.8F
+    override val profileTranslation = Vec3d(0.0, 0.5, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

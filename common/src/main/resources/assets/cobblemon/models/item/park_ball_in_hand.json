@@ -1,6 +1,0 @@
-{
-  "parent": "cobblemon:item/poke_ball_in_hand",
-  "textures": {
-    "layer0": "cobblemon:items/poke_balls/models/park_ball"
-  }
-}

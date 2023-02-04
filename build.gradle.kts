@@ -1,4 +1,3 @@
-
 plugins {
     base
     id("cobblemon.root-conventions")

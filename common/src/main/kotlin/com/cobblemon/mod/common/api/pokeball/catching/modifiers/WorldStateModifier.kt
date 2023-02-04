@@ -21,20 +21,17 @@ import net.minecraft.entity.LivingEntity
  * @author Licious
  * @since May 7th, 2022
  */
-open class WorldStateModifier(
-    private val calculator: (currentCatchRate: Float, thrower: LivingEntity, entity: PokemonEntity) -> Float
-) : CatchRateModifier {
+open class WorldStateModifier(private val calculator: (thrower: LivingEntity, entity: PokemonEntity) -> Float) : CatchRateModifier {
 
-    final override fun modifyCatchRate(
-        currentCatchRate: Float,
-        thrower: LivingEntity,
-        pokemon: Pokemon,
-        host: Pokemon?
-    ): Float {
-        val entity = pokemon.entity ?: return currentCatchRate
-        return this.modifyCatchRate(currentCatchRate, thrower, entity)
+    override fun value(thrower: LivingEntity, pokemon: Pokemon): Float {
+        val entity = pokemon.entity ?: return 1F
+        return this.calculator(thrower, entity)
     }
 
-    open fun modifyCatchRate(currentCatchRate: Float, thrower: LivingEntity, entity: PokemonEntity): Float = this.calculator.invoke(currentCatchRate, thrower, entity)
+    override fun behavior(thrower: LivingEntity, pokemon: Pokemon): CatchRateModifier.Behavior = CatchRateModifier.Behavior.MULTIPLY
+
+    override fun isValid(thrower: LivingEntity, pokemon: Pokemon): Boolean = true
+
+    override fun modifyCatchRate(currentCatchRate: Float, thrower: LivingEntity, pokemon: Pokemon): Float = this.behavior(thrower, pokemon).mutator(currentCatchRate, this.value(thrower, pokemon))
 
 }

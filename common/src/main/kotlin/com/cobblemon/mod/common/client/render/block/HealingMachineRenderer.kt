@@ -9,8 +9,7 @@
 package com.cobblemon.mod.common.client.render.block
 
 import com.cobblemon.mod.common.CobblemonBlocks
-import com.cobblemon.mod.common.CobblemonItems
-import com.cobblemon.mod.common.world.block.entity.HealingMachineBlockEntity
+import com.cobblemon.mod.common.block.entity.HealingMachineBlockEntity
 import net.minecraft.block.BlockState
 import net.minecraft.block.HorizontalFacingBlock
 import net.minecraft.block.entity.BlockEntity
@@ -20,19 +19,19 @@ import net.minecraft.client.render.block.entity.BlockEntityRenderer
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory
 import net.minecraft.client.render.model.json.ModelTransformation
 import net.minecraft.client.util.math.MatrixStack
-import net.minecraft.item.ItemStack
-import net.minecraft.item.Items
 import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3f
+
+
 class HealingMachineRenderer<T: BlockEntity>(ctx: BlockEntityRendererFactory.Context): BlockEntityRenderer<T> {
     companion object {
         private val offsets = listOf(
-            0.0 to 0.0,
-            -0.64 to 0.0,
-            0.64 to -0.5,
-            -0.64 to 0.0,
-            0.64 to -0.5,
-            -0.64 to 0.0
+            0.2 to 0.385,
+            -0.2 to 0.385,
+            0.2 to 0.0,
+            -0.2 to 0.0,
+            0.2 to -0.385,
+            -0.2 to -0.385
         )
     }
 
@@ -41,22 +40,21 @@ class HealingMachineRenderer<T: BlockEntity>(ctx: BlockEntityRendererFactory.Con
 
         poseStack.push()
 
-        val blockState =
-            if (blockEntity.world != null) blockEntity.cachedState else (CobblemonBlocks.HEALING_MACHINE.get().defaultState.with(
-                HorizontalFacingBlock.FACING, Direction.SOUTH
-            ) as BlockState)
+        val blockState = if (blockEntity.world != null) blockEntity.cachedState
+            else (CobblemonBlocks.HEALING_MACHINE.get().defaultState.with(HorizontalFacingBlock.FACING, Direction.SOUTH) as BlockState)
         val yRot = blockState.get(HorizontalFacingBlock.FACING).asRotation()
 
-        // Position balls
+        // Position Poké Balls
         poseStack.translate(0.5, 0.5, 0.5)
         poseStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-yRot))
-        poseStack.scale(0.5f, 0.5f, 0.5f)
-        poseStack.translate(0.3, 0.4, 0.23)
+        poseStack.scale(0.65F, 0.65F, 0.65F)
 
         for ((index, pokeBall) in blockEntity.pokeBalls.withIndex()) {
+            poseStack.push()
             val offset = offsets[index]
-            poseStack.translate(offset.first, 0.0, offset.second)
+            poseStack.translate(offset.first, 0.4, offset.second)
             MinecraftClient.getInstance().itemRenderer.renderItem(pokeBall.stack(), ModelTransformation.Mode.GROUND, light, overlay, poseStack, multiBufferSource, 0)
+            poseStack.pop()
         }
         poseStack.pop()
     }

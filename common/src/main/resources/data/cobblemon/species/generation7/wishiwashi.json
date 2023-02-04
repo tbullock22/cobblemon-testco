@@ -1,119 +1,151 @@
 {
-    "name": "wishiwashi",
-    "nationalPokedexNumber": 746,
-    "primaryType": "water",
-    "abilities": [
+  "name": "Wishiwashi",
+  "nationalPokedexNumber": 746,
+  "primaryType": "water",
+  "abilities": [
+    "schooling"
+  ],
+  "baseStats": {
+    "hp": 45,
+    "attack": 20,
+    "defence": 20,
+    "special_attack": 25,
+    "special_defence": 25,
+    "speed": 40
+  },
+  "catchRate": 60,
+  "maleRatio": 0.5,
+  "shoulderMountable": false,
+  "baseExperienceYield": 61,
+  "baseFriendship": 50,
+  "evYield": {
+    "hp": 1,
+    "attack": 0,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
+  },
+  "experienceGroup": "fast",
+  "eggCycles": 15,
+  "eggGroups": [
+    "water_2"
+  ],
+  "moves": [
+    "1:growl",
+    "1:watergun",
+    "4:helpinghand",
+    "8:beatup",
+    "9:feintattack",
+    "12:brine",
+    "16:tearfullook",
+    "20:dive",
+    "24:soak",
+    "28:uproar",
+    "32:aquatail",
+    "36:aquaring",
+    "40:endeavor",
+    "44:hydropump",
+    "48:doubleedge",
+    "egg:mist",
+    "egg:takedown",
+    "egg:waterpulse",
+    "egg:watersport",
+    "tm:attract",
+    "tm:beatup",
+    "tm:brine",
+    "tm:bulldoze",
+    "tm:confide",
+    "tm:dive",
+    "tm:doubleteam",
+    "tm:earthquake",
+    "tm:endure",
+    "tm:facade",
+    "tm:frustration",
+    "tm:hail",
+    "tm:helpinghand",
+    "tm:hiddenpower",
+    "tm:hydropump",
+    "tm:icebeam",
+    "tm:irontail",
+    "tm:liquidation",
+    "tm:muddywater",
+    "tm:mudshot",
+    "tm:protect",
+    "tm:raindance",
+    "tm:rest",
+    "tm:return",
+    "tm:round",
+    "tm:scald",
+    "tm:sleeptalk",
+    "tm:snore",
+    "tm:substitute",
+    "tm:surf",
+    "tm:swagger",
+    "tm:toxic",
+    "tm:uproar",
+    "tm:uturn",
+    "tm:waterfall",
+    "tm:whirlpool",
+    "tutor:covet",
+    "tutor:flipturn",
+    "tutor:scaleshot"
+  ],
+  "labels": [
+    "gen7"
+  ],
+  "pokedex": [
+    "cobblemon.species.wishiwashi.desc"
+  ],
+  "height": 2,
+  "weight": 3,
+  "evolutions": [],
+  "forms": [
+    {
+      "name": "School",
+      "primaryType": "water",
+      "abilities": [
         "schooling"
-    ],
-    "baseStats": {
+      ],
+      "baseStats": {
         "hp": 45,
-        "attack": 20,
-        "defence": 20,
-        "special_attack": 25,
-        "special_defence": 25,
-        "speed": 40
-    },
-    "catchRate": 60,
-    "maleRatio": 0.5,
-    "shoulderMountable": false,
-    "baseExperienceYield": 61,
-    "baseFriendship": 50,
-    "evYield": {
-        "hp": 1
-    },
-    "experienceGroup": "fast",
-    "eggCycles": 15,
-    "eggGroups": [
+        "attack": 140,
+        "defence": 130,
+        "special_attack": 140,
+        "special_defence": 135,
+        "speed": 30
+      },
+      "catchRate": 60,
+      "maleRatio": 0.5,
+      "baseExperienceYield": 217,
+      "baseFriendship": 50,
+      "evYield": {
+        "hp": 1,
+        "attack": 0,
+        "defence": 0,
+        "special_attack": 0,
+        "special_defence": 0,
+        "speed": 0
+      },
+      "experienceGroup": "fast",
+      "eggCycles": 15,
+      "eggGroups": [
         "water_2"
-    ],
-    "moves": [
-        "1:growl",
-        "1:watergun",
-        "4:helpinghand",
-        "8:beatup",
-        "9:feintattack",
-        "12:brine",
-        "16:tearfullook",
-        "20:dive",
-        "24:soak",
-        "28:uproar",
-        "32:aquatail",
-        "36:aquaring",
-        "40:endeavor",
-        "44:hydropump",
-        "48:doubleedge",
-        "egg:mist",
-        "egg:takedown",
-        "egg:waterpulse",
-        "egg:watersport",
-        "tm:attract",
-        "tm:beatup",
-        "tm:brine",
-        "tm:bulldoze",
-        "tm:confide",
-        "tm:dive",
-        "tm:doubleteam",
-        "tm:earthquake",
-        "tm:endure",
-        "tm:facade",
-        "tm:frustration",
-        "tm:hail",
-        "tm:helpinghand",
-        "tm:hiddenpower",
-        "tm:hydropump",
-        "tm:icebeam",
-        "tm:irontail",
-        "tm:liquidation",
-        "tm:muddywater",
-        "tm:mudshot",
-        "tm:protect",
-        "tm:raindance",
-        "tm:rest",
-        "tm:return",
-        "tm:round",
-        "tm:scald",
-        "tm:sleeptalk",
-        "tm:snore",
-        "tm:substitute",
-        "tm:surf",
-        "tm:swagger",
-        "tm:toxic",
-        "tm:uproar",
-        "tm:uturn",
-        "tm:waterfall",
-        "tm:whirlpool",
-        "tutor:covet",
-        "tutor:flipturn",
-        "tutor:scaleshot"
-    ],
-    "labels": [
+      ],
+      "moves": [],
+      "labels": [
         "gen7"
-    ],
-    "pokedex": [
-        "cobblemon.species.wishiwashi.desc1",
-        "cobblemon.species.wishiwashi.desc2"
-    ],
-    "height": 2,
-    "weight": 3,
-    "evolutions": [],
-    "forms": [
-        {
-            "name": "school",
-            "baseStats": {
-                "hp": 45,
-                "attack": 140,
-                "defence": 130,
-                "special_attack": 140,
-                "special_defence": 135,
-                "speed": 30
-            },
-            "baseExperienceYield": 217,
-            "pokedex": [
-                "cobblemon.form.wishiwashi-school.desc1",
-                "cobblemon.form.wishiwashi-school.desc2"
-            ],
-            "height": 82,
-            "weight": 786
-        }
-    ]
+      ],
+      "aspects": [
+        "school"
+      ],
+      "height": 82,
+      "weight": 786,
+      "evolutions": [],
+      "cannotDynamax": false,
+      "battleOnly": true
+    }
+  ],
+  "aspects": [],
+  "cannotDynamax": false
 }

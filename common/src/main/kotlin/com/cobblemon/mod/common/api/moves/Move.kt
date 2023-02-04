@@ -65,8 +65,8 @@ open class Move(
     val accuracy: Double
         get() = template.accuracy
 
-    val effectChance: Double
-        get() = template.effectChance
+    val effectChances: Array<Double>
+        get() = template.effectChances
 
     val maxPp: Int
         get() = template.pp + raisedPpStages * template.pp / 5

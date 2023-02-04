@@ -19,10 +19,14 @@ import com.cobblemon.mod.common.api.spawning.detail.SpawnDetail
 import com.cobblemon.mod.common.api.spawning.detail.SpawnPool
 import com.cobblemon.mod.common.api.spawning.mixins.CachedOnlyChunkAccessor
 import com.cobblemon.mod.common.api.spawning.prospecting.SpawningProspector
+import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import com.cobblemon.mod.common.util.squeezeWithinBounds
+import com.cobblemon.mod.common.util.toVec3f
 import net.minecraft.entity.ai.pathing.NavigationType
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Box
 import net.minecraft.util.math.ChunkSectionPos
+import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import net.minecraft.world.chunk.Chunk
 import net.minecraft.world.chunk.ChunkStatus
@@ -46,6 +50,10 @@ abstract class AreaSpawner(
 ) : TickingSpawner(name, spawns, manager) {
     abstract fun getArea(cause: SpawnCause): SpawningArea?
 
+    companion object {
+        const val CHUNK_REACH = 3
+    }
+
     var prospector: SpawningProspector = Cobblemon.prospector
     var resolver: AreaContextResolver = Cobblemon.areaContextResolver
     var contextCalculators: List<AreaSpawningContextCalculator<*>> = prioritizedAreaCalculators
@@ -54,6 +62,16 @@ abstract class AreaSpawner(
         val area = getArea(cause)
         val constrainedArea = if (area != null) constrainArea(area) else null
         if (constrainedArea != null) {
+            val numberNearby = constrainedArea.world.getEntitiesByClass(
+                PokemonEntity::class.java,
+                Box.of(Vec3d(constrainedArea.getCenter().toVec3f()), CHUNK_REACH * 16.0 * 2, 1000.0, CHUNK_REACH * 16.0 * 2)
+            ) { true }.size
+
+            val chunksCovered = CHUNK_REACH * CHUNK_REACH
+            if (numberNearby.toFloat() / chunksCovered >= Cobblemon.config.pokemonPerChunk) {
+                return null
+            }
+
             //val prospectStart = System.currentTimeMillis()
             val slice = prospector.prospect(this, constrainedArea)
             //val prospectEnd = System.currentTimeMillis()

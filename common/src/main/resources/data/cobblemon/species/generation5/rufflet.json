@@ -1,9 +1,13 @@
 {
-  "name": "rufflet",
+  "name": "Rufflet",
   "nationalPokedexNumber": 627,
   "primaryType": "normal",
   "secondaryType": "flying",
-  "abilities": ["keeneye", "sheerforce", "h:hustle"],
+  "abilities": [
+    "keeneye",
+    "sheerforce",
+    "h:hustle"
+  ],
   "baseStats": {
     "hp": 70,
     "attack": 83,
@@ -13,13 +17,14 @@
     "speed": 60
   },
   "catchRate": 190,
-  "maleRatio": 1.0,
+  "maleRatio": 1,
   "shoulderMountable": false,
-  "forms": [],
   "baseExperienceYield": 70,
   "experienceGroup": "slow",
   "eggCycles": 20,
-  "eggGroups": ["flying"],
+  "eggGroups": [
+    "flying"
+  ],
   "moves": [
     "1:leer",
     "1:peck",
@@ -37,10 +42,16 @@
     "60:defog",
     "66:thrash",
     "72:bravebird",
+    "egg:rocksmash",
+    "egg:roost",
+    "tm:acrobatics",
+    "tm:aerialace",
     "tm:agility",
+    "tm:aircutter",
     "tm:airslash",
     "tm:assurance",
     "tm:attract",
+    "tm:bodyslam",
     "tm:bravebird",
     "tm:bulkup",
     "tm:closecombat",
@@ -52,6 +63,7 @@
     "tm:fly",
     "tm:frustration",
     "tm:heatwave",
+    "tm:helpinghand",
     "tm:hiddenpower",
     "tm:hurricane",
     "tm:pluck",
@@ -61,9 +73,7 @@
     "tm:retaliate",
     "tm:return",
     "tm:rockslide",
-    "tm:rocksmash",
     "tm:rocktomb",
-    "tm:roost",
     "tm:round",
     "tm:scaryface",
     "tm:secretpower",
@@ -78,38 +88,45 @@
     "tm:superpower",
     "tm:swagger",
     "tm:swift",
+    "tm:tailwind",
+    "tm:takedown",
+    "tm:terablast",
     "tm:toxic",
     "tm:uturn",
     "tm:workup",
     "tm:zenheadbutt",
     "tutor:dualwingbeat"
   ],
-  "labels": ["gen5"],
-  "pokedex": ["cobblemon.species.rufflet.desc1", "cobblemon.species.rufflet.desc2"],
+  "labels": [
+    "gen5"
+  ],
+  "pokedex": [
+    "cobblemon.species.rufflet.desc"
+  ],
   "evolutions": [
     {
-      "id": "rufflet_braviary_hisui",
+      "id": "rufflet_braviary",
       "variant": "level_up",
-      "result": "braviary hisuian",
+      "result": "braviary",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "superpower"
+      ],
       "requirements": [
         {
           "variant": "level",
           "minLevel": 54
-        },
-        {
-          "variant": "biome",
-          "biome": "#cobblemon:is_magical"
         }
       ]
     },
     {
       "id": "rufflet_braviary",
       "variant": "level_up",
-      "result": "braviary",
+      "result": "braviary form=hisui",
       "consumeHeldItem": false,
-      "learnableMoves": [],
+      "learnableMoves": [
+        "esperwing"
+      ],
       "requirements": [
         {
           "variant": "level",
@@ -118,16 +135,23 @@
       ]
     }
   ],
-  "baseScale": 1.0,
+  "baseScale": 1,
   "hitbox": {
-    "width": 1.0,
-    "height": 1.0,
+    "width": 1,
+    "height": 1,
     "fixed": false
   },
   "baseFriendship": 50,
   "evYield": {
-    "attack": 1
+    "hp": 0,
+    "attack": 1,
+    "defence": 0,
+    "special_attack": 0,
+    "special_defence": 0,
+    "speed": 0
   },
   "height": 5,
-  "weight": 105
+  "weight": 105,
+  "aspects": [],
+  "cannotDynamax": false
 }

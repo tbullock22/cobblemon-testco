@@ -28,10 +28,14 @@ class LabelModifier(
     vararg val labels: String
 ) : CatchRateModifier {
 
-    override fun modifyCatchRate(currentCatchRate: Float, thrower: LivingEntity, pokemon: Pokemon, host: Pokemon?) = if (pokemon.hasLabels(*this.labels)) currentCatchRate * this.resolveMatchRate() else currentCatchRate * this.resolveNoMatchRate()
+    override fun isGuaranteed(): Boolean = false
 
-    private fun resolveMatchRate() = if (this.matching) this.multiplier else 1F
+    override fun value(thrower: LivingEntity, pokemon: Pokemon): Float = this.multiplier
 
-    private fun resolveNoMatchRate() = if (this.matching) 1F else this.multiplier
+    override fun behavior(thrower: LivingEntity, pokemon: Pokemon): CatchRateModifier.Behavior = CatchRateModifier.Behavior.MULTIPLY
+
+    override fun isValid(thrower: LivingEntity, pokemon: Pokemon): Boolean = if (this.matching) pokemon.hasLabels(*this.labels) else !pokemon.hasLabels(*this.labels)
+
+    override fun modifyCatchRate(currentCatchRate: Float, thrower: LivingEntity, pokemon: Pokemon): Float = this.behavior(thrower, pokemon).mutator(currentCatchRate, this.value(thrower, pokemon))
 
 }
