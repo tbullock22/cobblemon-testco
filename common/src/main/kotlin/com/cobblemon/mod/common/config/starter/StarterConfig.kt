@@ -38,7 +38,17 @@ class StarterConfig {
                 PokemonProperties.parse("Charmander level=10"),
                 PokemonProperties.parse("Squirtle level=10"),
             )
-        )//,
+        ),
+        StarterCategory(
+                name = "Hoenn",
+                displayName = "cobblemon.starterselection.category.hoenn",
+                pokemon = mutableListOf(
+                        PokemonProperties.parse("Treecko level=10"),
+                        PokemonProperties.parse("Torchic level=10"),
+                        PokemonProperties.parse("Mudkip level=10"),
+                )
+        )
+            //,
 //            StarterCategory(
 //                name = "Johto",
 //                displayName = lang("starterselection.category.johto"),

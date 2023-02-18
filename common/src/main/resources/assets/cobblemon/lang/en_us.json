@@ -342,7 +342,7 @@
   "cobblemon.capture.you_in_battle": "You are in a battle.",
   "cobblemon.capture.not_single": "You can only capture wild Pokémon in a 1v1 battle.",
   "cobblemon.you_in_battle": "You can't do that while in a battle!",
-  "cobblemon.battle.turn": "It is now turn %1",
+  "cobblemon.battle.turn": "It is now turn %1$s",
 
 
   "cobblemon.battle.rain_dance": "It started to rain!",
@@ -510,6 +510,7 @@
   "cobblemon.starterselection.category.kalos": "Kalos",
   "cobblemon.starterselection.category.alola": "Alola",
   "cobblemon.starterselection.category.galar": "Galar",
+  "cobblemon.starterselection.category.paldea": "Paldea",
 
   "cobblemon.stat.hp.name": "HP",
   "cobblemon.stat.attack.name": "Attack",

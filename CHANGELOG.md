@@ -43,6 +43,8 @@
 - Added particle effect and animation for Gastly.
 - Added builtin compatibility with Carry On by preventing the mod being able to interact with Cobblemon entities, the mod caused too many gameplay detrimental features to stay enabled.
 - Added sleep animations to many Pokémon.
+- Added the Gen 3 Pokémon to the starter select screen.
+- Added Paldea starter slect lang to "en_us"
 
 ### Changes
 - Significantly sped up the Poké Ball shake animation so it takes less time to try to catch Pokémon.
@@ -57,6 +59,7 @@
 - Apricorns can now be harvested with Axes scaling speed scaling with enchantments and tool material, only dropping the Apricorn if fully grown, these will still destroy the Apricorn so the manual harvest still is recommended unless you're just keen on destroying trees.
 - Apricorns are now a part of the vanilla tag ``minecraft:blocks/mineable/axe``.
 - Apricorns are now compatible with any mod that breaks a whole tree at once.
+- Changed "it is now turn" to have proper placeholder
 
 ### Fixes
 - Fixed layering logic so multiple texture layers can exist on a Pokémon (probably).
