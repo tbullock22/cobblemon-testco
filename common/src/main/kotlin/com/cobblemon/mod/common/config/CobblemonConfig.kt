@@ -172,9 +172,6 @@ class CobblemonConfig {
     @NodeCategory(Category.Spawning)
     var shinyRate = 8192F
 
-    @NodeCategory(Category.World)
-    var apricornSeedChance = 0.1
-
     @NodeCategory(Category.Pokemon)
     var captureCalculator: CaptureCalculator = CobblemonCaptureCalculator
 

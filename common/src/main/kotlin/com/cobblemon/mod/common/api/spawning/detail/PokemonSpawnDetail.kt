@@ -35,6 +35,8 @@ class PokemonSpawnDetail : SpawnDetail() {
     @SerializedName("level", alternate = ["levelRange"])
     var levelRange: IntRange? = null
     val drops: DropTable? = null
+    val heldItems: MutableList<PossibleHeldItem>? = null
+
     /* todo breadcrumbing, ai */
 
 

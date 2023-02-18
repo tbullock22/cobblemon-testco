@@ -58,6 +58,7 @@ class ShowdownThread : Thread("Cobblemon Showdown") {
         // Check if showdown needs to be installed
         if (!showdownDir.exists() || config.autoUpdateShowdown) {
             val showdownZip = File(showdownDir, "showdown.zip")
+            showdownZip.mkdirs()
             val showdownMetadataFile = File(showdownDir, "showdown.json")
 
             var extract = true

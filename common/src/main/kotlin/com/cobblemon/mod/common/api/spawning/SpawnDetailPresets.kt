@@ -15,12 +15,14 @@ import com.cobblemon.mod.common.api.pokemon.PokemonProperties
 import com.cobblemon.mod.common.api.reactive.SimpleObservable
 import com.cobblemon.mod.common.api.spawning.condition.SpawningCondition
 import com.cobblemon.mod.common.api.spawning.context.RegisteredSpawningContext
+import com.cobblemon.mod.common.api.spawning.detail.PossibleHeldItem
 import com.cobblemon.mod.common.api.spawning.preset.SpawnDetailPreset
 import com.cobblemon.mod.common.util.adapters.BiomeLikeConditionAdapter
 import com.cobblemon.mod.common.util.adapters.BlockLikeConditionAdapter
 import com.cobblemon.mod.common.util.adapters.FluidLikeConditionAdapter
 import com.cobblemon.mod.common.util.adapters.IdentifierAdapter
 import com.cobblemon.mod.common.util.adapters.IntRangesAdapter
+import com.cobblemon.mod.common.util.adapters.PossibleHeldItemAdapter
 import com.cobblemon.mod.common.util.adapters.RegisteredSpawningContextAdapter
 import com.cobblemon.mod.common.util.adapters.SpawnBucketAdapter
 import com.cobblemon.mod.common.util.adapters.SpawnDetailPresetAdapter
@@ -61,6 +63,7 @@ object SpawnDetailPresets : JsonDataRegistry<SpawnDetailPreset> {
         .registerTypeAdapter(TimeRange::class.java, IntRangesAdapter(TimeRange.timeRanges) { TimeRange(*it) })
         .registerTypeAdapter(MoonPhaseRange::class.java, IntRangesAdapter(MoonPhaseRange.moonPhaseRanges) { MoonPhaseRange(*it) })
         .registerTypeAdapter(PokemonProperties::class.java, pokemonPropertiesShortAdapter)
+        .registerTypeAdapter(PossibleHeldItem::class.java, PossibleHeldItemAdapter)
         .create()
 
     val presetTypes = mutableMapOf<String, Class<out SpawnDetailPreset>>()
