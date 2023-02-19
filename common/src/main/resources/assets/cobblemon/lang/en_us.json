@@ -263,6 +263,7 @@
   "cobblemon.command.givepokemon.give": "Gave %1$s to %2$s.",
   "cobblemon.command.pokemonedit": "Edited %2$s's %1$s.",
   "cobblemon.command.teach": "%2$s's %1$s learnt %3$s.",
+  "cobblemon.command.teach.already_knows": "%1$s already knows %2$s!",
   "cobblemon.command.healpokemon.heal": "Fully healed %1$s's party.",
   "cobblemon.command.friendship": " %1$s has %2$s friendship.",
   "cobblemon.command.givepokemon.nospecies": "Error: You need to include a Pokémon name or 'random'",
@@ -342,7 +343,7 @@
   "cobblemon.capture.you_in_battle": "You are in a battle.",
   "cobblemon.capture.not_single": "You can only capture wild Pokémon in a 1v1 battle.",
   "cobblemon.you_in_battle": "You can't do that while in a battle!",
-  "cobblemon.battle.turn": "It is now turn %1",
+  "cobblemon.battle.turn": "It is now turn %1$s",
 
 
   "cobblemon.battle.rain_dance": "It started to rain!",
@@ -389,13 +390,27 @@
   "cobblemon.battle.field_end.water_sport": "The effects of Water Sport have faded.",
   "cobblemon.battle.field_end.wonder_room": "Wonder Room wore off, and Defense and Sp. Def stats returned to normal!",
 
+  "cobblemon.battle.cant.generic_block": "%1$s can't use %2$s!",
+  "cobblemon.battle.cant.truant": "%1$s is loafing around!",
+  "cobblemon.battle.cant.flinched": "%1$s flinched and couldn't move!",
+  "cobblemon.battle.cant.recharge": "%1$s must recharge!",
+  "cobblemon.battle.cant.attract": "%1$s is immobilized by love!",
+  "cobblemon.battle.cant.disable": "%1$s' %2$s is disabled!",
+  "cobblemon.battle.cant.focus_punch": "%1$s lost its focus and couldn't move!",
+  "cobblemon.battle.cant.heal_block": "%1$s can't use %2$s because of Heal Block!",
+  "cobblemon.battle.cant.imprison": "%1$s can't use its sealed %2$s!",
   "cobblemon.battle.cant.gravity": "%1$s can't use %2$s because of gravity!",
+  "cobblemon.battle.cant.shell_trap": "%1$s's shell trap didn't work!",
+  "cobblemon.battle.cant.taunt": "%1$s can't use %2$s after the taunt!",
+  "cobblemon.battle.cant.throat_chop": "The effects of Throat Chop prevent %1$s from using certain moves!",
+  "cobblemon.battle.cant.no_pp": "%1$s tried to use %2$s but had no PP left!",
 
   "cobblemon.battle.activate.gravity": "%1$s couldn't stay airborne because of gravity!",
   "cobblemon.battle.activate.misty_terrain": "%1$s surrounds itself with a protective mist!",
   "cobblemon.battle.activate.psychic_terrain": "%1$s surrounds itself with psychic terrain!",
-  "cobblemon.battle.activate.healbell": "A bell chimed!",
+  "cobblemon.battle.activate.heal_bell": "A bell chimed!",
   "cobblemon.battle.activate.aromatherapy": "A soothing aroma wafted through the area!",
+  "cobblemon.battle.activate.trapped": "%1$s can no longer escape!",
 
   "cobblemon.battle.set_hp.pain_split": "The battlers shared their pain!",
 
@@ -407,7 +422,6 @@
   "cobblemon.battle.error.no_pokemon": "You don't have any usable Pokémon!",
   "cobblemon.battle.error.insufficient_pokemon": "%1$s has %2 Pokémon when %3 are required.",
   "cobblemon.battle.error.insufficient_pokemon.personal": "You have %1 usable Pokémon but you need %2.",
-  "cobblemon.battle.flinched": "%1$s flinched and couldn't move!",
   "cobblemon.battle.immune": "But %1$s is immune!",
   "cobblemon.battle.missed": "But it missed.",
   "cobblemon.battle.hit_count": "Hit %1$s times!",

@@ -573,7 +573,6 @@ object ShowdownInterpreter {
                     move
                 ))
             }
-
             GO
         }
     }
@@ -586,13 +585,26 @@ object ShowdownInterpreter {
             // This may be null as it's not always given
             val moveName = message.argumentAt(2)?.let { Moves.getByName(it)?.displayName } ?: Text.EMPTY
             val name = pokemon.battlePokemon?.getName() ?: "DEAD".text()
-            val actionText = when (reason) {
-                Statuses.SLEEP.showdownName -> lang("status.sleep.is", name)
+            val actionText = when(reason) {
+                // ToDo in the games they use a generic image because there is a popup of the ability and the sprite of the mon, it may be good to have a similar system here
+                "ability: Armor Tail", "ability: Damp", "ability: Dazzling", "ability: Queenly Majesty" -> battleLang("cant.generic_block", name, moveName)
+                "ability: Truant" -> battleLang("cant.truant", name, moveName)
                 Statuses.PARALYSIS.showdownName -> lang("status.paralysis.is", name)
+                Statuses.SLEEP.showdownName -> lang("status.sleep.is", name)
                 Statuses.FROZEN.showdownName -> lang("status.frozen.is", name)
+                "flinch" -> battleLang("cant.flinched", name)
+                "recharge" -> battleLang("cant.recharge", name)
+                "Attract" -> battleLang("cant.attract", name)
+                "Disable" -> battleLang("cant.disable", name)
+                "Focus Punch" -> battleLang("cant.focus_punch", name)
+                "move: Heal Block" -> battleLang("cant.heal_block", name, moveName)
+                "move: Imprison" -> battleLang("cant.imprison", name, moveName)
                 "move: Gravity" -> battleLang("cant.gravity", name, moveName)
-                "flinch" -> battleLang("flinched", name)
-                else -> reason.text() // Way for us to find those we have not implemented
+                "Shell Trap" -> battleLang("cant.shell_trap", name)
+                "move: Taunt" -> battleLang("cant.taunt", name, moveName)
+                "move: Throat Chop" -> battleLang("cant.throat_chop", name, moveName)
+                "nopp" -> battleLang("cant.no_pp", name, moveName)
+                else -> battle.createUnimplemented(message).copy()
             }
             battle.broadcastChatMessage(actionText.red())
         }
@@ -753,6 +765,7 @@ object ShowdownInterpreter {
                 "psychicterrain" -> battleLang("activate.psychic_terrain", pokemonName)
                 "healbell" -> battleLang("activate.heal_bell")
                 "aromatherapy" -> battleLang("activate.aromatherapy")
+                "trapped" -> battleLang("activate.trapped")
                 else -> battle.createUnimplemented(message)
             }
             battle.broadcastChatMessage(lang)
@@ -855,17 +868,15 @@ object ShowdownInterpreter {
         // Parse Json message and update state info for actor
         val request = BattleRegistry.gson.fromJson(message.split("|request|")[1], ShowdownActionRequest::class.java)
         if (battle.started) {
-            battle.dispatch {
+            battle.dispatchGo {
                 battleActor.sendUpdate(BattleQueueRequestPacket(request))
                 battleActor.request = request
                 battleActor.responses.clear()
-                val goneIndices = battleActor.activePokemon.filter { it.isGone() }.map { battleActor.activePokemon.indexOf(it) }
-                val forceSwitchIndices = request.forceSwitch.mapIndexedNotNull { index, b -> if (b) index else null }
-                if (forceSwitchIndices.any { it in goneIndices }) {
+                // We need to send this out because 'upkeep' isn't received until the request is handled since the turn won't swap
+                if (request.forceSwitch.withIndex().any { it.value && battleActor.activePokemon.getOrNull(it.index)?.isGone() == false }) {
                     battleActor.mustChoose = true
                     battleActor.sendUpdate(BattleMakeChoicePacket())
                 }
-                GO
             }
         } else {
             battleActor.request = request

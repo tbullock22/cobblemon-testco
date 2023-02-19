@@ -43,6 +43,7 @@
 - Added particle effect and animation for Gastly.
 - Added builtin compatibility with Carry On by preventing the mod being able to interact with Cobblemon entities, the mod caused too many gameplay detrimental features to stay enabled.
 - Added sleep animations to many Pokémon.
+- Added lang interpretation for every showdown message that prevents a move from being executed such as a Taunt, requiring a recharge, flinched, etc.
 
 ### Changes
 - Significantly sped up the Poké Ball shake animation so it takes less time to try to catch Pokémon.
@@ -98,7 +99,8 @@
 - Fixed Showdown initialization happening several times when you login depending on how many times you have relogged this session (hilarious).
 - Fixed Showdown failing to update on first attempt, we totally didn't accidentally delete our target directory or anything, nope.
 - Fixed crashes involving opening the Pokémon summary with an empty party.
-- Fixed missing battle text for Belly Drum, Anger Point, and Haze
+- Fixed missing battle text for Belly Drum, Anger Point, and Haze.
+- Fixed moves that force a switch such as Teleport or U-Turn soft locking battles.
 
 ### Developer
 - Reworked CatchRateModifier, as such, existing implementations need to be updated.

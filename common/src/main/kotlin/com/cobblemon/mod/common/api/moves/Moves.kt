@@ -10,6 +10,7 @@ package com.cobblemon.mod.common.api.moves
 
 import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.api.data.DataRegistry
+import com.cobblemon.mod.common.api.data.ShowdownIdentifiable
 import com.cobblemon.mod.common.api.moves.categories.DamageCategories
 import com.cobblemon.mod.common.api.reactive.SimpleObservable
 import com.cobblemon.mod.common.api.types.ElementalTypes
@@ -35,6 +36,7 @@ object Moves : DataRegistry {
 
     override fun reload(manager: ResourceManager) {
         this.allMoves.clear()
+        this.idMapping.clear()
         val script = """
             PokemonShowdown.Dex.mod("${Cobblemon.MODID}")
               .moves.all();
