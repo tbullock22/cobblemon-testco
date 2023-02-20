@@ -5,9 +5,13 @@
     {
       "aspects": [],
       "poser": "cobblemon:doduo",
-      "model": "cobblemon:doduo.geo",
-      "texture": "cobblemon:textures/pokemon/0084_doduo/doduo_m.png",
+      "model": "cobblemon:doduo_male.geo",
+      "texture": "cobblemon:textures/pokemon/0084_doduo/doduo.png",
       "layers": []
+    },
+    {
+      "aspects": ["shiny"],
+      "texture": "cobblemon:textures/pokemon/0084_doduo/doduo_shiny.png"
     }
   ]
 }

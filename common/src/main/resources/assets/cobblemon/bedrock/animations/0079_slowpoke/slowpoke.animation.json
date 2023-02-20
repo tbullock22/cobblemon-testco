@@ -15,6 +15,41 @@
 				}
 			}
 		},
+		"pose": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": [-7.7614, -14.8687, 2.00307]
+				},
+				"jaw": {
+					"rotation": [30, 0, 0]
+				},
+				"leftfrontleg": {
+					"rotation": [-36.00521, -18.74724, -23.85865]
+				},
+				"leftbackleg": {
+					"rotation": [-43.39482, -27.79687, -26.25382]
+				},
+				"rightfrontleg": {
+					"rotation": [-36.00521, 18.74724, 23.85865]
+				},
+				"rightbackleg": {
+					"rotation": [-43.39482, 27.79687, 26.25382]
+				},
+				"tail": {
+					"rotation": [25.68482, -10.17781, 20.17393]
+				},
+				"tail2": {
+					"rotation": [32.5, 0, 0]
+				},
+				"tail3": {
+					"rotation": [32.5, 0, 0]
+				},
+				"tail4": {
+					"rotation": [30, 0, 0]
+				}
+			}
+		},
 		"animation.slowpoke.water_idle": {
 			"loop": true,
 			"bones": {

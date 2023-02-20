@@ -5,8 +5,8 @@
     {
       "aspects": [],
       "poser": "cobblemon:dodrio",
-      "model": "cobblemon:dodrio.geo",
-      "texture": "cobblemon:textures/pokemon/0085_dodrio/dodrio_male.png",
+      "model": "cobblemon:dodrio_male.geo",
+      "texture": "cobblemon:textures/pokemon/0085_dodrio/dodrio.png",
       "layers": []
     },
     {

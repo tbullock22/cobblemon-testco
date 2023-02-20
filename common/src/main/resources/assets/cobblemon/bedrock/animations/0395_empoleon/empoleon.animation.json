@@ -1,85 +1,83 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
+		"animation.empoleon.blink": {
+			"animation_length": 0.16667,
+			"bones": {
+				"eyelid_left": {
+					"position": {
+						"0.0": [0.1, 0, -0.1],
+						"0.125": [0.1, 0, -0.1],
+						"0.1667": [0, 0, 0]
+					}
+				},
+				"eyelid_right": {
+					"position": {
+						"0.0": [-0.1, 0, -0.1],
+						"0.125": [-0.1, 0, -0.1],
+						"0.1667": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.empoleon.cry": {
+			"animation_length": 1.5,
+			"bones": {
+				"neck": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.25": [10, 0, 0],
+						"1.25": [10, 0, 0],
+						"1.5": [0, 0, 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.25": [-15, 0, 0],
+						"1.25": [-15, 0, 0],
+						"1.5": [0, 0, 0]
+					}
+				},
+				"jaw": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.25": [25, 0, 0],
+						"1.25": [25, 0, 0],
+						"1.5": [0, 0, 0]
+					}
+				}
+			}
+		},
 		"animation.empoleon.ground_idle": {
 			"loop": true,
 			"bones": {
-				"wing_right1": {
+				"head": {
+					"rotation": [0, 0, 0]
+				},
+				"torso": {
+					"rotation": [0, 0, 0]
+				},
+				"wing_left": {
+					"rotation": [0, 0, 60]
+				},
+				"wing_left2": {
+					"rotation": [0, 0, 5]
+				},
+				"wing_right": {
 					"rotation": [0, 0, -60]
 				},
-				"wing_left1": {
-					"rotation": [0, 0, 60]
-				}
-			}
-		},
-		"animation.empoleon.water_idle": {
-			"loop": true,
-			"bones": {
-				"wing_right1": {
-					"rotation": [15, 15, -45]
+				"wing_right2": {
+					"rotation": [0, 0, -5]
 				},
-				"wing_left1": {
-					"rotation": [15, -15, 45]
-				},
-				"body": {
-					"rotation": [15, 0, 0]
-				},
-				"head": {
-					"rotation": [-12.5, 0, 0]
-				},
-				"leg_right1": {
-					"rotation": [7.5, 0, 0]
-				},
-				"leg_right2": {
-					"rotation": [15, 0, 0]
-				},
-				"foot_right1": {
-					"rotation": [15, 0, 0]
-				},
-				"leg_left1": {
-					"rotation": [7.5, 0, 0]
+				"leg_left": {
+					"rotation": [0, 0, 0]
 				},
 				"leg_left2": {
-					"rotation": [15, 0, 0]
+					"rotation": [0, 0, 0]
 				},
-				"foot_left1": {
-					"rotation": [15, 0, 0]
-				}
-			}
-		},
-		"animation.empoleon.water_swim": {
-			"loop": true,
-			"bones": {
-				"wing_right1": {
-					"rotation": [7.5, 15, -60]
-				},
-				"wing_left1": {
-					"rotation": [7.5, -15, 60]
-				},
-				"body": {
-					"rotation": [60, 0, 0]
-				},
-				"head": {
-					"rotation": [-50, 0, 0],
-					"position": [0, -1, -1]
-				},
-				"leg_right1": {
-					"rotation": [7.5, 0, 0]
-				},
-				"leg_right2": {
-					"rotation": [15, 0, 0]
-				},
-				"foot_right1": {
-					"rotation": [30, 0, 0]
-				},
-				"leg_left1": {
-					"rotation": [7.5, 0, 0]
-				},
-				"leg_left2": {
-					"rotation": [15, 0, 0]
-				},
-				"foot_left1": {
-					"rotation": [30, 0, 0]
+				"foot_left": {
+					"rotation": [0, 0, 0]
 				}
 			}
 		}

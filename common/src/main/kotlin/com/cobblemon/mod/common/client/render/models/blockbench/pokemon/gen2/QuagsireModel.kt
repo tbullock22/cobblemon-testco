@@ -8,6 +8,10 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen2
 
+import com.cobblemon.mod.common.client.render.models.blockbench.animation.BimanualSwingAnimation
+import com.cobblemon.mod.common.client.render.models.blockbench.animation.BipedWalkAnimation
+import com.cobblemon.mod.common.client.render.models.blockbench.frame.BimanualFrame
+import com.cobblemon.mod.common.client.render.models.blockbench.frame.BipedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
@@ -17,9 +21,14 @@ import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
 
-class QuagsireModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
+class QuagsireModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFrame, BimanualFrame {
     override val rootPart = root.registerChildWithAllChildren("quagsire")
     override val head = getPart("head")
+
+    override val leftArm = getPart("arm_left")
+    override val rightArm = getPart("arm_right")
+    override val leftLeg = getPart("leg_left")
+    override val rightLeg = getPart("leg_right")
 
     override val portraitScale = 2.2F
     override val portraitTranslation = Vec3d(-0.3, 0.2, 0.0)
@@ -48,7 +57,9 @@ class QuagsireModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("quagsire", "ground_idle")
+                bedrock("quagsire", "ground_idle"),
+                BipedWalkAnimation(this, periodMultiplier = 0.6F, amplitudeMultiplier = 0.9F),
+                BimanualSwingAnimation(this, swingPeriodMultiplier = 0.6F, amplitudeMultiplier = 0.9F)
                 //bedrock("quagsire", "ground_walk")
             )
         )

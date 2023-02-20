@@ -4,10 +4,7 @@
 		"animation.quagsire.ground_idle": {
 			"loop": true,
 			"bones": {
-				"leftarm": {
-					"rotation": [15, 5, 45]
-				},
-				"rightarm": {
+				"arm_right": {
 					"rotation": [15, -5, -45]
 				},
 				"tail": {
@@ -15,16 +12,16 @@
 				},
 				"tail2": {
 					"rotation": [15, 0, 0]
+				},
+				"arm_left": {
+					"rotation": [15, 5, 45]
 				}
 			}
 		},
 		"animation.quagsire.water_idle": {
 			"loop": true,
 			"bones": {
-				"leftarm": {
-					"rotation": [15, 5, 45]
-				},
-				"rightarm": {
+				"arm_right": {
 					"rotation": [15, -5, -45]
 				},
 				"tail": {
@@ -39,10 +36,10 @@
 				"head": {
 					"rotation": [-15, 0, 0]
 				},
-				"leftfoot": {
+				"leg_left": {
 					"rotation": [15, 0, 0]
 				},
-				"rightfoot": {
+				"leg_right": {
 					"rotation": [15, 0, 0]
 				}
 			}
@@ -50,10 +47,7 @@
 		"animation.quagsire.water_swim": {
 			"loop": true,
 			"bones": {
-				"leftarm": {
-					"rotation": [15, 0, 45]
-				},
-				"rightarm": {
+				"arm_right": {
 					"rotation": [15, 0, -45]
 				},
 				"tail": {
@@ -68,11 +62,48 @@
 				"head": {
 					"rotation": [-60, 0, 0]
 				},
-				"leftfoot": {
+				"leg_left": {
 					"rotation": [30, 0, 0]
 				},
-				"rightfoot": {
+				"leg_right": {
 					"rotation": [30, 0, 0]
+				}
+			}
+		},
+		"animation.quagsire.home": {
+			"loop": true,
+			"bones": {
+				"leg_left": {
+					"rotation": [0, -12.5, 0],
+					"position": [0, 0, -2]
+				},
+				"leg_right": {
+					"rotation": [0, 27.5, 0],
+					"position": [-1, 0, -1]
+				},
+				"tail": {
+					"rotation": [5, -20, 0]
+				},
+				"tail2": {
+					"rotation": [5, -15, 0]
+				},
+				"head": {
+					"rotation": [-19.07229, 29.4926, -4.97973]
+				},
+				"mouth_open_happy": {
+					"position": [0, -0.1, -0.1]
+				},
+				"arm_right": {
+					"rotation": [31.92961, -36.46498, -75.61249]
+				},
+				"hand_right": {
+					"rotation": [1.19097, -4.87461, -10.01507]
+				},
+				"arm_left": {
+					"rotation": [0, 0, -50]
+				},
+				"hand_left": {
+					"rotation": [0, 0, -12.5]
 				}
 			}
 		},
@@ -91,6 +122,27 @@
 						"0.0": [0, 0, -0.1],
 						"0.125": [0, 0, -0.1],
 						"0.1667": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.quagsire.call": {
+			"animation_length": 1.5,
+			"bones": {
+				"head": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.25": [-10, 0, 0],
+						"1.25": [-10, 0, 0],
+						"1.5": [0, 0, 0]
+					}
+				},
+				"mouth_open_happy": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.25": [0, 0, -0.1],
+						"1.25": [0, 0, -0.1],
+						"1.5": [0, 0, 0]
 					}
 				}
 			}
