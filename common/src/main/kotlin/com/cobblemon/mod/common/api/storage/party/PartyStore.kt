@@ -204,6 +204,10 @@ open class PartyStore(override val uuid: UUID) : PokemonStore<PartyPosition>() {
         forEach { it.heal() }
     }
 
+    fun didSleep() {
+        forEach { it.didSleep() }
+    }
+
     fun getHealingRemainderPercent(): Float {
         var totalPercent = 0.0f
         for (pokemon in this) {

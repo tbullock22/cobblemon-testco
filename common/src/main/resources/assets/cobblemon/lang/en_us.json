@@ -212,12 +212,13 @@
   "cobblemon.subtitle.capture_succeeded": "Capture Succeeded!",
 
   "cobblemon.healingmachine.alreadyinuse": "This healing machine is already in use!",
-  "cobblemon.healingmachine.nopokemon": "You don't have any Pokemon in your party to heal!",
-  "cobblemon.healingmachine.alreadyhealed": "Your Pokemon party is already fully healed!",
-  "cobblemon.healingmachine.healing": "Your Pokemon party is being healed!",
-  "cobblemon.healingmachine.healed": "Your Pokemon party has been healed!",
+  "cobblemon.healingmachine.nopokemon": "You don't have any Pokémon in your party to heal!",
+  "cobblemon.healingmachine.alreadyhealed": "Your Pokémon party is already fully healed!",
+  "cobblemon.healingmachine.healing": "Your Pokémon party is being healed!",
+  "cobblemon.healingmachine.healed": "Your Pokémon party has been healed!",
   "cobblemon.healingmachine.notenoughcharge": "This machine needs %s more charge to heal your party!",
   "cobblemon.healingmachine.inbattle": "You cannot use a healing machine while in battle!",
+  "cobblemon.healingmachine.alreadyhealing": "Your Pokémon party is already in a different healer!",
 
   "cobblemon.pc.inbattle": "You cannot use a PC while in battle!",
 

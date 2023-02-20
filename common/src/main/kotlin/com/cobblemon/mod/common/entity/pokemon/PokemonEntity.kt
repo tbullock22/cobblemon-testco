@@ -767,10 +767,6 @@ class PokemonEntity(
 
     override fun isBreedingItem(stack: ItemStack): Boolean = false
 
-    override fun getBreedingAge(): Int = -1
-
-    override fun setBreedingAge(age: Int) {}
-
     override fun canBreedWith(other: AnimalEntity): Boolean = false
 
     override fun breed(world: ServerWorld, other: AnimalEntity) {}

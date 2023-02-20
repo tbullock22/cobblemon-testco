@@ -11,6 +11,8 @@ package com.cobblemon.mod.common.client.render.models.blockbench
 import com.bedrockk.molang.runtime.MoLangRuntime
 import com.cobblemon.mod.common.client.render.models.blockbench.additives.PosedAdditiveAnimation
 import com.cobblemon.mod.common.client.render.models.blockbench.animation.StatefulAnimation
+import com.cobblemon.mod.common.client.render.models.blockbench.bedrock.animation.BedrockParticleKeyframe
+import com.cobblemon.mod.common.client.render.models.blockbench.bedrock.animation.BedrockStatelessAnimation
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.ModelFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pose.Pose
 import com.cobblemon.mod.common.client.render.models.blockbench.quirk.ModelQuirk
@@ -38,6 +40,7 @@ abstract class PoseableEntityState<T : Entity> {
     var deltaSeconds = 0F
     var timeLastRendered = System.currentTimeMillis()
     var wasPaused = false
+    val poseParticles = mutableListOf<BedrockParticleKeyframe>()
     val runtime = MoLangRuntime().also {
         it.environment.structs["query"] = it.environment.structs["variable"]
     }
@@ -76,6 +79,7 @@ abstract class PoseableEntityState<T : Entity> {
         val model = currentModel
         if (model != null) {
             val poseImpl = model.getPose(pose) ?: return
+            poseParticles.removeIf { it !in poseImpl.idleAnimations.filterIsInstance<BedrockStatelessAnimation<*>>().flatMap { it.particleKeyFrames } }
             poseImpl.onTransitionedInto(this)
             timeEnteredPose = animationSeconds
         }

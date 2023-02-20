@@ -77,6 +77,7 @@ class ParticleStorm(
 
         if (!sourceAlive()) {
             stopped = true
+            markDead()
         }
 
         if (stopped) {

@@ -48,10 +48,10 @@ class CharizardModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
 
     override fun registerPoses() {
 //        val blink = quirk("blink") { bedrockStateful("charizard", "blink").setPreventsIdle(false)}
-//        sleep = registerPose(
-//            poseType = PoseType.SLEEP,
-//            idleAnimations = arrayOf(bedrock("charizard", "sleep"))
-//        )
+        sleep = registerPose(
+            poseType = PoseType.SLEEP,
+            idleAnimations = arrayOf(bedrock("charizard", "sleep"))
+        )
 
         standing = registerPose(
             poseName = "standing",

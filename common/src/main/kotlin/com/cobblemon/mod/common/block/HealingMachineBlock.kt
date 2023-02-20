@@ -11,10 +11,8 @@ package com.cobblemon.mod.common.block
 import com.cobblemon.mod.common.CobblemonBlockEntities
 import com.cobblemon.mod.common.api.text.green
 import com.cobblemon.mod.common.api.text.red
-import com.cobblemon.mod.common.util.isInBattle
-import com.cobblemon.mod.common.util.lang
-import com.cobblemon.mod.common.util.party
 import com.cobblemon.mod.common.block.entity.HealingMachineBlockEntity
+import com.cobblemon.mod.common.util.*
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
@@ -144,6 +142,11 @@ class HealingMachineBlock(properties: Settings) : BlockWithEntity(properties) {
 
         if (party.none { pokemon -> pokemon.canBeHealed() }) {
             player.sendMessage(lang("healingmachine.alreadyhealed").red())
+            return ActionResult.SUCCESS
+        }
+
+        if (player.uuid in HealingMachineBlockEntity.alreadyHealing) {
+            player.sendMessage(lang("healingmachine.alreadyhealing").red())
             return ActionResult.SUCCESS
         }
 

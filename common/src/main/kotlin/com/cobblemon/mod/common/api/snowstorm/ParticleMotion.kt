@@ -82,7 +82,7 @@ class DynamicParticleMotion(
             runtime.resolveDouble(acceleration.first),
             runtime.resolveDouble(acceleration.second),
             runtime.resolveDouble(acceleration.third)
-        ).subtract(velocity.multiply(runtime.resolveDouble(drag) / 20) /* Drag is measured in blocks per tick per tick, I know it sounds dumb. */)
+        ).subtract(velocity.multiply(runtime.resolveDouble(drag) / 20)/* Drag is measured in blocks per tick per tick, I know it sounds dumb. */)
     }
 
     override fun <T> encode(ops: DynamicOps<T>) = CODEC.encodeStart(ops, this)

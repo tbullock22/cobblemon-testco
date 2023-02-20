@@ -78,6 +78,7 @@ class HealingMachineBlockEntity(
             this.updateRedstoneSignal()
         }
         this.setUser(player.uuid)
+        alreadyHealing.add(player.uuid)
         updateBlockChargeLevel(HealingMachineBlock.MAX_CHARGE_LEVEL + 1)
         if (world != null && !world!!.isClient) world!!.playSoundServer(position = blockPos.toVec3d(), sound = CobblemonSounds.HEALING_MACHINE_ACTIVE.get(), volume = 1F, pitch = 1F)
     }
@@ -86,6 +87,7 @@ class HealingMachineBlockEntity(
         val player = this.currentUser?.getPlayer() ?: return clearData()
         val party = player.party()
 
+        alreadyHealing.remove(player.uuid)
         party.heal()
         player.sendMessage(lang("healingmachine.healed").green())
         updateBlockChargeLevel()
@@ -191,6 +193,7 @@ class HealingMachineBlockEntity(
     }
 
     companion object {
+        val alreadyHealing = mutableListOf<UUID>()
         const val MAX_REDSTONE_SIGNAL = 10
 
         internal val TICKER = BlockEntityTicker<HealingMachineBlockEntity> { world, _, _, blockEntity ->

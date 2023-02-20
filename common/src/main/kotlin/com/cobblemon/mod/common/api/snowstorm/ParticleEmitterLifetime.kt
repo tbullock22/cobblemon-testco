@@ -10,6 +10,7 @@ package com.cobblemon.mod.common.api.snowstorm
 
 import com.bedrockk.molang.Expression
 import com.bedrockk.molang.MoLang
+import com.bedrockk.molang.ast.NumberExpression
 import com.bedrockk.molang.runtime.MoLangRuntime
 import com.cobblemon.mod.common.api.codec.CodecMapped
 import com.cobblemon.mod.common.api.data.ArbitrarilyMappedSerializableCompanion
@@ -71,7 +72,7 @@ class OnceEmitterLifetime(var activeTime: Expression = 1.0.asExpression()) : Par
     }
 }
 
-class ExpressionEmitterLifetime(var activation: Expression, var expiration: Expression) : ParticleEmitterLifetime {
+class ExpressionEmitterLifetime(var activation: Expression = NumberExpression(0.0), var expiration: Expression = NumberExpression(0.0)) : ParticleEmitterLifetime {
     companion object {
         val CODEC: Codec<ExpressionEmitterLifetime> = RecordCodecBuilder.create { instance ->
             instance.group(

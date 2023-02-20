@@ -32,8 +32,8 @@ object LocatorBoneAdapter : JsonDeserializer<LocatorBone> {
             rotation = listOf(0F, 0F, 0F)
         } else {
             json as JsonObject
-            offset = json.get("offset").asJsonArray.map { it.asFloat }
-            rotation = json.get("rotation").asJsonArray.map { it.asFloat }
+            offset = json.get("offset")?.asJsonArray?.map { it.asFloat } ?: listOf(0F, 0F, 0F)
+            rotation = json.get("rotation")?.asJsonArray?.map { it.asFloat } ?: listOf(0F, 0F, 0F)
         }
         return LocatorBone(
             offset = offset,

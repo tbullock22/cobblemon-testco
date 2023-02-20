@@ -434,6 +434,15 @@ open class Pokemon : ShowdownIdentifiable {
         entity?.heal(entity.maxHealth - entity.health)
     }
 
+    fun didSleep() {
+        this.currentHealth = min((currentHealth + (hp / 2)), hp)
+        this.status = null
+        this.faintedTimer = -1
+        this.healTimer = -1
+        val entity = entity
+        entity?.heal(entity.maxHealth - entity.health)
+    }
+
     /**
      * Check if this Pokémon can be healed.
      * This verifies if HP is not maxed, any status is present or any move is not full PP.

@@ -14,10 +14,13 @@ import com.cobblemon.mod.common.CobblemonImplementation
 import com.cobblemon.mod.common.CobblemonNetwork
 import com.cobblemon.mod.common.CobblemonPlacements
 import com.cobblemon.mod.common.ModAPI
+import com.cobblemon.mod.common.util.didSleep
 import com.cobblemon.mod.fabric.net.CobblemonFabricNetworkDelegate
 import com.cobblemon.mod.fabric.permission.FabricPermissionValidator
+import net.fabricmc.fabric.api.entity.event.v1.EntitySleepEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents
 import net.fabricmc.loader.api.FabricLoader
+import net.minecraft.server.network.ServerPlayerEntity
 
 object CobblemonFabric : CobblemonImplementation {
     override val modAPI = ModAPI.FABRIC
@@ -38,6 +41,14 @@ object CobblemonFabric : CobblemonImplementation {
         if (FabricLoader.getInstance().getModContainer("fabric-permissions-api-v0").isPresent) {
             Cobblemon.permissionValidator = FabricPermissionValidator()
         }
+        EntitySleepEvents.STOP_SLEEPING.register { playerEntity, _ ->
+            if (playerEntity !is ServerPlayerEntity) {
+                return@register
+            }
+
+            playerEntity.didSleep()
+        }
+
         ServerLifecycleEvents.SYNC_DATA_PACK_CONTENTS.register { player, isLogin ->
             if (isLogin) {
                 Cobblemon.dataProvider.sync(player)

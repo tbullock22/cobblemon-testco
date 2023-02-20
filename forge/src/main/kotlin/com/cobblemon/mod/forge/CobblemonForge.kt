@@ -12,15 +12,18 @@ import com.cobblemon.mod.common.*
 import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.reactive.Observable.Companion.filter
 import com.cobblemon.mod.common.api.reactive.Observable.Companion.takeFirst
+import com.cobblemon.mod.common.util.didSleep
 import com.cobblemon.mod.forge.net.CobblemonForgeNetworkDelegate
 import com.cobblemon.mod.forge.permission.ForgePermissionValidator
 import dev.architectury.event.events.common.LifecycleEvent
 import dev.architectury.platform.forge.EventBuses
+import net.minecraft.server.network.ServerPlayerEntity
 import java.util.*
 import net.minecraftforge.common.ForgeMod
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.event.OnDatapackSyncEvent
 import net.minecraftforge.event.entity.player.PlayerEvent
+import net.minecraftforge.event.entity.player.PlayerWakeUpEvent
 import net.minecraftforge.fml.ModList
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
@@ -61,8 +64,14 @@ class CobblemonForge : CobblemonImplementation {
             addListener(this@CobblemonForge::onDataPackSync)
             addListener(this@CobblemonForge::onLogin)
             addListener(this@CobblemonForge::onLogout)
+            addListener(this@CobblemonForge::wakeUp)
         }
         Cobblemon.permissionValidator = ForgePermissionValidator
+    }
+
+    fun wakeUp(event: PlayerWakeUpEvent) {
+        val playerEntity = event.entity as? ServerPlayerEntity ?: return
+        playerEntity.didSleep()
     }
 
     fun serverInit(event: FMLDedicatedServerSetupEvent) {

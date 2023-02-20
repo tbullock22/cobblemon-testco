@@ -196,7 +196,7 @@ class SnowstormParticle(
             val acceleration = storm.effect.particle.motion.getAcceleration(
                 storm.runtime,
                 Vec3d(velocityX, velocityY, velocityZ).multiply(20.0) // Uses blocks per second, not blocks per tick
-            ).multiply(1 / 20.0)
+            ).multiply(1 / 20.0).multiply(1 / 20.0)
 
             velocityX += acceleration.x
             velocityY += acceleration.y

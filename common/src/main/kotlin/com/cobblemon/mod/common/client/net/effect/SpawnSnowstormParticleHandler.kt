@@ -22,6 +22,7 @@ object SpawnSnowstormParticleHandler : ClientPacketHandler<SpawnSnowstormParticl
     override fun invokeOnClient(packet: SpawnSnowstormParticlePacket, ctx: CobblemonNetwork.NetworkContext) {
         val wrapper = MatrixWrapper()
         val matrix = MatrixStack()
+        matrix.translate(packet.position.x, packet.position.y, packet.position.z)
         matrix.multiply(POSITIVE_Y.getDegreesQuaternion(packet.yawDegrees))
         matrix.multiply(POSITIVE_X.getDegreesQuaternion(packet.pitchDegrees))
         wrapper.update(matrix.peek().positionMatrix)

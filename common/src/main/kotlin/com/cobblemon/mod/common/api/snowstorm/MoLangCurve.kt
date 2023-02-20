@@ -53,15 +53,15 @@ interface MoLangCurve : CodecMapped {
     fun resolve(runtime: MoLangRuntime, inputValue: Double): Double
     fun apply(runtime: MoLangRuntime) {
         val inputValue = runtime.resolveDouble(input)
-        runtime.environment.setSimpleVariable(name, DoubleValue(inputValue))
+        runtime.environment.setSimpleVariable(name, DoubleValue(resolve(runtime, inputValue)))
     }
 }
 
 class LinearMoLangCurve(
-    override var name: String,
-    override var input: Expression,
-    var horizontalRange: Expression,
-    var nodes: List<Double>
+    override var name: String = "variable",
+    override var input: Expression = NumberExpression(0.0),
+    var horizontalRange: Expression = NumberExpression(1.0),
+    var nodes: List<Double> = emptyList()
 ) : MoLangCurve {
     companion object {
         val CODEC: Codec<LinearMoLangCurve> = RecordCodecBuilder.create { instance ->
@@ -90,6 +90,7 @@ class LinearMoLangCurve(
             val leftNode = nodes[rangeIndex]
             val rightNode = nodes[rangeIndex + 1]
             val t = inputValue.mod(spaceBetweenNodes) / spaceBetweenNodes
+
             return leftNode + (rightNode - leftNode) * t
         }
     }
@@ -113,8 +114,8 @@ class LinearMoLangCurve(
 class CatmullRomMoLangCurve(
     override var name: String = "variable",
     override var input: Expression = NumberExpression(0.5),
-    var horizontalRange: Expression,
-    var nodes: List<Double>
+    var horizontalRange: Expression = NumberExpression(1.0),
+    var nodes: List<Double> = emptyList()
 ) : MoLangCurve {
 
     var curve: CatmullRomCurve
@@ -167,11 +168,11 @@ class CatmullRomMoLangCurve(
 class BezierMoLangCurve(
     override var name: String = "variable",
     override var input: Expression = NumberExpression(0.5),
-    var horizontalRange: Expression,
-    var v0: Double,
-    var v1: Double,
-    var v2: Double,
-    var v3: Double
+    var horizontalRange: Expression = NumberExpression(1.0),
+    var v0: Double = 0.0,
+    var v1: Double = 0.0,
+    var v2: Double = 0.0,
+    var v3: Double = 0.0
 ) : MoLangCurve {
     var curve: CubedBezierCurve
 

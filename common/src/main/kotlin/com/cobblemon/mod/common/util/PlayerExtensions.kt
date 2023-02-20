@@ -32,6 +32,14 @@ fun ServerPlayerEntity.onLogout(handler: () -> Unit) {
     CobblemonEvents.PLAYER_QUIT.pipe(filter { it.uuid == uuid }, takeFirst()).subscribe { handler() }
 }
 
+fun ServerPlayerEntity.didSleep() {
+    if (sleepTimer != 100 || world.timeOfDay.toInt() % 24000 != 0) {
+        return
+    }
+
+    party().didSleep()
+}
+
 fun ServerPlayerEntity.isInBattle() = BattleRegistry.getBattleByParticipatingPlayer(this) != null
 
 // TODO Player extension for queueing next login?
