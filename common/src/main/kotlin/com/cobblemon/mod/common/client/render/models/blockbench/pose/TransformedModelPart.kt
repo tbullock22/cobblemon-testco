@@ -36,16 +36,26 @@ class TransformedModelPart(
     var position = floatArrayOf(modelPart.pivotX, modelPart.pivotY, modelPart.pivotZ)
     var rotation = floatArrayOf(modelPart.pitch, modelPart.yaw, modelPart.roll)
 
+    var originalVisibility = true
+    var visibility = originalVisibility
+
     /** Applies the transformation to the model part. */
     fun apply() {
         modelPart.setPivot(position[0], position[1], position[2])
         modelPart.setAngles(rotation[0], rotation[1], rotation[2])
+        modelPart.visible = visibility
     }
 
     /** Sets the part back to its original location, prior to this transformation. */
     fun applyDefaults() {
         modelPart.setPivot(initialPosition[0], initialPosition[1], initialPosition[2])
         modelPart.setAngles(initialRotation[0], initialRotation[1], initialRotation[2])
+        visibility = originalVisibility
+    }
+
+    fun withVisibility(visibility: Boolean): TransformedModelPart {
+        this.visibility = visibility
+        return this
     }
 
     var xPos: Float
