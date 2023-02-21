@@ -75,7 +75,7 @@ open class FlagSpeciesFeature(override val name: String) : SpeciesFeature, Custo
 class FlagSpeciesFeatureProvider : SpeciesFeatureProvider<FlagSpeciesFeature>, CustomPokemonPropertyType<FlagSpeciesFeature>, AspectProvider {
     override val keys: List<String>
     override val needsKey get() = true
-    val default: String? = null
+    var default: String? = null
     val isAspect = true
 
     override fun examples() = setOf("true", "false")
@@ -86,6 +86,11 @@ class FlagSpeciesFeatureProvider : SpeciesFeatureProvider<FlagSpeciesFeature>, C
 
     constructor(keys: List<String>) {
         this.keys = keys
+    }
+
+    constructor(keys: List<String>, default: Boolean) {
+        this.keys = keys
+        this.default = default.toString()
     }
 
     constructor(vararg keys: String) : this(keys.toList())

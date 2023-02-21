@@ -21,6 +21,9 @@
   "baseExperienceYield": 122,
   "experienceGroup": "medium_fast",
   "eggCycles": 15,
+  "features": [
+    "sheared"
+  ],
   "eggGroups": [
     "field"
   ],
