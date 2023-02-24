@@ -30,7 +30,7 @@ class HitmonchanModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
     override val rightLeg = getPart("leg_right")
 
     override val portraitScale = 2.5F
-    override val portraitTranslation = Vec3d(-0.05, 0.85, 0.0)
+    override val portraitTranslation = Vec3d(-0.13, 0.85, 0.0)
 
     override val profileScale = 0.85F
     override val profileTranslation = Vec3d(0.0, 0.5, 0.0)

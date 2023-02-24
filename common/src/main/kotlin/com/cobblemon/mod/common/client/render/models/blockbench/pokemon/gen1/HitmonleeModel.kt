@@ -28,7 +28,7 @@ class HitmonleeModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame, Bima
     override val rightLeg = getPart("leg_right")
 
     override val portraitScale = 2.3F
-    override val portraitTranslation = Vec3d(-0.1, -0.1, 0.0)
+    override val portraitTranslation = Vec3d(-0.1, -0.4, 0.0)
 
     override val profileScale = 0.96F
     override val profileTranslation = Vec3d(0.0, 0.3, 0.0)

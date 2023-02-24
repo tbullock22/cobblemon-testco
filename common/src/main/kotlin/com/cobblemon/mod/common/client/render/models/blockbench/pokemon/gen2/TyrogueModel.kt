@@ -30,7 +30,7 @@ class TyrogueModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
     override val rightLeg = getPart("leg_right")
 
     override val portraitScale = 2.3F
-    override val portraitTranslation = Vec3d(-0.05, -0.1, 0.0)
+    override val portraitTranslation = Vec3d(-0.15, 0.1, 0.0)
 
     override val profileScale = 0.73F
     override val profileTranslation = Vec3d(-0.03, 0.7, 0.0)

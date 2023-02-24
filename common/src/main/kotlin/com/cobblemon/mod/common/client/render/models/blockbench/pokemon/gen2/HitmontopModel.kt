@@ -31,7 +31,7 @@ class HitmontopModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
     override val rightLeg = getPart("leg_right")
 
     override val portraitScale = 2.1F
-    override val portraitTranslation = Vec3d(-0.18, 0.13, 0.0)
+    override val portraitTranslation = Vec3d(-0.18, 0.0, 0.0)
 
     override val profileScale = 0.91F
     override val profileTranslation = Vec3d(0.0, 0.4, 0.0)
