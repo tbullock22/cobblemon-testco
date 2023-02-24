@@ -1,8 +1,8 @@
 {
-  "parent": "cobblemon:root",
+  "parent": "cobblemon:first_evolution",
   "display": {
     "icon": {
-      "item": "cobblemon:rare_candy"
+      "item": "cobblemon:choice_band"
     },
     "title": {
       "translate": "advancements.cobblemon.first_battle_victory"

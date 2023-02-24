@@ -61,6 +61,7 @@
 - Apricorns are now a part of the vanilla tag ``minecraft:blocks/mineable/axe``.
 - Apricorns are now compatible with any mod that breaks a whole tree at once.
 - Apricorns no longer have a config value for the seed drop chance these are now a part of their loot table which can be found in ``cobblemon/loot_tables/blocks/<color>_apricorn.json``.
+- Advancements were redone to be slightly more interesting, with improved names, descriptions, and sorting.
 - Updated models and textures for Tentacool line, Gengar, Slowpoke line, Tyrogue line, Doduo line, Dratini, Dragonair, Quagsire, and Piplup line.
 
 ### Fixes

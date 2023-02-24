@@ -1,5 +1,5 @@
 {
-  "parent": "cobblemon:root",
+  "parent": "cobblemon:first_catch",
   "display": {
     "icon": {
       "item": "cobblemon:link_cable"
@@ -16,7 +16,7 @@
 	"hidden": false
   },
   "criteria": {
-    "catch": {
+    "evolve": {
       "trigger": "cobblemon:pokemon_evolved",
       "conditions": {
         "count": 1
@@ -25,7 +25,7 @@
   },
 	"requirements": [
 		[
-			"catch"
+			"evolve"
 		]
 	]
 }

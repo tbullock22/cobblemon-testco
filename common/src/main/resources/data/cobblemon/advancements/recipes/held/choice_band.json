@@ -1,24 +1,12 @@
 {
   "parent": "cobblemon:recipes/root",
   "criteria": {
-    "has_echo_shard": {
+    "has_band": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:echo_shard"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_diamond": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:diamond"
+              "cobblemon:muscle_band"
             ]
           }
         ]
@@ -27,24 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cobblemon:beast_ball"
+        "recipe": "cobblemon:choice_band"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_diamond",
-      "has_the_recipe"
-    ],
-	[
-      "has_echo_shard",
+      "has_band",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "cobblemon:beast_ball"
+      "cobblemon:choice_band"
     ]
   }
 }
