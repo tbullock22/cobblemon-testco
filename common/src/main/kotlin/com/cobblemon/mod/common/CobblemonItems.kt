@@ -16,9 +16,7 @@ import com.cobblemon.mod.common.item.CobblemonItem
 import com.cobblemon.mod.common.item.CobblemonItemGroups
 import com.cobblemon.mod.common.item.PokeBallItem
 import com.cobblemon.mod.common.item.PokemonItem
-import com.cobblemon.mod.common.item.interactive.CandyItem
-import com.cobblemon.mod.common.item.interactive.LinkCableItem
-import com.cobblemon.mod.common.item.interactive.VitaminItem
+import com.cobblemon.mod.common.item.interactive.*
 import com.cobblemon.mod.common.pokeball.PokeBall
 import com.cobblemon.mod.common.registry.CompletableRegistry
 import dev.architectury.registry.registries.RegistrySupplier
@@ -128,6 +126,11 @@ object CobblemonItems : CompletableRegistry<Item>(Registry.ITEM_KEY) {
     val IRON = queue("iron") { VitaminItem(Stats.DEFENCE) }
     val PROTEIN = queue("protein") { VitaminItem(Stats.ATTACK) }
     val ZINC = queue("zinc") { VitaminItem(Stats.SPECIAL_DEFENCE) }
+    val POTION = queue("potion") { PotionItem(PotionType.POTION) }
+    val SUPER_POTION = queue("super_potion") { PotionItem(PotionType.SUPER_POTION) }
+    val HYPER_POTION = queue("hyper_potion") { PotionItem(PotionType.HYPER_POTION) }
+    val MAX_POTION = queue("max_potion") { PotionItem(PotionType.MAX_POTION) }
+    val FULL_RESTORE = queue("full_restore") { PotionItem(PotionType.FULL_RESTORE) }
 
     /**
      * Evolution Ores and Stones

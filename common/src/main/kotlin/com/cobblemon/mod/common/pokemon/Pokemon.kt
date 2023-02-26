@@ -434,6 +434,10 @@ open class Pokemon : ShowdownIdentifiable {
         entity?.heal(entity.maxHealth - entity.health)
     }
 
+    fun isFullHealth(): Boolean {
+        return this.currentHealth == this.hp
+    }
+
     fun didSleep() {
         this.currentHealth = min((currentHealth + (hp / 2)), hp)
         this.status = null
