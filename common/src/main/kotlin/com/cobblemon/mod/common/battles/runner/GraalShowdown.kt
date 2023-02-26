@@ -18,10 +18,12 @@ import org.graalvm.polyglot.PolyglotAccess
 import org.graalvm.polyglot.Value
 
 object GraalShowdown {
+
     @Transient
     lateinit var context: Context
     @Transient
     lateinit var sendBattleMessageFunction: Value
+
     fun createContext() {
         val access = HostAccess.newBuilder(HostAccess.ALL).build()
         context = Context.newBuilder("js")
@@ -70,4 +72,5 @@ object GraalShowdown {
     fun sendToShowdown(battleId: UUID, messages: Array<String>) {
         sendBattleMessageFunction.execute(battleId.toString(), messages)
     }
+
 }

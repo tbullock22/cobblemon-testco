@@ -229,7 +229,7 @@ object PokemonSpecies : JsonDataRegistry<Species> {
 
 
         // Showdown loads mods by reading existing files as such we cannot dynamically add to the Pokédex, instead, we will overwrite the existing file and force a mod reload.
-        val pokedexFile = File("showdown/node_modules/pokemon-showdown/data/mods/cobblemon/pokedex.js")
+        val pokedexFile = File("showdown/data/mods/cobblemon/pokedex.js")
         Files.createDirectories(pokedexFile.toPath().parent)
         pokedexFile.bufferedWriter().use { writer ->
             writer.write(
@@ -243,7 +243,7 @@ object PokemonSpecies : JsonDataRegistry<Species> {
                 """.trimIndent()
             )
         }
-        val formatsDataFile = File("showdown/node_modules/pokemon-showdown/data/mods/cobblemon/formats-data.js")
+        val formatsDataFile = File("showdown/data/mods/cobblemon/formats-data.js")
         formatsDataFile.bufferedWriter().use { writer ->
             writer.write(
                 """
@@ -256,10 +256,7 @@ object PokemonSpecies : JsonDataRegistry<Species> {
                 """.trimIndent()
             )
         }
-        GraalShowdown.context.eval("js", """
-            PokemonShowdown.Dex.modsLoaded = false;
-            PokemonShowdown.Dex.includeMods();
-        """.trimIndent())
+        GraalShowdown.context.eval("js", "afterCobbledSpeciesInit();")
         Cobblemon.LOGGER.info("Finished creating showdown data for species")
     }
 

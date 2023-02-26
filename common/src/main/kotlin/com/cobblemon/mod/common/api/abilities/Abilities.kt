@@ -37,12 +37,8 @@ object Abilities : DataRegistry {
         PotentialAbility.types.add(CommonAbilityType)
         PotentialAbility.types.add(HiddenAbilityType)
         this.abilityMap.clear()
-        val script = """
-            PokemonShowdown.Dex.mod("${Cobblemon.MODID}")
-              .abilities.all()
-              .map(ability => ability.id);
-        """.trimIndent()
-        val arrayResult = GraalShowdown.context.eval("js", script)
+        val function = "getCobbledAbilityIds();"
+        val arrayResult = GraalShowdown.context.eval("js", function)
         for (i in 0 until arrayResult.arraySize) {
             val id = arrayResult.getArrayElement(i).asString()
             val ability = AbilityTemplate(id)

@@ -37,11 +37,8 @@ object Moves : DataRegistry {
     override fun reload(manager: ResourceManager) {
         this.allMoves.clear()
         this.idMapping.clear()
-        val script = """
-            PokemonShowdown.Dex.mod("${Cobblemon.MODID}")
-              .moves.all();
-        """.trimIndent()
-        val arrayResult = GraalShowdown.context.eval("js", script)
+        val function = "getCobbledMoves();"
+        val arrayResult = GraalShowdown.context.eval("js", function)
         for (i in 0 until arrayResult.arraySize) {
             val jsMove = arrayResult.getArrayElement(i)
             val id = jsMove.getMember("id").asString()

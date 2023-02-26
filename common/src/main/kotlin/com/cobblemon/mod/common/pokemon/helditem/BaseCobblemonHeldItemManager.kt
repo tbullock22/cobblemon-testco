@@ -31,12 +31,8 @@ abstract class BaseCobblemonHeldItemManager : HeldItemManager {
 
     internal open fun load() {
         this.itemIds.clear()
-        val script = """
-            PokemonShowdown.Dex.mod("${Cobblemon.MODID}")
-              .items.all()
-              .map(item => item.id);
-        """.trimIndent()
-        val arrayResult = GraalShowdown.context.eval("js", script)
+        val function = "getCobbledItemIds();"
+        val arrayResult = GraalShowdown.context.eval("js", function)
         val showdownIds = hashSetOf<String>()
         for (i in 0 until arrayResult.arraySize) {
             showdownIds += arrayResult.getArrayElement(i).asString()
