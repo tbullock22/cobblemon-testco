@@ -29,6 +29,7 @@ import com.cobblemon.mod.common.pokemon.evolution.progress.RecoilEvolutionProgre
 import com.cobblemon.mod.common.pokemon.evolution.progress.UseMoveEvolutionProgress
 import com.cobblemon.mod.common.pokemon.status.PersistentStatus
 import com.cobblemon.mod.common.util.*
+import dev.architectury.utils.GameInstance
 import net.minecraft.entity.LivingEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text

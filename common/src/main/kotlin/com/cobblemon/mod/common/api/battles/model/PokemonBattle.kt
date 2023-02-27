@@ -29,7 +29,7 @@ import com.cobblemon.mod.common.battles.dispatch.BattleDispatch
 import com.cobblemon.mod.common.battles.dispatch.DispatchResult
 import com.cobblemon.mod.common.battles.dispatch.GO
 import com.cobblemon.mod.common.battles.dispatch.WaitDispatch
-import com.cobblemon.mod.common.battles.runner.GraalShowdown
+import com.cobblemon.mod.common.battles.runner.ShowdownService
 import com.cobblemon.mod.common.net.messages.client.battle.BattleEndPacket
 import com.cobblemon.mod.common.pokemon.evolution.progress.DefeatEvolutionProgress
 import com.cobblemon.mod.common.util.battleLang
@@ -151,7 +151,7 @@ open class PokemonBattle(
 
     fun writeShowdownAction(vararg messages: String) {
         log(messages.joinToString("\n"))
-        GraalShowdown.sendToShowdown(battleId, messages.toList().toTypedArray())
+        ShowdownService.get().send(battleId, messages.toList().toTypedArray())
     }
 
     fun turn(newTurnNumber: Int) {

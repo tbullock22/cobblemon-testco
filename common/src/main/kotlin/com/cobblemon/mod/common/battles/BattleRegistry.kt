@@ -13,7 +13,7 @@ import com.cobblemon.mod.common.api.pokemon.helditem.HeldItemProvider
 import com.cobblemon.mod.common.api.pokemon.stats.Stats
 import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
-import com.cobblemon.mod.common.battles.runner.GraalShowdown
+import com.cobblemon.mod.common.battles.runner.ShowdownService
 import com.google.gson.GsonBuilder
 import java.time.Instant
 import java.util.Optional
@@ -172,7 +172,7 @@ object BattleRegistry {
         }
 
         // Compiles the request and sends it off
-        GraalShowdown.startBattle(battle, messages.toTypedArray())
+        ShowdownService.get().startBattle(battle, messages.toTypedArray())
         return battle
     }
 

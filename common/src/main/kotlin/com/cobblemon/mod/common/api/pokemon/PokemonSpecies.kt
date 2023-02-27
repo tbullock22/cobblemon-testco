@@ -34,7 +34,7 @@ import com.cobblemon.mod.common.api.spawning.TimeRange
 import com.cobblemon.mod.common.api.types.ElementalType
 import com.cobblemon.mod.common.api.types.ElementalTypes
 import com.cobblemon.mod.common.api.types.adapters.ElementalTypeAdapter
-import com.cobblemon.mod.common.battles.runner.GraalShowdown
+import com.cobblemon.mod.common.battles.runner.ShowdownService
 import com.cobblemon.mod.common.net.messages.client.data.SpeciesRegistrySyncPacket
 import com.cobblemon.mod.common.pokemon.FormData
 import com.cobblemon.mod.common.pokemon.Species
@@ -256,7 +256,7 @@ object PokemonSpecies : JsonDataRegistry<Species> {
                 """.trimIndent()
             )
         }
-        GraalShowdown.context.eval("js", "afterCobbledSpeciesInit();")
+        ShowdownService.get().indicateSpeciesInitialized()
         Cobblemon.LOGGER.info("Finished creating showdown data for species")
     }
 

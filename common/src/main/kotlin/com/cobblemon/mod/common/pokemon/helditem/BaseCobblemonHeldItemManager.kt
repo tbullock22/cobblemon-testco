@@ -11,7 +11,7 @@ package com.cobblemon.mod.common.pokemon.helditem
 import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.api.pokemon.helditem.HeldItemManager
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
-import com.cobblemon.mod.common.battles.runner.GraalShowdown
+import com.cobblemon.mod.common.battles.runner.ShowdownService
 import com.google.common.collect.HashBiMap
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
@@ -31,11 +31,10 @@ abstract class BaseCobblemonHeldItemManager : HeldItemManager {
 
     internal open fun load() {
         this.itemIds.clear()
-        val function = "getCobbledItemIds();"
-        val arrayResult = GraalShowdown.context.eval("js", function)
+        val itemsJson = ShowdownService.get().getItemIds()
         val showdownIds = hashSetOf<String>()
-        for (i in 0 until arrayResult.arraySize) {
-            showdownIds += arrayResult.getArrayElement(i).asString()
+        for (i in 0 until itemsJson.size()) {
+            showdownIds += itemsJson[i].asString
         }
         Registry.ITEM.forEach { item ->
             val identifier = Registry.ITEM.getId(item)
