@@ -9,6 +9,8 @@
 package com.cobblemon.mod.common.command
 
 import com.cobblemon.mod.common.CobblemonNetwork.sendPacket
+import com.cobblemon.mod.common.battles.BattleRegistry
+import com.cobblemon.mod.common.battles.HealItemActionResponse
 import com.cobblemon.mod.common.net.messages.client.effect.SpawnSnowstormParticlePacket
 import com.cobblemon.mod.common.particle.SnowstormParticleReader
 import com.cobblemon.mod.common.util.fromJson
@@ -38,7 +40,11 @@ object TestCommand {
         }
 
         try {
-            testParticles(context)
+//            testParticles(context)
+            val player = context.source.player ?: return Command.SINGLE_SUCCESS
+            val battle = BattleRegistry.getBattleByParticipatingPlayer(player) ?: return Command.SINGLE_SUCCESS
+            val actor = battle.actors.find { player.uuid in it.getPlayerUUIDs() } ?: return Command.SINGLE_SUCCESS
+            actor.setActionResponses(listOf(HealItemActionResponse("potion")))
 
 //            extractMovesData()
 //            // Player variables

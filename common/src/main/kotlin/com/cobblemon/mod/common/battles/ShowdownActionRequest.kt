@@ -68,7 +68,8 @@ enum class ShowdownActionResponseType(val loader: (PacketByteBuf) -> ShowdownAct
     MOVE({ MoveActionResponse("", null) }),
     DEFAULT({ DefaultActionResponse() }),
     BALL({ BallActionResponse() }),
-    PASS({ PassActionResponse });
+    PASS({ PassActionResponse }),
+    HEAL_ITEM({ HealItemActionResponse("potion") });
 }
 
 abstract class ShowdownActionResponse(val type: ShowdownActionResponseType) {
@@ -138,6 +139,27 @@ data class MoveActionResponse(var moveName: String, var targetPnx: String? = nul
             targetPnx = buffer.readString()
         }
         return this
+    }
+}
+
+data class HealItemActionResponse(var item: String) : ShowdownActionResponse(ShowdownActionResponseType.BALL) {
+    override fun saveToBuffer(buffer: PacketByteBuf) {
+        super.saveToBuffer(buffer)
+        buffer.writeString(item)
+    }
+
+    override fun loadFromBuffer(buffer: PacketByteBuf): ShowdownActionResponse {
+        super.loadFromBuffer(buffer)
+        item = buffer.readString()
+        return this
+    }
+
+    override fun isValid(activeBattlePokemon: ActiveBattlePokemon, showdownMoveSet: ShowdownMoveset?, forceSwitch: Boolean): Boolean {
+        return !forceSwitch
+    }
+
+    override fun toShowdownString(activeBattlePokemon: ActiveBattlePokemon, showdownMoveSet: ShowdownMoveset?): String {
+        return "healitem ${activeBattlePokemon.getPNX()} $item"
     }
 }
 

@@ -99,6 +99,7 @@ object ShowdownInterpreter {
         splitUpdateInstructions["|-damage|"] = this::handleDamageInstruction
         splitUpdateInstructions["|drag|"] = this::handleDragInstruction
         splitUpdateInstructions["|-heal|"] = this::handleHealInstruction
+        splitUpdateInstructions["|-healitem|"] = this::handleHealItemInstruction
         splitUpdateInstructions["|-sethp|"] = this::handleSetHpInstructions
     }
 
@@ -1121,6 +1122,12 @@ object ShowdownInterpreter {
                     status.applyMessage.let { battle.broadcastChatMessage(it.asTranslated(battlePokemon.getName())) }
                 }
             }
+        })
+    }
+
+    private fun handleHealItemInstruction(battle: PokemonBattle, actor: BattleActor, rawPublic: String, rawPrivate: String) {
+        battle.dispatchWaiting({
+
         })
     }
 
