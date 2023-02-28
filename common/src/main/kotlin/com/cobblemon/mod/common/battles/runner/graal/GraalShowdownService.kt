@@ -13,6 +13,15 @@ import org.graalvm.polyglot.Value
 import java.io.File
 import java.util.*
 
+/**
+ * Mediator service for communicating between the Cobblemon Minecraft mod and Cobblemon showdown service via
+ * GraalVM. This directly invokes JavaScript functions provided within the showdown service.
+ *
+ * @see {@code cobbled-exports/cobbled-index.js} within cobbledmon-showdown repository
+ * @see <a href="https://www.graalvm.org/">
+ * @since February 27, 2023
+ * @author Hiroku, landonjw
+ */
 class GraalShowdownService : ShowdownService {
 
     @Transient
@@ -82,19 +91,19 @@ class GraalShowdownService : ShowdownService {
     override fun getAbilityIds(): JsonArray {
         val getCobbledAbilityIdsFn = context.getBindings("js").getMember("getCobbledAbilityIds")
         val arrayResult = getCobbledAbilityIdsFn.execute().asString()
-        return Gson().fromJson(arrayResult, JsonArray::class.java)
+        return gson.fromJson(arrayResult, JsonArray::class.java)
     }
 
     override fun getMoves(): JsonArray {
         val getCobbledMovesFn = context.getBindings("js").getMember("getCobbledMoves")
         val arrayResult = getCobbledMovesFn.execute().asString()
-        return Gson().fromJson(arrayResult, JsonArray::class.java)
+        return gson.fromJson(arrayResult, JsonArray::class.java)
     }
 
     override fun getItemIds(): JsonArray {
         val getCobbledItemIdsFn = context.getBindings("js").getMember("getCobbledItemIds")
         val arrayResult = getCobbledItemIdsFn.execute().asString()
-        return Gson().fromJson(arrayResult, JsonArray::class.java)
+        return gson.fromJson(arrayResult, JsonArray::class.java)
     }
 
     override fun indicateSpeciesInitialized() {

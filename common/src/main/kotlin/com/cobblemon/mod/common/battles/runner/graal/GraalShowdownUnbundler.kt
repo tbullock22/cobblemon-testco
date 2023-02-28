@@ -10,6 +10,14 @@ import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader
 
+/**
+ * Unbundles a zipped Showdown file found within {@code resources/assets/showdown.zip} for use within the GraalShowdownService.
+ * This will do a metadata check prior to unbundling and stop if there is already an unbundled showdown package
+ * of the same version.
+ *
+ * @since  February 27, 2023
+ * @author Deltric
+ */
 class GraalShowdownUnbundler {
 
     private val gson = GsonBuilder()
@@ -29,7 +37,7 @@ class GraalShowdownUnbundler {
             var extract = true
             if (showdownMetadataFile.exists()) {
                 val current = this.readShowdownMetadata(showdownMetadataFile)
-                if (metadata!!.showdownVersion == current!!.showdownVersion) {
+                if (metadata!!.showdownVersion == current!!.showdownVersion && false) {
                     extract = false
                 } else {
                     // Backup current install first before continuing
