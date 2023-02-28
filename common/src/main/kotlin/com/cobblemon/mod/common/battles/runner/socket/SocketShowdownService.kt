@@ -37,7 +37,7 @@ import java.util.*
  * @since February 27, 2023
  * @author landonjw
  */
-class SocketShowdownService(val host: String = "localhost", val port: Int = 18468, val localPort: Int = 18469) : ShowdownService {
+class SocketShowdownService(val host: String = "localhost", val port: Int = 18468, val localPort: Int = 0) : ShowdownService {
 
     private lateinit var socket: Socket
     private lateinit var writer: OutputStreamWriter
