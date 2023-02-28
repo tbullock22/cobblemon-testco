@@ -33,7 +33,7 @@ import java.util.*
  * The protocol for messages sent from showdown is <length of characters in payload><payload>,
  * and a payload length of 0 indicates that there is no response.
  *
- * @see {@code sim/cobbled-debug-server.ts} within cobbledmon-showdown repository
+ * @see {@code sim/cobbled-debug-server.ts} within cobblemon-showdown repository
  * @since February 27, 2023
  * @author landonjw
  */
@@ -55,7 +55,7 @@ class SocketShowdownService(val host: String = "localhost", val port: Int = 1846
     }
 
     override fun startBattle(battle: PokemonBattle, messages: Array<String>) {
-        writer.write(">startbattle ${battle.battleId}")
+        writer.write(">startbattle ${battle.battleId}\n")
         writer.flush()
         send(battle.battleId, messages)
     }
@@ -98,28 +98,28 @@ class SocketShowdownService(val host: String = "localhost", val port: Int = 1846
     }
 
     override fun getAbilityIds(): JsonArray {
-        writer.write(">getCobbledAbilityIds")
+        writer.write(">getCobbledAbilityIds\n")
         writer.flush()
         val response = readMessage()
         return gson.fromJson(response, JsonArray::class.java)
     }
 
     override fun getMoves(): JsonArray {
-        writer.write(">getCobbledMoves")
+        writer.write(">getCobbledMoves\n")
         writer.flush()
         val response = readMessage()
         return gson.fromJson(response, JsonArray::class.java)
     }
 
     override fun getItemIds(): JsonArray {
-        writer.write(">getCobbledItemIds")
+        writer.write(">getCobbledItemIds\n")
         writer.flush()
         val response = readMessage()
         return gson.fromJson(response, JsonArray::class.java)
     }
 
     override fun indicateSpeciesInitialized() {
-        writer.write(">afterCobbledSpeciesInit")
+        writer.write(">afterCobbledSpeciesInit\n")
         writer.flush()
     }
 
