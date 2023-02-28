@@ -73,6 +73,11 @@
   "item.cobblemon.iron": "Iron",
   "item.cobblemon.protein": "Protein",
   "item.cobblemon.zinc": "Zinc",
+  "item.cobblemon.potion": "Potion",
+  "item.cobblemon.super_potion": "Super Potion",
+  "item.cobblemon.hyper_potion": "Hyper Potion",
+  "item.cobblemon.max_potion": "Max Potion",
+  "item.cobblemon.full_restore": "Full Restore",
 
   "itemGroup.cobblemon.held_item": "Held Items",
   "item.cobblemon.assault_vest": "Assault Vest",
