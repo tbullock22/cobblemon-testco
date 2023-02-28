@@ -45,7 +45,7 @@ class GraalShowdownUnbundler {
             var extract = true
             if (showdownMetadataFile.exists()) {
                 val current = this.readShowdownMetadata(showdownMetadataFile)
-                if (metadata!!.showdownVersion == current!!.showdownVersion && false) {
+                if (metadata!!.showdownVersion == current!!.showdownVersion) {
                     extract = false
                 } else {
                     // Backup current install first before continuing
