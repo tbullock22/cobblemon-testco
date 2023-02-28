@@ -11,7 +11,7 @@ package com.cobblemon.mod.common.api.abilities
 import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.api.data.DataRegistry
 import com.cobblemon.mod.common.api.reactive.SimpleObservable
-import com.cobblemon.mod.common.battles.runner.GraalShowdown
+import com.cobblemon.mod.common.battles.runner.ShowdownService
 import com.cobblemon.mod.common.net.messages.client.data.AbilityRegistrySyncPacket
 import com.cobblemon.mod.common.pokemon.abilities.HiddenAbilityType
 import com.cobblemon.mod.common.util.cobblemonResource
@@ -37,14 +37,9 @@ object Abilities : DataRegistry {
         PotentialAbility.types.add(CommonAbilityType)
         PotentialAbility.types.add(HiddenAbilityType)
         this.abilityMap.clear()
-        val script = """
-            PokemonShowdown.Dex.mod("${Cobblemon.MODID}")
-              .abilities.all()
-              .map(ability => ability.id);
-        """.trimIndent()
-        val arrayResult = GraalShowdown.context.eval("js", script)
-        for (i in 0 until arrayResult.arraySize) {
-            val id = arrayResult.getArrayElement(i).asString()
+        val abilitiesJson = ShowdownService.get().getAbilityIds()
+        for (i in 0 until abilitiesJson.size()) {
+            val id = abilitiesJson[i].asString
             val ability = AbilityTemplate(id)
             this.register(ability)
         }
