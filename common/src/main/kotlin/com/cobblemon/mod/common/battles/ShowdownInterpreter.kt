@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.battles
 
+import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.Cobblemon.LOGGER
 import com.cobblemon.mod.common.CobblemonItems
 import com.cobblemon.mod.common.api.battles.interpreter.BattleMessage
@@ -99,7 +100,6 @@ object ShowdownInterpreter {
         splitUpdateInstructions["|-damage|"] = this::handleDamageInstruction
         splitUpdateInstructions["|drag|"] = this::handleDragInstruction
         splitUpdateInstructions["|-heal|"] = this::handleHealInstruction
-        splitUpdateInstructions["|-healitem|"] = this::handleHealItemInstruction
         splitUpdateInstructions["|-sethp|"] = this::handleSetHpInstructions
     }
 
@@ -1082,34 +1082,45 @@ object ShowdownInterpreter {
             battle.sendSidedUpdate(actor, BattleHealthChangePacket(pnx, newHealth.toFloat()), BattleHealthChangePacket(pnx, newHealthRatio))
             val silent = privateMessage.hasOptionalArgument("silent")
             if (!silent) {
-                val message: Text = when {
-                    privateMessage.hasOptionalArgument("zeffect") -> battleLang("heal.z_effect", battlePokemon.getName())
+                when {
+                    privateMessage.hasOptionalArgument("zeffect") -> {
+                        battle.broadcastChatMessage(battleLang("heal.z_effect", battlePokemon.getName()))
+                    }
                     privateMessage.hasOptionalArgument("wisher") -> {
                         val name = privateMessage.optionalArgument("wisher")!!
                         val showdownId = name.lowercase().replace(ShowdownIdentifiable.REGEX, "")
                         val wisher = actor.pokemonList.firstOrNull { it.effectedPokemon.showdownId() == showdownId }
                         // If no Pokémon is found this is a nickname
-                        battleLang("heal.wish", wisher?.getName() ?: actor.nameOwned(name))
+                        battle.broadcastChatMessage(battleLang("heal.wish", wisher?.getName() ?: actor.nameOwned(name)))
                     }
                     privateMessage.optionalArgument("from") == "drain" -> {
                         val drained = privateMessage.actorAndActivePokemonFromOptional(battle, "of")?.second?.battlePokemon ?: return@dispatchWaiting
-                        battleLang("heal.drain", drained.getName())
+                        battle.broadcastChatMessage(battleLang("heal.drain", drained.getName()))
                     }
                     privateMessage.hasOptionalArgument("from") -> {
-                        val effect = privateMessage.effect("from") ?: return@dispatchWaiting
-                        when (effect.id) {
-                            "healingwish" -> battleLang("heal.healing_wish", battlePokemon.getName())
-                            "lunardance" -> battleLang("heal.lunar_dance", battlePokemon.getName())
-                            "revivalblessing" -> battleLang("heal.revival_blessing", battlePokemon.getName())
-                            "aquaring" -> battleLang("heal.aqua_ring", battlePokemon.getName())
-                            "ingrain" -> battleLang("heal.ingrain", battlePokemon.getName())
-                            "grassyterrain" -> battleLang("heal.grassy_terrain", battlePokemon.getName())
-                            else -> battle.createUnimplementedSplit(publicMessage, privateMessage)
+                        val arg = privateMessage.optionalArgument("from") ?: return@dispatchWaiting
+                        if (arg.startsWith("item")) {
+                            // From here we could retrieve the item like so, if we want custom messages for certain items. For now, we just display a generic message.
+                            // val itemId = arg.split(":").lastOrNull()
+                            battle.broadcastChatMessage(battleLang("heal.generic", battlePokemon.getName()))
+                        }
+                        else {
+                            val effect = privateMessage.effect("from") ?: return@dispatchWaiting
+                            when (effect.id) {
+                                "healingwish" -> battleLang("heal.healing_wish", battlePokemon.getName())
+                                "lunardance" -> battleLang("heal.lunar_dance", battlePokemon.getName())
+                                "revivalblessing" -> battleLang("heal.revival_blessing", battlePokemon.getName())
+                                "aquaring" -> battleLang("heal.aqua_ring", battlePokemon.getName())
+                                "ingrain" -> battleLang("heal.ingrain", battlePokemon.getName())
+                                "grassyterrain" -> battleLang("heal.grassy_terrain", battlePokemon.getName())
+                                else -> battle.createUnimplementedSplit(publicMessage, privateMessage)
+                            }
                         }
                     }
-                    else -> battleLang("heal.generic", battlePokemon.getName())
+                    else -> {
+                        battle.broadcastChatMessage(battleLang("heal.generic", battlePokemon.getName()))
+                    }
                 }
-                battle.broadcastChatMessage(message)
             }
             battlePokemon.effectedPokemon.currentHealth = newHealth
             // This part is not always present
@@ -1122,12 +1133,6 @@ object ShowdownInterpreter {
                     status.applyMessage.let { battle.broadcastChatMessage(it.asTranslated(battlePokemon.getName())) }
                 }
             }
-        })
-    }
-
-    private fun handleHealItemInstruction(battle: PokemonBattle, actor: BattleActor, rawPublic: String, rawPrivate: String) {
-        battle.dispatchWaiting({
-
         })
     }
 

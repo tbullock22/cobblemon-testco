@@ -44,7 +44,7 @@ object TestCommand {
             val player = context.source.player ?: return Command.SINGLE_SUCCESS
             val battle = BattleRegistry.getBattleByParticipatingPlayer(player) ?: return Command.SINGLE_SUCCESS
             val actor = battle.actors.find { player.uuid in it.getPlayerUUIDs() } ?: return Command.SINGLE_SUCCESS
-            actor.setActionResponses(listOf(HealItemActionResponse("potion")))
+            actor.setActionResponses(listOf(HealItemActionResponse("full_restore")))
 
 //            extractMovesData()
 //            // Player variables
