@@ -86,7 +86,8 @@ object BattleRegistry {
                 }|"
             )
             // Nature
-            packedTeamBuilder.append("${pk.nature.name.path}|")
+            val battleNature = pk.mintedNature ?: pk.nature
+            packedTeamBuilder.append("${battleNature.name.path}|")
             // EVs
             val evsInOrder = Stats.PERMANENT.map { pk.evs.getOrDefault(it) }.joinToString(separator = ",")
             packedTeamBuilder.append("$evsInOrder|")
