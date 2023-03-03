@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "cobblemon:blocks/special_defense_mint_stage2"
+  }
+}

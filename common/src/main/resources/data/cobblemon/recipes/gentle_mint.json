@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "cobblemon:special_defense_mint_leaves"
+    },
+    "W": {
+      "item": "cobblemon:defense_mint_leaves"
+    }
+  },
+  "pattern": [
+    "##",
+    "#W"
+  ],
+  "result": {
+    "item": "cobblemon:gentle_mint"
+  }
+}

@@ -9,11 +9,8 @@
 package com.cobblemon.mod.common
 
 import com.cobblemon.mod.common.api.apricorn.Apricorn
+import com.cobblemon.mod.common.block.*
 import com.cobblemon.mod.common.registry.CompletableRegistry
-import com.cobblemon.mod.common.block.ApricornBlock
-import com.cobblemon.mod.common.block.ApricornSaplingBlock
-import com.cobblemon.mod.common.block.HealingMachineBlock
-import com.cobblemon.mod.common.block.PCBlock
 import dev.architectury.registry.registries.RegistrySupplier
 import net.minecraft.block.*
 import net.minecraft.entity.EntityType
@@ -84,7 +81,7 @@ object CobblemonBlocks : CompletableRegistry<Block>(Registry.BLOCK_KEY) {
         )
     }
     val APRICORN_PLANKS = queue("apricorn_planks") { Block(AbstractBlock.Settings.of(Material.WOOD, MapColor.DIRT_BROWN).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)) }
-    val APRICORN_LEAVES = queue("apricorn_leaves") { com.cobblemon.mod.common.CobblemonBlocks.leaves(BlockSoundGroup.GRASS) }
+    val APRICORN_LEAVES = queue("apricorn_leaves") { leaves(BlockSoundGroup.GRASS) }
     val APRICORN_FENCE = queue("apricorn_fence") { FenceBlock(AbstractBlock.Settings.of(Material.WOOD, APRICORN_PLANKS.get().defaultMapColor).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)) }
     val APRICORN_FENCE_GATE = queue("apricorn_fence_gate") { FenceGateBlock(AbstractBlock.Settings.of(Material.WOOD, APRICORN_PLANKS.get().defaultMapColor).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)) }
     val APRICORN_BUTTON = queue("apricorn_button") { WoodenButtonBlock(AbstractBlock.Settings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)) }
@@ -119,6 +116,14 @@ object CobblemonBlocks : CompletableRegistry<Block>(Registry.BLOCK_KEY) {
     val HEALING_MACHINE = queue("healing_machine") { HealingMachineBlock(AbstractBlock.Settings.of(Material.METAL, MapColor.IRON_GRAY).sounds(BlockSoundGroup.METAL).strength(2f).nonOpaque().luminance(ToIntFunction { state: BlockState -> if (state.get(HealingMachineBlock.CHARGE_LEVEL) >= HealingMachineBlock.MAX_CHARGE_LEVEL) 7 else 2 })) }
     val PC = queue("pc") { PCBlock(AbstractBlock.Settings.of(Material.METAL, MapColor.IRON_GRAY).sounds(BlockSoundGroup.METAL).strength(2F).nonOpaque().luminance(ToIntFunction { state: BlockState -> if ((state.get(
             PCBlock.ON) as Boolean) && (state.get(PCBlock.PART) == PCBlock.PCPart.TOP)) 10 else 0 })) }
+
+    val ATTACK_MINT = queue("attack_mint") { MintBlock(CobblemonItems.ATTACK_MINT_SEED, AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP)) }
+    val DEFENSE_MINT = queue("defense_mint") { MintBlock(CobblemonItems.DEFENSE_MINT_SEED, AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP)) }
+    val SPECIAL_ATTACK_MINT = queue("special_attack_mint") { MintBlock(CobblemonItems.SPECIAL_ATTACK_MINT_SEED, AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP)) }
+    val SPECIAL_DEFENSE_MINT = queue("special_defense_mint") { MintBlock(CobblemonItems.SPECIAL_DEFENSE_MINT_SEED, AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP)) }
+    val SPEED_MINT = queue("speed_mint") { MintBlock(CobblemonItems.SPEED_MINT_SEED, AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP)) }
+    val SERIOUS_MINT = queue("serious_mint") { MintBlock(CobblemonItems.SERIOUS_MINT_SEED, AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP)) }
+
 
     private fun registerApricornBlock(id: String, apricorn: Apricorn): RegistrySupplier<ApricornBlock> {
         return queue(id) { ApricornBlock(AbstractBlock.Settings.of(Material.PLANT, apricorn.mapColor()).ticksRandomly().strength(Blocks.OAK_LOG.hardness, Blocks.OAK_LOG.blastResistance).sounds(BlockSoundGroup.WOOD).nonOpaque(), apricorn) }

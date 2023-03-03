@@ -9,15 +9,12 @@
 package com.cobblemon.mod.common
 
 import com.cobblemon.mod.common.api.pokeball.PokeBalls
+import com.cobblemon.mod.common.api.pokemon.Natures
 import com.cobblemon.mod.common.api.pokemon.stats.Stats
-import com.cobblemon.mod.common.item.ApricornItem
-import com.cobblemon.mod.common.item.ApricornSeedItem
-import com.cobblemon.mod.common.item.CobblemonItem
-import com.cobblemon.mod.common.item.CobblemonItemGroups
-import com.cobblemon.mod.common.item.PokeBallItem
-import com.cobblemon.mod.common.item.PokemonItem
+import com.cobblemon.mod.common.item.*
 import com.cobblemon.mod.common.item.interactive.CandyItem
 import com.cobblemon.mod.common.item.interactive.LinkCableItem
+import com.cobblemon.mod.common.item.interactive.MintItem
 import com.cobblemon.mod.common.item.interactive.VitaminItem
 import com.cobblemon.mod.common.pokeball.PokeBall
 import com.cobblemon.mod.common.registry.CompletableRegistry
@@ -128,6 +125,41 @@ object CobblemonItems : CompletableRegistry<Item>(Registry.ITEM_KEY) {
     val IRON = queue("iron") { VitaminItem(Stats.DEFENCE) }
     val PROTEIN = queue("protein") { VitaminItem(Stats.ATTACK) }
     val ZINC = queue("zinc") { VitaminItem(Stats.SPECIAL_DEFENCE) }
+
+    val ATTACK_MINT_SEED = queue("attack_mint_seed") { itemNameBlockItem(CobblemonBlocks.ATTACK_MINT.get(), ItemGroup.MISC) }
+    val ATTACK_MINT_LEAVES = queue("attack_mint_leaves") { Item(Item.Settings().group(ItemGroup.MISC)) }
+    val DEFENSE_MINT_SEED = queue("defense_mint_seed") { itemNameBlockItem(CobblemonBlocks.DEFENSE_MINT.get(), ItemGroup.MISC) }
+    val DEFENSE_MINT_LEAVES = queue("defense_mint_leaves") { Item(Item.Settings().group(ItemGroup.MISC)) }
+    val SPECIAL_ATTACK_MINT_SEED = queue("special_attack_mint_seed") { itemNameBlockItem(CobblemonBlocks.SPECIAL_ATTACK_MINT.get(), ItemGroup.MISC) }
+    val SPECIAL_ATTACK_MINT_LEAVES = queue("special_attack_mint_leaves") { Item(Item.Settings().group(ItemGroup.MISC)) }
+    val SPECIAL_DEFENSE_MINT_SEED = queue("special_defense_mint_seed") { itemNameBlockItem(CobblemonBlocks.SPECIAL_DEFENSE_MINT.get(), ItemGroup.MISC) }
+    val SPECIAL_DEFENSE_MINT_LEAVES = queue("special_defense_mint_leaves") { Item(Item.Settings().group(ItemGroup.MISC)) }
+    val SPEED_MINT_SEED = queue("speed_mint_seed") { itemNameBlockItem(CobblemonBlocks.SPEED_MINT.get(), ItemGroup.MISC) }
+    val SPEED_MINT_LEAVES = queue("speed_mint_leaves") { Item(Item.Settings().group(ItemGroup.MISC)) }
+    val SERIOUS_MINT_SEED = queue("serious_mint_seed") { itemNameBlockItem(CobblemonBlocks.SERIOUS_MINT.get(), ItemGroup.MISC) }
+    val SERIOUS_MINT_LEAVES = queue("serious_mint_leaves") { Item(Item.Settings().group(ItemGroup.MISC)) }
+
+    val LONELY_MINT = queue("lonely_mint") { MintItem(Natures.LONELY) }
+    val ADAMANT_MINT = queue("adamant_mint") { MintItem(Natures.ADAMANT) }
+    val NAUGHTY_MINT = queue("naughty_mint") { MintItem(Natures.NAUGHTY) }
+    val BRAVE_MINT = queue("brave_mint") { MintItem(Natures.BRAVE) }
+    val BOLD_MINT = queue("bold_mint") { MintItem(Natures.BOLD) }
+    val IMPISH_MINT = queue("impish_mint") { MintItem(Natures.IMPISH) }
+    val LAX_MINT = queue("lax_mint") { MintItem(Natures.LAX) }
+    val RELAXED_MINT = queue("relaxed_mint") { MintItem(Natures.RELAXED) }
+    val MODEST_MINT = queue("modest_mint") { MintItem(Natures.MODEST) }
+    val MILD_MINT = queue("mild_mint") { MintItem(Natures.MILD) }
+    val RASH_MINT = queue("rash_mint") { MintItem(Natures.RASH) }
+    val QUIET_MINT = queue("quiet_mint") { MintItem(Natures.QUIET) }
+    val CALM_MINT = queue("calm_mint") { MintItem(Natures.CALM) }
+    val GENTLE_MINT = queue("gentle_mint") { MintItem(Natures.GENTLE) }
+    val CAREFUL_MINT = queue("careful_mint") { MintItem(Natures.CAREFUL) }
+    val SASSY_MINT = queue("sassy_mint") { MintItem(Natures.SASSY) }
+    val TIMID_MINT = queue("timid_mint") { MintItem(Natures.TIMID) }
+    val HASTY_MINT = queue("hasty_mint") { MintItem(Natures.HASTY) }
+    val JOLLY_MINT = queue("jolly_mint") { MintItem(Natures.JOLLY) }
+    val NAIVE_MINT = queue("naive_mint") { MintItem(Natures.NAIVE) }
+    val SERIOUS_MINT = queue("serious_mint") { MintItem(Natures.SERIOUS) }
 
     /**
      * Evolution Ores and Stones

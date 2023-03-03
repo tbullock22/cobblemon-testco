@@ -121,7 +121,14 @@ object CobblemonClient {
             CobblemonBlocks.RED_APRICORN.get(),
             CobblemonBlocks.WHITE_APRICORN.get(),
             CobblemonBlocks.YELLOW_APRICORN.get(),
-            CobblemonBlocks.HEALING_MACHINE.get())
+            CobblemonBlocks.HEALING_MACHINE.get(),
+            CobblemonBlocks.ATTACK_MINT.get(),
+            CobblemonBlocks.DEFENSE_MINT.get(),
+            CobblemonBlocks.SPECIAL_ATTACK_MINT.get(),
+            CobblemonBlocks.SPECIAL_DEFENSE_MINT.get(),
+            CobblemonBlocks.SPEED_MINT.get(),
+            CobblemonBlocks.SERIOUS_MINT.get(),
+        )
     }
 
     fun beforeChatRender(matrixStack: MatrixStack, partialDeltaTicks: Float) {
