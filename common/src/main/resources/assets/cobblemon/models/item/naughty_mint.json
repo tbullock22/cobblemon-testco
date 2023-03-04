@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "cobblemon:items/naughty_mint"
+    "layer0": "cobblemon:items/mints/naughty_mint"
   }
 }

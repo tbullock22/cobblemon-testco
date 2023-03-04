@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "#": {
-      "item": "cobblemon:serious_mint_leaves"
+      "item": "cobblemon:white_mint_leaf"
     }
   },
   "pattern": [

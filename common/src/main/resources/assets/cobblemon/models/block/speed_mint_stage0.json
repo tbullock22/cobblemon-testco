@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/crop",
-  "textures": {
-    "crop": "cobblemon:blocks/speed_mint_stage0"
-  }
-}

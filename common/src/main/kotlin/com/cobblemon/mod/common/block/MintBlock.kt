@@ -8,15 +8,16 @@
 
 package com.cobblemon.mod.common.block
 
+import com.cobblemon.mod.common.mint.MintType
 import dev.architectury.registry.registries.RegistrySupplier
 import net.minecraft.block.CropBlock
 import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemConvertible
 
-class MintBlock(val seed: RegistrySupplier<BlockItem>, settings: Settings) : CropBlock(settings) {
+class MintBlock(val mintType: MintType, settings: Settings) : CropBlock(settings) {
 
     override fun getSeedsItem(): ItemConvertible {
-        return seed.get()
+        return mintType.getSeed()
     }
 
 }

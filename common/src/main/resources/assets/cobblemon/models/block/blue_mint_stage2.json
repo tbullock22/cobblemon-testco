@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "cobblemon:blocks/blue_mint_stage2"
+  }
+}

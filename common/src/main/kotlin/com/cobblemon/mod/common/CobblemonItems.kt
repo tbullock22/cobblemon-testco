@@ -16,6 +16,7 @@ import com.cobblemon.mod.common.item.interactive.CandyItem
 import com.cobblemon.mod.common.item.interactive.LinkCableItem
 import com.cobblemon.mod.common.item.interactive.MintItem
 import com.cobblemon.mod.common.item.interactive.VitaminItem
+import com.cobblemon.mod.common.mint.MintType
 import com.cobblemon.mod.common.pokeball.PokeBall
 import com.cobblemon.mod.common.registry.CompletableRegistry
 import dev.architectury.registry.registries.RegistrySupplier
@@ -126,18 +127,18 @@ object CobblemonItems : CompletableRegistry<Item>(Registry.ITEM_KEY) {
     val PROTEIN = queue("protein") { VitaminItem(Stats.ATTACK) }
     val ZINC = queue("zinc") { VitaminItem(Stats.SPECIAL_DEFENCE) }
 
-    val ATTACK_MINT_SEED = queue("attack_mint_seed") { itemNameBlockItem(CobblemonBlocks.ATTACK_MINT.get(), ItemGroup.MISC) }
-    val ATTACK_MINT_LEAVES = queue("attack_mint_leaves") { Item(Item.Settings().group(ItemGroup.MISC)) }
-    val DEFENSE_MINT_SEED = queue("defense_mint_seed") { itemNameBlockItem(CobblemonBlocks.DEFENSE_MINT.get(), ItemGroup.MISC) }
-    val DEFENSE_MINT_LEAVES = queue("defense_mint_leaves") { Item(Item.Settings().group(ItemGroup.MISC)) }
-    val SPECIAL_ATTACK_MINT_SEED = queue("special_attack_mint_seed") { itemNameBlockItem(CobblemonBlocks.SPECIAL_ATTACK_MINT.get(), ItemGroup.MISC) }
-    val SPECIAL_ATTACK_MINT_LEAVES = queue("special_attack_mint_leaves") { Item(Item.Settings().group(ItemGroup.MISC)) }
-    val SPECIAL_DEFENSE_MINT_SEED = queue("special_defense_mint_seed") { itemNameBlockItem(CobblemonBlocks.SPECIAL_DEFENSE_MINT.get(), ItemGroup.MISC) }
-    val SPECIAL_DEFENSE_MINT_LEAVES = queue("special_defense_mint_leaves") { Item(Item.Settings().group(ItemGroup.MISC)) }
-    val SPEED_MINT_SEED = queue("speed_mint_seed") { itemNameBlockItem(CobblemonBlocks.SPEED_MINT.get(), ItemGroup.MISC) }
-    val SPEED_MINT_LEAVES = queue("speed_mint_leaves") { Item(Item.Settings().group(ItemGroup.MISC)) }
-    val SERIOUS_MINT_SEED = queue("serious_mint_seed") { itemNameBlockItem(CobblemonBlocks.SERIOUS_MINT.get(), ItemGroup.MISC) }
-    val SERIOUS_MINT_LEAVES = queue("serious_mint_leaves") { Item(Item.Settings().group(ItemGroup.MISC)) }
+    val RED_MINT_SEEDS = queue("red_mint_seeds") { itemNameBlockItem(MintType.RED.getCropBlock(), ItemGroup.MISC) }
+    val RED_MINT_LEAF = queue("red_mint_leaf") { MintLeafItem(MintType.RED) }
+    val BLUE_MINT_SEEDS = queue("blue_mint_seeds") { itemNameBlockItem(MintType.BLUE.getCropBlock(), ItemGroup.MISC) }
+    val BLUE_MINT_LEAF = queue("blue_mint_leaf") { MintLeafItem(MintType.BLUE) }
+    val CYAN_MINT_SEEDS = queue("cyan_mint_seeds") { itemNameBlockItem(MintType.CYAN.getCropBlock(), ItemGroup.MISC) }
+    val CYAN_MINT_LEAF = queue("cyan_mint_leaf") { MintLeafItem(MintType.CYAN) }
+    val PINK_MINT_SEEDS = queue("pink_mint_seeds") { itemNameBlockItem(MintType.PINK.getCropBlock(), ItemGroup.MISC) }
+    val PINK_MINT_LEAF = queue("pink_mint_leaf") { MintLeafItem(MintType.PINK) }
+    val GREEN_MINT_SEEDS = queue("green_mint_seeds") { itemNameBlockItem(MintType.GREEN.getCropBlock(), ItemGroup.MISC) }
+    val GREEN_MINT_LEAF = queue("green_mint_leaf") { MintLeafItem(MintType.GREEN) }
+    val WHITE_MINT_SEEDS = queue("white_mint_seeds") { itemNameBlockItem(MintType.WHITE.getCropBlock(), ItemGroup.MISC) }
+    val WHITE_MINT_LEAF = queue("white_mint_leaf") { MintLeafItem(MintType.WHITE) }
 
     val LONELY_MINT = queue("lonely_mint") { MintItem(Natures.LONELY) }
     val ADAMANT_MINT = queue("adamant_mint") { MintItem(Natures.ADAMANT) }

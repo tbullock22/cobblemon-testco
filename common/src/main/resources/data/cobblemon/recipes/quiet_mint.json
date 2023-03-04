@@ -2,10 +2,10 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "#": {
-      "item": "cobblemon:special_attack_mint_leaves"
+      "item": "cobblemon:cyan_mint_leaf"
     },
     "W": {
-      "item": "cobblemon:speed_mint_leaves"
+      "item": "cobblemon:green_mint_leaf"
     }
   },
   "pattern": [

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "cobblemon:blocks/cyan_mint_stage2"
+  }
+}

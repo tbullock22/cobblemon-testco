@@ -122,12 +122,12 @@ object CobblemonClient {
             CobblemonBlocks.WHITE_APRICORN.get(),
             CobblemonBlocks.YELLOW_APRICORN.get(),
             CobblemonBlocks.HEALING_MACHINE.get(),
-            CobblemonBlocks.ATTACK_MINT.get(),
-            CobblemonBlocks.DEFENSE_MINT.get(),
-            CobblemonBlocks.SPECIAL_ATTACK_MINT.get(),
-            CobblemonBlocks.SPECIAL_DEFENSE_MINT.get(),
-            CobblemonBlocks.SPEED_MINT.get(),
-            CobblemonBlocks.SERIOUS_MINT.get(),
+            CobblemonBlocks.RED_MINT.get(),
+            CobblemonBlocks.BLUE_MINT.get(),
+            CobblemonBlocks.CYAN_MINT.get(),
+            CobblemonBlocks.PINK_MINT.get(),
+            CobblemonBlocks.GREEN_MINT.get(),
+            CobblemonBlocks.WHITE_MINT.get(),
         )
     }
 
