@@ -46,8 +46,8 @@ dependencies {
         libs.graal,
         libs.molang
     ).forEach {
-        include(forgeRuntimeLibrary(it.get())!!)
-        //bundle(it)
+        forgeRuntimeLibrary(it)
+        bundle(it)
     }
 
     listOf(
