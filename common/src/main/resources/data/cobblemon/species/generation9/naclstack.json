@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Naclstack",
   "nationalPokedexNumber": 933,
   "primaryType": "rock",
@@ -14,6 +15,14 @@
     "special_attack": 35,
     "special_defence": 65,
     "speed": 35
+  },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    }
   },
   "catchRate": 120,
   "maleRatio": 0.5,

@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Shiinotic",
   "nationalPokedexNumber": 756,
   "primaryType": "grass",
@@ -95,10 +96,10 @@
   ],
   "preEvolution": "morelull",
   "evolutions": [],
-  "baseScale": 1,
+  "baseScale": 0.75,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 0.75,
+    "height": 0.75,
     "fixed": false
   },
   "baseFriendship": 50,

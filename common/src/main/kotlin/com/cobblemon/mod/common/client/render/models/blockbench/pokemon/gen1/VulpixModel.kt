@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -37,13 +37,15 @@ class VulpixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
     lateinit var walk: PokemonPose
 
     override fun registerPoses() {
+        val blink = quirk("blink") { bedrockStateful("vulpix", "blink").setPreventsIdle(false)}
         standing = registerPose(
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("vulpix", "ground_idle")
+                singleBoneLook(),
+//                bedrock("vulpix", "ground_idle")
             )
         )
 
@@ -51,10 +53,11 @@ class VulpixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quadru
             poseName = "walk",
             poseTypes = MOVING_POSES,
             transformTicks = 10,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                QuadrupedWalkAnimation(this, periodMultiplier = 0.5F)
-                //bedrock("vulpix", "ground_walk")
+                QuadrupedWalkAnimation(this, periodMultiplier = 0.5F),
+//                bedrock("vulpix", "ground_walk")
             )
         )
     }

@@ -1,0 +1,47 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.mrmime.ground_idle": {
+			"loop": true,
+			"bones": {
+				"arm_right": {
+					"rotation": [-60, -30, -30]
+				},
+				"arm_right2": {
+					"rotation": [0, -60, 0]
+				},
+				"hand_right": {
+					"rotation": [15, -45, 30]
+				},
+				"arm_left": {
+					"rotation": [-60, 30, 30]
+				},
+				"arm_left2": {
+					"rotation": [0, 60, 0]
+				},
+				"hand_left": {
+					"rotation": [15, 45, -30]
+				}
+			}
+		},
+		"animation.mrmime.blink": {
+			"animation_length": 0.16667,
+			"bones": {
+				"eyelid_right": {
+					"position": {
+						"0.0": [0, 0, -0.1],
+						"0.125": [0, 0, -0.1],
+						"0.1667": [0, 0, 0]
+					}
+				},
+				"eyelid_left": {
+					"position": {
+						"0.0": [0, 0, -0.1],
+						"0.125": [0, 0, -0.1],
+						"0.1667": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

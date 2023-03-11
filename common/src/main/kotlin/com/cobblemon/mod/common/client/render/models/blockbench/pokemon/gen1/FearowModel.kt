@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -26,12 +26,17 @@ class FearowModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val profileScale = 0.9F
     override val profileTranslation = Vec3d(-0.1, 0.38, 0.0)
 
+    lateinit var sleep: PokemonPose
     lateinit var stand: PokemonPose
     lateinit var walk: PokemonPose
     lateinit var hover: PokemonPose
     lateinit var fly: PokemonPose
 
     override fun registerPoses() {
+        sleep = registerPose(
+                poseType = PoseType.SLEEP,
+                idleAnimations = arrayOf(bedrock("fearow", "sleep"))
+        )
         stand = registerPose(
             poseName = "standing",
             poseTypes = UI_POSES + PoseType.STAND,

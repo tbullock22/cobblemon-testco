@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench
 
+import com.cobblemon.mod.common.client.util.adapters.LocatorBoneAdapter
 import com.google.gson.GsonBuilder
 import com.google.gson.annotations.SerializedName
 import net.minecraft.client.model.*
@@ -25,27 +26,47 @@ class TexturedModel {
 
         try {
             val geometry = this.geometry!![0]
-            val geometryBones = geometry.bones!! 
+            val geometryBones = geometry.bones!!.toMutableList()
             var parentPart: ModelPartData
+
+            // We want all the regular bones, but then we want locators to be mapped into being empty bones.
+            // Reasoning there is that in many ways they really do function the same. Creating a bespoke locator
+            // thing in ModelPart and holding onto it through runtime would require 500 mixins and 1000 virgin
+            // sacrifices, so no thanks. This actually works startlingly well and allows us to follow DRY.
+            // - Hiro
+            geometryBones += geometryBones.mapNotNull { bone ->
+                val locators = bone.locators ?: return@mapNotNull null
+                locators.map { (name, locator) ->
+                    val locatorBone = ModelBone()
+                    locatorBone.name = LocatorAccess.PREFIX + name
+                    locatorBone.parent = bone.name
+                    locatorBone.pivot = locator.offset
+                    locatorBone.rotation = locator.rotation
+                    return@map locatorBone
+                }
+            }.flatten() + ModelBone().apply {
+                this.name = LocatorAccess.PREFIX + "root"
+            }
 
             for (bone in geometryBones) {
                 bones[bone.name] = bone
                 parentPart = if (bone.parent != null) parts[bone.parent]!! else modelData.root
 
+                val boneRotation = bone.rotation
                 val modelTransform : ModelTransform
                 when {
                     bone.parent == null -> {
                         // The root part always has a 24 Y offset. One of life's great mysteries.
                         modelTransform = ModelTransform.pivot(0F, 24F, 0F)
                     }
-                    bone.rotation != null -> {
+                    boneRotation != null -> {
                         modelTransform = ModelTransform.of(
                             -(bones[bone.parent]!!.pivot[0] - bone.pivot[0]),
                             bones[bone.parent]!!.pivot[1] - bone.pivot[1],
                             -(bones[bone.parent]!!.pivot[2] - bone.pivot[2]),
-                            Math.toRadians(bone.rotation[0].toDouble()).toFloat(),
-                            Math.toRadians(bone.rotation[1].toDouble()).toFloat(),
-                            Math.toRadians(bone.rotation[2].toDouble()).toFloat()
+                            Math.toRadians(boneRotation[0].toDouble()).toFloat(),
+                            Math.toRadians(boneRotation[1].toDouble()).toFloat(),
+                            Math.toRadians(boneRotation[2].toDouble()).toFloat()
                         )
                     }
                     else -> {
@@ -61,11 +82,12 @@ class TexturedModel {
                 val subParts = mutableListOf<ModelPartBuilder>()
                 val modelTransforms = mutableListOf<ModelTransform>()
 
-                if (bone.cubes != null) {
+                val boneCubes = bone.cubes
+                if (boneCubes != null) {
                     var pivot: List<Float>
                     var subPart: ModelPartBuilder
 
-                    for (cube in bone.cubes) {
+                    for (cube in boneCubes) {
                         subPart = if (cube.rotation != null) ModelPartBuilder.create() else modelPart
                         pivot = cube.pivot ?: bone.pivot
 
@@ -108,13 +130,10 @@ class TexturedModel {
                     }
                 }
 
-                parts.put(
+                parts[bone.name] = parentPart.addChild(
                     bone.name,
-                    parentPart.addChild(
-                        bone.name,
-                        modelPart,
-                        modelTransform
-                    )
+                    modelPart,
+                    modelTransform
                 )
 
                 var counter = 0
@@ -130,9 +149,9 @@ class TexturedModel {
             return TexturedModelData.of(modelData, geometry.description.textureWidth, geometry.description.textureHeight)
         } catch (e: Exception) {
             if (geometry != null) {
-                throw IllegalArgumentException("Error creating TexturedModelData with identifier ${geometry[0].description.identifier}.", e)
+                throw IllegalArgumentException("Error creating TexturedModelData with identifier ${geometry[0].description.identifier}", e)
             } else {
-                throw IllegalArgumentException("Error creating TexturedModelData.", e)
+                throw IllegalArgumentException("Error creating TexturedModelData", e)
             }
         }
     }
@@ -140,6 +159,7 @@ class TexturedModel {
     companion object {
         val GSON = GsonBuilder()
             .setLenient()
+            .registerTypeAdapter(LocatorBone::class.java, LocatorBoneAdapter)
             .create()
 
         fun from(json: String) : TexturedModel {
@@ -167,14 +187,17 @@ class ModelDataDescription(
     val visibleBoundsHeight: Float,
     @SerializedName("visible_bounds_offset")
     val visibleBoundsOffset: List<Float>
-) { }
+)
+
 class ModelBone {
-    val name: String = ""
-    val parent: String? = null
-    val pivot: List<Float> = emptyList()
-    val rotation: List<Float>? = null
-    val cubes: List<Cube>? = null
+    var name: String = ""
+    var parent: String? = null
+    var pivot: List<Float> = emptyList()
+    var rotation: List<Float>? = null
+    var cubes: List<Cube>? = null
+    var locators: Map<String, LocatorBone>? = null
 }
+
 class Cube {
     val origin: List<Float>? = null
     val size: List<Float>? = null
@@ -184,3 +207,8 @@ class Cube {
     val inflate: Float? = null
     val mirror: Boolean = false
 }
+
+class LocatorBone(
+    var offset: List<Float> = listOf(0F, 0F, 0F),
+    var rotation: List<Float> = listOf(0F, 0F, 0F)
+)

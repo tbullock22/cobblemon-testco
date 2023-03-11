@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -18,21 +18,25 @@ import net.minecraft.util.math.Vec3d
 class TentacoolModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("tentacool")
 
-    override val portraitScale = 2.0F
-    override val portraitTranslation = Vec3d(0.1, -0.6, 0.0)
+    override val portraitScale = 1.2F
+    override val portraitTranslation = Vec3d(0.1, 1.1, 0.0)
 
-    override val profileScale = 0.95F
-    override val profileTranslation = Vec3d(0.0, 0.35, 0.0)
+    override val profileScale = 0.6F
+    override val profileTranslation = Vec3d(0.0, 0.8, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
     lateinit var swim: PokemonPose
     lateinit var float: PokemonPose
+    lateinit var sleep: PokemonPose
+    lateinit var watersleep: PokemonPose
 
     override fun registerPoses() {
+        val blink = quirk("blink") { bedrockStateful("tentacool", "blink").setPreventsIdle(false)}
         standing = registerPose(
             poseName = "standing",
             poseType = PoseType.STAND,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 bedrock("tentacool", "ground_idle")
             )
@@ -41,6 +45,7 @@ class TentacoolModel(root: ModelPart) : PokemonPoseableModel() {
         walk = registerPose(
             poseName = "walk",
             poseType = PoseType.WALK,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 bedrock("tentacool", "ground_idle")
                 //bedrock("tentacool", "ground_walk")
@@ -50,6 +55,7 @@ class TentacoolModel(root: ModelPart) : PokemonPoseableModel() {
         float = registerPose(
             poseName = "float",
             poseTypes = UI_POSES + PoseType.FLOAT,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 bedrock("tentacool", "water_idle")
             )
@@ -58,9 +64,24 @@ class TentacoolModel(root: ModelPart) : PokemonPoseableModel() {
         swim = registerPose(
             poseName = "swim",
             poseType = PoseType.SWIM,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 bedrock("tentacool", "water_swim")
             )
+        )
+
+        sleep = registerPose(
+                poseName = "sleep",
+                poseType = PoseType.SLEEP,
+                condition = { !it.isTouchingWater },
+                idleAnimations = arrayOf(bedrock("tentacool", "ground_sleep"))
+        )
+
+        watersleep = registerPose(
+                poseName = "watersleep",
+                poseType = PoseType.SLEEP,
+                condition = { it.isTouchingWater },
+                idleAnimations = arrayOf(bedrock("tentacool", "water_sleep"))
         )
     }
 

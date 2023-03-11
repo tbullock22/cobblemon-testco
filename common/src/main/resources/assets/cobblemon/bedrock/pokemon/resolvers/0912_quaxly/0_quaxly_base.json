@@ -1,0 +1,13 @@
+{
+	"species": "cobblemon:quaxly",
+	"order": 0,
+	"variations": [
+		{
+			"aspects": [],
+			"poser": "cobblemon:quaxly",
+			"model": "cobblemon:quaxly.geo",
+			"texture": "cobblemon:textures/pokemon/0912_quaxly/quaxly.png",
+			"layers": []
+		}
+	]
+}

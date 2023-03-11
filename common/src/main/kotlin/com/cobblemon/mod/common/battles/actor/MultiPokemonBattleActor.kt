@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -16,11 +16,14 @@ import com.cobblemon.mod.common.battles.ai.RandomBattleAI
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
 import java.util.UUID
 import net.minecraft.text.MutableText
+import net.minecraft.text.Text
+
 class MultiPokemonBattleActor(
     pokemonList: List<BattlePokemon>,
     artificialDecider: BattleAI = RandomBattleAI(),
     uuid: UUID = UUID.randomUUID()
 ) : AIBattleActor(uuid, pokemonList, artificialDecider) {
     override fun getName(): MutableText = "Wild Pokémon".text() // TODO probably remove by making it nullable
+    override fun nameOwned(name: String): MutableText = Text.literal(name)
     override val type = ActorType.WILD
 }

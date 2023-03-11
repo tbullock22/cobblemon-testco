@@ -4,11 +4,12 @@ plugins {
 }
 
 architectury {
-    common("fabric", "forge")
+    common()
 }
 
 repositories {
-    maven(url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
+    maven(url = "${rootProject.projectDir}/deps")
+    mavenLocal()
 }
 
 dependencies {
@@ -18,16 +19,20 @@ dependencies {
     modImplementation(libs.fabricLoader)
     modApi(libs.architectury)
     modApi(libs.molang)
-    modApi(libs.mclib)
 
     // For Showdown
-    modCompileOnly(libs.graalJs)
+    modCompileOnly(libs.graal)
 
     //shadowCommon group: 'commons-io', name: 'commons-io', version: '2.6'
+
 
     testRuntimeOnly(libs.junitEngine)
     testImplementation(libs.junitApi)
     testImplementation(libs.junitParams)
     testImplementation(libs.mockito)
     testImplementation(libs.mockk)
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -18,6 +18,7 @@ import com.cobblemon.mod.common.client.battle.ClientBattle
 import com.cobblemon.mod.common.client.gui.PartyOverlay
 import com.cobblemon.mod.common.client.gui.battle.BattleOverlay
 import com.cobblemon.mod.common.client.net.ClientPacketRegistrar
+import com.cobblemon.mod.common.client.particle.BedrockParticleEffectRepository
 import com.cobblemon.mod.common.client.render.block.HealingMachineRenderer
 import com.cobblemon.mod.common.client.render.item.CobblemonBuiltinItemRendererRegistry
 import com.cobblemon.mod.common.client.render.item.PokemonItemRenderer
@@ -81,9 +82,6 @@ object CobblemonClient {
 
         ClientPacketRegistrar.registerHandlers()
 
-        LOGGER.info("Initializing PokéBall models")
-        PokeBallModelRepository.init()
-
         BlockEntityRendererRegistry.register(CobblemonBlockEntities.HEALING_MACHINE.get(), ::HealingMachineRenderer)
 
         registerBlockRenderTypes()
@@ -140,20 +138,23 @@ object CobblemonClient {
 
     fun registerPokemonRenderer(context: EntityRendererFactory.Context): PokemonRenderer {
         LOGGER.info("Registering Pokémon renderer")
-        PokemonModelRepository.initializeModels(context)
         return PokemonRenderer(context)
     }
 
     fun registerPokeBallRenderer(context: EntityRendererFactory.Context): PokeBallRenderer {
         LOGGER.info("Registering PokéBall renderer")
-        PokeBallModelRepository.initializeModels(context)
         return PokeBallRenderer(context)
     }
 
     fun reloadCodedAssets(resourceManager: ResourceManager) {
-        LOGGER.info("Reloading assets")
-        BedrockAnimationRepository.loadAnimations(resourceManager)
+        LOGGER.info("Loading assets...")
+        BedrockParticleEffectRepository.loadEffects(resourceManager)
+        BedrockAnimationRepository.loadAnimations(
+            resourceManager = resourceManager,
+            directories = PokemonModelRepository.animationDirectories + PokeBallModelRepository.animationDirectories
+        )
         PokemonModelRepository.reload(resourceManager)
+        PokeBallModelRepository.reload(resourceManager)
         LOGGER.info("Loaded assets")
 //        PokeBallModelRepository.reload(resourceManager)
     }

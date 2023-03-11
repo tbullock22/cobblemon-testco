@@ -1,7 +1,8 @@
 {
   "display": {
     "icon": {
-      "item": "cobblemon:poke_ball"
+      "item": "cobblemon:link_cable",
+	"nbt": "{CustomModelData:1}"
     },
     "title": {
       "translate": "advancements.cobblemon.root"

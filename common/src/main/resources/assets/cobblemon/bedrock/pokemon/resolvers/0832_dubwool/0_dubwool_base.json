@@ -1,0 +1,19 @@
+{
+  "species": "cobblemon:dubwool",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:dubwool",
+      "model": "cobblemon:dubwool.geo",
+      "texture": "cobblemon:textures/pokemon/0832_dubwool/dubwool.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0832_dubwool/dubwool_shiny.png"
+    }
+  ]
+}

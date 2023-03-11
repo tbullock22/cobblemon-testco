@@ -1,0 +1,32 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.spiritomb.ground_idle": {
+			"loop": true,
+			"bones": {
+				"stem": {
+					"rotation": ["math.sin(q.anim_time*90*2)*2", 0, "math.sin(q.anim_time*90*1)*4"]
+				},
+				"face": {
+					"rotation": [0, 0, "math.sin(q.anim_time*90*1)*4"]
+				},
+				"back": {
+					"rotation": [0, 0, "(q.anim_time*90*1)"]
+				}
+			}
+		},
+		"animation.spiritomb.ground_walk": {
+			"loop": true,
+			"bones": {
+				"spiritomb": {
+					"rotation": ["math.sin(q.anim_time*90*8)*4", 0, 0],
+					"position": [0, "math.abs(math.sin(q.anim_time*90*4)*2)", 0]
+				},
+				"stem": {
+					"rotation": ["-15-math.sin(q.anim_time*90*8)*6", 0, 0]
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

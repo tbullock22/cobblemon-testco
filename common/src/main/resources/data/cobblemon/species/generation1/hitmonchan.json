@@ -156,10 +156,10 @@
   ],
   "preEvolution": "tyrogue",
   "evolutions": [],
-  "baseScale": 1.2,
+  "baseScale": 1.05,
   "hitbox": {
-    "width": 0.5,
-    "height": 1.5,
+    "width": 0.65,
+    "height": 1.6,
     "fixed": false
   },
   "baseFriendship": 50,

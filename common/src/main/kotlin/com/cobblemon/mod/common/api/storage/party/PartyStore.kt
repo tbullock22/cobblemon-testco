@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -202,6 +202,10 @@ open class PartyStore(override val uuid: UUID) : PokemonStore<PartyPosition>() {
 
     fun heal() {
         forEach { it.heal() }
+    }
+
+    fun didSleep() {
+        forEach { it.didSleep() }
     }
 
     fun getHealingRemainderPercent(): Float {

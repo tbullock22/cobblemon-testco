@@ -132,10 +132,10 @@
   ],
   "preEvolution": "magmar",
   "evolutions": [],
-  "baseScale": 1,
+  "baseScale": 1.25,
   "hitbox": {
     "width": 1.1,
-    "height": 2.2,
+    "height": 2.1,
     "fixed": false
   },
   "baseFriendship": 50,

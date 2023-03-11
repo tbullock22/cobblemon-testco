@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -21,6 +21,6 @@ object BattleCaptureStartHandler : ClientPacketHandler<BattleCaptureStartPacket>
         val targetPokemon = battle.getPokemonFromPNX(packet.targetPNX)
         val tile = targetPokemon.second
         val pokeBall = PokeBalls.getPokeBall(packet.pokeBallType) ?: PokeBalls.POKE_BALL
-        tile.ballCapturing = ClientBallDisplay(pokeBall).also { it.start() }
+        tile.ballCapturing = ClientBallDisplay(pokeBall, packet.aspects).also { it.start() }
     }
 }

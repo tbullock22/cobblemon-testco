@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -126,6 +126,17 @@ class BattleMessage(rawMessage: String) {
     fun actorAndActivePokemon(index: Int, battle: PokemonBattle): Pair<BattleActor, ActiveBattlePokemon>? {
         val pnx = this.argumentAt(index)?.substring(0, 3) ?: return null
         return this.actorAndActivePokemon(pnx, battle)
+    }
+
+    /**
+     * Attempts to parse an [Effect] from an argument at the given [index].
+     *
+     * @param index The index of the expected argument.
+     * @return The parsed [Effect] or null.
+     */
+    fun effectAt(index: Int): Effect? {
+        val data = this.argumentAt(index) ?: return null
+        return Effect.parse(data)
     }
 
     /**

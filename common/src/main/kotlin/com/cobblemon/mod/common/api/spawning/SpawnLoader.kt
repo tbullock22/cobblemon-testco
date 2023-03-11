@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -14,6 +14,7 @@ import com.cobblemon.mod.common.api.drop.ItemDropMethod
 import com.cobblemon.mod.common.api.pokemon.PokemonProperties
 import com.cobblemon.mod.common.api.spawning.condition.SpawningCondition
 import com.cobblemon.mod.common.api.spawning.context.RegisteredSpawningContext
+import com.cobblemon.mod.common.api.spawning.detail.PossibleHeldItem
 import com.cobblemon.mod.common.api.spawning.detail.SpawnDetail
 import com.cobblemon.mod.common.util.adapters.BiomeLikeConditionAdapter
 import com.cobblemon.mod.common.util.adapters.BlockLikeConditionAdapter
@@ -23,6 +24,7 @@ import com.cobblemon.mod.common.util.adapters.IdentifierAdapter
 import com.cobblemon.mod.common.util.adapters.IntRangeAdapter
 import com.cobblemon.mod.common.util.adapters.IntRangesAdapter
 import com.cobblemon.mod.common.util.adapters.NbtCompoundAdapter
+import com.cobblemon.mod.common.util.adapters.PossibleHeldItemAdapter
 import com.cobblemon.mod.common.util.adapters.RegisteredSpawningContextAdapter
 import com.cobblemon.mod.common.util.adapters.SpawnBucketAdapter
 import com.cobblemon.mod.common.util.adapters.SpawnDetailAdapter
@@ -63,6 +65,7 @@ object SpawnLoader {
         .registerTypeAdapter(SpawnBucket::class.java, SpawnBucketAdapter)
         .registerTypeAdapter(NbtCompound::class.java, NbtCompoundAdapter)
         .registerTypeAdapter(IntRange::class.java, IntRangeAdapter)
+        .registerTypeAdapter(PossibleHeldItem::class.java, PossibleHeldItemAdapter)
         .create()
 
     var deserializingConditionClass: Class<out SpawningCondition<*>>? = null

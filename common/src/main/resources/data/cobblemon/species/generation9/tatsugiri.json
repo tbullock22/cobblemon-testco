@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Tatsugiri",
   "nationalPokedexNumber": 978,
   "primaryType": "dragon",
@@ -84,6 +85,12 @@
   "height": 3,
   "weight": 80,
   "evolutions": [],
+  "baseScale": 0.8,
+  "hitbox": {
+    "width": 0.8,
+    "height": 0.5,
+    "fixed": false
+  },
   "cannotDynamax": false,
   "pokedex": [
     "cobblemon.species.tatsugiri.desc"

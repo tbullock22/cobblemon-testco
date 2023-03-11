@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench.bedrock.animation
 
+import com.bedrockk.molang.runtime.MoLangRuntime
 import com.cobblemon.mod.common.client.render.models.blockbench.pose.TransformedModelPart
 import kotlin.math.floor
 import net.minecraft.client.util.math.Vector3d
@@ -17,11 +18,11 @@ import net.minecraft.util.math.Vec3d
  * Interpolates a vector based on a Catmull-Rom spline.
  * Frame A to D should be in order based on time. Frame A should be the keyframe before frame B, which should be the keyframe before C, and so on.
  */
-fun catmullromLerp(frameA: BedrockAnimationKeyFrame?, frameB: BedrockAnimationKeyFrame, frameC: BedrockAnimationKeyFrame, frameD: BedrockAnimationKeyFrame?, time: Double): Vec3d {
+fun catmullromLerp(frameA: BedrockAnimationKeyFrame?, frameB: BedrockAnimationKeyFrame, frameC: BedrockAnimationKeyFrame, frameD: BedrockAnimationKeyFrame?, time: Double, runtime: MoLangRuntime): Vec3d {
     return Vec3d(
-            catmullromLerp(frameA, frameB, frameC, frameD, TransformedModelPart.X_AXIS, time),
-            catmullromLerp(frameA, frameB, frameC, frameD, TransformedModelPart.Y_AXIS, time),
-            catmullromLerp(frameA, frameB, frameC, frameD, TransformedModelPart.Z_AXIS, time)
+            catmullromLerp(frameA, frameB, frameC, frameD, TransformedModelPart.X_AXIS, time, runtime),
+            catmullromLerp(frameA, frameB, frameC, frameD, TransformedModelPart.Y_AXIS, time, runtime),
+            catmullromLerp(frameA, frameB, frameC, frameD, TransformedModelPart.Z_AXIS, time, runtime)
     )
 }
 
@@ -38,12 +39,12 @@ fun linearLerpAlpha(before: Double, after: Double, value: Double): Double {
  * Interpolates a value based on a Catmull-Rom spline on a given axis.
  * Frame A to D should be in order based on time. Frame A should be the keyframe before frame B, which should be the keyframe before C, and so on.
  */
-fun catmullromLerp(frameA: BedrockAnimationKeyFrame?, frameB: BedrockAnimationKeyFrame, frameC: BedrockAnimationKeyFrame, frameD: BedrockAnimationKeyFrame?, axis: Int, time: Double) : Double {
+fun catmullromLerp(frameA: BedrockAnimationKeyFrame?, frameB: BedrockAnimationKeyFrame, frameC: BedrockAnimationKeyFrame, frameD: BedrockAnimationKeyFrame?, axis: Int, time: Double, runtime: MoLangRuntime) : Double {
     val vectors = mutableListOf<Vector2d>()
-    val frameAData = frameA?.data?.resolve(time)
-    val frameBData = frameB.data.resolve(time)
-    val frameCData = frameC.data.resolve(time)
-    val frameDData = frameD?.data?.resolve(time)
+    val frameAData = frameA?.data?.resolve(time, runtime)
+    val frameBData = frameB.data.resolve(time, runtime)
+    val frameCData = frameC.data.resolve(time, runtime)
+    val frameDData = frameD?.data?.resolve(time, runtime)
     if (frameAData != null) vectors.add(Vector2d(frameA.time, frameAData.get(axis)))
     vectors.add(Vector2d(frameB.time, frameBData.get(axis)))
     vectors.add(Vector2d(frameC.time, frameCData.get(axis)))

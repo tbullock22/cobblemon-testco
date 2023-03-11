@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -30,9 +30,11 @@ class HorseaModel(root: ModelPart) : PokemonPoseableModel() {
     lateinit var swim: PokemonPose
 
     override fun registerPoses() {
+        val blink = quirk("blink") { bedrockStateful("horsea", "blink").setPreventsIdle(false)}
         standing = registerPose(
             poseName = "standing",
             poseType = PoseType.STAND,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 bedrock("horsea", "ground_idle")
             )
@@ -41,6 +43,7 @@ class HorseaModel(root: ModelPart) : PokemonPoseableModel() {
         walk = registerPose(
             poseName = "walk",
             poseType = PoseType.WALK,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 bedrock("horsea", "ground_walk")
             )
@@ -49,6 +52,7 @@ class HorseaModel(root: ModelPart) : PokemonPoseableModel() {
         float = registerPose(
             poseName = "float",
             poseTypes = UI_POSES + PoseType.FLOAT,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 bedrock("horsea", "water_idle")
             )
@@ -57,6 +61,7 @@ class HorseaModel(root: ModelPart) : PokemonPoseableModel() {
         swim = registerPose(
             poseName = "swim",
             poseType = PoseType.SWIM,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 bedrock("horsea", "water_swim")
             )

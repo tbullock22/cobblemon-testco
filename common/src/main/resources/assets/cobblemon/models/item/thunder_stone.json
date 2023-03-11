@@ -1,6 +1,6 @@
 {
-	"parent": "item/generated",
-	"textures": {
-		"layer0": "cobblemon:items/thunder_stone"
-	}
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cobblemon:items/evolution/thunder_stone"
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -13,6 +13,7 @@ import com.cobblemon.mod.common.CobblemonItems
 import com.cobblemon.mod.common.item.ApricornItem
 import com.cobblemon.mod.common.block.ApricornBlock
 import com.cobblemon.mod.common.block.ApricornSaplingBlock
+import net.minecraft.block.MapColor
 import net.minecraft.item.BlockItem
 
 /**
@@ -69,6 +70,16 @@ enum class Apricorn {
         RED -> CobblemonBlocks.RED_APRICORN_SAPLING.get()
         WHITE -> CobblemonBlocks.WHITE_APRICORN_SAPLING.get()
         YELLOW -> CobblemonBlocks.YELLOW_APRICORN_SAPLING.get()
+    }
+
+    fun mapColor(): MapColor = when(this) {
+        BLACK -> MapColor.BLACK
+        BLUE ->  MapColor.BLUE
+        GREEN ->  MapColor.GREEN
+        PINK ->  MapColor.PINK
+        RED ->  MapColor.RED
+        WHITE ->  MapColor.WHITE
+        YELLOW ->  MapColor.YELLOW
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -89,6 +89,10 @@ class PokemonServerDelegate : PokemonSideDelegate {
             if (!entity.isDead && entity.health > 0) {
                 entity.pokemon.state = SentOutState(entity)
             }
+        }
+
+        if (entity.ownerUuid != null && entity.pokemon.storeCoordinates.get() == null) {
+            entity.discard()
         }
 
         if (!entity.behaviour.moving.walk.canWalk && entity.behaviour.moving.fly.canFly && !entity.getBehaviourFlag(PokemonBehaviourFlag.FLYING)) {

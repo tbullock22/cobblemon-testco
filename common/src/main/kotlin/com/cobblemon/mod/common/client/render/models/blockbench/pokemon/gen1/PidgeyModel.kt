@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -38,15 +38,23 @@ class PidgeyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
     override val profileScale = 1.2F
     override val profileTranslation = Vec3d(0.0, -0.01, 0.0)
 
+    lateinit var sleep: PokemonPose
     lateinit var stand: PokemonPose
     lateinit var walk: PokemonPose
     lateinit var hover: PokemonPose
     lateinit var fly: PokemonPose
 
     override fun registerPoses() {
+        sleep = registerPose(
+                poseType = PoseType.SLEEP,
+                idleAnimations = arrayOf(bedrock("pidgey", "sleep"))
+        )
+        val blink = quirk("blink") { bedrockStateful("pidgey", "blink").setPreventsIdle(false) }
         stand = registerPose(
             poseName = "standing",
             poseTypes = SHOULDER_POSES + UI_POSES + PoseType.STAND,
+            transformTicks = 10,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("pidgey", "ground_idle")
@@ -56,6 +64,8 @@ class PidgeyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
         hover = registerPose(
             poseName = "hover",
             poseType = PoseType.HOVER,
+            transformTicks = 10,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("pidgey", "air_idle")
@@ -65,6 +75,8 @@ class PidgeyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
         fly = registerPose(
             poseName = "fly",
             poseType = PoseType.FLY,
+            transformTicks = 10,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("pidgey", "air_fly")
@@ -74,6 +86,8 @@ class PidgeyModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedF
         walk = registerPose(
             poseName = "walking",
             poseType = PoseType.WALK,
+            transformTicks = 10,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("pidgey", "ground_idle"),

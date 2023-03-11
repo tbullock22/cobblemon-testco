@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -38,9 +38,13 @@ const val SEASON = "season"
 
 object SeasonFeatureHandler {
     fun updateSeason(pokemon: Pokemon, world: WorldAccess, pos: BlockPos) {
+        updateSeason(pokemon, Cobblemon.seasonResolver(world, pos))
+    }
+
+    fun updateSeason(pokemon: Pokemon, season: CobblemonSeason?) {
         val feature = pokemon.getFeature<StringSpeciesFeature>(SEASON) ?: return
         val currentSeason = feature.value
-        val newSeason = Cobblemon.seasonResolver(world, pos)?.name?.lowercase()
+        val newSeason = season?.name?.lowercase()
         if (currentSeason != newSeason && newSeason != null) {
             feature.value = newSeason
             pokemon.updateAspects()

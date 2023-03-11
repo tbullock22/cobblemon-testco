@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -21,24 +21,20 @@ import net.minecraft.network.PacketByteBuf
  */
 class BattleHealthChangePacket() : NetworkPacket {
     lateinit var pnx: String
-    var newHealthRatio = 0F
-    var newHealth = 0
+    var newHealth = 0F
 
-    constructor(pnx: String, newHealthRatio: Float, newHealth: Int): this() {
+    constructor(pnx: String, newHealth: Float): this() {
         this.pnx = pnx
-        this.newHealthRatio = newHealthRatio
         this.newHealth = newHealth
     }
 
     override fun encode(buffer: PacketByteBuf) {
         buffer.writeString(pnx)
-        buffer.writeFloat(newHealthRatio)
-        buffer.writeInt(newHealth)
+        buffer.writeFloat(newHealth)
     }
 
     override fun decode(buffer: PacketByteBuf) {
         pnx = buffer.readString()
-        newHealthRatio = buffer.readFloat()
-        newHealth = buffer.readInt()
+        newHealth = buffer.readFloat()
     }
 }

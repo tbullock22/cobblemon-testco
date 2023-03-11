@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -30,10 +30,13 @@ class KangaskhanModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     lateinit var walk: PokemonPose
 
     override fun registerPoses() {
+        val blink = quirk("blink") { bedrockStateful("kangaskhan", "blink").setPreventsIdle(false)}
+        val blink2 = quirk("blink2") { bedrockStateful("kangaskhan", "blink2").setPreventsIdle(false)}
         standing = registerPose(
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             transformTicks = 10,
+            quirks = arrayOf(blink, blink2),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("kangaskhan", "ground_idle")
@@ -44,6 +47,7 @@ class KangaskhanModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             transformTicks = 10,
+            quirks = arrayOf(blink, blink2),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("kangaskhan", "ground_idle")

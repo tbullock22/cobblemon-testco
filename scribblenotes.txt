@@ -1,2 +1,1 @@
 battle.add('') is the format for a || message out of showdown, e.g. battle.add('detailschange', ...)
-pokemon saved into the world have spawner name in them which a new spawner can pick up and add to list of spawned entities to maintain count integrity

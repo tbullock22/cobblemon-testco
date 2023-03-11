@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -34,6 +34,7 @@ import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.cobblemon.mod.common.util.lang
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.gui.widget.ButtonWidget
 import net.minecraft.client.sound.PositionedSoundInstance
 import net.minecraft.client.util.math.MatrixStack
@@ -314,6 +315,30 @@ class StorageWidget(
 
         if (grabbedSlot == null) {
             if (clickedPokemon != null) {
+                val shiftClicked = Screen.hasShiftDown()
+                if (shiftClicked) {
+                    if (clickedPosition is PCPosition) {
+                        val firstEmptySpace = party.slots.indexOfFirst { it == null }
+                        if (firstEmptySpace != -1) {
+                            val packet = MovePCPokemonToPartyPacket(clickedPokemon.uuid, clickedPosition, PartyPosition(firstEmptySpace))
+                            packet.sendToServer()
+                            playSound(CobblemonSounds.PC_DROP.get())
+                            return
+                        }
+                    } else if (clickedPosition is PartyPosition) {
+                        if (ServerSettings.preventCompletePartyDeposit && party.count { it != null } == 1) {
+                            return
+                        }
+                        val firstEmptySpace = pc.boxes[box].indexOfFirst { it == null }
+                        if (firstEmptySpace != -1) {
+                            val packet = MovePartyPokemonToPCPacket(clickedPokemon.uuid, clickedPosition, PCPosition(box, firstEmptySpace))
+                            packet.sendToServer()
+                            playSound(CobblemonSounds.PC_DROP.get())
+                            return
+                        }
+                    }
+                }
+
                 this.selectedPosition = clickedPosition
                 this.pcGui.setPreviewPokemon(clickedPokemon)
                 grabbedSlot = GrabbedStorageSlot(

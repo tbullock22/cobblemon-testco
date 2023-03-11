@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -22,13 +22,13 @@ class RapidashModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
     override val rootPart = root.registerChildWithAllChildren("rapidash")
     override val head = getPart("head")
 
-    override val foreLeftLeg = getPart("leftfrontleg")
-    override val foreRightLeg = getPart("rightfrontleg")
-    override val hindLeftLeg = getPart("leftbackleg")
-    override val hindRightLeg = getPart("rightbackleg")
+    override val foreLeftLeg = getPart("leg_front_left")
+    override val foreRightLeg = getPart("leg_front_right")
+    override val hindLeftLeg = getPart("leg_back_left")
+    override val hindRightLeg = getPart("leg_back_right")
 
-    override val portraitScale = 1.8F
-    override val portraitTranslation = Vec3d(-0.4, 0.71, 0.0)
+    override val portraitScale = 2.5F
+    override val portraitTranslation = Vec3d(-0.7, 1.11, 0.0)
 
     override val profileScale = 0.75F
     override val profileTranslation = Vec3d(0.0, 0.65, 0.0)

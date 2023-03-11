@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -16,6 +16,7 @@ import com.cobblemon.mod.common.api.text.red
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
 import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.util.battleLang
+import net.minecraft.item.Item
 import net.minecraft.text.Text
 
 /**
@@ -38,12 +39,19 @@ object CobblemonHeldItemManager : BaseCobblemonHeldItemManager() {
      */
     private val takeItemEffect = setOf("magician", "pickpocket", "covet", "bestow")
 
+    /** Remappings of [Item] to showdownId strings. */
+    private val remaps = mutableMapOf<Item, String>()
+
     override fun load() {
         super.load()
         Cobblemon.LOGGER.info("Imported {} held item IDs from showdown", this.loadedItemCount())
     }
 
     override fun showdownId(pokemon: BattlePokemon): String? {
+        val item = pokemon.effectedPokemon.heldItemNoCopy().item
+        if (remaps.containsKey(item)) {
+            return remaps[item]
+        }
         val original = super.showdownId(pokemon)
         if (original == null && pokemon.effectedPokemon.heldItemNoCopy().isEmpty) {
             // This will allow interactions such as thief to occur, we want this when there is no item only instead of overwriting other stacks that aren't held items.
@@ -136,4 +144,13 @@ object CobblemonHeldItemManager : BaseCobblemonHeldItemManager() {
         battle.broadcastChatMessage(text)
     }
 
+    /**
+     * Registers a custom mapping from [Item] to showdown ID string.
+     *
+     * @param item The Minecraft [Item] instance that has a specific showdownId.
+     * @param showdownId The showdown name of this item.
+     */
+    fun registerRemap(item: Item, showdownId: String) {
+        this.remaps[item] = showdownId
+    }
 }

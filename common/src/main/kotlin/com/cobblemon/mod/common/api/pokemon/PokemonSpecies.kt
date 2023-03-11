@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -34,7 +34,7 @@ import com.cobblemon.mod.common.api.spawning.TimeRange
 import com.cobblemon.mod.common.api.types.ElementalType
 import com.cobblemon.mod.common.api.types.ElementalTypes
 import com.cobblemon.mod.common.api.types.adapters.ElementalTypeAdapter
-import com.cobblemon.mod.common.battles.runner.GraalShowdown
+import com.cobblemon.mod.common.battles.runner.ShowdownService
 import com.cobblemon.mod.common.net.messages.client.data.SpeciesRegistrySyncPacket
 import com.cobblemon.mod.common.pokemon.FormData
 import com.cobblemon.mod.common.pokemon.Species
@@ -134,6 +134,18 @@ object PokemonSpecies : JsonDataRegistry<Species> {
         operator fun getValue(_species: PokemonSpecies, property: KProperty<*>) = getByIdentifier(cobblemonResource(property.name.lowercase()))
     }
 
+    init {
+        SpeciesAdditions.observable.subscribe {
+            this.species.forEach(Species::initialize)
+            Cobblemon.showdownThread.queue { createShowdownData() }
+            // Reload this with the mod
+            CobblemonEmptyHeldItemManager.load()
+            CobblemonHeldItemManager.load()
+            Cobblemon.LOGGER.info("Loaded {} Pokémon species", this.speciesByIdentifier.size)
+            this.observable.emit(this)
+        }
+    }
+
     /**
      * Finds a species by the pathname of their [Identifier].
      * This method exists for the convenience of finding Cobble default Pokémon.
@@ -190,15 +202,6 @@ object PokemonSpecies : JsonDataRegistry<Species> {
                 this.implemented.add(species)
             }
         }
-        SpeciesAdditions.observable.subscribe {
-            this.species.forEach(Species::initialize)
-            Cobblemon.showdownThread.showdownStarted.whenComplete { _, _ -> createShowdownData() }.get()
-            // Reload this with the mod
-            CobblemonEmptyHeldItemManager.load()
-            CobblemonHeldItemManager.load()
-            Cobblemon.LOGGER.info("Loaded {} Pokémon species", this.speciesByIdentifier.size)
-            this.observable.emit(this)
-        }
     }
 
     override fun sync(player: ServerPlayerEntity) {
@@ -226,7 +229,7 @@ object PokemonSpecies : JsonDataRegistry<Species> {
 
 
         // Showdown loads mods by reading existing files as such we cannot dynamically add to the Pokédex, instead, we will overwrite the existing file and force a mod reload.
-        val pokedexFile = File("showdown/node_modules/pokemon-showdown/data/mods/cobblemon/pokedex.js")
+        val pokedexFile = File("showdown/data/mods/cobblemon/pokedex.js")
         Files.createDirectories(pokedexFile.toPath().parent)
         pokedexFile.bufferedWriter().use { writer ->
             writer.write(
@@ -240,7 +243,7 @@ object PokemonSpecies : JsonDataRegistry<Species> {
                 """.trimIndent()
             )
         }
-        val formatsDataFile = File("showdown/node_modules/pokemon-showdown/data/mods/cobblemon/formats-data.js")
+        val formatsDataFile = File("showdown/data/mods/cobblemon/formats-data.js")
         formatsDataFile.bufferedWriter().use { writer ->
             writer.write(
                 """
@@ -253,10 +256,7 @@ object PokemonSpecies : JsonDataRegistry<Species> {
                 """.trimIndent()
             )
         }
-        GraalShowdown.context.eval("js", """
-            PokemonShowdown.Dex.modsLoaded = false;
-            PokemonShowdown.Dex.includeMods();
-        """.trimIndent())
+        ShowdownService.get().indicateSpeciesInitialized()
         Cobblemon.LOGGER.info("Finished creating showdown data for species")
     }
 

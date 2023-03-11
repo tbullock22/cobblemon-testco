@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Mismagius",
   "nationalPokedexNumber": 429,
   "primaryType": "ghost",
@@ -125,10 +126,10 @@
   ],
   "preEvolution": "misdreavus",
   "evolutions": [],
-  "baseScale": 1,
+  "baseScale": 1.2,
   "hitbox": {
     "width": 1,
-    "height": 1,
+    "height": 1.65,
     "fixed": false
   },
   "baseFriendship": 35,

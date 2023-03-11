@@ -21,12 +21,6 @@
       "canSleep": true,
       "depth": "normal",
       "light": "0-4"
-    },
-    "moving": {
-      "canLook": false,
-      "walk": {
-        "canWalk": false
-      }
     }
   },
   "catchRate": 255,

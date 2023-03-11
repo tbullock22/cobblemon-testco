@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -18,7 +18,7 @@ import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.network.ServerPlayerEntity
 
-/**
+/*
  * Effect that allows for slow falling.
  * The value for [slowAfter] can be set per Form in the Species JSON.
  *
@@ -32,7 +32,7 @@ class SlowFallEffect : ShoulderEffect {
      they SHOULD have the effect even after they take their pokemon off the shoulder since the potion would still be in effect,
      but it won't have even been added because of the uniqueness constraint. Unclear how best to solve this.
      */
-    class SlowFallShoulderStatusEffect(val pokemonIds: MutableList<UUID>) : StatusEffectInstance(StatusEffects.SLOW_FALLING, 2) {
+    class SlowFallShoulderStatusEffect(val pokemonIds: MutableList<UUID>) : StatusEffectInstance(StatusEffects.SLOW_FALLING, 2, 1, true, false, false) {
         fun isShoulderedPokemon(shoulderEntity: NbtCompound): Boolean {
             val pokemonNBT = shoulderEntity.getCompound("Pokemon")
             return pokemonNBT.containsUuid(POKEMON_UUID) && pokemonNBT.getUuid(POKEMON_UUID) in pokemonIds

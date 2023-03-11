@@ -166,10 +166,10 @@
   ],
   "preEvolution": "wooper",
   "evolutions": [],
-  "baseScale": 1,
+  "baseScale": 1.1,
   "hitbox": {
     "width": 0.8,
-    "height": 1.5,
+    "height": 1.45,
     "fixed": false
   },
   "baseFriendship": 50,

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -12,6 +12,7 @@ import com.cobblemon.mod.common.*
 import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.reactive.Observable.Companion.filter
 import com.cobblemon.mod.common.api.reactive.Observable.Companion.takeFirst
+import com.cobblemon.mod.common.util.didSleep
 import com.cobblemon.mod.forge.compat.AdornForgeCompat
 import com.cobblemon.mod.forge.net.CobblemonForgeNetworkDelegate
 import com.cobblemon.mod.forge.permission.ForgePermissionValidator
@@ -19,18 +20,22 @@ import dev.architectury.event.events.common.LifecycleEvent
 import dev.architectury.platform.forge.EventBuses
 import juuxel.adorn.compat.CompatBlocks
 import java.util.*
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraftforge.common.ForgeMod
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.event.OnDatapackSyncEvent
 import net.minecraftforge.event.entity.player.PlayerEvent
+import net.minecraftforge.event.entity.player.PlayerWakeUpEvent
 import net.minecraftforge.fml.ModList
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
 import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
 
 @Mod(Cobblemon.MODID)
 class CobblemonForge : CobblemonImplementation {
+    override val modAPI = ModAPI.FABRIC
+    private val hasBeenSynced = hashSetOf<UUID>()
+
 
     private val modCompat = mapOf(
         "adorn" to {
@@ -40,7 +45,7 @@ class CobblemonForge : CobblemonImplementation {
     )
 
     init {
-        with(FMLJavaModLoadingContext.get().modEventBus) {
+        with(thedarkcolour.kotlinforforge.forge.MOD_BUS) {
             EventBuses.registerModEventBus(Cobblemon.MODID, this)
 
             CobblemonEvents.ENTITY_ATTRIBUTE.pipe(filter { it.entityType == CobblemonEntities.POKEMON.get() }, takeFirst())
@@ -55,7 +60,7 @@ class CobblemonForge : CobblemonImplementation {
             addListener(this@CobblemonForge::serverInit)
             CobblemonNetwork.networkDelegate = CobblemonForgeNetworkDelegate
 
-            Cobblemon.preinitialize(this@CobblemonForge)
+            Cobblemon.preInitialize(this@CobblemonForge)
 
             LifecycleEvent.SETUP.register {
                 CobblemonConfiguredFeatures.register()
@@ -68,6 +73,7 @@ class CobblemonForge : CobblemonImplementation {
             addListener(this@CobblemonForge::onDataPackSync)
             addListener(this@CobblemonForge::onLogin)
             addListener(this@CobblemonForge::onLogout)
+            addListener(this@CobblemonForge::wakeUp)
         }
         Cobblemon.permissionValidator = ForgePermissionValidator
         this.modCompat.forEach { (modId, compatSupplier) ->
@@ -75,6 +81,11 @@ class CobblemonForge : CobblemonImplementation {
                 compatSupplier.invoke()
             }
         }
+    }
+
+    fun wakeUp(event: PlayerWakeUpEvent) {
+        val playerEntity = event.entity as? ServerPlayerEntity ?: return
+        playerEntity.didSleep()
     }
 
     fun serverInit(event: FMLDedicatedServerSetupEvent) {
@@ -87,8 +98,6 @@ class CobblemonForge : CobblemonImplementation {
         //else {
         //}
     }
-
-    private val hasBeenSynced = hashSetOf<UUID>()
 
     fun onDataPackSync(event: OnDatapackSyncEvent) {
         Cobblemon.dataProvider.sync(event.player ?: return)

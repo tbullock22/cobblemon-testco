@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Monferno",
   "nationalPokedexNumber": 391,
   "primaryType": "fire",
@@ -133,10 +134,10 @@
       ]
     }
   ],
-  "baseScale": 1,
+  "baseScale": 0.7,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 0.9,
+    "height": 1.6,
     "fixed": false
   },
   "baseFriendship": 70,

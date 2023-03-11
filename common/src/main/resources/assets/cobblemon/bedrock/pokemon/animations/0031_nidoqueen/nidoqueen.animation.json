@@ -1,0 +1,131 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.nidoqueen.ground_idle": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": [2.5, 0, 0]
+				},
+				"arm_right": {
+					"rotation": [10, 0, 0]
+				},
+				"arm_right2": {
+					"rotation": [0, 0, -60]
+				},
+				"hand_right": {
+					"rotation": [0, -60, 0]
+				},
+				"arm_left": {
+					"rotation": [10, 0, 0]
+				},
+				"arm_left2": {
+					"rotation": [0, 0, 60]
+				},
+				"hand_left": {
+					"rotation": [0, 60, 0]
+				},
+				"tail": {
+					"rotation": [-15, 0, 0]
+				},
+				"tail2": {
+					"rotation": [5, 0, 0]
+				},
+				"tail3": {
+					"rotation": [5, 0, 0]
+				}
+			}
+		},
+		"animation.nidoqueen.sleep": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [70, 0, 0],
+					"position": [0, 5.25, 12]
+				},
+				"torso": {
+					"rotation": [7.5, 0, 0]
+				},
+				"head": {
+					"rotation": [-29.22599, 45.63828, 4.50563]
+				},
+				"eyelid_right": {
+					"position": [-0.1, 0, 0]
+				},
+				"eyelid_left": {
+					"position": [0.1, 0, 0]
+				},
+				"jaw": {
+					"rotation": [22.5, 0, 0]
+				},
+				"ear_right": {
+					"rotation": [-3.91887, -32.77242, -16.98258]
+				},
+				"ear_left": {
+					"rotation": [0, 25, 0]
+				},
+				"arm_right": {
+					"rotation": [-10.87673, -51.5587, 15.96577]
+				},
+				"arm_right2": {
+					"rotation": [-0.65245, 2.52805, 4.92866]
+				},
+				"hand_right": {
+					"rotation": [-58.18859, -13.55983, 64.72319]
+				},
+				"arm_left": {
+					"rotation": [-94.76652, 49.51331, -56.90142]
+				},
+				"arm_left2": {
+					"rotation": [20, 15, 5]
+				},
+				"hand_left": {
+					"rotation": [44.89078, 82.93343, 45.10922]
+				},
+				"tail": {
+					"rotation": [-95, 0, 0],
+					"position": [0, -2, -3.75]
+				},
+				"tail2": {
+					"rotation": [-23.97027, -24.09293, 6.8817]
+				},
+				"tail3": {
+					"rotation": [10.07673, -9.96156, -0.88045]
+				},
+				"leg_right": {
+					"rotation": [-43.26898, 15.78509, 2.3726],
+					"position": [0, 0, 1]
+				},
+				"foot_right": {
+					"rotation": [-22.19157, -3.81024, -9.25249]
+				},
+				"leg_left": {
+					"rotation": [-42.14802, -24.15497, -11.98914],
+					"position": [0, 0, 1]
+				},
+				"foot_left": {
+					"rotation": [-22.12165, 4.98093, 8.6822]
+				}
+			}
+		},
+		"animation.nidoqueen.blink": {
+			"animation_length": 0.16667,
+			"bones": {
+				"eyelid_right": {
+					"position": {
+						"0.0": [-0.1, 0, 0],
+						"0.125": [-0.1, 0, 0],
+						"0.1667": [0, 0, 0]
+					}
+				},
+				"eyelid_left": {
+					"position": {
+						"0.0": [0.1, 0, 0],
+						"0.125": [0.1, 0, 0],
+						"0.1667": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

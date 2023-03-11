@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -15,7 +15,7 @@ import com.cobblemon.mod.common.pokemon.Pokemon
 
 /**
  * Event fired when experience is about to be gained. Cancelling this event prevents
- * any experience being added, and the amount of experience cna be hcanged from [experience].
+ * any experience being added, and the amount of experience can be changed from [experience].
  *
  * @author Hiroku
  * @since August 5th, 2022

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -66,8 +66,9 @@ class BattleSwitchPokemonSelection(
                 displayName = pokemon.species.translatedName,
                 gender = pokemon.gender,
                 status = pokemon.status?.status,
-                hpRatio = pokemon.currentHealth.toFloat() / pokemon.hp,
-                trueHealth = pokemon.currentHealth to pokemon.hp,
+                maxHealth = pokemon.hp,
+                health = pokemon.currentHealth.toFloat(),
+                isFlatHealth = true,
                 state = null,
                 colour = null,
                 opacity = selection.opacity
@@ -86,6 +87,7 @@ class BattleSwitchPokemonSelection(
             }
             .filter { it.second.uuid !in battleGUI.actor!!.activePokemon.map { it.battlePokemon?.uuid } }
             .filter { it.second.uuid !in switchingInPokemon }
+            .filter { it.second.currentHealth > 0 }
 
         showdownPokemonToPokemon.forEachIndexed { index, (showdownPokemon, pokemon) ->
             val row = index / 2

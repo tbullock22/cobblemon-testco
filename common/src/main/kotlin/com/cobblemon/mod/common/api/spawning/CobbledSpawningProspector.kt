@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -61,9 +61,9 @@ object CobblemonSpawningProspector : SpawningProspector {
             area.cause.entity,
             Box.of(
                 Vec3d(area.baseX + area.length / 2.0, baseY + height / 2.0, area.baseZ + area.width / 2.0),
-                area.length / 2.0 + minimumDistanceBetweenEntities,
-                height / 2.0 + minimumDistanceBetweenEntities,
-                area.width / 2.0 + minimumDistanceBetweenEntities
+                area.length + minimumDistanceBetweenEntities,
+                height + minimumDistanceBetweenEntities,
+                area.width + minimumDistanceBetweenEntities
             )
         ).map { it.pos }
 

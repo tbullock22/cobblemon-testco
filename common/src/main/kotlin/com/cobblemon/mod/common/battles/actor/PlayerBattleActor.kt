@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -17,10 +17,13 @@ import com.cobblemon.mod.common.api.net.NetworkPacket
 import com.cobblemon.mod.common.api.pokemon.experience.BattleExperienceSource
 import com.cobblemon.mod.common.api.text.red
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
+import com.cobblemon.mod.common.util.battleLang
 import com.cobblemon.mod.common.util.getPlayer
 import java.util.UUID
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.text.MutableText
+import net.minecraft.text.Text
+
 class PlayerBattleActor(
     uuid: UUID,
     pokemonList: List<BattlePokemon>
@@ -30,6 +33,7 @@ class PlayerBattleActor(
         get() = this.uuid.getPlayer()
 
     override fun getName(): MutableText = this.entity?.name?.copy() ?: "Offline Player".red()
+    override fun nameOwned(name: String): MutableText = battleLang("owned_pokemon", this.getName(), name)
     override val type = ActorType.PLAYER
     override fun getPlayerUUIDs() = setOf(uuid)
     override fun awardExperience(battlePokemon: BattlePokemon, experience: Int) {

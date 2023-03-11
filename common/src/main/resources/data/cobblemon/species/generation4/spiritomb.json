@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Spiritomb",
   "nationalPokedexNumber": 442,
   "primaryType": "ghost",
@@ -124,10 +125,10 @@
     "cobblemon.species.spiritomb.desc"
   ],
   "evolutions": [],
-  "baseScale": 1,
+  "baseScale": 1.3,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 0.8,
+    "height": 0.8,
     "fixed": false
   },
   "baseFriendship": 50,

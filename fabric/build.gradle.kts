@@ -19,7 +19,8 @@ sourceSets {
 }
 
 repositories {
-    maven("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
+    maven(url = "${rootProject.projectDir}/deps")
+    mavenLocal()
     maven("https://oss.sonatype.org/content/repositories/snapshots")
     maven("https://api.modrinth.com/maven")
 }
@@ -36,6 +37,7 @@ dependencies {
     }
 
     modApi(libs.fabricApi)
+    modApi(libs.fabricKotlin)
     modApi(libs.architecturyFabric)
     modApi(libs.fabricPermissionsApi)
     modCompileOnly(libs.adornFabric)
@@ -46,15 +48,13 @@ dependencies {
         libs.jetbrainsAnnotations,
         libs.serializationCore,
         libs.serializationJson,
-        libs.graalJs,
-        libs.graalSdk,
-        libs.graalTruffle,
-        libs.graalRegex,
-        libs.molang,
-        libs.mclib
+        libs.graal,
+        libs.molang
     ).forEach {
-        include(modImplementation(it.get())!!)
+        bundle(it)
+        runtimeOnly(it)
     }
+
 }
 
 tasks {
@@ -63,6 +63,8 @@ tasks {
         from(loom.accessWidenerPath)
         into(generatedResources)
     }
+
+    shadowJar {}
 
     processResources {
         dependsOn(copyAccessWidener)

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -56,3 +56,8 @@ fun JsonObject.isEmpty() = size() <= 0
 fun JsonObject.isNotEmpty() = size() > 0
 
 fun JsonElement.asNbt(): NbtElement = JsonOps.INSTANCE.convertTo(NbtOps.INSTANCE, this)
+
+fun <T : Enum<T>> Array<T>.getFromJSON(element: JsonElement, name: String): T {
+    val type = (element as JsonObject).get(name).asString
+    return first { type.equals(it.name, ignoreCase = true) }
+}

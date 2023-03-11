@@ -1,0 +1,164 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.ninetales.ground_idle": {
+			"loop": true,
+			"bones": {
+				"tail21": {
+					"rotation": [30, 0, 0]
+				},
+				"tail22": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail23": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail24": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail25": {
+					"rotation": [-15, 0, 0]
+				},
+				"tail6": {
+					"rotation": [15, 0, 0]
+				},
+				"tail7": {
+					"rotation": [-10, 0, 0]
+				},
+				"tail8": {
+					"rotation": [-35, 0, 0]
+				},
+				"tail9": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail10": {
+					"rotation": [-15, 0, 0]
+				},
+				"tail2": {
+					"rotation": [15, 0, 0]
+				},
+				"tail3": {
+					"rotation": [-10, 0, 0]
+				},
+				"tail4": {
+					"rotation": [-35, 0, 0]
+				},
+				"tail5": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail36": {
+					"rotation": [-15, 0, 0]
+				},
+				"tail37": {
+					"rotation": [20, 0, 0]
+				},
+				"tail38": {
+					"rotation": [-12.5, 0, 0]
+				},
+				"tail39": {
+					"rotation": [-35, 0, 0]
+				},
+				"tail40": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail41": {
+					"rotation": [-15, 0, 0]
+				},
+				"tail42": {
+					"rotation": [20, 0, 0]
+				},
+				"tail43": {
+					"rotation": [-12.5, 0, 0]
+				},
+				"tail44": {
+					"rotation": [-35, 0, 0]
+				},
+				"tail45": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail46": {
+					"rotation": [-15, 0, 0]
+				},
+				"tail26": {
+					"rotation": [30, 0, 0]
+				},
+				"tail27": {
+					"rotation": [-17.5, 0, 0]
+				},
+				"tail28": {
+					"rotation": [-40, 0, 0]
+				},
+				"tail29": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail30": {
+					"rotation": [-15, 0, 0]
+				},
+				"tail31": {
+					"rotation": [30, 0, 0]
+				},
+				"tail32": {
+					"rotation": [-17.5, 0, 0]
+				},
+				"tail33": {
+					"rotation": [-40, 0, 0]
+				},
+				"tail34": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail35": {
+					"rotation": [-15, 0, 0]
+				},
+				"tail16": {
+					"rotation": [30, 0, 0]
+				},
+				"tail17": {
+					"rotation": [-20, 0, 0]
+				},
+				"tail18": {
+					"rotation": [-40, 0, 0]
+				},
+				"tail19": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail20": {
+					"rotation": [-15, 0, 0]
+				},
+				"tail11": {
+					"rotation": [30, 0, 0]
+				},
+				"tail12": {
+					"rotation": [-20, 0, 0]
+				},
+				"tail13": {
+					"rotation": [-40, 0, 0]
+				},
+				"tail14": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail15": {
+					"rotation": [-15, 0, 0]
+				}
+			}
+		},
+		"animation.ninetales.blink": {
+			"animation_length": 0.16667,
+			"bones": {
+				"eyelid_right": {
+					"position": {
+						"0.0": [-0.1, 0, 0],
+						"0.125": [-0.1, 0, 0],
+						"0.1667": [0, 0, 0]
+					}
+				},
+				"eyelid_left": {
+					"position": {
+						"0.0": [0.1, 0, 0],
+						"0.125": [0.1, 0, 0],
+						"0.1667": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

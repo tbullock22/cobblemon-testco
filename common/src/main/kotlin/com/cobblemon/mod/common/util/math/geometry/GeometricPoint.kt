@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -7,6 +7,8 @@
  */
 
 package com.cobblemon.mod.common.util.math.geometry
+
+import net.minecraft.util.math.Vec3d
 
 /**
  * A three dimensional point in space.
@@ -22,7 +24,11 @@ data class GeometricPoint(val x: Float, val y: Float, val z: Float) {
     operator fun plus(right: GeometricPoint): GeometricPoint = add(this, right)
     operator fun times(scalar: Float): GeometricPoint = multiply(this, scalar)
 
+    fun toVec3d() = Vec3d(x.toDouble(), y.toDouble(), z.toDouble())
+
     constructor() : this(0f, 0f, 0f)
+    constructor(x: Double, y: Double, z: Double): this(x.toFloat(), y.toFloat(), z.toFloat())
+    constructor(vec3d: Vec3d) : this(vec3d.x, vec3d.y, vec3d.z)
 
     companion object {
 

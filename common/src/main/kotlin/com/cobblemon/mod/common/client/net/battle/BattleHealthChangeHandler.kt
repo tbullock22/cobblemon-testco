@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -21,7 +21,7 @@ object BattleHealthChangeHandler : ClientPacketHandler<BattleHealthChangePacket>
             val battle = CobblemonClient.battle ?: return@execute
             val (_, activePokemon) = battle.getPokemonFromPNX(packet.pnx)
             activePokemon.animations.add(
-                HealthChangeAnimation(newHealthRatio = packet.newHealthRatio, newHealth = packet.newHealth)
+                HealthChangeAnimation(newHealth = packet.newHealth)
             )
         }
     }

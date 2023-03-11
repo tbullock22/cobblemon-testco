@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -9,28 +9,31 @@
 package com.cobblemon.mod.common.client.battle.animations
 
 import com.cobblemon.mod.common.client.battle.ActiveClientBattlePokemon
-class HealthChangeAnimation(val newHealthRatio: Float, val newHealth: Int, val duration: Float = 1F) : TileAnimation {
-    var passedSeconds = 0F
-    var initialHealthRatio = -1F
-    var ratioDifference = 0F
-    var initialHealth = -1
-    var healthDifference = 0
+
+class HealthChangeAnimation(private val newHealth: Float, private val duration: Float = 1F) : TileAnimation {
+
+    private var passedSeconds = 0F
+    private var initialHealthRatio = -1F
+    private var ratioDifference = 0F
+    private var coercedNewHealth = -1F
 
     override fun shouldHoldUntilNextAnimation() = false
     override fun invoke(activeBattlePokemon: ActiveClientBattlePokemon, deltaTicks: Float): Boolean {
+        // We don't update the ClientBattlePokemon flat property since that's static since the start of a battle
         val pokemon = activeBattlePokemon.battlePokemon ?: return true
-        if (initialHealthRatio == -1F) {
-            initialHealthRatio = pokemon.hpRatio
-            ratioDifference = newHealthRatio - initialHealthRatio
+        if (this.coercedNewHealth == -1F) {
+            this.coercedNewHealth = if (!pokemon.isHpFlat) this.newHealth.coerceAtMost(1F) else this.newHealth
+        }
+        if (this.initialHealthRatio == -1F) {
+            this.initialHealthRatio = pokemon.hpValue
+            this.ratioDifference = this.coercedNewHealth - this.initialHealthRatio
         }
 
-        if (initialHealth == -1) {
-            healthDifference = newHealth - initialHealth
-        }
-
-        passedSeconds += deltaTicks / 20
-        passedSeconds = passedSeconds.coerceAtMost(duration)
-        pokemon.hpRatio = initialHealthRatio + (passedSeconds / duration) * ratioDifference
-        return passedSeconds == duration
+        this.passedSeconds += deltaTicks / 20
+        this.passedSeconds = passedSeconds.coerceAtMost(duration)
+        val progress = this.passedSeconds / this.duration
+        pokemon.hpValue = this.initialHealthRatio + progress * this.ratioDifference
+        return this.passedSeconds == this.duration
     }
+
 }

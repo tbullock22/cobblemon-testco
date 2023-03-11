@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -13,6 +13,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.animation.Statef
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.ModelFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pose.Pose
+import com.cobblemon.mod.common.client.render.models.blockbench.quirk.SimpleQuirk
 import com.cobblemon.mod.common.client.render.models.blockbench.withPosition
 import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
@@ -81,6 +82,8 @@ class JsonPokemonPoseableModel(override val rootPart: ModelPart) : PokemonPoseab
         get() = _profileScale ?: 1F
     override val profileTranslation
         get() = _profileTranslation ?: Vec3d(0.0, 0.0, 0.0)
+
+
 
     val faint: StatefulAnimation<PokemonEntity, ModelFrame>? = null
 
@@ -155,6 +158,30 @@ class JsonPokemonPoseableModel(override val rootPart: ModelPart) : PokemonPoseab
                 return@mapNotNull null
             }.toTypedArray()
 
+            val quirks = (obj.get("quirks")?.asJsonArray ?: JsonArray()).map { json ->
+                json as JsonObject
+                val name = json.get("name").asString
+                val animations: (state: PoseableEntityState<PokemonEntity>) -> List<StatefulAnimation<PokemonEntity, *>> = { _ ->
+                    (json.get("animations")?.asJsonArray ?: JsonArray()).map { animJson ->
+                        val split =
+                            animJson.asString.replace("bedrock(", "").replace(")", "").split(",").map(String::trim)
+                        return@map model.bedrockStateful(animationGroup = split[0], animation = split[1]).setPreventsIdle(false)
+                    }
+                }
+
+                val loopTimes = json.get("loopTimes")?.asInt ?: 1
+                val minSeconds = json.get("minSecondsBetweenOccurrences")?.asFloat ?: 8F
+                val maxSeconds = json.get("maxSecondsBetweenOccurrences")?.asFloat ?: 30F
+
+                model.quirkMultiple(
+                    name = name,
+                    secondsBetweenOccurrences = minSeconds to maxSeconds,
+                    condition = { true },
+                    loopTimes = 1..loopTimes,
+                    animations = animations
+                )
+            }
+
             return Pose(
                 poseName = poseName,
                 poseTypes = poseTypes.toSet(),
@@ -162,7 +189,7 @@ class JsonPokemonPoseableModel(override val rootPart: ModelPart) : PokemonPoseab
                 transformTicks =  transformTicks,
                 idleAnimations = idleAnimations,
                 transformedParts = transformedParts,
-                quirks = arrayOf()
+                quirks = quirks.toTypedArray()
             )
         }
     }

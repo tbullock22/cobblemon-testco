@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Carvanha",
   "nationalPokedexNumber": 318,
   "primaryType": "water",
@@ -126,10 +127,10 @@
       ]
     }
   ],
-  "baseScale": 1,
+  "baseScale": 0.7,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 0.7,
+    "height": 1.1,
     "fixed": false
   },
   "baseFriendship": 35,

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -14,6 +14,7 @@ import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.util.DataKeys
 import com.cobblemon.mod.common.util.isPokemonEntity
+import net.minecraft.client.render.OverlayTexture
 import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.entity.LivingEntityRenderer
 import net.minecraft.client.render.entity.feature.FeatureRenderer
@@ -62,15 +63,17 @@ class PokemonOnShoulderRenderer<T : PlayerEntity>(renderLayerParent: FeatureRend
                 0.0
             )
             pMatrixStack.scale(scale, scale, scale)
-            val model = PokemonModelRepository.getPoser(pokemon.species, pokemon.aspects)
-            val vertexConsumer = pBuffer.getBuffer(model.getLayer(PokemonModelRepository.getTexture(pokemon.species, pokemon.aspects)))
-            val i = LivingEntityRenderer.getOverlay(pLivingEntity, 0.0f)
+            val model = PokemonModelRepository.getPoser(pokemon.species.resourceIdentifier, pokemon.aspects)
             val state = PokemonFloatingState()
             state.animationSeconds = pLivingEntity.age.toFloat() / 20F
+            val vertexConsumer = pBuffer.getBuffer(model.getLayer(PokemonModelRepository.getTexture(pokemon.species.resourceIdentifier, pokemon.aspects, state)))
+            val i = LivingEntityRenderer.getOverlay(pLivingEntity, 0.0f)
+
             val pose = model.poses.values
                 .firstOrNull { (if (pLeftShoulder) PoseType.SHOULDER_LEFT else PoseType.SHOULDER_RIGHT) in it.poseTypes  }
                 ?: model.poses.values.first()
             state.setPose(pose.poseName)
+            state.timeEnteredPose = 0F
             model.setupAnimStateful(
                 entity = null,
                 state = state,
@@ -81,6 +84,9 @@ class PokemonOnShoulderRenderer<T : PlayerEntity>(renderLayerParent: FeatureRend
                 ageInTicks = pLivingEntity.age.toFloat()
             )
             model.render(pMatrixStack, vertexConsumer, pPackedLight, i, 1.0f, 1.0f, 1.0f, 1.0f)
+            model.withLayerContext(pBuffer, state, PokemonModelRepository.getLayers(pokemon.species.resourceIdentifier, pokemon.aspects)) {
+                model.render(pMatrixStack, vertexConsumer, pPackedLight, OverlayTexture.DEFAULT_UV, 1F, 1F, 1F, 1F)
+            }
             pMatrixStack.pop();
         }
     }

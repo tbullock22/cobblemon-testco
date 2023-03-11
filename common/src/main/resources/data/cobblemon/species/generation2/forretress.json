@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Forretress",
   "nationalPokedexNumber": 205,
   "primaryType": "bug",
@@ -14,6 +15,14 @@
     "special_attack": 60,
     "special_defence": 60,
     "speed": 40
+  },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": true,
+      "depth": "normal",
+      "light": "0-4"
+    }
   },
   "catchRate": 75,
   "maleRatio": 0.5,
@@ -141,10 +150,10 @@
   ],
   "preEvolution": "pineco",
   "evolutions": [],
-  "baseScale": 1,
+  "baseScale": 0.7,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 1.25,
+    "height": 1.7,
     "fixed": false
   },
   "baseFriendship": 70,

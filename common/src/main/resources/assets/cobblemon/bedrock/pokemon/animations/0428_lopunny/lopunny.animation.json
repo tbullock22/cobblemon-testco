@@ -1,0 +1,71 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.lopunny.ground_idle": {
+			"loop": true,
+			"bones": {
+				"ear_right": {
+					"rotation": [0, 0, -10]
+				},
+				"ear_right2": {
+					"rotation": [0, 0, -50]
+				},
+				"ear_right3": {
+					"rotation": [0, 0, -5]
+				},
+				"ear_right4": {
+					"rotation": [0, 0, -5]
+				},
+				"ear_right5": {
+					"rotation": [0, 0, -5]
+				},
+				"ear_left": {
+					"rotation": [0, 0, 10]
+				},
+				"ear_left2": {
+					"rotation": [0, 0, 50]
+				},
+				"ear_left3": {
+					"rotation": [0, 0, 5]
+				},
+				"ear_left4": {
+					"rotation": [0, 0, 5]
+				},
+				"ear_left5": {
+					"rotation": [0, 0, 5]
+				},
+				"arm_right": {
+					"rotation": [15, 15, -50]
+				},
+				"arm_right2": {
+					"rotation": [0, -30, 0]
+				},
+				"arm_left": {
+					"rotation": [15, -15, 50]
+				},
+				"arm_left2": {
+					"rotation": [0, 30, 0]
+				}
+			}
+		},
+		"animation.lopunny.blink": {
+			"animation_length": 0.1667,
+			"bones": {
+				"eyelid_right": {
+					"position": {
+						"0.0": [-0.1, 0, 0],
+						"0.125": [-0.1, 0, 0],
+						"0.1667": [0, 0, 0]
+					}
+				},
+				"eyelid_left": {
+					"position": {
+						"0.0": [0.1, 0, 0],
+						"0.125": [0.1, 0, 0],
+						"0.1667": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

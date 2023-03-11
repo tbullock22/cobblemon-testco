@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -40,7 +40,6 @@ open class Learnset : ClientDataSynchronizer<Learnset> {
     }
 
     companion object {
-        private val laMoves = setOf("ragingfury", "chloroblast", "barbbarrage", "infernalparade", "esperwing", "powershift", "victorydance", "bittermalice", "mountaingale", "shelter", "triplearrows", "direclaw")
         val tmInterpreter = Interpreter.parseFromPrefixIntoList("tm") { it.tmMoves }
         val eggInterpreter = Interpreter.parseFromPrefixIntoList("egg") { it.eggMoves }
         val tutorInterpreter = Interpreter.parseFromPrefixIntoList("tutor") { it.tutorMoves }
@@ -56,10 +55,6 @@ open class Learnset : ClientDataSynchronizer<Learnset> {
 
             val level = splits[0].toInt()
             val moveName = splits[1]
-            // ToDo remove me once the moves are implemented
-            if (laMoves.contains(moveName.lowercase())) {
-                return@Interpreter true
-            }
             val move = Moves.getByName(moveName) ?: return@Interpreter false
 
             val levelLearnset = learnset.levelUpMoves.getOrPut(level) { mutableListOf() }

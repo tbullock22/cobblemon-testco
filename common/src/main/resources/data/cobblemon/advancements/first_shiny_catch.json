@@ -1,22 +1,23 @@
 {
-  "display": {
-    "icon": {
-      "item": "minecraft:nether_star"
-    },
-    "title": {
-      "translate": "advancements.cobblemon.first_shiny_catch"
-    },
-    "description": {
-      "translate": "advancements.cobblemon.first_shiny_catch.description"
-    }
-  },
-  "parent": "cobblemon:first_catch",
-  "criteria": {
-    "catch": {
-      "trigger": "cobblemon:catch_shiny_pokemon",
-      "conditions": {
-        "count": 1
-      }
-    }
-  }
+	"display": {
+		"icon": {
+			"item": "cobblemon:pokemon_model",
+			"nbt": "{\"species\":\"cobblemon:charizard\",\"aspects\":[\"shiny\"]}"
+		},
+		"title": {
+			"translate": "advancements.cobblemon.first_shiny_catch"
+		},
+		"description": {
+			"translate": "advancements.cobblemon.first_shiny_catch.description"
+		}
+	},
+	"parent": "cobblemon:first_catch",
+	"criteria": {
+		"catch": {
+			"trigger": "cobblemon:catch_shiny_pokemon",
+			"conditions": {
+				"count": 1
+			}
+		}
+	}
 }

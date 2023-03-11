@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -35,7 +35,8 @@ object BattleSwitchPokemonHandler : ClientPacketHandler<BattleSwitchPokemonPacke
                         displayName = displayName,
                         properties = properties,
                         aspects = aspects,
-                        hpRatio = hpRatio,
+                        hpValue = hpValue,
+                        isHpFlat = packet.isAlly,
                         status = status,
                         statChanges = statChanges
                     ).also {

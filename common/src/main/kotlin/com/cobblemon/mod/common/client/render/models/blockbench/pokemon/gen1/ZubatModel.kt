@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -13,6 +13,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.RangeOfMotion
 import com.cobblemon.mod.common.client.render.models.blockbench.asTransformed
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.BiWingedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.EaredFrame
+import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pose.TransformedModelPart.Companion.X_AXIS
 import com.cobblemon.mod.common.client.render.models.blockbench.pose.TransformedModelPart.Companion.Y_AXIS
@@ -38,14 +39,21 @@ class ZubatModel(root: ModelPart) : PokemonPoseableModel(), BiWingedFrame, Eared
     override val rightEarJoint = EarJoint(rightEar, Z_AXIS, RangeOfMotion((-70F).toRadians(), (-40F).toRadians()))
 
     override val portraitScale = 2.3F
-    override val portraitTranslation = Vec3d(0.0, -0.1, 0.0)
+    override val portraitTranslation = Vec3d(0.0, -0.5, 0.0)
     override val profileScale = 1.0F
     override val profileTranslation = Vec3d(0.0, 0.36, 0.0)
 
+    lateinit var sleep: PokemonPose
+
     override fun registerPoses() {
+        sleep = registerPose(
+                poseType = PoseType.SLEEP,
+                idleAnimations = arrayOf(bedrock("zubat", "sleep"))
+        )
+
         registerPose(
             poseName = "hover",
-            poseTypes = ALL_POSES - SHOULDER_POSES - PoseType.FLY,
+            poseTypes = ALL_POSES - SHOULDER_POSES - PoseType.FLY - PoseType.SLEEP,
             idleAnimations = arrayOf(
                 bedrock("zubat", "ground_idle")
             )

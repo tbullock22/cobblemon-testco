@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -21,12 +21,14 @@ object CobblemonBlockEntities : CompletableRegistry<BlockEntityType<*>>(Registry
         return queue(name, blockEntityType)
     }
 
+    @JvmField
     val HEALING_MACHINE = com.cobblemon.mod.common.CobblemonBlockEntities.register("healing_machine") {
         BlockEntityType.Builder.create(
             ::HealingMachineBlockEntity,
             CobblemonBlocks.HEALING_MACHINE.get()
         ).build(null)
     }
+    @JvmField
     val PC = com.cobblemon.mod.common.CobblemonBlockEntities.register("pc") {
         BlockEntityType.Builder.create(
             ::PCBlockEntity,

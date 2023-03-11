@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -82,7 +82,7 @@ class PokemonMoveControl(val pokemonEntity: PokemonEntity) : MoveControl(pokemon
             if (!closeHorizontally) {
                 val angleToTarget = MathHelper.atan2(zDist, xDist).toDegrees() - 90.0f
                 val currentMovingAngle = entity.yaw
-                val steppedAngle = MathHelper.stepUnwrappedAngleTowards(currentMovingAngle, angleToTarget,  if (entity.isOnGround) 20F else 5F)
+                val steppedAngle = MathHelper.stepUnwrappedAngleTowards(currentMovingAngle, angleToTarget,  100 * mediumSpeed)
                 entity.yaw = steppedAngle
             }
 

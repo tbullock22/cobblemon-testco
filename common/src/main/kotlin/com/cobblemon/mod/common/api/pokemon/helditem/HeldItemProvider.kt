@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -30,6 +30,14 @@ object HeldItemProvider {
      * @return The [HeldItemManager] that can provide for the given [pokemon], if non match returns the [HeldItemManager.EMPTY].
      */
     fun provide(pokemon: BattlePokemon): HeldItemManager = this.managers.firstOrNull { manager -> manager.showdownId(pokemon) != null } ?: HeldItemManager.EMPTY
+
+    /**
+     * Finds the first non-null showdownId provided by a [HeldItemManager] in [managers].
+     *
+     * @param pokemon The [Pokemon] being queried.
+     * @return The showdownId string that [pokemon] is holding, otherwise null.
+     */
+    fun provideShowdownId(pokemon: BattlePokemon) = this.managers.firstNotNullOfOrNull { manager -> manager.showdownId(pokemon) }
 
     /**
      * Registers a new [HeldItemManager].

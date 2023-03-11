@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -32,6 +32,19 @@ open class BedrockStatefulAnimation<T : Entity>(
     }
 
     var secondsPassed = 0F
+    var isTransformAnimation = false
+    private var afterAction: (T, PoseableEntityState<T>) -> Unit = { _, _ -> }
+
+    override val isTransform: Boolean
+        get() = isTransformAnimation
+
+    fun isTransformAnimation(value: Boolean) = this.also {
+        it.isTransformAnimation = value
+    }
+
+    fun andThen(action: (entity: T, PoseableEntityState<T>) -> Unit) = this.also {
+        it.afterAction = action
+    }
 
     override fun preventsIdle(entity: T?, state: PoseableEntityState<T>, idleAnimation: StatelessAnimation<T, *>) = preventsIdleCheck(entity, state, idleAnimation)
     override fun run(
@@ -44,7 +57,12 @@ open class BedrockStatefulAnimation<T : Entity>(
         headYaw: Float,
         headPitch: Float
     ): Boolean {
+        val previousSeconds = secondsPassed
         secondsPassed += state.deltaSeconds
-        return animation.run(model, state, secondsPassed)
+        return animation.run(model, entity, state, previousSeconds.toDouble(), secondsPassed.toDouble()).also {
+            if (!it && entity != null) {
+                afterAction(entity, state)
+            }
+        }
     }
 }

@@ -15,6 +15,14 @@
     "special_defence": 55,
     "speed": 65
   },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    }
+  },
   "catchRate": 90,
   "maleRatio": 0.5,
   "shoulderMountable": false,

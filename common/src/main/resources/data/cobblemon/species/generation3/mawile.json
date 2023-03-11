@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Mawile",
   "nationalPokedexNumber": 303,
   "primaryType": "steel",
@@ -200,10 +201,10 @@
     "cobblemon.species.mawile.desc"
   ],
   "evolutions": [],
-  "baseScale": 1,
+  "baseScale": 0.8,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 0.5,
+    "height": 0.9,
     "fixed": false
   },
   "baseFriendship": 50,

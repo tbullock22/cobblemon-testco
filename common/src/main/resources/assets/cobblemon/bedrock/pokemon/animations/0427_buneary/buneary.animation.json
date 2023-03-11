@@ -1,0 +1,47 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.buneary.ground_idle": {
+			"loop": true,
+			"bones": {
+				"arm_left": {
+					"rotation": [2.5, 10, 10]
+				},
+				"arm_left2": {
+					"rotation": [0, 0, -5]
+				},
+				"arm_left3": {
+					"rotation": [0, 0, -5]
+				},
+				"arm_right": {
+					"rotation": [2.5, -10, -10]
+				},
+				"arm_right2": {
+					"rotation": [0, 0, 5]
+				},
+				"arm_right3": {
+					"rotation": [0, 0, 5]
+				}
+			}
+		},
+		"animation.buneary.blink": {
+			"animation_length": 0.16667,
+			"bones": {
+				"eyelid_left": {
+					"position": {
+						"0.0": [0, 0, -0.1],
+						"0.125": [0, 0, -0.1],
+						"0.1667": [0, 0, 0]
+					}
+				},
+				"eyelid_right": {
+					"position": {
+						"0.0": [0, 0, -0.1],
+						"0.125": [0, 0, -0.1],
+						"0.1667": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

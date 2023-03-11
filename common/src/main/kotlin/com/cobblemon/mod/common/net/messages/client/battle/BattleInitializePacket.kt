@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -17,6 +17,7 @@ import com.cobblemon.mod.common.api.pokemon.PokemonPropertyExtractor
 import com.cobblemon.mod.common.api.pokemon.stats.Stat
 import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.battles.BattleFormat
+import com.cobblemon.mod.common.battles.BattleSide
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
 import com.cobblemon.mod.common.net.IntSize
 import com.cobblemon.mod.common.pokemon.status.PersistentStatus
@@ -44,7 +45,7 @@ class BattleInitializePacket() : NetworkPacket {
     lateinit var side1: BattleSideDTO
     lateinit var side2: BattleSideDTO
 
-    constructor(battle: PokemonBattle): this() {
+    constructor(battle: PokemonBattle, allySide: BattleSide): this() {
         battleId = battle.battleId
         battleFormat = battle.format
         val sides = arrayOf(battle.side1, battle.side2).map { side ->
@@ -54,7 +55,7 @@ class BattleInitializePacket() : NetworkPacket {
                         uuid = actor.uuid,
                         showdownId = actor.showdownId,
                         displayName = actor.getName(),
-                        activePokemon = actor.activePokemon.map { it.battlePokemon?.let(ActiveBattlePokemonDTO::fromPokemon) },
+                        activePokemon = actor.activePokemon.map { it.battlePokemon?.let { pkm -> ActiveBattlePokemonDTO.fromPokemon(pkm, allySide == side) } },
                         type = actor.type
                     )
                 }
@@ -134,22 +135,26 @@ class BattleInitializePacket() : NetworkPacket {
         val properties: PokemonProperties,
         val aspects: Set<String>,
         val status: PersistentStatus?,
-        val hpRatio: Float,
+        val hpValue: Float,
+        val isFlatHp: Boolean,
         val statChanges: MutableMap<Stat, Int>
     ) {
         companion object {
-            fun fromPokemon(battlePokemon: BattlePokemon) = with(battlePokemon.effectedPokemon) {
-                ActiveBattlePokemonDTO(
-                    uuid = uuid,
-                    displayName = species.translatedName,
-                    properties = createPokemonProperties(
+            fun fromPokemon(battlePokemon: BattlePokemon, isAlly: Boolean): ActiveBattlePokemonDTO {
+                val pokemon = battlePokemon.effectedPokemon
+                val hpValue = if (isAlly) pokemon.currentHealth.toFloat() else pokemon.currentHealth.toFloat() / pokemon.hp
+                return ActiveBattlePokemonDTO(
+                    uuid = pokemon.uuid,
+                    displayName = pokemon.species.translatedName,
+                    properties = pokemon.createPokemonProperties(
                         PokemonPropertyExtractor.SPECIES,
                         PokemonPropertyExtractor.LEVEL,
                         PokemonPropertyExtractor.GENDER
                     ),
-                    aspects = aspects,
-                    status = status?.status,
-                    hpRatio = currentHealth.toFloat() / hp,
+                    aspects = pokemon.aspects,
+                    status = pokemon.status?.status,
+                    hpValue = hpValue,
+                    isFlatHp = isAlly,
                     statChanges = battlePokemon.statChanges
                 )
             }
@@ -165,6 +170,7 @@ class BattleInitializePacket() : NetworkPacket {
                     null
                 }
                 val hpRatio = buffer.readFloat()
+                val isFlatHp = buffer.readBoolean()
                 val statChanges = mutableMapOf<Stat, Int>()
                 buffer.readMapK(size = IntSize.U_BYTE, statChanges) {
                     val stat = Cobblemon.statProvider.decode(buffer)
@@ -177,7 +183,8 @@ class BattleInitializePacket() : NetworkPacket {
                     properties = properties,
                     aspects = aspects,
                     status = status,
-                    hpRatio = hpRatio,
+                    hpValue = hpRatio,
+                    isFlatHp = isFlatHp,
                     statChanges = statChanges
                 )
             }
@@ -190,7 +197,8 @@ class BattleInitializePacket() : NetworkPacket {
             buffer.writeCollection(aspects) { buf, it -> buf.writeString(it) }
             buffer.writeBoolean(status != null)
             status?.let { buffer.writeString(it.name.toString()) }
-            buffer.writeFloat(hpRatio)
+            buffer.writeFloat(hpValue)
+            buffer.writeBoolean(isFlatHp)
             buffer.writeMapK(IntSize.U_BYTE, statChanges) { (stat, stages) ->
                 Cobblemon.statProvider.encode(buffer, stat)
                 buffer.writeSizedInt(IntSize.BYTE, stages)

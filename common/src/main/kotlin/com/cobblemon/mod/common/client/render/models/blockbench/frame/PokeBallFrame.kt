@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -11,6 +11,6 @@ package com.cobblemon.mod.common.client.render.models.blockbench.frame
 import net.minecraft.client.model.ModelPart
 
 interface PokeBallFrame : ModelFrame {
-    val subRoot: ModelPart
+    val base: ModelPart
     val lid: ModelPart
 }

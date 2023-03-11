@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -118,5 +118,13 @@ class PokemonClientDelegate : PoseableEntityState<PokemonEntity>(), PokemonSideD
 
     fun setPhaseTarget(targetId: Int) {
         this.phaseTarget = entity.world.getEntityById(targetId)
+    }
+
+    override fun handleStatus(status: Byte) {
+        if (status == 10.toByte()) {
+            val model = (currentModel ?: return) as PokemonPoseableModel
+            val animation = model.getEatAnimation(entity, this) ?: return
+            statefulAnimations.add(animation)
+        }
     }
 }

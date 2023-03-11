@@ -16,6 +16,14 @@
     "special_defence": 79,
     "speed": 80
   },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    }
+  },
   "standingEyeHeight": 1,
   "features": [
     "snake-pattern"

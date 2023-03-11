@@ -19,7 +19,10 @@
   },
   "catchRate": 255,
   "maleRatio": 0.5,
-  "shoulderMountable": false,
+  "shoulderMountable": true,
+  "shoulderEffects": [
+    "water_breathing"
+  ],
   "forms": [
     {
       "name": "Paldea",

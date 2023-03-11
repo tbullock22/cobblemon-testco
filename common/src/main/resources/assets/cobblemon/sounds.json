@@ -42,6 +42,12 @@
   "item.use": {
     "sounds": [ "cobblemon:use_item" ]
   },
+  "pokemon.can_evolve": {
+    "sounds": [ "cobblemon:pokemon/evolution_notification"]
+  },
+  "pokemon.evolving": {
+    "sounds": [ "cobblemon:pokemon/evolving"]
+  },
   "gui.click": {
     "sounds": [ "cobblemon:click" ]
   },

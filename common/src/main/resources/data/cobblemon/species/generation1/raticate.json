@@ -16,6 +16,14 @@
     "special_defence": 70,
     "speed": 97
   },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    }
+  },
   "features": [
     "alolan"
   ],

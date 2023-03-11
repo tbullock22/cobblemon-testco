@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -22,17 +22,17 @@ import com.cobblemon.mod.common.pokemon.Species
  * @since July 28th, 2022
  */
 open class AbilityPool : PrioritizedList<PotentialAbility>() {
-    fun select(species: Species, aspects: Set<String>): Ability {
+    fun select(species: Species, aspects: Set<String>): Pair<Ability, Priority> {
         for (priority in Priority.values()) {
             val potentialAbilities = priorityMap[priority]?.filter { it.isSatisfiedBy(aspects) } ?: continue
             if (potentialAbilities.isNotEmpty()) {
-                return potentialAbilities.random().template.create()
+                return potentialAbilities.random().template.create() to priority
             }
         }
 
         LOGGER.error("Unable to select an ability from the pool for $species and aspects: ${aspects.joinToString()}")
         LOGGER.error("Usually this happens when a client is doing logic it shouldn't. Please show this to the Cobblemon developers!")
         Exception().printStackTrace()
-        return Abilities.first().create()
+        return Abilities.first().create() to Priority.LOWEST
     }
 }

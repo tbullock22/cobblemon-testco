@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.api.pokemon.evolution
 
+import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.abilities.AbilityPool
 import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.events.pokemon.evolution.EvolutionCompleteEvent
@@ -19,6 +20,7 @@ import com.cobblemon.mod.common.pokemon.evolution.variants.ItemInteractionEvolut
 import com.cobblemon.mod.common.pokemon.evolution.variants.LevelUpEvolution
 import com.cobblemon.mod.common.pokemon.evolution.variants.TradeEvolution
 import net.minecraft.item.ItemStack
+import net.minecraft.sound.SoundCategory
 
 /**
  * Represents an evolution of a [Pokemon], this is the server side counterpart of [EvolutionDisplay].
@@ -90,29 +92,14 @@ interface Evolution : EvolutionLike {
      */
     fun forceEvolve(pokemon: Pokemon) {
         // ToDo Once implemented queue evolution for a pokemon state that is not in battle, start animation instead of instantly doing all of this
-        val previousAbilityPool = pokemon.form.abilities
         this.result.apply(pokemon)
-        evolveAbility(pokemon, previousAbilityPool)
         // we want to instantly tick for example you might only evolve your Bulbasaur at level 34 so Venusaur should be immediately available
         pokemon.evolutions.filterIsInstance<PassiveEvolution>()
             .forEach { evolution ->
                 evolution.attemptEvolution(pokemon)
             }
+        pokemon.getOwnerPlayer()?.playSound(CobblemonSounds.EVOLVING.get(), SoundCategory.NEUTRAL, 1F, 1F)
         CobblemonEvents.EVOLUTION_COMPLETE.post(EvolutionCompleteEvent(pokemon, this))
-    }
-
-    fun evolveAbility(pokemon: Pokemon, previousAbilityPool: AbilityPool) {
-        with (pokemon) {
-            val originalPotentialAbility = previousAbilityPool.find { it.template == ability.template }
-            if (ability.template !in form.abilities.map { it.template } && ability.template in previousAbilityPool.map { it.template }) {
-                val matchingTypes = form.abilities.filter { it.type == originalPotentialAbility?.type }
-                ability = if (matchingTypes.isNotEmpty()) {
-                    matchingTypes.random().template.create()
-                } else {
-                    form.abilities.select(species, aspects)
-                }
-            }
-        }
     }
 
     fun applyTo(pokemon: Pokemon) {

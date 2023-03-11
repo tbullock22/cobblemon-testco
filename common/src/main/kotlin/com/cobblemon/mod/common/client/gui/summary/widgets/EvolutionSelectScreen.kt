@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -133,8 +133,8 @@ class EvolutionSelectScreen(
             poseStack.translate(x + (PORTRAIT_DIAMETER / 2) + 65.0, y - 5.0, 0.0)
             poseStack.scale(2.5F, 2.5F, 1F)
             drawProfilePokemon(
-                species = form.species,
-                aspects = form.aspects.toSet(),
+                species = this.evolution.species,
+                aspects = this.evolution.aspects,
                 matrixStack = poseStack,
                 rotation = Quaternion.fromEulerXyzDegrees(Vec3f(13F, 35F, 0F)),
                 state = null,

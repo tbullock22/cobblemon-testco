@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Whismur",
   "nationalPokedexNumber": 293,
   "primaryType": "normal",
@@ -127,10 +128,10 @@
       ]
     }
   ],
-  "baseScale": 1,
+  "baseScale": 0.9,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 0.8,
+    "height": 0.8,
     "fixed": false
   },
   "baseFriendship": 50,

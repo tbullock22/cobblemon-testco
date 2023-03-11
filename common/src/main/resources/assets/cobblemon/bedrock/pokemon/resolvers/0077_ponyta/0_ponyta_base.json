@@ -1,0 +1,32 @@
+{
+  "species": "cobblemon:ponyta",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:ponyta",
+      "model": "cobblemon:ponyta.geo",
+      "texture": "cobblemon:textures/pokemon/0077_ponyta/ponyta.png",
+      "layers": [
+        {
+        "name": "fire",
+        "texture": "cobblemon:textures/pokemon/0077_ponyta/ponyta_emissive.png",
+        "emissive": "true"
+      }
+      ]
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0077_ponyta/ponyta_shiny.png",
+      "layers": [
+        {
+          "name": "fire",
+          "texture": "cobblemon:textures/pokemon/0077_ponyta/ponyta_shiny_emissive.png",
+          "emissive": "true"
+        }
+      ]
+    }
+  ]
+}

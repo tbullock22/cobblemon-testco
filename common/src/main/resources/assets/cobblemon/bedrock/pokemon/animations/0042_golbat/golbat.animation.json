@@ -1,0 +1,26 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.golbat.sleep": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [90, 0, 0],
+					"position": [0, -5.75, 0]
+				},
+				"rightwing": {
+					"rotation": [0, -7.5, 0]
+				},
+				"leftwing": {
+					"rotation": [0, 7.5, 0]
+				},
+				"rightleg": {
+					"rotation": [0, -37.5, 0]
+				},
+				"leftleg": {
+					"rotation": [0, 40, 0]
+				}
+			}
+		}
+	}
+}

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -9,31 +9,23 @@
 package com.cobblemon.mod.common.client.entity
 
 import com.cobblemon.mod.common.api.entity.EntitySideDelegate
-import com.cobblemon.mod.common.api.reactive.Observable.Companion.emitWhile
-import com.cobblemon.mod.common.client.render.models.blockbench.PoseableEntityState
-import com.cobblemon.mod.common.client.render.pokeball.animation.OpenAnimation
-import com.cobblemon.mod.common.client.render.pokeball.animation.ShakeAnimation
+import com.cobblemon.mod.common.api.reactive.Observable
+import com.cobblemon.mod.common.api.reactive.SettableObservable
+import com.cobblemon.mod.common.api.reactive.SimpleObservable
+import com.cobblemon.mod.common.client.render.pokeball.PokeBallPoseableState
 import com.cobblemon.mod.common.entity.pokeball.EmptyPokeBallEntity
 import com.cobblemon.mod.common.entity.pokeball.EmptyPokeBallEntity.CaptureState
-import com.cobblemon.mod.common.entity.pokeball.EmptyPokeBallEntity.CaptureState.HIT
-import com.cobblemon.mod.common.entity.pokeball.EmptyPokeBallEntity.CaptureState.SHAKE
-class EmptyPokeBallClientDelegate : PoseableEntityState<EmptyPokeBallEntity>(), EntitySideDelegate<EmptyPokeBallEntity> {
+import com.cobblemon.mod.common.entity.pokeball.EmptyPokeBallEntity.CaptureState.NOT
+
+class EmptyPokeBallClientDelegate : PokeBallPoseableState(), EntitySideDelegate<EmptyPokeBallEntity> {
+    override val stateEmitter: SettableObservable<CaptureState> = SettableObservable(NOT)
+    override val shakeEmitter = SimpleObservable<Unit>()
+
     override fun initialize(entity: EmptyPokeBallEntity) {
+        initSubscriptions()
         entity.captureState.subscribe {
-            when (CaptureState.values()[it.toInt()]) {
-                HIT -> {
-                    statefulAnimations.add(OpenAnimation())
-                }
-                CaptureState.FALL -> {
-                    statefulAnimations.clear()
-                }
-                SHAKE -> {
-                    entity.shakeEmitter
-                        .pipe(emitWhile { entity.captureState.get() == SHAKE.ordinal.toByte() })
-                        .subscribe { statefulAnimations.add(ShakeAnimation(0.8F)) }
-                }
-                else -> {}
-            }
+            stateEmitter.set(CaptureState.values()[it.toInt()])
         }
+        entity.shakeEmitter.subscribe { shakeEmitter.emit(Unit) }
     }
 }

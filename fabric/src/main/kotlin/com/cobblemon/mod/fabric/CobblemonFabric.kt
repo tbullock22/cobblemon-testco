@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -13,14 +13,19 @@ import com.cobblemon.mod.common.CobblemonConfiguredFeatures
 import com.cobblemon.mod.common.CobblemonImplementation
 import com.cobblemon.mod.common.CobblemonNetwork
 import com.cobblemon.mod.common.CobblemonPlacements
+import com.cobblemon.mod.common.ModAPI
+import com.cobblemon.mod.common.util.didSleep
 import com.cobblemon.mod.fabric.compat.AdornFabricCompat
 import com.cobblemon.mod.fabric.net.CobblemonFabricNetworkDelegate
 import com.cobblemon.mod.fabric.permission.FabricPermissionValidator
+import net.fabricmc.fabric.api.entity.event.v1.EntitySleepEvents
 import juuxel.adorn.compat.CompatBlocks
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents
 import net.fabricmc.loader.api.FabricLoader
+import net.minecraft.server.network.ServerPlayerEntity
 
 object CobblemonFabric : CobblemonImplementation {
+    override val modAPI = ModAPI.FABRIC
 
     private val modCompat = mapOf(
         "adorn" to {
@@ -33,7 +38,7 @@ object CobblemonFabric : CobblemonImplementation {
     override fun isModInstalled(id: String) = FabricLoader.getInstance().isModLoaded(id)
     fun initialize() {
         CobblemonNetwork.networkDelegate = CobblemonFabricNetworkDelegate
-        Cobblemon.preinitialize(this)
+        Cobblemon.preInitialize(this)
 
         CobblemonConfiguredFeatures.register()
         CobblemonPlacements.register()
@@ -49,6 +54,14 @@ object CobblemonFabric : CobblemonImplementation {
                 compatSupplier.invoke()
             }
         }
+        EntitySleepEvents.STOP_SLEEPING.register { playerEntity, _ ->
+            if (playerEntity !is ServerPlayerEntity) {
+                return@register
+            }
+
+            playerEntity.didSleep()
+        }
+
         ServerLifecycleEvents.SYNC_DATA_PACK_CONTENTS.register { player, isLogin ->
             if (isLogin) {
                 Cobblemon.dataProvider.sync(player)

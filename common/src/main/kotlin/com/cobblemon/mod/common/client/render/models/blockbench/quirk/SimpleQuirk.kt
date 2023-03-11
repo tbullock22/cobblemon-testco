@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -16,7 +16,7 @@ import net.minecraft.entity.Entity
 class SimpleQuirk<T : Entity>(
     name: String,
     private val secondsBetweenOccurrences: Pair<Float, Float>,
-    val condition: (state: PoseableEntityState<T>) -> Boolean ,
+    val condition: (state: PoseableEntityState<T>) -> Boolean = { true },
     val loopTimes: IntRange = 1..1,
     val animations: (state: PoseableEntityState<T>) -> Iterable<StatefulAnimation<T, *>>
 ) : ModelQuirk<T, SimpleQuirkData<T>>(name) {

@@ -1,0 +1,140 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.spearow.air_idle": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [-15, 0, 0]
+				},
+				"head": {
+					"rotation": [20, 0, 0]
+				},
+				"leftleg": {
+					"position": [0, 1.5, 0]
+				},
+				"backlefttoe": {
+					"rotation": [-30, 0, 0]
+				},
+				"frontlefttoe3": {
+					"rotation": [15, 0, 0]
+				},
+				"frontlefttoe4": {
+					"rotation": [15, 0, 0]
+				},
+				"rightleg": {
+					"position": [0, 1, 0]
+				},
+				"rightfoot": {
+					"position": [0, 0.5, 0]
+				},
+				"backrighttoe": {
+					"rotation": [-30, 0, 0]
+				},
+				"frontrighttoe": {
+					"rotation": [15, 0, 0]
+				},
+				"frontrighttoe2": {
+					"rotation": [15, 0, 0]
+				},
+				"rightwing": {
+					"rotation": [-40, 30, 100]
+				},
+				"rightwing2": {
+					"rotation": [-30, 0, 0]
+				},
+				"leftwing": {
+					"rotation": [-40, -30, -100]
+				},
+				"leftwing2": {
+					"rotation": [-30, 0, 0]
+				}
+			}
+		},
+		"animation.spearow.air_fly": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [15, 0, 0]
+				},
+				"head": {
+					"rotation": [-10, 0, 0]
+				},
+				"leftleg": {
+					"position": [0, 1.5, 0]
+				},
+				"backlefttoe": {
+					"rotation": [-30, 0, 0]
+				},
+				"frontlefttoe3": {
+					"rotation": [15, 0, 0]
+				},
+				"frontlefttoe4": {
+					"rotation": [15, 0, 0]
+				},
+				"rightleg": {
+					"position": [0, 1, 0]
+				},
+				"rightfoot": {
+					"position": [0, 0.5, 0]
+				},
+				"backrighttoe": {
+					"rotation": [-30, 0, 0]
+				},
+				"frontrighttoe": {
+					"rotation": [15, 0, 0]
+				},
+				"frontrighttoe2": {
+					"rotation": [15, 0, 0]
+				},
+				"rightwing": {
+					"rotation": [-50, 0, 80]
+				},
+				"rightwing2": {
+					"rotation": [-30, 0, 0]
+				},
+				"leftwing": {
+					"rotation": [-50, 0, -80]
+				},
+				"leftwing2": {
+					"rotation": [-30, 0, 0]
+				},
+				"tail": {
+					"rotation": [-15, 0, 0]
+				}
+			}
+		},
+		"animation.spearow.sleep": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [7.5, 0, 0],
+					"position": [0, -1.75, 0]
+				},
+				"head": {
+					"rotation": [15, 0, 0]
+				},
+				"tail": {
+					"rotation": [-10, 0, 0]
+				},
+				"leftleg": {
+					"rotation": [-5, 0, 0],
+					"position": [0, 1.75, 0]
+				},
+				"leftfoot": {
+					"rotation": [-2.5, 0, 0]
+				},
+				"rightleg": {
+					"rotation": [-7.5, 0, 0],
+					"position": [0, 1.75, 0]
+				},
+				"rightwing": {
+					"position": [0, -1.25, -1.25]
+				},
+				"leftwing": {
+					"position": [0, -1.5, -1.25]
+				}
+			}
+		}
+	}
+}

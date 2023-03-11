@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -31,7 +31,7 @@ class BattleCaptureAction(
 ) {
     val pokemonName = targetPokemon.battlePokemon?.getName() ?: "error".red()
     fun attach() {
-        battle.sendUpdate(BattleCaptureStartPacket(pokeBallEntity.pokeBall.name, targetPokemon.getPNX()))
+        battle.sendUpdate(BattleCaptureStartPacket(pokeBallEntity.pokeBall.name, pokeBallEntity.aspects.get(), targetPokemon.getPNX()))
 
         pokeBallEntity.shakeEmitter
             .pipe(emitWhile { pokeBallEntity.isAlive && this in battle.captureActions })

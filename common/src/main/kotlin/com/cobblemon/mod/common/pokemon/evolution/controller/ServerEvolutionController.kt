@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.pokemon.evolution.controller
 
+import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.events.pokemon.evolution.EvolutionAcceptedEvent
 import com.cobblemon.mod.common.api.pokemon.evolution.Evolution
@@ -31,6 +32,7 @@ import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtList
 import net.minecraft.nbt.NbtString
 import net.minecraft.network.PacketByteBuf
+import net.minecraft.sound.SoundCategory
 
 class ServerEvolutionController(override val pokemon: Pokemon) : EvolutionController<Evolution> {
 
@@ -171,6 +173,7 @@ class ServerEvolutionController(override val pokemon: Pokemon) : EvolutionContro
         if (this.evolutions.add(element)) {
             this.pokemon.getOwnerPlayer()?.sendMessage("cobblemon.ui.evolve.hint".asTranslated(pokemon.displayName).green())
             this.pokemon.notify(AddEvolutionPacket(this.pokemon, element))
+            this.pokemon.getOwnerPlayer()?.playSound(CobblemonSounds.CAN_EVOLVE.get(), SoundCategory.NEUTRAL, 1F, 1F)
             return true
         }
         return false

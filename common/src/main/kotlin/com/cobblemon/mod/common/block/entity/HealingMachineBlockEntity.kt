@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -72,12 +72,13 @@ class HealingMachineBlockEntity(
     }
 
     fun activate(player: ServerPlayerEntity) {
-        if (!Cobblemon.config.infiniteHealerCharge) {
+        if (!Cobblemon.config.infiniteHealerCharge && this.healingCharge != Cobblemon.config.maxHealerCharge) {
             val neededHealthPercent = player.party().getHealingRemainderPercent()
             this.healingCharge -= neededHealthPercent
             this.updateRedstoneSignal()
         }
         this.setUser(player.uuid)
+        alreadyHealing.add(player.uuid)
         updateBlockChargeLevel(HealingMachineBlock.MAX_CHARGE_LEVEL + 1)
         if (world != null && !world!!.isClient) world!!.playSoundServer(position = blockPos.toVec3d(), sound = CobblemonSounds.HEALING_MACHINE_ACTIVE.get(), volume = 1F, pitch = 1F)
     }
@@ -86,6 +87,7 @@ class HealingMachineBlockEntity(
         val player = this.currentUser?.getPlayer() ?: return clearData()
         val party = player.party()
 
+        alreadyHealing.remove(player.uuid)
         party.heal()
         player.sendMessage(lang("healingmachine.healed").green())
         updateBlockChargeLevel()
@@ -191,6 +193,7 @@ class HealingMachineBlockEntity(
     }
 
     companion object {
+        val alreadyHealing = mutableListOf<UUID>()
         const val MAX_REDSTONE_SIGNAL = 10
 
         internal val TICKER = BlockEntityTicker<HealingMachineBlockEntity> { world, _, _, blockEntity ->

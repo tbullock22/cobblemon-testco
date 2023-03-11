@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -217,17 +217,17 @@ class FormData(
         }
         buffer.writeNullable(this._primaryType) { pb, type -> pb.writeString(type.name) }
         buffer.writeNullable(this._secondaryType) { pb, type -> pb.writeString(type.name) }
+        buffer.writeNullable(this._experienceGroup) { pb, value -> pb.writeString(value.name) }
         buffer.writeNullable(this._height) { pb, height -> pb.writeFloat(height) }
         buffer.writeNullable(this._weight) { pb, weight -> pb.writeFloat(weight) }
-        buffer.writeNullable(this._pokedex) { pb1, pokedex -> pb1.writeCollection(pokedex)  { pb2, line -> pb2.writeString(line) } }
-        buffer.writeNullable(this._moves) { buf, moves -> moves.encode(buf)}
         buffer.writeNullable(this._baseScale) { buf, fl -> buf.writeFloat(fl)}
         buffer.writeNullable(this._hitbox) { pb, hitbox ->
             pb.writeFloat(hitbox.width)
             pb.writeFloat(hitbox.height)
             pb.writeBoolean(hitbox.fixed)
         }
-        buffer.writeNullable(this._experienceGroup) { pb, value -> pb.writeString(value.name) }
+        buffer.writeNullable(this._moves) { buf, moves -> moves.encode(buf)}
+        buffer.writeNullable(this._pokedex) { pb1, pokedex -> pb1.writeCollection(pokedex)  { pb2, line -> pb2.writeString(line) } }
     }
 
     override fun decode(buffer: PacketByteBuf) {
@@ -241,15 +241,15 @@ class FormData(
         }
         this._primaryType = buffer.readNullable { pb -> ElementalTypes.get(pb.readString()) }
         this._secondaryType = buffer.readNullable { pb -> ElementalTypes.get(pb.readString()) }
+        this._experienceGroup = buffer.readNullable { pb -> ExperienceGroups.findByName(pb.readString()) }
         this._height = buffer.readNullable { pb -> pb.readFloat() }
         this._weight = buffer.readNullable { pb -> pb.readFloat() }
-        this._pokedex = buffer.readNullable { pb -> pb.readList { it.readString() } }
-        this._moves = buffer.readNullable { pb -> Learnset().also { it.decode(pb) }}
         this._baseScale = buffer.readNullable { pb -> pb.readFloat() }
         this._hitbox = buffer.readNullable { pb ->
             EntityDimensions(pb.readFloat(), pb.readFloat(), pb.readBoolean())
         }
-        this._experienceGroup = ExperienceGroups.findByName(buffer.readString())
+        this._moves = buffer.readNullable { pb -> Learnset().apply { decode(pb) }}
+        this._pokedex = buffer.readNullable { pb -> pb.readList { it.readString() } }
     }
 
     /**

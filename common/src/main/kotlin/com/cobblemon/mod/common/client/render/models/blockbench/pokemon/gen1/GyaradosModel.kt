@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -58,14 +58,16 @@ class GyaradosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     val wseg12 = WaveSegment(seg12, 4F)
 
     override val portraitScale = 1.8F
-    override val portraitTranslation = Vec3d(-1.65, 0.35, 0.0)
+    override val portraitTranslation = Vec3d(-1.55, 0.35, 0.0)
     override val profileScale = 0.7F
     override val profileTranslation = Vec3d(-0.1, 0.65, 0.0)
 
     override fun registerPoses() {
+        val blink = quirk("blink") { bedrockStateful("gyarados", "blink").setPreventsIdle(false)}
         registerPose(
             poseName = "land",
             poseTypes = STANDING_POSES + UI_POSES,
+            quirks = arrayOf(blink),
             condition = { !it.isTouchingWater },
             idleAnimations = arrayOf(
                 singleBoneLook(),
@@ -98,6 +100,7 @@ class GyaradosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
         registerPose(
             poseName = "surface",
             poseTypes = setOf(PoseType.STAND, PoseType.WALK),
+            quirks = arrayOf(blink),
             condition = { it.isTouchingWater },
             idleAnimations = arrayOf(
                 singleBoneLook(),
@@ -134,6 +137,7 @@ class GyaradosModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseName = "swim",
             poseTypes = SWIMMING_POSES + FLYING_POSES,
 //            transformedParts = arrayOf(head.withRotation(X_AXIS, -70F.toRadians())),
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 WaveAnimation(

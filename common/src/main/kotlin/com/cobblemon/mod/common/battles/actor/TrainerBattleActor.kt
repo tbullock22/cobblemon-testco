@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -13,6 +13,8 @@ import com.cobblemon.mod.common.api.battles.model.actor.ActorType
 import com.cobblemon.mod.common.api.battles.model.ai.BattleAI
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
 import com.cobblemon.mod.common.util.asTranslated
+import com.cobblemon.mod.common.util.battleLang
+import net.minecraft.text.MutableText
 import java.util.UUID
 class TrainerBattleActor(
     val trainerName: String,
@@ -21,5 +23,6 @@ class TrainerBattleActor(
     artificialDecider: BattleAI
 ) : AIBattleActor(uuid, pokemonList, artificialDecider) {
     override fun getName() = trainerName.asTranslated()
+    override fun nameOwned(name: String): MutableText = battleLang("owned_pokemon", this.getName(), name)
     override val type = ActorType.NPC
 }

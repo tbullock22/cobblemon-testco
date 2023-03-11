@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Pumpkaboo",
   "nationalPokedexNumber": 710,
   "primaryType": "ghost",
@@ -59,7 +60,7 @@
         "gen6"
       ],
       "aspects": [
-        "small"
+        "pumpkin-size-small"
       ],
       "height": 3,
       "weight": 35,
@@ -67,14 +68,20 @@
         {
           "id": "pumpkaboo_gourgeist",
           "variant": "trade",
-          "result": "gourgeist form=small",
+          "result": "gourgeist pumpkin_size=small",
           "consumeHeldItem": false,
           "learnableMoves": [],
           "requirements": []
         }
       ],
       "cannotDynamax": false,
-      "battleOnly": false
+      "battleOnly": false,
+      "baseScale": 0.6,
+      "hitbox": {
+        "width": 1,
+        "height": 1,
+        "fixed": false
+      }
     },
     {
       "name": "Large",
@@ -115,7 +122,7 @@
         "gen6"
       ],
       "aspects": [
-        "large"
+        "pumpkin-size-large"
       ],
       "height": 5,
       "weight": 75,
@@ -123,14 +130,20 @@
         {
           "id": "pumpkaboo_gourgeist",
           "variant": "trade",
-          "result": "gourgeist form=large",
+          "result": "gourgeist pumpkin_size=large",
           "consumeHeldItem": false,
           "learnableMoves": [],
           "requirements": []
         }
       ],
       "cannotDynamax": false,
-      "battleOnly": false
+      "battleOnly": false,
+      "baseScale": 2,
+      "hitbox": {
+        "width": 1.5,
+        "height": 1.5,
+        "fixed": false
+      }
     },
     {
       "name": "Super",
@@ -176,7 +189,7 @@
         "gen6"
       ],
       "aspects": [
-        "super"
+        "pumpkin-size-super"
       ],
       "height": 8,
       "weight": 150,
@@ -184,14 +197,20 @@
         {
           "id": "pumpkaboo_gourgeist",
           "variant": "trade",
-          "result": "gourgeist form=super",
+          "result": "gourgeist pumpkin_size=super",
           "consumeHeldItem": false,
           "learnableMoves": [],
           "requirements": []
         }
       ],
       "cannotDynamax": false,
-      "battleOnly": false
+      "battleOnly": false,
+      "baseScale": 3,
+      "hitbox": {
+        "width": 2,
+        "height": 2,
+        "fixed": false
+      }
     }
   ],
   "baseExperienceYield": 67,
@@ -290,7 +309,7 @@
     {
       "id": "pumpkaboo_gourgeist",
       "variant": "trade",
-      "result": "gourgeist",
+      "result": "gourgeist pumpkin_size=average",
       "consumeHeldItem": false,
       "learnableMoves": [],
       "requirements": []
@@ -313,6 +332,6 @@
   },
   "height": 4,
   "weight": 50,
-  "aspects": [],
+  "aspects": ["pumpkin_size=average"],
   "cannotDynamax": false
 }

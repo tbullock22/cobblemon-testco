@@ -30,6 +30,12 @@
       "fly": {
         "canFly": true
       }
+    },
+    "resting": {
+      "canSleep": false,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
     }
   },
   "drops": {

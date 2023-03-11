@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -16,6 +16,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonP
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pose.TransformedModelPart
 import com.cobblemon.mod.common.client.render.models.blockbench.wavefunction.sineFunction
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
@@ -27,12 +28,13 @@ class ArbokModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("arbok")
     override val head = getPart("head_ai")
 
-    override val portraitScale = 2F
-    override val portraitTranslation = Vec3d(-1.0, 1.2, 0.0)
+    override val portraitScale = 1.5F
+    override val portraitTranslation = Vec3d(-0.4, 1.0, 0.0)
 
     override val profileScale = 0.67F
     override val profileTranslation = Vec3d(0.0, 0.7, 0.0)
 
+    lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
     lateinit var summary: PokemonPose
@@ -49,6 +51,7 @@ class ArbokModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     val tail5WaveSegment = WaveSegment(modelPart = tail5, length = 11F)
 
     override fun registerPoses() {
+        val blink = quirk("blink") { bedrockStateful("arbok", "blink").setPreventsIdle(false)}
         // TODO tongue_flick
 
         val wave = WaveAnimation<PokemonEntity>(
@@ -72,11 +75,17 @@ class ArbokModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             )
         )
 
+        sleep = registerPose(
+                poseType = PoseType.SLEEP,
+                idleAnimations = arrayOf(bedrock("arbok", "sleep"))
+        )
+
 
         standing = registerPose(
             poseName = "standing",
             poseTypes = STATIONARY_POSES,
             transformTicks = 10,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("arbok", "ground_idle"),
@@ -88,6 +97,7 @@ class ArbokModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             transformTicks = 10,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("arbok", "ground_walk"),
@@ -98,6 +108,7 @@ class ArbokModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
         summary = registerPose(
             poseName = "summary",
             poseTypes = UI_POSES,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("arbok", "summary_idle")

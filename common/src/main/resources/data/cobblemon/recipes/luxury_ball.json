@@ -10,10 +10,10 @@
             "item": "cobblemon:black_apricorn"
         },
         "l": {
-            "item": "cobblemon:yellow_apricorn"
+            "item": "cobblemon:white_apricorn"
         },
         "c": {
-            "item": "minecraft:iron_ingot"
+            "item": "minecraft:gold_ingot"
         },
         "r": {
             "item": "cobblemon:red_apricorn"

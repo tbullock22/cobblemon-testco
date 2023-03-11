@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -10,6 +10,7 @@ package com.cobblemon.mod.common.util.math.geometry
 
 import com.cobblemon.mod.common.util.collections.ImmutableArray
 import com.cobblemon.mod.common.util.collections.immutableArrayOf
+import net.minecraft.util.math.Vec3d
 import net.minecraft.util.math.Vec3f
 
 /**
@@ -27,6 +28,7 @@ data class TransformationMatrix internal constructor(val values: ImmutableArray<
     operator fun times(right: TransformationMatrix): TransformationMatrix = combine(this, right)
     operator fun times(point: GeometricPoint): GeometricPoint = transform(this, point)
     operator fun times(normal: GeometricNormal): GeometricNormal = transform(this, normal)
+    operator fun times(point: Vec3d): Vec3d = transform(this, GeometricPoint(point)).toVec3d()
 
     override fun toString(): String {
         return """

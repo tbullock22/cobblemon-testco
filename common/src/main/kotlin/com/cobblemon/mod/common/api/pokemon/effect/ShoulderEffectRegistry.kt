@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -9,8 +9,7 @@
 package com.cobblemon.mod.common.api.pokemon.effect
 
 import com.cobblemon.mod.common.pokemon.activestate.ShoulderedState
-import com.cobblemon.mod.common.pokemon.effects.LightSourceEffect
-import com.cobblemon.mod.common.pokemon.effects.SlowFallEffect
+import com.cobblemon.mod.common.pokemon.effects.*
 import com.cobblemon.mod.common.util.party
 import dev.architectury.event.events.common.PlayerEvent.PLAYER_JOIN
 import dev.architectury.event.events.common.PlayerEvent.PLAYER_QUIT
@@ -28,6 +27,9 @@ object ShoulderEffectRegistry {
     // Effects - START
     val LIGHT_SOURCE = register("light_source", LightSourceEffect::class.java)
     val SLOW_FALL = register("slow_fall", SlowFallEffect::class.java)
+    val HASTE = register("haste", HasteEffect::class.java)
+    val WATER_BREATHING = register("water_breathing", WaterBreathingEffect::class.java)
+    val SATURATION = register("saturation", SaturationEffect::class.java)
     // Effects - END
 
     fun register() {

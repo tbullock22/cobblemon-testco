@@ -238,12 +238,12 @@
   "cobblemon.drop.item.inventory": "收到了 %2$s (%1$sx).",
   "cobblemon.drop.item.full": "物品欄滿了所以 %1$s 掉到地上",
 
-  "cobblemon.command.general.invalid-party-slot": " %1$s 插槽沒有寶可夢！",
+  "cobblemon.command.general.invalid-party-slot": "%1$s 插槽沒有寶可夢！",
   "cobblemon.command.givepokemon.give": "把 %1$s 給 %2$s.",
   "cobblemon.command.pokemonedit": "編輯 %2$s 的 %1$s.",
   "cobblemon.command.teach": "%2$s 的 %1$s 學習了 %3$s.",
   "cobblemon.command.healpokemon.heal": "完全恢復了 %1$s 的隊伍",
-  "cobblemon.command.friendship": " %1$s 有 %2$s 親密度",
+  "cobblemon.command.friendship": "%1$s 有 %2$s 親密度",
   "cobblemon.command.givepokemon.nospecies": "Error: 需要包含寶可夢名字或隨機名 ",
   "cobblemon.command.spawnpokemon.nospecies": "Error: 需要包含寶可夢名字或隨機名 ",
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -8,80 +8,37 @@
 
 package com.cobblemon.mod.common.battles
 
-import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.Cobblemon.LOGGER
-import com.cobblemon.mod.common.Cobblemon.config
-import com.cobblemon.mod.common.battles.runner.GraalShowdown
-import com.cobblemon.mod.common.util.FileUtils
-import com.cobblemon.mod.common.util.extractTo
-import com.cobblemon.mod.common.util.fromJson
-import com.google.gson.GsonBuilder
-import java.io.File
-import java.io.FileInputStream
-import java.io.InputStreamReader
-import java.util.concurrent.CompletableFuture
-import net.minecraft.util.Identifier
+import com.cobblemon.mod.common.battles.runner.ShowdownService
+import java.util.*
+import java.util.concurrent.CountDownLatch
 
 class ShowdownThread : Thread("Cobblemon Showdown") {
 
-    var showdownStarted = CompletableFuture<Unit>()
-    val gson = GsonBuilder()
-        .disableHtmlEscaping()
-        .create()
+    private val latch = CountDownLatch(1)
+
+    private val whenReady : Queue<Runnable> = LinkedList()
+
+    fun launch() {
+        this.start()
+        this.latch.await()
+        for (action in whenReady) {
+            action.run()
+        }
+    }
+
+    fun queue(action: Runnable) {
+        if (this.latch.count == 0L) {
+            action.run()
+        } else {
+            this.whenReady.add(action)
+        }
+    }
 
     override fun run() {
-        var showdownDir = File("showdown")
-        showdownDir.mkdir()
-
-        val showdownMetadata = loadShowdownMetadata()
-
-        // Check if showdown needs to be installed
-        if (!showdownDir.exists() || config.autoUpdateShowdown) {
-            val showdownZip = File(showdownDir, "showdown.zip")
-            val showdownMetadataFile = File(showdownDir, "showdown.json")
-
-            var extract = true
-
-            if (showdownMetadataFile.exists()) {
-                val metaDataStream = InputStreamReader(FileInputStream(showdownMetadataFile))
-                val localShowdownMetadata = gson.fromJson<ShowdownMetadata>(metaDataStream)
-                metaDataStream.close()
-                if (showdownMetadata!!.showdownVersion == localShowdownMetadata.showdownVersion) {
-                    extract = false
-                } else {
-                    showdownDir.renameTo(File("showdown-backup"))
-                }
-            }
-
-            if (extract) {
-                showdownDir = showdownZip.parentFile
-                Identifier(Cobblemon.MODID, "showdown.zip").extractTo(showdownZip)
-                Identifier(Cobblemon.MODID, "showdown.json").extractTo(showdownMetadataFile)
-                FileUtils.unzipFile(showdownZip.toPath(), showdownDir.toPath())
-                showdownZip.delete()
-            }
-        }
-
-
-        // Initialize showdown connection
-        GraalShowdown.createContext()
-        GraalShowdown.boot()
-
+        LOGGER.info("Starting showdown service...")
+        ShowdownService.get().openConnection()
         LOGGER.info("Showdown has been started!")
-        showdownStarted.complete(Unit)
+        this.latch.countDown()
     }
-
-    private fun loadShowdownMetadata() : ShowdownMetadata? {
-        try {
-            val inputStream = javaClass.getResourceAsStream("/assets/${Cobblemon.MODID}/showdown.json")!!
-            return gson.fromJson<ShowdownMetadata>(InputStreamReader(inputStream))
-        } catch (exception: Exception) {
-            exception.printStackTrace()
-        }
-        return null
-    }
-
-    private data class ShowdownMetadata(
-        val showdownVersion: Double
-    )
 }

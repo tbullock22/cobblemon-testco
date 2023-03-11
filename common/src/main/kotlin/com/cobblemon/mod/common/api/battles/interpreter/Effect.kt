@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Cobblemon Contributors
+ * Copyright (C) 2023 Cobblemon Contributors
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -9,6 +9,7 @@
 package com.cobblemon.mod.common.api.battles.interpreter
 
 import com.cobblemon.mod.common.api.abilities.Abilities
+import com.cobblemon.mod.common.api.data.ShowdownIdentifiable
 import com.cobblemon.mod.common.api.moves.Moves
 import com.cobblemon.mod.common.battles.interpreter.CobblemonEffect
 
@@ -129,10 +130,10 @@ interface Effect {
             }
             return try {
                 when {
-                    rawData.startsWith(Type.ABILITY.prefix) -> ability(rawData.substringAfter(Type.ABILITY.prefix).replace(" ", ""), rawData)
-                    rawData.startsWith(Type.ITEM.prefix) -> item(rawData.substringAfter(Type.ITEM.prefix).replace(" ", ""), rawData)
-                    rawData.startsWith(Type.MOVE.prefix) -> move(rawData.substringAfter(Type.MOVE.prefix).replace(" ", ""), rawData)
-                    else -> pure(rawData.replace(" ", ""), rawData)
+                    rawData.startsWith(Type.ABILITY.prefix) -> ability(rawData.lowercase().substringAfter(Type.ABILITY.prefix).replace(ShowdownIdentifiable.REGEX, ""), rawData)
+                    rawData.startsWith(Type.ITEM.prefix) -> item(rawData.lowercase().substringAfter(Type.ITEM.prefix).replace(ShowdownIdentifiable.REGEX, ""), rawData)
+                    rawData.startsWith(Type.MOVE.prefix) -> move(rawData.lowercase().substringAfter(Type.MOVE.prefix).replace(ShowdownIdentifiable.REGEX, ""), rawData)
+                    else -> pure(rawData.lowercase().replace(ShowdownIdentifiable.REGEX, ""), rawData)
                 }
             } catch (_: Exception) {
                 null

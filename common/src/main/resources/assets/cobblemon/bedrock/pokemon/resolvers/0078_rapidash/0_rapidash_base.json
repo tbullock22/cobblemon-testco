@@ -1,0 +1,32 @@
+{
+  "species": "cobblemon:rapidash",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:rapidash",
+      "model": "cobblemon:rapidash.geo",
+      "texture": "cobblemon:textures/pokemon/0078_rapidash/rapidash.png",
+      "layers": [
+        {
+          "name": "fire",
+          "texture": "cobblemon:textures/pokemon/0078_rapidash/rapidash_emissive.png",
+          "emissive": "true"
+        }
+      ]
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0078_rapidash/rapidash_shiny.png",
+      "layers": [
+        {
+          "name": "fire",
+          "texture": "cobblemon:textures/pokemon/0078_rapidash/rapidash_shiny_emissive.png",
+          "emissive": "true"
+        }
+      ]
+    }
+  ]
+}

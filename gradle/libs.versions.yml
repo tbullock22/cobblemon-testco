@@ -17,11 +17,12 @@ versions:
   architectury-plugin: 3.4-SNAPSHOT
 
   # forge
-  forge: 1.19.2-43.2.2
+  forge: 1.19.2-43.2.4
+  kotlinForForge: 3.8.0
 
   # common
-  graal: 22.3.1
-  eliotlash: 18
+  graal: 22.3.0
+  molang: 1.1.1
   architectury: 6.3.49
 
   # test
@@ -81,30 +82,14 @@ dependencies:
     group: org.jetbrains.kotlinx
     name: kotlinx-serialization-json-jvm
     version: { ref: serialization }
-  graalJs:
+  graal:
     group: org.graalvm.js
     name: js
     version: { ref: graal }
-  graalSdk:
-    group: org.graalvm.sdk
-    name: graal-sdk
-    version: { ref: graal }
-  graalTruffle:
-    group: org.graalvm.truffle
-    name: truffle-api
-    version: { ref: graal }
-  graalRegex:
-    group: org.graalvm.regex
-    name: regex
-    version: { ref: graal }
   molang:
-    group: com.eliotlash.molang
+    group: local.com.bedrockk
     name: molang
-    version: { ref: eliotlash }
-  mclib:
-    group: com.eliotlash.mclib
-    name: mclib
-    version: { ref: eliotlash }
+    version: { ref: molang }
   fabricLoader:
     group: net.fabricmc
     name: fabric-loader
@@ -144,6 +129,10 @@ dependencies:
     group: dev.architectury
     name: architectury-forge
     version: { ref: architectury }
+  kotlinForForge:
+    group: thedarkcolour
+    name: kotlinforforge
+    version: { ref: kotlinForForge }
   adornForge:
     group: maven.modrinth
     name: adorn
