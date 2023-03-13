@@ -14,6 +14,7 @@ versions:
   loom: 0.12.0-SNAPSHOT
   fabric-loader: 0.14.9
   fabric-api: 0.59.0+1.19.2
+  fabric-kotlin: 1.8.2+kotlin.1.7.10
   architectury-plugin: 3.4-SNAPSHOT
 
   # forge
@@ -107,6 +108,10 @@ dependencies:
     group: net.fabricmc.fabric-api
     name: fabric-api
     version: { ref: fabric-api }
+  fabricKotlin:
+    group: net.fabricmc
+    name: fabric-language-kotlin
+    version: { ref: fabric-kotlin }
   architecturyFabric:
     group: dev.architectury
     name: architectury-fabric
