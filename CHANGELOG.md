@@ -60,7 +60,7 @@
 - Added several evolution items.
 - Added block tag support to the 'neededBaseBlocks' and 'neededNearbyBlocks' spawn condition.
 - Added a config option for disallowing players from damaging Pokémon by hand.
-- - Added compatibility for Adorn ([CurseForge-Fabric/Quilt](https://www.curseforge.com/minecraft/mc-mods/adorn), [CurseForge-Forge](https://www.curseforge.com/minecraft/mc-mods/adorn-for-forge), [Modrinth](https://modrinth.com/mod/adorn)) you can now craft furniture with Apricorn wood.
+- Added compatibility for Adorn ([CurseForge-Fabric/Quilt](https://www.curseforge.com/minecraft/mc-mods/adorn), [CurseForge-Forge](https://www.curseforge.com/minecraft/mc-mods/adorn-for-forge), [Modrinth](https://modrinth.com/mod/adorn)) you can now craft furniture with Apricorn wood.
 
 ### Changes
 - Significantly sped up the Poké Ball shake animation so it takes less time to try to catch Pokémon.
