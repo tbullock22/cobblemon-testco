@@ -10,6 +10,7 @@ package com.cobblemon.mod.common.battles.runner.graal
 
 import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.api.battles.model.PokemonBattle
+import com.cobblemon.mod.common.api.pokemon.PokemonSpecies
 import com.cobblemon.mod.common.battles.ShowdownInterpreter
 import com.cobblemon.mod.common.battles.runner.ShowdownService
 import com.google.gson.Gson
@@ -114,9 +115,19 @@ class GraalShowdownService : ShowdownService {
         return gson.fromJson(arrayResult, JsonArray::class.java)
     }
 
-    override fun indicateSpeciesInitialized() {
-        val speciesInitFn = context.getBindings("js").getMember("afterCobbledSpeciesInit")
-        speciesInitFn.execute()
+    override fun registerSpecies() {
+        val receiveSpeciesDataFn = this.context.getBindings("js").getMember("receiveSpeciesData")
+        val jsArray = this.context.eval("js", "new Array();")
+        var index = 0L
+        PokemonSpecies.species.forEach { species ->
+            jsArray.setArrayElement(index++, this.gson.toJson(PokemonSpecies.ShowdownSpecies(species, null)))
+            species.forms.forEach { form ->
+                if (form != species.standardForm) {
+                    jsArray.setArrayElement(index++, this.gson.toJson(PokemonSpecies.ShowdownSpecies(species, form)))
+                }
+            }
+        }
+        receiveSpeciesDataFn.execute(jsArray)
     }
 
     private fun sendToShowdown(battleId: UUID, messages: Array<String>) {

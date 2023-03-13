@@ -101,7 +101,7 @@ class Species : ClientDataSynchronizer<Species>, ShowdownIdentifiable {
     var forms = mutableListOf<FormData>()
         private set
 
-    val standardForm by lazy { FormData().initialize(this) }
+    val standardForm by lazy { FormData(_evolutions = this.evolutions).initialize(this) }
 
     internal var labels = hashSetOf<String>()
         private set
@@ -115,6 +115,9 @@ class Species : ClientDataSynchronizer<Species>, ShowdownIdentifiable {
 
     @Transient
     lateinit var resourceIdentifier: Identifier
+
+    val types: Iterable<ElementalType>
+        get() = secondaryType?.let { listOf(primaryType, it) } ?: listOf(primaryType)
 
     fun initialize() {
         Cobblemon.statProvider.provide(this)

@@ -52,7 +52,12 @@ class PokemonItemRenderer : CobblemonBuiltinItemRenderer {
 //        val packedLight = LightmapTextureManager.pack(12, 12)
         val vertexConsumer: VertexConsumer = vertexConsumers.getBuffer(renderLayer)
         matrices.push()
-        model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0f, 1.0f, 1.0f, 1.0f)
+
+        val packedLight = LightmapTextureManager.pack(11, 7)
+        model.withLayerContext(vertexConsumers, null, PokemonModelRepository.getLayers(pokemon.species.resourceIdentifier, pokemon.aspects)) {
+            model.render(matrices, vertexConsumer, packedLight, OverlayTexture.DEFAULT_UV, 1F, 1F, 1F, 1F)
+        }
+
         matrices.pop()
         matrices.pop()
 

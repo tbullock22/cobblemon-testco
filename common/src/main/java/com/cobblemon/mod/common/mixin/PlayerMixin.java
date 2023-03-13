@@ -131,7 +131,7 @@ public abstract class PlayerMixin extends LivingEntity {
         method = "eatFood",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/entity/player/HungerManager;eat(Lnet/minecraft/item/Item;Lnet/minecraft/item/ItemStack;)V",
+            target = "Lnet/minecraft/entity/player/PlayerEntity;getHungerManager()Lnet/minecraft/entity/player/HungerManager;",
             shift = At.Shift.AFTER
         )
     )

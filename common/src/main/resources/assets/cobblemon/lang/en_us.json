@@ -131,6 +131,7 @@
   "item.cobblemon.poison_barb": "Poison Barb",
   "item.cobblemon.quick_claw": "Quick Claw",
   "item.cobblemon.razor_claw": "Razor Claw",
+  "item.cobblemon.razor_fang": "Razor Fang",
   "item.cobblemon.rocky_helmet": "Rocky Helmet",
   "item.cobblemon.safety_goggles": "Safety Goggles",
   "item.cobblemon.sharp_beak": "Sharp Beak",
@@ -197,6 +198,8 @@
   "block.cobblemon.apricorn_door": "Apricorn Door",
   "block.cobblemon.apricorn_trapdoor": "Apricorn Trapdoor",
   "block.cobblemon.healing_machine": "Healing Machine",
+  "block.cobblemon.healing_machine.tooltip1": "Must be charged after placing.",
+  "block.cobblemon.healing_machine.tooltip2": "Charges over time.",
   "block.cobblemon.pc": "PC",
 
   "cobblemon.overflow_no_pc": "Your party was full and you don't have a PC!",

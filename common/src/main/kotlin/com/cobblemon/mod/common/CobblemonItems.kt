@@ -194,6 +194,8 @@ object CobblemonItems : CompletableRegistry<Item>(Registry.ITEM_KEY) {
     @JvmField val GALARICA_WREATH = this.evolutionItem("galarica_wreath")
     @JvmField val BLACK_AUGURITE = this.evolutionItem("black_augurite")
     @JvmField val PEAT_BLOCK = this.evolutionItem("peat_block")
+    @JvmField val RAZOR_CLAW = this.evolutionItem("razor_claw")
+    @JvmField val RAZOR_FANG = this.evolutionItem("razor_fang")
     // ToDo enable me when malicious armor goes in the game
     //@JvmField val AUSPICIOUS_ARMOR = this.heldItem("auspicious_armor")
 
@@ -338,8 +340,6 @@ object CobblemonItems : CompletableRegistry<Item>(Registry.ITEM_KEY) {
     val POISON_BARB = this.heldItem("poison_barb")
     @JvmField
     val QUICK_CLAW = this.heldItem("quick_claw")
-    @JvmField
-    val RAZOR_CLAW = this.heldItem("razor_claw")
     @JvmField
     val ROCKY_HELMET = this.heldItem("rocky_helmet")
     @JvmField
