@@ -9,6 +9,7 @@
 package com.cobblemon.mod.common.client.render.pokemon
 
 import com.cobblemon.mod.common.api.text.add
+import com.cobblemon.mod.common.client.CobblemonClient
 import com.cobblemon.mod.common.client.entity.PokemonClientDelegate
 import com.cobblemon.mod.common.client.entity.PokemonClientDelegate.Companion.BEAM_EXTEND_TIME
 import com.cobblemon.mod.common.client.entity.PokemonClientDelegate.Companion.BEAM_SHRINK_TIME
@@ -22,6 +23,7 @@ import com.cobblemon.mod.common.client.render.renderBeaconBeam
 import com.cobblemon.mod.common.client.settings.ServerSettings
 import com.cobblemon.mod.common.entity.pokeball.EmptyPokeBallEntity
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
+import com.cobblemon.mod.common.pokemon.Species
 import com.cobblemon.mod.common.util.isLookingAt
 import com.cobblemon.mod.common.util.lang
 import com.cobblemon.mod.common.util.math.DoubleRange
@@ -61,7 +63,8 @@ class PokemonRenderer(
     }
 
     override fun getTexture(entity: PokemonEntity): Identifier {
-        return PokemonModelRepository.getTexture(entity.pokemon.species, entity.aspects.get(), entity.delegate as PokemonClientDelegate)
+        val (species, aspects) = this.resolveSpeciesAndAspects(entity)
+        return PokemonModelRepository.getTexture(species, aspects, entity.delegate as PokemonClientDelegate)
     }
 
     override fun render(
@@ -72,9 +75,10 @@ class PokemonRenderer(
         buffer: VertexConsumerProvider,
         packedLight: Int
     ) {
+        val (species, aspects) = this.resolveSpeciesAndAspects(entity)
         shadowRadius = min((entity.boundingBox.maxX - entity.boundingBox.minX), (entity.boundingBox.maxZ) - (entity.boundingBox.minZ)).toFloat()
         DELTA_TICKS = partialTicks // TODO move this somewhere universal // or just fecking remove it
-        model = PokemonModelRepository.getPoser(entity.pokemon.species, entity.aspects.get())
+        model = PokemonModelRepository.getPoser(species, aspects)
 
         val clientDelegate = entity.delegate as PokemonClientDelegate
         val beamMode = entity.beamModeEmitter.get().toInt()
@@ -100,7 +104,7 @@ class PokemonRenderer(
         }
 
         if (modelNow is PokemonPoseableModel) {
-            modelNow.setLayerContext(buffer, clientDelegate, PokemonModelRepository.getLayers(entity.pokemon.species, entity.aspects.get()))
+            modelNow.setLayerContext(buffer, clientDelegate, PokemonModelRepository.getLayers(species, aspects))
         }
 
         super.render(entity, entityYaw, partialTicks, poseMatrix, buffer, packedLight)
@@ -324,5 +328,29 @@ class PokemonRenderer(
             }
             matrices.pop()
         }
+    }
+
+    /**
+     * Resolves the species and aspects of an entity.
+     * This is done in order to account for the possible transformation via the move Transform or the Imposter ability.
+     * Illusion isn't always a possibility here due to only the user and their allies being aware a Pokémon is disguised through Illusion in order to prevent cheating.
+     *
+     * @param entity The [PokemonEntity] being queried.
+     * @return The current species and aspects to display.
+     */
+    private fun resolveSpeciesAndAspects(entity: PokemonEntity): Pair<Species, Set<String>> {
+        if (entity.isBattling) {
+            CobblemonClient.battle?.sides?.forEach { side ->
+                side.actors.forEach { actor ->
+                    for (activeBattlePokemon in actor.activePokemon) {
+                        val battlePokemon = activeBattlePokemon.battlePokemon ?: continue
+                        if (battlePokemon.uuid == entity.pokemon.uuid) {
+                            return battlePokemon.displayedSpecies to battlePokemon.displayedAspects
+                        }
+                    }
+                }
+            }
+        }
+        return entity.pokemon.species to entity.aspects.get()
     }
 }

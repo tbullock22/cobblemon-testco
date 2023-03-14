@@ -23,6 +23,7 @@ object BattleSwitchPokemonHandler : ClientNetworkPacketHandler<BattleSwitchPokem
         val (actor, activeBattlePokemon) = battle.getPokemonFromPNX(packet.pnx)
 
         val lastAnimation = activeBattlePokemon.animations.lastOrNull()
+        activeBattlePokemon.battlePokemon?.transformation = null
         if (lastAnimation !is MoveTileOffscreenAnimation) {
             activeBattlePokemon.animations.add(MoveTileOffscreenAnimation())
         }

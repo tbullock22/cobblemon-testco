@@ -92,6 +92,7 @@ object ShowdownInterpreter {
         updateInstructions["|-hitcount|"] = this::handleHitCountInstruction
         updateInstructions["|-item|"] = this::handleItemInstruction
         updateInstructions["|-enditem|"] = this::handleEndItemInstruction
+        updateInstructions["|-transform|"] = this::handleTransformInstruction
 
         sideUpdateInstructions["|request|"] = this::handleRequestInstruction
         splitUpdateInstructions["|switch|"] = this::handleSwitchInstruction
@@ -1064,6 +1065,17 @@ object ShowdownInterpreter {
             val battleMessage = BattleMessage(baseMessage)
             val battlePokemon = battleMessage.actorAndActivePokemon(0, battle)?.second?.battlePokemon ?: return@dispatchGo
             battlePokemon.heldItemManager.handleEndInstruction(battlePokemon, battle, battleMessage)
+        }
+    }
+
+    private fun handleTransformInstruction(battle: PokemonBattle, baseMessage: String, remainingLines: MutableList<String>) {
+        battle.dispatchGo {
+            val battleMessage = BattleMessage(baseMessage)
+            val transformerPnx = battleMessage.argumentAt(0) ?: return@dispatchGo
+            val transformer = battleMessage.actorAndActivePokemon(0, battle)?.second?.battlePokemon ?: return@dispatchGo
+            val target = battleMessage.actorAndActivePokemon(1, battle)?.second?.battlePokemon ?: return@dispatchGo
+            val packet = BattleTransformPacket(transformerPnx, target.effectedPokemon.species, target.effectedPokemon.aspects)
+            battle.sendUpdate(packet)
         }
     }
 

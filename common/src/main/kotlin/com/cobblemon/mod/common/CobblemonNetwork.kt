@@ -202,6 +202,7 @@ object CobblemonNetwork : NetworkManager {
         this.registerClientBound(ChallengeNotificationPacket.ID, ChallengeNotificationPacket::decode, ChallengeNotificationHandler)
         this.registerClientBound(BattleUpdateTeamPokemonPacket.ID, BattleUpdateTeamPokemonPacket::decode, BattleUpdateTeamPokemonHandler)
         this.registerClientBound(BattlePersistentStatusPacket.ID, BattlePersistentStatusPacket::decode, BattlePersistentStatusHandler)
+        this.registerClientBound(BattleTransformPacket.ID, BattleTransformPacket::decode, BattleTransformPacketHandler)
 
         // Settings packets
         this.registerClientBound(ServerSettingsPacket.ID, ServerSettingsPacket::decode, ServerSettingsPacketHandler)

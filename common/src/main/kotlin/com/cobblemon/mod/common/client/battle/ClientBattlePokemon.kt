@@ -52,4 +52,20 @@ class ClientBattlePokemon(
 
     var state = PokemonFloatingState()
 
+    var transformation: Transformation? = null
+
+    /**
+     * The [Species] the Pokémon currently looks like, this takes into account the [transformation].
+     */
+    val displayedSpecies: Species
+        get() = this.transformation?.species ?: this.species
+
+    /**
+     * The aspects the Pokémon currently uses for the way it looks like, this takes into account the [transformation].
+     */
+    val displayedAspects: Set<String>
+        get() = this.transformation?.aspects ?: this.aspects
+
+    data class Transformation(val species: Species, val aspects: Set<String>)
+
 }

@@ -16,6 +16,7 @@ import com.cobblemon.mod.common.battles.Targetable
 import com.cobblemon.mod.common.client.battle.animations.TileAnimation
 import java.util.concurrent.ConcurrentLinkedQueue
 import net.minecraft.client.MinecraftClient
+
 class ActiveClientBattlePokemon(val actor: ClientBattleActor, var battlePokemon: ClientBattlePokemon?) : Targetable {
     var animations = ConcurrentLinkedQueue<TileAnimation>()
     var xDisplacement = 0F
@@ -68,4 +69,5 @@ class ActiveClientBattlePokemon(val actor: ClientBattleActor, var battlePokemon:
             }
         }
     }
+
 }

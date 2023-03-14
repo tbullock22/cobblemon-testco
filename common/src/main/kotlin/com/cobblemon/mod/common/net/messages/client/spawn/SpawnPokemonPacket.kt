@@ -18,8 +18,10 @@ import net.minecraft.entity.Entity
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.util.Identifier
+import java.util.*
 
 class SpawnPokemonPacket(
+    private val uuid: UUID,
     private val scaleModifier: Float,
     private val species: Species,
     private val form: FormData,
@@ -33,6 +35,7 @@ class SpawnPokemonPacket(
     override val id: Identifier = ID
 
     constructor(entity: PokemonEntity, vanillaSpawnPacket: EntitySpawnS2CPacket) : this(
+        entity.pokemon.uuid,
         entity.pokemon.scaleModifier,
         entity.pokemon.species,
         entity.pokemon.form,
@@ -44,6 +47,7 @@ class SpawnPokemonPacket(
     )
 
     override fun encodeEntityData(buffer: PacketByteBuf) {
+        buffer.writeUuid(this.uuid)
         buffer.writeFloat(this.scaleModifier)
         buffer.writeIdentifier(this.species.resourceIdentifier)
         buffer.writeString(this.form.formOnlyShowdownId())
@@ -55,6 +59,7 @@ class SpawnPokemonPacket(
 
     override fun applyData(entity: PokemonEntity) {
         entity.pokemon.apply {
+            uuid = this@SpawnPokemonPacket.uuid
             scaleModifier = this@SpawnPokemonPacket.scaleModifier
             species = this@SpawnPokemonPacket.species
             form = this@SpawnPokemonPacket.form
@@ -72,6 +77,7 @@ class SpawnPokemonPacket(
     companion object {
         val ID = cobblemonResource("spawn_pokemon_entity")
         fun decode(buffer: PacketByteBuf): SpawnPokemonPacket {
+            val uuid = buffer.readUuid()
             val scaleModifier = buffer.readFloat()
             val species = PokemonSpecies.getByIdentifier(buffer.readIdentifier())!!
             val showdownId = buffer.readString()
@@ -81,7 +87,7 @@ class SpawnPokemonPacket(
             val beamModeEmitter = buffer.readByte()
             val labelLevel = buffer.readInt()
             val vanillaPacket = decodeVanillaPacket(buffer)
-            return SpawnPokemonPacket(scaleModifier, species, form, aspects, phasingTargetId, beamModeEmitter, labelLevel, vanillaPacket)
+            return SpawnPokemonPacket(uuid, scaleModifier, species, form, aspects, phasingTargetId, beamModeEmitter, labelLevel, vanillaPacket)
         }
     }
 
