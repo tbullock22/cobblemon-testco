@@ -130,7 +130,7 @@
   "evolutions": [],
   "baseScale": 1,
   "hitbox": {
-    "width": 0.6,
+    "width": 0.7,
     "height": 1.4,
     "fixed": false
   },

@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Chesnaught",
   "nationalPokedexNumber": 652,
   "primaryType": "grass",
@@ -151,7 +152,7 @@
   "baseScale": 1,
   "hitbox": {
     "width": 1,
-    "height": 1,
+    "height": 2.2,
     "fixed": false
   },
   "baseFriendship": 70,

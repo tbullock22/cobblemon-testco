@@ -21,12 +21,14 @@ object CobblemonBlockEntities : CompletableRegistry<BlockEntityType<*>>(Registry
         return queue(name, blockEntityType)
     }
 
+    @JvmField
     val HEALING_MACHINE = com.cobblemon.mod.common.CobblemonBlockEntities.register("healing_machine") {
         BlockEntityType.Builder.create(
             ::HealingMachineBlockEntity,
             CobblemonBlocks.HEALING_MACHINE.get()
         ).build(null)
     }
+    @JvmField
     val PC = com.cobblemon.mod.common.CobblemonBlockEntities.register("pc") {
         BlockEntityType.Builder.create(
             ::PCBlockEntity,

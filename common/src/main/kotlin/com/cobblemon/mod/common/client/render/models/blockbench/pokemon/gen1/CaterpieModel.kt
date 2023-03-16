@@ -24,8 +24,8 @@ class CaterpieModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("caterpie")
     override val head = getPart("head")
 
-    override val portraitScale = 1.6F
-    override val portraitTranslation = Vec3d(-0.4, -0.9, 0.0)
+    override val portraitScale = 2.2F
+    override val portraitTranslation = Vec3d(-0.55, -1.7, 0.0)
     override val profileScale = 0.8F
     override val profileTranslation = Vec3d(0.0, 0.55, 0.0)
 

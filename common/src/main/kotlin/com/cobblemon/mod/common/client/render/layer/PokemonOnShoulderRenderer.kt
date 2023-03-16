@@ -63,10 +63,10 @@ class PokemonOnShoulderRenderer<T : PlayerEntity>(renderLayerParent: FeatureRend
                 0.0
             )
             pMatrixStack.scale(scale, scale, scale)
-            val model = PokemonModelRepository.getPoser(pokemon.species, pokemon.aspects)
+            val model = PokemonModelRepository.getPoser(pokemon.species.resourceIdentifier, pokemon.aspects)
             val state = PokemonFloatingState()
             state.animationSeconds = pLivingEntity.age.toFloat() / 20F
-            val vertexConsumer = pBuffer.getBuffer(model.getLayer(PokemonModelRepository.getTexture(pokemon.species, pokemon.aspects, state)))
+            val vertexConsumer = pBuffer.getBuffer(model.getLayer(PokemonModelRepository.getTexture(pokemon.species.resourceIdentifier, pokemon.aspects, state)))
             val i = LivingEntityRenderer.getOverlay(pLivingEntity, 0.0f)
 
             val pose = model.poses.values
@@ -84,7 +84,7 @@ class PokemonOnShoulderRenderer<T : PlayerEntity>(renderLayerParent: FeatureRend
                 ageInTicks = pLivingEntity.age.toFloat()
             )
             model.render(pMatrixStack, vertexConsumer, pPackedLight, i, 1.0f, 1.0f, 1.0f, 1.0f)
-            model.withLayerContext(pBuffer, state, PokemonModelRepository.getLayers(pokemon.species, pokemon.aspects)) {
+            model.withLayerContext(pBuffer, state, PokemonModelRepository.getLayers(pokemon.species.resourceIdentifier, pokemon.aspects)) {
                 model.render(pMatrixStack, vertexConsumer, pPackedLight, OverlayTexture.DEFAULT_UV, 1F, 1F, 1F, 1F)
             }
             pMatrixStack.pop();

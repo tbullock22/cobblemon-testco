@@ -9,7 +9,6 @@
 package com.cobblemon.mod.common.command
 
 import com.cobblemon.mod.common.CobblemonNetwork.sendPacket
-import com.cobblemon.mod.common.battles.runner.GraalShowdown
 import com.cobblemon.mod.common.net.messages.client.effect.SpawnSnowstormParticlePacket
 import com.cobblemon.mod.common.particle.SnowstormParticleReader
 import com.cobblemon.mod.common.util.fromJson
@@ -90,63 +89,63 @@ object TestCommand {
         player.sendPacket(pkt)
     }
 
-    private fun extractMovesData() {
-        val ctx = GraalShowdown.context
-        ctx.eval("js", """
-                const ShowdownMoves = require('pokemon-showdown/data/moves');
-            """.trimIndent())
-        val moves = ctx.getBindings("js").getMember("ShowdownMoves").getMember("Moves")
-        val gson = GsonBuilder().setPrettyPrinting().create()
-        for (moveName in moves.memberKeys) {
-            try {
-                val value = moves.getMember(moveName)
-                val obj = JsonObject()
-                obj.addProperty("name", moveName)
-                obj.addProperty("type", value.getMember("type").asString())
-                obj.addProperty("damageCategory", value.getMember("category").asString())
-                obj.addProperty("target", value.getMember("target").asString())
-                obj.addProperty("power", value.getMember("basePower").asInt())
-                obj.addProperty("accuracy", value.getMember("accuracy").let { if (it.isBoolean) -1F else it.asFloat() })
-                obj.addProperty("pp", value.getMember("pp").asInt())
-                obj.addProperty("priority", value.getMember("priority").asInt())
-                if (value.hasMember("secondary")) {
-                    val secondary = value.getMember("secondary")
-                    if (secondary.hasMember("chance")) {
-                        obj.addProperty("effectChance", secondary.getMember("chance").asInt())
-                    }
-                }
-                val file = File("outputmoves").also { it.mkdir() }
-                val pw = PrintWriter(File(file, "$moveName.json"))
-                pw.write(gson.toJson(obj))
-                pw.close()
-            } catch (e: Exception) {
-                println("Issue when converting $moveName")
-                e.printStackTrace()
-            }
-        }
-    }
-
-    private fun extractAbilitiesData() {
-        val ctx = GraalShowdown.context
-        ctx.eval("js", """
-            const ShowdownAbilities = require('pokemon-showdown/data/abilities');
-        """.trimIndent())
-        val abilities = ctx.getBindings("js").getMember("ShowdownAbilities").getMember("Abilities")
-        val gson = GsonBuilder().setPrettyPrinting().create()
-        for (abilityName in abilities.memberKeys) {
-            try {
-                val obj = JsonObject()
-                obj.addProperty("name", abilityName)
-                obj.addProperty("displayName", "cobblemon.ability.$abilityName")
-                obj.addProperty("description", "cobblemon.ability.$abilityName.desc")
-                val file = File("outputabilities").also { it.mkdir() }
-                val pw = PrintWriter(File(file, "$abilityName.json"))
-                pw.write(gson.toJson(obj))
-                pw.close()
-            } catch (e: Exception) {
-                println("Issue when converting $abilityName")
-                e.printStackTrace()
-            }
-        }
-    }
+//    private fun extractMovesData() {
+//        val ctx = GraalShowdown.context
+//        ctx.eval("js", """
+//                const ShowdownMoves = require('pokemon-showdown/data/moves');
+//            """.trimIndent())
+//        val moves = ctx.getBindings("js").getMember("ShowdownMoves").getMember("Moves")
+//        val gson = GsonBuilder().setPrettyPrinting().create()
+//        for (moveName in moves.memberKeys) {
+//            try {
+//                val value = moves.getMember(moveName)
+//                val obj = JsonObject()
+//                obj.addProperty("name", moveName)
+//                obj.addProperty("type", value.getMember("type").asString())
+//                obj.addProperty("damageCategory", value.getMember("category").asString())
+//                obj.addProperty("target", value.getMember("target").asString())
+//                obj.addProperty("power", value.getMember("basePower").asInt())
+//                obj.addProperty("accuracy", value.getMember("accuracy").let { if (it.isBoolean) -1F else it.asFloat() })
+//                obj.addProperty("pp", value.getMember("pp").asInt())
+//                obj.addProperty("priority", value.getMember("priority").asInt())
+//                if (value.hasMember("secondary")) {
+//                    val secondary = value.getMember("secondary")
+//                    if (secondary.hasMember("chance")) {
+//                        obj.addProperty("effectChance", secondary.getMember("chance").asInt())
+//                    }
+//                }
+//                val file = File("outputmoves").also { it.mkdir() }
+//                val pw = PrintWriter(File(file, "$moveName.json"))
+//                pw.write(gson.toJson(obj))
+//                pw.close()
+//            } catch (e: Exception) {
+//                println("Issue when converting $moveName")
+//                e.printStackTrace()
+//            }
+//        }
+//    }
+//
+//    private fun extractAbilitiesData() {
+//        val ctx = GraalShowdown.context
+//        ctx.eval("js", """
+//            const ShowdownAbilities = require('pokemon-showdown/data/abilities');
+//        """.trimIndent())
+//        val abilities = ctx.getBindings("js").getMember("ShowdownAbilities").getMember("Abilities")
+//        val gson = GsonBuilder().setPrettyPrinting().create()
+//        for (abilityName in abilities.memberKeys) {
+//            try {
+//                val obj = JsonObject()
+//                obj.addProperty("name", abilityName)
+//                obj.addProperty("displayName", "cobblemon.ability.$abilityName")
+//                obj.addProperty("description", "cobblemon.ability.$abilityName.desc")
+//                val file = File("outputabilities").also { it.mkdir() }
+//                val pw = PrintWriter(File(file, "$abilityName.json"))
+//                pw.write(gson.toJson(obj))
+//                pw.close()
+//            } catch (e: Exception) {
+//                println("Issue when converting $abilityName")
+//                e.printStackTrace()
+//            }
+//        }
+//    }
 }

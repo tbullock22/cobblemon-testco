@@ -18,6 +18,9 @@
                 "canSeeSky": false,
                 "biomes": [
                     "#cobblemon:is_overworld"
+                ],
+				"neededNearbyBlocks": [
+                    "minecraft:water"
                 ]
             }
         },

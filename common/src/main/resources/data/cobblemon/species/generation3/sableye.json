@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Sableye",
   "nationalPokedexNumber": 302,
   "primaryType": "dark",
@@ -18,7 +19,7 @@
   },
   "catchRate": 45,
   "maleRatio": 0.5,
-  "shoulderMountable": false,
+  "shoulderMountable": true,
   "forms": [
     {
       "name": "Mega",

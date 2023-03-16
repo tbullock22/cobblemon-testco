@@ -39,7 +39,7 @@ class ZubatModel(root: ModelPart) : PokemonPoseableModel(), BiWingedFrame, Eared
     override val rightEarJoint = EarJoint(rightEar, Z_AXIS, RangeOfMotion((-70F).toRadians(), (-40F).toRadians()))
 
     override val portraitScale = 2.3F
-    override val portraitTranslation = Vec3d(0.0, -0.1, 0.0)
+    override val portraitTranslation = Vec3d(0.0, -0.5, 0.0)
     override val profileScale = 1.0F
     override val profileTranslation = Vec3d(0.0, 0.36, 0.0)
 

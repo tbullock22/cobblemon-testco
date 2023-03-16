@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Claydol",
   "nationalPokedexNumber": 344,
   "primaryType": "ground",
@@ -13,6 +14,14 @@
     "special_attack": 70,
     "special_defence": 120,
     "speed": 75
+  },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    }
   },
   "catchRate": 90,
   "maleRatio": -1,

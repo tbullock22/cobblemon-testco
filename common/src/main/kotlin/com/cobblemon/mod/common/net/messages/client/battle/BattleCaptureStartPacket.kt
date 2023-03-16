@@ -23,20 +23,24 @@ import net.minecraft.util.Identifier
  */
 class BattleCaptureStartPacket() : NetworkPacket {
     lateinit var pokeBallType: Identifier
+    lateinit var aspects: Set<String>
     lateinit var targetPNX: String
 
-    constructor(pokeBallType: Identifier, targetPNX: String): this() {
+    constructor(pokeBallType: Identifier, aspects: Set<String>, targetPNX: String): this() {
         this.pokeBallType = pokeBallType
+        this.aspects = aspects
         this.targetPNX = targetPNX
     }
 
     override fun encode(buffer: PacketByteBuf) {
         buffer.writeIdentifier(pokeBallType)
+        buffer.writeCollection(aspects) { _, aspect -> buffer.writeString(aspect) }
         buffer.writeString(targetPNX)
     }
 
     override fun decode(buffer: PacketByteBuf) {
         pokeBallType = buffer.readIdentifier()
+        aspects = buffer.readList { it.readString() }.toSet()
         targetPNX = buffer.readString()
     }
 }

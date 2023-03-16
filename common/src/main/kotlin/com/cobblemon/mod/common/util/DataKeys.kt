@@ -31,6 +31,8 @@ object DataKeys {
     const val POKEMON_ABILITY = "Ability"
     const val POKEMON_ABILITY_NAME = "AbilityName"
     const val POKEMON_ABILITY_FORCED = "AbilityForced"
+    const val POKEMON_ABILITY_INDEX = "AbilityIndex"
+    const val POKEMON_ABILITY_PRIORITY = "AbilityPriority"
     const val POKEMON_SHINY = "Shiny"
     const val POKEMON_STATUS = "Status"
     const val POKEMON_STATUS_NAME = "StatusName"
@@ -95,4 +97,7 @@ object DataKeys {
     const val POKEMON_ITEM_SPECIES = "species"
     const val POKEMON_ITEM_ASPECTS = "aspects"
 
+    // Features
+    const val CAN_BE_MILKED = "milkable"
+    const val HAS_BEEN_SHEARED = "sheared"
 }

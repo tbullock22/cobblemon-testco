@@ -11,6 +11,7 @@ package com.cobblemon.mod.common.pokeball.catching.calculators
 import com.cobblemon.mod.common.api.pokeball.catching.CaptureContext
 import com.cobblemon.mod.common.api.pokeball.catching.calculators.CaptureCalculator
 import com.cobblemon.mod.common.api.pokeball.catching.calculators.CriticalCaptureProvider
+import com.cobblemon.mod.common.api.pokeball.catching.calculators.PokedexProgressCaptureMultiplierProvider
 import com.cobblemon.mod.common.battles.BattleRegistry
 import com.cobblemon.mod.common.battles.actor.PlayerBattleActor
 import com.cobblemon.mod.common.pokeball.PokeBall
@@ -19,20 +20,61 @@ import com.cobblemon.mod.common.pokemon.status.statuses.*
 import net.minecraft.entity.LivingEntity
 import net.minecraft.server.network.ServerPlayerEntity
 import kotlin.math.max
-import kotlin.math.min
 import kotlin.math.pow
 import kotlin.math.roundToInt
 import kotlin.random.Random
 
-object CobblemonCaptureCalculator : CaptureCalculator, CriticalCaptureProvider {
+object CobblemonCaptureCalculator: CaptureCalculator, CriticalCaptureProvider, PokedexProgressCaptureMultiplierProvider {
 
     override fun id(): String = "cobblemon"
 
+    /**
+     * Calculates catch rates based on the following mechanics:
+     *
+     * Gen 8: https://bulbapedia.bulbagarden.net/wiki/Catch_rate#Capture_method_.28Generation_VIII.29
+     * Gen 9: https://bulbapedia.bulbagarden.net/wiki/Catch_rate#Capture_method_.28Generation_IX.30
+     *
+     * This is an almost exact copy of how Generation 9 handles capture mechanics, with a change to the difficulty
+     * modifier copied over from Gen 8.
+     *
+     * The difficulty modifier makes it so that every level higher the wild Pokémon is than the highest level Pokémon
+     * in your party, you will receive a 2% reduction in your overall catch rate of that Pokémon. For example,
+     * if your highest level is 15 and the wild is 20 you will be hit with a 10% reduction. This reduction maxes out at
+     * 90%. This 90% reduction would take place at a 45 level difference or higher.
+     */
     override fun processCapture(thrower: LivingEntity, pokeBall: PokeBall, target: Pokemon): CaptureContext {
+//        return Gen3And4CaptureCalculator.processCapture(thrower, pokeBall, target)
         if (pokeBall.catchRateModifier.isGuaranteed()) {
             return CaptureContext.successful()
         }
-        val modifiedCatchRate = this.getCatchRate(thrower, pokeBall, target)
+        // We don't have dark grass so we're just gonna pretend everything is that. Scratch that, without the pokedex it has issues.
+        val darkGrass = 1F //if (thrower is ServerPlayerEntity) this.caughtMultiplierFor(thrower).roundToInt() else 1
+        val inBattleModifier = if (target.entity?.battleId?.get()?.isPresent == true) 1F else 0.5F
+        val catchRate = target.form.catchRate.toFloat()
+        val validModifier = pokeBall.catchRateModifier.isValid(thrower, target)
+        val bonusStatus = when (target.status?.status) {
+            is SleepStatus, is FrozenStatus -> 2.5F
+            is ParalysisStatus, is BurnStatus, is PoisonStatus, is PoisonBadlyStatus -> 1.5F
+            else -> 1F
+        }
+        val bonusLevel = if (target.level < 13) max((36 - (2 * target.level)) / 10, 1) else 1
+        // ToDo implement badgePenalty when we have a system for obedience
+        // ToDo implement bonusMisc when we have sandwich powers
+        val ballBonus = if (validModifier) pokeBall.catchRateModifier.value(thrower, target).roundToInt().coerceAtLeast(1) else 1
+        var modifiedCatchRate = pokeBall.catchRateModifier
+            .behavior(thrower, target)
+            .mutator((3F * target.hp - 2F * target.currentHealth) * darkGrass * catchRate * inBattleModifier, ballBonus.toFloat()) / (3F * target.hp)
+        modifiedCatchRate *= bonusStatus * bonusLevel
+        if (thrower is ServerPlayerEntity) {
+            val highestLevelThrower = this.findHighestThrowerLevel(thrower, target)
+            if (highestLevelThrower != null && highestLevelThrower < target.level) {
+                var difficulty = 1F - (target.level - highestLevelThrower) / 50
+                if (difficulty < 0.1F) {
+                    difficulty = 0.1F
+                }
+                modifiedCatchRate *= difficulty
+            }
+        }
         val critical = if (thrower is ServerPlayerEntity) this.shouldHaveCriticalCapture(thrower, modifiedCatchRate) else false
         val shakeProbability = (65536F / (255F / modifiedCatchRate).pow(0.1875F)).roundToInt()
         var shakes = 0
@@ -49,63 +91,6 @@ object CobblemonCaptureCalculator : CaptureCalculator, CriticalCaptureProvider {
         return CaptureContext(numberOfShakes = shakes, isSuccessfulCapture = shakes == 4, isCriticalCapture = false)
     }
 
-    /**
-     * Calculates catch rates based on the following mechanics:
-     *
-     * Gen 3/4: https://bulbapedia.bulbagarden.net/wiki/Catch_rate#Capture_method_.28Generation_III-IV.29
-     * Gen 8: https://bulbapedia.bulbagarden.net/wiki/Catch_rate#Capture_method_.28Generation_VIII.29
-     *
-     * Due to pokemon making pokemon captures on Gen 5 and higher much easier, this implementation
-     * calculates catch rate in a modified manner to increase difficulty. First, it calculates the base capture
-     * rate via the Gen 3/4 mechanics. This involves the following variables:
-     * - The pokemon's maximum HP at its current level
-     * - The pokemon's current HP
-     * - The base catch rate of the pokemon
-     * - Modifiers which directly affect the catch rate
-     * - A status inflicted on the pokemon
-     *
-     * These values are used in accordance with the Gen 3/4 modified catch rate formula, and are then
-     * additionally ran through difficulty modifiers introduced in generation 8. These modifiers can be
-     * described as the following:
-     * - bonusLevel: Based on the level of the target wild pokemon, this value only applies to Pokémon bellow level 20.
-     * - difficulty: A difficulty factor, modified to scale with your own pokemon's level, which is directly affected
-     * by the level of the wild pokemon against your own.
-     *
-     * Normally, the difficulty factor simply checks if the level of your pokemon is less than the target wild
-     * pokemon. If so, your capture rate is immediately reduced by 90%, making it far more difficult for a
-     * pokeball to succeed in capture. In this implementation, the mechanic scales to your level, so the closer
-     * your pokemon is to the opponent's level, the better the odds. So, if the target pokemon is level 100 and
-     * your pokemon is level 95, you'd only face a 10% reduction. Now, in the event your pokemon is level 5 and
-     * the target is level 10, you'd have a 50% reduction in catch rate potential. This should see a better
-     * difficulty factor for users who simply start and catch the highest level pokemon they can find immediately,
-     * effectively skipping the entire starting phase.
-     *
-     * In the event you throw a pokeball out of battle, the difficulty factor will automatically default to the base
-     * 90% reduction.
-     *
-     * Finally, if your pokemon has a level higher than that of the target, a maximum multiplier of 1 will be applied,
-     * which simply forces this modifier to act as a no-op.
-     */
-    private fun getCatchRate(thrower: LivingEntity, pokeBall: PokeBall, target: Pokemon): Float {
-        val catchRate = target.form.catchRate.toFloat()
-        val validModifier = pokeBall.catchRateModifier.isValid(thrower, target)
-        val bonusStatus = when (target.status?.status) {
-            is SleepStatus, is FrozenStatus -> 2F
-            is ParalysisStatus, is BurnStatus, is PoisonStatus, is PoisonBadlyStatus -> 1.5F
-            else -> 1F
-        }
-        val ballBonus: Float = if (validModifier) pokeBall.catchRateModifier.value(thrower, target) else 1F
-        var modifiedCatchRate = (pokeBall.catchRateModifier.behavior(thrower, target).mutator((3F * target.hp - 2F * target.currentHealth) * catchRate, ballBonus) / 3F * target.hp) * bonusStatus
-        val bonusLevel = max((30 - target.level) / 10, 1)
-        modifiedCatchRate *= bonusLevel
-        if (thrower is ServerPlayerEntity) {
-            val highestLevelThrower = this.findHighestThrowerLevel(thrower, target) ?: return modifiedCatchRate
-            val difficulty = min(1F, max(33F / 100F, highestLevelThrower.toFloat() / target.level))
-            modifiedCatchRate *= difficulty
-        }
-        return modifiedCatchRate
-    }
-
     private fun findHighestThrowerLevel(player: ServerPlayerEntity, pokemon: Pokemon): Int? {
         val entity = pokemon.entity ?: return null
         val battleId = entity.battleId.get().orElse(null) ?: return null
@@ -117,5 +102,4 @@ object CobblemonCaptureCalculator : CaptureCalculator, CriticalCaptureProvider {
         } ?: return null
         return actor.getSide().getOppositeSide().activePokemon.maxOfOrNull { it.battlePokemon?.effectedPokemon?.level ?: 1 }
     }
-
 }

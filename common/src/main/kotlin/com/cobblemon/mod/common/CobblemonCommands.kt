@@ -8,24 +8,7 @@
 
 package com.cobblemon.mod.common
 
-import com.cobblemon.mod.common.command.ChangeScaleAndSize
-import com.cobblemon.mod.common.command.CheckSpawnsCommand
-import com.cobblemon.mod.common.command.ClickTextCommand
-import com.cobblemon.mod.common.command.FriendshipCommand
-import com.cobblemon.mod.common.command.GetNBT
-import com.cobblemon.mod.common.command.GiveAllPokemon
-import com.cobblemon.mod.common.command.GivePokemon
-import com.cobblemon.mod.common.command.HealPokemonCommand
-import com.cobblemon.mod.common.command.HeldItemCommand
-import com.cobblemon.mod.common.command.LevelUp
-import com.cobblemon.mod.common.command.OpenStarterScreenCommand
-import com.cobblemon.mod.common.command.PokemonEditCommand
-import com.cobblemon.mod.common.command.SpawnAllPokemon
-import com.cobblemon.mod.common.command.SpawnPokemon
-import com.cobblemon.mod.common.command.StopBattleCommand
-import com.cobblemon.mod.common.command.TakePokemon
-import com.cobblemon.mod.common.command.TeachCommand
-import com.cobblemon.mod.common.command.TestCommand
+import com.cobblemon.mod.common.command.*
 import com.mojang.brigadier.CommandDispatcher
 import net.minecraft.command.CommandRegistryAccess
 import net.minecraft.server.command.CommandManager
@@ -38,6 +21,7 @@ object CobblemonCommands {
         TakePokemon.register(dispatcher)
         ChangeScaleAndSize.register(dispatcher)
         TestCommand.register(dispatcher)
+        ReloadShowdownCommand.register(dispatcher)
         ClickTextCommand.register(dispatcher)
         PokemonEditCommand.register(dispatcher)
         TeachCommand.register(dispatcher)

@@ -56,7 +56,7 @@ object Gen7CaptureCalculator : CaptureCalculator, CriticalCaptureProvider, Poked
             rate = catchRate
             ballBonus = if (validModifier) pokeBall.catchRateModifier.value(thrower, target).roundToInt().coerceAtLeast(1) else 1
         }
-        val modifiedCatchRate = (pokeBall.catchRateModifier.behavior(thrower, target).mutator((3F * target.hp - 2F * target.currentHealth) * 4096F * darkGrass * rate, ballBonus.toFloat()) / 3F * target.hp) * bonusStatus
+        val modifiedCatchRate = (pokeBall.catchRateModifier.behavior(thrower, target).mutator((3F * target.hp - 2F * target.currentHealth) * 4096F * darkGrass * rate, ballBonus.toFloat()) / (3F * target.hp)) * bonusStatus
         val critical = if (thrower is ServerPlayerEntity) this.shouldHaveCriticalCapture(thrower, modifiedCatchRate) else false
         val shakeProbability = (65536F / (255F / modifiedCatchRate).pow(0.1875F)).roundToInt()
         var shakes = 0

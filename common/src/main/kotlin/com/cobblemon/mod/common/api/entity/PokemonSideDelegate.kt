@@ -16,4 +16,5 @@ interface PokemonSideDelegate : EntitySideDelegate<PokemonEntity> {
     fun changePokemon(pokemon: Pokemon)
     fun drop(source: DamageSource?) {}
     fun updatePostDeath() {}
+    fun handleStatus(status: Byte) {}
 }

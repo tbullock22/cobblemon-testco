@@ -263,7 +263,7 @@
   "cobblemon.command.pokemonedit": "成功编辑%2$s的%1$s。",
   "cobblemon.command.teach": "让%2$s的%1$s学会了%3$s。",
   "cobblemon.command.healpokemon.heal": "已完全治愈玩家%1$s的同行宝可梦。",
-  "cobblemon.command.friendship": " %1$s的亲密度為%2$s。",
+  "cobblemon.command.friendship": "%1$s的亲密度為%2$s。",
   "cobblemon.command.givepokemon.nospecies": "错误：该指令需要包含一个宝可梦名称或随机(random)参数。",
   "cobblemon.command.spawnpokemon.nospecies": "错误：该指令需要包含一个宝可梦名称或随机(random)参数。",
   "cobblemon.command.held_item": "让%1$s的%2$s携带了%3$s。",

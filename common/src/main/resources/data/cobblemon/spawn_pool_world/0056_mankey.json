@@ -16,8 +16,7 @@
                 "biomes": [
                     "#cobblemon:is_hills",
                     "#cobblemon:is_jungle"
-                ],
-                "timeRange": "day"
+                ]
             }
         }
     ]

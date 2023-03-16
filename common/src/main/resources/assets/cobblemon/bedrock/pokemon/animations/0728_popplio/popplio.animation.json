@@ -1,0 +1,222 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.popplio.ground_idle": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": [-32.5, 0, 0]
+				},
+				"torso_top": {
+					"rotation": [10, 0, 0]
+				},
+				"arm_right": {
+					"rotation": [-0.5015, -56.9172, -35.6003]
+				},
+				"arm_right2": {
+					"rotation": [0, 0, 7.5]
+				},
+				"arm_right3": {
+					"rotation": [0, 0, 17.5]
+				},
+				"arm_left": {
+					"rotation": [-0.5015, 56.91722, 35.60033]
+				},
+				"arm_left2": {
+					"rotation": [0, 0, -7.5]
+				},
+				"arm_left3": {
+					"rotation": [0, 0, -17.5]
+				},
+				"torso_bottom": {
+					"rotation": [12.5, 0, 0]
+				},
+				"torso_bottom2": {
+					"rotation": [12.5, 0, 0]
+				},
+				"tail_right": {
+					"rotation": [-2.5167, -10.2874, -0.9826]
+				},
+				"tail_left": {
+					"rotation": [-8.33818, 10.28736, 0.98256]
+				},
+				"body": {
+					"rotation": [30, 0, 0],
+					"position": [0, -4, 0]
+				}
+			}
+		},
+		"animation.popplio.ground_walk": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": [-75, 0, 0]
+				},
+				"arm_right": {
+					"rotation": [-75.40493, -15.1656, -38.66079]
+				},
+				"arm_right2": {
+					"rotation": [0, 0, 20]
+				},
+				"arm_right3": {
+					"rotation": [0, 0, 10]
+				},
+				"arm_left": {
+					"rotation": [-75.40493, 15.1656, 38.66079]
+				},
+				"arm_left2": {
+					"rotation": [0, 0, -20]
+				},
+				"arm_left3": {
+					"rotation": [0, 0, -10]
+				},
+				"ruff_front": {
+					"rotation": [72.5, 0, 0]
+				},
+				"torso_bottom": {
+					"rotation": [2.5, 0, 0]
+				},
+				"torso_bottom2": {
+					"rotation": [5, 0, 0]
+				},
+				"tail_right": {
+					"rotation": [-10, 0, -10]
+				},
+				"tail_left": {
+					"rotation": [-10, 0, 10]
+				},
+				"body": {
+					"rotation": [75, 0, 0],
+					"position": [0, -5.5, 0]
+				}
+			}
+		},
+		"animation.popplio.water_idle": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": [-77.5, 0, 0]
+				},
+				"arm_right": {
+					"rotation": [-69.3532, -18.2312, -15.3836]
+				},
+				"arm_right2": {
+					"rotation": [0, 0, 0]
+				},
+				"arm_right3": {
+					"rotation": [0, 0, -10]
+				},
+				"arm_left": {
+					"rotation": [-69.3532, 18.23117, 15.38361]
+				},
+				"arm_left2": {
+					"rotation": [0, 0, 0]
+				},
+				"arm_left3": {
+					"rotation": [0, 0, 10]
+				},
+				"ruff_front": {
+					"rotation": [0, 0, 0]
+				},
+				"torso_bottom": {
+					"rotation": [-2.5, 0, 0]
+				},
+				"torso_bottom2": {
+					"rotation": [-2.5, 0, 0]
+				},
+				"tail_right": {
+					"rotation": [-22.64168, -7.15102, 2.26708]
+				},
+				"tail_left": {
+					"rotation": [-22.6417, 7.151, -2.2671]
+				},
+				"body": {
+					"rotation": [80, 0, 0],
+					"position": [0, -3.75, -1]
+				}
+			}
+		},
+		"animation.popplio.water_swim": {
+			"animation_length": 5.58333,
+			"bones": {
+				"head": {
+					"rotation": {
+						"0.0": [-67.5, 0, 0],
+						"5.5833": [-72.5, 0, 0]
+					}
+				},
+				"arm_right": {
+					"rotation": [-0.53871, -0.6844, -63.4534]
+				},
+				"arm_right2": {
+					"rotation": [0, 0, 0]
+				},
+				"arm_right3": {
+					"rotation": [0, 0, -10]
+				},
+				"arm_left": {
+					"rotation": [-0.53871, 0.68438, 63.45342]
+				},
+				"arm_left2": {
+					"rotation": [0, 0, 0]
+				},
+				"arm_left3": {
+					"rotation": [0, 0, 10]
+				},
+				"ruff_front": {
+					"rotation": [22.5, 0, 0]
+				},
+				"torso_bottom": {
+					"rotation": [-2.5, 0, 0]
+				},
+				"torso_bottom2": {
+					"rotation": [2.5, 0, 0]
+				},
+				"tail_right": {
+					"rotation": {
+						"0.0": [-17.6477, 7.151, 2.26708],
+						"5.5833": [-13.01654, -5.21605, 0.64301]
+					}
+				},
+				"tail_left": {
+					"rotation": [-17.64767, 7.151, -2.2671]
+				},
+				"body": {
+					"rotation": [80, 0, 0],
+					"position": [0, -4, -1]
+				},
+				"torso_top": {
+					"rotation": [10, 0, 0]
+				},
+				"ruff_back": {
+					"rotation": [-22.5, 0, 0]
+				},
+				"ruff_right": {
+					"rotation": [0, 0, -22.5]
+				},
+				"ruff_left": {
+					"rotation": [0, 0, 22.5]
+				}
+			}
+		},
+		"animation.popplio.blink": {
+			"animation_length": 0.1667,
+			"bones": {
+				"eyelid_right": {
+					"position": {
+						"0.0": [-0.1, 0, -0.1],
+						"0.125": [-0.1, 0, -0.1],
+						"0.1667": [0, 0, 0]
+					}
+				},
+				"eyelid_left": {
+					"position": {
+						"0.0": [0.1, 0, -0.1],
+						"0.125": [0.1, 0, -0.1],
+						"0.1667": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

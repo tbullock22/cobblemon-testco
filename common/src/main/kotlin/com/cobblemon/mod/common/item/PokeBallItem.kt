@@ -40,9 +40,10 @@ class PokeBallItem(
     }
 
     private fun throwPokeBall(world: World, player: ServerPlayerEntity) {
-        val pokeBallEntity = EmptyPokeBallEntity(pokeBall, player.world).apply {
-            setPos(player.x, player.y + player.standingEyeHeight - 0.2, player.z)
-            setVelocity(player, player.pitch - 10 * cos(player.pitch.toRadians()), player.yaw, 0.0f, 1.25f, 1.0f)
+        val pokeBallEntity = EmptyPokeBallEntity(pokeBall, player.world, player).apply {
+//            setPos(player.x, player.y + player.standingEyeHeight - 0.2, player.z)
+            setVelocity(player, player.pitch - 5, player.yaw, 0.0f, 1.25f, 1.0f)
+            setPosition(pos.add(velocity.normalize().multiply(1.0)))
             owner = player
         }
         world.spawnEntity(pokeBallEntity)
@@ -51,5 +52,4 @@ class PokeBallItem(
     override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
         tooltip.add("item.${this.pokeBall.name.namespace}.${this.pokeBall.name.path}.tooltip".asTranslated().gray())
     }
-
 }

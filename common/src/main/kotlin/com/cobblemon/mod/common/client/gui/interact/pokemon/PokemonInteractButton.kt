@@ -9,12 +9,9 @@
 package com.cobblemon.mod.common.client.gui.interact.pokemon
 
 import com.cobblemon.mod.common.api.gui.blitk
-import com.cobblemon.mod.common.client.CobblemonResources
-import com.cobblemon.mod.common.client.render.drawScaledText
 import net.minecraft.client.gui.widget.ButtonWidget
 import net.minecraft.client.sound.SoundManager
 import net.minecraft.client.util.math.MatrixStack
-import net.minecraft.text.MutableText
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 

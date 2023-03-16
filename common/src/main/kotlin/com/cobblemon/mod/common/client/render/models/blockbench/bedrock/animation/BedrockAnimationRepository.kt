@@ -31,17 +31,20 @@ object BedrockAnimationRepository {
 
     private val animationGroups = mutableMapOf<String, BedrockAnimationGroup>()
 
-    fun loadAnimations(resourceManager: ResourceManager) {
+    fun loadAnimations(resourceManager: ResourceManager, directories: List<String>) {
         LOGGER.info("Loading animations...")
         var animationCount = 0
         animationGroups.clear()
-        resourceManager.findResources("bedrock/animations", { it.path.endsWith(".animation.json") }).forEach { identifier, resource ->
-            val animationGroup = gson.fromJson<BedrockAnimationGroup>(resource.inputStream.reader())
-            val animationGroupName = identifier.path.substringAfterLast("/").replace(".animation.json", "")
-            animationGroups[animationGroupName] = animationGroup
-            animationCount += animationGroup.animations.size
+        for (directory in directories) {
+            resourceManager.findResources(directory) { it.path.endsWith(".animation.json") }
+                .forEach { (identifier, resource) ->
+                    val animationGroup = gson.fromJson<BedrockAnimationGroup>(resource.inputStream.reader())
+                    val animationGroupName = identifier.path.substringAfterLast("/").replace(".animation.json", "")
+                    animationGroups[animationGroupName] = animationGroup
+                    animationCount += animationGroup.animations.size
+                }
         }
-        LOGGER.info("Loaded $animationCount animations from ${animationGroups.size} animation groups.")
+        LOGGER.info("Loaded $animationCount animations from ${animationGroups.size} animation groups")
     }
 
     fun getAnimation(fileName: String, animationName: String): BedrockAnimation {

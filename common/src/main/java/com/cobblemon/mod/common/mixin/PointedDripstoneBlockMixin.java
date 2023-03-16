@@ -26,7 +26,7 @@ public abstract class PointedDripstoneBlockMixin {
             slice = @Slice(from = @At(value = "FIELD", target = "Lnet/minecraft/block/Blocks;DRIPSTONE_BLOCK:Lnet/minecraft/block/Block;"))
     )
     private static boolean cobblemon$validateMoonStoneDripstone(BlockState instance, Block block) {
-        return instance.isIn(CobblemonBlockTags.INSTANCE.getDRIPSTONE_GROWABLE());
+        return instance.isIn(CobblemonBlockTags.DRIPSTONE_GROWABLE);
     }
 
 }

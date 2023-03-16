@@ -21,7 +21,7 @@ class MorelullModel(root: ModelPart) : PokemonPoseableModel() {
     override val portraitTranslation = Vec3d(0.0, -5.0, 0.0)
 
     override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.5, 0.0)
+    override val profileTranslation = Vec3d(0.0, 0.25, 0.0)
 
     lateinit var standing: PokemonPose
 

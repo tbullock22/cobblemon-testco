@@ -18,7 +18,8 @@ package com.cobblemon.mod.common.api
  */
 open class PrioritizedList<T> : Iterable<T> {
     protected val priorityMap = mutableMapOf<Priority, MutableList<T>>()
-    protected val ordered = mutableListOf<T>()
+    // Please don't change arraylist, we need insertion order
+    protected val ordered = arrayListOf<T>()
 
     val mapping: Map<Priority, List<T>>
         get() = priorityMap.toMap()
@@ -31,7 +32,8 @@ open class PrioritizedList<T> : Iterable<T> {
     }
 
     fun add(priority: Priority, value: T) {
-        priorityMap.putIfAbsent(priority, mutableListOf())
+        // Please don't change arraylist, we need insertion order
+        priorityMap.putIfAbsent(priority, arrayListOf())
         priorityMap[priority]?.add(value)
         reorder()
     }

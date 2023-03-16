@@ -32,6 +32,19 @@ open class BedrockStatefulAnimation<T : Entity>(
     }
 
     var secondsPassed = 0F
+    var isTransformAnimation = false
+    private var afterAction: (T, PoseableEntityState<T>) -> Unit = { _, _ -> }
+
+    override val isTransform: Boolean
+        get() = isTransformAnimation
+
+    fun isTransformAnimation(value: Boolean) = this.also {
+        it.isTransformAnimation = value
+    }
+
+    fun andThen(action: (entity: T, PoseableEntityState<T>) -> Unit) = this.also {
+        it.afterAction = action
+    }
 
     override fun preventsIdle(entity: T?, state: PoseableEntityState<T>, idleAnimation: StatelessAnimation<T, *>) = preventsIdleCheck(entity, state, idleAnimation)
     override fun run(
@@ -46,6 +59,10 @@ open class BedrockStatefulAnimation<T : Entity>(
     ): Boolean {
         val previousSeconds = secondsPassed
         secondsPassed += state.deltaSeconds
-        return animation.run(model, entity, state, previousSeconds.toDouble(), secondsPassed.toDouble())
+        return animation.run(model, entity, state, previousSeconds.toDouble(), secondsPassed.toDouble()).also {
+            if (!it && entity != null) {
+                afterAction(entity, state)
+            }
+        }
     }
 }

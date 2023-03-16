@@ -8,11 +8,14 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen3
 
+import com.cobblemon.mod.common.client.render.models.blockbench.asTransformed
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.BimanualFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.BipedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
+import com.cobblemon.mod.common.client.render.models.blockbench.pose.TransformedModelPart
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
@@ -36,6 +39,10 @@ class SableyeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
+    lateinit var shoulderLeft: PokemonPose
+    lateinit var shoulderRight: PokemonPose
+
+    val shoulderOffset = 1
 
     override fun registerPoses() {
         standing = registerPose(
@@ -54,6 +61,28 @@ class SableyeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
                 singleBoneLook(),
                 bedrock("sableye", "ground_idle"),
                 bedrock("sableye", "ground_walk")
+            )
+        )
+
+        shoulderLeft = registerPose(
+            poseType = PoseType.SHOULDER_LEFT,
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("sableye", "shoulder_left")
+            ),
+            transformedParts = arrayOf(
+                rootPart.asTransformed().addPosition(TransformedModelPart.X_AXIS, shoulderOffset)
+            )
+        )
+
+        shoulderRight = registerPose(
+            poseType = PoseType.SHOULDER_RIGHT,
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("sableye", "shoulder_right")
+            ),
+            transformedParts = arrayOf(
+                rootPart.asTransformed().addPosition(TransformedModelPart.X_AXIS, -shoulderOffset)
             )
         )
     }

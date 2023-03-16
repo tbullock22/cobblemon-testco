@@ -19,6 +19,7 @@ versions:
 
   # forge
   forge: 1.19.2-43.2.4
+  kotlinForForge: 3.8.0
 
   # common
   graal: 22.3.0
@@ -125,6 +126,10 @@ dependencies:
     group: dev.architectury
     name: architectury-forge
     version: { ref: architectury }
+  kotlinForForge:
+    group: thedarkcolour
+    name: kotlinforforge
+    version: { ref: kotlinForForge }
 
   # test
   junitEngine:

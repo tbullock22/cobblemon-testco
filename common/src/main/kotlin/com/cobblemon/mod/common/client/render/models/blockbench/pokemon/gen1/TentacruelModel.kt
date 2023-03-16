@@ -18,16 +18,18 @@ import net.minecraft.util.math.Vec3d
 class TentacruelModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("tentacruel")
 
-    override val portraitScale = 2.0F
-    override val portraitTranslation = Vec3d(-0.1, -0.2, 0.0)
+    override val portraitScale = 1.3F
+    override val portraitTranslation = Vec3d(-0.3, 1.8, 0.0)
 
-    override val profileScale = 1.0F
-    override val profileTranslation = Vec3d(0.0, 0.35, 0.0)
+    override val profileScale = 0.55F
+    override val profileTranslation = Vec3d(0.0, 1.1, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
     lateinit var swim: PokemonPose
     lateinit var float: PokemonPose
+    lateinit var sleep: PokemonPose
+    lateinit var watersleep: PokemonPose
 
     override fun registerPoses() {
         val blink = quirk("blink") { bedrockStateful("tentacruel", "blink").setPreventsIdle(false)}
@@ -43,6 +45,7 @@ class TentacruelModel(root: ModelPart) : PokemonPoseableModel() {
         walk = registerPose(
             poseName = "walk",
             poseType = PoseType.WALK,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 bedrock("tentacruel", "ground_idle")
                 //bedrock("tentacruel", "ground_walk")
@@ -52,6 +55,7 @@ class TentacruelModel(root: ModelPart) : PokemonPoseableModel() {
         float = registerPose(
             poseName = "float",
             poseTypes = UI_POSES + PoseType.FLOAT,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 bedrock("tentacruel", "water_idle")
             )
@@ -60,9 +64,24 @@ class TentacruelModel(root: ModelPart) : PokemonPoseableModel() {
         swim = registerPose(
             poseName = "swim",
             poseType = PoseType.SWIM,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 bedrock("tentacruel", "water_swim")
             )
+        )
+
+        sleep = registerPose(
+                poseName = "sleep",
+                poseType = PoseType.SLEEP,
+                condition = { !it.isTouchingWater },
+                idleAnimations = arrayOf(bedrock("tentacruel", "ground_sleep"))
+        )
+
+        watersleep = registerPose(
+                poseName = "watersleep",
+                poseType = PoseType.SLEEP,
+                condition = { it.isTouchingWater },
+                idleAnimations = arrayOf(bedrock("tentacruel", "water_sleep"))
         )
     }
 

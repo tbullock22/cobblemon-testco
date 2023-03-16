@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Brionne",
   "nationalPokedexNumber": 729,
   "primaryType": "water",
@@ -114,10 +115,10 @@
       ]
     }
   ],
-  "baseScale": 1,
+  "baseScale": 0.75,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 1.05,
+    "height": 1.25,
     "fixed": false
   },
   "baseFriendship": 50,

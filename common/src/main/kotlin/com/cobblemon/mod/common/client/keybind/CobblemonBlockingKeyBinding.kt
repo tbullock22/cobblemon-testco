@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.client.keybind
 
+import net.minecraft.client.MinecraftClient
 import net.minecraft.client.util.InputUtil
 
 /**
@@ -22,13 +23,23 @@ abstract class CobblemonBlockingKeyBinding(
     key: Int,
     category: String
 ) : CobblemonKeyBinding(name, type, key, category) {
-    private var wasDown = false
+    var wasDown = false
+    var timeDown = 0F
+
+    open fun onRelease() {}
 
     override fun onTick() {
         if (isPressed && !wasDown) {
             wasDown = true
+            timeDown = 0F
             onPress()
-        } else if (!isPressed)
+        } else if (!isPressed && wasDown) {
+            onRelease()
             wasDown = false
+        } else if (!isPressed) {
+            wasDown = false
+        } else if (wasDown) {
+            timeDown += MinecraftClient.getInstance().tickDelta
+        }
     }
 }

@@ -53,6 +53,7 @@ object CobblemonEntities : CompletableRegistry<EntityType<*>>(Registry.ENTITY_TY
         return queue(name) { entityTypeBuilder.build(cobblemonResource("pokemon").toString()) }
     }
 
+    @JvmField
     val POKEMON = livingEntity(
         name = "pokemon",
         entityTypeBuilder = EntityType.Builder.create<PokemonEntity>(
@@ -61,6 +62,7 @@ object CobblemonEntities : CompletableRegistry<EntityType<*>>(Registry.ENTITY_TY
         )
     )
 
+    @JvmField
     val EMPTY_POKEBALL = entity(
         name = "empty_pokeball",
         entityTypeBuilder = EntityType.Builder.create<EmptyPokeBallEntity>(

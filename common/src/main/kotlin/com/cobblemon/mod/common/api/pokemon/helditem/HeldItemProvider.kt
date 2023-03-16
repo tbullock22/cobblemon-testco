@@ -32,6 +32,14 @@ object HeldItemProvider {
     fun provide(pokemon: BattlePokemon): HeldItemManager = this.managers.firstOrNull { manager -> manager.showdownId(pokemon) != null } ?: HeldItemManager.EMPTY
 
     /**
+     * Finds the first non-null showdownId provided by a [HeldItemManager] in [managers].
+     *
+     * @param pokemon The [Pokemon] being queried.
+     * @return The showdownId string that [pokemon] is holding, otherwise null.
+     */
+    fun provideShowdownId(pokemon: BattlePokemon) = this.managers.firstNotNullOfOrNull { manager -> manager.showdownId(pokemon) }
+
+    /**
      * Registers a new [HeldItemManager].
      *
      * @param manager The [HeldItemManager] being registered.

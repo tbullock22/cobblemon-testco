@@ -28,6 +28,8 @@ class PoseTransitionAnimation<T : Entity>(
     val afterPose: Pose<T, *>,
     durationTicks: Int = 20
 ) : StatefulAnimation<T, ModelFrame> {
+    override val isTransform = true
+
     var changedPose = false
     val transforms = mutableListOf<GradualTransform>()
     val startTime = System.currentTimeMillis()

@@ -26,7 +26,7 @@ class YanmegaModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val head = getPart("head")
 
     override val portraitScale = 2.0F
-    override val portraitTranslation = Vec3d(-0.9, -0.95, 0.0)
+    override val portraitTranslation = Vec3d(-0.9, -0.35, 0.0)
 
     override val profileScale = 0.6F
     override val profileTranslation = Vec3d(0.0, 0.8, 0.0)

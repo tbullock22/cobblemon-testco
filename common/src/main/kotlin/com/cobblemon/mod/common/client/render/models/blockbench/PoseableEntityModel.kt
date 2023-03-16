@@ -10,6 +10,7 @@ package com.cobblemon.mod.common.client.render.models.blockbench
 
 import com.cobblemon.mod.common.client.entity.PokemonClientDelegate
 import com.cobblemon.mod.common.client.render.MatrixWrapper
+import com.cobblemon.mod.common.client.render.ModelLayer
 import com.cobblemon.mod.common.client.render.models.blockbench.animation.PoseTransitionAnimation
 import com.cobblemon.mod.common.client.render.models.blockbench.animation.RotationFunctionStatelessAnimation
 import com.cobblemon.mod.common.client.render.models.blockbench.animation.StatefulAnimation
@@ -24,12 +25,19 @@ import com.cobblemon.mod.common.client.render.models.blockbench.pose.Transformed
 import com.cobblemon.mod.common.client.render.models.blockbench.quirk.ModelQuirk
 import com.cobblemon.mod.common.client.render.models.blockbench.quirk.SimpleQuirk
 import com.cobblemon.mod.common.client.render.models.blockbench.wavefunction.WaveFunction
+import com.cobblemon.mod.common.client.render.pokeball.PokeBallPoseableState
 import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.Poseable
+import com.cobblemon.mod.common.entity.pokeball.EmptyPokeBallEntity
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import net.minecraft.client.model.ModelPart
+import net.minecraft.client.render.OverlayTexture
 import net.minecraft.client.render.RenderLayer
+import net.minecraft.client.render.RenderPhase
 import net.minecraft.client.render.VertexConsumer
+import net.minecraft.client.render.VertexConsumerProvider
+import net.minecraft.client.render.VertexFormat
+import net.minecraft.client.render.VertexFormats
 import net.minecraft.client.render.entity.model.EntityModel
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.Entity
@@ -50,8 +58,19 @@ abstract class PoseableEntityModel<T : Entity>(
     var currentEntity: T? = null
 
     val poses = mutableMapOf<String, Pose<T, out ModelFrame>>()
-    val locatorStates = mutableMapOf<String, MatrixWrapper>()
     lateinit var locatorAccess: LocatorAccess
+
+    var red = 1F
+    var green = 1F
+    var blue = 1F
+    var alpha = 1F
+
+    @Transient
+    var currentLayers: Iterable<ModelLayer> = listOf()
+    @Transient
+    var bufferProvider: VertexConsumerProvider? = null
+    @Transient
+    var currentState: PoseableEntityState<T>? = null
 
     /**
      * A list of [TransformedModelPart] that are relevant to any frame or animation.
@@ -59,6 +78,7 @@ abstract class PoseableEntityModel<T : Entity>(
      */
     val relevantParts = mutableListOf<TransformedModelPart>()
     val relevantPartsByName = mutableMapOf<String, TransformedModelPart>()
+
     /** Registers the different poses this model is capable of ahead of time. Should use [registerPose] religiously. */
     abstract fun registerPoses()
     /** Gets the [PoseableEntityState] for an entity. */
@@ -66,6 +86,24 @@ abstract class PoseableEntityModel<T : Entity>(
 
     fun getChangeFactor(part: ModelPart) = relevantParts.find { it.modelPart == part }?.changeFactor ?: 1F
     fun scaleForPart(part: ModelPart, value: Float) = getChangeFactor(part) * value
+
+    fun withLayerContext(buffer: VertexConsumerProvider, state: PoseableEntityState<T>?, layers: Iterable<ModelLayer>, action: () -> Unit) {
+        setLayerContext(buffer, state, layers)
+        action()
+        resetLayerContext()
+    }
+
+    fun setLayerContext(buffer: VertexConsumerProvider, state: PoseableEntityState<T>?, layers: Iterable<ModelLayer>) {
+        currentLayers = layers
+        bufferProvider = buffer
+        currentState = state
+    }
+
+    fun resetLayerContext() {
+        currentLayers = emptyList()
+        bufferProvider = null
+        currentState = null
+    }
 
     /**
      * Registers a pose for this model.
@@ -169,8 +207,57 @@ abstract class PoseableEntityModel<T : Entity>(
     fun registerRelevantPart(pairing: Pair<String, ModelPart>) = registerRelevantPart(pairing.first, pairing.second)
 
     override fun render(stack: MatrixStack, buffer: VertexConsumer, packedLight: Int, packedOverlay: Int, r: Float, g: Float, b: Float, a: Float) {
+        renderModel(stack, buffer, packedLight, OverlayTexture.DEFAULT_UV, red * r, green * g, blue * b, alpha * a)
+
+        val animationSeconds = currentState?.animationSeconds ?: 0F
+        val provider = bufferProvider
+        if (provider != null) {
+            for (layer in currentLayers) {
+                val texture = layer.texture?.invoke(animationSeconds) ?: continue
+                val renderLayer = getLayer(texture, layer.emissive, layer.translucent)
+                val consumer = provider.getBuffer(renderLayer)
+                stack.push()
+                renderModel(stack, consumer, packedLight, OverlayTexture.DEFAULT_UV, layer.tint.x, layer.tint.y, layer.tint.z, layer.tint.w)
+                stack.pop()
+            }
+        }
+    }
+
+    fun renderModel(stack: MatrixStack, buffer: VertexConsumer, packedLight: Int, packedOverlay: Int, r: Float, g: Float, b: Float, a: Float) {
         rootPart.render(stack, buffer, packedLight, packedOverlay, r, g, b, a)
     }
+
+    fun makeLayer(texture: Identifier, emissive: Boolean, translucent: Boolean): RenderLayer {
+        val multiPhaseParameters: RenderLayer.MultiPhaseParameters = RenderLayer.MultiPhaseParameters.builder()
+            .shader(if (emissive) RenderPhase.ENTITY_TRANSLUCENT_EMISSIVE_SHADER else RenderPhase.ENTITY_TRANSLUCENT_SHADER)
+            .texture(RenderPhase.Texture(texture, false, false))
+            .transparency(if (translucent) RenderPhase.TRANSLUCENT_TRANSPARENCY else RenderPhase.NO_TRANSPARENCY)
+            .cull(RenderPhase.ENABLE_CULLING)
+            .writeMaskState(RenderPhase.ALL_MASK)
+            .overlay(RenderPhase.ENABLE_OVERLAY_COLOR)
+            .build(false)
+
+        return RenderLayer.of(
+            "cobblemon_entity_layer",
+            VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL,
+            VertexFormat.DrawMode.QUADS,
+            256,
+            true,
+            translucent,
+            multiPhaseParameters
+        )
+    }
+
+    fun getLayer(texture: Identifier, emissive: Boolean, translucent: Boolean): RenderLayer {
+        return if (!emissive && !translucent) {
+            RenderLayer.getEntityCutout(texture)
+        } else if (!emissive) {
+            RenderLayer.getEntityTranslucent(texture)
+        } else {
+            makeLayer(texture, emissive = emissive, translucent = translucent)
+        }
+    }
+
 
     /** Applies the given pose type to the model, if there is a matching pose. */
     fun applyPose(pose: String) = getPose(pose)?.transformedParts?.forEach { it.apply() }
@@ -203,36 +290,21 @@ abstract class PoseableEntityModel<T : Entity>(
 
     fun setupAnimStateful(entity: T?, state: PoseableEntityState<T>, limbSwing: Float, limbSwingAmount: Float, ageInTicks: Float, headYaw: Float, headPitch: Float) {
         currentEntity = entity
+        state.currentModel = this
         setDefault()
         state.preRender()
         updateLocators()
-        state.currentModel = this
         var poseName = state.getPose()
         var pose = poseName?.let { getPose(it) }
         val entityPoseType = if (entity is Poseable) entity.getPoseType() else null
 
         if (entity != null && (poseName == null || pose == null || !pose.condition(entity) || entityPoseType !in pose.poseTypes)) {
-            val previousPose = pose
             val desirablePose = poses.values.firstOrNull { (entityPoseType == null || entityPoseType in it.poseTypes) && it.condition(entity) }
                 ?: Pose("none", setOf(PoseType.NONE), { true }, {}, 0, emptyArray(), emptyArray(), emptyArray())
 
-            val desirablePoseType = desirablePose.poseTypes.first()
-
             // If this condition matches then it just no longer fits this pose
             if (pose != null && poseName != null) {
-                if (state.statefulAnimations.none { it is PoseTransitionAnimation<*> }) {
-                    if (previousPose != null && pose.transformTicks > 0) {
-                        state.statefulAnimations.add(
-                            PoseTransitionAnimation(
-                                beforePose = previousPose,
-                                afterPose = desirablePose,
-                                durationTicks = pose.transformTicks
-                            )
-                        )
-                    } else {
-                        getState(entity).setPose(poses.values.first { desirablePoseType in it.poseTypes && it.condition(entity) }.poseName)
-                    }
-                }
+                moveToPose(entity, state, desirablePose)
             } else {
                 pose = desirablePose
                 poseName = desirablePose.poseName
@@ -251,7 +323,8 @@ abstract class PoseableEntityModel<T : Entity>(
             currentPose.quirks.forEach { it.tick(entity, this, state, limbSwing, limbSwingAmount, ageInTicks, headYaw, headPitch) }
         }
 
-        state.statefulAnimations.removeIf { !it.run(entity, this, state, limbSwing, limbSwingAmount, ageInTicks, headYaw, headPitch) }
+        val removedStatefuls = state.statefulAnimations.toList().filterNot { it.run(entity, this, state, limbSwing, limbSwingAmount, ageInTicks, headYaw, headPitch) }
+        state.statefulAnimations.removeAll(removedStatefuls)
         state.currentPose?.let { getPose(it) }?.idleStateful(entity, this, state, limbSwing, limbSwingAmount, ageInTicks, headYaw, headPitch)
         state.applyAdditives(entity, this, state)
         relevantParts.forEach { it.changeFactor = 1F }
@@ -262,26 +335,59 @@ abstract class PoseableEntityModel<T : Entity>(
         setupAnimStateful(entity, getState(entity), limbSwing, limbSwingAmount, ageInTicks, headYaw, headPitch)
     }
 
+    fun moveToPose(entity: T, state: PoseableEntityState<T>, desirablePose: Pose<T, out ModelFrame>) {
+        val previousPose = state.getPose()?.let { getPose(it) } ?: run {
+            return state.setPose(desirablePose.poseName)
+        }
+
+        val desirablePoseType = desirablePose.poseTypes.first()
+
+        if (state.statefulAnimations.none { it.isTransform }) {
+            val transition = previousPose.transitions[desirablePose]
+            if (transition == null && previousPose.transformTicks > 0) {
+                state.statefulAnimations.add(
+                    PoseTransitionAnimation(
+                        beforePose = previousPose,
+                        afterPose = desirablePose,
+                        durationTicks = previousPose.transformTicks
+                    )
+                )
+            } else if (transition != null) {
+                state.statefulAnimations.add(transition(previousPose, desirablePose))
+            } else {
+                getState(entity).setPose(poses.values.first { desirablePoseType in it.poseTypes && it.condition(entity) }.poseName)
+            }
+        }
+    }
+
     /**
      * Figures out where all of this model's locators are in real space, so that they can be
      * found and used from other client-side systems.
      */
     fun updateLocators() {
-        val entity = currentEntity ?: return
-        val matrixStack = MatrixStack()
-        matrixStack.translate(entity.x, entity.y, entity.z)
-        matrixStack.push()
-        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180 - entity.bodyYaw))
-        matrixStack.push()
-        matrixStack.scale(-1F, -1F, 1F)
-        // We could improve this to be generalized for other entities
-        if (entity is PokemonEntity) {
-            val scale = entity.pokemon.form.baseScale * entity.pokemon.scaleModifier * (entity.delegate as PokemonClientDelegate).entityScaleModifier
-            matrixStack.scale(scale, scale, scale)
+        currentState?.let {
+            val entity = currentEntity ?: return
+            val matrixStack = MatrixStack()
+            matrixStack.translate(entity.x, entity.y, entity.z)
+            matrixStack.push()
+            // We could improve this to be generalized for other entities
+            if (entity is PokemonEntity) {
+                matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180 - entity.bodyYaw))
+                matrixStack.push()
+                matrixStack.scale(-1F, -1F, 1F)
+                val scale = entity.pokemon.form.baseScale * entity.pokemon.scaleModifier * (entity.delegate as PokemonClientDelegate).entityScaleModifier
+                matrixStack.scale(scale, scale, scale)
+            } else if (entity is EmptyPokeBallEntity) {
+                matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(entity.yaw))
+                matrixStack.push()
+                matrixStack.scale(1F, -1F, -1F)
+                matrixStack.scale(0.7F, 0.7F, 0.7F)
+            }
+            // Standard living entity offset, only God knows why Mojang did this.
+            matrixStack.translate(0.0, -1.5, 0.0)
+
+            locatorAccess.update(matrixStack, it.locatorStates)
         }
-        // Standard living entity offset, only God knows why Mojang did this.
-        matrixStack.translate(0.0, -1.5, 0.0)
-        locatorAccess.update(matrixStack, locatorStates)
     }
 
     fun ModelPart.translation(

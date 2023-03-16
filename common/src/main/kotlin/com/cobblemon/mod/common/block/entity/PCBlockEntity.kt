@@ -9,13 +9,17 @@
 package com.cobblemon.mod.common.block.entity
 
 import com.cobblemon.mod.common.CobblemonBlockEntities
+import com.cobblemon.mod.common.CobblemonBlocks
 import com.cobblemon.mod.common.api.storage.pc.link.PCLinkManager
 import com.cobblemon.mod.common.api.storage.pc.link.ProximityPCLink
 import com.cobblemon.mod.common.block.PCBlock
 import net.minecraft.block.BlockState
+import net.minecraft.block.Blocks
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
+import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.ItemStack
 import net.minecraft.util.TypeFilter
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Box
@@ -38,15 +42,27 @@ class PCBlockEntity(
         val pcBlock = blockState.block as PCBlock
 
         if (world != null && !world!!.isClient) {
+            val world = world!!
             val posBottom = pcBlock.getBasePosition(blockState, blockPos)
-            val stateBottom = world!!.getBlockState(posBottom)
+            val stateBottom = world.getBlockState(posBottom)
 
             val posTop = pcBlock.getPositionOfOtherPart(stateBottom, posBottom)
-            val stateTop = world!!.getBlockState(posTop)
+            val stateTop = world.getBlockState(posTop)
 
-            if (stateBottom.get(PCBlock.ON) != on) {
-                world!!.setBlockState(posTop, stateTop.with(PCBlock.ON, on))
-                world!!.setBlockState(posBottom, stateBottom.with(PCBlock.ON, on))
+            try {
+                if (stateBottom.get(PCBlock.ON) != on) {
+                    world.setBlockState(posTop, stateTop.with(PCBlock.ON, on))
+                    world.setBlockState(posBottom, stateBottom.with(PCBlock.ON, on))
+                }
+            } catch (exception: IllegalArgumentException) {
+                // This is probably a PC from before 1.3. Break it.
+                if (world.getBlockState(pos.up()).block is PCBlock) {
+                    world.setBlockState(pos.up(), Blocks.AIR.defaultState)
+                } else {
+                    world.setBlockState(pos.down(), Blocks.AIR.defaultState)
+                }
+                world.setBlockState(pos, Blocks.AIR.defaultState)
+                world.spawnEntity(ItemEntity(world, pos.x + 0.5, pos.y + 1.0, pos.z + 0.5, ItemStack(CobblemonBlocks.PC.get())))
             }
         }
     }

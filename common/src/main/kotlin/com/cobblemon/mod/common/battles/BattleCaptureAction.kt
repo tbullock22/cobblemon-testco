@@ -31,7 +31,7 @@ class BattleCaptureAction(
 ) {
     val pokemonName = targetPokemon.battlePokemon?.getName() ?: "error".red()
     fun attach() {
-        battle.sendUpdate(BattleCaptureStartPacket(pokeBallEntity.pokeBall.name, targetPokemon.getPNX()))
+        battle.sendUpdate(BattleCaptureStartPacket(pokeBallEntity.pokeBall.name, pokeBallEntity.aspects.get(), targetPokemon.getPNX()))
 
         pokeBallEntity.shakeEmitter
             .pipe(emitWhile { pokeBallEntity.isAlive && this in battle.captureActions })

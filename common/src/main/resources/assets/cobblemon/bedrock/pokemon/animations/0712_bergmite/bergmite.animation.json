@@ -1,0 +1,42 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.bergmite.ground_idle": {
+			"loop": true,
+			"bones": {
+				"leg_front_left": {
+					"rotation": [-15, 0, -20]
+				},
+				"leg_back_left": {
+					"rotation": [15, 0, -20]
+				},
+				"horn_front": {
+					"rotation": [2.5, 0, 0]
+				},
+				"leg_front_right": {
+					"rotation": [-15, 0, 20]
+				},
+				"leg_back_right": {
+					"rotation": [15, 0, 20]
+				}
+			}
+		},
+		"animation.bergmite.blink": {
+			"animation_length": 0.08333,
+			"bones": {
+				"eyelid_left": {
+					"position": {
+						"0.0": [0, 0, -0.1],
+						"0.0833": [0, 0, 0]
+					}
+				},
+				"eyelid_right": {
+					"position": {
+						"0.0": [0, 0, -0.1],
+						"0.0833": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

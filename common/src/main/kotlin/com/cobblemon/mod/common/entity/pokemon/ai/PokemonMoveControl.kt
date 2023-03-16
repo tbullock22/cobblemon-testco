@@ -82,7 +82,7 @@ class PokemonMoveControl(val pokemonEntity: PokemonEntity) : MoveControl(pokemon
             if (!closeHorizontally) {
                 val angleToTarget = MathHelper.atan2(zDist, xDist).toDegrees() - 90.0f
                 val currentMovingAngle = entity.yaw
-                val steppedAngle = MathHelper.stepUnwrappedAngleTowards(currentMovingAngle, angleToTarget,  if (entity.isOnGround) 20F else 5F)
+                val steppedAngle = MathHelper.stepUnwrappedAngleTowards(currentMovingAngle, angleToTarget,  100 * mediumSpeed)
                 entity.yaw = steppedAngle
             }
 

@@ -360,10 +360,10 @@
   ],
   "preEvolution": "slowpoke",
   "evolutions": [],
-  "baseScale": 1.3,
+  "baseScale": 1.2,
   "hitbox": {
     "width": 0.8,
-    "height": 1.8,
+    "height": 1.6,
     "fixed": false
   },
   "baseFriendship": 50,

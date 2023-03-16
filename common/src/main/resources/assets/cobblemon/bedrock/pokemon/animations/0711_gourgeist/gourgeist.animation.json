@@ -1,0 +1,89 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.gourgeist.ground_idle": {
+			"loop": true,
+			"bones": {
+				"arm_left": {
+					"rotation": [30, 10, 75]
+				},
+				"arm_left4": {
+					"rotation": [0, 0, -15]
+				},
+				"arm_left5": {
+					"rotation": [0, 0, -15]
+				},
+				"finger_left_front": {
+					"rotation": [0, 0, 15]
+				},
+				"finger_left_back": {
+					"rotation": [0, 0, 15]
+				},
+				"finger_left_mid": {
+					"rotation": [0, 0, 7.5]
+				},
+				"hair_back": {
+					"rotation": [5, 0, 0]
+				},
+				"arm_left2": {
+					"rotation": [0, -30, 0]
+				},
+				"arm_left3": {
+					"rotation": [0, 30, 0]
+				},
+				"hair_back2": {
+					"rotation": [5, 0, 0]
+				},
+				"hair_back3": {
+					"rotation": [5, 0, 0]
+				},
+				"hair_back4": {
+					"rotation": [5, 0, 0]
+				},
+				"arm_right": {
+					"rotation": [30, -10, -75]
+				},
+				"arm_right2": {
+					"rotation": [0, 30, 0]
+				},
+				"arm_right3": {
+					"rotation": [0, -30, 0]
+				},
+				"arm_right4": {
+					"rotation": [0, 0, 15]
+				},
+				"arm_right5": {
+					"rotation": [0, 0, 15]
+				},
+				"finger_right_front": {
+					"rotation": [0, 0, -15]
+				},
+				"finger_right_back": {
+					"rotation": [0, 0, -15]
+				},
+				"finger_right_mid": {
+					"rotation": [0, 0, -7.5]
+				}
+			}
+		},
+		"animation.gourgeist.blink": {
+			"animation_length": 0.16667,
+			"bones": {
+				"eyelid_right": {
+					"position": {
+						"0.0": [0, 0, -0.1],
+						"0.125": [0, 0, -0.1],
+						"0.1667": [0, 0, 0]
+					}
+				},
+				"eyelid_left": {
+					"position": {
+						"0.0": [0, 0, -0.1],
+						"0.125": [0, 0, -0.1],
+						"0.1667": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

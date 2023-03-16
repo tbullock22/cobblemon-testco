@@ -13,6 +13,7 @@ import com.cobblemon.mod.common.api.pokemon.PokemonProperties
 import com.cobblemon.mod.common.api.spawning.context.SpawningContext
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import com.cobblemon.mod.common.pokemon.feature.SeasonFeatureHandler
+import com.cobblemon.mod.common.util.toVec3d
 import com.cobblemon.mod.common.util.weightedSelection
 import kotlin.random.Random
 import net.minecraft.item.Items
@@ -49,7 +50,7 @@ class PokemonSpawnAction(
             null
         }?.createStack(ctx)
         val entity = props.createEntity(ctx.world)
-        SeasonFeatureHandler.updateSeason(entity.pokemon, ctx.world, ctx.position)
+        SeasonFeatureHandler.updateSeason(entity.pokemon, Cobblemon.seasonResolver(ctx.world, ctx.position))
         if (heldItem != null) {
             entity.pokemon.swapHeldItem(heldItem)
         }

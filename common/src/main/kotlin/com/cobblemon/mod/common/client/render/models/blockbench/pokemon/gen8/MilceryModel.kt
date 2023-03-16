@@ -22,10 +22,10 @@ class MilceryModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val head = getPart("head")
 
     override val portraitScale = 3.0F
-    override val portraitTranslation = Vec3d(-0.15, -1.0, 0.0)
+    override val portraitTranslation = Vec3d(-0.15, -2.8, 0.0)
 
-    override val profileScale = 1.1F
-    override val profileTranslation = Vec3d(0.0, -0.25, 0.0)
+    override val profileScale = 1.0F
+    override val profileTranslation = Vec3d(0.0, 0.2, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

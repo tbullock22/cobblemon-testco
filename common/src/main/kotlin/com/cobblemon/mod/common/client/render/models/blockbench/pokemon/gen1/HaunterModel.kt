@@ -19,7 +19,7 @@ class HaunterModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("haunter")
 
     override val portraitScale = 2.0F
-    override val portraitTranslation = Vec3d(-0.1, 1.1, 0.0)
+    override val portraitTranslation = Vec3d(-0.1, -0.8, 0.0)
 
     override val profileScale = 1.1F
     override val profileTranslation = Vec3d(0.1, 0.1, 0.0)

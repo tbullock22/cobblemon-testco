@@ -23,8 +23,8 @@ class WeedleModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("weedle")
     override val head = getPart("head")
 
-    override val portraitScale = 1.7F
-    override val portraitTranslation = Vec3d(-0.1, -0.5, 0.0)
+    override val portraitScale = 2.2F
+    override val portraitTranslation = Vec3d(-0.31, -1.83, 0.0)
     override val profileScale = 0.8F
     override val profileTranslation = Vec3d(0.1, 0.6, 0.0)
 

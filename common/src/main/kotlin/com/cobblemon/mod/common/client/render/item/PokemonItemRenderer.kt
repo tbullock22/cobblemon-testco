@@ -29,8 +29,8 @@ class PokemonItemRenderer : CobblemonBuiltinItemRenderer {
         val pokemon = pokemonItem.asPokemon(stack) ?: return
 
         matrices.push()
-        val model = PokemonModelRepository.getPoser(pokemon.species, pokemon.aspects)
-        val renderLayer = model.getLayer(PokemonModelRepository.getTexture(pokemon.species, pokemon.aspects, null))
+        val model = PokemonModelRepository.getPoser(pokemon.species.resourceIdentifier, pokemon.aspects)
+        val renderLayer = model.getLayer(PokemonModelRepository.getTexture(pokemon.species.resourceIdentifier, pokemon.aspects, null))
 
         val transformations = positions[mode]!!
 

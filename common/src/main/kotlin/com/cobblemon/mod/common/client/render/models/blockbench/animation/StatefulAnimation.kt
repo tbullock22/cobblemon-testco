@@ -22,6 +22,7 @@ import net.minecraft.entity.Entity
  * @since December 5th, 2021
  */
 interface StatefulAnimation<T : Entity, F : ModelFrame> {
+    val isTransform: Boolean
     /**
      * Whether this animation should prevent the given idle animation from occurring.
      *

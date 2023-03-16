@@ -149,19 +149,19 @@ class StarterSelectionScreen private constructor(): Screen("cobblemon.ui.starter
         addDrawableChild(selectionButton)
 
         starterRoundaboutCenter = StarterRoundabout(
-            pX = x + 119, pY = height / 2 + 86,
+            pX = x + 119, pY = height / 2 + 84,
             pWidth = StarterRoundabout.MODEL_WIDTH, pHeight = StarterRoundabout.MODEL_HEIGHT,
             pokemon = currentPokemon
         )
 
         starterRoundaboutLeft = StarterRoundabout(
-            pX = x + 89, pY = height / 2 + 86,
+            pX = x + 89, pY = height / 2 + 84,
             pWidth = StarterRoundabout.MODEL_WIDTH, pHeight = StarterRoundabout.MODEL_HEIGHT,
             pokemon = currentCategory.pokemon[leftOfCurrentSelection()]
         )
 
         starterRoundaboutRight = StarterRoundabout(
-            pX = x + 149, pY = height / 2 + 86,
+            pX = x + 149, pY = height / 2 + 84,
             pWidth = StarterRoundabout.MODEL_WIDTH, pHeight = StarterRoundabout.MODEL_HEIGHT,
             pokemon = currentCategory.pokemon[rightOfCurrentSelection()]
         )

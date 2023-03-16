@@ -9,12 +9,8 @@
 package com.cobblemon.mod.common.client.gui.interact.pokemon
 
 import com.cobblemon.mod.common.api.gui.blitk
-import com.cobblemon.mod.common.api.storage.pc.PCPosition
-import com.cobblemon.mod.common.api.text.bold
-import com.cobblemon.mod.common.client.gui.pc.StorageSlot
 import com.cobblemon.mod.common.net.messages.server.pokemon.interact.InteractPokemonPacket
 import com.cobblemon.mod.common.util.cobblemonResource
-import com.cobblemon.mod.common.util.lang
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.util.math.MatrixStack

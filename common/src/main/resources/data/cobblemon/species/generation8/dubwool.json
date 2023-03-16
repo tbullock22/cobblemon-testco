@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Dubwool",
   "nationalPokedexNumber": 832,
   "primaryType": "normal",
@@ -21,6 +22,17 @@
   "baseExperienceYield": 172,
   "experienceGroup": "medium_fast",
   "eggCycles": 15,
+  "features": [
+    "sheared"
+  ],
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    }
+  },
   "eggGroups": [
     "field"
   ],
@@ -74,10 +86,10 @@
   ],
   "preEvolution": "wooloo",
   "evolutions": [],
-  "baseScale": 1,
+  "baseScale": 1.2,
   "hitbox": {
     "width": 1,
-    "height": 1,
+    "height": 1.2,
     "fixed": false
   },
   "baseFriendship": 50,

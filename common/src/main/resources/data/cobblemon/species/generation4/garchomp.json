@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Garchomp",
   "nationalPokedexNumber": 445,
   "primaryType": "dragon",
@@ -14,6 +15,16 @@
     "special_attack": 80,
     "special_defence": 85,
     "speed": 102
+  },
+  "behaviour": {
+    "moving": {
+      "walk": {
+        "walkSpeed": 0.5
+      },
+      "fly": {
+        "canFly": true
+      }
+    }
   },
   "catchRate": 45,
   "maleRatio": 0.5,
@@ -182,10 +193,10 @@
   ],
   "preEvolution": "gabite",
   "evolutions": [],
-  "baseScale": 1,
+  "baseScale": 1.2,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 1.3,
+    "height": 2.3,
     "fixed": false
   },
   "baseFriendship": 50,

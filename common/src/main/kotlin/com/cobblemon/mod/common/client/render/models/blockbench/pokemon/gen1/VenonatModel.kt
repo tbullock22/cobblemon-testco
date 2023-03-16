@@ -24,11 +24,11 @@ class VenonatModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame {
     override val leftLeg = getPart("foot_left")
     override val rightLeg = getPart("foot_right")
 
-    override val portraitScale = 1.65F
-    override val portraitTranslation = Vec3d(-0.01, -0.8, 0.0)
+    override val portraitScale = 2.2F
+    override val portraitTranslation = Vec3d(-0.1, -1.5, 0.0)
 
-    override val profileScale = 0.95F
-    override val profileTranslation = Vec3d(0.0, 0.31, 0.0)
+    override val profileScale = 1.1F
+    override val profileTranslation = Vec3d(0.0, 0.08, 0.0)
 
     lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose

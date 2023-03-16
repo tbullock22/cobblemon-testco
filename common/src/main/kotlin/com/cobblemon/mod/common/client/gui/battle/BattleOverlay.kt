@@ -22,10 +22,10 @@ import com.cobblemon.mod.common.client.keybind.keybinds.PartySendBinding
 import com.cobblemon.mod.common.client.render.drawScaledText
 import com.cobblemon.mod.common.client.render.getDepletableRedGreen
 import com.cobblemon.mod.common.client.render.models.blockbench.PoseableEntityState
-import com.cobblemon.mod.common.client.render.models.blockbench.pokeball.PokeBallModel
 import com.cobblemon.mod.common.client.render.models.blockbench.repository.PokeBallModelRepository
 import com.cobblemon.mod.common.client.render.models.blockbench.wavefunction.sineFunction
 import com.cobblemon.mod.common.entity.PoseType
+import com.cobblemon.mod.common.entity.pokeball.EmptyPokeBallEntity
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import com.cobblemon.mod.common.pokemon.Gender
 import com.cobblemon.mod.common.pokemon.Species
@@ -37,7 +37,6 @@ import com.mojang.blaze3d.systems.RenderSystem
 import java.lang.Double.max
 import java.lang.Double.min
 import java.util.UUID
-import kotlin.math.roundToInt
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.gui.hud.InGameHud
@@ -197,12 +196,6 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
         health: Float,
         isFlatHealth: Boolean
     ) {
-
-        val mc = MinecraftClient.getInstance()
-        fun scaleIt(i: Number): Int {
-            return (mc.window.scaleFactor * i.toFloat()).roundToInt()
-        }
-
         val portraitStartX = x + if (!reversed) PORTRAIT_OFFSET_X else { TILE_WIDTH - PORTRAIT_DIAMETER - PORTRAIT_OFFSET_X }
         blitk(
             matrixStack = matrices,
@@ -228,7 +221,7 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
             0.0
         )
         matrixStack.push()
-        if (ballState != null && ballState.phase == ClientBallDisplay.Phase.SHAKING) {
+        if (ballState != null && ballState.stateEmitter.get() == EmptyPokeBallEntity.CaptureState.SHAKE) {
             drawPokeBall(
                 state = ballState,
                 matrixStack = matrixStack,
@@ -383,11 +376,11 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
     private fun drawPokeBall(
         state: ClientBallDisplay,
         matrixStack: MatrixStack,
-        scale: Float = 6F,
+        scale: Float = 5F,
         reversed: Boolean = false
     ) {
-        val model = PokeBallModelRepository.getModel(state.pokeBall).entityModel as PokeBallModel
-        val texture = PokeBallModelRepository.getModelTexture(state.pokeBall)
+        val model = PokeBallModelRepository.getPoser(state.pokeBall.name, state.aspects)
+        val texture = PokeBallModelRepository.getTexture(state.pokeBall.name, state.aspects, state)
         val renderType = model.getLayer(texture)
 
         RenderSystem.applyModelViewMatrix()
@@ -398,9 +391,11 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
         state.timeEnteredPose = 0F
         model.setupAnimStateful(null, state, 0F, 0F, 0F, 0F, 0F)
 
-        matrixStack.scale(scale, -scale, scale)
-        matrixStack.translate(0.0, -4.5, -4.0)
-        matrixStack.scale(scale * state.scale, scale * state.scale, 0.01F)
+        matrixStack.scale(scale, scale, -scale)
+        matrixStack.translate(0.0, -2.0, -4.0)
+        matrixStack.push()
+
+        matrixStack.scale(scale * state.scale, scale * state.scale, 0.1F)
 
         matrixStack.multiply(quaternion1)
         matrixStack.multiply(quaternion2)
@@ -412,10 +407,12 @@ class BattleOverlay : InGameHud(MinecraftClient.getInstance(), MinecraftClient.g
 
         val immediate = MinecraftClient.getInstance().bufferBuilders.entityVertexConsumers
         val buffer = immediate.getBuffer(renderType)
-        val packedLight = LightmapTextureManager.pack(8, 4)
+        val packedLight = LightmapTextureManager.pack(11, 7)
         model.render(matrixStack, buffer, packedLight, OverlayTexture.DEFAULT_UV, 1F, 1F, 1F, 1F)
 
         immediate.draw()
+
+        matrixStack.pop()
 
         DiffuseLighting.enableGuiDepthLighting()
     }

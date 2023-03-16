@@ -1,0 +1,30 @@
+{
+  "species": "cobblemon:eiscue",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [],
+      "poser": "cobblemon:eiscue",
+      "model": "cobblemon:eiscue.geo",
+      "texture": "cobblemon:textures/pokemon/0875_eiscue/eiscue.png",
+      "layers": []
+    },
+    {
+      "aspects": ["no_ice"],
+      "texture": "cobblemon:textures/pokemon/0875_eiscue/eiscue_no_ice.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0875_eiscue/eiscue_shiny.png"
+    },
+    {
+      "aspects": [
+        "shiny", "no_ice"
+      ],
+      "texture": "cobblemon:textures/pokemon/0875_eiscue/eiscue_no_ice_shiny.png"
+    }
+  ]
+}

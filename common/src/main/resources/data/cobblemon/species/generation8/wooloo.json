@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Wooloo",
   "nationalPokedexNumber": 831,
   "primaryType": "normal",
@@ -21,6 +22,9 @@
   "baseExperienceYield": 122,
   "experienceGroup": "medium_fast",
   "eggCycles": 15,
+  "features": [
+    "sheared"
+  ],
   "eggGroups": [
     "field"
   ],

@@ -40,7 +40,6 @@ import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.eventbus.api.SubscribeEvent
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
 
 @EventBusSubscriber(
     modid = Cobblemon.MODID,
@@ -57,12 +56,22 @@ object CobblemonForgeClient : CobblemonClientImplementation {
         }
     }
     init {
-        FMLJavaModLoadingContext.get().modEventBus.addListener(this::register3dPokeballModels)
+        with(thedarkcolour.kotlinforforge.forge.MOD_BUS) {
+            addListener(this@CobblemonForgeClient::register3dPokeballModels)
+            addListener(this@CobblemonForgeClient::onRegisterParticleProviders)
+            addListener(this@CobblemonForgeClient::onKeyMappingRegister)
+            addListener(this@CobblemonForgeClient::onClientSetup)
+        }
+
         registerParticleFactory(CobblemonParticles.SNOWSTORM_PARTICLE, SnowstormParticleType::Factory)
+
+        MinecraftForge.EVENT_BUS.addListener<RenderGuiOverlayEvent.Pre> { event ->
+            if (event.overlay.id == VanillaGuiOverlay.CHAT_PANEL.id()) {
+                CobblemonClient.beforeChatRender(event.poseStack, event.partialTick)
+            }
+        }
     }
 
-    @JvmStatic
-    @SubscribeEvent
     fun onClientSetup(event: FMLClientSetupEvent) {
         (MinecraftClient.getInstance().resourceManager as ReloadableResourceManagerImpl)
             .registerReloader(object : SynchronousResourceReloader {
@@ -88,23 +97,12 @@ object CobblemonForgeClient : CobblemonClientImplementation {
         particleFactories.add(PreparedParticleFactory(type, factory))
     }
 
-    @SubscribeEvent
-    fun onRenderGameOverlay(event: RenderGuiOverlayEvent.Pre) {
-        if (event.overlay.id == VanillaGuiOverlay.CHAT_PANEL.id()) {
-            CobblemonClient.beforeChatRender(event.poseStack, event.partialTick)
-        }
-    }
-
-    @JvmStatic
-    @SubscribeEvent
     fun onRegisterParticleProviders(event: RegisterParticleProvidersEvent) {
         for (factoryProviders in particleFactories) {
             factoryProviders.register(event)
         }
     }
 
-    @JvmStatic
-    @SubscribeEvent
     fun onKeyMappingRegister(event: RegisterKeyMappingsEvent) {
         CobblemonKeyBinds.register(event::register)
     }

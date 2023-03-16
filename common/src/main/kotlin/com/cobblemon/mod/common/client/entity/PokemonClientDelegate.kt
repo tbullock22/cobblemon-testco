@@ -119,4 +119,12 @@ class PokemonClientDelegate : PoseableEntityState<PokemonEntity>(), PokemonSideD
     fun setPhaseTarget(targetId: Int) {
         this.phaseTarget = entity.world.getEntityById(targetId)
     }
+
+    override fun handleStatus(status: Byte) {
+        if (status == 10.toByte()) {
+            val model = (currentModel ?: return) as PokemonPoseableModel
+            val animation = model.getEatAnimation(entity, this) ?: return
+            statefulAnimations.add(animation)
+        }
+    }
 }

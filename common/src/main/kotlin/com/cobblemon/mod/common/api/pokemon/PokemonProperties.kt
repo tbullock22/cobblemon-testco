@@ -9,6 +9,7 @@
 package com.cobblemon.mod.common.api.pokemon
 
 import com.cobblemon.mod.common.Cobblemon
+import com.cobblemon.mod.common.api.abilities.Abilities
 import com.cobblemon.mod.common.api.pokeball.PokeBalls
 import com.cobblemon.mod.common.api.pokemon.aspect.AspectProvider
 import com.cobblemon.mod.common.api.properties.CustomPokemonProperty
@@ -78,6 +79,7 @@ open class PokemonProperties {
             props.friendship = parseIntProperty(keyPairs, listOf("friendship"))?.coerceIn(0, Cobblemon.config.maxPokemonFriendship)
             props.pokeball = parseIdentifierOfRegistry(keyPairs, listOf("pokeball")) { identifier -> PokeBalls.getPokeBall(identifier)?.name?.toString() }
             props.nature = parseIdentifierOfRegistry(keyPairs, listOf("nature")) { identifier -> Natures.getNature(identifier)?.name?.toString() }
+            props.ability = parseStringOfRegistry(keyPairs, listOf("ability")) { string -> Abilities.get(string)?.name }
             props.updateAspects()
             return props
         }
@@ -102,6 +104,16 @@ open class PokemonProperties {
             return try {
                 val identifier = value.asIdentifierDefaultingNamespace()
                 valueFetcher(identifier)
+            } catch (_: InvalidIdentifierException) {
+                null
+            }
+        }
+
+        private fun parseStringOfRegistry(keyPairs: MutableList<Pair<String, String?>>, validKeys: List<String>, valueFetcher: (String) -> String?): String? {
+            val matched = getMatchedKeyPair(keyPairs, validKeys) ?: return null
+            val value = matched.second?.lowercase() ?: return null
+            return try {
+                valueFetcher(value)
             } catch (_: InvalidIdentifierException) {
                 null
             }
@@ -203,6 +215,7 @@ open class PokemonProperties {
     var friendship: Int? = null
     var pokeball: String? = null
     var nature: String? = null
+    var ability: String? = null
     var aspects: Set<String> = emptySet()
 
     var customProperties = mutableListOf<CustomPokemonProperty>()
@@ -236,7 +249,8 @@ open class PokemonProperties {
         level?.let { pokemon.level = it }
         friendship?.let { pokemon.setFriendship(it) }
         pokeball?.let { PokeBalls.getPokeBall(it.asIdentifierDefaultingNamespace())?.let { pokeball -> pokemon.caughtBall = pokeball } }
-        nature?.let { Natures.getNature(it.asIdentifierDefaultingNamespace())?.let { nature -> pokemon.nature = nature } }
+        nature?.let  { Natures.getNature(it.asIdentifierDefaultingNamespace())?.let { nature -> pokemon.nature = nature } }
+        ability?.let { Abilities.getOrException(it).create(true).let { ability -> pokemon.ability = ability } }
         customProperties.forEach { it.apply(pokemon) }
     }
 
@@ -259,6 +273,7 @@ open class PokemonProperties {
         friendship?.let { pokemonEntity.pokemon.setFriendship(it) }
         pokeball?.let { PokeBalls.getPokeBall(it.asIdentifierDefaultingNamespace())?.let { pokeball -> pokemonEntity.pokemon.caughtBall = pokeball } }
         nature?.let { Natures.getNature(it.asIdentifierDefaultingNamespace())?.let { nature -> pokemonEntity.pokemon.nature = nature } }
+        ability?.let { Abilities.getOrException(it).create(true).let { ability -> pokemonEntity.pokemon.ability = ability } }
         customProperties.forEach { it.apply(pokemonEntity) }
     }
 
@@ -284,6 +299,7 @@ open class PokemonProperties {
         friendship?.takeIf { it != pokemon.friendship }?.let { return false }
         pokeball?.takeIf { it != pokemon.caughtBall.name.toString() }?.let { return false }
         nature?.takeIf { it != pokemon.nature.name.toString() }?.let { return false }
+        ability?.takeIf { it != pokemon.ability.name }?. let {return false}
         return customProperties.none { !it.matches(pokemon) }
     }
 
@@ -307,6 +323,7 @@ open class PokemonProperties {
         friendship?.takeIf { it != pokemonEntity.pokemon.friendship }?.let { return false }
         pokeball?.takeIf { it != pokemonEntity.pokemon.caughtBall.name.toString() }?.let { return false }
         nature?.takeIf { it != pokemonEntity.pokemon.nature.name.toString() }?.let { return false }
+        ability?.takeIf { it != pokemonEntity.pokemon.ability.name }?. let { return false }
         return customProperties.none { !it.matches(pokemonEntity) }
     }
 
@@ -340,6 +357,7 @@ open class PokemonProperties {
         friendship?.let { nbt.putInt(DataKeys.POKEMON_FRIENDSHIP, it) }
         pokeball?.let { nbt.putString(DataKeys.POKEMON_CAUGHT_BALL, it) }
         nature?.let { nbt.putString(DataKeys.POKEMON_NATURE, it) }
+        ability?.let { nbt.putString(DataKeys.POKEMON_ABILITY, it) }
         val custom = NbtList()
         customProperties.map { NbtString.of(it.asString()) }.forEach { custom.add(it) }
         nbt.put(DataKeys.POKEMON_PROPERTIES_CUSTOM, custom)
@@ -356,6 +374,7 @@ open class PokemonProperties {
         friendship = if (tag.contains(DataKeys.POKEMON_FRIENDSHIP)) tag.getInt(DataKeys.POKEMON_FRIENDSHIP) else null
         pokeball = if (tag.contains(DataKeys.POKEMON_CAUGHT_BALL)) tag.getString(DataKeys.POKEMON_CAUGHT_BALL) else null
         nature = if (tag.contains(DataKeys.POKEMON_NATURE)) tag.getString(DataKeys.POKEMON_NATURE) else null
+        ability = if (tag.contains(DataKeys.POKEMON_ABILITY)) tag.getString(DataKeys.POKEMON_ABILITY) else null
         val custom = tag.getList(DataKeys.POKEMON_PROPERTIES_CUSTOM, NbtElement.STRING_TYPE.toInt())
         // This is kinda gross
         custom.forEach { customProperties.addAll(parse(it.asString()).customProperties) }
@@ -374,6 +393,7 @@ open class PokemonProperties {
         friendship?.let { json.addProperty(DataKeys.POKEMON_FRIENDSHIP, it) }
         pokeball?.let { json.addProperty(DataKeys.POKEMON_CAUGHT_BALL, it) }
         nature?.let { json.addProperty(DataKeys.POKEMON_NATURE, it) }
+        ability?.let { json.addProperty(DataKeys.POKEMON_ABILITY, it) }
         val custom = JsonArray()
         customProperties.map { it.asString() }.forEach { custom.add(it) }
         json.add(DataKeys.POKEMON_PROPERTIES_CUSTOM, custom)
@@ -391,6 +411,7 @@ open class PokemonProperties {
         friendship = json.get(DataKeys.POKEMON_FRIENDSHIP)?.asInt
         pokeball = json.get(DataKeys.POKEMON_CAUGHT_BALL)?.asString
         nature = json.get(DataKeys.POKEMON_NATURE)?.asString
+        ability = json.get(DataKeys.POKEMON_ABILITY)?.asString
         val custom = json.get(DataKeys.POKEMON_PROPERTIES_CUSTOM)?.asJsonArray
         // This is still kinda gross
         custom?.forEach { customProperties.addAll(parse(it.asString).customProperties) }
@@ -408,6 +429,7 @@ open class PokemonProperties {
         friendship?.let { pieces.add("friendship=$it") }
         pokeball?.let { pieces.add("pokeball=$it") }
         nature?.let { pieces.add("nature=$it") }
+        ability?.let { pieces.add("ability=$it") }
         customProperties.forEach { pieces.add(it.asString()) }
         return pieces.joinToString(separator)
     }

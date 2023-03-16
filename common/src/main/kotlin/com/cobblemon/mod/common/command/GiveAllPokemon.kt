@@ -42,10 +42,10 @@ object GiveAllPokemon {
         val player = context.source.playerOrThrow
         val pc = player.party().getOverflowPC() ?: return 0
 
-        for (species in PokemonSpecies.implemented) {
-            if (species.nationalPokedexNumber in range) {
-                pc.add(species.create())//.sendOut(player.world as ServerWorld, player.pos)
-            }
+        val orderedSpeces = PokemonSpecies.implemented.sortedBy { it.nationalPokedexNumber }
+
+        for (species in orderedSpeces) {
+            pc.add(species.create())//.sendOut(player.world as ServerWorld, player.pos)
         }
 
         return Command.SINGLE_SUCCESS

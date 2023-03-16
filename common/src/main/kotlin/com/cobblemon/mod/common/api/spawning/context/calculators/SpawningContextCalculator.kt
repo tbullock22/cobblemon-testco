@@ -29,10 +29,7 @@ import net.minecraft.world.World
  */
 interface SpawningContextCalculator<I : SpawningContextInput, O : SpawningContext> {
     companion object {
-        var foliageMaterials = mutableListOf(
-            Material.LEAVES
-        )
-        val isAirCondition: (BlockState) -> Boolean = { it.isAir || !it.material.isSolid }
+        val isAirCondition: (BlockState) -> Boolean = { it.isAir || (!it.material.isSolid && !it.material.isLiquid) }
         val isSolidCondition: (BlockState) -> Boolean = { it.material.isSolid && it.material != Material.LEAVES }
         val isWaterCondition: (BlockState) -> Boolean = { it.material == Material.WATER && it.fluidState.isStill  }
         val isLavaCondition: (BlockState) -> Boolean = { it.material == Material.LAVA && it.fluidState.isStill }

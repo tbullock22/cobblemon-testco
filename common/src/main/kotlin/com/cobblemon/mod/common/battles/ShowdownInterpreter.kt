@@ -20,21 +20,41 @@ import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent
 import com.cobblemon.mod.common.api.moves.Moves
 import com.cobblemon.mod.common.api.pokemon.stats.Stats
 import com.cobblemon.mod.common.api.pokemon.status.Statuses
-import com.cobblemon.mod.common.api.text.*
-import com.cobblemon.mod.common.battles.dispatch.*
+import com.cobblemon.mod.common.api.text.aqua
+import com.cobblemon.mod.common.api.text.gold
+import com.cobblemon.mod.common.api.text.plus
+import com.cobblemon.mod.common.api.text.red
+import com.cobblemon.mod.common.api.text.text
+import com.cobblemon.mod.common.battles.dispatch.BattleDispatch
+import com.cobblemon.mod.common.battles.dispatch.DispatchResult
+import com.cobblemon.mod.common.battles.dispatch.GO
+import com.cobblemon.mod.common.battles.dispatch.UntilDispatch
+import com.cobblemon.mod.common.battles.dispatch.WaitDispatch
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
-import com.cobblemon.mod.common.net.messages.client.battle.*
+import com.cobblemon.mod.common.net.messages.client.battle.BattleFaintPacket
+import com.cobblemon.mod.common.net.messages.client.battle.BattleHealthChangePacket
+import com.cobblemon.mod.common.net.messages.client.battle.BattleInitializePacket
+import com.cobblemon.mod.common.net.messages.client.battle.BattleMakeChoicePacket
+import com.cobblemon.mod.common.net.messages.client.battle.BattlePersistentStatusPacket
+import com.cobblemon.mod.common.net.messages.client.battle.BattleQueueRequestPacket
+import com.cobblemon.mod.common.net.messages.client.battle.BattleSetTeamPokemonPacket
+import com.cobblemon.mod.common.net.messages.client.battle.BattleSwitchPokemonPacket
 import com.cobblemon.mod.common.pokemon.evolution.progress.DamageTakenEvolutionProgress
 import com.cobblemon.mod.common.pokemon.evolution.progress.RecoilEvolutionProgress
 import com.cobblemon.mod.common.pokemon.evolution.progress.UseMoveEvolutionProgress
 import com.cobblemon.mod.common.pokemon.status.PersistentStatus
-import com.cobblemon.mod.common.util.*
+import com.cobblemon.mod.common.util.asTranslated
+import com.cobblemon.mod.common.util.battleLang
+import com.cobblemon.mod.common.util.getPlayer
+import com.cobblemon.mod.common.util.lang
+import com.cobblemon.mod.common.util.runOnServer
+import com.cobblemon.mod.common.util.swap
+import java.util.UUID
+import java.util.concurrent.CompletableFuture
+import kotlin.math.roundToInt
 import net.minecraft.entity.LivingEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
-import java.util.*
-import java.util.concurrent.CompletableFuture
-import kotlin.math.roundToInt
 
 object ShowdownInterpreter {
     private val updateInstructions = mutableMapOf<String, (PokemonBattle, String, MutableList<String>) -> Unit>()
@@ -540,7 +560,12 @@ object ShowdownInterpreter {
             this.lastMover[battle.battleId] = message
             val userPNX = editMessaged.split("|")[0].split(":")[0].trim()
             val (_, userPokemon) = battle.getActorAndActiveSlotFromPNX(userPNX)
-            val move = editMessaged.split("|")[1].split("|")[0]
+            val moveName = editMessaged.split("|")[1].split("|")[0]
+                .replace(" ", "")
+                .lowercase()
+                .replace("[^A-z0-9]".toRegex(), "")
+
+            val moveTemplate = Moves.getByName(moveName) ?: return@dispatch GO.also { battle.broadcastChatMessage("UNRECOGNIZED MOVE: $moveName".text()) }
             val hasTarget = editMessaged.split("|").size == 3 && editMessaged.split("|")[2].isNotEmpty()
             val targetPokemon = if (hasTarget) {
                 val targetPNX = editMessaged.split("|")[2].split(":")[0]
@@ -549,12 +574,10 @@ object ShowdownInterpreter {
                 null
             }
             userPokemon.battlePokemon?.effectedPokemon?.let { pokemon ->
-                Moves.getByName(move)?.let { moveTemplate ->
-                    val progress = UseMoveEvolutionProgress()
-                    if (progress.shouldKeep(pokemon)) {
-                        val created = pokemon.evolutionProxy.current().progressFirstOrCreate({ it is UseMoveEvolutionProgress && it.currentProgress().move == moveTemplate }) { progress }
-                        created.updateProgress(UseMoveEvolutionProgress.Progress(created.currentProgress().move, created.currentProgress().amount + 1))
-                    }
+                val progress = UseMoveEvolutionProgress()
+                if (progress.shouldKeep(pokemon)) {
+                    val created = pokemon.evolutionProxy.current().progressFirstOrCreate({ it is UseMoveEvolutionProgress && it.currentProgress().move == moveTemplate }) { progress }
+                    created.updateProgress(UseMoveEvolutionProgress.Progress(created.currentProgress().move, created.currentProgress().amount + 1))
                 }
             }
             if (targetPokemon != null && targetPokemon.second != userPokemon) {
@@ -563,14 +586,14 @@ object ShowdownInterpreter {
                 battle.broadcastChatMessage(battleLang(
                     key = "used_move_on",
                     userPokemon.battlePokemon?.getName() ?: "ERROR".red(),
-                    move,
+                    moveTemplate.displayName,
                     targetPokemon.battlePokemon?.getName() ?: "ERROR".red()
                 ))
             } else {
                 battle.broadcastChatMessage(battleLang(
                     key = "used_move",
                     userPokemon.battlePokemon?.getName() ?: "ERROR".red(),
-                    move
+                    moveTemplate.displayName
                 ))
             }
             GO
@@ -766,6 +789,7 @@ object ShowdownInterpreter {
                 "healbell" -> battleLang("activate.heal_bell")
                 "aromatherapy" -> battleLang("activate.aromatherapy")
                 "trapped" -> battleLang("activate.trapped")
+                "quickclaw" -> battleLang("item.quick_claw.end", pokemonName)
                 else -> battle.createUnimplemented(message)
             }
             battle.broadcastChatMessage(lang)
@@ -874,8 +898,10 @@ object ShowdownInterpreter {
                 battleActor.responses.clear()
                 // We need to send this out because 'upkeep' isn't received until the request is handled since the turn won't swap
                 if (request.forceSwitch.withIndex().any { it.value && battleActor.activePokemon.getOrNull(it.index)?.isGone() == false }) {
-                    battleActor.mustChoose = true
-                    battleActor.sendUpdate(BattleMakeChoicePacket())
+                    battle.doWhenClear {
+                        battleActor.mustChoose = true
+                        battleActor.sendUpdate(BattleMakeChoicePacket())
+                    }
                 }
             }
         } else {
@@ -891,14 +917,21 @@ object ShowdownInterpreter {
             val uuid = UUID.fromString(publicMessage.split("|")[2].split(":")[1].trim())
             val pokemon = actor.pokemonList.find { it.uuid == uuid } ?: throw IllegalStateException("Unable to find ${actor.showdownId}'s Pokemon with UUID: $uuid")
             val entity = if (actor is EntityBackedBattleActor<*>) actor.entity else null
+
             activePokemon.battlePokemon = pokemon
             val pokemonEntity = pokemon.entity
             if (pokemonEntity == null && entity != null) {
+                val targetPos = battleActor.getSide().getOppositeSide().actors.filterIsInstance<EntityBackedBattleActor<*>>().firstOrNull()?.entity?.pos?.let { pos ->
+                    val offset = pos.subtract(entity.pos)
+                    val idealPos = entity.pos.add(offset.multiply(0.33))
+                    idealPos
+                } ?: entity.pos
+
                 pokemon.effectedPokemon.sendOutWithAnimation(
                     source = entity,
                     battleId = battle.battleId,
                     level = entity.world as ServerWorld,
-                    position = entity.pos
+                    position = targetPos
                 )
             }
         } else {
@@ -1102,6 +1135,7 @@ object ShowdownInterpreter {
                             "aquaring" -> battleLang("heal.aqua_ring", battlePokemon.getName())
                             "ingrain" -> battleLang("heal.ingrain", battlePokemon.getName())
                             "grassyterrain" -> battleLang("heal.grassy_terrain", battlePokemon.getName())
+                            "leftovers" -> battleLang("heal.leftovers", battlePokemon.getName())
                             else -> battle.createUnimplementedSplit(publicMessage, privateMessage)
                         }
                     }

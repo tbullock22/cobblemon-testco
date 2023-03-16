@@ -15,9 +15,11 @@ import com.cobblemon.mod.common.client.entity.PokemonClientDelegate.Companion.BE
 import com.cobblemon.mod.common.client.keybind.boundKey
 import com.cobblemon.mod.common.client.keybind.keybinds.PartySendBinding
 import com.cobblemon.mod.common.client.render.addVertex
+import com.cobblemon.mod.common.client.render.models.blockbench.PoseableEntityModel
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
 import com.cobblemon.mod.common.client.render.models.blockbench.repository.PokemonModelRepository
 import com.cobblemon.mod.common.client.render.models.blockbench.wavefunction.parabolaFunction
+import com.cobblemon.mod.common.client.render.pokeball.PokeBallPoseableState
 import com.cobblemon.mod.common.client.render.renderBeaconBeam
 import com.cobblemon.mod.common.client.settings.ServerSettings
 import com.cobblemon.mod.common.entity.pokeball.EmptyPokeBallEntity
@@ -25,8 +27,11 @@ import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import com.cobblemon.mod.common.util.isLookingAt
 import com.cobblemon.mod.common.util.lang
 import com.cobblemon.mod.common.util.math.DoubleRange
+import com.cobblemon.mod.common.util.math.geometry.getOrigin
 import com.cobblemon.mod.common.util.math.geometry.toRadians
 import com.cobblemon.mod.common.util.math.remap
+import java.util.Vector
+import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.tan
 import net.minecraft.client.MinecraftClient
@@ -39,14 +44,14 @@ import net.minecraft.client.render.entity.model.EntityModel
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.particle.ParticleTypes
+import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.MathConstants.PI
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Quaternion
 import net.minecraft.util.math.Vec3f
 import net.minecraft.util.math.Vector4f
-import kotlin.math.max
-import net.minecraft.text.Text
 
 class PokemonRenderer(
     context: EntityRendererFactory.Context
@@ -57,10 +62,13 @@ class PokemonRenderer(
             peak = 1F,
             period = 1F
         )
+
+        val recallBeamColour = Vector4f(1F, 0.1F, 0.1F, 1F)
+        val sendOutBeamColour = Vector4f(0.85F, 0.85F, 1F, 0.5F)
     }
 
     override fun getTexture(entity: PokemonEntity): Identifier {
-        return PokemonModelRepository.getTexture(entity.pokemon.species, entity.aspects.get(), entity.delegate as PokemonClientDelegate)
+        return PokemonModelRepository.getTexture(entity.pokemon.species.resourceIdentifier, entity.aspects.get(), entity.delegate as PokemonClientDelegate)
     }
 
     override fun render(
@@ -71,13 +79,13 @@ class PokemonRenderer(
         buffer: VertexConsumerProvider,
         packedLight: Int
     ) {
-        shadowRadius = min((entity.boundingBox.maxX - entity.boundingBox.minX), (entity.boundingBox.maxZ) - (entity.boundingBox.minZ)).toFloat()
+        shadowRadius = min((entity.boundingBox.maxX - entity.boundingBox.minX), (entity.boundingBox.maxZ) - (entity.boundingBox.minZ)).toFloat() / 1.5F
         DELTA_TICKS = partialTicks // TODO move this somewhere universal // or just fecking remove it
-        model = PokemonModelRepository.getPoser(entity.pokemon.species, entity.aspects.get())
+        model = PokemonModelRepository.getPoser(entity.pokemon.species.resourceIdentifier, entity.aspects.get())
 
         val clientDelegate = entity.delegate as PokemonClientDelegate
         val beamMode = entity.beamModeEmitter.get().toInt()
-        val modelNow = model
+        val modelNow = model as PoseableEntityModel<PokemonEntity>
         val s = clientDelegate.secondsSinceBeamEffectStarted
         if (modelNow is PokemonPoseableModel && beamMode != 0) {
             if (s > BEAM_EXTEND_TIME) {
@@ -94,22 +102,18 @@ class PokemonRenderer(
         }
 
         val phaseTarget = clientDelegate.phaseTarget
+        val lightColour = if (beamMode == 1) sendOutBeamColour else recallBeamColour
         if (phaseTarget != null && beamMode != 0) {
-            renderBeam(poseMatrix, partialTicks, entity, phaseTarget, buffer)
+            renderBeam(poseMatrix, partialTicks, entity, phaseTarget, lightColour, buffer)
         }
 
-        if (modelNow is PokemonPoseableModel) {
-            modelNow.setLayerContext(buffer, clientDelegate, PokemonModelRepository.getLayers(entity.pokemon.species, entity.aspects.get()))
-        }
+        modelNow.setLayerContext(buffer, clientDelegate, PokemonModelRepository.getLayers(entity.pokemon.species.resourceIdentifier, entity.aspects.get()))
 
         super.render(entity, entityYaw, partialTicks, poseMatrix, buffer, packedLight)
 
-        if (modelNow is PokemonPoseableModel) {
-            modelNow.green = 1F
-            modelNow.blue = 1F
-
-            modelNow.resetLayerContext()
-        }
+        modelNow.green = 1F
+        modelNow.blue = 1F
+        modelNow.resetLayerContext()
 
         if (phaseTarget != null && beamMode != 0) {
             val glowMultiplier = if (s > BEAM_EXTEND_TIME && s < BEAM_EXTEND_TIME + BEAM_SHRINK_TIME) {
@@ -124,9 +128,9 @@ class PokemonRenderer(
                     matrixStack = poseMatrix,
                     entity = entity,
                     buffer = buffer,
-                    red = 1F,
-                    green = 0F,
-                    blue = 0F,
+                    red = lightColour.x,
+                    green = lightColour.y,
+                    blue = lightColour.z,
                     alpha = 1F,
                     glowLength = glowMultiplier * entity.width * 1.5F,
                     glowRangeAngle = PI / 7
@@ -143,11 +147,12 @@ class PokemonRenderer(
         pMatrixStack.scale(scale, scale, scale)
     }
 
-    fun renderBeam(matrixStack: MatrixStack, partialTicks: Float, entity: PokemonEntity, beamTarget: Entity, buffer: VertexConsumerProvider) {
+    fun renderBeam(matrixStack: MatrixStack, partialTicks: Float, entity: PokemonEntity, beamTarget: Entity, colour: Vector4f, buffer: VertexConsumerProvider) {
         val clientDelegate = entity.delegate as PokemonClientDelegate
         val pokemonPosition = entity.pos.add(0.0, entity.height / 2.0 * clientDelegate.entityScaleModifier.toDouble(), 0.0)
         val beamSourcePosition = if (beamTarget is EmptyPokeBallEntity) {
-            beamTarget.pos.let { it.add(pokemonPosition.subtract(it).normalize().multiply(0.4, 0.0, 0.4)) }
+            (beamTarget.delegate as PokeBallPoseableState).locatorStates["beam"]!!.matrix.getOrigin()
+//            beamTarget.pos.let { it.add(pokemonPosition.subtract(it).normalize().multiply(0.4, 0.0, 0.4)) }
         } else {
             beamTarget as PlayerEntity
             if (beamTarget.uuid == MinecraftClient.getInstance().player?.uuid) {
@@ -158,7 +163,6 @@ class PokemonRenderer(
                 beamTarget.getCameraPosVec(partialTicks).subtract(0.0, 0.7, 0.0).subtract(lookVec.multiply(0.4))
             }
         }
-
 
         if (beamSourcePosition.distanceTo(pokemonPosition) > 20) {
             return
@@ -194,10 +198,10 @@ class PokemonRenderer(
             partialTicks = partialTicks,
             totalLevelTime = entity.world.time,
             height = pokemonPosition.distanceTo(beamSourcePosition).toFloat() * ratio,
-            red = 1F,
-            green = 0.1F,
-            blue = 0.1F,
-            alpha = 1F,
+            red = colour.x,
+            green = colour.y,
+            blue = colour.z,
+            alpha = colour.w,
             beamRadius = 0.03F,
             glowRadius = 0.07F,
             glowAlpha = 0.4F
@@ -292,7 +296,7 @@ class PokemonRenderer(
         }
         val player = MinecraftClient.getInstance().player ?: return
         val d = this.dispatcher.getSquaredDistanceToCamera(entity)
-        if(d <= 4096.0){
+        if (d <= 4096.0){
             val scale = min(1.5, max(0.65, d.remap(DoubleRange(-16.0, 96.0), DoubleRange(0.0, 1.0))))
             val sizeScale = MathHelper.lerp(scale.remap(DoubleRange(0.65, 1.5), DoubleRange(0.0,1.0)), 0.5, 1.0)
             val offsetScale = MathHelper.lerp(scale.remap(DoubleRange(0.65, 1.5), DoubleRange(0.0,1.0)), 0.0,1.0)

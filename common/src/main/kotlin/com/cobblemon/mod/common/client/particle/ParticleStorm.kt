@@ -37,6 +37,7 @@ class ParticleStorm(
     val world: ClientWorld,
     val sourceVelocity: () -> Vec3d = { Vec3d.ZERO },
     val sourceAlive: () -> Boolean = { true },
+    val sourceVisible: () -> Boolean = { true },
     val runtime: MoLangRuntime = MoLangRuntime()
 ): NoRenderParticle(world, matrixWrapper.matrix.getOrigin().x, matrixWrapper.matrix.getOrigin().y, matrixWrapper.matrix.getOrigin().z) {
     fun spawn() {
@@ -80,7 +81,7 @@ class ParticleStorm(
             markDead()
         }
 
-        if (stopped) {
+        if (stopped || !sourceVisible()) {
             return
         }
 

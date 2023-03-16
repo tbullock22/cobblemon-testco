@@ -10,14 +10,15 @@ package com.cobblemon.mod.common.api.moves
 
 import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.api.data.DataRegistry
-import com.cobblemon.mod.common.api.data.ShowdownIdentifiable
 import com.cobblemon.mod.common.api.moves.categories.DamageCategories
 import com.cobblemon.mod.common.api.reactive.SimpleObservable
 import com.cobblemon.mod.common.api.types.ElementalTypes
 import com.cobblemon.mod.common.battles.MoveTarget
-import com.cobblemon.mod.common.battles.runner.GraalShowdown
+import com.cobblemon.mod.common.battles.runner.ShowdownService
 import com.cobblemon.mod.common.net.messages.client.data.MovesRegistrySyncPacket
 import com.cobblemon.mod.common.util.cobblemonResource
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
 import net.minecraft.resource.ResourceManager
 import net.minecraft.resource.ResourceType
 import net.minecraft.server.network.ServerPlayerEntity
@@ -37,40 +38,37 @@ object Moves : DataRegistry {
     override fun reload(manager: ResourceManager) {
         this.allMoves.clear()
         this.idMapping.clear()
-        val script = """
-            PokemonShowdown.Dex.mod("${Cobblemon.MODID}")
-              .moves.all();
-        """.trimIndent()
-        val arrayResult = GraalShowdown.context.eval("js", script)
-        for (i in 0 until arrayResult.arraySize) {
-            val jsMove = arrayResult.getArrayElement(i)
-            val id = jsMove.getMember("id").asString()
+        val movesJson = ShowdownService.get().getMoves()
+        for (i in 0 until movesJson.size()) {
+            val jsMove = movesJson[i].asJsonObject
+            val id = jsMove.get("id").asString
             try {
-                val elementalType = ElementalTypes.getOrException(jsMove.getMember("type").asString())
-                val damageCategory = DamageCategories.getOrException(jsMove.getMember("category").asString())
-                val power = jsMove.getMember("basePower").asDouble()
-                val target = MoveTarget.fromShowdownId(jsMove.getMember("target").asString())
+                val elementalType = ElementalTypes.getOrException(jsMove.get("type").asString)
+                val damageCategory = DamageCategories.getOrException(jsMove.get("category").asString)
+                val power = jsMove.get("basePower").asDouble
+                val target = MoveTarget.fromShowdownId(jsMove.get("target").asString)
                 // If not a double it's always true
-                val accuracy = if (!jsMove.getMember("accuracy").fitsInDouble()) -1.0 else jsMove.getMember("accuracy").asDouble()
-                val pp = jsMove.getMember("pp").asInt()
-                val priority = jsMove.getMember("priority").asInt()
-                val critRatio = if (jsMove.hasMember("critRatio")) jsMove.getMember("critRatio").asDouble() else 1.0
+                val accuracyJson = jsMove.get("accuracy").asJsonPrimitive
+                val accuracy = if (accuracyJson.isNumber) accuracyJson.asDouble else -1.0
+                val pp = jsMove.get("pp").asInt
+                val priority = jsMove.get("priority").asInt
+                val critRatio = jsMove.get("critRatio")?.asDouble ?: 1.0
                 val effectChances = arrayListOf<Double>()
-                val secondariesMember = jsMove.getMember("secondaries")
-                val secondaryMember = jsMove.getMember("secondary")
-                if (!secondariesMember.isNull) {
-                    for (j in 0 until secondariesMember.arraySize) {
-                        val element = secondariesMember.getArrayElement(j)
+                val secondariesMember = jsMove.get("secondaries")
+                val secondaryMember = jsMove.get("secondary")
+                if (secondariesMember != null && secondariesMember is JsonArray) {
+                    for (j in 0 until secondariesMember.size()) {
+                        val element = secondariesMember[j].asJsonObject
                         // They declare moves without data on secondary effects for sheer force compatibility
-                        if (element.hasMember("chance")) {
-                            effectChances += element.getMember("chance").asDouble()
+                        if (element.has("chance")) {
+                            effectChances += element.get("chance").asDouble
                         }
                     }
                 }
-                else if (!secondaryMember.isNull) {
+                else if (secondaryMember != null && secondaryMember is JsonObject) {
                     // They declare moves without data on secondary effects for sheer force compatibility
-                    if (secondaryMember.hasMember("chance")) {
-                        effectChances += secondaryMember.getMember("chance").asDouble()
+                    if (secondaryMember.has("chance")) {
+                        effectChances += secondaryMember.get("chance").asDouble
                     }
                 }
                 val move = MoveTemplate(id, elementalType, damageCategory, power, target, accuracy, pp, priority, critRatio, effectChances.toTypedArray())

@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Elgyem",
   "nationalPokedexNumber": 605,
   "primaryType": "psychic",
@@ -14,6 +15,14 @@
     "special_attack": 85,
     "special_defence": 55,
     "speed": 30
+  },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": true,
+      "depth": "normal",
+      "light": "0-4"
+    }
   },
   "catchRate": 255,
   "maleRatio": 0.5,
@@ -135,10 +144,10 @@
       ]
     }
   ],
-  "baseScale": 1,
+  "baseScale": 0.7,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 0.6,
+    "height": 1.3,
     "fixed": false
   },
   "baseFriendship": 50,

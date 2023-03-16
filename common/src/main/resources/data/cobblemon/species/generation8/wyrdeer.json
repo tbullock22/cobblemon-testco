@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Wyrdeer",
   "nationalPokedexNumber": 899,
   "primaryType": "normal",
@@ -15,6 +16,14 @@
     "special_attack": 105,
     "special_defence": 75,
     "speed": 65
+  },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    }
   },
   "catchRate": 135,
   "maleRatio": 0.5,
@@ -104,6 +113,12 @@
   "weight": 951,
   "preEvolution": "stantler",
   "evolutions": [],
+  "baseScale": 1.4,
+  "hitbox": {
+    "width": 1.2,
+    "height": 1.8,
+    "fixed": false
+  },
   "aspects": [],
   "cannotDynamax": false
 }

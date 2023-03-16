@@ -163,5 +163,8 @@
   "height": 12,
   "weight": 755,
   "aspects": [],
+  "features": [
+    "milkable"
+  ],
   "cannotDynamax": false
 }

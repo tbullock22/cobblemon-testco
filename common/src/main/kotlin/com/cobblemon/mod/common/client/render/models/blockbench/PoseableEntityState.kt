@@ -9,6 +9,7 @@
 package com.cobblemon.mod.common.client.render.models.blockbench
 
 import com.bedrockk.molang.runtime.MoLangRuntime
+import com.cobblemon.mod.common.client.render.MatrixWrapper
 import com.cobblemon.mod.common.client.render.models.blockbench.additives.PosedAdditiveAnimation
 import com.cobblemon.mod.common.client.render.models.blockbench.animation.StatefulAnimation
 import com.cobblemon.mod.common.client.render.models.blockbench.bedrock.animation.BedrockParticleKeyframe
@@ -17,6 +18,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.frame.ModelFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pose.Pose
 import com.cobblemon.mod.common.client.render.models.blockbench.quirk.ModelQuirk
 import com.cobblemon.mod.common.client.render.models.blockbench.quirk.QuirkData
+import java.util.concurrent.ConcurrentLinkedQueue
 import net.minecraft.client.MinecraftClient
 import net.minecraft.entity.Entity
 
@@ -45,6 +47,10 @@ abstract class PoseableEntityState<T : Entity> {
         it.environment.structs["query"] = it.environment.structs["variable"]
     }
 
+    val locatorStates = mutableMapOf<String, MatrixWrapper>()
+
+    val renderQueue = ConcurrentLinkedQueue<() -> Unit>()
+
     fun isPosedIn(vararg poses: Pose<T, in ModelFrame>) = poses.any { it.poseName == currentPose }
     fun isNotPosedIn(vararg poses: Pose<T, in ModelFrame>) = poses.none { it.poseName == currentPose }
 
@@ -68,6 +74,15 @@ abstract class PoseableEntityState<T : Entity> {
         deltaSeconds = deltaMillis / 1000F
         previousAnimationSeconds = animationSeconds
         animationSeconds += deltaSeconds
+
+        while (renderQueue.peek() != null) {
+            val action = renderQueue.poll()
+            action()
+        }
+    }
+
+    fun doLater(action: () -> Unit) {
+        renderQueue.offer(action)
     }
 
     fun getPose(): String? {
@@ -87,5 +102,10 @@ abstract class PoseableEntityState<T : Entity> {
 
     fun applyAdditives(entity: T?, model: PoseableEntityModel<T>, state: PoseableEntityState<T>?) {
         additives.removeIf { !it.run(entity, model, state) }
+    }
+
+    fun setStatefulAnimations(vararg animations: StatefulAnimation<T, out ModelFrame>) {
+        statefulAnimations.clear()
+        statefulAnimations.addAll(animations)
     }
 }

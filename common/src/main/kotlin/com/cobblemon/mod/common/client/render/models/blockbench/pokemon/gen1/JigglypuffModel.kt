@@ -21,7 +21,7 @@ class JigglypuffModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("jigglypuff")
 
     override val portraitScale = 1.8F
-    override val portraitTranslation = Vec3d(0.0, -0.1, 0.0)
+    override val portraitTranslation = Vec3d(0.0, -0.9, 0.0)
 
     override val profileScale = 1.1F
     override val profileTranslation = Vec3d(0.0, 0.08, 0.0)

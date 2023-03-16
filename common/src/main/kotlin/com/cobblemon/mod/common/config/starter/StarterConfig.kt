@@ -38,7 +38,35 @@ class StarterConfig {
                 PokemonProperties.parse("Charmander level=10"),
                 PokemonProperties.parse("Squirtle level=10"),
             )
-        )//,
+        ),
+        StarterCategory(
+                name = "Hoenn",
+                displayName = "cobblemon.starterselection.category.hoenn",
+                pokemon = mutableListOf(
+                        PokemonProperties.parse("Treecko level=10"),
+                        PokemonProperties.parse("Torchic level=10"),
+                        PokemonProperties.parse("Mudkip level=10"),
+                )
+        ),
+        StarterCategory(
+            name = "Sinnoh",
+            displayName = "cobblemon.starterselection.category.sinnoh",
+            pokemon = mutableListOf(
+                PokemonProperties.parse("Turtwig level=10"),
+                PokemonProperties.parse("Chimchar level=10"),
+                PokemonProperties.parse("Piplup level=10"),
+            )
+        ),
+        StarterCategory(
+            name = "Alola",
+            displayName = "cobblemon.starterselection.category.alola",
+            pokemon = mutableListOf(
+                PokemonProperties.parse("Rowlet level=10"),
+                PokemonProperties.parse("Litten level=10"),
+                PokemonProperties.parse("Popplio level=10"),
+            )
+        )
+    //,
 //            StarterCategory(
 //                name = "Johto",
 //                displayName = lang("starterselection.category.johto"),

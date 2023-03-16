@@ -1,5 +1,4 @@
 {
-  "implemented": true,
   "name": "Charcadet",
   "nationalPokedexNumber": 935,
   "primaryType": "fire",
@@ -96,6 +95,12 @@
       "requiredContext": "cobblemon:malicious_armor"
     }
   ],
+  "baseScale": 0.55,
+  "hitbox": {
+    "width": 0.6,
+    "height": 1.3,
+    "fixed": false
+  },
   "cannotDynamax": false,
   "pokedex": [
     "cobblemon.species.charcadet.desc"

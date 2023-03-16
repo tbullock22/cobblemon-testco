@@ -21,5 +21,6 @@ object CobblemonFeatures : CompletableRegistry<Feature<*>>(Registry.FEATURE_KEY)
         return queue(name, feature)
     }
 
+    @JvmField
     val APRICORN_TREE_FEATURE = register("apricorn_tree_feature") { ApricornTreeFeature(SingleStateFeatureConfig.CODEC) }
 }

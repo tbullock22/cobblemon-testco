@@ -8,6 +8,10 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1
 
+import com.cobblemon.mod.common.client.render.models.blockbench.animation.BimanualSwingAnimation
+import com.cobblemon.mod.common.client.render.models.blockbench.animation.BipedWalkAnimation
+import com.cobblemon.mod.common.client.render.models.blockbench.frame.BimanualFrame
+import com.cobblemon.mod.common.client.render.models.blockbench.frame.BipedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
@@ -15,11 +19,16 @@ import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
-class HitmonleeModel(root: ModelPart) : PokemonPoseableModel() {
+class HitmonleeModel(root: ModelPart) : PokemonPoseableModel(), BipedFrame, BimanualFrame {
     override val rootPart = root.registerChildWithAllChildren("hitmonlee")
 
-    override val portraitScale = 2.3F
-    override val portraitTranslation = Vec3d(-0.1, -0.1, 0.0)
+    override val leftArm = getPart("arm_left")
+    override val rightArm = getPart("arm_right")
+    override val leftLeg = getPart("leg_left")
+    override val rightLeg = getPart("leg_right")
+
+    override val portraitScale = 2.5F
+    override val portraitTranslation = Vec3d(-0.15, 0.0, 0.0)
 
     override val profileScale = 0.96F
     override val profileTranslation = Vec3d(0.0, 0.3, 0.0)
@@ -40,7 +49,9 @@ class HitmonleeModel(root: ModelPart) : PokemonPoseableModel() {
             poseName = "walk",
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
-                bedrock("hitmonlee", "ground_idle")
+                bedrock("hitmonlee", "ground_idle"),
+                BipedWalkAnimation(this, periodMultiplier = 0.6F, amplitudeMultiplier = 0.9F),
+                BimanualSwingAnimation(this, swingPeriodMultiplier = 0.6F, amplitudeMultiplier = 0.9F)
                 //bedrock("hitmonlee", "ground_walk")
             )
         )

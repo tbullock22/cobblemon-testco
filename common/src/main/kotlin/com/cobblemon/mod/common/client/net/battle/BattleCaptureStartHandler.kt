@@ -21,6 +21,6 @@ object BattleCaptureStartHandler : ClientPacketHandler<BattleCaptureStartPacket>
         val targetPokemon = battle.getPokemonFromPNX(packet.targetPNX)
         val tile = targetPokemon.second
         val pokeBall = PokeBalls.getPokeBall(packet.pokeBallType) ?: PokeBalls.POKE_BALL
-        tile.ballCapturing = ClientBallDisplay(pokeBall).also { it.start() }
+        tile.ballCapturing = ClientBallDisplay(pokeBall, packet.aspects).also { it.start() }
     }
 }

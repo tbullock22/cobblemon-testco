@@ -22,7 +22,7 @@ class OddishModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("oddish")
 
     override val portraitScale = 2.0F
-    override val portraitTranslation = Vec3d(-0.2, -1.0, 0.0)
+    override val portraitTranslation = Vec3d(-0.0, -1.0, 0.0)
 
     override val profileScale = 0.85F
     override val profileTranslation = Vec3d(0.0, 0.5, 0.0)

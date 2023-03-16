@@ -35,8 +35,8 @@ class BlastoiseModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
     override val leftEarJoint = EarJoint(leftEar, TransformedModelPart.Z_AXIS, RangeOfMotion(50F.toRadians(), 0F))
     override val rightEarJoint = EarJoint(rightEar, TransformedModelPart.Z_AXIS, RangeOfMotion((-50F).toRadians(), 0F))
 
-    override val portraitScale = 1.2F
-    override val portraitTranslation = Vec3d(-0.4, -0.9, 0.0)
+    override val portraitScale = 2.1F
+    override val portraitTranslation = Vec3d(-0.65, 1.4, 0.0)
 
     override val profileScale = 0.63F
     override val profileTranslation = Vec3d(0.0, 0.8, 0.0)

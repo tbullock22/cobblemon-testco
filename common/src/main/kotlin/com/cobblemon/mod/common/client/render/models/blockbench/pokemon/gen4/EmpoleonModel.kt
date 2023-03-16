@@ -23,22 +23,24 @@ class EmpoleonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
     override val rootPart = root.registerChildWithAllChildren("empoleon")
     override val head = getPart("head")
 
-    override val leftLeg = getPart("leg_left1")
-    override val rightLeg = getPart("leg_right1")
+    override val leftLeg = getPart("leg_left")
+    override val rightLeg = getPart("leg_right")
 
-    override val portraitScale = 2.3F
-    override val portraitTranslation = Vec3d(0.0, 1.0, 0.0)
+    override val portraitScale = 3.0F
+    override val portraitTranslation = Vec3d(-0.15, 1.0, 0.0)
 
-    override val profileScale = 0.71F
-    override val profileTranslation = Vec3d(0.0, 0.65, 0.0)
+    override val profileScale = 0.7F
+    override val profileTranslation = Vec3d(0.0, 0.7, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
 
     override fun registerPoses() {
+        val blink = quirk("blink") { bedrockStateful("empoleon", "blink").setPreventsIdle(false)}
         standing = registerPose(
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("empoleon", "ground_idle")
@@ -48,6 +50,7 @@ class EmpoleonModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
         walk = registerPose(
             poseName = "walk",
             poseTypes = MOVING_POSES,
+            quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("empoleon", "ground_idle"),

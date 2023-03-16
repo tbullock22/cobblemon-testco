@@ -137,7 +137,7 @@
   "cobblemon.command.pokemonedit": "Editlendi %2$s's %1$s.",
   "cobblemon.command.teach": "%2$s's %1$s öğrendi %3$s.",
   "cobblemon.command.healpokemon.heal": "%1$s'ın partisi tamamen iyileştirildi.",
-  "cobblemon.command.friendship": " %1$s has %2$s friendship.",
+  "cobblemon.command.friendship": "%1$s has %2$s friendship.",
   "cobblemon.command.givepokemon.nospecies": "Error: Pokémon ismi vermen veya 'random' yazman gerekli",
   "cobblemon.command.spawnpokemon.nospecies": "Error: Pokémon ismi vermen veya 'random' yazman gerekli",
   "advancements.cobblemon.root": "Cobblemon",

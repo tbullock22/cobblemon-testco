@@ -11,24 +11,28 @@ architectury {
 loom {
     forge {
         convertAccessWideners.set(true)
+        mixinConfig("mixins.cobblemon-forge.json")
         mixinConfig("mixins.cobblemon-common.json")
     }
 }
 
 repositories {
     maven(url = "${rootProject.projectDir}/deps")
+    maven(url = "https://thedarkcolour.github.io/KotlinForForge/")
     mavenLocal()
 }
 
 dependencies {
     forge(libs.forge)
     modApi(libs.architecturyForge)
+//    modApi(libs.kotlinForForge)
 
     //shadowCommon group: 'commons-io', name: 'commons-io', version: '2.6'
 
     implementation(project(":common", configuration = "namedElements")) {
         isTransitive = false
     }
+    implementation(libs.kotlinForForge)
     "developmentForge"(project(":common", configuration = "namedElements")) {
         isTransitive = false
     }
@@ -38,17 +42,19 @@ dependencies {
     testImplementation(project(":common", configuration = "namedElements"))
 
     listOf(
-        libs.stdlib,
-        libs.reflect,
-        libs.jetbrainsAnnotations,
-        libs.serializationCore,
-        libs.serializationJson,
         libs.graal,
         libs.molang
     ).forEach {
         forgeRuntimeLibrary(it)
         bundle(it)
     }
+
+    listOf(
+        libs.stdlib,
+        libs.serializationCore,
+        libs.serializationJson,
+        libs.reflect
+    ).forEach(::forgeRuntimeLibrary)
 }
 
 tasks {

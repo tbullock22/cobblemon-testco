@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.client.keybind.keybinds
 
+import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.client.CobblemonClient
 import com.cobblemon.mod.common.client.gui.summary.Summary
 import com.cobblemon.mod.common.client.keybind.CobblemonPartyLockedKeyBinding
@@ -24,6 +25,10 @@ object PokeNavigatorBinding : CobblemonPartyLockedKeyBinding(
 ) {
     override fun onPress() {
         // MinecraftClient.getInstance().setScreen(PokeNav())
-        MinecraftClient.getInstance().setScreen(Summary(CobblemonClient.storage.myParty))
+        try {
+            Summary.open(CobblemonClient.storage.myParty.filterNotNull(), true, CobblemonClient.storage.selectedSlot)
+        } catch (e: Exception) {
+            Cobblemon.LOGGER.debug("Failed to open the summary from the PokeNav keybind", e)
+        }
     }
 }

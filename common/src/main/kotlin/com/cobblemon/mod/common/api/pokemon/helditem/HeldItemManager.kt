@@ -8,8 +8,8 @@
 
 package com.cobblemon.mod.common.api.pokemon.helditem
 
-import com.cobblemon.mod.common.api.battles.model.PokemonBattle
 import com.cobblemon.mod.common.api.battles.interpreter.BattleMessage
+import com.cobblemon.mod.common.api.battles.model.PokemonBattle
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
 import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.pokemon.helditem.BaseCobblemonHeldItemManager
@@ -78,7 +78,6 @@ interface HeldItemManager {
      * @param showdownId The literal ID of the held item on Showdown.
      */
     fun take(pokemon: BattlePokemon, showdownId: String)
-
 
     companion object {
 

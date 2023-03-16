@@ -13,7 +13,7 @@ import com.cobblemon.mod.common.api.pokemon.helditem.HeldItemProvider
 import com.cobblemon.mod.common.api.pokemon.stats.Stats
 import com.cobblemon.mod.common.api.pokemon.status.Statuses
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
-import com.cobblemon.mod.common.battles.runner.GraalShowdown
+import com.cobblemon.mod.common.battles.runner.ShowdownService
 import com.google.gson.GsonBuilder
 import java.time.Instant
 import java.util.Optional
@@ -68,8 +68,7 @@ object BattleRegistry {
             }
 
             // Held item, empty if none
-            pokemon.heldItemManager = HeldItemProvider.provide(pokemon)
-            val heldItemID = pokemon.heldItemManager.showdownId(pokemon) ?: ""
+            val heldItemID = HeldItemProvider.provideShowdownId(pokemon) ?: ""
             packedTeamBuilder.append("$heldItemID|")
             // Ability, our showdown has edits here to trust whatever we tell it, this was needed to support more than 4 abilities.
             packedTeamBuilder.append("${pk.ability.name.replace("_", "")}|")
@@ -173,7 +172,7 @@ object BattleRegistry {
         }
 
         // Compiles the request and sends it off
-        GraalShowdown.startBattle(battle, messages.toTypedArray())
+        ShowdownService.get().startBattle(battle, messages.toTypedArray())
         return battle
     }
 

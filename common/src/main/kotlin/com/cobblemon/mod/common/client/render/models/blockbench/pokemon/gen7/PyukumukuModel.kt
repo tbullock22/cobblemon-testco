@@ -17,8 +17,8 @@ import net.minecraft.util.math.Vec3d
 class PyukumukuModel(root: ModelPart) : PokemonPoseableModel() {
     override val rootPart = root.registerChildWithAllChildren("pyukumuku")
 
-    override val portraitScale = 2.6F
-    override val portraitTranslation = Vec3d(-0.35, -2.5, 0.0)
+    override val portraitScale = 1.65F
+    override val portraitTranslation = Vec3d(-0.1, -0.8, 0.0)
     override val profileScale = 1.0F
     override val profileTranslation = Vec3d(0.0, 0.2, 0.0)
 

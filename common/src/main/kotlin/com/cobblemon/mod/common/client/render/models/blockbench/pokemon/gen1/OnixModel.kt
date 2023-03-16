@@ -21,7 +21,7 @@ class OnixModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val head = getPart("head")
 
     override val portraitScale = 1.1F
-    override val portraitTranslation = Vec3d(0.3, 1.4, 0.0)
+    override val portraitTranslation = Vec3d(-0.15, 1.4, 0.0)
 
     override val profileScale = 0.55F
     override val profileTranslation = Vec3d(-0.1, 0.9, 0.0)

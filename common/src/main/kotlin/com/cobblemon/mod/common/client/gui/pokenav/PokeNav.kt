@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.client.gui.pokenav
 
+import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.api.gui.blitk
 import com.cobblemon.mod.common.client.CobblemonClient
 import com.cobblemon.mod.common.client.gui.summary.Summary
@@ -327,7 +328,12 @@ class PokeNav : Screen(Text.translatable("cobblemon.ui.pokenav.title")) {
      */
 
     private fun onPressPokemon(button: ButtonWidget) {
-        MinecraftClient.getInstance().setScreen(Summary(CobblemonClient.storage.myParty))
+        try {
+            Summary.open(CobblemonClient.storage.myParty.filterNotNull(), true, CobblemonClient.storage.selectedSlot)
+        } catch (e: Exception) {
+            MinecraftClient.getInstance().setScreen(null)
+            Cobblemon.LOGGER.debug("Failed to open the summary from the PokeNav screen", e)
+        }
     }
 
     private fun onPressExit(button: ButtonWidget) {

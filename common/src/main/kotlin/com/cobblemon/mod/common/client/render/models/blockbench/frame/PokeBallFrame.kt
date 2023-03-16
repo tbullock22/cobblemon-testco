@@ -11,6 +11,6 @@ package com.cobblemon.mod.common.client.render.models.blockbench.frame
 import net.minecraft.client.model.ModelPart
 
 interface PokeBallFrame : ModelFrame {
-    val subRoot: ModelPart
+    val base: ModelPart
     val lid: ModelPart
 }
