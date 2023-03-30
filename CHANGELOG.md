@@ -107,6 +107,7 @@
 - Fixed issues with Charizard's sleep pose.
 - Fixed players being able to use multiple healer machines at once.
 - Fixed Pokémon layers not rendering when a Pokémon is on your shoulder.
+- Fixed Apricorn tree components and materials not being flammable
 
 ### Developer
 - Reworked CatchRateModifier, as such, existing implementations need to be updated.

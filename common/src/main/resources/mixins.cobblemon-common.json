@@ -22,6 +22,7 @@
     "invoker.BooleanRuleInvoker",
     "invoker.ButtonBlockInvoker",
     "invoker.DoorBlockInvoker",
+    "invoker.FireBlockInvoker",
     "invoker.PressurePlateBlockInvoker",
     "invoker.StairsBlockInvoker",
     "invoker.TrapdoorBlockInvoker"

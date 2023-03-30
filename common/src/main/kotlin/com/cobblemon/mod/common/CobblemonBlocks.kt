@@ -26,6 +26,7 @@ import net.minecraft.block.Blocks
 import net.minecraft.block.ExperienceDroppingBlock
 import net.minecraft.block.FenceBlock
 import net.minecraft.block.FenceGateBlock
+import net.minecraft.block.FireBlock
 import net.minecraft.block.LeavesBlock
 import net.minecraft.block.MapColor
 import net.minecraft.block.Material
@@ -152,5 +153,17 @@ object CobblemonBlocks : PlatformRegistry<Registry<Block>, RegistryKey<Registry<
                 .suffocates { _, _, _ -> false }
                 .blockVision { _, _, _ -> false })
         return this.create(name, block)
+    }
+
+    fun registerFlammableCobblemonBlocks(registerFlammableBlock: (Block, Int, Int) -> Unit) {
+        registerFlammableBlock(APRICORN_PLANKS, 5, 20)
+        registerFlammableBlock(APRICORN_SLAB, 5, 20)
+        registerFlammableBlock(APRICORN_FENCE_GATE, 5, 20)
+        registerFlammableBlock(APRICORN_FENCE, 5, 20)
+        registerFlammableBlock(APRICORN_STAIRS, 5, 20)
+        registerFlammableBlock(APRICORN_LOG, 5, 5)
+        registerFlammableBlock(STRIPPED_APRICORN_LOG, 5, 5)
+        registerFlammableBlock(APRICORN_WOOD, 5, 5)
+        registerFlammableBlock(APRICORN_LEAVES, 30, 60)
     }
 }
