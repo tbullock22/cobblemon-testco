@@ -10,6 +10,7 @@ package com.cobblemon.mod.forge
 
 import com.cobblemon.mod.common.*
 import com.cobblemon.mod.common.item.group.CobblemonItemGroups
+import com.cobblemon.mod.common.mixin.invoker.FireBlockInvoker
 import com.cobblemon.mod.common.particle.CobblemonParticles
 import com.cobblemon.mod.common.util.didSleep
 import com.cobblemon.mod.common.world.feature.CobblemonFeatures
@@ -23,6 +24,9 @@ import java.util.*
 import kotlin.reflect.KClass
 import net.minecraft.advancement.criterion.Criteria
 import net.minecraft.advancement.criterion.Criterion
+import net.minecraft.block.Block
+import net.minecraft.block.Blocks
+import net.minecraft.block.FireBlock
 import net.minecraft.command.argument.ArgumentTypes
 import net.minecraft.command.argument.serialize.ArgumentSerializer
 import net.minecraft.registry.RegistryKey
@@ -102,6 +106,11 @@ class CobblemonForge : CobblemonImplementation {
         this.networkManager.initClient()
         this.networkManager.initServer()
         Cobblemon.initialize()
+
+        val fireblock = ((Blocks.FIRE as FireBlock) as FireBlockInvoker)
+        event.enqueueWork {
+            CobblemonBlocks.registerFlammableCobblemonBlocks { block: Block, burn: Int, spread: Int -> fireblock.invokeRegisterFlammableBlock(block, burn, spread) }
+        }
     }
 
     fun onDataPackSync(event: OnDatapackSyncEvent) {
