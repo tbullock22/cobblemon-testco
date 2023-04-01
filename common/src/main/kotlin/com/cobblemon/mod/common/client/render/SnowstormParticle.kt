@@ -123,7 +123,7 @@ class SnowstormParticle(
         val f = (MathHelper.lerp(tickDelta.toDouble(), prevPosX, x) - vec3d.getX()).toFloat()
         val g = (MathHelper.lerp(tickDelta.toDouble(), prevPosY, y) - vec3d.getY()).toFloat()
         val h = (MathHelper.lerp(tickDelta.toDouble(), prevPosZ, z) - vec3d.getZ()).toFloat()
-        val quaternion = storm.effect.particle.cameraMode.getRotation(prevAngle, angle, tickDelta, camera.rotation, camera.yaw, camera.pitch)
+        val quaternion = storm.effect.particle.cameraMode.getRotation(prevAngle, angle, tickDelta, camera.rotation, camera.yaw, camera.pitch, Vec3d(velocityX, velocityY, velocityZ))
 
         val xSize = storm.runtime.resolveDouble(storm.effect.particle.sizeX).toFloat() / 2
         val ySize = storm.runtime.resolveDouble(storm.effect.particle.sizeY).toFloat() / 2
