@@ -64,6 +64,8 @@ class SnowstormParticle(
 
     val uvDetails = UVDetails()
 
+    var velocityVec: Vec3d = Vec3d(0.0, 0.0, 0.0)
+
     fun getSpriteFromAtlas(): Sprite {
         val atlas = MinecraftClient.getInstance().particleManager.particleAtlasTexture
 
@@ -123,7 +125,7 @@ class SnowstormParticle(
         val f = (MathHelper.lerp(tickDelta.toDouble(), prevPosX, x) - vec3d.getX()).toFloat()
         val g = (MathHelper.lerp(tickDelta.toDouble(), prevPosY, y) - vec3d.getY()).toFloat()
         val h = (MathHelper.lerp(tickDelta.toDouble(), prevPosZ, z) - vec3d.getZ()).toFloat()
-        val quaternion = storm.effect.particle.cameraMode.getRotation(prevAngle, angle, tickDelta, camera.rotation, camera.yaw, camera.pitch, Vec3d(velocityX, velocityY, velocityZ))
+        val quaternion = storm.effect.particle.cameraMode.getRotation(prevAngle, angle, tickDelta, camera.rotation, camera.yaw, camera.pitch, velocityVec)
 
         val xSize = storm.runtime.resolveDouble(storm.effect.particle.sizeX).toFloat() / 2
         val ySize = storm.runtime.resolveDouble(storm.effect.particle.sizeY).toFloat() / 2
@@ -204,6 +206,7 @@ class SnowstormParticle(
             prevAngle = angle
             angle = prevAngle + angularVelocity.toFloat()
         }
+        velocityVec = Vec3d(velocityX, velocityY, velocityZ)
 
         prevPosX = x
         prevPosY = y
