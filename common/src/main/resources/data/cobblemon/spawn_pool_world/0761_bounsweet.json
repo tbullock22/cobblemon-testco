@@ -6,6 +6,10 @@
         {
             "id": "bounsweet-1",
             "pokemon": "bounsweet",
+            "presets": [
+                "natural",
+				"treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

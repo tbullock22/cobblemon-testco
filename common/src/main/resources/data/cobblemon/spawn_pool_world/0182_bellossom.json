@@ -6,6 +6,9 @@
         {
             "id": "bellossom-1",
             "pokemon": "bellossom",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -22,6 +25,9 @@
         {
             "id": "bellossom-2",
             "pokemon": "bellossom",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",
@@ -38,6 +44,9 @@
         {
             "id": "bellossom-valencian-1",
             "pokemon": "bellossom valencian",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

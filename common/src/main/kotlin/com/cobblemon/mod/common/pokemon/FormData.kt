@@ -202,6 +202,15 @@ class FormData(
         return this
     }
 
+    internal fun resolveEvolutionMoves() {
+        this.evolutions.forEach { evolution ->
+            if (evolution.learnableMoves.isNotEmpty() && evolution.result.species != null) {
+                val pokemon = evolution.result.create()
+                pokemon.form.moves.evolutionMoves += evolution.learnableMoves
+            }
+        }
+    }
+
     override fun equals(other: Any?): Boolean = other is FormData && other.showdownId() == this.showdownId()
 
     override fun hashCode(): Int = this.showdownId().hashCode()

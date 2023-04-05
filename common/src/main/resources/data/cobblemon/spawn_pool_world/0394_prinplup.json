@@ -6,6 +6,9 @@
         {
             "id": "prinplup-1",
             "pokemon": "prinplup",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "ultra-rare",

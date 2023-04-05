@@ -44,7 +44,6 @@
       },
       "catchRate": 100,
       "maleRatio": 0,
-      "shoulderMountable": true,
       "baseExperienceYield": 173,
       "baseFriendship": 50,
       "evYield": {
@@ -83,6 +82,20 @@
     "fairy",
     "amorphous"
   ],
+  "drops": {
+    "amount": "2",
+    "entries": [
+      {
+        "item": "minecraft:sugar",
+        "quantityRange": "1-3",
+        "percentage": 75
+      },
+      {
+        "item": "minecraft:cake",
+        "percentage": 10
+      }
+    ]
+  },
   "moves": [
     "1:aromaticmist",
     "1:sweetkiss",

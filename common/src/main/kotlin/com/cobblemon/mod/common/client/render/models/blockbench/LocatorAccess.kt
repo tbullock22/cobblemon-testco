@@ -75,7 +75,7 @@ class LocatorAccess(
         for ((name, locator) in locators) {
             matrixStack.push()
             locator.rotate(matrixStack)
-            state.getOrPut(name) { MatrixWrapper() }.update(matrixStack.peek().positionMatrix)
+            state.getOrPut(name) { MatrixWrapper() }.updateMatrix(matrixStack.peek().positionMatrix)
             matrixStack.pop()
         }
 

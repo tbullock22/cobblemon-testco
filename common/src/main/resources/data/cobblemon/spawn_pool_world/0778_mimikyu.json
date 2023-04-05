@@ -6,6 +6,9 @@
         {
             "id": "mimikyu-1",
             "pokemon": "mimikyu",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "rare",

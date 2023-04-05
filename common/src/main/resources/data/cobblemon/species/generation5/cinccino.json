@@ -49,6 +49,7 @@
     "tm:dazzlinggleam",
     "tm:dig",
     "tm:doubleteam",
+    "tm:echoedvoice",
     "tm:encore",
     "tm:endure",
     "tm:facade",
@@ -91,12 +92,22 @@
     "tm:uproar",
     "tm:uturn",
     "tm:workup",
+    "tutor:afteryou",
     "tutor:aquatail",
     "tutor:covet",
+    "tutor:gunkshot",
+    "tutor:helpinghand",
+    "tutor:hypervoice",
+    "tutor:irontail",
     "tutor:knockoff",
     "tutor:laserfocus",
+    "tutor:lastresort",
+    "tutor:seedbomb",
     "tutor:shockwave",
-    "tutor:tripleaxel"
+    "tutor:sleeptalk",
+    "tutor:snore",
+    "tutor:tripleaxel",
+    "tutor:uproar"
   ],
   "labels": [
     "gen5"

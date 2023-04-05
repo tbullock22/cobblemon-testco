@@ -6,6 +6,9 @@
         {
             "id": "munchlax-1",
             "pokemon": "munchlax",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "rare",

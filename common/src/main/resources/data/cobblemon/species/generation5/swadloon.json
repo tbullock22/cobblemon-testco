@@ -28,10 +28,10 @@
   "moves": [
     "1:bugbite",
     "1:grasswhistle",
-    "1:protect",
     "1:razorleaf",
     "1:stringshot",
     "1:tackle",
+    "20:protect",
     "tm:attract",
     "tm:calmmind",
     "tm:confide",
@@ -67,6 +67,7 @@
     "tutor:magiccoat",
     "tutor:seedbomb",
     "tutor:signalbeam",
+    "tutor:sleeptalk",
     "tutor:snore",
     "tutor:synthesis",
     "tutor:worryseed"

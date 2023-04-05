@@ -6,6 +6,9 @@
         {
             "id": "tyrogue-1",
             "pokemon": "tyrogue",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

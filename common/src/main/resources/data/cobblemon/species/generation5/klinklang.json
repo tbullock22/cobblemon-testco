@@ -16,6 +16,14 @@
     "special_defence": 85,
     "speed": 90
   },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    }
+  },
   "catchRate": 30,
   "maleRatio": -1,
   "shoulderMountable": false,
@@ -25,27 +33,38 @@
   "eggGroups": [
     "mineral"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:raw_iron",
+        "quantityRange": "1-3",
+        "percentage": 75
+      }
+    ]
+  },
   "moves": [
-    "1:bind",
     "1:charge",
+    "1:geargrind",
     "1:gearup",
     "1:magneticflux",
     "1:thundershock",
     "1:visegrip",
-    "12:chargebeam",
-    "16:metalsound",
-    "20:autotomize",
-    "24:discharge",
-    "28:screech",
-    "32:geargrind",
-    "36:lockon",
+    "21:bind",
+    "25:chargebeam",
+    "31:autotomize",
     "36:mirrorshot",
-    "42:shiftgear",
-    "48:zapcannon",
-    "56:hyperbeam",
+    "40:screech",
+    "44:discharge",
+    "48:metalsound",
+    "54:shiftgear",
+    "60:lockon",
     "64:electricterrain",
+    "66:zapcannon",
+    "72:hyperbeam",
     "tm:allyswitch",
     "tm:assurance",
+    "tm:chargebeam",
     "tm:confide",
     "tm:doubleteam",
     "tm:electricterrain",
@@ -79,16 +98,22 @@
     "tm:uproar",
     "tm:voltswitch",
     "tm:wildcharge",
+    "tutor:allyswitch",
+    "tutor:bind",
     "tutor:gravity",
+    "tutor:irondefense",
     "tutor:magiccoat",
     "tutor:magnetrise",
     "tutor:recycle",
     "tutor:risingvoltage",
     "tutor:shockwave",
     "tutor:signalbeam",
+    "tutor:sleeptalk",
+    "tutor:snore",
     "tutor:steelbeam",
     "tutor:steelroller",
-    "tutor:telekinesis"
+    "tutor:telekinesis",
+    "tutor:uproar"
   ],
   "labels": [
     "gen5"

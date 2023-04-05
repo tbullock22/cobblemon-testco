@@ -6,15 +6,36 @@
         {
             "id": "eevee-1",
             "pokemon": "eevee",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "ultra-rare",
             "level": "5-32",
-            "weight": 9.9,
+            "weight": 9.0,
             "condition": {
                 "canSeeSky": true,
                 "biomes": [
                     "#cobblemon:is_overworld"
+                ]
+            }
+        },
+		{
+            "id": "eevee-1",
+            "pokemon": "eevee",
+            "presets": [
+                "natural"
+            ],
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "rare",
+            "level": "5-32",
+            "weight": 10.0,
+            "condition": {
+                "canSeeSky": true,
+                "biomes": [
+                    "#cobblemon:is_temperate"
                 ]
             }
         }

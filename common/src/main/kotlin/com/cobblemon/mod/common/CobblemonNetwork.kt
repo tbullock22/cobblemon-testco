@@ -28,10 +28,8 @@ import com.cobblemon.mod.common.net.messages.client.battle.BattleSetTeamPokemonP
 import com.cobblemon.mod.common.net.messages.client.battle.BattleSwitchPokemonPacket
 import com.cobblemon.mod.common.net.messages.client.battle.BattleUpdateTeamPokemonPacket
 import com.cobblemon.mod.common.net.messages.client.battle.ChallengeNotificationPacket
-import com.cobblemon.mod.common.net.messages.client.data.AbilityRegistrySyncPacket
-import com.cobblemon.mod.common.net.messages.client.data.MovesRegistrySyncPacket
+import com.cobblemon.mod.common.net.messages.client.data.*
 import com.cobblemon.mod.common.net.messages.client.data.PropertiesCompletionRegistrySyncPacket
-import com.cobblemon.mod.common.net.messages.client.data.SpeciesRegistrySyncPacket
 import com.cobblemon.mod.common.net.messages.client.effect.SpawnSnowstormParticlePacket
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.*
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.evolution.AddEvolutionPacket
@@ -189,6 +187,7 @@ object CobblemonNetwork {
         buildClientMessage<ServerSettingsPacket>()
 
         // Data registries
+        buildClientMessage<UnlockReloadPacket>()
         buildClientMessage<AbilityRegistrySyncPacket>()
         buildClientMessage<MovesRegistrySyncPacket>()
         buildClientMessage<SpeciesRegistrySyncPacket>()

@@ -30,8 +30,8 @@
   "accessWidener": "cobblemon-common.accesswidener",
   "depends": {
     "fabricloader": ">=0.13.3",
-    "fabric": "*",
-    "architectury": ">=6.0.37",
+    "fabric": ">=0.75.1",
+    "architectury": ">=6.5.69",
     "minecraft": ">=1.19.2",
     "java": ">=17"
   },

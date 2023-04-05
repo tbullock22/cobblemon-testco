@@ -16,7 +16,7 @@
   },
   "catchRate": 30,
   "maleRatio": -1,
-  "baseExperienceYield": 0,
+  "baseExperienceYield": 285,
   "baseFriendship": 0,
   "evYield": {
     "hp": 0,

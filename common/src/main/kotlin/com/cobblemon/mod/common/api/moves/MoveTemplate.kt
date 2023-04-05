@@ -22,6 +22,7 @@ import net.minecraft.text.MutableText
  * To build a Move you need to use its template
  *
  * @param name The name in Showdown ID form.
+ * @param num The numerical ID of this move on Showdown.
  * @param elementalType The [ElementalType] of this move.
  * @param damageCategory The [DamageCategory] of this move.
  * @param power The base power of this move.
@@ -34,6 +35,7 @@ import net.minecraft.text.MutableText
  */
 open class MoveTemplate(
     val name: String,
+    val num: Int,
     @SerializedName("type")
     val elementalType: ElementalType,
     val damageCategory: DamageCategory,
@@ -45,8 +47,7 @@ open class MoveTemplate(
     val critRatio: Double,
     val effectChances: Array<Double>
 ) {
-    /** Don't change this from 0. It was -1, but then the data JSON reader was making this 0 instead of -1, ignoring our original video. */
-    var id = 0
+
     val displayName: MutableText
         get() = lang("move.$name")
     val description: MutableText
@@ -55,6 +56,7 @@ open class MoveTemplate(
         get() = 8 * pp / 5
     class Dummy(name: String) : MoveTemplate(
         name = name,
+        num = -1,
         elementalType = ElementalTypes.NORMAL,
         damageCategory = DamageCategories.STATUS,
         power = 0.0,

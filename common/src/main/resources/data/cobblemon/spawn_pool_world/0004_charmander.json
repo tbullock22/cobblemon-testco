@@ -6,6 +6,9 @@
         {
             "id": "charmander-1",
             "pokemon": "charmander",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "ultra-rare",

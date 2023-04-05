@@ -6,6 +6,9 @@
         {
             "id": "butterfree-1",
             "pokemon": "butterfree",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -28,6 +31,9 @@
 		{
             "id": "butterfree-valencian-1",
             "pokemon": "butterfree valencian",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

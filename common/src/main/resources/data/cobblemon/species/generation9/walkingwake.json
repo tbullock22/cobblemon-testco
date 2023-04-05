@@ -21,6 +21,10 @@
       "willSleepOnBed": false,
       "depth": "normal",
       "light": "0-4"
+    },
+    "swim": {
+      "canWalkOnWater": true,
+      "canBreatheUnderwater": true
     }
   },
   "baseExperienceYield": 295,

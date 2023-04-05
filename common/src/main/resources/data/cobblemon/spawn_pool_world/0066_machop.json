@@ -6,6 +6,9 @@
         {
             "id": "machop-1",
             "pokemon": "machop",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

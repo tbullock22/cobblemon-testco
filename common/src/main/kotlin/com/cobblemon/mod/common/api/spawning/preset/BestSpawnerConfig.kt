@@ -33,14 +33,14 @@ class BestSpawnerConfig {
     val replaceWithNewVersion = true
     val contextWeights = mutableMapOf(
         "grounded" to 1F,
-        "submerged" to 0.95F,
-        "surface" to 0.05F
+        "submerged" to 0.99F,
+        "surface" to 0.01F
     )
     val buckets = mutableListOf(
-        SpawnBucket("common", 94.4F),
+        SpawnBucket("common", 93.8F),
         SpawnBucket("uncommon", 5F),
-        SpawnBucket("rare", 0.5F),
-        SpawnBucket("ultra-rare", 0.1F)
+        SpawnBucket("rare", 1.0F),
+        SpawnBucket("ultra-rare", 0.2F)
     )
 
     companion object {
@@ -51,7 +51,7 @@ class BestSpawnerConfig {
             .disableHtmlEscaping()
             .create()
 
-        const val CONFIG_NAME = "best-spawner-config.json"
+        const val CONFIG_NAME = "best-spawner-config"
 
         fun load(): BestSpawnerConfig {
             val internal = loadInternal()
@@ -74,7 +74,7 @@ class BestSpawnerConfig {
         }
 
         private fun loadInternal(): BestSpawnerConfig {
-            val reader = InputStreamReader(Cobblemon::class.java.getResourceAsStream("/assets/${Cobblemon.MODID}/spawning/$CONFIG_NAME")!!)
+            val reader = InputStreamReader(Cobblemon::class.java.getResourceAsStream("/assets/${Cobblemon.MODID}/spawning/$CONFIG_NAME.json")!!)
             val config = GSON.fromJson(reader, BestSpawnerConfig::class.java)
             reader.close()
             return config
@@ -99,7 +99,7 @@ class BestSpawnerConfig {
         }
 
         fun saveExternal() {
-            val stream = Cobblemon::class.java.getResourceAsStream("/assets/${Cobblemon.MODID}/spawning/$CONFIG_NAME")!!
+            val stream = Cobblemon::class.java.getResourceAsStream("/assets/${Cobblemon.MODID}/spawning/$CONFIG_NAME.json")!!
             val bytes = stream.readAllBytes()
             stream.close()
             val configFile = File("config/${Cobblemon.MODID}/spawning/$CONFIG_NAME.json")

@@ -108,7 +108,7 @@ abstract class AreaSpawner(
         return true
     }
 
-    private fun constrainArea(area: SpawningArea): SpawningArea? {
+    fun constrainArea(area: SpawningArea): SpawningArea? {
         val basePos = BlockPos.Mutable(area.baseX, area.baseY, area.baseZ)
         val originalY = area.baseY
 

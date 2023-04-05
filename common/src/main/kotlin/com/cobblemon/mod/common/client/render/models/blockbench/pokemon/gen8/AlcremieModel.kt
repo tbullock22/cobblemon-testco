@@ -75,7 +75,7 @@ class AlcremieModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bim
             quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("alcremie", "ground_idle")
+                bedrock("alcremie", "shoulder_left")
             ),
             transformedParts = arrayOf(
                 rootPart.asTransformed().addPosition(TransformedModelPart.X_AXIS, shoulderOffset)
@@ -87,7 +87,7 @@ class AlcremieModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bim
             quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("alcremie", "ground_idle")
+                bedrock("alcremie", "shoulder_right")
             ),
             transformedParts = arrayOf(
                 rootPart.asTransformed().addPosition(TransformedModelPart.X_AXIS, -shoulderOffset)

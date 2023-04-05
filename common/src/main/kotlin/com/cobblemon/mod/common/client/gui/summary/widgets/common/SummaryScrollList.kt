@@ -41,6 +41,8 @@ abstract class SummaryScrollList<T : AlwaysSelectedEntryListWidget.Entry<T>>(
         private val scrollOverlayResource = cobblemonResource("ui/summary/summary_scroll_overlay.png")
     }
 
+    private var scrolling = false
+
     override fun getRowWidth(): Int {
         return SLOT_WIDTH
     }
@@ -98,6 +100,35 @@ abstract class SummaryScrollList<T : AlwaysSelectedEntryListWidget.Entry<T>>(
             centered = true,
             shadow = true
         )
+    }
+
+    override fun mouseClicked(mouseX: Double, mouseY: Double, button: Int): Boolean {
+        updateScrollingState(mouseX, mouseY)
+        if (scrolling) {
+            focused = getEntryAtPosition(mouseX, mouseY)
+            isDragging = true
+        }
+        return super.mouseClicked(mouseX, mouseY, button)
+    }
+
+    override fun mouseDragged(mouseX: Double, mouseY: Double, button: Int, deltaX: Double, deltaY: Double): Boolean {
+        if (scrolling) {
+            if (mouseY < top) {
+                setScrollAmount(0.0)
+            } else if (mouseY > bottom) {
+                setScrollAmount(maxScroll.toDouble())
+            } else {
+                setScrollAmount(scrollAmount + deltaY)
+            }
+        }
+        return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY)
+    }
+
+    private fun updateScrollingState(mouseX: Double, mouseY: Double) {
+        scrolling = mouseX >= this.scrollbarPositionX.toDouble()
+                && mouseX < (this.scrollbarPositionX + 3).toDouble()
+                && mouseY >= top
+                && mouseY < bottom
     }
 
     private fun correctSize() {

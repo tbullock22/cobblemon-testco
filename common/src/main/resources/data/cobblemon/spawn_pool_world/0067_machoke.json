@@ -6,6 +6,9 @@
         {
             "id": "machoke-1",
             "pokemon": "machoke",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

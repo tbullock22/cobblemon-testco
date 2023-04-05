@@ -30,7 +30,7 @@
       "texture": "cobblemon:textures/pokemon/0606_beheeyem/beheeyem_shiny.png",
       "layers": [
         {
-          "name": "color",
+          "name": "shiny_color",
           "texture": {
             "frames": [
               "cobblemon:textures/pokemon/0606_beheeyem/glow/hand_shiny_blue.png",

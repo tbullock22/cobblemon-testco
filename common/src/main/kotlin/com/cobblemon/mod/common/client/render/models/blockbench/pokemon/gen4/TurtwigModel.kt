@@ -30,11 +30,17 @@ class TurtwigModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Quad
     override val profileScale = 0.85F
     override val profileTranslation = Vec3d(0.0, 0.5, 0.0)
 
+    lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
 
     override fun registerPoses() {
         val blink = quirk("blink") { bedrockStateful("turtwig", "blink").setPreventsIdle(false) }
+        sleep = registerPose(
+            poseType = PoseType.SLEEP,
+            idleAnimations = arrayOf(bedrock("turtwig", "sleep"))
+        )
+
         standing = registerPose(
             poseName = "standing",
             poseTypes = PoseType.STATIONARY_POSES + PoseType.UI_POSES,

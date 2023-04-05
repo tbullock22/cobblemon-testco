@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "cobblemon:leftovers"
+    },
+    "title": {
+      "translate": "advancements.cobblemon.obtain_leftovers"
+    },
+    "description": {
+      "translate": "advancements.cobblemon.obtain_leftovers.description"
+    }
+  },
+  "parent": "cobblemon:root",
+  "criteria": {
+    "check_inv": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["cobblemon:leftovers"]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -11,6 +11,7 @@ package com.cobblemon.mod.common.battles.pokemon
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor
 import com.cobblemon.mod.common.api.moves.MoveSet
 import com.cobblemon.mod.common.api.pokemon.helditem.HeldItemManager
+import com.cobblemon.mod.common.api.pokemon.helditem.HeldItemProvider
 import com.cobblemon.mod.common.api.pokemon.stats.Stat
 import com.cobblemon.mod.common.battles.actor.MultiPokemonBattleActor
 import com.cobblemon.mod.common.battles.actor.PokemonBattleActor
@@ -67,7 +68,7 @@ open class BattlePokemon(
     /**
      * The [HeldItemManager] backing this [BattlePokemon].
      */
-    lateinit var heldItemManager: HeldItemManager
+    val heldItemManager: HeldItemManager by lazy { HeldItemProvider.provide(this) }
 
     open fun getName(): MutableText {
         return if (actor is PokemonBattleActor || actor is MultiPokemonBattleActor) {

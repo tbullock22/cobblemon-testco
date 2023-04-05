@@ -104,6 +104,7 @@
         "tm:mudshot",
         "tm:nastyplot",
         "tm:payback",
+        "tm:powerwhip",
         "tm:protect",
         "tm:rest",
         "tm:revenge",
@@ -130,8 +131,12 @@
         "tm:throatchop",
         "tm:trailblaze",
         "tm:uturn",
+        "tutor:energyball",
         "tutor:grassyglide",
-        "tutor:lashout"
+        "tutor:hammerarm",
+        "tutor:junglehealing",
+        "tutor:lashout",
+        "tutor:powerwhip"
       ],
       "labels": [
         "gen8",
@@ -208,6 +213,7 @@
     "tm:mudshot",
     "tm:nastyplot",
     "tm:payback",
+    "tm:powerwhip",
     "tm:protect",
     "tm:rest",
     "tm:revenge",
@@ -234,8 +240,12 @@
     "tm:throatchop",
     "tm:trailblaze",
     "tm:uturn",
+    "tutor:closecombat",
     "tutor:grassyglide",
-    "tutor:lashout"
+    "tutor:lashout",
+    "tutor:powerwhip",
+    "tutor:snarl",
+    "tutor:swagger"
   ],
   "labels": [
     "gen8",

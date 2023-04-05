@@ -6,6 +6,9 @@
         {
             "id": "pichu-1",
             "pokemon": "pichu",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

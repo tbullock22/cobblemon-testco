@@ -32,6 +32,22 @@
     "water_1",
     "field"
   ],
+  "drops": {
+    "amount": "3",
+    "entries": [
+      {
+        "item": "minecraft:feather",
+        "percentage": 50
+      },
+      {
+        "item": "minecraft:raw_chicken"
+      },
+      {
+        "item": "minecraft:raw_cod",
+        "percentage": 50
+      }
+    ]
+  },
   "moves": [
     "1:powdersnow",
     "1:tackle",
@@ -90,6 +106,7 @@
     "tm:terablast",
     "tm:waterfall",
     "tm:waterpulse",
+    "tm:weatherball",
     "tm:whirlpool",
     "tm:zenheadbutt"
   ],
@@ -118,12 +135,6 @@
       },
       "catchRate": 60,
       "maleRatio": 0.5,
-      "baseScale": 1.1,
-      "hitbox": {
-        "width": 0.9,
-        "height": 1.4,
-        "fixed": false
-      },
       "baseExperienceYield": 165,
       "baseFriendship": 50,
       "evYield": {

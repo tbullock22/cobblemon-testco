@@ -68,6 +68,7 @@
     "tm:secretpower",
     "tm:sleeptalk",
     "tm:solarbeam",
+    "tm:strugglebug",
     "tm:substitute",
     "tm:sunnyday",
     "tm:swagger",
@@ -79,6 +80,7 @@
     "tutor:magiccoat",
     "tutor:seedbomb",
     "tutor:signalbeam",
+    "tutor:sleeptalk",
     "tutor:snore",
     "tutor:synthesis",
     "tutor:worryseed"

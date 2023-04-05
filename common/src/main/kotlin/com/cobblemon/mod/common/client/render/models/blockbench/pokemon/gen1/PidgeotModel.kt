@@ -32,8 +32,8 @@ class PidgeotModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
     override val head = getPart("head")
     private val tail = getPart("tail")
 
-    override val portraitScale = 2.3F
-    override val portraitTranslation = Vec3d(-0.15, -0.4, 0.0)
+    override val portraitScale = 2.8F
+    override val portraitTranslation = Vec3d(-0.15, -0.8, 0.0)
     override val profileScale = 1.2F
     override val profileTranslation = Vec3d(0.0, -0.05, 0.0)
 

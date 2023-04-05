@@ -47,7 +47,7 @@
 					]
 				},
 				{
-					"name": "leaves2",
+					"name": "leaves",
 					"parent": "tree",
 					"pivot": [7, 41.59442, 4.57923],
 					"rotation": [9.91615, 1.29876, -7.38733],
@@ -61,8 +61,8 @@
 					]
 				},
 				{
-					"name": "outerleaves2",
-					"parent": "leaves2",
+					"name": "outerleaves",
+					"parent": "leaves",
 					"pivot": [-2.5, 13.00966, -7.44474],
 					"cubes": [
 						{"origin": [-8, 37.50966, -16.44474], "size": [12, 8, 30], "inflate": 0.002, "uv": [94, 13]},

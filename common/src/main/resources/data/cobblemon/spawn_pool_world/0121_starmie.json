@@ -6,6 +6,9 @@
         {
             "id": "starmie-1",
             "pokemon": "starmie",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

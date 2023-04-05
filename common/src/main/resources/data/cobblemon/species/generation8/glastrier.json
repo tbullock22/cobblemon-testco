@@ -80,7 +80,11 @@
     "tm:trailblaze",
     "tm:uproar",
     "tm:zenheadbutt",
-    "tutor:lashout"
+    "tutor:doubleedge",
+    "tutor:iciclecrash",
+    "tutor:lashout",
+    "tutor:swordsdance",
+    "tutor:taunt"
   ],
   "labels": [
     "gen8",

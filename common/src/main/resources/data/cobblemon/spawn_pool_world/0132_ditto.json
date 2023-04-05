@@ -6,31 +6,15 @@
         {
             "id": "ditto-1",
             "pokemon": "ditto",
-            "type": "pokemon",
-            "context": "grounded",
-            "bucket": "ultra-rare",
-            "level": "1-29",
-            "weight": 10.0,
-            "condition": {
-                "canSeeSky": true,
-                "biomes": [
-                    "#cobblemon:is_overworld"
-                ]
-            }
-        },
-        {
-            "id": "ditto-2",
-            "pokemon": "ditto",
             "presets": [
-                "underground"
+                "natural"
             ],
             "type": "pokemon",
             "context": "grounded",
-            "bucket": "ultra-rare",
+            "bucket": "rare",
             "level": "1-29",
             "weight": 10.0,
             "condition": {
-                "canSeeSky": false,
                 "biomes": [
                     "#cobblemon:is_overworld"
                 ]

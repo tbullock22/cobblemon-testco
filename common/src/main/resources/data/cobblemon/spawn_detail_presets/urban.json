@@ -1,6 +1,6 @@
 {
   "condition": {
-    "neededNearbyBlocks": [
+	"neededNearbyBlocks": [
       "minecraft:dirt_path",
       "minecraft:cut_sandstone",
       "minecraft:cut_red_sandstone",

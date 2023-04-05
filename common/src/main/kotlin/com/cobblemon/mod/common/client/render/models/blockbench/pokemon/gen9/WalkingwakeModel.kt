@@ -28,7 +28,7 @@ class WalkingwakeModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, 
     override val rightLeg = getPart("leg_right")
 
     override val portraitScale = 2.2F
-    override val portraitTranslation = Vec3d(-2.35, 2.4, 0.0)
+    override val portraitTranslation = Vec3d(-2.5, 2.4, 0.0)
 
     override val profileScale = 0.35F
     override val profileTranslation = Vec3d(0.0, 1.2, 0.0)

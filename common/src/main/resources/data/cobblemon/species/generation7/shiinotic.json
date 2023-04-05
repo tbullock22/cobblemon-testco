@@ -26,22 +26,32 @@
   "eggGroups": [
     "grass"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:brown_mushroom",
+        "quantityRange": "1-2",
+        "percentage": 66
+      }
+    ]
+  },
   "moves": [
     "1:absorb",
     "1:astonish",
-    "1:confuseray",
     "1:flash",
     "1:ingrain",
-    "12:megadrain",
-    "16:sleeppowder",
-    "20:moonlight",
-    "27:strengthsap",
-    "32:gigadrain",
+    "11:moonlight",
+    "15:megadrain",
+    "18:sleeppowder",
+    "26:confuseray",
+    "31:gigadrain",
+    "35:strengthsap",
     "38:dazzlinggleam",
-    "44:spore",
-    "50:moonblast",
+    "40:spore",
+    "44:moonblast",
+    "49:dreameater",
     "53:spotlight",
-    "56:dreameater",
     "tm:amnesia",
     "tm:attract",
     "tm:chargebeam",
@@ -50,6 +60,7 @@
     "tm:doubleteam",
     "tm:drainingkiss",
     "tm:drainpunch",
+    "tm:dreameater",
     "tm:endure",
     "tm:energyball",
     "tm:facade",
@@ -82,10 +93,15 @@
     "tm:weatherball",
     "tm:wonderroom",
     "tutor:afteryou",
+    "tutor:gigadrain",
     "tutor:magiccoat",
+    "tutor:magicroom",
     "tutor:recycle",
+    "tutor:seedbomb",
     "tutor:signalbeam",
+    "tutor:snore",
     "tutor:synthesis",
+    "tutor:wonderroom",
     "tutor:worryseed"
   ],
   "labels": [

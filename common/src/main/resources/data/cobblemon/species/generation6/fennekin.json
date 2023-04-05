@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Fennekin",
   "nationalPokedexNumber": 653,
   "primaryType": "fire",
@@ -23,6 +24,22 @@
   "eggGroups": [
     "field"
   ],
+  "drops": {
+    "amount": "3",
+    "entries": [
+      {
+        "item": "minecraft:stick"
+      },
+      {
+        "item": "minecraft:blaze_powder",
+        "percentage": 50
+      },
+      {
+        "item": "cobblemon:charcoal_stick",
+        "percentage": 5
+      }
+    ]
+  },
   "moves": [
     "1:scratch",
     "1:tailwhip",
@@ -31,19 +48,21 @@
     "14:flamecharge",
     "17:psybeam",
     "20:firespin",
-    "25:lightscreen",
     "25:luckychant",
+    "27:lightscreen",
     "31:psyshock",
     "35:flamethrower",
     "38:willowisp",
     "41:psychic",
     "43:sunnyday",
+    "46:magicroom",
     "48:fireblast",
     "egg:copycat",
     "egg:heatwave",
     "egg:hypnosis",
     "egg:magiccoat",
     "egg:magicroom",
+    "egg:psychicterrain",
     "egg:wish",
     "tm:agility",
     "tm:attract",
@@ -106,8 +125,15 @@
     "tm:willowisp",
     "tm:workup",
     "tutor:covet",
+    "tutor:firepledge",
+    "tutor:flamethrower",
+    "tutor:foulplay",
+    "tutor:heatwave",
+    "tutor:hiddenpower",
     "tutor:irontail",
     "tutor:magiccoat",
+    "tutor:magicroom",
+    "tutor:scratch",
     "tutor:snore"
   ],
   "labels": [
@@ -131,7 +157,7 @@
       ]
     }
   ],
-  "baseScale": 1,
+  "baseScale": 0.5,
   "hitbox": {
     "width": 1,
     "height": 1,

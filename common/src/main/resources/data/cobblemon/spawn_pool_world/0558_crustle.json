@@ -6,6 +6,9 @@
         {
             "id": "crustle-1",
             "pokemon": "crustle",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

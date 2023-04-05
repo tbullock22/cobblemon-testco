@@ -32,7 +32,7 @@ class SlowFallEffect : ShoulderEffect {
      they SHOULD have the effect even after they take their pokemon off the shoulder since the potion would still be in effect,
      but it won't have even been added because of the uniqueness constraint. Unclear how best to solve this.
      */
-    class SlowFallShoulderStatusEffect(val pokemonIds: MutableList<UUID>) : StatusEffectInstance(StatusEffects.SLOW_FALLING, 2, 1, true, false, false) {
+    class SlowFallShoulderStatusEffect(val pokemonIds: MutableList<UUID>) : StatusEffectInstance(StatusEffects.SLOW_FALLING, 2, 0, true, false, false) {
         fun isShoulderedPokemon(shoulderEntity: NbtCompound): Boolean {
             val pokemonNBT = shoulderEntity.getCompound("Pokemon")
             return pokemonNBT.containsUuid(POKEMON_UUID) && pokemonNBT.getUuid(POKEMON_UUID) in pokemonIds

@@ -8,9 +8,12 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1
 
+import com.cobblemon.mod.common.client.render.models.blockbench.asTransformed
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
+import com.cobblemon.mod.common.client.render.models.blockbench.pose.TransformedModelPart
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
@@ -21,15 +24,18 @@ class PikachuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("pikachu")
     override val head = getPart("head")
 
-    override val portraitScale = 1.4F
-    override val portraitTranslation = Vec3d(0.1, 0.3, 0.0)
+    override val portraitScale = 2F
+    override val portraitTranslation = Vec3d(-0.1, 0.0, 0.0)
 
     override val profileScale = 0.65F
     override val profileTranslation = Vec3d(0.0, 0.77, 0.0)
 
+    lateinit var shoulderLeft: PokemonPose
+    lateinit var shoulderRight: PokemonPose
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
 
+    val shoulderOffset = 1.5
     override fun registerPoses() {
         val blink = quirk("blink") { bedrockStateful("pikachu", "blink").setPreventsIdle(false) }
         standing = registerPose(
@@ -52,6 +58,30 @@ class PikachuModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
                 singleBoneLook(),
                 bedrock("pikachu", "ground_walk")
                 //bedrock("pikachu", "ground_walk")
+            )
+        )
+
+        shoulderLeft = registerPose(
+            poseType = PoseType.SHOULDER_LEFT,
+            quirks = arrayOf(blink),
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("pikachu", "shoulder_left")
+            ),
+            transformedParts = arrayOf(
+                rootPart.asTransformed().addPosition(TransformedModelPart.X_AXIS, shoulderOffset)
+            )
+        )
+
+        shoulderRight = registerPose(
+            poseType = PoseType.SHOULDER_RIGHT,
+            quirks = arrayOf(blink),
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("pikachu", "shoulder_right")
+            ),
+            transformedParts = arrayOf(
+                rootPart.asTransformed().addPosition(TransformedModelPart.X_AXIS, -shoulderOffset)
             )
         )
     }

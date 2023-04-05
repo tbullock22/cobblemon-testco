@@ -141,7 +141,13 @@
     "tm:thunderfang",
     "tm:trailblaze",
     "tm:wildcharge",
-    "tm:workup"
+    "tm:workup",
+    "tutor:crunch",
+    "tutor:ironhead",
+    "tutor:playrough",
+    "tutor:sacredsword",
+    "tutor:steelbeam",
+    "tutor:swordsdance"
   ],
   "labels": [
     "gen8",

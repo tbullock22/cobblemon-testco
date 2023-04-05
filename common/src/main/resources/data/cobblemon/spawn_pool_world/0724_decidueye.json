@@ -6,6 +6,10 @@
         {
             "id": "decidueye-1",
             "pokemon": "decidueye",
+            "presets": [
+                "natural",
+				"treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "ultra-rare",

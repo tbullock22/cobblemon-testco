@@ -6,6 +6,9 @@
         {
             "id": "torchic-1",
             "pokemon": "torchic",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "ultra-rare",

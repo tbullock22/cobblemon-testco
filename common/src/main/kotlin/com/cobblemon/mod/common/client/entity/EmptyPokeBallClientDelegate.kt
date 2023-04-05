@@ -28,4 +28,9 @@ class EmptyPokeBallClientDelegate : PokeBallPoseableState(), EntitySideDelegate<
         }
         entity.shakeEmitter.subscribe { shakeEmitter.emit(Unit) }
     }
+
+    override fun tick(entity: EmptyPokeBallEntity) {
+        super.tick(entity)
+        updateLocatorPosition(entity.pos)
+    }
 }

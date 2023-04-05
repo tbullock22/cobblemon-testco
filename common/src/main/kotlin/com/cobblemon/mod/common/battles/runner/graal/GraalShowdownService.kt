@@ -115,7 +115,7 @@ class GraalShowdownService : ShowdownService {
         return gson.fromJson(arrayResult, JsonArray::class.java)
     }
 
-    override fun sendSpeciesData() {
+    override fun registerSpecies() {
         val receiveSpeciesDataFn = this.context.getBindings("js").getMember("receiveSpeciesData")
         val jsArray = this.context.eval("js", "new Array();")
         var index = 0L

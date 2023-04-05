@@ -21,6 +21,17 @@
       "willSleepOnBed": false,
       "depth": "normal",
       "light": "0-4"
+    },
+    "moving": {
+      "canLook": false,
+      "walk": {
+        "avoidsLand": true
+      },
+      "swim": {
+        "swimSpeed": 0.2,
+        "canSwimInWater": true,
+        "canBreatheUnderwater": true
+      }
     }
   },
   "catchRate": 25,
@@ -32,25 +43,40 @@
   "eggGroups": [
     "mineral"
   ],
+  "drops": {
+    "amount": "2",
+    "entries": [
+      {
+        "item": "minecraft:kelp",
+        "quantityRange": "1-2",
+        "percentage": 66
+      },
+      {
+        "item": "minecraft:raw_iron",
+        "quantityRange": "1-2",
+        "percentage": 66
+      }
+    ]
+  },
   "moves": [
     "1:absorb",
+    "1:astonish",
+    "1:growth",
     "1:rapidspin",
-    "4:astonish",
-    "8:wrap",
-    "12:megadrain",
-    "16:growth",
-    "20:gyroball",
-    "24:switcheroo",
-    "28:gigadrain",
-    "32:whirlpool",
-    "36:heavyslam",
-    "40:slam",
-    "44:shadowball",
-    "48:metalsound",
-    "52:anchorshot",
-    "56:energyball",
-    "60:phantomforce",
-    "64:powerwhip",
+    "1:switcheroo",
+    "5:megadrain",
+    "9:wrap",
+    "14:gyroball",
+    "18:metalsound",
+    "23:gigadrain",
+    "27:whirlpool",
+    "32:anchorshot",
+    "36:shadowball",
+    "41:energyball",
+    "45:slam",
+    "50:heavyslam",
+    "54:phantomforce",
+    "59:powerwhip",
     "tm:aerialace",
     "tm:allyswitch",
     "tm:assurance",
@@ -107,12 +133,18 @@
     "tm:thief",
     "tm:toxic",
     "tm:whirlpool",
+    "tutor:allyswitch",
     "tutor:block",
+    "tutor:gigadrain",
     "tutor:grassyglide",
+    "tutor:helpinghand",
+    "tutor:irondefense",
+    "tutor:ironhead",
     "tutor:knockoff",
     "tutor:painsplit",
     "tutor:poltergeist",
     "tutor:roleplay",
+    "tutor:snore",
     "tutor:spite",
     "tutor:steelroller",
     "tutor:synthesis",

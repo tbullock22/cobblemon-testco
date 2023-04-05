@@ -24,7 +24,7 @@
   ],
   "moves": [
     "1:splash",
-    "1:teleport",
+    "23:teleport",
     "tutor:splash",
     "tutor:teleport"
   ],

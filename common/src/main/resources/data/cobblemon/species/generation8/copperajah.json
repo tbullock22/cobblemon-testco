@@ -103,6 +103,7 @@
     "tm:gigaimpact",
     "tm:heatcrash",
     "tm:heavyslam",
+    "tm:highhorsepower",
     "tm:hyperbeam",
     "tm:irondefense",
     "tm:ironhead",
@@ -130,11 +131,13 @@
     "tm:stompingtantrum",
     "tm:stoneedge",
     "tm:substitute",
+    "tm:superpower",
     "tm:takedown",
     "tm:taunt",
     "tm:terablast",
     "tm:workup",
     "tm:zenheadbutt",
+    "tutor:steelbeam",
     "tutor:steelroller"
   ],
   "labels": [

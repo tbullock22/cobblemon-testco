@@ -13,6 +13,8 @@ import com.cobblemon.mod.common.api.battles.model.PokemonBattle
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies
 import com.cobblemon.mod.common.battles.ShowdownInterpreter
 import com.cobblemon.mod.common.battles.runner.ShowdownService
+import com.cobblemon.mod.common.pokemon.FormData
+import com.cobblemon.mod.common.pokemon.Species
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import java.io.BufferedReader
@@ -120,18 +122,23 @@ class SocketShowdownService(val host: String = "localhost", val port: Int = 1846
         return gson.fromJson(response, JsonArray::class.java)
     }
 
-    override fun sendSpeciesData() {
-        writer.write(">resetSpeciesData")
+    private fun sendSpeciesData(species: Species, form: FormData?) {
+        writer.write(">receiveSpeciesData ${gson.toJson(PokemonSpecies.ShowdownSpecies(species, form))}\n")
         writer.flush()
-        val queue = arrayListOf<String>()
+        val ack = CharArray(3)
+        reader.read(ack) // Wait for showdown to acknowledge.
+        assert(String(ack) == "ACK")
+    }
+
+    override fun registerSpecies() {
+        writer.write(">resetSpeciesData\n")
         PokemonSpecies.species.forEach { species ->
-            queue.add(">receiveSpeciesData ${gson.toJson(PokemonSpecies.ShowdownSpecies(species, null))}\n")
+            sendSpeciesData(species, null)
             species.forms.forEach { form ->
                 if (form != species.standardForm) {
-                    queue.add(">receiveSpeciesData ${gson.toJson(PokemonSpecies.ShowdownSpecies(species, form))}\n")
+                    sendSpeciesData(species, form)
                 }
             }
         }
-        // ToDo fix me
     }
 }

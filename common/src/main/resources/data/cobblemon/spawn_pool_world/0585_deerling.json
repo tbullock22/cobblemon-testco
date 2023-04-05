@@ -6,6 +6,9 @@
         {
             "id": "deerling-1",
             "pokemon": "deerling",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

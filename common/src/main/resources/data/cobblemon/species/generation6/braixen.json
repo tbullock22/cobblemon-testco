@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Braixen",
   "nationalPokedexNumber": 654,
   "primaryType": "fire",
@@ -23,23 +24,40 @@
   "eggGroups": [
     "field"
   ],
+  "drops": {
+    "amount": "3",
+    "entries": [
+      {
+        "item": "minecraft:stick"
+      },
+      {
+        "item": "minecraft:blaze_powder",
+        "quantityRange": "1-2",
+        "percentage": 66
+      },
+      {
+        "item": "cobblemon:charcoal_stick",
+        "percentage": 10
+      }
+    ]
+  },
   "moves": [
-    "1:ember",
     "1:scratch",
     "1:tailwhip",
+    "5:ember",
     "11:howl",
     "14:flamecharge",
     "18:psybeam",
     "22:firespin",
-    "28:lightscreen",
-    "28:luckychant",
-    "36:psyshock",
+    "27:luckychant",
+    "30:lightscreen",
+    "34:psyshock",
     "41:flamethrower",
     "45:willowisp",
-    "49:psychic",
-    "52:sunnyday",
-    "56:magicroom",
-    "59:fireblast",
+    "48:psychic",
+    "51:sunnyday",
+    "53:magicroom",
+    "55:fireblast",
     "tm:agility",
     "tm:attract",
     "tm:calmmind",
@@ -106,15 +124,25 @@
     "tm:zenheadbutt",
     "tutor:allyswitch",
     "tutor:covet",
+    "tutor:firepledge",
+    "tutor:firepunch",
+    "tutor:foulplay",
+    "tutor:heatwave",
     "tutor:irontail",
     "tutor:laserfocus",
+    "tutor:lowkick",
     "tutor:magiccoat",
+    "tutor:magicroom",
     "tutor:recycle",
     "tutor:shockwave",
+    "tutor:skillswap",
     "tutor:snatch",
     "tutor:snore",
     "tutor:telekinesis",
-    "tutor:wonderroom"
+    "tutor:thunderpunch",
+    "tutor:trick",
+    "tutor:wonderroom",
+    "tutor:zenheadbutt"
   ],
   "labels": [
     "gen6"
@@ -140,10 +168,10 @@
       ]
     }
   ],
-  "baseScale": 1,
+  "baseScale": 0.65,
   "hitbox": {
     "width": 1,
-    "height": 1,
+    "height": 2.25,
     "fixed": false
   },
   "baseFriendship": 70,

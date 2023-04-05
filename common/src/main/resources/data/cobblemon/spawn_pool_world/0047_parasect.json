@@ -6,13 +6,16 @@
         {
             "id": "parasect-1",
             "pokemon": "parasect",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",
             "level": "24-40",
             "weight": 1.0,
             "condition": {
-                "canSeeSky": true,
+                "canSeeSky": false,
                 "biomes": [
                     "#cobblemon:is_lush"
                 ]
@@ -21,23 +24,8 @@
         {
             "id": "parasect-2",
             "pokemon": "parasect",
-            "type": "pokemon",
-            "context": "grounded",
-            "bucket": "common",
-            "level": "24-40",
-            "weight": 1.0,
-            "condition": {
-				"canSeeSky": true,
-                "biomes": [
-                    "#cobblemon:is_mushroom"
-                ]
-            }
-        },
-        {
-            "id": "parasect-3",
-            "pokemon": "parasect",
-			"presets": [
-                "underground"
+            "presets": [
+                "natural"
             ],
             "type": "pokemon",
             "context": "grounded",
@@ -45,7 +33,6 @@
             "level": "24-40",
             "weight": 1.0,
             "condition": {
-				"canSeeSky": false,
                 "biomes": [
                     "#cobblemon:is_mushroom"
                 ]

@@ -25,23 +25,32 @@
     "water_1",
     "field"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:mystic_water",
+        "percentage": 10
+      }
+    ]
+  },
   "moves": [
     "1:disarmingvoice",
     "1:growl",
     "1:pound",
     "1:watergun",
-    "9:aquajet",
-    "12:babydolleyes",
-    "15:icywind",
-    "20:sing",
-    "25:bubblebeam",
-    "30:encore",
+    "11:babydolleyes",
+    "14:aquajet",
+    "16:icywind",
+    "19:encore",
+    "24:bubblebeam",
+    "28:sing",
     "33:doubleslap",
-    "35:mistyterrain",
-    "40:hypervoice",
-    "45:moonblast",
+    "37:hypervoice",
+    "42:moonblast",
     "46:captivate",
-    "50:hydropump",
+    "51:hydropump",
+    "55:mistyterrain",
     "tm:acrobatics",
     "tm:amnesia",
     "tm:attract",
@@ -87,9 +96,16 @@
     "tutor:aquatail",
     "tutor:covet",
     "tutor:flipturn",
+    "tutor:helpinghand",
+    "tutor:hypervoice",
+    "tutor:icywind",
+    "tutor:irontail",
+    "tutor:snore",
     "tutor:tripleaxel",
+    "tutor:uproar",
     "tutor:waterpledge",
-    "tutor:waterpulse"
+    "tutor:waterpulse",
+    "tutor:wonderroom"
   ],
   "labels": [
     "gen7"

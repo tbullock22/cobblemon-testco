@@ -6,6 +6,9 @@
         {
             "id": "clefable-1",
             "pokemon": "clefable",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",
@@ -40,6 +43,9 @@
         {
             "id": "clefable-3",
             "pokemon": "clefable",
+			"presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",
@@ -56,6 +62,9 @@
         {
             "id": "clefable-4",
             "pokemon": "clefable",
+			"presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

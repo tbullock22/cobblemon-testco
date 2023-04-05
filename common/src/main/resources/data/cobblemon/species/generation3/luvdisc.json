@@ -24,27 +24,49 @@
   "eggGroups": [
     "water_2"
   ],
+  "behaviour": {
+    "moving": {
+      "walk": {
+        "avoidsLand": true
+      },
+      "swim": {
+        "swimSpeed": 0.1,
+        "canSwimInWater": true,
+        "canBreatheUnderwater": true
+      }
+    }
+  },
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:deep_sea_scale",
+        "percentage": 2.5
+      }
+    ]
+  },
   "moves": [
-    "1:charm",
     "1:tackle",
-    "4:watergun",
-    "7:agility",
-    "13:luckychant",
+    "4:charm",
+    "9:drainingkiss",
+    "12:watergun",
     "13:wish",
-    "17:waterpulse",
-    "20:attract",
-    "22:drainingkiss",
+    "16:agility",
+    "17:luckychant",
     "22:heartstamp",
-    "26:flail",
-    "31:sweetkiss",
-    "34:takedown",
+    "24:takedown",
+    "28:attract",
+    "31:waterpulse",
+    "36:sweetkiss",
+    "37:aquaring",
     "37:babydolleyes",
-    "37:captivate",
-    "40:aquaring",
+    "40:captivate",
+    "40:flail",
+    "40:hydropump",
     "42:soak",
-    "46:hydropump",
-    "49:safeguard",
+    "48:safeguard",
     "egg:aquajet",
+    "egg:aquaring",
     "egg:brine",
     "egg:captivate",
     "egg:entrainment",
@@ -54,7 +76,10 @@
     "egg:supersonic",
     "egg:watersport",
     "tm:agility",
+    "tm:attract",
     "tm:blizzard",
+    "tm:brine",
+    "tm:captivate",
     "tm:charm",
     "tm:confide",
     "tm:dive",
@@ -76,6 +101,7 @@
     "tm:rest",
     "tm:return",
     "tm:round",
+    "tm:safeguard",
     "tm:scald",
     "tm:secretpower",
     "tm:sleeptalk",
@@ -90,10 +116,21 @@
     "tm:waterpulse",
     "tm:whirlpool",
     "tutor:bounce",
+    "tutor:charm",
+    "tutor:dive",
     "tutor:doubleedge",
+    "tutor:endure",
+    "tutor:icywind",
+    "tutor:liquidation",
     "tutor:mimic",
+    "tutor:mudsport",
+    "tutor:psychup",
+    "tutor:sleeptalk",
     "tutor:snore",
-    "tutor:swift"
+    "tutor:substitute",
+    "tutor:swagger",
+    "tutor:swift",
+    "tutor:waterpulse"
   ],
   "labels": [
     "gen3"

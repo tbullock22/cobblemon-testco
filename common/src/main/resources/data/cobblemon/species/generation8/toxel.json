@@ -46,7 +46,11 @@
     "tm:sleeptalk",
     "tm:snore",
     "tm:substitute",
-    "tm:terablast"
+    "tm:terablast",
+    "tutor:acid",
+    "tutor:flail",
+    "tutor:growl",
+    "tutor:nuzzle"
   ],
   "labels": [
     "gen8",

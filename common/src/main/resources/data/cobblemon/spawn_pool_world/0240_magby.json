@@ -6,6 +6,9 @@
 		{
             "id": "magby-1",
             "pokemon": "magby",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -30,6 +33,9 @@
         {
             "id": "magby-2",
             "pokemon": "magby",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -46,6 +52,9 @@
         {
             "id": "magby-3",
             "pokemon": "magby",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

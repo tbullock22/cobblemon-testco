@@ -1,16 +1,19 @@
 {
-    "enabled": true,
+    "enabled": "true",
     "neededInstalledMods": [],
     "neededUninstalledMods": [],
     "spawns": [
         {
             "id": "golbat-1",
             "pokemon": "golbat",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
             "level": "22-45",
-            "weight": 0.9,
+            "weight": 0.18,
             "condition": {
                 "canSeeSky": true,
                 "biomes": [
@@ -26,6 +29,7 @@
             },
             "anticondition": {
                 "biomes": [
+                    "#cobblemon:is_spooky",
                     "#cobblemon:is_freezing"
                 ]
             }
@@ -56,6 +60,32 @@
         {
             "id": "golbat-3",
             "pokemon": "golbat",
+            "presets": [
+                "derelict"
+            ],
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "uncommon",
+            "level": "22-45",
+            "weight": 0.9,
+            "condition": {
+                "canSeeSky": false,
+                "biomes": [
+                    "#cobblemon:is_overworld"
+                ]
+            },
+            "anticondition": {
+                "biomes": [
+                    "#cobblemon:is_abyss"
+                ]
+            }
+        },
+        {
+            "id": "golbat-4",
+            "pokemon": "golbat",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

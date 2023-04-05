@@ -27,10 +27,8 @@ import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import com.cobblemon.mod.common.util.isLookingAt
 import com.cobblemon.mod.common.util.lang
 import com.cobblemon.mod.common.util.math.DoubleRange
-import com.cobblemon.mod.common.util.math.geometry.getOrigin
 import com.cobblemon.mod.common.util.math.geometry.toRadians
 import com.cobblemon.mod.common.util.math.remap
-import java.util.Vector
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.tan
@@ -151,7 +149,7 @@ class PokemonRenderer(
         val clientDelegate = entity.delegate as PokemonClientDelegate
         val pokemonPosition = entity.pos.add(0.0, entity.height / 2.0 * clientDelegate.entityScaleModifier.toDouble(), 0.0)
         val beamSourcePosition = if (beamTarget is EmptyPokeBallEntity) {
-            (beamTarget.delegate as PokeBallPoseableState).locatorStates["beam"]!!.matrix.getOrigin()
+            (beamTarget.delegate as PokeBallPoseableState).locatorStates["beam"]?.getOrigin() ?: beamTarget.pos
 //            beamTarget.pos.let { it.add(pokemonPosition.subtract(it).normalize().multiply(0.4, 0.0, 0.4)) }
         } else {
             beamTarget as PlayerEntity

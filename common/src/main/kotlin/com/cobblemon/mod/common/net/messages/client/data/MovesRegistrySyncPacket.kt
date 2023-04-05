@@ -13,10 +13,6 @@ import com.cobblemon.mod.common.api.moves.Moves
 import com.cobblemon.mod.common.api.moves.categories.DamageCategories
 import com.cobblemon.mod.common.api.types.ElementalTypes
 import com.cobblemon.mod.common.battles.MoveTarget
-import com.cobblemon.mod.common.net.IntSize
-import com.cobblemon.mod.common.util.cobblemonResource
-import com.cobblemon.mod.common.util.readSizedInt
-import com.cobblemon.mod.common.util.writeSizedInt
 import net.minecraft.network.PacketByteBuf
 
 class MovesRegistrySyncPacket : DataRegistrySyncPacket<MoveTemplate> {
@@ -24,8 +20,8 @@ class MovesRegistrySyncPacket : DataRegistrySyncPacket<MoveTemplate> {
     constructor(moves: List<MoveTemplate>): super(moves)
 
     override fun encodeEntry(buffer: PacketByteBuf, entry: MoveTemplate) {
-        buffer.writeSizedInt(IntSize.U_SHORT, entry.id)
         buffer.writeString(entry.name)
+        buffer.writeInt(entry.num)
         buffer.writeString(entry.elementalType.name)
         buffer.writeString(entry.damageCategory.name)
         buffer.writeDouble(entry.power)
@@ -39,8 +35,8 @@ class MovesRegistrySyncPacket : DataRegistrySyncPacket<MoveTemplate> {
     }
 
     override fun decodeEntry(buffer: PacketByteBuf): MoveTemplate {
-        val id = buffer.readSizedInt(IntSize.U_SHORT)
         val name = buffer.readString()
+        val num = buffer.readInt()
         val type = ElementalTypes.getOrException(buffer.readString())
         val damageCategory = DamageCategories.getOrException(buffer.readString())
         val power = buffer.readDouble()
@@ -53,7 +49,7 @@ class MovesRegistrySyncPacket : DataRegistrySyncPacket<MoveTemplate> {
         repeat(buffer.readVarInt()) {
             effectChances += buffer.readDouble()
         }
-        return MoveTemplate(name, type, damageCategory, power, target, accuracy, pp, priority, critRatio, effectChances.toTypedArray()).apply { this.id = id }
+        return MoveTemplate(name, num, type, damageCategory, power, target, accuracy, pp, priority, critRatio, effectChances.toTypedArray())
     }
 
     override fun synchronizeDecoded(entries: Collection<MoveTemplate>) {

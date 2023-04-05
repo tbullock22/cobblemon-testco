@@ -16,6 +16,7 @@
             "weight": 0.1,
             "condition": {
                 "canSeeSky": false,
+				"maxY": 32,
                 "biomes": [
                     "#cobblemon:is_overworld"
                 ],
@@ -27,6 +28,9 @@
         {
             "id": "dragonite-2",
             "pokemon": "dragonite",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "rare",

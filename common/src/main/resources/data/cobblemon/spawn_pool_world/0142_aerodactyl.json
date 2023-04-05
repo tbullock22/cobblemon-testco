@@ -6,23 +6,8 @@
         {
             "id": "aerodactyl-1",
             "pokemon": "aerodactyl",
-            "type": "pokemon",
-            "context": "grounded",
-            "bucket": "ultra-rare",
-            "level": "25-51",
-            "weight": 10.0,
-            "condition": {
-                "canSeeSky": true,
-                "biomes": [
-                    "#cobblemon:is_lush"
-                ]
-            }
-        },
-        {
-            "id": "aerodactyl-2",
-            "pokemon": "aerodactyl",
             "presets": [
-                "underground"
+                "natural"
             ],
             "type": "pokemon",
             "context": "grounded",
@@ -30,7 +15,6 @@
             "level": "25-51",
             "weight": 10.0,
             "condition": {
-                "canSeeSky": false,
                 "biomes": [
                     "#cobblemon:is_lush"
                 ]

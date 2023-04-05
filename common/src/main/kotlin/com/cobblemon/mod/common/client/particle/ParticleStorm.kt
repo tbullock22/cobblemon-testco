@@ -39,7 +39,7 @@ class ParticleStorm(
     val sourceAlive: () -> Boolean = { true },
     val sourceVisible: () -> Boolean = { true },
     val runtime: MoLangRuntime = MoLangRuntime()
-): NoRenderParticle(world, matrixWrapper.matrix.getOrigin().x, matrixWrapper.matrix.getOrigin().y, matrixWrapper.matrix.getOrigin().z) {
+): NoRenderParticle(world, matrixWrapper.getOrigin().x, matrixWrapper.getOrigin().y, matrixWrapper.getOrigin().z) {
     fun spawn() {
         MinecraftClient.getInstance().particleManager.addParticle(this)
     }
@@ -85,7 +85,7 @@ class ParticleStorm(
             return
         }
 
-        val pos = matrixWrapper.matrix.getOrigin()
+        val pos = matrixWrapper.getOrigin()
         prevPosX = x
         prevPosY = y
         prevPosZ = z
@@ -134,6 +134,6 @@ class ParticleStorm(
         contextStorm = null
     }
 
-    fun transformPosition(position: Vec3d): Vec3d = matrixWrapper.matrix.transformPosition(position)
+    fun transformPosition(position: Vec3d): Vec3d = matrixWrapper.transformPosition(position)
     fun transformDirection(direction: Vec3d): Vec3d = matrixWrapper.matrix.transformDirection(direction)
 }

@@ -46,8 +46,10 @@
   "moves": [
     "1:stringshot",
     "1:tackle",
-    "9:bugbite",
+    "15:bugbite",
     "tm:electroweb",
+    "tutor:bugbite",
+    "tutor:electroweb",
     "tutor:snore",
     "tutor:stringshot",
     "tutor:tackle"

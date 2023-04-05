@@ -6,6 +6,9 @@
         {
             "id": "magmar-1",
             "pokemon": "magmar",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -30,6 +33,9 @@
         {
             "id": "magmar-2",
             "pokemon": "magmar",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -46,6 +52,9 @@
         {
             "id": "magmar-3",
             "pokemon": "magmar",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

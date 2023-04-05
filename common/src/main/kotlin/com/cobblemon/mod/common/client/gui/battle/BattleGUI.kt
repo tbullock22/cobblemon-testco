@@ -37,6 +37,7 @@ class BattleGUI : Screen(battleLang("gui.title")) {
         val runResource = cobblemonResource("ui/battle/battle_menu_run.png")
     }
 
+    private lateinit var messagePane: BattleMessagePane
     var opacity = 0F
     val actor = CobblemonClient.battle?.side1?.actors?.find { it.uuid == MinecraftClient.getInstance().player?.uuid }
 
@@ -44,7 +45,8 @@ class BattleGUI : Screen(battleLang("gui.title")) {
 
     override fun init() {
         super.init()
-        addDrawableChild(BattleMessagePane(CobblemonClient.battle!!.messages))
+        messagePane = BattleMessagePane(CobblemonClient.battle!!.messages)
+        addDrawableChild(messagePane)
     }
 
     fun changeActionSelection(newSelection: BattleActionSelection?) {
@@ -126,6 +128,11 @@ class BattleGUI : Screen(battleLang("gui.title")) {
     override fun close() {
         super.close()
         CobblemonClient.battle?.minimised = true
+    }
+
+    override fun mouseDragged(mouseX: Double, mouseY: Double, button: Int, deltaX: Double, deltaY: Double): Boolean {
+        if (this::messagePane.isInitialized) messagePane.mouseDragged(mouseX, mouseY, button, deltaX, deltaY)
+        return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY)
     }
 
     override fun charTyped(chr: Char, modifiers: Int): Boolean {

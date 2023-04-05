@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.pokeball.catching.calculators
 
+import com.cobblemon.mod.common.Cobblemon
 import com.cobblemon.mod.common.api.pokeball.catching.CaptureContext
 import com.cobblemon.mod.common.api.pokeball.catching.calculators.CaptureCalculator
 import com.cobblemon.mod.common.api.pokeball.catching.calculators.CriticalCaptureProvider
@@ -20,6 +21,7 @@ import com.cobblemon.mod.common.pokemon.status.statuses.*
 import net.minecraft.entity.LivingEntity
 import net.minecraft.server.network.ServerPlayerEntity
 import kotlin.math.max
+import kotlin.math.min
 import kotlin.math.pow
 import kotlin.math.roundToInt
 import kotlin.random.Random
@@ -68,11 +70,8 @@ object CobblemonCaptureCalculator: CaptureCalculator, CriticalCaptureProvider, P
         if (thrower is ServerPlayerEntity) {
             val highestLevelThrower = this.findHighestThrowerLevel(thrower, target)
             if (highestLevelThrower != null && highestLevelThrower < target.level) {
-                var difficulty = 1F - (target.level - highestLevelThrower) / 50
-                if (difficulty < 0.1F) {
-                    difficulty = 0.1F
-                }
-                modifiedCatchRate *= difficulty
+                val config = Cobblemon.config
+                modifiedCatchRate *= max(0.1F, min(1F, 1F - ((target.level - highestLevelThrower) / (config.maxPokemonLevel / 2))))
             }
         }
         val critical = if (thrower is ServerPlayerEntity) this.shouldHaveCriticalCapture(thrower, modifiedCatchRate) else false

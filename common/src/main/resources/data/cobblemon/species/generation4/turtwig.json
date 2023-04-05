@@ -15,6 +15,14 @@
     "special_defence": 55,
     "speed": 31
   },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": true,
+      "depth": "normal",
+      "light": "0-4"
+    }
+  },
   "catchRate": 45,
   "maleRatio": 0.875,
   "shoulderMountable": false,
@@ -25,6 +33,15 @@
     "monster",
     "grass"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:miracle_seed",
+        "percentage": 5
+      }
+    ]
+  },
   "moves": [
     "1:tackle",
     "5:withdraw",
@@ -66,8 +83,10 @@
     "tm:facade",
     "tm:flash",
     "tm:frustration",
+    "tm:gigadrain",
     "tm:grassknot",
     "tm:hiddenpower",
+    "tm:irontail",
     "tm:lightscreen",
     "tm:naturalgift",
     "tm:naturepower",
@@ -82,6 +101,7 @@
     "tm:secretpower",
     "tm:sleeptalk",
     "tm:solarbeam",
+    "tm:stealthrock",
     "tm:strength",
     "tm:substitute",
     "tm:sunnyday",
@@ -89,6 +109,7 @@
     "tm:swordsdance",
     "tm:toxic",
     "tm:workup",
+    "tutor:absorb",
     "tutor:earthpower",
     "tutor:gigadrain",
     "tutor:grasspledge",
@@ -96,10 +117,14 @@
     "tutor:irontail",
     "tutor:mudslap",
     "tutor:seedbomb",
+    "tutor:sleeptalk",
     "tutor:snore",
     "tutor:stealthrock",
+    "tutor:stockpile",
     "tutor:superpower",
     "tutor:synthesis",
+    "tutor:tackle",
+    "tutor:withdraw",
     "tutor:worryseed"
   ],
   "labels": [

@@ -6,6 +6,9 @@
         {
             "id": "gloom-1",
             "pokemon": "gloom",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -22,6 +25,9 @@
 		{
             "id": "gloom-2",
             "pokemon": "gloom",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",
@@ -38,6 +44,9 @@
 		{
             "id": "gloom-valencian-1",
             "pokemon": "gloom valencian",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

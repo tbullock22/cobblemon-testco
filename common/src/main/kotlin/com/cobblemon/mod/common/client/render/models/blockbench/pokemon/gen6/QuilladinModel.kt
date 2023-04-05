@@ -8,21 +8,23 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen6
 
-import com.cobblemon.mod.common.client.render.models.blockbench.animation.BipedWalkAnimation
+import com.cobblemon.mod.common.client.render.models.blockbench.frame.BimanualFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.BipedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
 
-class QuilladinModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFrame {
+class QuilladinModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFrame, BimanualFrame {
     override val rootPart = root.registerChildWithAllChildren("quilladin")
     override val head = getPart("torso")
-
+    override val rightArm = getPart("arm_right")
+    override val leftArm = getPart("arm_left")
     override val leftLeg = getPart("leg_left")
     override val rightLeg = getPart("leg_right")
 
@@ -34,9 +36,17 @@ class QuilladinModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
+    lateinit var sleep: PokemonPose
+
 
     override fun registerPoses() {
         val blink = quirk("blink") { bedrockStateful("quilladin", "blink").setPreventsIdle(false)}
+
+        sleep = registerPose(
+            poseType = PoseType.SLEEP,
+            idleAnimations = arrayOf(bedrock("quilladin", "sleep"))
+        )
+
         standing = registerPose(
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
@@ -52,10 +62,15 @@ class QuilladinModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bi
             poseTypes = MOVING_POSES,
             quirks = arrayOf(blink),
             idleAnimations = arrayOf(
-                BipedWalkAnimation(this, periodMultiplier = 0.9F, amplitudeMultiplier = 1.1f),
                 singleBoneLook(),
-                bedrock("quilladin", "ground_idle")
+                bedrock("quilladin", "ground_walk")
             )
+        )
+
+        sleep = registerPose(
+                poseType = PoseType.SLEEP,
+                transformTicks = 10,
+                idleAnimations = arrayOf(bedrock("quilladin", "sleep"))
         )
     }
 }

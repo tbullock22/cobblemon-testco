@@ -35,7 +35,29 @@ class BattleMessagePane(
     1 + TEXT_BOX_HEIGHT, // bottom
     LINE_HEIGHT
 ) {
+
+    companion object {
+        const val LINE_HEIGHT = 10
+        const val LINE_WIDTH = 142
+        const val FRAME_WIDTH = 169
+        const val FRAME_HEIGHT = 55
+        const val FRAME_EXPANDED_HEIGHT = 101
+        const val TEXT_BOX_WIDTH = 153
+        const val TEXT_BOX_HEIGHT = 46
+        const val EXPAND_TOGGLE_SIZE = 5
+
+        private val battleMessagePaneFrameResource = cobblemonResource("ui/battle/battle_log.png")
+        private val battleMessagePaneFrameExpandedResource = cobblemonResource("ui/battle/battle_log_expanded.png")
+        private var expanded = false
+    }
+
     var opacity = 1F
+    private var scrolling = false
+
+    val appropriateX: Int
+        get() = client.window.scaledWidth - (FRAME_WIDTH + 12)
+    val appropriateY: Int
+        get() = client.window.scaledHeight - (30 + (if (expanded) FRAME_EXPANDED_HEIGHT else FRAME_HEIGHT))
 
     init {
         correctSize()
@@ -52,30 +74,10 @@ class BattleMessagePane(
         }
     }
 
-    val appropriateX: Int
-        get() = client.window.scaledWidth - (FRAME_WIDTH + 12)
-    val appropriateY: Int
-        get() = client.window.scaledHeight - (30 + (if (expanded) FRAME_EXPANDED_HEIGHT else FRAME_HEIGHT))
-
-    fun correctSize() {
+    private fun correctSize() {
         val textBoxHeight = if (expanded) TEXT_BOX_HEIGHT * 2 else TEXT_BOX_HEIGHT
         updateSize(TEXT_BOX_WIDTH, textBoxHeight, appropriateY + 6, appropriateY + 6 + textBoxHeight)
         setLeftPos(appropriateX)
-    }
-
-    companion object {
-        const val LINE_HEIGHT = 10
-        const val LINE_WIDTH = 142
-        const val FRAME_WIDTH = 169
-        const val FRAME_HEIGHT = 55
-        const val FRAME_EXPANDED_HEIGHT = 101
-        const val TEXT_BOX_WIDTH = 153
-        const val TEXT_BOX_HEIGHT = 46
-        const val EXPAND_TOGGLE_SIZE = 5
-
-        private val battleMessagePaneFrameResource = cobblemonResource("ui/battle/battle_log.png")
-        private val battleMessagePaneFrameExpandedResource = cobblemonResource("ui/battle/battle_log_expanded.png")
-        private var expanded = false
     }
 
     override fun addEntry(entry: BattleMessageLine): Int {
@@ -126,7 +128,34 @@ class BattleMessagePane(
         if (mouseX > (left + 160) && mouseX < (left + 160 + EXPAND_TOGGLE_SIZE) && mouseY > (appropriateY + toggleOffsetY) && mouseY < (appropriateY + toggleOffsetY + EXPAND_TOGGLE_SIZE)) {
             expanded = !expanded
         }
-        return false
+
+        updateScrollingState(mouseX, mouseY)
+        if (scrolling) {
+            focused = getEntryAtPosition(mouseX, mouseY)
+            isDragging = true
+        }
+
+        return super.mouseClicked(mouseX, mouseY, button)
+    }
+
+    override fun mouseDragged(mouseX: Double, mouseY: Double, button: Int, deltaX: Double, deltaY: Double): Boolean {
+        if (scrolling) {
+            if (mouseY < top) {
+                scrollAmount = 0.0
+            } else if (mouseY > bottom) {
+                scrollAmount = maxScroll.toDouble()
+            } else {
+                scrollAmount += deltaY
+            }
+        }
+        return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY)
+    }
+
+    private fun updateScrollingState(mouseX: Double, mouseY: Double) {
+        scrolling = mouseX >= this.scrollbarPositionX.toDouble()
+                && mouseX < (this.scrollbarPositionX + 3).toDouble()
+                && mouseY >= top
+                && mouseY < bottom
     }
 
     class BattleMessageLine(val pane: BattleMessagePane, val line: OrderedText) : Entry<BattleMessageLine>() {

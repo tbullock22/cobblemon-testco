@@ -45,8 +45,8 @@ class DurantModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
             poseTypes = PoseType.MOVING_POSES,
             quirks = arrayOf(blink),
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("durant", "ground_walk")
+                singleBoneLook(),
+                bedrock("durant", "ground_walk")
             )
         )
     }

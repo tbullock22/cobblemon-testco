@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Emboar",
   "nationalPokedexNumber": 500,
   "primaryType": "fire",
@@ -15,6 +16,14 @@
     "special_defence": 65,
     "speed": 65
   },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    }
+  },
   "catchRate": 45,
   "maleRatio": 0.875,
   "shoulderMountable": false,
@@ -24,8 +33,20 @@
   "eggGroups": [
     "field"
   ],
+  "drops": {
+    "amount": "2",
+    "entries": [
+      {
+        "item": "minecraft:porkchop",
+        "quantityRange": "2-4"
+      },
+      {
+        "item": "cobblemon:charcoal_stick",
+        "percentage": 20
+      }
+    ]
+  },
   "moves": [
-    "1:armthrust",
     "1:ember",
     "1:hammerarm",
     "1:odorsleuth",
@@ -33,6 +54,7 @@
     "1:tailwhip",
     "13:defensecurl",
     "15:flamecharge",
+    "17:armthrust",
     "20:smog",
     "23:rollout",
     "28:takedown",
@@ -96,17 +118,23 @@
     "tutor:endeavor",
     "tutor:firepledge",
     "tutor:firepunch",
+    "tutor:flareblitz",
     "tutor:focuspunch",
+    "tutor:hammerarm",
+    "tutor:headsmash",
     "tutor:heatwave",
     "tutor:helpinghand",
     "tutor:holdback",
     "tutor:ironhead",
     "tutor:irontail",
     "tutor:lowkick",
+    "tutor:sleeptalk",
     "tutor:snore",
     "tutor:stompingtantrum",
     "tutor:superpower",
+    "tutor:takedown",
     "tutor:thunderpunch",
+    "tutor:wildcharge",
     "tutor:zenheadbutt"
   ],
   "labels": [
@@ -117,10 +145,10 @@
   ],
   "preEvolution": "pignite",
   "evolutions": [],
-  "baseScale": 1,
+  "baseScale": 1.25,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 1.35,
+    "height": 2,
     "fixed": false
   },
   "baseFriendship": 70,

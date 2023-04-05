@@ -6,6 +6,10 @@
         {
             "id": "xatu-1",
             "pokemon": "xatu",
+            "presets": [
+                "natural",
+				"treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

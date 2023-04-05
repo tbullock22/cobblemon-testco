@@ -8,7 +8,7 @@
 					"position": [0, -7.35, 0]
 				},
 				"torso": {
-					"rotation": [7.5, 0, 0]
+					"rotation": [10, 0, 0]
 				},
 				"torso_ruff_back": {
 					"rotation": [5, 0, 0]
@@ -17,13 +17,7 @@
 					"rotation": [17.5, 0, 0]
 				},
 				"chest": {
-					"rotation": [7.5, 0, 0]
-				},
-				"neck": {
 					"rotation": [27.5, 0, 0]
-				},
-				"head": {
-					"rotation": [-32.5, 0, 0]
 				},
 				"fire": {
 					"rotation": [7.5, 0, 0]
@@ -44,76 +38,78 @@
 					"rotation": [20, 0, 0]
 				},
 				"arm_right": {
-					"rotation": [0.43688, 4.98093, -34.981]
+					"rotation": [6.19395, -28.47015, -51.67162],
+					"position": [0, 0, 1]
 				},
 				"arm_right2": {
-					"rotation": [0, -52.5, 0]
+					"rotation": [-6.31274, -31.94715, 11.80868]
 				},
 				"finger_right_thumb": {
 					"rotation": [0.32902, -7.49282, -27.52154]
 				},
 				"finger_right_thumb2": {
-					"rotation": [0, 12.5, 0]
+					"rotation": [0, 32.5, 0]
 				},
 				"finger_right_index": {
-					"rotation": [0, 0, -10]
+					"rotation": [0, 0, -37.5]
 				},
 				"finger_right_index2": {
-					"rotation": [0, 0, -25]
+					"rotation": [0, 0, -65]
 				},
 				"finger_right_middle": {
-					"rotation": [0, 0, -5]
-				},
-				"finger_right_middle2": {
-					"rotation": [0, 0, -17.5]
-				},
-				"finger_right_ring": {
-					"rotation": [0, 0, -5]
-				},
-				"finger_right_ring2": {
 					"rotation": [0, 0, -20]
 				},
+				"finger_right_middle2": {
+					"rotation": [0, 0, -62.5]
+				},
+				"finger_right_ring": {
+					"rotation": [0, 0, -20]
+				},
+				"finger_right_ring2": {
+					"rotation": [0, 0, -57.5]
+				},
 				"finger_right_pinkie": {
-					"rotation": [0, 0, -7.5]
+					"rotation": [0, 0, -22.5]
 				},
 				"finger_right_pinkie2": {
-					"rotation": [0, 0, -25]
+					"rotation": [0, 0, -55]
 				},
 				"arm_left": {
-					"rotation": [0.43688, -4.98093, 34.981]
+					"rotation": [5.83141, 21.01125, 50.80722],
+					"position": [0, 0, 1]
 				},
 				"arm_left2": {
-					"rotation": [0, 52.5, 0]
+					"rotation": [-6.31274, 31.94715, -11.80868]
 				},
 				"finger_left_thumb": {
-					"rotation": [0, 0, 15]
+					"rotation": [0, 0, 42.5]
 				},
 				"finger_left_thumb2": {
-					"rotation": [0, -20, 0]
+					"rotation": [0, -57.5, 0]
 				},
 				"finger_left_index": {
-					"rotation": [0, 0, 10]
+					"rotation": [0, 0, 37.5]
 				},
 				"finger_left_index2": {
-					"rotation": [0, 0, 22.5]
+					"rotation": [0, 0, 70]
 				},
 				"finger_left_middle": {
-					"rotation": [0, 0, 5]
+					"rotation": [0, 0, 40]
 				},
 				"finger_left_middle2": {
-					"rotation": [0, 0, 22.5]
+					"rotation": [0, 0, 65]
 				},
 				"finger_left_ring": {
-					"rotation": [0, 0, 5]
+					"rotation": [0, 0, 32.5]
 				},
 				"finger_left_ring2": {
-					"rotation": [0, 0, 17.5]
+					"rotation": [0, 0, 65]
 				},
 				"finger_left_pinkie": {
-					"rotation": [0, 0, 10]
+					"rotation": [0, 0, 35]
 				},
 				"finger_left_pinkie2": {
-					"rotation": [0, 0, 22.5]
+					"rotation": [0, 0, 52.5]
 				},
 				"tail": {
 					"rotation": [-42.11228, 4.22051, -3.77632]
@@ -131,28 +127,43 @@
 					"rotation": [-14.96706, 0.17728, 0.35984]
 				},
 				"leg_right": {
-					"rotation": [-67.5, 65, -2.5]
+					"rotation": [-39.75569, 17.9775, 5.29698]
 				},
 				"leg_right2": {
-					"rotation": [62.5, 0, 0]
+					"rotation": [82.5, 0, 0]
 				},
 				"foot_right": {
-					"rotation": [7.5, 0, 0]
+					"rotation": [-34.89247, -3.21154, -3.83424]
 				},
 				"toes_right": {
 					"rotation": [-5, 0, 0]
 				},
 				"leg_left": {
-					"rotation": [-67.5, -65, 2.5]
+					"rotation": [-51.7516, -32.42641, -2.19931]
 				},
 				"leg_left2": {
-					"rotation": [62.5, 0, 0]
+					"rotation": [75, 0, 0]
 				},
 				"foot_left": {
-					"rotation": [7.5, 0, 0]
+					"rotation": [-15, 0, 0]
 				},
 				"toes_left": {
 					"rotation": [-5, 0, 0]
+				},
+				"arm_right_shoulder_armor_plate": {
+					"rotation": [0, 0, 17.5]
+				},
+				"hand_right": {
+					"rotation": [0, 0, -22.5]
+				},
+				"arm_left_shoulder_armor_plate": {
+					"rotation": [-7.38206, -1.08089, -12.45392]
+				},
+				"hand_left": {
+					"rotation": [0, 0, 12.5]
+				},
+				"head_rotation": {
+					"rotation": [-35, 0, 0]
 				}
 			}
 		},

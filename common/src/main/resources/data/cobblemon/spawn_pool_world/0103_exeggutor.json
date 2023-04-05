@@ -6,6 +6,9 @@
         {
             "id": "exeggutor-1",
             "pokemon": "exeggutor",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

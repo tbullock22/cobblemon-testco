@@ -6,6 +6,9 @@
         {
             "id": "litten-1",
             "pokemon": "litten",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "ultra-rare",

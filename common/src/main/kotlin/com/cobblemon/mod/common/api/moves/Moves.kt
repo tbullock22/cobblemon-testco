@@ -43,6 +43,7 @@ object Moves : DataRegistry {
             val jsMove = movesJson[i].asJsonObject
             val id = jsMove.get("id").asString
             try {
+                val num = jsMove.get("num").asInt
                 val elementalType = ElementalTypes.getOrException(jsMove.get("type").asString)
                 val damageCategory = DamageCategories.getOrException(jsMove.get("category").asString)
                 val power = jsMove.get("basePower").asDouble
@@ -71,13 +72,12 @@ object Moves : DataRegistry {
                         effectChances += secondaryMember.get("chance").asDouble
                     }
                 }
-                val move = MoveTemplate(id, elementalType, damageCategory, power, target, accuracy, pp, priority, critRatio, effectChances.toTypedArray())
+                val move = MoveTemplate(id, num, elementalType, damageCategory, power, target, accuracy, pp, priority, critRatio, effectChances.toTypedArray())
                 this.register(move)
             } catch (e: Exception) {
                 Cobblemon.LOGGER.error("Caught exception trying to resolve the move '{}'", id, e)
             }
         }
-        this.applyIDs()
         Cobblemon.LOGGER.info("Loaded {} moves", this.allMoves.size)
         this.observable.emit(this)
     }
@@ -87,7 +87,7 @@ object Moves : DataRegistry {
     }
 
     fun getByName(name: String) = allMoves[name.lowercase()]
-    fun getByNumericalId(id: Int) = idMapping[id]!!
+    fun getByNumericalId(id: Int) = idMapping[id]
     fun getByNameOrDummy(name: String) = allMoves[name.lowercase()] ?: MoveTemplate.dummy(name.lowercase())
     fun getExceptional() = getByName("tackle") ?: allMoves.values.random()
     fun count() = allMoves.size
@@ -95,24 +95,12 @@ object Moves : DataRegistry {
     fun all() = this.allMoves.values.toList()
 
     internal fun receiveSyncPacket(moves: Collection<MoveTemplate>) {
-        moves.forEach { move ->
-            this.register(move)
-            this.idMapping[move.id] = move
-        }
+        moves.forEach(this::register)
     }
 
     private fun register(move: MoveTemplate) {
         this.allMoves[move.name] = move
-    }
-
-    private fun applyIDs() {
-        var id = 1
-        this.allMoves.values
-            .sortedBy { it.name }
-            .forEach {
-                it.id = id++
-                idMapping[it.id] = it
-            }
+        this.idMapping[move.num] = move
     }
 
 }

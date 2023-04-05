@@ -6,6 +6,9 @@
         {
             "id": "kleavor-1",
             "pokemon": "kleavor",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "rare",

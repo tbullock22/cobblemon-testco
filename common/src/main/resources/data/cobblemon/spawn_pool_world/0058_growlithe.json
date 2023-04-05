@@ -7,7 +7,8 @@
             "id": "growlithe-1",
             "pokemon": "growlithe",
             "presets": [
-                "urban"
+                "natural",
+				"urban"
             ],
             "type": "pokemon",
             "context": "grounded",

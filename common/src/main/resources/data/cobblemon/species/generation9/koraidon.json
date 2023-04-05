@@ -16,7 +16,7 @@
   },
   "catchRate": 3,
   "maleRatio": -1,
-  "baseExperienceYield": 0,
+  "baseExperienceYield": 335,
   "baseFriendship": 0,
   "evYield": {
     "hp": 0,
@@ -106,9 +106,7 @@
     "tm:zenheadbutt",
     "tutor:bulkup",
     "tutor:collisioncourse",
-    "tutor:collisioncourse",
     "tutor:endure",
-    "tutor:flamethrower",
     "tutor:flamethrower",
     "tutor:gigaimpact",
     "tutor:terablast"

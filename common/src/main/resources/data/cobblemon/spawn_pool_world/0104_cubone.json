@@ -6,6 +6,9 @@
         {
             "id": "cubone-1",
             "pokemon": "cubone",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

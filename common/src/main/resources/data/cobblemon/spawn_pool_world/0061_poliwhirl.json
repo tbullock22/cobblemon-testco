@@ -7,7 +7,8 @@
             "id": "poliwhirl-1",
             "pokemon": "poliwhirl",
             "presets": [
-                "freshwater"
+                "natural",
+				"freshwater"
             ],
             "type": "pokemon",
             "context": "grounded",
@@ -16,10 +17,7 @@
             "weight": 0.9,
             "condition": {
                 "canSeeSky": true,
-                "isRaining": true,
-				"neededNearbyBlocks": [
-                    "minecraft:lily_pad"
-                ]
+                "isRaining": true
             }
         },
         {

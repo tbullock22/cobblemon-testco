@@ -16,7 +16,7 @@
   },
   "catchRate": 3,
   "maleRatio": -1,
-  "baseExperienceYield": 0,
+  "baseExperienceYield": 335,
   "baseFriendship": 0,
   "evYield": {
     "hp": 0,
@@ -95,10 +95,8 @@
     "tm:zenheadbutt",
     "tutor:charge",
     "tutor:electrodrift",
-    "tutor:electrodrift",
     "tutor:endure",
     "tutor:hyperbeam",
-    "tutor:powergem",
     "tutor:powergem",
     "tutor:terablast"
   ],

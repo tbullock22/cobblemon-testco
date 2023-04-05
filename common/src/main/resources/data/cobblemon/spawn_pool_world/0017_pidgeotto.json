@@ -6,6 +6,10 @@
         {
             "id": "pidgeotto-1",
             "pokemon": "pidgeotto",
+            "presets": [
+                "natural",
+                "treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

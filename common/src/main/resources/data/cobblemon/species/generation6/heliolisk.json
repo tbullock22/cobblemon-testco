@@ -105,11 +105,20 @@
     "tm:voltswitch",
     "tm:weatherball",
     "tm:wildcharge",
+    "tutor:allyswitch",
+    "tutor:dragonpulse",
+    "tutor:electroweb",
+    "tutor:firepunch",
+    "tutor:hypervoice",
+    "tutor:irontail",
+    "tutor:lowkick",
     "tutor:magnetrise",
     "tutor:risingvoltage",
     "tutor:scaleshot",
     "tutor:shockwave",
-    "tutor:signalbeam"
+    "tutor:signalbeam",
+    "tutor:snore",
+    "tutor:thunderpunch"
   ],
   "labels": [
     "gen6"

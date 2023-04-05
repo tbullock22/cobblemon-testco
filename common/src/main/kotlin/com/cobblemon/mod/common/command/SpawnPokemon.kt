@@ -50,8 +50,8 @@ object SpawnPokemon {
         dispatcher.register(contextPositionCommand.alias(ALIAS))
         val argumentPositionCommand = dispatcher.register(literal(AT_NAME)
             .permission(CobblemonPermissions.SPAWN_POKEMON)
-            .then(argument(PROPERTIES, PokemonPropertiesArgumentType.properties())
-                .then(argument(POSITION, Vec3ArgumentType.vec3())
+            .then(argument(POSITION, Vec3ArgumentType.vec3())
+                .then(argument(PROPERTIES, PokemonPropertiesArgumentType.properties())
                     .executes { context -> execute(context, Vec3ArgumentType.getVec3(context, POSITION)) }
                 )
             )

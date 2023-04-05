@@ -33,9 +33,9 @@
           "name": "color",
           "texture": {
             "frames": [
-              "cobblemon:textures/pokemon/0606_beheeyem/glow/hand_shiny_blue.png",
-              "cobblemon:textures/pokemon/0606_beheeyem/glow/hand_shiny_purple.png",
-              "cobblemon:textures/pokemon/0606_beheeyem/glow/hand_shiny_yellow.png"
+              "cobblemon:textures/pokemon/0605_elgyem/glow/hand_shiny_blue.png",
+              "cobblemon:textures/pokemon/0605_elgyem/glow/hand_shiny_purple.png",
+              "cobblemon:textures/pokemon/0605_elgyem/glow/hand_shiny_yellow.png"
             ],
             "fps": 5,
             "loop": true

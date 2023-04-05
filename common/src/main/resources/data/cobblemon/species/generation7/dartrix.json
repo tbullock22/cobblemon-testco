@@ -33,7 +33,7 @@
     }
   },
   "drops": {
-    "amount": "2",
+    "amount": "3",
     "entries": [
       {
         "item": "minecraft:feather",
@@ -42,27 +42,31 @@
       },
       {
         "item": "minecraft:chicken"
+      },
+      {
+        "item": "cobblemon:miracle_seed",
+        "percentage": 10
       }
     ]
   },
   "moves": [
-    "1:astonish",
     "1:growl",
     "1:leafage",
+    "1:peck",
     "1:tackle",
-    "9:peck",
+    "11:astonish",
     "12:shadowsneak",
-    "15:razorleaf",
+    "14:razorleaf",
     "16:ominouswind",
     "19:foresight",
-    "20:synthesis",
-    "25:pluck",
-    "30:nastyplot",
+    "24:pluck",
+    "28:synthesis",
     "33:furyattack",
-    "35:suckerpunch",
-    "40:leafblade",
-    "45:featherdance",
-    "50:bravebird",
+    "37:suckerpunch",
+    "42:leafblade",
+    "46:featherdance",
+    "51:bravebird",
+    "55:nastyplot",
     "tm:aerialace",
     "tm:aircutter",
     "tm:airslash",
@@ -84,6 +88,7 @@
     "tm:grassyterrain",
     "tm:helpinghand",
     "tm:hiddenpower",
+    "tm:leafblade",
     "tm:leafstorm",
     "tm:lightscreen",
     "tm:magicalleaf",
@@ -116,8 +121,13 @@
     "tutor:covet",
     "tutor:defog",
     "tutor:dualwingbeat",
+    "tutor:gigadrain",
+    "tutor:grasspledge",
     "tutor:grassyglide",
+    "tutor:seedbomb",
     "tutor:skyattack",
+    "tutor:snore",
+    "tutor:synthesis",
     "tutor:worryseed"
   ],
   "labels": [

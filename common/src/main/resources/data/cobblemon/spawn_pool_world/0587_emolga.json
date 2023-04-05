@@ -6,6 +6,10 @@
         {
             "id": "emolga-1",
             "pokemon": "emolga",
+            "presets": [
+                "natural",
+				"treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

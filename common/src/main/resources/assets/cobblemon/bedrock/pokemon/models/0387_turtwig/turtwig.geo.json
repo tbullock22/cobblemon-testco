@@ -59,7 +59,7 @@
 				},
 				{
 					"name": "leaf_left",
-					"parent": "head",
+					"parent": "twig",
 					"pivot": [0.5, 16.25, -3],
 					"rotation": [0, 0, -27.5],
 					"cubes": [
@@ -68,7 +68,7 @@
 				},
 				{
 					"name": "leaf_right",
-					"parent": "head",
+					"parent": "twig",
 					"pivot": [-0.5, 16.25, -3],
 					"rotation": [0, 0, 27.5],
 					"cubes": [

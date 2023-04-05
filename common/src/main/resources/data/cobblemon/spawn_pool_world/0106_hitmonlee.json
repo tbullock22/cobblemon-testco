@@ -6,6 +6,9 @@
         {
             "id": "hitmonlee-1",
             "pokemon": "hitmonlee",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

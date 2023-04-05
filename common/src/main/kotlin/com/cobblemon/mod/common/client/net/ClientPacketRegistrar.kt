@@ -28,6 +28,7 @@ import com.cobblemon.mod.common.client.net.battle.BattleSwitchPokemonHandler
 import com.cobblemon.mod.common.client.net.battle.BattleUpdateTeamPokemonHandler
 import com.cobblemon.mod.common.client.net.battle.ChallengeNotificationHandler
 import com.cobblemon.mod.common.client.net.data.DataRegistrySyncPacketHandler
+import com.cobblemon.mod.common.client.net.data.UnlockReloadPacketHandler
 import com.cobblemon.mod.common.client.net.effect.SpawnSnowstormParticleHandler
 import com.cobblemon.mod.common.client.net.gui.InteractPokemonUIPacketHandler
 import com.cobblemon.mod.common.client.net.gui.SummaryUIPacketHandler
@@ -141,6 +142,7 @@ object ClientPacketRegistrar : SidedPacketRegistrar() {
 
 
         // Data registries
+        registerHandler(UnlockReloadPacketHandler)
         registerHandler(DataRegistrySyncPacketHandler<AbilityTemplate, AbilityRegistrySyncPacket>())
         registerHandler(DataRegistrySyncPacketHandler<MoveTemplate, MovesRegistrySyncPacket>())
         registerHandler(DataRegistrySyncPacketHandler<Species, SpeciesRegistrySyncPacket>())

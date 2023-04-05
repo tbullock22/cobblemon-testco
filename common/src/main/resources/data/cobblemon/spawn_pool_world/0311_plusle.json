@@ -6,6 +6,9 @@
         {
             "id": "plusle-1",
             "pokemon": "plusle",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "rare",

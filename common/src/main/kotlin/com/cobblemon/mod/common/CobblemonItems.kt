@@ -23,13 +23,21 @@ import com.cobblemon.mod.common.pokemon.helditem.CobblemonHeldItemManager
 import com.cobblemon.mod.common.registry.CompletableRegistry
 import dev.architectury.registry.registries.RegistrySupplier
 import net.minecraft.block.Block
-import net.minecraft.item.AliasedBlockItem
-import net.minecraft.item.BlockItem
-import net.minecraft.item.Item
-import net.minecraft.item.ItemGroup
+import net.minecraft.block.ComposterBlock
+import net.minecraft.item.*
 import net.minecraft.util.registry.Registry
 
 object CobblemonItems : CompletableRegistry<Item>(Registry.ITEM_KEY) {
+
+    init {
+        this.completed.thenRun {
+            val compostChance = ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.getFloat(Items.OAK_LEAVES)
+            // Should always pass unless Mojang reworks leaves to no longer work in the Composter, in that case we already updated w.o doing anything
+            if (compostChance != ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.defaultReturnValue()) {
+                ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE[APRICORN_LEAVES.get()] = compostChance
+            }
+        }
+    }
 
     private val pokeballs = mutableListOf<RegistrySupplier<PokeBallItem>>()
 
@@ -197,6 +205,8 @@ object CobblemonItems : CompletableRegistry<Item>(Registry.ITEM_KEY) {
     @JvmField val GALARICA_WREATH = this.evolutionItem("galarica_wreath")
     @JvmField val BLACK_AUGURITE = this.evolutionItem("black_augurite")
     @JvmField val PEAT_BLOCK = this.evolutionItem("peat_block")
+    @JvmField val RAZOR_CLAW = this.evolutionItem("razor_claw")
+    @JvmField val RAZOR_FANG = this.evolutionItem("razor_fang")
     // ToDo enable me when malicious armor goes in the game
     //@JvmField val AUSPICIOUS_ARMOR = this.heldItem("auspicious_armor")
 
@@ -376,8 +386,6 @@ object CobblemonItems : CompletableRegistry<Item>(Registry.ITEM_KEY) {
     val POISON_BARB = this.heldItem("poison_barb")
     @JvmField
     val QUICK_CLAW = this.heldItem("quick_claw")
-    @JvmField
-    val RAZOR_CLAW = this.heldItem("razor_claw")
     @JvmField
     val ROCKY_HELMET = this.heldItem("rocky_helmet")
     @JvmField

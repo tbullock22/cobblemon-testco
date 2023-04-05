@@ -6,6 +6,10 @@
         {
             "id": "spearow-1",
             "pokemon": "spearow",
+            "presets": [
+                "natural",
+                "treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

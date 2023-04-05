@@ -108,16 +108,24 @@
     "tutor:aquatail",
     "tutor:bind",
     "tutor:bounce",
+    "tutor:dragonpulse",
+    "tutor:drainpunch",
+    "tutor:firepunch",
     "tutor:focuspunch",
+    "tutor:gastroacid",
+    "tutor:gigadrain",
     "tutor:irontail",
     "tutor:knockoff",
     "tutor:magnetrise",
+    "tutor:outrage",
     "tutor:shockwave",
     "tutor:signalbeam",
+    "tutor:sleeptalk",
     "tutor:snore",
     "tutor:superfang",
     "tutor:superpower",
-    "tutor:throatchop"
+    "tutor:throatchop",
+    "tutor:thunderpunch"
   ],
   "labels": [
     "gen5"

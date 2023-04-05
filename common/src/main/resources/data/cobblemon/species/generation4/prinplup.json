@@ -31,10 +31,16 @@
         "canSwimInWater": true,
         "canBreatheUnderwater": true
       }
+    },
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
     }
   },
   "drops": {
-    "amount": "2",
+    "amount": "3",
     "entries": [
       {
         "item": "minecraft:feather",
@@ -43,31 +49,37 @@
       },
       {
         "item": "minecraft:chicken"
+      },
+      {
+        "item": "cobblemon:mystic_water",
+        "percentage": 10
       }
     ]
   },
   "moves": [
-    "1:bubble",
     "1:growl",
-    "1:metalclaw",
     "1:tackle",
+    "8:bubble",
     "11:watersport",
     "15:peck",
+    "16:metalclaw",
+    "19:bide",
     "19:bubblebeam",
-    "24:bide",
     "28:furyattack",
     "33:brine",
     "37:whirlpool",
     "42:mist",
     "46:drillpeck",
-    "50:hydropump",
+    "51:hydropump",
     "tm:aerialace",
     "tm:attract",
     "tm:blizzard",
     "tm:brickbreak",
+    "tm:brine",
     "tm:captivate",
     "tm:confide",
     "tm:cut",
+    "tm:defog",
     "tm:dig",
     "tm:dive",
     "tm:doubleteam",
@@ -95,19 +107,24 @@
     "tm:secretpower",
     "tm:shadowclaw",
     "tm:sleeptalk",
+    "tm:stealthrock",
     "tm:strength",
     "tm:substitute",
     "tm:surf",
     "tm:swagger",
     "tm:toxic",
     "tm:waterfall",
+    "tm:waterpulse",
+    "tm:whirlpool",
     "tm:workup",
     "tutor:covet",
     "tutor:defog",
+    "tutor:dive",
     "tutor:headbutt",
     "tutor:icywind",
     "tutor:mudslap",
     "tutor:signalbeam",
+    "tutor:sleeptalk",
     "tutor:snore",
     "tutor:stealthrock",
     "tutor:waterpledge",

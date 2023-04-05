@@ -21,6 +21,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.quirk.QuirkData
 import java.util.concurrent.ConcurrentLinkedQueue
 import net.minecraft.client.MinecraftClient
 import net.minecraft.entity.Entity
+import net.minecraft.util.math.Vec3d
 
 /**
  * Represents the entity-specific state for a poseable model. The implementation is responsible for
@@ -107,5 +108,9 @@ abstract class PoseableEntityState<T : Entity> {
     fun setStatefulAnimations(vararg animations: StatefulAnimation<T, out ModelFrame>) {
         statefulAnimations.clear()
         statefulAnimations.addAll(animations)
+    }
+
+    fun updateLocatorPosition(position: Vec3d) {
+        locatorStates.values.toList().forEach { it.updatePosition(position) }
     }
 }

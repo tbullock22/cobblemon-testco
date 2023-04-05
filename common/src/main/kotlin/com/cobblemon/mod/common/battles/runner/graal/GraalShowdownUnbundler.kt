@@ -33,13 +33,14 @@ class GraalShowdownUnbundler {
         .create()
 
     fun attemptUnbundle() {
-        var showdownDir = File("showdown")
+        val showdownDir = File("showdown")
         val metadata = loadShowdownMetadata()
 
         // Check if showdown needs to be installed
         if (!showdownDir.exists() || Cobblemon.config.autoUpdateShowdown) {
+            showdownDir.mkdirs()
+
             val showdownZip = File(showdownDir, "showdown.zip")
-            showdownZip.mkdirs()
             val showdownMetadataFile = File(showdownDir, "showdown.json")
 
             var extract = true
@@ -56,12 +57,11 @@ class GraalShowdownUnbundler {
                         backupDir.deleteRecursively()
                     }
 
-                    showdownDir.copyTo(File("showdown-backup"))
+                    showdownDir.copyTo(backupDir)
                 }
             }
 
             if (extract) {
-                showdownDir = showdownZip.parentFile
                 Identifier(Cobblemon.MODID, "showdown.zip").extractTo(showdownZip)
                 Identifier(Cobblemon.MODID, "showdown.json").extractTo(showdownMetadataFile)
                 FileUtils.unzipFile(showdownZip.toPath(), showdownDir.toPath())

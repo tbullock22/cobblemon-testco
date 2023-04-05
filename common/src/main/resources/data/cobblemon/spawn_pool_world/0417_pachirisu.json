@@ -6,6 +6,10 @@
         {
             "id": "pachirisu-1",
             "pokemon": "pachirisu",
+            "presets": [
+                "natural",
+				"treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

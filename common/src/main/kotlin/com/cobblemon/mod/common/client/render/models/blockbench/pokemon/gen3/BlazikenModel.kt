@@ -53,9 +53,8 @@ class BlazikenModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("blaziken", "ground_idle"),
+                bedrock("blaziken", "ground_walk"),
                 BipedWalkAnimation(this, amplitudeMultiplier = 0.9F, periodMultiplier = 0.75F)
-                //bedrock("blaziken", "ground_walk")
             )
         )
     }

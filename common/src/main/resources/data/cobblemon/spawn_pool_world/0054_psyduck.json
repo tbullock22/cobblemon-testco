@@ -7,7 +7,8 @@
             "id": "psyduck-1",
             "pokemon": "psyduck",
             "presets": [
-                "freshwater"
+                "natural",
+				"freshwater"
             ],
             "type": "pokemon",
             "context": "grounded",

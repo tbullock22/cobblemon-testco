@@ -7,7 +7,8 @@
             "id": "bibarel-1",
             "pokemon": "bibarel",
 			"presets": [
-                "freshwater"
+                "natural",
+				"freshwater"
             ],
             "type": "pokemon",
             "context": "grounded",
@@ -22,8 +23,7 @@
             "id": "bibarel-2",
             "pokemon": "bibarel",
 			"presets": [
-                "freshwater",
-                "underwater"
+                "freshwater"
             ],
             "type": "pokemon",
             "context": "submerged",

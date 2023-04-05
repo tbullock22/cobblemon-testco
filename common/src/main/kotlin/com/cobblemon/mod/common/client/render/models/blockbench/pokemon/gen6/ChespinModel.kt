@@ -8,7 +8,7 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen6
 
-import com.cobblemon.mod.common.client.render.models.blockbench.animation.BipedWalkAnimation
+import com.cobblemon.mod.common.client.render.models.blockbench.frame.BimanualFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.BipedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
@@ -17,10 +17,11 @@ import com.cobblemon.mod.common.entity.PoseType
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
 
-class ChespinModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFrame {
+class ChespinModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFrame, BimanualFrame {
     override val rootPart = root.registerChildWithAllChildren("chespin")
     override val head = getPart("head")
-
+    override val rightArm = getPart("arm_right")
+    override val leftArm = getPart("arm_left")
     override val leftLeg = getPart("leg_left")
     override val rightLeg = getPart("leg_right")
 
@@ -32,9 +33,16 @@ class ChespinModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
+    lateinit var sleep: PokemonPose
 
     override fun registerPoses() {
-        val blink = quirk("blink") { bedrockStateful("alakazam", "blink").setPreventsIdle(false)}
+        val blink = quirk("blink") { bedrockStateful("chespin", "blink").setPreventsIdle(false)}
+
+        sleep = registerPose(
+            poseType = PoseType.SLEEP,
+            idleAnimations = arrayOf(bedrock("chespin", "sleep"))
+        )
+
         standing = registerPose(
             poseName = "standing",
             poseTypes = PoseType.STATIONARY_POSES + PoseType.UI_POSES,
@@ -50,11 +58,15 @@ class ChespinModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
             poseTypes = PoseType.MOVING_POSES,
             quirks = arrayOf(blink),
             idleAnimations = arrayOf(
-                BipedWalkAnimation(this, periodMultiplier = 0.9F, amplitudeMultiplier = 1.1f),
                 singleBoneLook(),
-                bedrock("chespin", "ground_idle")
-                //bedrock("marowak", "ground_walk")
+                bedrock("chespin", "ground_walk")
             )
+        )
+
+        sleep = registerPose(
+                poseType = PoseType.SLEEP,
+                transformTicks = 10,
+                idleAnimations = arrayOf(bedrock("chespin", "sleep"))
         )
     }
 }

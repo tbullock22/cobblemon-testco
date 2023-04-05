@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Sobble",
   "nationalPokedexNumber": 816,
   "primaryType": "water",
@@ -24,6 +25,15 @@
     "water_1",
     "field"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:mystic_water",
+        "percentage": 5
+      }
+    ]
+  },
   "moves": [
     "1:growl",
     "1:pound",
@@ -74,7 +84,8 @@
     "tm:waterpulse",
     "tm:weatherball",
     "tm:whirlpool",
-    "tm:workup"
+    "tm:workup",
+    "tutor:waterpledge"
   ],
   "labels": [
     "gen8"
@@ -97,10 +108,10 @@
       ]
     }
   ],
-  "baseScale": 1,
+  "baseScale": 0.5,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 0.9,
+    "height": 1.05,
     "fixed": false
   },
   "baseFriendship": 50,

@@ -75,7 +75,11 @@
     "tm:terablast",
     "tm:uproar",
     "tm:willowisp",
-    "tutor:lashout"
+    "tutor:disable",
+    "tutor:doubleedge",
+    "tutor:lashout",
+    "tutor:nastyplot",
+    "tutor:thrash"
   ],
   "labels": [
     "gen8",

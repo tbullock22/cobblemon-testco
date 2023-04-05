@@ -26,7 +26,7 @@ class KingdraModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val portraitTranslation = Vec3d(-0.4, 1.8, 0.0)
 
     override val profileScale = 0.63F
-    override val profileTranslation = Vec3d(0.0, 0.8, 0.0)
+    override val profileTranslation = Vec3d(0.0, 1.0, 0.0)
 
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose

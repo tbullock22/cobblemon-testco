@@ -32,7 +32,11 @@
     "tm:zenheadbutt",
     "tutor:headbutt",
     "tutor:holdback",
-    "tutor:steelbeam"
+    "tutor:irondefense",
+    "tutor:ironhead",
+    "tutor:steelbeam",
+    "tutor:takedown",
+    "tutor:zenheadbutt"
   ],
   "labels": [
     "gen3"

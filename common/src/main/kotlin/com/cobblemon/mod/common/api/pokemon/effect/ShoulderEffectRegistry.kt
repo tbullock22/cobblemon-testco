@@ -30,6 +30,7 @@ object ShoulderEffectRegistry {
     val HASTE = register("haste", HasteEffect::class.java)
     val WATER_BREATHING = register("water_breathing", WaterBreathingEffect::class.java)
     val SATURATION = register("saturation", SaturationEffect::class.java)
+    val SPEED = register("speed", SpeedEffect::class.java)
     // Effects - END
 
     fun register() {

@@ -13,31 +13,42 @@ import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.reactive.Observable.Companion.filter
 import com.cobblemon.mod.common.api.reactive.Observable.Companion.takeFirst
 import com.cobblemon.mod.common.battles.BattleRegistry
-import java.util.UUID
 import net.minecraft.block.BlockState
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.player.PlayerInventory
+import net.minecraft.item.ItemStack
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.sound.SoundCategory
+import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3d
+import java.util.*
 
 // Stuff like getting their party
 fun ServerPlayerEntity.party() = Cobblemon.storage.getParty(this)
+fun ServerPlayerEntity.pc() = Cobblemon.storage.getPC(this.uuid)
+fun ServerPlayerEntity.extraData(key: String) = Cobblemon.playerData.get(this).extraData[key]
 fun UUID.getPlayer() = getServer()?.playerManager?.getPlayer(this)
 
 fun ServerPlayerEntity.onLogout(handler: () -> Unit) {
     CobblemonEvents.PLAYER_QUIT.pipe(filter { it.uuid == uuid }, takeFirst()).subscribe { handler() }
 }
 
-fun ServerPlayerEntity.didSleep() {
-    if (sleepTimer != 100 || world.timeOfDay.toInt() % 24000 != 0) {
-        return
+/**
+ * Attempts to heal the player party when they're sleeping.
+ * This will fail if the sleeping trigger isn't the typical vanilla bed or if [isInBattle] is true.
+ *
+ * @return If the attempt to heal was successful.
+ */
+fun ServerPlayerEntity.didSleep(): Boolean {
+    if (sleepTimer != 100 || world.timeOfDay.toInt() % 24000 != 0 || this.isInBattle()) {
+        return false
     }
-
     party().didSleep()
+    return true
 }
 
 fun ServerPlayerEntity.isInBattle() = BattleRegistry.getBattleByParticipatingPlayer(this) != null
@@ -212,3 +223,29 @@ fun findDirectionForIntercept(p0: Vec3d, p1: Vec3d, blockPos: BlockPos): Directi
 }
 
 fun PlayerInventory.usableItems() = offHand + main
+
+/**
+ * Utility function meant to emulate the behavior seen across Minecraft when attempting to give items directly to player but there's not enough room for the entire stack.
+ * This will drop any remainder of the stack on the ground with the associate player marked as the owner.
+ * Keep in mind in creative attempting to insert stacks into the player inventory never fails instead they're simply consumed, this is not custom Cobblemon behavior.
+ *
+ * @param stack The [ItemStack] being given.
+ * @param playSound If the pickup sound should be played for any successfully added items.
+ */
+fun PlayerEntity.giveOrDropItemStack(stack: ItemStack, playSound: Boolean = true) {
+    val inserted = this.inventory.insertStack(stack)
+    if (inserted && stack.isEmpty) {
+        stack.count = 1
+        this.dropItem(stack, false)?.setDespawnImmediately()
+        if (playSound) {
+            this.world.playSound(null, this.x, this.y, this.z, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 0.2f, ((this.random.nextFloat() - this.random.nextFloat()) * 0.7f + 1.0f) * 2.0f)
+        }
+        this.currentScreenHandler.sendContentUpdates()
+    }
+    else {
+        this.dropItem(stack, false)?.let { itemEntity ->
+            itemEntity.resetPickupDelay()
+            itemEntity.owner = this.uuid
+        }
+    }
+}

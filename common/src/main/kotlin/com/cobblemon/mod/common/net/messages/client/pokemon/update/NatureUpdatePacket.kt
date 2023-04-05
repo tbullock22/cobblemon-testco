@@ -11,7 +11,9 @@ package com.cobblemon.mod.common.net.messages.client.pokemon.update
 import com.cobblemon.mod.common.Cobblemon.LOGGER
 import com.cobblemon.mod.common.api.pokemon.Natures
 import com.cobblemon.mod.common.pokemon.Pokemon
-import com.cobblemon.mod.common.util.cobblemonResource
+import net.minecraft.util.Identifier
+import net.minecraft.util.InvalidIdentifierException
+
 class NatureUpdatePacket(
     private var mintNature : Boolean = false
 ) : StringUpdatePacket() {
@@ -28,18 +30,23 @@ class NatureUpdatePacket(
             return
         }
 
-        val nature = Natures.getNature(cobblemonResource(value))
-        // Validate the nature locally
-        if (nature == null) {
-            LOGGER.warn("A invalid nature of '$value' was attempted to be put onto: '$pokemon'")
-            return
-        }
+        try {
+            val nature = Natures.getNature(Identifier(value))
+            // Validate the nature locally
+            if (nature == null) {
+                LOGGER.warn("A invalid nature of '$value' was attempted to be put onto: '$pokemon'")
+                return
+            }
 
-        // Check which nature to modify
-        if (!mintNature) {
-            pokemon.nature = nature
-        } else {
-            pokemon.mintedNature = nature
+            // Check which nature to modify
+            if (!mintNature) {
+                pokemon.nature = nature
+            } else {
+                pokemon.mintedNature = nature
+            }
+        } catch (e: InvalidIdentifierException) {
+            // This should never happen
+            LOGGER.error("Failed to resolve nature value in NatureUpdatePacket", e)
         }
     }
 }

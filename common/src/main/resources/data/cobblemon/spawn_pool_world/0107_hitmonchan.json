@@ -6,6 +6,9 @@
         {
             "id": "hitmonchan-1",
             "pokemon": "hitmonchan",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

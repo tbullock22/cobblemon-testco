@@ -35,9 +35,7 @@ class PokemonInBattleMovementGoal(val entity: PokemonEntity, val range: Int) : G
         val closestPokemonEntity = getClosestPokemonEntity()
         if (closestPokemonEntity != null) {
             entity.navigation.stop()
-//            entity.lookAt(EntityAnchorArgumentType.EntityAnchor.EYES, closestPokemonEntity.eyePos)
-            entity.lookAtEntity(closestPokemonEntity, 30.0f, 30.0f)
-//            entity.lookControl.lookAt(closestPokemonEntity.x, closestPokemonEntity.y, closestPokemonEntity.z)
+            entity.lookControl.lookAt(closestPokemonEntity.x, closestPokemonEntity.eyeY, closestPokemonEntity.z)
         }
     }
 }

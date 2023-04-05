@@ -7,8 +7,25 @@
             "id": "dragonair-1",
             "pokemon": "dragonair",
             "presets": [
-                "underwater",
-                "underground"
+                "water_surface"
+            ],
+            "type": "pokemon",
+            "bucket": "rare",
+            "level": "30-42",
+            "weight": 0.9,
+            "condition": {
+                "canSeeSky": false,
+				"maxY": 32,
+                "biomes": [
+                    "#cobblemon:is_overworld"
+                ]
+            }
+        },
+		{
+            "id": "dragonair-2",
+            "pokemon": "dragonair",
+            "presets": [
+                "underwater"
             ],
             "type": "pokemon",
             "context": "submerged",
@@ -17,6 +34,7 @@
             "weight": 0.9,
             "condition": {
                 "canSeeSky": false,
+				"maxY": 32,
                 "biomes": [
                     "#cobblemon:is_overworld"
                 ]

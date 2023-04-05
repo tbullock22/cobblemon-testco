@@ -6,6 +6,9 @@
         {
             "id": "swampert-1",
             "pokemon": "swampert",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "ultra-rare",

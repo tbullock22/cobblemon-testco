@@ -6,6 +6,9 @@
         {
             "id": "cleffa-1",
             "pokemon": "cleffa",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",
@@ -40,6 +43,9 @@
         {
             "id": "cleffa-3",
             "pokemon": "cleffa",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",
@@ -57,6 +63,9 @@
         {
             "id": "cleffa-4",
             "pokemon": "cleffa",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

@@ -24,25 +24,37 @@
   "eggGroups": [
     "mineral"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:iron_sword",
+        "percentage": 5
+      }
+    ]
+  },
   "moves": [
-    "1:furycutter",
+    "1:swordsdance",
     "1:tackle",
-    "4:shadowsneak",
-    "8:autotomize",
-    "12:aerialace",
+    "5:furycutter",
+    "8:metalsound",
     "13:pursuit",
-    "16:metalsound",
-    "20:slash",
-    "24:nightslash",
-    "28:retaliate",
+    "18:autotomize",
+    "20:shadowsneak",
+    "22:aerialace",
+    "26:retaliate",
+    "29:slash",
     "32:irondefense",
-    "36:ironhead",
-    "40:powertrick",
-    "44:swordsdance",
-    "48:sacredsword",
+    "35:nightslash",
+    "39:powertrick",
+    "42:ironhead",
+    "47:sacredsword",
     "egg:block",
     "egg:destinybond",
+    "egg:metalsound",
+    "egg:shadowsneak",
     "egg:wideguard",
+    "tm:aerialace",
     "tm:attract",
     "tm:brickbreak",
     "tm:brutalswing",
@@ -81,9 +93,12 @@
     "tm:swordsdance",
     "tm:toxic",
     "tutor:afteryou",
+    "tutor:irondefense",
+    "tutor:ironhead",
     "tutor:laserfocus",
     "tutor:magnetrise",
     "tutor:shockwave",
+    "tutor:snore",
     "tutor:spite",
     "tutor:steelbeam"
   ],

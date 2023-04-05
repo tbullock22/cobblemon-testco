@@ -6,6 +6,9 @@
         {
             "id": "scyther-1",
             "pokemon": "scyther",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "rare",
@@ -27,6 +30,9 @@
         {
             "id": "scyther-2",
             "pokemon": "scyther",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

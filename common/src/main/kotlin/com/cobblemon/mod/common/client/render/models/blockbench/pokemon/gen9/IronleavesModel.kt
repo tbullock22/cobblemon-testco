@@ -8,6 +8,7 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen9
 
+import com.cobblemon.mod.common.client.render.models.blockbench.asTransformed
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.QuadrupedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
@@ -16,14 +17,12 @@ import com.cobblemon.mod.common.entity.PoseType
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
 
-class IronleavesModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, QuadrupedFrame {
+class IronleavesModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("ironleaves")
     override val head = getPart("head")
-
-    override val foreLeftLeg = getPart("leg_front_left")
-    override val foreRightLeg = getPart("leg_front_right")
-    override val hindLeftLeg = getPart("leg_back_left")
-    override val hindRightLeg = getPart("leg_back_right")
+    val neck_sword_left = getPart("neck_sword_left")
+    val neck_sword_right = getPart("neck_sword_right")
+    val sword_head = getPart("sword_head")
 
     override val portraitScale = 3.0F
     override val portraitTranslation = Vec3d(-0.9, 2.2, 0.0)
@@ -43,6 +42,11 @@ class IronleavesModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Q
             poseTypes = PoseType.STATIONARY_POSES + PoseType.UI_POSES,
             transformTicks = 10,
             quirks = arrayOf(blink),
+            transformedParts = arrayOf(
+                neck_sword_left.asTransformed().withVisibility(visibility = false),
+                neck_sword_right.asTransformed().withVisibility(visibility = false),
+                sword_head.asTransformed().withVisibility(visibility = false)
+            ),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("ironleaves", "ground_idle")
@@ -51,6 +55,11 @@ class IronleavesModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Q
 
         sleep = registerPose(
             poseType = PoseType.SLEEP,
+            transformedParts = arrayOf(
+                neck_sword_left.asTransformed().withVisibility(visibility = false),
+                neck_sword_right.asTransformed().withVisibility(visibility = false),
+                sword_head.asTransformed().withVisibility(visibility = false)
+            ),
             idleAnimations = arrayOf(bedrock("ironleaves", "sleep"))
         )
 
@@ -59,6 +68,11 @@ class IronleavesModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Q
             poseTypes = PoseType.MOVING_POSES,
             transformTicks = 10,
             quirks = arrayOf(blink),
+            transformedParts = arrayOf(
+                neck_sword_left.asTransformed().withVisibility(visibility = false),
+                neck_sword_right.asTransformed().withVisibility(visibility = false),
+                sword_head.asTransformed().withVisibility(visibility = false)
+            ),
             idleAnimations = arrayOf(
                 singleBoneLook(),
                 bedrock("ironleaves", "ground_walk")

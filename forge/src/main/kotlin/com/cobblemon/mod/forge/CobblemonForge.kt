@@ -79,9 +79,6 @@ class CobblemonForge : CobblemonImplementation {
     fun initialize(event: FMLCommonSetupEvent) {
         Cobblemon.LOGGER.info("Initializing...")
         Cobblemon.initialize()
-        //if (ModList.get().isLoaded("luckperms")) { PokemonCobblemon.permissionValidator = LuckPermsPermissionValidator() }
-        //else {
-        //}
     }
 
     fun onDataPackSync(event: OnDatapackSyncEvent) {

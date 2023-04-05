@@ -51,6 +51,7 @@ object CobblemonRequirementAdapter : RequirementAdapter {
         this.registerType(RecoilRequirement.ADAPTER_VARIANT, RecoilRequirement::class)
         this.registerType(DefeatRequirement.ADAPTER_VARIANT, DefeatRequirement::class)
         this.registerType(WalkedStepsRequirement.ADAPTER_VARIANT, WalkedStepsRequirement::class)
+        this.registerType(AnyRequirement.ADAPTER_VARIANT, AnyRequirement::class)
     }
 
     override fun <T : EvolutionRequirement> registerType(id: String, type: KClass<T>) {

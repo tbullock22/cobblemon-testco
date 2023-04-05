@@ -100,6 +100,7 @@
         "tm:endure",
         "tm:energyball",
         "tm:facade",
+        "tm:futuresight",
         "tm:gigadrain",
         "tm:gigaimpact",
         "tm:grassknot",
@@ -166,7 +167,11 @@
         "tm:wonderroom",
         "tm:zenheadbutt",
         "tutor:expandingforce",
-        "tutor:lashout"
+        "tutor:gigadrain",
+        "tutor:glaciallance",
+        "tutor:irondefense",
+        "tutor:lashout",
+        "tutor:psychic"
       ],
       "labels": [
         "gen8",
@@ -263,6 +268,7 @@
         "tm:energyball",
         "tm:facade",
         "tm:foulplay",
+        "tm:futuresight",
         "tm:gigadrain",
         "tm:gigaimpact",
         "tm:grassknot",
@@ -320,8 +326,12 @@
         "tm:willowisp",
         "tm:wonderroom",
         "tm:zenheadbutt",
+        "tutor:agility",
+        "tutor:astralbarrage",
         "tutor:expandingforce",
-        "tutor:lashout"
+        "tutor:gigadrain",
+        "tutor:lashout",
+        "tutor:psychic"
       ],
       "labels": [
         "gen8",
@@ -372,6 +382,7 @@
     "tm:endure",
     "tm:energyball",
     "tm:facade",
+    "tm:futuresight",
     "tm:gigadrain",
     "tm:gigaimpact",
     "tm:grassknot",
@@ -418,7 +429,9 @@
     "tm:trickroom",
     "tm:wonderroom",
     "tm:zenheadbutt",
-    "tutor:expandingforce"
+    "tutor:expandingforce",
+    "tutor:gigadrain",
+    "tutor:psychic"
   ],
   "labels": [
     "gen8",

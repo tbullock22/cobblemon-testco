@@ -50,6 +50,9 @@ class PokeBallItem(
     }
 
     override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
+        if (stack.hasNbt() && stack.nbt!!.getBoolean("HideTooltip")) {
+            return
+        }
         tooltip.add("item.${this.pokeBall.name.namespace}.${this.pokeBall.name.path}.tooltip".asTranslated().gray())
     }
 }

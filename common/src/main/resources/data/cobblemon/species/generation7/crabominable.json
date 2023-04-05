@@ -27,6 +27,7 @@
   ],
   "moves": [
     "1:bubble",
+    "1:icepunch",
     "1:leer",
     "1:protect",
     "1:pursuit",
@@ -107,11 +108,18 @@
     "tm:workup",
     "tm:zenheadbutt",
     "tutor:block",
+    "tutor:drainpunch",
     "tutor:dualchop",
     "tutor:endeavor",
     "tutor:focuspunch",
+    "tutor:icepunch",
+    "tutor:icywind",
+    "tutor:irondefense",
+    "tutor:ironhead",
     "tutor:snore",
-    "tutor:superpower"
+    "tutor:superpower",
+    "tutor:thunderpunch",
+    "tutor:zenheadbutt"
   ],
   "labels": [
     "gen7"

@@ -53,10 +53,13 @@
     ]
   },
   "moves": [
+    "1:harden",
     "tm:electroweb",
     "tm:irondefense",
     "tutor:bugbite",
+    "tutor:electroweb",
     "tutor:harden",
+    "tutor:irondefense",
     "tutor:stringshot"
   ],
   "labels": [

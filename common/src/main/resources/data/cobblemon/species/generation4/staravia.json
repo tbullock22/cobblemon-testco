@@ -46,6 +46,8 @@
     "tm:bravebird",
     "tm:captivate",
     "tm:confide",
+    "tm:defog",
+    "tm:doubleteam",
     "tm:echoedvoice",
     "tm:endure",
     "tm:facade",
@@ -78,13 +80,21 @@
     "tm:toxic",
     "tm:uturn",
     "tm:workup",
+    "tutor:aircutter",
     "tutor:defog",
+    "tutor:endeavor",
     "tutor:featherdance",
+    "tutor:heatwave",
     "tutor:mudslap",
     "tutor:ominouswind",
+    "tutor:roost",
+    "tutor:sleeptalk",
     "tutor:snore",
+    "tutor:swift",
+    "tutor:tailwind",
     "tutor:twister",
-    "tutor:uproar"
+    "tutor:uproar",
+    "tutor:wingattack"
   ],
   "labels": [
     "gen4"

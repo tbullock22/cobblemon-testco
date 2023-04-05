@@ -6,6 +6,9 @@
         {
             "id": "kadabra-1",
             "pokemon": "kadabra",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "rare",

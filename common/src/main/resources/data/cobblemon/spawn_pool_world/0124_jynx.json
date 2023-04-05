@@ -7,7 +7,8 @@
             "id": "jynx-1",
             "pokemon": "jynx",
             "presets": [
-                "urban"
+                "natural",
+				"urban"
             ],
             "type": "pokemon",
             "context": "grounded",

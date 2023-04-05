@@ -29,7 +29,8 @@ import net.minecraft.util.math.Vec3f
 class StarterRoundabout(
     pX: Int, pY: Int,
     pWidth: Int, pHeight: Int,
-    var pokemon: RenderablePokemon
+    var pokemon: RenderablePokemon,
+    private val clickAction: (mouseX: Double, mouseY: Double) -> Unit = { _, _ -> }
 ): SoundlessWidget(pX, pY, pWidth, pHeight, Text.literal("StarterRoundabout")) {
 
     companion object {
@@ -44,6 +45,10 @@ class StarterRoundabout(
     }
 
     override fun render(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
+        if (!this.visible) {
+            return
+        }
+        this.hovered = mouseX >= this.x && mouseX < this.x + this.width && mouseY >= (this.y - MODEL_HEIGHT) && mouseY < this.y
         matrices.push()
         /*
          * This correction term is due to where scaling comes from in a render. We are giving the drawProfilePokemon
@@ -75,5 +80,20 @@ class StarterRoundabout(
         DrawableHelper.disableScissor()
 
         matrices.pop()
+    }
+
+    override fun mouseClicked(pMouseX: Double, pMouseY: Double, pButton: Int): Boolean {
+        if (this.clicked(pMouseX, pMouseY) && this.isValidClickButton(pButton)) {
+            this.onClick(pMouseX, pMouseY)
+        }
+        return super.mouseClicked(pMouseX, pMouseY, pButton)
+    }
+
+    override fun clicked(mouseX: Double, mouseY: Double): Boolean {
+        return this.active && this.visible && this.hovered
+    }
+
+    override fun onClick(mouseX: Double, mouseY: Double) {
+        this.clickAction(mouseX, mouseY)
     }
 }

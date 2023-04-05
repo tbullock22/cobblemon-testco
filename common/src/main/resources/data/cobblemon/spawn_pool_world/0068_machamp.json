@@ -6,6 +6,9 @@
         {
             "id": "machamp-1",
             "pokemon": "machamp",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

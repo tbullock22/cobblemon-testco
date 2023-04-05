@@ -29,7 +29,7 @@ class ShiftryModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
     override val rightLeg = getPart("leg_right")
 
     override val portraitScale = 2.0F
-    override val portraitTranslation = Vec3d(-0.15, -1.5, 0.0)
+    override val portraitTranslation = Vec3d(-0.15, 1.0, 0.0)
 
     override val profileScale = 0.74F
     override val profileTranslation = Vec3d(0.0, -0.1, 0.0)

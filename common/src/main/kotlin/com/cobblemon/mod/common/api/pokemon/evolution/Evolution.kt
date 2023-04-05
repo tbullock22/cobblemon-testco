@@ -12,13 +12,16 @@ import com.cobblemon.mod.common.CobblemonSounds
 import com.cobblemon.mod.common.api.abilities.AbilityPool
 import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.events.pokemon.evolution.EvolutionCompleteEvent
+import com.cobblemon.mod.common.api.moves.BenchedMove
 import com.cobblemon.mod.common.api.moves.MoveTemplate
 import com.cobblemon.mod.common.api.pokemon.PokemonProperties
 import com.cobblemon.mod.common.api.pokemon.evolution.requirement.EvolutionRequirement
 import com.cobblemon.mod.common.pokemon.Pokemon
+import com.cobblemon.mod.common.pokemon.activestate.ShoulderedState
 import com.cobblemon.mod.common.pokemon.evolution.variants.ItemInteractionEvolution
 import com.cobblemon.mod.common.pokemon.evolution.variants.LevelUpEvolution
 import com.cobblemon.mod.common.pokemon.evolution.variants.TradeEvolution
+import com.cobblemon.mod.common.util.lang
 import net.minecraft.item.ItemStack
 import net.minecraft.sound.SoundCategory
 
@@ -91,8 +94,20 @@ interface Evolution : EvolutionLike {
      * @param pokemon The [Pokemon] being evolved.
      */
     fun forceEvolve(pokemon: Pokemon) {
+        if (pokemon.state is ShoulderedState) {
+            pokemon.tryRecallWithAnimation()
+        }
         // ToDo Once implemented queue evolution for a pokemon state that is not in battle, start animation instead of instantly doing all of this
         this.result.apply(pokemon)
+        this.learnableMoves.forEach { move ->
+            if (pokemon.moveSet.hasSpace()) {
+                pokemon.moveSet.add(move.create())
+            }
+            else {
+                pokemon.benchedMoves.add(BenchedMove(move, 0))
+            }
+            pokemon.getOwnerPlayer()?.sendMessage(lang("experience.learned_move", pokemon.species.translatedName, move.displayName))
+        }
         // we want to instantly tick for example you might only evolve your Bulbasaur at level 34 so Venusaur should be immediately available
         pokemon.evolutions.filterIsInstance<PassiveEvolution>()
             .forEach { evolution ->

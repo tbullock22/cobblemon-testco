@@ -27,11 +27,11 @@
     "field"
   ],
   "behaviour": {
-    "moving": {
-      "swim": {
-        "canSwimInWater": true,
-        "canWalkOnWater": true
-      }
+    "swim": {
+      "swimSpeed": 0.1,
+      "canSwimInWater": true,
+      "canBreatheUnderwater": true,
+      "canWalkOnWater": true
     }
   },
   "drops": {
@@ -44,20 +44,20 @@
     ]
   },
   "moves": [
-    "1:growl",
     "1:tackle",
-    "5:defensecurl",
-    "9:rollout",
-    "13:headbutt",
-    "17:hyperfang",
-    "21:yawn",
+    "5:growl",
+    "9:defensecurl",
+    "13:rollout",
+    "17:headbutt",
+    "21:hyperfang",
     "25:crunch",
-    "29:takedown",
-    "33:superfang",
+    "25:yawn",
+    "29:amnesia",
+    "33:takedown",
+    "37:superfang",
     "37:swordsdance",
-    "41:amnesia",
-    "45:superpower",
-    "49:curse",
+    "41:superpower",
+    "45:curse",
     "egg:aquatail",
     "egg:defensecurl",
     "egg:doubleedge",
@@ -80,11 +80,13 @@
     "tm:dig",
     "tm:doubleteam",
     "tm:echoedvoice",
+    "tm:endure",
     "tm:facade",
     "tm:frustration",
     "tm:grassknot",
     "tm:hiddenpower",
     "tm:icebeam",
+    "tm:irontail",
     "tm:naturalgift",
     "tm:pluck",
     "tm:protect",
@@ -96,7 +98,9 @@
     "tm:round",
     "tm:secretpower",
     "tm:shadowball",
+    "tm:shockwave",
     "tm:sleeptalk",
+    "tm:stealthrock",
     "tm:substitute",
     "tm:sunnyday",
     "tm:swagger",
@@ -111,16 +115,21 @@
     "tutor:aquatail",
     "tutor:covet",
     "tutor:furycutter",
+    "tutor:headbutt",
     "tutor:icywind",
     "tutor:irontail",
     "tutor:lastresort",
     "tutor:mudslap",
+    "tutor:rollout",
+    "tutor:secretpower",
     "tutor:shockwave",
+    "tutor:sleeptalk",
     "tutor:snore",
     "tutor:stealthrock",
     "tutor:superfang",
     "tutor:superpower",
-    "tutor:swift"
+    "tutor:swift",
+    "tutor:tackle"
   ],
   "labels": [
     "gen4"

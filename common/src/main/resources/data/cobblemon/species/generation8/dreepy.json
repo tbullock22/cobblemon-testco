@@ -54,7 +54,8 @@
     "tm:substitute",
     "tm:swift",
     "tm:terablast",
-    "tm:thunderwave"
+    "tm:thunderwave",
+    "tutor:dracometeor"
   ],
   "labels": [
     "gen8"

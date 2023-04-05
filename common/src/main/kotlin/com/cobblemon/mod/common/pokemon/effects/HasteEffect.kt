@@ -19,7 +19,7 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.network.ServerPlayerEntity
 
 class HasteEffect : ShoulderEffect {
-    class HasteShoulderStatusEffect(val pokemonIds: MutableList<UUID>) : StatusEffectInstance(StatusEffects.HASTE, 2, 1, true, false, false) {
+    class HasteShoulderStatusEffect(val pokemonIds: MutableList<UUID>) : StatusEffectInstance(StatusEffects.HASTE, 2, 0, true, false, false) {
         fun isShoulderedPokemon(shoulderEntity: NbtCompound): Boolean {
             val pokemonNBT = shoulderEntity.getCompound("Pokemon")
             return pokemonNBT.containsUuid(POKEMON_UUID) && pokemonNBT.getUuid(POKEMON_UUID) in pokemonIds

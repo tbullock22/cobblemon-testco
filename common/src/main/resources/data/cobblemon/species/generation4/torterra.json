@@ -26,9 +26,25 @@
     "monster",
     "grass"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:miracle_seed",
+        "percentage": 20
+      }
+    ]
+  },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    }
+  },
   "moves": [
     "1:absorb",
-    "1:earthquake",
     "1:razorleaf",
     "1:tackle",
     "1:withdraw",
@@ -36,6 +52,7 @@
     "17:curse",
     "22:bite",
     "27:megadrain",
+    "32:earthquake",
     "33:leechseed",
     "39:synthesis",
     "45:crunch",
@@ -54,10 +71,12 @@
     "tm:facade",
     "tm:flash",
     "tm:frustration",
+    "tm:gigadrain",
     "tm:gigaimpact",
     "tm:grassknot",
     "tm:hiddenpower",
     "tm:hyperbeam",
+    "tm:irontail",
     "tm:lightscreen",
     "tm:naturalgift",
     "tm:naturepower",
@@ -77,6 +96,7 @@
     "tm:secretpower",
     "tm:sleeptalk",
     "tm:solarbeam",
+    "tm:stealthrock",
     "tm:stoneedge",
     "tm:strength",
     "tm:substitute",
@@ -87,6 +107,7 @@
     "tm:workup",
     "tutor:block",
     "tutor:earthpower",
+    "tutor:earthquake",
     "tutor:frenzyplant",
     "tutor:gigadrain",
     "tutor:grasspledge",
@@ -96,11 +117,14 @@
     "tutor:mudslap",
     "tutor:outrage",
     "tutor:seedbomb",
+    "tutor:sleeptalk",
     "tutor:snore",
     "tutor:stealthrock",
     "tutor:stompingtantrum",
+    "tutor:stoneedge",
     "tutor:superpower",
     "tutor:synthesis",
+    "tutor:woodhammer",
     "tutor:worryseed"
   ],
   "labels": [

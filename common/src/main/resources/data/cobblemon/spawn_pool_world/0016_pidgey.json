@@ -6,6 +6,10 @@
         {
             "id": "pidgey-1",
             "pokemon": "pidgey",
+            "presets": [
+                "natural",
+                "treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

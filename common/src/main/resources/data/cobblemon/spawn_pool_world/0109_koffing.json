@@ -6,6 +6,9 @@
         {
             "id": "koffing-1",
             "pokemon": "koffing",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -21,6 +24,9 @@
         {
             "id": "koffing-2",
             "pokemon": "koffing",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

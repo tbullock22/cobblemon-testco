@@ -72,6 +72,7 @@ abstract class TickingSpawner(
         val scheduledSpawn = scheduledSpawn
         if (scheduledSpawn != null) {
             performSpawn(scheduledSpawn)
+            this.scheduledSpawn = null
         }
 
         ticksUntilNextSpawn -= tickTimerMultiplier
@@ -97,8 +98,11 @@ abstract class TickingSpawner(
     fun performSpawn(spawnAction: SpawnAction<*>) {
         spawnAction.entity.subscribe { afterSpawn(it) }
         spawnAction.run()
-        this.scheduledSpawn = null
     }
 
     open fun getCauseEntity(): Entity? = null
+
+    fun getAllInfluences() = this.influences + manager.influences
+
+    override fun copyInfluences() = this.getAllInfluences().toMutableList()
 }

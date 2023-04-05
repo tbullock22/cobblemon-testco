@@ -6,6 +6,9 @@
         {
             "id": "dewgong-1",
             "pokemon": "dewgong",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

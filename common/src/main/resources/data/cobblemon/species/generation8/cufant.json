@@ -60,6 +60,7 @@
     "tm:flashcannon",
     "tm:fling",
     "tm:heavyslam",
+    "tm:highhorsepower",
     "tm:irondefense",
     "tm:ironhead",
     "tm:megakick",
@@ -81,10 +82,12 @@
     "tm:stompingtantrum",
     "tm:stoneedge",
     "tm:substitute",
+    "tm:superpower",
     "tm:takedown",
     "tm:terablast",
     "tm:workup",
     "tm:zenheadbutt",
+    "tutor:steelbeam",
     "tutor:steelroller"
   ],
   "labels": [

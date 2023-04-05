@@ -93,7 +93,9 @@
         "tm:trickroom",
         "tm:willowisp",
         "tutor:aromatherapy",
-        "tutor:celebrate"
+        "tutor:celebrate",
+        "tutor:memento",
+        "tutor:metronome"
       ],
       "labels": [
         "gen8"
@@ -130,6 +132,7 @@
     "1:withdraw",
     "6:aromaticmist",
     "12:megadrain",
+    "18:protect",
     "24:suckerpunch",
     "30:aromatherapy",
     "30:sweetscent",
@@ -139,6 +142,7 @@
     "54:memento",
     "60:shellsmash",
     "egg:allyswitch",
+    "tm:allyswitch",
     "tm:batonpass",
     "tm:calmmind",
     "tm:confuseray",

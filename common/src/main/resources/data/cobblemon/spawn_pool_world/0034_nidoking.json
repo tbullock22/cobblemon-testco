@@ -6,6 +6,9 @@
         {
             "id": "nidoking-1",
             "pokemon": "nidoking",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Inteleon",
   "nationalPokedexNumber": 818,
   "primaryType": "water",
@@ -73,6 +74,15 @@
     "water_1",
     "field"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:mystic_water",
+        "percentage": 20
+      }
+    ]
+  },
   "moves": [
     "1:acrobatics",
     "1:bind",
@@ -140,7 +150,9 @@
     "tm:weatherball",
     "tm:whirlpool",
     "tm:workup",
-    "tutor:scaleshot"
+    "tutor:hydrocannon",
+    "tutor:scaleshot",
+    "tutor:waterpledge"
   ],
   "labels": [
     "gen8"
@@ -150,10 +162,10 @@
   ],
   "preEvolution": "drizzile",
   "evolutions": [],
-  "baseScale": 1,
+  "baseScale": 0.9,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 0.8,
+    "height": 2.5,
     "fixed": false
   },
   "baseFriendship": 50,

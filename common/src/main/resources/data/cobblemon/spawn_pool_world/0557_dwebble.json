@@ -6,6 +6,9 @@
         {
             "id": "dwebble-1",
             "pokemon": "dwebble",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

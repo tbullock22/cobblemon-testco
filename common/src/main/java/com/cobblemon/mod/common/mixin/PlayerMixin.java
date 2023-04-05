@@ -18,12 +18,16 @@ import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.util.CompoundTagExtensionsKt;
 import com.cobblemon.mod.common.util.DataKeys;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
@@ -54,6 +58,9 @@ public abstract class PlayerMixin extends LivingEntity {
     @Shadow public abstract boolean isSpectator();
 
     @Shadow public abstract boolean giveItemStack(ItemStack stack);
+
+    @Shadow public abstract void sendMessage(Text message, boolean overlay);
+
 
     protected PlayerMixin(EntityType<? extends LivingEntity> p_20966_, World p_20967_) {
         super(p_20966_, p_20967_);
@@ -145,8 +152,10 @@ public abstract class PlayerMixin extends LivingEntity {
                     new LeftoversCreatedEvent(player, leftovers),
                     leftoversCreatedEvent -> null,
                     leftoversCreatedEvent -> {
-                        giveItemStack(leftovers);
-                        sendMessage(lang("leftovers.created"));
+                        if(!player.giveItemStack(leftoversCreatedEvent.getLeftovers())) {
+                            var itemPos = player.getRotationVector().multiply(0.5).add(getPos());
+                            getWorld().spawnEntity(new ItemEntity(getWorld(), itemPos.getX(), itemPos.getY(), itemPos.getZ(), leftoversCreatedEvent.getLeftovers()));
+                        }
                         return null;
                     }
                 );

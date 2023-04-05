@@ -28,7 +28,7 @@
   "catchRate": 135,
   "maleRatio": 0.5,
   "shoulderMountable": false,
-  "baseExperienceYield": 0,
+  "baseExperienceYield": 263,
   "baseFriendship": 0,
   "evYield": {
     "hp": 0,
@@ -43,6 +43,16 @@
   "eggGroups": [
     "field"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:leather",
+        "quantityRange": "1-2",
+        "percentage": 66
+      }
+    ]
+  },
   "moves": [
     "1:tackle",
     "3:leer",

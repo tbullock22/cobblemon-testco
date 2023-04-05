@@ -176,7 +176,7 @@ class PokemonServerDelegate : PokemonSideDelegate {
         }
         ++entity.deathTime
 
-        if (entity.deathTime == 60) {
+        if (entity.deathTime == 30) {
             val owner = entity.owner
             if (owner != null) {
                 entity.world.playSoundServer(owner.pos, CobblemonSounds.POKE_BALL_RECALL.get(), volume = 0.2F)
@@ -185,7 +185,7 @@ class PokemonServerDelegate : PokemonSideDelegate {
             }
         }
 
-        if (entity.deathTime == 120) {
+        if (entity.deathTime == 60) {
             if (entity.owner == null) {
                 entity.world.sendEntityStatus(entity, 60.toByte()) // Sends smoke effect
                 (entity.drops ?: entity.pokemon.form.drops).drop(entity, entity.world as ServerWorld, entity.pos, entity.killer)

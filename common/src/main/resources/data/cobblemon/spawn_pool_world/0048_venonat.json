@@ -6,6 +6,9 @@
         {
             "id": "venonat-1",
             "pokemon": "venonat",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

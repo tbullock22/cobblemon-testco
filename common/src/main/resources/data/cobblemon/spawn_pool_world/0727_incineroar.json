@@ -6,6 +6,9 @@
         {
             "id": "incineroar-1",
             "pokemon": "incineroar",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "ultra-rare",

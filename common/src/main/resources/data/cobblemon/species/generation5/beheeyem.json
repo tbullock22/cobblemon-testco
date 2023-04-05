@@ -33,27 +33,46 @@
   "eggGroups": [
     "human_like"
   ],
+  "drops": {
+    "amount": "3",
+    "entries": [
+      {
+        "item": "minecraft:ender_pearl",
+        "quantityRange": "1-2",
+        "percentage": 66
+      },
+	  {
+        "item": "minecraft:chorus_fruit",
+        "quantityRange": "1-2",
+        "percentage": 66
+      },
+      {
+        "item": "cobblemon:light_clay",
+        "percentage": 5
+      }
+    ]
+  },
   "moves": [
     "1:confusion",
     "1:growl",
     "1:healblock",
-    "1:imprison",
     "1:miracleeye",
     "1:psychicterrain",
-    "1:synchronoise",
     "1:teleport",
-    "18:psybeam",
+    "15:psybeam",
+    "18:headbutt",
     "22:hiddenpower",
-    "24:guardsplit",
-    "24:powersplit",
+    "25:imprison",
     "29:simplebeam",
-    "30:headbutt",
+    "32:zenheadbutt",
     "36:psychup",
-    "36:zenheadbutt",
-    "45:recover",
-    "52:calmmind",
-    "60:wonderroom",
-    "68:psychic",
+    "39:psychic",
+    "45:calmmind",
+    "50:recover",
+    "56:guardsplit",
+    "58:powersplit",
+    "63:synchronoise",
+    "68:wonderroom",
     "tm:agility",
     "tm:allyswitch",
     "tm:attract",
@@ -104,6 +123,7 @@
     "tm:storedpower",
     "tm:substitute",
     "tm:swagger",
+    "tm:telekinesis",
     "tm:thief",
     "tm:thunderbolt",
     "tm:thunderwave",
@@ -115,6 +135,8 @@
     "tm:wonderroom",
     "tm:zenheadbutt",
     "tutor:afteryou",
+    "tutor:allyswitch",
+    "tutor:darkpulse",
     "tutor:expandingforce",
     "tutor:gravity",
     "tutor:magiccoat",
@@ -124,8 +146,15 @@
     "tutor:roleplay",
     "tutor:shockwave",
     "tutor:signalbeam",
+    "tutor:skillswap",
+    "tutor:sleeptalk",
     "tutor:snatch",
-    "tutor:telekinesis"
+    "tutor:snore",
+    "tutor:telekinesis",
+    "tutor:trick",
+    "tutor:uproar",
+    "tutor:wonderroom",
+    "tutor:zenheadbutt"
   ],
   "labels": [
     "gen5"

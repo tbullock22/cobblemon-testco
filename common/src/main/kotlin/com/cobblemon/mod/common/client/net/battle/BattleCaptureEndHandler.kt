@@ -24,5 +24,6 @@ object BattleCaptureEndHandler : ClientPacketHandler<BattleCaptureEndPacket> {
         } else {
             activeBattlePokemon.ballCapturing?.finish()
         }
+        activeBattlePokemon.ballCapturing = null
     }
 }

@@ -56,7 +56,7 @@ import net.minecraft.text.Text
  *
  * @param selection The index the [party] will have as the base [selectedPokemon].
  */
-class Summary private constructor(party: Collection<Pokemon>, private val editable: Boolean, selection: Int): Screen(Text.translatable("cobblemon.ui.summary.title")) {
+class Summary private constructor(party: Collection<Pokemon?>, private val editable: Boolean, selection: Int): Screen(Text.translatable("cobblemon.ui.summary.title")) {
 
     companion object {
         const val BASE_WIDTH = 331
@@ -95,7 +95,7 @@ class Summary private constructor(party: Collection<Pokemon>, private val editab
          * @throws IllegalArgumentException If the [party] is empty or contains more than 6 members.
          * @throws IndexOutOfBoundsException If the [selection] is not a possible index of [party].
          */
-        fun open(party: Collection<Pokemon>, editable: Boolean = true, selection: Int = 0) {
+        fun open(party: Collection<Pokemon?>, editable: Boolean = true, selection: Int = 0) {
             val mc = MinecraftClient.getInstance()
             val screen = Summary(party, editable, selection)
             mc.setScreen(screen)
@@ -118,7 +118,13 @@ class Summary private constructor(party: Collection<Pokemon>, private val editab
         if (this.party.size > 6) {
             throw IllegalArgumentException("Summary UI cannot display more than six Pokemon")
         }
-        this.selectedPokemon = this.party[selection]
+
+        val idealSelected = this.party[selection]
+        if (idealSelected == null) {
+            this.selectedPokemon = this.party.first { it != null }!!
+        } else {
+            this.selectedPokemon = idealSelected
+        }
         this.listenToMoveSet()
     }
 
@@ -223,10 +229,15 @@ class Summary private constructor(party: Collection<Pokemon>, private val editab
     }
 
     fun swapPartySlot(sourceIndex: Int, targetIndex: Int) {
+        if (sourceIndex >= this.party.size || targetIndex >= this.party.size) {
+            return
+        }
+
         val sourcePokemon = this.party.getOrNull(sourceIndex)
 
         if (sourcePokemon != null) {
             val targetPokemon = this.party.getOrNull(targetIndex)
+
             val sourcePosition = PartyPosition(sourceIndex)
             val targetPosition = PartyPosition(targetIndex)
 
@@ -562,12 +573,17 @@ class Summary private constructor(party: Collection<Pokemon>, private val editab
         return false
     }
 
-    override fun mouseScrolled(d: Double, e: Double, f: Double): Boolean {
-        return children().any { it.mouseScrolled(d, e, f) }
+    override fun mouseScrolled(mouseX: Double, mouseY: Double, amount: Double): Boolean {
+        return children().any { it.mouseScrolled(mouseX, mouseY, amount) }
     }
 
-    override fun mouseClicked(d: Double, e: Double, i: Int): Boolean {
-        return children().any { it.mouseClicked(d, e, i) }
+    override fun mouseClicked(mouseX: Double, mouseY: Double, button: Int): Boolean {
+        return children().any { it.mouseClicked(mouseX, mouseY, button) }
+    }
+
+    override fun mouseDragged(mouseX: Double, mouseY: Double, button: Int, deltaX: Double, deltaY: Double): Boolean {
+        if (sideScreenIndex == MOVE_SWAP || sideScreenIndex == EVOLVE) sideScreen.mouseDragged(mouseX, mouseY, button, deltaX, deltaY)
+        return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY)
     }
 
     fun playSound(soundEvent: SoundEvent) {

@@ -35,32 +35,52 @@
         "swimSpeed": 0.1,
         "canSwimInWater": true,
         "canBreatheUnderwater": true
-      },
-      "wanderChance": 1
+      }
     }
   },
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:salmon"
+      },
+      {
+        "item": "minecraft:bone_meal",
+        "percentage": 5
+      }
+    ]
+  },
   "moves": [
+    "1:tackle",
     "1:tailwhip",
     "1:watergun",
-    "4:tackle",
-    "8:flail",
-    "11:chipaway",
-    "12:aquajet",
-    "16:bite",
-    "20:scaryface",
-    "24:headbutt",
-    "28:soak",
-    "32:crunch",
-    "36:takedown",
-    "40:finalgambit",
-    "44:aquatail",
+    "4:uproar",
+    "7:headbutt",
+    "10:bite",
+    "13:aquajet",
+    "16:chipaway",
+    "20:takedown",
+    "24:crunch",
+    "28:aquatail",
+    "32:soak",
+    "36:doubleedge",
+    "41:scaryface",
     "44:wavecrash",
-    "48:thrash",
-    "52:doubleedge",
-    "56:headsmash",
+    "46:flail",
+    "46:headsmash",
+    "51:finalgambit",
+    "56:thrash",
+    "egg:agility",
+    "egg:brine",
     "egg:bubblebeam",
     "egg:endeavor",
+    "egg:headsmash",
+    "egg:muddywater",
+    "egg:mudshot",
     "egg:rage",
+    "egg:revenge",
+    "egg:swift",
+    "egg:whirlpool",
     "tm:agility",
     "tm:assurance",
     "tm:attract",
@@ -115,8 +135,20 @@
     "tm:waterpulse",
     "tm:whirlpool",
     "tm:zenheadbutt",
+    "tutor:agility",
+    "tutor:aquatail",
+    "tutor:bounce",
+    "tutor:endeavor",
     "tutor:flipturn",
-    "tutor:scaleshot"
+    "tutor:headbutt",
+    "tutor:icywind",
+    "tutor:liquidation",
+    "tutor:scaleshot",
+    "tutor:sleeptalk",
+    "tutor:snore",
+    "tutor:superpower",
+    "tutor:uproar",
+    "tutor:zenheadbutt"
   ],
   "labels": [
     "gen5"
@@ -207,7 +239,6 @@
       },
       "catchRate": 25,
       "maleRatio": 0.5,
-      "baseExperienceYield": 0,
       "baseFriendship": 50,
       "evYield": {
         "hp": 0,

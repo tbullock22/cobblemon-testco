@@ -6,6 +6,10 @@
         {
             "id": "metapod-1",
             "pokemon": "metapod",
+            "presets": [
+                "natural",
+                "treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -27,7 +31,9 @@
             "id": "metapod-2",
             "pokemon": "metapod",
             "presets": [
-                "foliage"
+				"natural",
+                "foliage",
+                "treetop"
             ],
             "type": "pokemon",
             "context": "grounded",
@@ -44,6 +50,10 @@
 		{
             "id": "metapod-valencian-1",
             "pokemon": "metapod valencian",
+            "presets": [
+                "natural",
+                "treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

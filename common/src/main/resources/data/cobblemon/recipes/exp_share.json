@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GCG",
+        "LHL",
+		"I I"
+    ],
+    "key": {
+        "I": {
+            "item": "minecraft:iron_ingot"
+        },
+        "G": {
+            "item": "minecraft:glowstone"
+        },
+        "C": {
+            "item": "minecraft:prismarine_crystals"
+        },
+        "L": {
+            "item": "minecraft:lapis_lazuli"
+        },
+        "H": {
+            "item": "minecraft:diamond_helmet"
+        }
+    },
+    "result": {
+        "item": "cobblemon:exp_share"
+    }
+}

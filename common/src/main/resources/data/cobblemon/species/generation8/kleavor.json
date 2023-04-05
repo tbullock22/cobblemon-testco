@@ -20,12 +20,22 @@
   "catchRate": 115,
   "maleRatio": 0.5,
   "shoulderMountable": false,
-  "baseExperienceYield": 0,
+  "baseExperienceYield": 175,
   "experienceGroup": "medium_fast",
   "eggCycles": 0,
   "eggGroups": [
     "bug"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:stone_axe",
+        "quantityRange": "1-2",
+        "percentage": 66
+      }
+    ]
+  },
   "moves": [
     "1:leer",
     "1:quickattack",

@@ -16,6 +16,14 @@
     "special_defence": 75,
     "speed": 64
   },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    }
+  },
   "catchRate": 45,
   "maleRatio": 0.875,
   "shoulderMountable": false,
@@ -25,26 +33,36 @@
   "eggGroups": [
     "field"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:miracle_seed",
+        "percentage": 20
+      }
+    ]
+  },
   "moves": [
     "1:bellydrum",
     "1:feint",
     "1:growl",
     "1:hammerarm",
-    "1:needlearm",
-    "1:rollout",
     "1:tackle",
-    "1:vinewhip",
+    "5:vinewhip",
+    "8:rollout",
     "11:bite",
     "15:leechseed",
-    "19:pinmissile",
-    "29:takedown",
+    "20:pinmissile",
+    "26:needlearm",
+    "30:takedown",
     "35:seedbomb",
+    "36:spikyshield",
     "41:mudshot",
-    "48:bulkup",
-    "54:bodyslam",
-    "60:painsplit",
-    "66:woodhammer",
-    "78:gigaimpact",
+    "44:bulkup",
+    "48:bodyslam",
+    "52:painsplit",
+    "55:woodhammer",
+    "70:gigaimpact",
     "tm:aerialace",
     "tm:attract",
     "tm:bodypress",
@@ -131,15 +149,28 @@
     "tm:workup",
     "tm:zenheadbutt",
     "tutor:block",
+    "tutor:drainpunch",
     "tutor:dualchop",
     "tutor:endeavor",
     "tutor:focuspunch",
+    "tutor:frenzyplant",
+    "tutor:gigadrain",
+    "tutor:grasspledge",
+    "tutor:helpinghand",
+    "tutor:irondefense",
+    "tutor:ironhead",
     "tutor:irontail",
+    "tutor:lowkick",
+    "tutor:painsplit",
+    "tutor:seedbomb",
     "tutor:snore",
+    "tutor:stompingtantrum",
     "tutor:superfang",
     "tutor:superpower",
     "tutor:synthesis",
-    "tutor:worryseed"
+    "tutor:thunderpunch",
+    "tutor:worryseed",
+    "tutor:zenheadbutt"
   ],
   "labels": [
     "gen6"

@@ -39,6 +39,7 @@
     "38:doubleedge",
     "42:hornleech",
     "45:leafblade",
+    "50:milkdrink",
     "egg:defensecurl",
     "egg:grassyterrain",
     "egg:milkdrink",
@@ -94,8 +95,13 @@
     "tm:wildcharge",
     "tm:workup",
     "tm:zenheadbutt",
+    "tutor:gigadrain",
     "tutor:irontail",
-    "tutor:snore"
+    "tutor:seedbomb",
+    "tutor:snore",
+    "tutor:synthesis",
+    "tutor:worryseed",
+    "tutor:zenheadbutt"
   ],
   "labels": [
     "gen6"

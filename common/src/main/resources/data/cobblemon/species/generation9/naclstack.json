@@ -26,7 +26,7 @@
   },
   "catchRate": 120,
   "maleRatio": 0.5,
-  "baseExperienceYield": 0,
+  "baseExperienceYield": 124,
   "baseFriendship": 50,
   "evYield": {
     "hp": 0,
@@ -41,6 +41,16 @@
   "eggGroups": [
     "mineral"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:flint",
+        "quantityRange": "1-2",
+        "percentage": 66
+      }
+    ]
+  },
   "moves": [
     "1:harden",
     "1:tackle",

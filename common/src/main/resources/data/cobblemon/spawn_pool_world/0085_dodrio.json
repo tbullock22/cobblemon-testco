@@ -6,6 +6,9 @@
         {
             "id": "dodrio-1",
             "pokemon": "dodrio",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

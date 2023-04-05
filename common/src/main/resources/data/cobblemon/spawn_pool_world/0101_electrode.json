@@ -7,7 +7,8 @@
             "id": "electrode-1",
             "pokemon": "electrode",
             "presets": [
-                "urban"
+                "natural",
+				"urban"
             ],
             "type": "pokemon",
             "context": "grounded",

@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Raboot",
   "nationalPokedexNumber": 814,
   "primaryType": "fire",
@@ -24,6 +25,24 @@
     "field",
     "human_like"
   ],
+  "drops": {
+    "amount": "3",
+    "entries": [
+      {
+        "item": "minecraft:rabbit_hide",
+        "quantityRange": "1-2",
+        "percentage": 66
+      },
+      {
+        "item": "minecraft:rabbit_foot",
+        "percentage": 10
+      },
+      {
+        "item": "cobblemon:charcoal_stick",
+        "percentage": 10
+      }
+    ]
+  },
   "moves": [
     "1:ember",
     "1:growl",
@@ -43,6 +62,7 @@
     "tm:attract",
     "tm:batonpass",
     "tm:blazekick",
+    "tm:bounce",
     "tm:bulkup",
     "tm:electroball",
     "tm:endure",
@@ -78,7 +98,8 @@
     "tm:terablast",
     "tm:trailblaze",
     "tm:uturn",
-    "tm:workup"
+    "tm:workup",
+    "tutor:firepledge"
   ],
   "labels": [
     "gen8"
@@ -104,10 +125,10 @@
       ]
     }
   ],
-  "baseScale": 1,
+  "baseScale": 0.7,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 0.75,
+    "height": 1.4,
     "fixed": false
   },
   "baseFriendship": 50,

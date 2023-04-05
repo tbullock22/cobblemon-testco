@@ -47,6 +47,7 @@
     "tm:eerieimpulse",
     "tm:electricterrain",
     "tm:electroball",
+    "tm:electroweb",
     "tm:endure",
     "tm:facade",
     "tm:gigaimpact",
@@ -70,7 +71,11 @@
     "tm:thunderwave",
     "tm:voltswitch",
     "tm:wildcharge",
-    "tutor:risingvoltage"
+    "tutor:lockon",
+    "tutor:risingvoltage",
+    "tutor:thrash",
+    "tutor:thundercage",
+    "tutor:zapcannon"
   ],
   "labels": [
     "gen8",

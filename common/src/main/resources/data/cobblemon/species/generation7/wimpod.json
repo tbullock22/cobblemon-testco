@@ -32,6 +32,7 @@
     "egg:harden",
     "egg:metalclaw",
     "egg:rollout",
+    "egg:spikes",
     "egg:wideguard",
     "tm:assurance",
     "tm:attract",
@@ -62,7 +63,8 @@
     "tm:taunt",
     "tm:toxic",
     "tm:waterfall",
-    "tutor:skittersmack"
+    "tutor:skittersmack",
+    "tutor:snore"
   ],
   "labels": [
     "gen7"

@@ -26,11 +26,11 @@ import net.minecraft.util.math.Vec3f
 class PokemonItemRenderer : CobblemonBuiltinItemRenderer {
     override fun render(stack: ItemStack, mode: ModelTransformation.Mode, matrices: MatrixStack, vertexConsumers: VertexConsumerProvider, light: Int, overlay: Int) {
         val pokemonItem = stack.item as? PokemonItem ?: return
-        val pokemon = pokemonItem.asPokemon(stack) ?: return
+        val (species, aspects) = pokemonItem.getSpeciesAndAspects(stack) ?: return
 
         matrices.push()
-        val model = PokemonModelRepository.getPoser(pokemon.species.resourceIdentifier, pokemon.aspects)
-        val renderLayer = model.getLayer(PokemonModelRepository.getTexture(pokemon.species.resourceIdentifier, pokemon.aspects, null))
+        val model = PokemonModelRepository.getPoser(species.resourceIdentifier, aspects)
+        val renderLayer = model.getLayer(PokemonModelRepository.getTexture(species.resourceIdentifier, aspects, null))
 
         val transformations = positions[mode]!!
 
@@ -52,7 +52,12 @@ class PokemonItemRenderer : CobblemonBuiltinItemRenderer {
 //        val packedLight = LightmapTextureManager.pack(12, 12)
         val vertexConsumer: VertexConsumer = vertexConsumers.getBuffer(renderLayer)
         matrices.push()
-        model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0f, 1.0f, 1.0f, 1.0f)
+
+        val packedLight = LightmapTextureManager.pack(11, 7)
+        model.withLayerContext(vertexConsumers, null, PokemonModelRepository.getLayers(species.resourceIdentifier, aspects)) {
+            model.render(matrices, vertexConsumer, packedLight, OverlayTexture.DEFAULT_UV, 1F, 1F, 1F, 1F)
+        }
+
         matrices.pop()
         matrices.pop()
 

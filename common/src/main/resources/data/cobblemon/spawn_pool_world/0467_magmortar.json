@@ -6,6 +6,9 @@
         {
             "id": "magmortar-1",
             "pokemon": "magmortar",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -16,7 +19,10 @@
                 "biomes": [
                     "#cobblemon:is_hills"
                 ],
-                "isRaining": false
+                "isRaining": false,
+				"neededNearbyBlocks": [
+                    "minecraft:lava", "minecraft:flowing_lava"
+                ]
             }
         },
         {

@@ -26,23 +26,40 @@
   "eggGroups": [
     "bug"
   ],
+  "drops": {
+    "amount": "2",
+    "entries": [
+      {
+        "item": "minecraft:string",
+        "quantityRange": "1-2",
+        "percentage": 66
+      },
+      {
+        "item": "minecraft:spider_eye",
+        "quantityRange": "1-2",
+        "percentage": 66
+      }
+    ]
+  },
   "moves": [
     "1:absorb",
-    "1:bugbite",
-    "1:electroweb",
-    "1:furycutter",
+    "1:leechlife",
     "1:spiderweb",
-    "12:stringshot",
-    "16:thunderwave",
-    "20:electroball",
-    "24:agility",
-    "28:suckerpunch",
-    "32:slash",
+    "1:stickyweb",
+    "1:stringshot",
+    "1:thunderwave",
+    "7:screech",
+    "12:furycutter",
+    "15:electroweb",
+    "18:bugbite",
+    "23:gastroacid",
+    "26:slash",
+    "29:electroball",
     "34:signalbeam",
-    "39:discharge",
-    "44:screech",
-    "50:gastroacid",
-    "56:bugbuzz",
+    "40:agility",
+    "46:suckerpunch",
+    "54:discharge",
+    "60:bugbuzz",
     "tm:agility",
     "tm:attract",
     "tm:bounce",
@@ -91,13 +108,22 @@
     "tm:voltswitch",
     "tm:wildcharge",
     "tm:xscissor",
+    "tutor:bounce",
+    "tutor:bugbite",
     "tutor:disable",
+    "tutor:electroball",
+    "tutor:electroweb",
+    "tutor:gastroacid",
+    "tutor:gigadrain",
     "tutor:magnetrise",
     "tutor:pursuit",
     "tutor:risingvoltage",
     "tutor:shockwave",
     "tutor:signalbeam",
-    "tutor:skittersmack"
+    "tutor:skittersmack",
+    "tutor:sleeptalk",
+    "tutor:snore",
+    "tutor:throatchop"
   ],
   "labels": [
     "gen5"

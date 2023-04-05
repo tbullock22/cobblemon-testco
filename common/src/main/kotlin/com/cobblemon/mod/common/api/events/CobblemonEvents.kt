@@ -29,6 +29,7 @@ import com.cobblemon.mod.common.api.events.pokemon.evolution.EvolutionCompleteEv
 import com.cobblemon.mod.common.api.events.pokemon.evolution.EvolutionDisplayEvent
 import com.cobblemon.mod.common.api.events.pokemon.interaction.ExperienceCandyUseEvent
 import com.cobblemon.mod.common.api.events.starter.StarterChosenEvent
+import com.cobblemon.mod.common.api.events.storage.ReleasePokemonEvent
 import com.cobblemon.mod.common.api.reactive.CancelableObservable
 import com.cobblemon.mod.common.api.reactive.EventObservable
 import com.cobblemon.mod.common.api.reactive.SimpleObservable
@@ -91,6 +92,11 @@ object CobblemonEvents {
     val EXPERIENCE_CANDY_USE_PRE = CancelableObservable<ExperienceCandyUseEvent.Pre>()
     @JvmField
     val EXPERIENCE_CANDY_USE_POST = EventObservable<ExperienceCandyUseEvent.Post>()
+
+    @JvmField
+    val POKEMON_RELEASED_EVENT_PRE = CancelableObservable<ReleasePokemonEvent.Pre>()
+    @JvmField
+    val POKEMON_RELEASED_EVENT_POST = EventObservable<ReleasePokemonEvent.Post>()
 
     @JvmField
     val LOOT_DROPPED = CancelableObservable<LootDroppedEvent>()

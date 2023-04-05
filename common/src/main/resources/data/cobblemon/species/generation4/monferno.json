@@ -26,12 +26,21 @@
     "field",
     "human_like"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:charcoal_stick",
+        "percentage": 10
+      }
+    ]
+  },
   "moves": [
     "1:ember",
     "1:leer",
-    "1:machpunch",
     "1:scratch",
     "9:taunt",
+    "14:machpunch",
     "16:furyswipes",
     "19:flamewheel",
     "26:feint",
@@ -39,8 +48,8 @@
     "36:closecombat",
     "39:firespin",
     "46:acrobatics",
-    "49:slackoff",
-    "56:flareblitz",
+    "46:slackoff",
+    "49:flareblitz",
     "tm:acrobatics",
     "tm:aerialace",
     "tm:attract",
@@ -58,11 +67,13 @@
     "tm:flamethrower",
     "tm:fling",
     "tm:focusblast",
+    "tm:focuspunch",
     "tm:frustration",
     "tm:grassknot",
     "tm:hiddenpower",
     "tm:honeclaws",
     "tm:incinerate",
+    "tm:irontail",
     "tm:lowsweep",
     "tm:naturalgift",
     "tm:overheat",
@@ -80,6 +91,7 @@
     "tm:secretpower",
     "tm:shadowclaw",
     "tm:sleeptalk",
+    "tm:stealthrock",
     "tm:strength",
     "tm:substitute",
     "tm:sunnyday",
@@ -106,6 +118,7 @@
     "tutor:mudslap",
     "tutor:roleplay",
     "tutor:rollout",
+    "tutor:sleeptalk",
     "tutor:snore",
     "tutor:stealthrock",
     "tutor:swift",

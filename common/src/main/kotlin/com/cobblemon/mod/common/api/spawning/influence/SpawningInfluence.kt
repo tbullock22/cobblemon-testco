@@ -9,6 +9,7 @@
 package com.cobblemon.mod.common.api.spawning.influence
 
 import com.cobblemon.mod.common.api.spawning.BestSpawner
+import com.cobblemon.mod.common.api.spawning.SpawnBucket
 import com.cobblemon.mod.common.api.spawning.context.SpawningContext
 import com.cobblemon.mod.common.api.spawning.detail.SpawnAction
 import com.cobblemon.mod.common.api.spawning.detail.SpawnDetail
@@ -32,4 +33,6 @@ interface SpawningInfluence {
     fun affectAction(action: SpawnAction<*>) {}
     /** Applies some influence over the entity that's been spawned. */
     fun affectSpawn(entity: Entity) {}
+    /** Applies some influence over the weight of spawn buckets. */
+    fun affectBucketWeight(bucket: SpawnBucket, weight: Float): Float = weight
 }

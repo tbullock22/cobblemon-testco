@@ -72,12 +72,14 @@
     "tm:metronome",
     "tm:nastyplot",
     "tm:payback",
+    "tm:payday",
     "tm:playrough",
     "tm:protect",
     "tm:raindance",
     "tm:rest",
     "tm:retaliate",
     "tm:round",
+    "tm:screech",
     "tm:seedbomb",
     "tm:shadowball",
     "tm:shadowclaw",
@@ -100,7 +102,8 @@
     "tm:uturn",
     "tm:workup",
     "tm:xscissor",
-    "tutor:lashout"
+    "tutor:lashout",
+    "tutor:steelbeam"
   ],
   "labels": [
     "gen8"

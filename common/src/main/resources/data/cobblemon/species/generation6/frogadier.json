@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Frogadier",
   "nationalPokedexNumber": 657,
   "primaryType": "water",
@@ -14,6 +15,20 @@
     "special_defence": 56,
     "speed": 97
   },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": false,
+      "depth": "normal",
+      "light": "0-4"
+    },
+    "moving": {
+      "swim": {
+        "canSwimInWater": true,
+        "canBreatheUnderwater": true
+      }
+    }
+  },
   "catchRate": 45,
   "maleRatio": 0.875,
   "shoulderMountable": false,
@@ -23,22 +38,36 @@
   "eggGroups": [
     "water_1"
   ],
+  "drops": {
+    "amount": "2",
+    "entries": [
+      {
+        "item": "minecraft:pearlescent_froglight",
+        "quantityRange": "1-2",
+        "percentage": 66
+      },
+      {
+        "item": "cobblemon:mystic_water",
+        "percentage": 10
+      }
+    ]
+  },
   "moves": [
-    "1:bubble",
     "1:growl",
     "1:pound",
     "1:watergun",
+    "5:bubble",
     "8:quickattack",
     "10:lick",
     "14:waterpulse",
-    "19:smokescreen",
+    "20:smokescreen",
     "23:round",
     "28:fling",
     "33:smackdown",
-    "40:substitute",
-    "45:bounce",
-    "50:doubleteam",
-    "56:hydropump",
+    "38:substitute",
+    "44:bounce",
+    "48:doubleteam",
+    "55:hydropump",
     "tm:acrobatics",
     "tm:aerialace",
     "tm:attract",
@@ -49,6 +78,7 @@
     "tm:darkpulse",
     "tm:dig",
     "tm:dive",
+    "tm:doubleteam",
     "tm:echoedvoice",
     "tm:endure",
     "tm:facade",
@@ -75,9 +105,11 @@
     "tm:rockslide",
     "tm:rocksmash",
     "tm:rocktomb",
+    "tm:round",
     "tm:scald",
     "tm:secretpower",
     "tm:sleeptalk",
+    "tm:smackdown",
     "tm:snowscape",
     "tm:spikes",
     "tm:strength",
@@ -98,10 +130,17 @@
     "tm:waterpledge",
     "tm:waterpulse",
     "tm:workup",
+    "tutor:bounce",
+    "tutor:gunkshot",
+    "tutor:icepunch",
+    "tutor:icywind",
+    "tutor:lowkick",
     "tutor:roleplay",
     "tutor:snatch",
     "tutor:snore",
-    "tutor:spite"
+    "tutor:spite",
+    "tutor:waterpledge",
+    "tutor:waterpulse"
   ],
   "labels": [
     "gen6"
@@ -127,10 +166,10 @@
       ]
     }
   ],
-  "baseScale": 1,
+  "baseScale": 0.75,
   "hitbox": {
-    "width": 1,
-    "height": 1,
+    "width": 0.9,
+    "height": 2,
     "fixed": false
   },
   "baseFriendship": 70,

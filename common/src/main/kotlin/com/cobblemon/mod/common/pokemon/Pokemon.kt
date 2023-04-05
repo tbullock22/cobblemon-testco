@@ -178,7 +178,7 @@ open class Pokemon : ShowdownIdentifiable {
                 throw IllegalArgumentException("Level cannot be negative")
             }
             if (value > Cobblemon.config.maxPokemonLevel) {
-                throw IllegalArgumentException("Cannot set level above the configured maxiumum of ${Cobblemon.config.maxPokemonLevel}")
+                throw IllegalArgumentException("Cannot set level above the configured maximum of ${Cobblemon.config.maxPokemonLevel}")
             }
             val hpRatio = (currentHealth / hp.toFloat()).coerceIn(0F, 1F)
             /*
@@ -186,7 +186,7 @@ open class Pokemon : ShowdownIdentifiable {
              * Specifically check for when there's a mismatch and update the experience.
              */
             field = value
-            if (experienceGroup.getLevel(experience) != value) {
+            if (experienceGroup.getLevel(experience) != value || value == Cobblemon.config.maxPokemonLevel) {
                 experience = experienceGroup.getExperience(value)
             }
 //            _level.emit(value)
@@ -239,7 +239,10 @@ open class Pokemon : ShowdownIdentifiable {
     var experience = 0
         internal set(value) {
             field = value
-            _experience.emit(value)
+            if (this.level == Cobblemon.config.maxPokemonLevel) {
+                field = this.experienceGroup.getExperience(this.level)
+            }
+            _experience.emit(field)
         }
 
     /**
@@ -426,6 +429,14 @@ open class Pokemon : ShowdownIdentifiable {
         this.state = InactivePokemonState()
     }
 
+    fun tryRecallWithAnimation() {
+        if (this.entity != null) {
+            this.entity?.recallWithAnimation()
+            return
+        }
+        this.recall()
+    }
+
     fun heal() {
         this.currentHealth = hp
         this.moveSet.heal()
@@ -518,9 +529,8 @@ open class Pokemon : ShowdownIdentifiable {
      * @return The existing [ItemStack] being held.
      */
     fun swapHeldItem(stack: ItemStack, decrement: Boolean = true): ItemStack {
-        var giving = stack
+        val giving = stack.copy().apply { count = 1 }
         if (decrement) {
-            giving = stack.copy().apply { count = 1 }
             stack.decrement(1)
         }
         val existing = this.heldItem()
@@ -828,7 +838,7 @@ open class Pokemon : ShowdownIdentifiable {
     fun isPossibleFriendship(value: Int) = value >= 0 && value <= Cobblemon.config.maxPokemonFriendship
 
     val allAccessibleMoves: Set<MoveTemplate>
-        get() = form.moves.getLevelUpMovesUpTo(level) + benchedMoves.map { it.moveTemplate }
+        get() = form.moves.getLevelUpMovesUpTo(level) + benchedMoves.map { it.moveTemplate } + form.moves.evolutionMoves
 
     fun updateAspects() {
         /*
@@ -1029,7 +1039,8 @@ open class Pokemon : ShowdownIdentifiable {
         )
 
         experience += appliedXP
-        var newLevel = experienceGroup.getLevel(experience)
+        // Bound is needed here as we can still be allowed to level up but go over the current cap
+        var newLevel = experienceGroup.getLevel(experience).coerceAtMost(Cobblemon.config.maxPokemonLevel)
         if (newLevel != oldLevel) {
             CobblemonEvents.LEVEL_UP_EVENT.post(
                 LevelUpEvent(this, oldLevel, newLevel),
@@ -1039,7 +1050,7 @@ open class Pokemon : ShowdownIdentifiable {
         }
 
         val newLevelUpMoves = form.moves.getLevelUpMovesUpTo(newLevel)
-        val differences = (newLevelUpMoves - previousLevelUpMoves).toMutableSet()
+        val differences = (newLevelUpMoves - previousLevelUpMoves).filter { this.moveSet.none { move -> move.template == it } }.toMutableSet()
         differences.forEach {
             if (moveSet.hasSpace()) {
                 moveSet.add(it.create())

@@ -6,11 +6,14 @@
         {
             "id": "jolteon-1",
             "pokemon": "jolteon",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "ultra-rare",
             "level": "33-52",
-            "weight": 0.1,
+            "weight": 1.0,
             "condition": {
                 "canSeeSky": true,
                 "biomes": [

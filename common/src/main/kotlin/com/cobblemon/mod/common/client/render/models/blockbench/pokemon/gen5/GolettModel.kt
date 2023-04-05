@@ -60,8 +60,7 @@ class GolettModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("golett", "ground_walk"),
-                //bedrock("golett", "ground_walk")
+                bedrock("golett", "ground_walk")
             )
         )
 

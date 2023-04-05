@@ -51,7 +51,7 @@ class PokemonClientDelegate : PoseableEntityState<PokemonEntity>(), PokemonSideD
         entity.subscriptions.add(entity.deathEffectsStarted.subscribe {
             if (it) {
                 val model = (currentModel ?: return@subscribe) as PokemonPoseableModel
-                val animation = model.getFaintAnimation(entity, this) ?: return@subscribe
+                val animation = try { model.getFaintAnimation(entity, this) } catch (e: Exception) { e.printStackTrace(); null } ?: return@subscribe
                 statefulAnimations.add(animation)
             }
         })
@@ -113,6 +113,8 @@ class PokemonClientDelegate : PoseableEntityState<PokemonEntity>(), PokemonSideD
             }
         }
 
+        updateLocatorPosition(entity.pos)
+
         previousVerticalVelocity = entity.velocity.y.toFloat()
     }
 
@@ -126,5 +128,9 @@ class PokemonClientDelegate : PoseableEntityState<PokemonEntity>(), PokemonSideD
             val animation = model.getEatAnimation(entity, this) ?: return
             statefulAnimations.add(animation)
         }
+    }
+
+    override fun updatePostDeath() {
+        ++entity.deathTime
     }
 }

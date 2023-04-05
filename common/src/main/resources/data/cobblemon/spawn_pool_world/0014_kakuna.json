@@ -6,6 +6,10 @@
         {
             "id": "kakuna-1",
             "pokemon": "kakuna",
+            "presets": [
+                "natural",
+                "treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "name": "Delphox",
   "nationalPokedexNumber": 655,
   "primaryType": "fire",
@@ -24,27 +25,45 @@
   "eggGroups": [
     "field"
   ],
+  "drops": {
+    "amount": "3",
+    "entries": [
+      {
+        "item": "minecraft:stick"
+      },
+      {
+        "item": "minecraft:blaze_powder",
+        "quantityRange": "1-3",
+        "percentage": 75
+      },
+      {
+        "item": "cobblemon:charcoal_stick",
+        "percentage": 20
+      }
+    ]
+  },
   "moves": [
-    "1:ember",
     "1:futuresight",
-    "1:howl",
     "1:roleplay",
     "1:scratch",
     "1:shadowball",
     "1:switcheroo",
     "1:tailwhip",
+    "5:ember",
+    "11:howl",
     "14:flamecharge",
     "18:psybeam",
     "22:firespin",
-    "28:lightscreen",
-    "28:luckychant",
-    "38:psyshock",
-    "45:flamethrower",
-    "51:willowisp",
-    "57:psychic",
-    "62:sunnyday",
-    "68:magicroom",
-    "74:fireblast",
+    "27:luckychant",
+    "30:lightscreen",
+    "34:psyshock",
+    "36:mysticalfire",
+    "42:flamethrower",
+    "47:willowisp",
+    "51:psychic",
+    "55:sunnyday",
+    "58:magicroom",
+    "61:fireblast",
     "tm:agility",
     "tm:attract",
     "tm:blastburn",
@@ -123,17 +142,29 @@
     "tm:workup",
     "tm:zenheadbutt",
     "tutor:allyswitch",
+    "tutor:blastburn",
     "tutor:covet",
+    "tutor:firepledge",
+    "tutor:firepunch",
+    "tutor:foulplay",
+    "tutor:heatwave",
     "tutor:irontail",
     "tutor:laserfocus",
+    "tutor:lowkick",
     "tutor:magiccoat",
+    "tutor:magicroom",
     "tutor:recycle",
+    "tutor:roleplay",
     "tutor:shockwave",
     "tutor:signalbeam",
+    "tutor:skillswap",
     "tutor:snatch",
     "tutor:snore",
     "tutor:telekinesis",
-    "tutor:wonderroom"
+    "tutor:thunderpunch",
+    "tutor:trick",
+    "tutor:wonderroom",
+    "tutor:zenheadbutt"
   ],
   "labels": [
     "gen6"
@@ -143,10 +174,10 @@
   ],
   "preEvolution": "braixen",
   "evolutions": [],
-  "baseScale": 1,
+  "baseScale": 0.8,
   "hitbox": {
     "width": 1,
-    "height": 1,
+    "height": 3,
     "fixed": false
   },
   "baseFriendship": 70,

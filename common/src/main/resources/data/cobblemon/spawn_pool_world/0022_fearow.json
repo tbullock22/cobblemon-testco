@@ -6,6 +6,10 @@
         {
             "id": "fearow-1",
             "pokemon": "fearow",
+            "presets": [
+                "natural",
+                "treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

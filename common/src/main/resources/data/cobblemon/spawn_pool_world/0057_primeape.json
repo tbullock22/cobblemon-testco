@@ -6,6 +6,10 @@
         {
             "id": "primeape-1",
             "pokemon": "primeape",
+            "presets": [
+                "natural",
+                "treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

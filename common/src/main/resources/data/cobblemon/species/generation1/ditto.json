@@ -25,7 +25,8 @@
     "ditto"
   ],
   "moves": [
-    "1:transform"
+    "1:transform",
+    "tutor:transform"
   ],
   "labels": [
     "gen1"

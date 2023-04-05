@@ -18,9 +18,14 @@
   },
   "behaviour": {
     "moving": {
+      "canLook": false,
+      "walk": {
+        "avoidsLand": true
+      },
       "swim": {
-        "canBreatheUnderwater": true,
-        "swimSpeed": 0.1
+        "swimSpeed": 0.1,
+        "canSwimInWater": true,
+        "canBreatheUnderwater": true
       }
     }
   },
@@ -34,33 +39,48 @@
     "field",
     "water_2"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:bone_block",
+        "percentage": 50
+      }
+    ]
+  },
   "moves": [
     "1:splash",
-    "3:growl",
-    "6:astonish",
-    "12:watergun",
-    "15:mist",
-    "18:waterpulse",
-    "21:heavyslam",
-    "24:brine",
-    "27:whirlpool",
-    "30:dive",
-    "33:bounce",
+    "5:growl",
+    "10:watergun",
+    "14:rollout",
+    "19:whirlpool",
+    "23:astonish",
+    "28:waterpulse",
+    "31:brine",
+    "32:mist",
     "36:bodyslam",
-    "39:rest",
-    "42:amnesia",
-    "45:hydropump",
-    "48:waterspout",
+    "37:rest",
+    "41:dive",
+    "41:waterspout",
+    "44:bounce",
+    "46:amnesia",
+    "50:heavyslam",
+    "50:hydropump",
     "egg:aquaring",
+    "egg:bodyslam",
     "egg:clearsmog",
     "egg:curse",
     "egg:defensecurl",
     "egg:doubleedge",
     "egg:fissure",
     "egg:rollout",
+    "egg:sleeptalk",
+    "egg:snore",
     "egg:soak",
+    "egg:swagger",
     "egg:thrash",
     "egg:tickle",
+    "egg:zenheadbutt",
     "tm:amnesia",
     "tm:attract",
     "tm:avalanche",
@@ -106,12 +126,30 @@
     "tm:swagger",
     "tm:toxic",
     "tm:waterfall",
+    "tm:waterpulse",
     "tm:weatherball",
     "tm:whirlpool",
     "tm:zenheadbutt",
+    "tutor:bodyslam",
+    "tutor:bounce",
+    "tutor:defensecurl",
+    "tutor:dive",
+    "tutor:doubleedge",
+    "tutor:endure",
     "tutor:headbutt",
+    "tutor:hypervoice",
+    "tutor:icywind",
     "tutor:mimic",
-    "tutor:steelroller"
+    "tutor:rollout",
+    "tutor:selfdestruct",
+    "tutor:sleeptalk",
+    "tutor:snore",
+    "tutor:steelroller",
+    "tutor:substitute",
+    "tutor:swagger",
+    "tutor:watergun",
+    "tutor:waterpulse",
+    "tutor:zenheadbutt"
   ],
   "labels": [
     "gen3"

@@ -25,13 +25,15 @@
   ],
   "moves": [
     "1:harden",
+    "9:protect",
     "tm:irondefense",
     "tm:pounce",
     "tm:protect",
     "tm:strugglebug",
     "tm:terablast",
     "tutor:bugbite",
-    "tutor:electroweb"
+    "tutor:electroweb",
+    "tutor:irondefense"
   ],
   "labels": [
     "gen6"

@@ -24,23 +24,32 @@
   "eggGroups": [
     "amorphous"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:spell_tag",
+        "percentage": 10
+      }
+    ]
+  },
   "moves": [
     "1:astonish",
     "1:copycat",
     "1:scratch",
     "1:splash",
     "1:woodhammer",
-    "6:shadowsneak",
-    "12:doubleteam",
-    "18:babydolleyes",
+    "5:doubleteam",
+    "10:babydolleyes",
+    "14:shadowsneak",
+    "19:mimic",
     "23:feintattack",
-    "24:mimic",
-    "30:honeclaws",
-    "36:slash",
-    "42:shadowclaw",
-    "48:charm",
-    "54:playrough",
-    "60:painsplit",
+    "28:charm",
+    "32:slash",
+    "37:shadowclaw",
+    "41:honeclaws",
+    "46:playrough",
+    "50:painsplit",
     "egg:curse",
     "egg:destinybond",
     "egg:grudge",
@@ -54,6 +63,7 @@
     "tm:confuseray",
     "tm:darkpulse",
     "tm:dazzlinggleam",
+    "tm:doubleteam",
     "tm:drainingkiss",
     "tm:drainpunch",
     "tm:dreameater",
@@ -109,13 +119,26 @@
     "tm:workup",
     "tm:xscissor",
     "tutor:afteryou",
+    "tutor:astonish",
+    "tutor:babydolleyes",
     "tutor:burningjealousy",
+    "tutor:copycat",
     "tutor:covet",
+    "tutor:destinybond",
+    "tutor:drainpunch",
+    "tutor:gigadrain",
     "tutor:lastresort",
+    "tutor:magicroom",
+    "tutor:mimic",
+    "tutor:painsplit",
+    "tutor:playrough",
     "tutor:snatch",
-    "tutor:snatch",
+    "tutor:snore",
     "tutor:spite",
-    "tutor:telekinesis"
+    "tutor:splash",
+    "tutor:substitute",
+    "tutor:telekinesis",
+    "tutor:trick"
   ],
   "labels": [
     "gen7"

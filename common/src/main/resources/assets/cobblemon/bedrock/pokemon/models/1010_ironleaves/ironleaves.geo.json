@@ -6,7 +6,7 @@
 				"identifier": "geometry.ironleaves",
 				"texture_width": 128,
 				"texture_height": 64,
-				"visible_bounds_width": 4,
+				"visible_bounds_width": 5,
 				"visible_bounds_height": 5.5,
 				"visible_bounds_offset": [0, 2.25, 0]
 			},
@@ -73,7 +73,10 @@
 				{
 					"name": "neck_sword_left",
 					"parent": "neck_panel_left",
-					"pivot": [2.5, 26.5, -3.25]
+					"pivot": [2.5, 26.5, -3.25],
+					"cubes": [
+						{"origin": [2.5, 25, -3.25], "size": [0, 3, 22], "pivot": [2.5, 24.5, -6], "rotation": [0, 0, 0], "uv": [78, -22]}
+					]
 				},
 				{
 					"name": "neck_panel_right",
@@ -87,7 +90,10 @@
 				{
 					"name": "neck_sword_right",
 					"parent": "neck_panel_right",
-					"pivot": [-2.5, 26.5, -3.25]
+					"pivot": [-2.5, 26.5, -3.25],
+					"cubes": [
+						{"origin": [-2.5, 25, -3.25], "size": [0, 3, 22], "pivot": [-2.5, 24.5, -6], "rotation": [0, 0, 0], "uv": [78, -19], "mirror": true}
+					]
 				},
 				{
 					"name": "neck3",
@@ -172,7 +178,10 @@
 				{
 					"name": "sword_head",
 					"parent": "head_angle",
-					"pivot": [0, 30.2, -6.775]
+					"pivot": [0, 30.2, -6.775],
+					"cubes": [
+						{"origin": [0, 33, -9.68], "size": [0, 24, 3], "uv": [122, -3]}
+					]
 				},
 				{
 					"name": "tails",
@@ -282,7 +291,7 @@
 					]
 				},
 				{
-					"name": "leg_back_left",
+					"name": "leg_back_left0",
 					"parent": "legs",
 					"pivot": [4, 17.5, 6.25],
 					"cubes": [
@@ -292,8 +301,13 @@
 					]
 				},
 				{
+					"name": "leg_back_left1",
+					"parent": "leg_back_left0",
+					"pivot": [4, 17.5, 6.25]
+				},
+				{
 					"name": "leg_back_left2",
-					"parent": "leg_back_left",
+					"parent": "leg_back_left1",
 					"pivot": [4, 9.05, 9.35],
 					"cubes": [
 						{"origin": [3, 0.25, 6.25], "size": [2, 9, 3], "pivot": [4.5, 6, 8], "rotation": [-10, 0, 0], "uv": [69, 22], "mirror": true},
@@ -309,7 +323,7 @@
 					]
 				},
 				{
-					"name": "leg_back_right",
+					"name": "leg_back_right0",
 					"parent": "legs",
 					"pivot": [-3, 17.5, 6.25],
 					"cubes": [
@@ -319,8 +333,13 @@
 					]
 				},
 				{
+					"name": "leg_back_right1",
+					"parent": "leg_back_right0",
+					"pivot": [-3, 17.5, 6.25]
+				},
+				{
 					"name": "leg_back_right2",
-					"parent": "leg_back_right",
+					"parent": "leg_back_right1",
 					"pivot": [-4, 9.05, 9.35],
 					"cubes": [
 						{"origin": [-5, 0.25, 6.25], "size": [2, 9, 3], "pivot": [-4.5, 6, 8], "rotation": [-10, 0, 0], "uv": [79, 22]},

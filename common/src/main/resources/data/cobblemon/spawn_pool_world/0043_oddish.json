@@ -6,6 +6,9 @@
         {
             "id": "oddish-1",
             "pokemon": "oddish",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -22,6 +25,9 @@
 		{
             "id": "oddish-2",
             "pokemon": "oddish",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",
@@ -38,6 +44,9 @@
 		{
             "id": "oddish-valencian-1",
             "pokemon": "oddish valencian",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

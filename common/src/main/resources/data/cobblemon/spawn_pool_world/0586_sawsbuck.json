@@ -6,6 +6,9 @@
         {
             "id": "sawsbuck-1",
             "pokemon": "sawsbuck",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

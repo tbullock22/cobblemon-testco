@@ -6,6 +6,9 @@
         {
             "id": "vulpix-1",
             "pokemon": "vulpix",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",
@@ -27,6 +30,9 @@
 		{
             "id": "vulpix-alolan-1",
             "pokemon": "vulpix alolan",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

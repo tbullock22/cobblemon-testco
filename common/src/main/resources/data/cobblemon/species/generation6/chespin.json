@@ -15,6 +15,14 @@
     "special_defence": 45,
     "speed": 38
   },
+  "behaviour": {
+    "resting": {
+      "canSleep": true,
+      "willSleepOnBed": true,
+      "depth": "normal",
+      "light": "0-4"
+    }
+  },
   "catchRate": 45,
   "maleRatio": 0.875,
   "shoulderMountable": false,
@@ -24,10 +32,19 @@
   "eggGroups": [
     "field"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:miracle_seed",
+        "percentage": 5
+      }
+    ]
+  },
   "moves": [
     "1:growl",
     "1:tackle",
-    "1:vinewhip",
+    "5:vinewhip",
     "8:rollout",
     "11:bite",
     "15:leechseed",
@@ -44,6 +61,7 @@
     "egg:defensecurl",
     "egg:poweruppunch",
     "egg:quickguard",
+    "egg:rollout",
     "egg:spikes",
     "egg:superfang",
     "egg:synthesis",
@@ -83,6 +101,7 @@
     "tm:naturepower",
     "tm:payback",
     "tm:poisonjab",
+    "tm:poweruppunch",
     "tm:protect",
     "tm:raindance",
     "tm:reflect",
@@ -118,14 +137,27 @@
     "tm:trailblaze",
     "tm:workup",
     "tm:zenheadbutt",
+    "tutor:drainpunch",
     "tutor:dualchop",
     "tutor:endeavor",
     "tutor:focuspunch",
+    "tutor:gigadrain",
+    "tutor:grasspledge",
+    "tutor:helpinghand",
     "tutor:irondefense",
+    "tutor:ironhead",
     "tutor:irontail",
+    "tutor:lowkick",
+    "tutor:painsplit",
+    "tutor:seedbomb",
     "tutor:snore",
+    "tutor:stompingtantrum",
+    "tutor:superfang",
     "tutor:superpower",
-    "tutor:worryseed"
+    "tutor:synthesis",
+    "tutor:thunderpunch",
+    "tutor:worryseed",
+    "tutor:zenheadbutt"
   ],
   "labels": [
     "gen6"

@@ -34,6 +34,7 @@
             "weight": 0.1,
             "condition": {
                 "canSeeSky": false,
+				"maxLight": 0,
                 "biomes": [
                     "#cobblemon:is_overworld"
                 ]
@@ -44,9 +45,30 @@
                 ]
             }
         },
-        {
+		{
             "id": "gengar-3",
             "pokemon": "gengar",
+            "presets": [
+                "derelict"
+            ],
+            "type": "pokemon",
+            "context": "grounded",
+            "bucket": "uncommon",
+            "level": "41-50",
+            "weight": 0.06,
+            "condition": {
+                "canSeeSky": false,
+                "biomes": [
+                    "#cobblemon:is_overworld"
+                ]
+            }
+        },
+        {
+            "id": "gengar-4",
+            "pokemon": "gengar",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -54,14 +76,18 @@
             "weight": 0.1,
             "condition": {
                 "canSeeSky": true,
+				"maxLight": 0,
                 "biomes": [
                     "#cobblemon:is_spooky"
                 ]
             }
         },
         {
-            "id": "gengar-4",
+            "id": "gengar-5",
             "pokemon": "gengar",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

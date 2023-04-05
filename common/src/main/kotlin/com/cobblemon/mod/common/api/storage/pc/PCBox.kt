@@ -62,6 +62,9 @@ open class PCBox(val pc: PCStore) : Iterable<Pokemon> {
     val boxNumber: Int
         get() = this.pc.boxes.indexOf(this)
 
+    val unoccupiedSlots: Int
+        get() = POKEMON_PER_BOX - this.pokemon.filterNotNull().count()
+
     fun getFirstAvailablePosition(): PCPosition? {
         for (index in 0 until POKEMON_PER_BOX) {
             if (this.pokemon[index] == null) {

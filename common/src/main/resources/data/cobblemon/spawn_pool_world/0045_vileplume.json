@@ -6,6 +6,10 @@
         {
             "id": "vileplume-1",
             "pokemon": "vileplume",
+            "presets": [
+                "natural",
+                "treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -22,6 +26,9 @@
         {
             "id": "vileplume-2",
             "pokemon": "vileplume",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",
@@ -38,6 +45,9 @@
         {
             "id": "vileplume-valencian-1",
             "pokemon": "vileplume valencian",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

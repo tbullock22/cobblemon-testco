@@ -51,6 +51,7 @@
     ]
   },
   "moves": [
+    "1:harden",
     "tutor:bugbite",
     "tutor:electroweb",
     "tutor:harden",

@@ -25,24 +25,51 @@
   "eggGroups": [
     "water_2"
   ],
+  "behaviour": {
+    "moving": {
+      "canLook": false,
+      "walk": {
+        "avoidsLand": true
+      },
+      "swim": {
+        "swimSpeed": 0.2,
+        "canSwimInWater": true,
+        "canBreatheUnderwater": true
+      }
+    }
+  },
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:deep_sea_tooth",
+        "percentage": 2.5
+      }
+    ]
+  },
   "moves": [
-    "1:aquajet",
+    "1:bite",
     "1:leer",
-    "4:poisonfang",
-    "4:rage",
-    "8:focusenergy",
-    "12:scaryface",
-    "16:bite",
-    "20:icefang",
-    "24:screech",
-    "28:swagger",
-    "32:crunch",
-    "36:agility",
+    "7:rage",
+    "13:focusenergy",
+    "16:icefang",
+    "16:scaryface",
+    "22:crunch",
+    "26:assurance",
+    "28:screech",
+    "31:aquajet",
+    "31:takedown",
+    "32:poisonfang",
+    "37:swagger",
     "40:liquidation",
-    "44:takedown",
+    "43:agility",
     "egg:ancientpower",
+    "egg:brine",
     "egg:destinybond",
     "egg:doubleedge",
+    "egg:hydropump",
+    "egg:psychicfangs",
+    "egg:swift",
     "egg:thrash",
     "egg:waterpulse",
     "tm:agility",
@@ -86,6 +113,7 @@
     "tm:snore",
     "tm:substitute",
     "tm:surf",
+    "tm:swagger",
     "tm:swift",
     "tm:taunt",
     "tm:thief",
@@ -93,16 +121,37 @@
     "tm:toxic",
     "tm:uproar",
     "tm:waterfall",
+    "tm:waterpulse",
     "tm:whirlpool",
     "tm:zenheadbutt",
+    "tutor:ancientpower",
+    "tutor:bite",
+    "tutor:bounce",
+    "tutor:darkpulse",
+    "tutor:dive",
+    "tutor:doubleedge",
+    "tutor:endure",
     "tutor:flipturn",
     "tutor:furycutter",
+    "tutor:hydropump",
+    "tutor:icywind",
+    "tutor:leer",
     "tutor:mimic",
     "tutor:mudslap",
     "tutor:refresh",
     "tutor:scaleshot",
+    "tutor:scaryface",
+    "tutor:sleeptalk",
+    "tutor:snore",
     "tutor:spite",
-    "tutor:superfang"
+    "tutor:substitute",
+    "tutor:superfang",
+    "tutor:swagger",
+    "tutor:swift",
+    "tutor:thrash",
+    "tutor:uproar",
+    "tutor:waterpulse",
+    "tutor:zenheadbutt"
   ],
   "labels": [
     "gen3"

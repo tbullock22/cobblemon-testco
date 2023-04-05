@@ -46,8 +46,9 @@ open class SpawnerManager {
     open fun onServerTick() {
         // Disables spawning
         if (!Cobblemon.config.enableSpawning) {
-            return;
+            return
         }
+        influences.removeIf { it.isExpired() }
         getSpawnersOfType<TickingSpawner>().forEach(TickingSpawner::tick)
     }
 }

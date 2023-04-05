@@ -6,6 +6,10 @@
         {
             "id": "weedle-1",
             "pokemon": "weedle",
+            "presets": [
+                "natural",
+                "treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

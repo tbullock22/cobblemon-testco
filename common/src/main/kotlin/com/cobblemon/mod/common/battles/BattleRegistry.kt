@@ -43,6 +43,10 @@ object BattleRegistry {
 
     /**
      * Packs a team into the showdown format
+     *
+     * Example from https://gitlab.com/cable-mc/cobblemon-showdown/-/blob/master/sim/TEAMS.md#packed-format
+     *  NICKNAME|SPECIES|ITEM|ABILITY|MOVES|NATURE|EVS|GENDER|IVS|SHINY|LEVEL|HAPPINESS,POKEBALL,HIDDENPOWERTYPE,GIGANTAMAX,DYNAMAXLEVEL,TERATYPE
+     *
      * @return a string of the packed team
      */
     fun List<BattlePokemon>.packTeam() : String {
@@ -99,14 +103,22 @@ object BattleRegistry {
             packedTeamBuilder.append("${if (pk.shiny) "S" else ""}|")
             // Level
             packedTeamBuilder.append("${pk.level}|")
+
+            // Misc
             // Happiness
-            packedTeamBuilder.append("${pk.friendship}|")
+            packedTeamBuilder.append("${pk.friendship},")
             // Caught Ball
             // This is safe to do as all our pokeballs that have showdown item equivalents are the same IDs they use for the pokeball attribute
             val pokeball = pokemon.effectedPokemon.caughtBall.name.path.replace("_", "")
-            packedTeamBuilder.append("$pokeball|")
+            packedTeamBuilder.append("$pokeball,")
             // Hidden Power Type
-            packedTeamBuilder.append("|")
+            packedTeamBuilder.append(",")
+            // Gigantamax
+            packedTeamBuilder.append(",")
+            // DynamaxLevel
+            packedTeamBuilder.append(",")
+            // Teratype
+            packedTeamBuilder.append(",")
 
             team.add(packedTeamBuilder.toString())
         }

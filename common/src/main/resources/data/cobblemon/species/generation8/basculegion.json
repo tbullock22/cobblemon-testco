@@ -19,7 +19,7 @@
   "catchRate": 135,
   "maleRatio": 1,
   "shoulderMountable": false,
-  "baseExperienceYield": 0,
+  "baseExperienceYield": 265,
   "baseFriendship": 0,
   "evYield": {
     "hp": 2,
@@ -118,7 +118,6 @@
       },
       "catchRate": 135,
       "maleRatio": 0,
-      "baseExperienceYield": 0,
       "baseFriendship": 0,
       "evYield": {
         "hp": 2,

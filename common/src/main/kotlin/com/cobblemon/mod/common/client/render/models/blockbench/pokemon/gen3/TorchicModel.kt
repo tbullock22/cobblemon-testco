@@ -40,8 +40,8 @@ class TorchicModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
             idleAnimations = arrayOf(
-                singleBoneLook()
-                //bedrock("torchic", "ground_idle")
+                singleBoneLook(),
+                bedrock("torchic", "ground_idle")
             )
         )
 
@@ -50,6 +50,7 @@ class TorchicModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             poseTypes = MOVING_POSES,
             idleAnimations = arrayOf(
                 singleBoneLook(),
+                bedrock("torchic", "ground_idle"),
                 BipedWalkAnimation(this, amplitudeMultiplier = 0.9F, periodMultiplier = 1F)
                 //bedrock("torchic", "ground_walk")
             )

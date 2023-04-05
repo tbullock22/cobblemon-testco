@@ -28,6 +28,19 @@
   "eggGroups": [
     "field"
   ],
+  "drops": {
+    "amount": "2",
+    "entries": [
+      {
+        "item": "minecraft:mutton",
+        "quantityRange": "1-2",
+        "percentage": 66
+      },
+      {
+        "item": "minecraft:white_wool"
+      }
+    ]
+  },
   "moves": [
     "1:growl",
     "1:tackle",

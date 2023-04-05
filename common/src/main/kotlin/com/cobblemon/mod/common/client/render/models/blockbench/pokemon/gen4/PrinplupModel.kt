@@ -13,6 +13,7 @@ import com.cobblemon.mod.common.client.render.models.blockbench.frame.BipedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
@@ -32,14 +33,22 @@ class PrinplupModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
     override val profileScale = 0.85F
     override val profileTranslation = Vec3d(0.0, 0.45, 0.0)
 
+    lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
+    lateinit var float: PokemonPose
+    lateinit var swim: PokemonPose
 
     override fun registerPoses() {
-        val blink = quirk("blink") { bedrockStateful("prinplup", "blink").setPreventsIdle(false) }
+        val blink = quirk("blink") { bedrockStateful("prinplup", "blink").setPreventsIdle(false)}
+        sleep = registerPose(
+            poseType = PoseType.SLEEP,
+            idleAnimations = arrayOf(bedrock("prinplup", "sleep"))
+        )
+
         standing = registerPose(
             poseName = "standing",
-            poseTypes = STATIONARY_POSES + UI_POSES,
+            poseTypes = UI_POSES + PoseType.STAND,
             quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
@@ -49,13 +58,30 @@ class PrinplupModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bipe
 
         walk = registerPose(
             poseName = "walk",
-            poseTypes = MOVING_POSES,
+            poseType = PoseType.WALK,
             quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("prinplup", "ground_idle"),
-                BipedWalkAnimation(this, periodMultiplier = 0.75F, amplitudeMultiplier = 0.8F)
-                //bedrock("prinplup", "ground_walk")
+                bedrock("prinplup", "ground_walk")
+            )
+        )
+        float = registerPose(
+            poseName = "float",
+            poseType = PoseType.FLOAT,
+            quirks = arrayOf(blink),
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("prinplup", "water_idle")
+            )
+        )
+
+        swim = registerPose(
+            poseName = "swim",
+            poseType = PoseType.SWIM,
+            quirks = arrayOf(blink),
+            idleAnimations = arrayOf(
+                singleBoneLook(),
+                bedrock("prinplup", "water_swim")
             )
         )
     }

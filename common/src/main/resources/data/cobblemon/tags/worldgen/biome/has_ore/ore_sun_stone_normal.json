@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "#cobblemon:is_dripstone",
+    "#cobblemon:is_badlands",
+	"#cobblemon:is_dripstone",
 	"#cobblemon:is_grassland"
   ]
 }

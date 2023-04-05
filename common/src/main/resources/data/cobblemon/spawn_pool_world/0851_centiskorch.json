@@ -6,6 +6,9 @@
         {
             "id": "centiskorch-1",
             "pokemon": "centiskorch",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -21,6 +24,9 @@
         {
             "id": "centiskorch-2",
             "pokemon": "centiskorch",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

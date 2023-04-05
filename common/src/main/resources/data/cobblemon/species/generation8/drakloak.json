@@ -46,6 +46,7 @@
     "tm:acrobatics",
     "tm:agility",
     "tm:allyswitch",
+    "tm:assurance",
     "tm:attract",
     "tm:batonpass",
     "tm:beatup",
@@ -89,7 +90,8 @@
     "tm:thunderbolt",
     "tm:thunderwave",
     "tm:uturn",
-    "tm:willowisp"
+    "tm:willowisp",
+    "tutor:dracometeor"
   ],
   "labels": [
     "gen8"

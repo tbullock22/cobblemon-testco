@@ -6,6 +6,10 @@
         {
             "id": "mankey-1",
             "pokemon": "mankey",
+            "presets": [
+                "natural",
+                "treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

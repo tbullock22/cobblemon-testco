@@ -6,6 +6,9 @@
         {
             "id": "seel-1",
             "pokemon": "seel",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

@@ -68,6 +68,7 @@
     "tm:payback",
     "tm:playrough",
     "tm:protect",
+    "tm:psychup",
     "tm:quash",
     "tm:raindance",
     "tm:return",
@@ -92,9 +93,13 @@
     "tm:workup",
     "tm:zenheadbutt",
     "tutor:endeavor",
+    "tutor:ironhead",
     "tutor:knockoff",
     "tutor:lastresort",
-    "tutor:snore"
+    "tutor:snore",
+    "tutor:stompingtantrum",
+    "tutor:superpower",
+    "tutor:zenheadbutt"
   ],
   "labels": [
     "gen7"

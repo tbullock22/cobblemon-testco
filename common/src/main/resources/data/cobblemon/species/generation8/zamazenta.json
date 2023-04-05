@@ -75,6 +75,7 @@
   "moves": [
     "1:bite",
     "1:howl",
+    "1:metalburst",
     "1:metalclaw",
     "1:quickattack",
     "1:wideguard",
@@ -82,7 +83,6 @@
     "22:irondefense",
     "33:ironhead",
     "44:laserfocus",
-    "44:metalburst",
     "55:crunch",
     "66:moonblast",
     "77:closecombat",
@@ -145,7 +145,14 @@
     "tm:trailblaze",
     "tm:wildcharge",
     "tm:workup",
-    "tutor:coaching"
+    "tutor:closecombat",
+    "tutor:coaching",
+    "tutor:crunch",
+    "tutor:irondefense",
+    "tutor:ironhead",
+    "tutor:slash",
+    "tutor:steelbeam",
+    "tutor:wideguard"
   ],
   "labels": [
     "gen8",

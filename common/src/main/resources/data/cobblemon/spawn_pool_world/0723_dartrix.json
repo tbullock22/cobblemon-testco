@@ -6,6 +6,10 @@
         {
             "id": "dartrix-1",
             "pokemon": "dartrix",
+            "presets": [
+                "natural",
+				"treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "ultra-rare",

@@ -6,6 +6,9 @@
         {
             "id": "slowpoke-1",
             "pokemon": "slowpoke",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

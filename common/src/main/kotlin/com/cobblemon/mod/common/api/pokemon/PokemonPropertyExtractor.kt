@@ -21,11 +21,17 @@ import com.cobblemon.mod.common.pokemon.Pokemon
 fun interface PokemonPropertyExtractor {
     companion object {
         val SPECIES = PokemonPropertyExtractor { pokemon, properties -> properties.species = pokemon.species.resourceIdentifier.toString() }
+        val FORM = PokemonPropertyExtractor { pokemon, properties -> properties.form = pokemon.form.formOnlyShowdownId() }
         val SHINY = PokemonPropertyExtractor { pokemon, properties -> properties.shiny = pokemon.shiny }
         val ASPECTS = PokemonPropertyExtractor { pokemon, properties -> properties.aspects = pokemon.aspects }
         val LEVEL = PokemonPropertyExtractor { pokemon, properties -> properties.level = pokemon.level }
         val GENDER = PokemonPropertyExtractor { pokemon, properties -> properties.gender = pokemon.gender }
         val FRIENDSHIP = PokemonPropertyExtractor { pokemon, properties -> properties.friendship = pokemon.friendship }
+        val POKEBALL = PokemonPropertyExtractor { pokemon, properties ->  properties.pokeball = pokemon.caughtBall.name.toString() }
+        val NATURE = PokemonPropertyExtractor { pokemon, properties ->  properties.nature = pokemon.nature.name.toString() }
+        val ABILITY = PokemonPropertyExtractor { pokemon, properties ->  properties.ability = pokemon.ability.name }
+
+        val ALL = arrayOf(SPECIES, FORM, SHINY, ASPECTS, LEVEL, GENDER, FRIENDSHIP, POKEBALL, NATURE, ABILITY)
     }
 
     operator fun invoke(pokemon: Pokemon, properties: PokemonProperties)

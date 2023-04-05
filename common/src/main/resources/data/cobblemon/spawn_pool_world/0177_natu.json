@@ -6,6 +6,10 @@
         {
             "id": "natu-1",
             "pokemon": "natu",
+            "presets": [
+                "natural",
+				"treetop"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

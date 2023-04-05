@@ -7,8 +7,8 @@
             "id": "blastoise",
             "pokemon": "blastoise",
             "presets": [
-                "river",
-                "river"
+                "natural",
+				"river"
             ],
             "type": "pokemon",
             "context": "grounded",
@@ -24,8 +24,7 @@
             "pokemon": "blastoise",
             "presets": [
                 "river",
-                "underwater",
-                "river"
+                "underwater"
             ],
             "type": "pokemon",
             "context": "submerged",

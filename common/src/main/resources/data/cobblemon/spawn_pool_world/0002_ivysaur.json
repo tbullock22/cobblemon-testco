@@ -6,6 +6,9 @@
         {
             "id": "ivysaur-1",
             "pokemon": "ivysaur",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "ultra-rare",

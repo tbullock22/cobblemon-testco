@@ -29,7 +29,6 @@ import com.cobblemon.mod.common.api.scheduling.afterOnMain
 import com.cobblemon.mod.common.api.types.ElementalTypes
 import com.cobblemon.mod.common.api.types.ElementalTypes.FIRE
 import com.cobblemon.mod.common.battles.BattleRegistry
-import com.cobblemon.mod.common.config.CobblemonConfig
 import com.cobblemon.mod.common.entity.EntityProperty
 import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.Poseable
@@ -53,15 +52,8 @@ import com.cobblemon.mod.common.pokemon.evolution.variants.ItemInteractionEvolut
 import com.cobblemon.mod.common.util.*
 import dev.architectury.extensions.network.EntitySpawnExtension
 import dev.architectury.networking.NetworkManager
-import java.util.*
-import java.util.concurrent.CompletableFuture
-import kotlin.math.round
-import kotlin.math.roundToInt
-import kotlin.math.sqrt
 import net.minecraft.block.BlockState
-import net.minecraft.entity.EntityDimensions
-import net.minecraft.entity.EntityPose
-import net.minecraft.entity.EntityType
+import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.MoveControl
 import net.minecraft.entity.ai.goal.EatGrassGoal
 import net.minecraft.entity.ai.goal.Goal
@@ -76,6 +68,7 @@ import net.minecraft.entity.passive.TameableShoulderEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.fluid.FluidState
 import net.minecraft.item.ItemStack
+import net.minecraft.item.ItemUsage
 import net.minecraft.item.Items
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.PacketByteBuf
@@ -93,12 +86,17 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
+import java.util.*
+import java.util.concurrent.CompletableFuture
+import kotlin.math.round
+import kotlin.math.roundToInt
+import kotlin.math.sqrt
 
 class PokemonEntity(
     world: World,
     pokemon: Pokemon = Pokemon(),
     type: EntityType<out PokemonEntity> = CobblemonEntities.POKEMON.get(),
-) : TameableShoulderEntity(type, world), EntitySpawnExtension, Poseable {
+) : TameableShoulderEntity(type, world), EntitySpawnExtension, Poseable, Shearable {
     val removalObservable = SimpleObservable<RemovalReason?>()
     /** A list of observable subscriptions related to this entity that need to be cleaned up when the entity is removed. */
     val subscriptions = mutableListOf<ObservableSubscription<*>>()
@@ -270,7 +268,7 @@ class PokemonEntity(
      * Prevents fire type Pokémon from taking fire damage.
      */
     override fun isFireImmune(): Boolean {
-        return FIRE in pokemon.types || behaviour.moving.swim.canSwimInLava
+        return FIRE in pokemon.types || !behaviour.moving.swim.hurtByLava
     }
 
     /**
@@ -419,40 +417,13 @@ class PokemonEntity(
     override fun interactMob(player: PlayerEntity, hand: Hand) : ActionResult {
         val itemStack = player.getStackInHand(hand)
         if (player is ServerPlayerEntity) {
-            if (itemStack.isOf(Items.SHEARS)) {
-                val feature = pokemon.getFeature<FlagSpeciesFeature>(DataKeys.HAS_BEEN_SHEARED)
-                val isShearable = feature?.enabled == false
-                if (isShearable) {
-                    feature!!
-                    world.playSoundFromEntity(
-                        null,
-                        this,
-                        SoundEvents.ENTITY_SHEEP_SHEAR,
-                        SoundCategory.PLAYERS,
-                        1.0F,
-                        1.0F
-                    )
-                    val i = 1 + random.nextInt(3)
-
-                    for (j in 0 until i) {
-                        val itemEntity = this.dropItem(Items.WHITE_WOOL, 1)
-                        if (itemEntity != null) {
-                            itemEntity.velocity = itemEntity.velocity.add(
-                                ((random.nextFloat() - random.nextFloat()) * 0.1f).toDouble(),
-                                (random.nextFloat() * 0.05f).toDouble(),
-                                ((random.nextFloat() - random.nextFloat()) * 0.1f).toDouble()
-                            )
-                        }
-                    }
-                    this.emitGameEvent(GameEvent.SHEAR, player)
-                    itemStack.damage(1, player) { it.sendToolBreakStatus(hand) }
-                    feature.enabled = true
-                    pokemon.markFeatureDirty(feature)
-                    pokemon.updateAspects()
-                    return ActionResult.SUCCESS
-                }
+            if (itemStack.isOf(Items.SHEARS) && this.isShearable) {
+                this.sheared(SoundCategory.PLAYERS)
+                this.emitGameEvent(GameEvent.SHEAR, player)
+                itemStack.damage(1, player) { it.sendToolBreakStatus(hand) }
+                return ActionResult.SUCCESS
             }
-            if (itemStack.isOf(Items.BUCKET)) {
+            else if (itemStack.isOf(Items.BUCKET)) {
                 if (pokemon.getFeature<FlagSpeciesFeature>(DataKeys.CAN_BE_MILKED) != null) {
                     world.playSoundFromEntity(
                         null,
@@ -462,7 +433,8 @@ class PokemonEntity(
                         1.0F,
                         1.0F
                     )
-                    player.setStackInHand(hand, ItemStack(Items.MILK_BUCKET))
+                    val milkBucket = ItemUsage.exchangeStack(itemStack, player, ItemStack(Items.MILK_BUCKET))
+                    player.setStackInHand(hand, milkBucket)
                     return ActionResult.SUCCESS
                 }
             }
@@ -645,9 +617,8 @@ class PokemonEntity(
             returned.isEmpty -> lang("held_item.give", this.pokemon.displayName, giving.name)
             else -> lang("held_item.replace", returned.name, this.pokemon.displayName, giving.name)
         }
-        player.giveItemStack(returned)
+        player.giveOrDropItemStack(returned)
         player.sendMessage(text)
-        this.world.playSoundServer(position = this.pos, sound = SoundEvents.ENTITY_ITEM_PICKUP, volume = 0.7F, pitch = 1.4F)
         return true
     }
 
@@ -703,7 +674,8 @@ class PokemonEntity(
     }
 
     override fun updatePostDeath() {
-        super.updatePostDeath()
+        // Do not invoke super we need to keep a tight lid on this due to the Thorium mod forcing the ticks to a max of 20 on server side if we invoke a field update here
+        // Client delegate is mimicking expected behavior on client end.
         delegate.updatePostDeath()
     }
 
@@ -859,4 +831,27 @@ class PokemonEntity(
 
     override fun breed(world: ServerWorld, other: AnimalEntity) {}
 
+    override fun sheared(shearedSoundCategory: SoundCategory) {
+        this.world.playSoundFromEntity(null, this,SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0F, 1.0F)
+        val feature = this.pokemon.getFeature<FlagSpeciesFeature>(DataKeys.HAS_BEEN_SHEARED) ?: return
+        feature.enabled = true
+        this.pokemon.markFeatureDirty(feature)
+        this.pokemon.updateAspects()
+        val i = this.random.nextInt(3)
+        for (j in 0 until i) {
+            val itemEntity = this.dropItem(Items.WHITE_WOOL, 1) ?: return
+            itemEntity.velocity = itemEntity.velocity.add(
+                ((this.random.nextFloat() - this.random.nextFloat()) * 0.1f).toDouble(),
+                (this.random.nextFloat() * 0.05f).toDouble(),
+                ((this.random.nextFloat() - this.random.nextFloat()) * 0.1f).toDouble()
+            )
+        }
+    }
+
+    override fun isShearable(): Boolean {
+        val feature = this.pokemon.getFeature<FlagSpeciesFeature>(DataKeys.HAS_BEEN_SHEARED) ?: return false
+        return !this.isBusy && !this.pokemon.isFainted() && !feature.enabled
+    }
+
+    override fun canUsePortals() = false
 }

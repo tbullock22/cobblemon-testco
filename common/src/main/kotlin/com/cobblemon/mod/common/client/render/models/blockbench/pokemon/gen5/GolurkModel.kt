@@ -23,14 +23,9 @@ import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
 
-class GolurkModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFrame, BimanualFrame {
+class GolurkModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame {
     override val rootPart = root.registerChildWithAllChildren("golurk")
     override val head = getPart("head")
-
-    override val leftArm = getPart("arm_left")
-    override val rightArm = getPart("arm_right")
-    override val leftLeg = getPart("leg_left")
-    override val rightLeg = getPart("leg_right")
 
     override val portraitScale = 3.0F
     override val portraitTranslation = Vec3d(-0.3, 5.4, 0.0)
@@ -61,8 +56,7 @@ class GolurkModel (root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Biped
             quirks = arrayOf(blink),
             idleAnimations = arrayOf(
                 singleBoneLook(),
-                bedrock("golurk", "ground_walk"),
-                //bedrock("golett", "ground_walk")
+                bedrock("golurk", "ground_walk")
             )
         )
 

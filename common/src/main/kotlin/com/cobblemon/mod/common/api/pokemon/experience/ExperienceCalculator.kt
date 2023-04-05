@@ -9,10 +9,11 @@
 package com.cobblemon.mod.common.api.pokemon.experience
 
 import com.cobblemon.mod.common.Cobblemon
+import com.cobblemon.mod.common.api.tags.CobblemonItemTags
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
 import com.cobblemon.mod.common.pokemon.evolution.requirements.LevelRequirement
-import com.cobblemon.mod.common.api.tags.CobblemonItemTags
 import kotlin.math.pow
+import kotlin.math.roundToInt
 
 fun interface ExperienceCalculator {
     fun calculate(battlePokemon: BattlePokemon, opponentPokemon: BattlePokemon, participationMultiplier: Double): Int
@@ -20,22 +21,25 @@ fun interface ExperienceCalculator {
 
 object StandardExperienceCalculator : ExperienceCalculator {
     override fun calculate(battlePokemon: BattlePokemon, opponentPokemon: BattlePokemon, participationMultiplier: Double): Int {
-        val trainerMultiplier = if (opponentPokemon.effectedPokemon.isWild()) 1.0 else 1.5 /* Not used in modern formulas */
         val baseExp = opponentPokemon.originalPokemon.form.baseExperienceYield
+        val opponentLevel = opponentPokemon.effectedPokemon.level
+        val term1 = (baseExp * opponentLevel) / 5.0
+        // This is meant to be a division but this is due to the intended behavior of handling the 2.0 sent over from Exp. All in modern Pokémon
+        val term2 = 1 * participationMultiplier
+        val victorPokemon = battlePokemon.effectedPokemon
+        val victorLevel = victorPokemon.level
+        val term3 = (((2.0 * opponentLevel) + 10) / (opponentLevel + victorLevel + 10)).pow(2.5)
+        // ToDo when OT is implemented 1.5 if traded with someone from the same locale, 1.7 otherwise, 1.0 if OT
+        val nonOtBonus = 1.0
         val luckyEggMultiplier = if (battlePokemon.effectedPokemon.heldItemNoCopy().isIn(CobblemonItemTags.LUCKY_EGG)) Cobblemon.config.luckyEggMultiplier else 1.0
+        val evolutionMultiplier = if (battlePokemon.effectedPokemon.evolutionProxy.server().any { evolution ->
+            val requirements = evolution.requirements.asSequence()
+            requirements.any { it is LevelRequirement } && requirements.all { it.check(battlePokemon.effectedPokemon) }
+        }) 1.2 else 1.0
         val affectionMultiplier = if (battlePokemon.effectedPokemon.friendship >= 220) 1.2 else 1.0
-        val level = opponentPokemon.originalPokemon.level
-        val levelVictor = battlePokemon.originalPokemon.level
-        val pointPowerMultiplier = 1.0
-        val originalTrainerMultiplier = 1.0
-        val evolutionMultiplier =
-            if (battlePokemon.effectedPokemon.evolutionProxy.server().any { evolution ->
-                val requirements = evolution.requirements.asSequence()
-                requirements.any { it is LevelRequirement } && requirements.all { it.check(battlePokemon.effectedPokemon) }
-            }) 1.2 else 1.0
-        val term1 = (baseExp * level * affectionMultiplier * evolutionMultiplier) / (5 * participationMultiplier)
-        val term2 = ((2.0 * level + 10) / (level + levelVictor + 10)).pow(2.5)
-        val term3 = originalTrainerMultiplier * luckyEggMultiplier * pointPowerMultiplier
-        return (term1 * term2 * term3).toInt()
+        // that's us!
+        val gimmickBoost = Cobblemon.config.experienceMultiplier
+        val term4 = term1 * term2 * term3 + 1
+        return (term4 * nonOtBonus * luckyEggMultiplier * evolutionMultiplier * affectionMultiplier * gimmickBoost).roundToInt()
     }
 }

@@ -78,6 +78,7 @@
     "tutor:firepunch",
     "tutor:focuspunch",
     "tutor:gastroacid",
+    "tutor:gigaimpact",
     "tutor:gunkshot",
     "tutor:heatwave",
     "tutor:helpinghand",
@@ -88,10 +89,12 @@
     "tutor:poweruppunch",
     "tutor:recycle",
     "tutor:roleplay",
+    "tutor:sleeptalk",
     "tutor:snore",
     "tutor:superpower",
     "tutor:throatchop",
-    "tutor:uproar"
+    "tutor:uproar",
+    "tutor:workup"
   ],
   "labels": [
     "gen5"

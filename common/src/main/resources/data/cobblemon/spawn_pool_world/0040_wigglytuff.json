@@ -6,6 +6,9 @@
         {
             "id": "wigglytuff-1",
             "pokemon": "wigglytuff",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",
@@ -21,6 +24,9 @@
         {
             "id": "wigglytuff-2",
             "pokemon": "wigglytuff",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

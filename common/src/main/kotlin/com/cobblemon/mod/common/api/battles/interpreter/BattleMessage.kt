@@ -11,6 +11,7 @@ package com.cobblemon.mod.common.api.battles.interpreter
 import com.cobblemon.mod.common.api.battles.model.PokemonBattle
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor
 import com.cobblemon.mod.common.battles.ActiveBattlePokemon
+import com.cobblemon.mod.common.battles.pokemon.BattlePokemon
 
 /**
  * A class responsible for parsing a raw simulator protocol message received from Showdown.
@@ -124,8 +125,23 @@ class BattleMessage(rawMessage: String) {
      * @return A pair of [BattleActor] and [ActiveBattlePokemon] if the argument exists and successfully parses them otherwise null.
      */
     fun actorAndActivePokemon(index: Int, battle: PokemonBattle): Pair<BattleActor, ActiveBattlePokemon>? {
-        val pnx = this.argumentAt(index)?.substring(0, 3) ?: return null
+        val pnx = this.argumentAt(index)?.takeIf { it.length >= 3 }?.substring(0, 3) ?: return null
         return this.actorAndActivePokemon(pnx, battle)
+    }
+
+    /*
+        Example:
+        |-curestatus|p1: a8e5710e-6835-4387-99d3-331b45f848e6|slp|[msg]
+        |-curestatus|p1: 0686b20d-3019-4167-92e2-786834245743|slp|[msg]
+        // Function used to grab BattlePokemon (As we need to be able to grab non active pokemon to cure their status)
+        // by using playerNumber(actorID) and pokemon uuid(pokemonID)
+     */
+    fun getBattlePokemon(index: Int, battle: PokemonBattle): BattlePokemon? {
+        val actorAndPokemonID = this.argumentAt(index)?.takeIf { it.length >= 2 }?.split(": ") ?: return null
+        if (actorAndPokemonID.count() < 2) return null
+        val actorID = actorAndPokemonID[0]
+        val pokemonID = actorAndPokemonID[1]
+        return this.getBattlePokemon(actorID, pokemonID, battle)
     }
 
     /**
@@ -158,7 +174,7 @@ class BattleMessage(rawMessage: String) {
      * @return A pair of [BattleActor] and [ActiveBattlePokemon] if the argument exists and successfully parses them otherwise null.
      */
     fun actorAndActivePokemonFromOptional(battle: PokemonBattle, argumentName: String = "of"): Pair<BattleActor, ActiveBattlePokemon>? {
-        val pnx = this.optionalArgument(argumentName)?.substring(0, 3) ?: return null
+        val pnx = this.optionalArgument(argumentName)?.takeIf { it.length >= 3 }?.substring(0, 3) ?: return null
         return this.actorAndActivePokemon(pnx, battle)
     }
 
@@ -179,6 +195,12 @@ class BattleMessage(rawMessage: String) {
      */
     private fun actorAndActivePokemon(pnx: String, battle: PokemonBattle): Pair<BattleActor, ActiveBattlePokemon>? = try {
         battle.getActorAndActiveSlotFromPNX(pnx)
+    } catch (_: Exception) {
+        null
+    }
+
+    private fun getBattlePokemon(pnx: String, pokemonID: String, battle: PokemonBattle): BattlePokemon? = try {
+        battle.getBattlePokemon(pnx, pokemonID)
     } catch (_: Exception) {
         null
     }

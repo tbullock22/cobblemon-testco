@@ -32,6 +32,7 @@
     "tm:protect",
     "tutor:bugbite",
     "tutor:electroweb",
+    "tutor:protect",
     "tutor:snore",
     "tutor:stringshot"
   ],
@@ -52,6 +53,10 @@
         {
           "variant": "level",
           "minLevel": 20
+        },
+        {
+          "variant": "properties",
+          "target": "gender=female"
         }
       ]
     },
@@ -65,6 +70,10 @@
         {
           "variant": "level",
           "minLevel": 20
+        },
+        {
+          "variant": "properties",
+          "target": "gender=female"
         }
       ]
     },
@@ -78,6 +87,10 @@
         {
           "variant": "level",
           "minLevel": 20
+        },
+        {
+          "variant": "properties",
+          "target": "gender=female"
         }
       ]
     },
@@ -91,6 +104,10 @@
         {
           "variant": "level",
           "minLevel": 20
+        },
+        {
+          "variant": "properties",
+          "target": "gender=male"
         }
       ]
     }

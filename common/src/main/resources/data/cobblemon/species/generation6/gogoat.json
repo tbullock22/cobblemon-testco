@@ -24,11 +24,11 @@
     "field"
   ],
   "moves": [
-    "1:earthquake",
+    "1:aerialace",
     "1:growth",
     "1:tackle",
-    "1:tailwhip",
-    "1:vinewhip",
+    "7:vinewhip",
+    "9:tailwhip",
     "12:leechseed",
     "13:razorleaf",
     "16:worryseed",
@@ -41,6 +41,7 @@
     "47:hornleech",
     "55:leafblade",
     "58:milkdrink",
+    "60:earthquake",
     "tm:aerialace",
     "tm:attract",
     "tm:bodyslam",
@@ -97,9 +98,15 @@
     "tm:workup",
     "tm:zenheadbutt",
     "tutor:bounce",
+    "tutor:gigadrain",
     "tutor:irontail",
+    "tutor:seedbomb",
     "tutor:snore",
-    "tutor:superpower"
+    "tutor:stompingtantrum",
+    "tutor:superpower",
+    "tutor:synthesis",
+    "tutor:worryseed",
+    "tutor:zenheadbutt"
   ],
   "labels": [
     "gen6"

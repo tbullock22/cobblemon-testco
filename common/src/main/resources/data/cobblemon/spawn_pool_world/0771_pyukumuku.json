@@ -6,6 +6,9 @@
         {
             "id": "pyukumuku-1",
             "pokemon": "pyukumuku",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "uncommon",

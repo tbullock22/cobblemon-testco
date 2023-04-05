@@ -13,6 +13,7 @@ import com.cobblemon.mod.common.api.abilities.AbilityPool
 import com.cobblemon.mod.common.api.data.ClientDataSynchronizer
 import com.cobblemon.mod.common.api.data.ShowdownIdentifiable
 import com.cobblemon.mod.common.api.drop.DropTable
+import com.cobblemon.mod.common.api.pokemon.PokemonSpecies
 import com.cobblemon.mod.common.api.pokemon.effect.ShoulderEffect
 import com.cobblemon.mod.common.api.pokemon.egg.EggGroup
 import com.cobblemon.mod.common.api.pokemon.evolution.Evolution
@@ -34,6 +35,7 @@ import net.minecraft.network.PacketByteBuf
 import net.minecraft.text.MutableText
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
+import net.minecraft.util.InvalidIdentifierException
 
 class Species : ClientDataSynchronizer<Species>, ShowdownIdentifiable {
     var name: String = "Bulbasaur"
@@ -129,6 +131,17 @@ class Species : ClientDataSynchronizer<Species>, ShowdownIdentifiable {
         this.preEvolution?.species
         this.preEvolution?.form
         this.evolutions.size
+    }
+
+    // Ran after initialize due to us creating a Pokémon here which requires all the properties in #initialize to be present for both this and the results, this is the easiest way to quickly resolve species + form
+    internal fun resolveEvolutionMoves() {
+        this.evolutions.forEach { evolution ->
+            if (evolution.learnableMoves.isNotEmpty() && evolution.result.species != null) {
+                val pokemon = evolution.result.create()
+                pokemon.form.moves.evolutionMoves += evolution.learnableMoves
+            }
+        }
+        this.forms.forEach(FormData::resolveEvolutionMoves)
     }
 
     fun create(level: Int = 10) = Pokemon().apply {

@@ -8,7 +8,9 @@
 
 package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen4
 
+import com.cobblemon.mod.common.client.render.models.blockbench.animation.BimanualSwingAnimation
 import com.cobblemon.mod.common.client.render.models.blockbench.animation.BipedWalkAnimation
+import com.cobblemon.mod.common.client.render.models.blockbench.frame.BimanualFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.BipedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.frame.HeadedFrame
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
@@ -19,15 +21,17 @@ import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
 import net.minecraft.client.model.ModelPart
 import net.minecraft.util.math.Vec3d
 
-class InfernapeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFrame {
+class InfernapeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, BipedFrame, BimanualFrame {
     override val rootPart = root.registerChildWithAllChildren("infernape")
-    override val head = getPart("head")
+    override val head = getPart("head_ai")
 
     override val leftLeg = getPart("leg_left")
     override val rightLeg = getPart("leg_right")
+    override val leftArm = getPart("arm_left")
+    override val rightArm = getPart("arm_right")
 
     override val portraitScale = 1.8F
-    override val portraitTranslation = Vec3d(-0.5, 1.9, 0.0)
+    override val portraitTranslation = Vec3d(-0.65, 1.55, 0.0)
 
     override val profileScale = 0.5F
     override val profileTranslation = Vec3d(0.0, 1.0, 0.0)
@@ -42,7 +46,7 @@ class InfernapeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
                 poseTypes = STATIONARY_POSES + UI_POSES,
                 quirks = arrayOf(blink),
                 idleAnimations = arrayOf(
-                        singleBoneLook(),
+                        //singleBoneLook(),
                         bedrock("infernape", "idle")
                 )
         )
@@ -52,9 +56,10 @@ class InfernapeModel(root: ModelPart) : PokemonPoseableModel(), HeadedFrame, Bip
                 poseTypes = MOVING_POSES,
                 quirks = arrayOf(blink),
                 idleAnimations = arrayOf(
-                        singleBoneLook(),
+                        //singleBoneLook(),
                         bedrock("infernape", "idle"),
-                        BipedWalkAnimation(this, periodMultiplier = 0.75F, amplitudeMultiplier = 0.8F)
+                        BipedWalkAnimation(this, periodMultiplier = 0.75F, amplitudeMultiplier = 0.8F),
+                        BimanualSwingAnimation(this, swingPeriodMultiplier = 0.6F, amplitudeMultiplier = 0.9F)
                         //bedrock("infernape", "ground_walk")
                 )
         )

@@ -58,12 +58,39 @@ class StarterConfig {
             )
         ),
         StarterCategory(
+            name = "Unova",
+            displayName = "cobblemon.starterselection.category.unova",
+            pokemon = mutableListOf(
+                PokemonProperties.parse("Snivy level=10"),
+                PokemonProperties.parse("Tepig level=10"),
+                PokemonProperties.parse("Oshawott level=10"),
+            )
+        ),
+        StarterCategory(
+            name = "Kalos",
+            displayName = "cobblemon.starterselection.category.kalos",
+            pokemon = mutableListOf(
+                PokemonProperties.parse("Chespin level=10"),
+                PokemonProperties.parse("Fennekin level=10"),
+                PokemonProperties.parse("Froakie level=10"),
+            )
+        ),
+        StarterCategory(
             name = "Alola",
             displayName = "cobblemon.starterselection.category.alola",
             pokemon = mutableListOf(
                 PokemonProperties.parse("Rowlet level=10"),
                 PokemonProperties.parse("Litten level=10"),
                 PokemonProperties.parse("Popplio level=10"),
+            )
+        ),
+        StarterCategory(
+            name = "Galar",
+            displayName = "cobblemon.starterselection.category.galar",
+            pokemon = mutableListOf(
+                PokemonProperties.parse("Grookey level=10"),
+                PokemonProperties.parse("Scorbunny level=10"),
+                PokemonProperties.parse("Sobble level=10"),
             )
         )
     //,

@@ -24,6 +24,15 @@
   "eggGroups": [
     "bug"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:metronome",
+        "percentage": 2.5
+      }
+    ]
+  },
   "moves": [
     "1:bide",
     "1:growl",
@@ -32,10 +41,12 @@
     "16:bugbite",
     "tm:strugglebug",
     "tm:terablast",
+    "tutor:bugbite",
     "tutor:endeavor",
     "tutor:mudslap",
     "tutor:snore",
     "tutor:stringshot",
+    "tutor:strugglebug",
     "tutor:uproar"
   ],
   "labels": [

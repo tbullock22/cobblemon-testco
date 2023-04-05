@@ -101,7 +101,9 @@
     "tm:waterpulse",
     "tutor:afteryou",
     "tutor:allyswitch",
+    "tutor:aquatail",
     "tutor:irontail",
+    "tutor:liquidation",
     "tutor:magiccoat",
     "tutor:magicroom",
     "tutor:painsplit",
@@ -110,6 +112,7 @@
     "tutor:snore",
     "tutor:telekinesis",
     "tutor:uproar",
+    "tutor:waterpulse",
     "tutor:wonderroom"
   ],
   "labels": [

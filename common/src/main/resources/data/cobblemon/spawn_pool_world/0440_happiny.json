@@ -7,7 +7,8 @@
             "id": "happiny-1",
             "pokemon": "happiny",
             "presets": [
-                "urban"
+                "natural",
+				"urban"
             ],
             "type": "pokemon",
             "context": "grounded",

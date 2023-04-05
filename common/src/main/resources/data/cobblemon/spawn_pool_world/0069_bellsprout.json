@@ -6,6 +6,9 @@
         {
             "id": "bellsprout-1",
             "pokemon": "bellsprout",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "common",

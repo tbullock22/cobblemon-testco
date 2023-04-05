@@ -34,6 +34,15 @@
       }
     }
   },
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "minecraft:blaze_powder",
+        "percentage": 2.5
+      }
+    ]
+  },
   "moves": [
     "1:ember",
     "1:smokescreen",

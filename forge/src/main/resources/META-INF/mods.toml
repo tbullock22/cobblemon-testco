@@ -33,4 +33,4 @@ versionRange="[40,)" #mandatory
 [[dependencies.cobblemon]]
 modId="architectury"
 mandatory=true
-versionRange="[6.0.37,)"
+versionRange="[6.5.69,)"

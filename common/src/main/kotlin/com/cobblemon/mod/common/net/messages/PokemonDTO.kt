@@ -86,6 +86,7 @@ class PokemonDTO : Encodable, Decodable {
         this.status = pokemon.status?.status?.name
         this.state = pokemon.state
         this.caughtBall = pokemon.caughtBall.name
+        this.benchedMoves = pokemon.benchedMoves
         this.aspects = pokemon.aspects
         evolutionBuffer = PacketByteBuf(Unpooled.buffer())
         pokemon.evolutionProxy.saveToBuffer(evolutionBuffer, toClient)

@@ -23,6 +23,15 @@
   "eggGroups": [
     "amorphous"
   ],
+  "drops": {
+    "amount": "1",
+    "entries": [
+      {
+        "item": "cobblemon:spell_tag",
+        "percentage": 10
+      }
+    ]
+  },
   "moves": [
     "1:astonish",
     "1:growl",
@@ -83,8 +92,10 @@
     "tm:scaryface",
     "tm:secretpower",
     "tm:shadowball",
+    "tm:shockwave",
     "tm:skillswap",
     "tm:sleeptalk",
+    "tm:snatch",
     "tm:snowscape",
     "tm:storedpower",
     "tm:substitute",
@@ -92,6 +103,7 @@
     "tm:swagger",
     "tm:swift",
     "tm:taunt",
+    "tm:telekinesis",
     "tm:terablast",
     "tm:thief",
     "tm:thunder",
@@ -103,18 +115,27 @@
     "tm:trickroom",
     "tm:willowisp",
     "tutor:allyswitch",
+    "tutor:darkpulse",
+    "tutor:foulplay",
     "tutor:headbutt",
     "tutor:healbell",
+    "tutor:hypervoice",
+    "tutor:icywind",
     "tutor:laserfocus",
     "tutor:magiccoat",
     "tutor:magicroom",
     "tutor:ominouswind",
     "tutor:painsplit",
     "tutor:shockwave",
+    "tutor:skillswap",
+    "tutor:sleeptalk",
     "tutor:snatch",
     "tutor:snore",
+    "tutor:spite",
     "tutor:suckerpunch",
+    "tutor:swift",
     "tutor:telekinesis",
+    "tutor:trick",
     "tutor:uproar",
     "tutor:wonderroom"
   ],

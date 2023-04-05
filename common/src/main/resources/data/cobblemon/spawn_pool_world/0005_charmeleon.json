@@ -6,6 +6,9 @@
         {
             "id": "charmeleon-1",
             "pokemon": "charmeleon",
+            "presets": [
+                "natural"
+            ],
             "type": "pokemon",
             "context": "grounded",
             "bucket": "ultra-rare",

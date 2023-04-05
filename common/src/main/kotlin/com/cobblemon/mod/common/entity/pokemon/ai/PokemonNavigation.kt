@@ -77,7 +77,8 @@ class PokemonNavigation(val world: World, val pokemonEntity: PokemonEntity) : Mo
 
     override fun tick() {
         super.tick()
-        val node = getCurrentPath()?.lastNode
+        val currentPath = getCurrentPath()
+        val node = if (currentPath == null || currentPath.isFinished) null else currentPath.lastNode
 
         val isFlying = pokemonEntity.getBehaviourFlag(PokemonBehaviourFlag.FLYING)
         val canWalk = pokemonEntity.behaviour.moving.walk.canWalk

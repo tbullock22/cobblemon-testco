@@ -10,6 +10,7 @@ package com.cobblemon.mod.common.client.render.models.blockbench.pokemon.gen1
 
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPose
 import com.cobblemon.mod.common.client.render.models.blockbench.pokemon.PokemonPoseableModel
+import com.cobblemon.mod.common.entity.PoseType
 import com.cobblemon.mod.common.entity.PoseType.Companion.MOVING_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.STATIONARY_POSES
 import com.cobblemon.mod.common.entity.PoseType.Companion.UI_POSES
@@ -24,11 +25,17 @@ class GeodudeModel(root: ModelPart) : PokemonPoseableModel() {
     override val profileScale = 0.9F
     override val profileTranslation = Vec3d(-0.05, 0.3, 0.0)
 
+    lateinit var sleep: PokemonPose
     lateinit var standing: PokemonPose
     lateinit var walk: PokemonPose
 
     override fun registerPoses() {
         val blink = quirk("blink") { bedrockStateful("geodude", "blink").setPreventsIdle(false)}
+        sleep = registerPose(
+            poseType = PoseType.SLEEP,
+            idleAnimations = arrayOf(bedrock("geodude", "sleep"))
+        )
+
         standing = registerPose(
             poseName = "standing",
             poseTypes = STATIONARY_POSES + UI_POSES,
@@ -43,8 +50,7 @@ class GeodudeModel(root: ModelPart) : PokemonPoseableModel() {
             poseTypes = MOVING_POSES,
             quirks = arrayOf(blink),
             idleAnimations = arrayOf(
-                bedrock("geodude", "ground_idle")
-                //bedrock("geodude", "ground_walk")
+                bedrock("geodude", "ground_walk")
             )
         )
     }

@@ -6,23 +6,8 @@
         {
             "id": "sandshrew-1",
             "pokemon": "sandshrew",
-            "type": "pokemon",
-            "context": "grounded",
-            "bucket": "common",
-            "level": "6-30",
-            "weight": 9.0,
-            "condition": {
-				"canSeeSky": true,
-                "biomes": [
-                    "#cobblemon:is_sandy"
-                ]
-            }
-        },
-		{
-            "id": "sandshrew-2",
-            "pokemon": "sandshrew",
-			"presets": [
-                "underground"
+            "presets": [
+                "natural"
             ],
             "type": "pokemon",
             "context": "grounded",
@@ -30,8 +15,7 @@
             "level": "6-30",
             "weight": 9.0,
             "condition": {
-                "canSeeSky": false,
-				"biomes": [
+                "biomes": [
                     "#cobblemon:is_sandy"
                 ]
             }

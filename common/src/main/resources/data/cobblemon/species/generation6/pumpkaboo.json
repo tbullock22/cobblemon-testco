@@ -75,13 +75,7 @@
         }
       ],
       "cannotDynamax": false,
-      "battleOnly": false,
-      "baseScale": 0.6,
-      "hitbox": {
-        "width": 1,
-        "height": 1,
-        "fixed": false
-      }
+      "battleOnly": false
     },
     {
       "name": "Large",
@@ -137,13 +131,7 @@
         }
       ],
       "cannotDynamax": false,
-      "battleOnly": false,
-      "baseScale": 2,
-      "hitbox": {
-        "width": 1.5,
-        "height": 1.5,
-        "fixed": false
-      }
+      "battleOnly": false
     },
     {
       "name": "Super",
@@ -204,13 +192,7 @@
         }
       ],
       "cannotDynamax": false,
-      "battleOnly": false,
-      "baseScale": 3,
-      "hitbox": {
-        "width": 2,
-        "height": 2,
-        "fixed": false
-      }
+      "battleOnly": false
     }
   ],
   "baseExperienceYield": 67,
@@ -219,20 +201,33 @@
   "eggGroups": [
     "amorphous"
   ],
+  "drops": {
+    "amount": "2",
+    "entries": [
+      {
+        "item": "minecraft:pumpkin_seeds",
+        "percentage": 50
+      },
+      {
+        "item": "cobblemon:miracle_seed",
+        "percentage": 2.5
+      }
+    ]
+  },
   "moves": [
     "1:astonish",
-    "1:trickortreat",
-    "4:shadowsneak",
-    "8:confuseray",
-    "12:razorleaf",
-    "16:leechseed",
-    "20:bulletseed",
-    "24:scaryface",
-    "28:worryseed",
-    "32:seedbomb",
+    "1:confuseray",
+    "1:trick",
+    "4:scaryface",
+    "6:trickortreat",
+    "11:worryseed",
+    "16:razorleaf",
+    "20:leechseed",
+    "26:bulletseed",
+    "30:shadowsneak",
     "36:shadowball",
-    "40:trick",
-    "44:painsplit",
+    "42:painsplit",
+    "48:seedbomb",
     "egg:bestow",
     "egg:curse",
     "egg:destinybond",
@@ -290,14 +285,22 @@
     "tm:trick",
     "tm:trickroom",
     "tm:willowisp",
+    "tutor:allyswitch",
+    "tutor:foulplay",
+    "tutor:gigadrain",
     "tutor:grassyglide",
     "tutor:magiccoat",
+    "tutor:painsplit",
     "tutor:poltergeist",
     "tutor:roleplay",
+    "tutor:seedbomb",
+    "tutor:skillswap",
     "tutor:skittersmack",
     "tutor:spite",
     "tutor:synthesis",
-    "tutor:telekinesis"
+    "tutor:telekinesis",
+    "tutor:trick",
+    "tutor:worryseed"
   ],
   "labels": [
     "gen6"
@@ -332,6 +335,8 @@
   },
   "height": 4,
   "weight": 50,
-  "aspects": ["pumpkin_size=average"],
+  "aspects": [
+    "pumpkin-size-average"
+  ],
   "cannotDynamax": false
 }

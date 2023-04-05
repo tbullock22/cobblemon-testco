@@ -1,0 +1,20 @@
+{
+  "condition": {
+	"canSeeSky": false,
+    "neededBaseBlocks": [
+		"minecraft:cracked_stone_bricks",
+		"minecraft:mossy_stone_bricks",
+		"minecraft:chiseled_stone_bricks",
+		"minecraft:mossy_cobblestone",
+		"minecraft:iron_bars"
+	],
+	"biomes": [
+		"#cobblemon:is_overworld"
+	]
+  },
+  "anticondition": {
+	"biomes": [
+		"#cobblemon:is_abyss"
+	]
+  }
+}

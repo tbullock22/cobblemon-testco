@@ -51,7 +51,8 @@
         "amorphous"
       ],
       "moves": [
-        "1:overheat"
+        "1:overheat",
+        "form_change:overheat"
       ],
       "labels": [
         "gen4"
@@ -98,7 +99,8 @@
         "amorphous"
       ],
       "moves": [
-        "1:hydropump"
+        "1:hydropump",
+        "form_change:hydropump"
       ],
       "labels": [
         "gen4"
@@ -145,7 +147,8 @@
         "amorphous"
       ],
       "moves": [
-        "1:blizzard"
+        "1:blizzard",
+        "form_change:blizzard"
       ],
       "labels": [
         "gen4"
@@ -192,7 +195,8 @@
         "amorphous"
       ],
       "moves": [
-        "1:airslash"
+        "1:airslash",
+        "form_change:airslash"
       ],
       "labels": [
         "gen4"
@@ -239,7 +243,8 @@
         "amorphous"
       ],
       "moves": [
-        "1:leafstorm"
+        "1:leafstorm",
+        "form_change:leafstorm"
       ],
       "labels": [
         "gen4"
@@ -262,24 +267,25 @@
   ],
   "moves": [
     "1:astonish",
-    "1:doubleteam",
-    "5:thundershock",
-    "10:confuseray",
-    "15:charge",
-    "20:electroball",
-    "25:thunderwave",
+    "1:confuseray",
+    "1:thundershock",
+    "1:thunderwave",
+    "1:trick",
+    "8:uproar",
+    "15:doubleteam",
+    "22:shockwave",
     "29:ominouswind",
-    "30:shockwave",
-    "35:hex",
-    "40:substitute",
-    "45:trick",
+    "36:substitute",
+    "43:charge",
+    "43:electroball",
     "50:discharge",
-    "55:uproar",
+    "50:hex",
     "tm:allyswitch",
     "tm:chargebeam",
     "tm:confide",
     "tm:confuseray",
     "tm:darkpulse",
+    "tm:doubleteam",
     "tm:dreameater",
     "tm:eerieimpulse",
     "tm:electricterrain",
@@ -307,13 +313,16 @@
     "tm:round",
     "tm:secretpower",
     "tm:shadowball",
+    "tm:shockwave",
     "tm:sleeptalk",
+    "tm:snatch",
     "tm:snore",
     "tm:storedpower",
     "tm:substitute",
     "tm:sunnyday",
     "tm:swagger",
     "tm:swift",
+    "tm:telekinesis",
     "tm:terablast",
     "tm:thief",
     "tm:thunder",
@@ -321,20 +330,35 @@
     "tm:thunderwave",
     "tm:toxic",
     "tm:trick",
+    "tm:uproar",
     "tm:voltswitch",
     "tm:willowisp",
+    "tutor:allyswitch",
+    "tutor:astonish",
     "tutor:confide",
+    "tutor:darkpulse",
     "tutor:defog",
     "tutor:disarmingvoice",
+    "tutor:electroweb",
+    "tutor:foulplay",
     "tutor:mudslap",
+    "tutor:ominouswind",
     "tutor:painsplit",
     "tutor:poltergeist",
     "tutor:risingvoltage",
+    "tutor:shockwave",
     "tutor:signalbeam",
+    "tutor:sleeptalk",
     "tutor:snatch",
+    "tutor:snore",
     "tutor:spite",
     "tutor:suckerpunch",
-    "tutor:telekinesis"
+    "tutor:swift",
+    "tutor:telekinesis",
+    "tutor:thundershock",
+    "tutor:thunderwave",
+    "tutor:trick",
+    "tutor:uproar"
   ],
   "labels": [
     "gen4"
