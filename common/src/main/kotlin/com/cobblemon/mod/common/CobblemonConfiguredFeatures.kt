@@ -9,9 +9,8 @@
 package com.cobblemon.mod.common
 
 import net.minecraft.util.registry.RegistryEntry
-import net.minecraft.world.gen.feature.ConfiguredFeature
-import net.minecraft.world.gen.feature.ConfiguredFeatures
-import net.minecraft.world.gen.feature.SingleStateFeatureConfig
+import net.minecraft.world.gen.feature.*
+import net.minecraft.world.gen.stateprovider.BlockStateProvider
 
 object CobblemonConfiguredFeatures {
     lateinit var BLACK_APRICORN_TREE: RegistryEntry<ConfiguredFeature<SingleStateFeatureConfig, *>>
@@ -21,6 +20,7 @@ object CobblemonConfiguredFeatures {
     lateinit var RED_APRICORN_TREE: RegistryEntry<ConfiguredFeature<SingleStateFeatureConfig, *>>
     lateinit var WHITE_APRICORN_TREE: RegistryEntry<ConfiguredFeature<SingleStateFeatureConfig, *>>
     lateinit var YELLOW_APRICORN_TREE: RegistryEntry<ConfiguredFeature<SingleStateFeatureConfig, *>>
+    lateinit var RED_MINT_BUSH: RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, *>>
 
     fun register() {
         BLACK_APRICORN_TREE = ConfiguredFeatures.register("black_apricorn_tree", CobblemonFeatures.APRICORN_TREE_FEATURE.get(), SingleStateFeatureConfig(
@@ -37,5 +37,18 @@ object CobblemonConfiguredFeatures {
             CobblemonBlocks.WHITE_APRICORN.get().defaultState))
         YELLOW_APRICORN_TREE = ConfiguredFeatures.register("yellow_apricorn_tree", CobblemonFeatures.APRICORN_TREE_FEATURE.get(), SingleStateFeatureConfig(
             CobblemonBlocks.YELLOW_APRICORN.get().defaultState))
+        RED_MINT_BUSH = ConfiguredFeatures.register(
+            "red_mint",
+            Feature.RANDOM_PATCH,
+            ConfiguredFeatures.createRandomPatchFeatureConfig(
+                64,
+                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, SimpleBlockFeatureConfig(BlockStateProvider.of(CobblemonBlocks.RED_MINT.get())),
+            )
+        ))
+//        val PATCH_GRASS = ConfiguredFeatures.register(
+//            "patch_grass", Feature.RANDOM_PATCH, VegetationConfiguredFeatures.createRandomPatchFeatureConfig(
+//                BlockStateProvider.of(Blocks.GRASS), 32
+//            )
+//        )
     }
 }

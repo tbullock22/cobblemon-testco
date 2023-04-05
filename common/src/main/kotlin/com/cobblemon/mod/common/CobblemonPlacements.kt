@@ -9,16 +9,15 @@
 package com.cobblemon.mod.common
 
 import com.cobblemon.mod.common.util.cobblemonResource
+import com.cobblemon.mod.common.world.predicate.MintBlockPredicate
 import dev.architectury.registry.level.biome.BiomeModifications
+import net.minecraft.util.math.Vec3i
 import net.minecraft.util.registry.RegistryEntry
 import net.minecraft.util.registry.RegistryEntryList
 import net.minecraft.world.gen.GenerationStep
-import net.minecraft.world.gen.feature.ConfiguredFeatures
-import net.minecraft.world.gen.feature.Feature
-import net.minecraft.world.gen.feature.PlacedFeature
-import net.minecraft.world.gen.feature.PlacedFeatures
-import net.minecraft.world.gen.feature.SimpleRandomFeatureConfig
-import net.minecraft.world.gen.feature.VegetationPlacedFeatures
+import net.minecraft.world.gen.blockpredicate.InsideWorldBoundsBlockPredicate
+import net.minecraft.world.gen.feature.*
+import net.minecraft.world.gen.placementmodifier.BlockFilterPlacementModifier
 import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier
 
 object CobblemonPlacements {
@@ -32,6 +31,9 @@ object CobblemonPlacements {
     lateinit var YELLOW_APRICORN_TREE: RegistryEntry<PlacedFeature>
 
     lateinit var APRICORN_TREES: RegistryEntry<PlacedFeature>
+
+    lateinit var RED_MINT_BUSH: RegistryEntry<PlacedFeature>
+    lateinit var MINT_BUSHES: RegistryEntry<PlacedFeature>
 
     fun register() {
         BLACK_APRICORN_TREE = PlacedFeatures.register(cobblemonResource("black_apricorn_tree").toString(), CobblemonConfiguredFeatures.BLACK_APRICORN_TREE, PlacedFeatures.wouldSurvive(
@@ -48,6 +50,8 @@ object CobblemonPlacements {
             CobblemonBlocks.WHITE_APRICORN_SAPLING.get()))
         YELLOW_APRICORN_TREE = PlacedFeatures.register(cobblemonResource("yellow_apricorn_tree").toString(), CobblemonConfiguredFeatures.YELLOW_APRICORN_TREE, PlacedFeatures.wouldSurvive(
             CobblemonBlocks.YELLOW_APRICORN_SAPLING.get()))
+        RED_MINT_BUSH = PlacedFeatures.register(cobblemonResource("red_mint").toString(), CobblemonConfiguredFeatures.RED_MINT_BUSH,
+            PlacedFeatures.wouldSurvive(CobblemonBlocks.RED_MINT.get()), BlockFilterPlacementModifier.of(MintBlockPredicate()))
 
         val apricornTreeVariety = ConfiguredFeatures.register(
             cobblemonResource("apricorn_trees").toString(), Feature.SIMPLE_RANDOM_SELECTOR, SimpleRandomFeatureConfig(
@@ -63,10 +67,20 @@ object CobblemonPlacements {
             )
         )
 
+        val mintVariety = ConfiguredFeatures.register(
+            cobblemonResource("mints").toString(), Feature.SIMPLE_RANDOM_SELECTOR, SimpleRandomFeatureConfig(
+                RegistryEntryList.of(
+                    RED_MINT_BUSH
+                )
+            )
+        )
+
         APRICORN_TREES = PlacedFeatures.register(cobblemonResource("apricorn_trees").toString(), apricornTreeVariety, VegetationPlacedFeatures.modifiers(RarityFilterPlacementModifier.of(8)))
+        MINT_BUSHES = PlacedFeatures.register(cobblemonResource("mints").toString(), mintVariety, VegetationPlacedFeatures.modifiers(RarityFilterPlacementModifier.of(1)))
 
         BiomeModifications.addProperties({ context -> true}, { context, properties ->
             properties.generationProperties.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, APRICORN_TREES)
+            properties.generationProperties.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, MINT_BUSHES)
         })
     }
 
