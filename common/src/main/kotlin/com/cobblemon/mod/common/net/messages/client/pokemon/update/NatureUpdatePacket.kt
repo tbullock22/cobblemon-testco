@@ -10,43 +10,56 @@ package com.cobblemon.mod.common.net.messages.client.pokemon.update
 
 import com.cobblemon.mod.common.Cobblemon.LOGGER
 import com.cobblemon.mod.common.api.pokemon.Natures
+import com.cobblemon.mod.common.pokemon.Nature
 import com.cobblemon.mod.common.pokemon.Pokemon
+import net.minecraft.network.PacketByteBuf
 import net.minecraft.util.Identifier
 import net.minecraft.util.InvalidIdentifierException
 
 class NatureUpdatePacket(
-    private var mintNature : Boolean = false
-) : StringUpdatePacket() {
-    constructor(pokemon: Pokemon, value: String, mintNature: Boolean): this() {
+    private var minted : Boolean = false
+) : SingleUpdatePacket<Nature?>(null) {
+    constructor(pokemon: Pokemon, value: Nature?, minted: Boolean): this() {
         this.setTarget(pokemon)
         this.value = value
-        this.mintNature = mintNature
+        this.minted = minted
     }
 
-    override fun set(pokemon: Pokemon, value: String) {
+    override fun set(pokemon: Pokemon, value: Nature?) {
         // Check for removing mint
-        if (mintNature && value.isEmpty()) {
+        if (minted && value == null) {
             pokemon.mintedNature = null
             return
         }
 
         try {
-            val nature = Natures.getNature(Identifier(value))
             // Validate the nature locally
-            if (nature == null) {
-                LOGGER.warn("A invalid nature of '$value' was attempted to be put onto: '$pokemon'")
+            if (value == null) {
+                LOGGER.warn("A null nature was attempted to be put onto: '$pokemon'")
                 return
             }
 
             // Check which nature to modify
-            if (!mintNature) {
-                pokemon.nature = nature
+            if (!minted) {
+                pokemon.nature = value
             } else {
-                pokemon.mintedNature = nature
+                pokemon.mintedNature = value
             }
         } catch (e: InvalidIdentifierException) {
             // This should never happen
             LOGGER.error("Failed to resolve nature value in NatureUpdatePacket", e)
         }
+    }
+
+    override fun encodeValue(buffer: PacketByteBuf, value: Nature?) {
+        buffer.writeNullable(value) { _, v -> buffer.writeIdentifier(v.name) }
+        buffer.writeBoolean(minted)
+    }
+
+    override fun decodeValue(buffer: PacketByteBuf): Nature? {
+        this.value = buffer.readNullable { Natures.getNature(buffer.readIdentifier()) }
+        this.minted = buffer.readBoolean()
+
+        return this.value
     }
 }

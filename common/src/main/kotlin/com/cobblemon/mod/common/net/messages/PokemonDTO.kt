@@ -64,6 +64,7 @@ class PokemonDTO : Encodable, Decodable {
     var aspects = setOf<String>()
     lateinit var evolutionBuffer: PacketByteBuf
     lateinit var nature: Identifier
+    var mintNature: Identifier? = null
     var heldItem: ItemStack = ItemStack.EMPTY
 
     constructor()
@@ -91,6 +92,7 @@ class PokemonDTO : Encodable, Decodable {
         evolutionBuffer = PacketByteBuf(Unpooled.buffer())
         pokemon.evolutionProxy.saveToBuffer(evolutionBuffer, toClient)
         this.nature = pokemon.nature.name
+        this.mintNature = pokemon.mintedNature?.name
         this.heldItem = pokemon.heldItemNoCopy()
     }
 
@@ -121,6 +123,7 @@ class PokemonDTO : Encodable, Decodable {
         buffer.writeBytes(evolutionBuffer)
         evolutionBuffer.release()
         buffer.writeIdentifier(nature)
+        buffer.writeNullable(mintNature) { _, v -> buffer.writeIdentifier(v) }
         buffer.writeItemStack(this.heldItem)
     }
 
@@ -152,6 +155,7 @@ class PokemonDTO : Encodable, Decodable {
         val bytesToRead = buffer.readSizedInt(IntSize.U_SHORT)
         evolutionBuffer = PacketByteBuf(buffer.readBytes(bytesToRead))
         nature = buffer.readIdentifier()
+        mintNature = buffer.readNullable { buffer.readIdentifier() }
         heldItem = buffer.readItemStack()
     }
 
@@ -190,6 +194,7 @@ class PokemonDTO : Encodable, Decodable {
             it.evolutionProxy.loadFromBuffer(evolutionBuffer)
             evolutionBuffer.release()
             it.nature = Natures.getNature(nature)!!
+            it.mintedNature = mintNature?.let { id -> Natures.getNature(id)!! }
             it.swapHeldItem(heldItem, false)
         }
     }

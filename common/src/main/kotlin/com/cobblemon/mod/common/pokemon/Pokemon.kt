@@ -293,9 +293,9 @@ open class Pokemon : ShowdownIdentifiable {
         }
 
     var nature = Natures.getRandomNature()
-        set(value) { field = value ; _nature.emit(value.name.toString()) }
+        set(value) { field = value ; _nature.emit(value) }
     var mintedNature: Nature? = null
-        set(value) { field = value ; _mintedNature.emit(value?.name?.toString() ?: "") }
+        set(value) { field = value ; _mintedNature.emit(value) }
 
     val moveSet = MoveSet()
 
@@ -1169,8 +1169,8 @@ open class Pokemon : ShowdownIdentifiable {
     private val _friendship = registerObservable(SimpleObservable<Int>()) { FriendshipUpdatePacket(this, it) }
     private val _currentHealth = registerObservable(SimpleObservable<Int>()) { HealthUpdatePacket(this, it) }
     private val _shiny = registerObservable(SimpleObservable<Boolean>()) { ShinyUpdatePacket(this, it) }
-    private val _nature = registerObservable(SimpleObservable<String>()) { NatureUpdatePacket(this, it, false) }
-    private val _mintedNature = registerObservable(SimpleObservable<String>()) { NatureUpdatePacket(this, it, true) }
+    private val _nature = registerObservable(SimpleObservable<Nature>()) { NatureUpdatePacket(this, it, false) }
+    private val _mintedNature = registerObservable(SimpleObservable<Nature?>()) { NatureUpdatePacket(this, it, true) }
     private val _moveSet = registerObservable(moveSet.observable) { MoveSetUpdatePacket(this, moveSet) }
     private val _state = registerObservable(SimpleObservable<PokemonState>()) { PokemonStateUpdatePacket(this, it) }
     private val _status = registerObservable(SimpleObservable<String>()) { StatusUpdatePacket(this, it) }

@@ -311,8 +311,9 @@ class StatWidget(
 
             // Nature-modified Stat Icons
             if (statTabIndex == STATS) {
-                renderModifiedStatIcon(pMatrixStack, pokemon.nature.increasedStat, true)
-                renderModifiedStatIcon(pMatrixStack, pokemon.nature.decreasedStat, false)
+                val nature = pokemon.mintedNature ?: pokemon.nature
+                renderModifiedStatIcon(pMatrixStack, nature.increasedStat, true)
+                renderModifiedStatIcon(pMatrixStack, nature.decreasedStat, false)
             }
         } else {
             // Friendship
@@ -417,8 +418,10 @@ class StatWidget(
 
     private fun getModifiedStatColour(stat: Stat, enableColour: Boolean): Int {
         if (statTabIndex == STATS && enableColour) {
-            if (pokemon.nature.increasedStat == stat) return RED
-            if (pokemon.nature.decreasedStat == stat) return BLUE
+            val nature = pokemon.mintedNature ?: pokemon.nature
+
+            if (nature.increasedStat == stat) return RED
+            if (nature.decreasedStat == stat) return BLUE
         }
         return WHITE
     }
