@@ -9,29 +9,46 @@
 package com.cobblemon.mod.common.client.gui.interact.pokemon
 
 import com.cobblemon.mod.common.api.gui.blitk
+import com.cobblemon.mod.common.client.gui.normalizeNumber
 import net.minecraft.client.gui.widget.ButtonWidget
 import net.minecraft.client.sound.SoundManager
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
+import net.minecraft.util.math.MathHelper
+import net.minecraft.util.math.Vec2f
+import org.joml.Vector2f
+import kotlin.math.sign
 
 class PokemonInteractButton(
-    x: Int, y: Int,
+    var x: Double, var y: Double,
     private val iconResource: Identifier? = null,
     private val textureResource: Identifier,
     private val enabled: Boolean = true,
     private val container: PokemonInteractGUI,
+    val xDirMod: Double,
+    val yDirMod: Double,
     onPress: PressAction
-) : ButtonWidget(x, y, SIZE, SIZE, Text.literal("Interact"), onPress, DEFAULT_NARRATION_SUPPLIER) {
+) : ButtonWidget(x.toInt(), y.toInt(), SIZE, SIZE, Text.literal("Interact"), onPress, DEFAULT_NARRATION_SUPPLIER) {
 
     companion object {
         const val SIZE = 69
         const val ICON_SIZE = 32
         const val ICON_SCALE = 0.5F
     }
+    private var xOffset: Double = x
+    private var yOffset: Double = y
+    init {
+        xOffset = x
+        yOffset = y
+        x += 10*xDirMod
+        y += 10*yDirMod
+    }
 
     override fun render(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
-            blitk(
+        x = MathHelper.lerp(0.15,x, xOffset)
+        y = MathHelper.lerp(0.15,y, yOffset)
+        blitk(
             matrixStack = matrices,
             texture = textureResource,
             x = x,

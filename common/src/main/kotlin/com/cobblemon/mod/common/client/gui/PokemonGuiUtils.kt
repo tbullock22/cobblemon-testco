@@ -38,6 +38,12 @@ fun drawProfilePokemon(
     scale
 )
 
+fun normalizeNumber(number: Number): Double {
+    val number = number.toDouble()
+    val normalized = (number - 0) / (1 - 0)
+    return normalized
+}
+
 fun drawProfilePokemon(
     species: Species,
     aspects: Set<String>,

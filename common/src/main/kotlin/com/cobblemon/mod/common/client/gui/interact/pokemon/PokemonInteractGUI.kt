@@ -16,11 +16,13 @@ import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.text.Text
+import org.joml.Math
 
 class PokemonInteractGUI(
     private val pokemonID: UUID,
     private val canMountShoulder: Boolean
 ) : Screen(Text.translatable("cobblemon.ui.interact.pokemon")) {
+    var alpha = 0.0F
     companion object {
         const val SIZE = 138
 
@@ -35,8 +37,8 @@ class PokemonInteractGUI(
     }
 
     override fun init() {
-        val x = (width - SIZE) / 2
-        val y = (height - SIZE) / 2
+        val x = (width - SIZE) / 2.0
+        val y = (height - SIZE) / 2.0
 
         // Mount/Shoulder Button
         this.addDrawableChild(PokemonInteractButton(
@@ -45,7 +47,9 @@ class PokemonInteractGUI(
             iconResource = iconShoulderResource,
             textureResource = topLeftResource,
             enabled = canMountShoulder,
-            container = this
+            container = this,
+            xDirMod =-1.0,
+            yDirMod = -2.0
         ) {
             if (canMountShoulder) {
                 InteractPokemonPacket(pokemonID, true).sendToServer()
@@ -59,7 +63,9 @@ class PokemonInteractGUI(
             y = y,
             iconResource = iconHeldItemResource,
             textureResource = topRightResource,
-            container = this
+            container = this,
+            xDirMod = 2.0,
+            yDirMod = -1.0
         ) {
             InteractPokemonPacket(pokemonID, false).sendToServer()
             MinecraftClient.getInstance().setScreen(null)
@@ -71,7 +77,9 @@ class PokemonInteractGUI(
             y = y + PokemonInteractButton.SIZE,
             textureResource = bottomLeftResource,
             enabled = false,
-            container = this
+            container = this,
+            xDirMod = -1.0,
+            yDirMod = 2.0
         ) {});
 
         // ToDo something else
@@ -80,14 +88,16 @@ class PokemonInteractGUI(
             y = y + PokemonInteractButton.SIZE,
             textureResource = bottomRightResource,
             enabled = false,
-            container = this
+            container = this,
+            xDirMod = 2.0,
+            yDirMod = 1.0
         ) {});
     }
 
     override fun render(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
         val x = (width - SIZE) / 2
         val y = (height - SIZE) / 2
-
+        alpha = Math.lerp(alpha.toDouble(), 1.0, 0.15).toFloat()
         // Render Background
         blitk(
             matrixStack = matrices,
@@ -95,7 +105,8 @@ class PokemonInteractGUI(
             x = x,
             y = y,
             width = SIZE,
-            height = SIZE
+            height = SIZE,
+            alpha = alpha
         )
 
         super.render(matrices, mouseX, mouseY, delta)
