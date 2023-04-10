@@ -62,7 +62,7 @@ class MovesWidget(
         addWidget(it)
     }
 
-    override fun render(pMatrixStack: MatrixStack, pMouseX: Int, pMouseY: Int, pPartialTicks: Float) {
+    override fun renderButton(pMatrixStack: MatrixStack, pMouseX: Int, pMouseY: Int, pPartialTicks: Float) {
         blitk(
             matrixStack = pMatrixStack,
             texture = movesBaseResource,

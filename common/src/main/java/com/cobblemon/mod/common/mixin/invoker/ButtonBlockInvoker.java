@@ -9,6 +9,7 @@
 package com.cobblemon.mod.common.mixin.invoker;
 
 import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.BlockSetType;
 import net.minecraft.block.ButtonBlock;
 import net.minecraft.sound.SoundEvent;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,7 +18,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(ButtonBlock.class)
 public interface ButtonBlockInvoker {
     @Invoker("<init>")
-    static ButtonBlock cobblemon$create(AbstractBlock.Settings settings, int pressTicks, boolean wooden, SoundEvent clickOffSound, SoundEvent clickOnSound) {
+    static ButtonBlock cobblemon$create(AbstractBlock.Settings settings, BlockSetType blockSetType, int pressTicks, boolean wooden) {
         throw new UnsupportedOperationException();
     }
 }

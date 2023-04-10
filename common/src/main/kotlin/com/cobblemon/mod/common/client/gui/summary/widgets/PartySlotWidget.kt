@@ -68,7 +68,7 @@ class PartySlotWidget(
         return 0
     }
 
-    override fun render(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
+    override fun renderButton(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
         hovered = mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height;
 
         val isDraggedSlot = partyWidget.swapEnabled && partyWidget.swapSource == index

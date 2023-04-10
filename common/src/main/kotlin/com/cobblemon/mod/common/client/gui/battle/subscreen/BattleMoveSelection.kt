@@ -169,7 +169,7 @@ class BattleMoveSelection(
         }
     }
 
-    override fun render(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
+    override fun renderButton(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
         moveTiles.forEach {
             it.render(matrices, mouseX, mouseY, delta)
         }

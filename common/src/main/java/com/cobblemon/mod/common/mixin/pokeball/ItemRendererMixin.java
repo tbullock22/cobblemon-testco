@@ -14,6 +14,7 @@ import net.minecraft.client.render.item.ItemModels;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformation;
+import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.world.ClientWorld;
@@ -33,7 +34,7 @@ public abstract class ItemRendererMixin {
 
     @Shadow @Final private ItemModels models;
 
-    @Shadow public abstract void renderItem(ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model);
+    @Shadow public abstract void renderItem(ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model);
 
     @Inject(method = "getModel", at = @At("HEAD"), cancellable = true)
     private void cobblemon$bakePokeballModel(ItemStack stack, World world, LivingEntity entity, int seed, CallbackInfoReturnable<BakedModel> cir) {
@@ -46,12 +47,12 @@ public abstract class ItemRendererMixin {
     }
 
     @Inject(
-            method = "renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformation$Mode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V",
+            method = "renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V",
             at = @At("HEAD"),
             cancellable = true
     )
-    private void cobblemon$determinePokeballModel(ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model, CallbackInfo ci) {
-        boolean shouldBe2d = renderMode == ModelTransformation.Mode.GUI || renderMode == ModelTransformation.Mode.FIXED;
+    private void cobblemon$determinePokeballModel(ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model, CallbackInfo ci) {
+        boolean shouldBe2d = renderMode == ModelTransformationMode.GUI || renderMode == ModelTransformationMode.FIXED;
         if (shouldBe2d && stack.getItem() instanceof PokeBallItem pokeBallItem) {
             BakedModel replacementModel = this.models.getModelManager().getModel(new ModelIdentifier(pokeBallItem.getPokeBall().getModel2d(), "inventory"));
             if (!model.equals(replacementModel)) {

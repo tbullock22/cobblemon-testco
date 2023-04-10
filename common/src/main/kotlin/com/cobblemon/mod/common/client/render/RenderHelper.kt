@@ -23,6 +23,7 @@ import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.VertexFormat
 import net.minecraft.client.render.VertexFormats
 import net.minecraft.client.render.model.json.ModelTransformation
+import net.minecraft.client.render.model.json.ModelTransformationMode
 import net.minecraft.client.texture.SpriteAtlasTexture
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.item.ItemStack
@@ -60,7 +61,9 @@ fun renderScaledGuiItemIcon(itemStack: ItemStack, x: Double, y: Double, scale: D
     RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F)
     val modelViewStack = matrixStack ?: RenderSystem.getModelViewStack()
     modelViewStack.push()
-    modelViewStack.translate(x, y, (zTranslation + itemRenderer.zOffset).toDouble())
+    // OLD LINE: modelViewStack.translate(x, y, (zTranslation + itemRenderer.zOffset).toDouble())
+    // TODO: Test this
+    modelViewStack.translate(x, y, (zTranslation + 0).toDouble())
     modelViewStack.translate(8.0 * scale, 8.0 * scale, 0.0)
     modelViewStack.scale(1.0F, -1.0F, 1.0F)
     modelViewStack.scale(16.0F * scale.toFloat(), 16.0F * scale.toFloat(), 16.0F * scale.toFloat())
@@ -73,7 +76,7 @@ fun renderScaledGuiItemIcon(itemStack: ItemStack, x: Double, y: Double, scale: D
 
     itemRenderer.renderItem(
         itemStack,
-        ModelTransformation.Mode.GUI,
+        ModelTransformationMode.GUI,
         false,
         stack,
         immediate,

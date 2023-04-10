@@ -58,7 +58,7 @@ fun Entity.setPositionSafely(pos: Vec3d): Boolean {
                     BooleanBiFunction.AND
                 )
         if (collides) {
-            val x = BlockPos(eyes)
+            val x = eyes.toBlockPos()
             for (direction in Direction.values()) {
                 if (conflicts.contains(direction)) continue
 

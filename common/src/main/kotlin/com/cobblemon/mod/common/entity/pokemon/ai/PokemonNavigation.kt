@@ -63,7 +63,8 @@ class PokemonNavigation(val world: World, val pokemonEntity: PokemonEntity) : Mo
         val e = abs(entity.y - targetVec3d.y)
         val f = abs(entity.z - targetVec3d.z)
         val bl = d < nodeReachProximity.toDouble() && f < this.nodeReachProximity.toDouble() && e < 1.0
-        if (bl || entity.canJumpToNextPathNode(currentPath!!.currentNode.type) && shouldJumpToNextNode(vec3d)) {
+
+        if (bl || entity.navigation.canJumpToNext(currentPath!!.currentNode.type) && shouldJumpToNextNode(vec3d)) {
             currentPath!!.next()
         }
 

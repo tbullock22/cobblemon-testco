@@ -64,6 +64,8 @@ import net.minecraft.entity.ai.pathing.PathNodeType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.damage.DamageSource
+import net.minecraft.entity.damage.DamageSources
+import net.minecraft.entity.damage.DamageTypes
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
@@ -76,7 +78,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsage
 import net.minecraft.item.Items
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.network.Packet
+import net.minecraft.network.packet.Packet
 import net.minecraft.network.listener.ClientPlayPacketListener
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket
 import net.minecraft.registry.tag.FluidTags
@@ -91,6 +93,7 @@ import net.minecraft.util.Hand
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
+import net.minecraft.world.EntityView
 import net.minecraft.world.World
 import net.minecraft.world.event.GameEvent
 import java.util.*
@@ -300,7 +303,7 @@ class PokemonEntity(
         }
 
         // Owned Pokémon cannot be hurt by players or suffocation
-        if (ownerUuid != null && (damageSource.attacker is PlayerEntity || damageSource == DamageSource.IN_WALL)) {
+        if (ownerUuid != null && (damageSource.attacker is PlayerEntity || damageSource.isOf(DamageTypes.IN_WALL))) {
             return true
         }
 
@@ -816,6 +819,10 @@ class PokemonEntity(
     override fun canBreedWith(other: AnimalEntity): Boolean = false
 
     override fun breed(world: ServerWorld, other: AnimalEntity) {}
+
+    override fun method_48926(): EntityView {
+        return this.getWorld()
+    }
 
     override fun sheared(shearedSoundCategory: SoundCategory) {
         this.world.playSoundFromEntity(null, this,SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0F, 1.0F)

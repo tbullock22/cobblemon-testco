@@ -33,6 +33,7 @@ import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.tan
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.render.LightmapTextureManager
 import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.VertexConsumerProvider
@@ -311,17 +312,16 @@ class PokemonRenderer(
             }
             var h = (-textRenderer.getWidth(label) / 2).toFloat()
             val y = 0F
-            val seeThrough = true
             val packedLight = LightmapTextureManager.pack(15, 15)
-            textRenderer.draw(label, h, y, 0x20FFFFFF, false, matrix4f, vertexConsumers, seeThrough, opacity, packedLight)
-            textRenderer.draw(label, h, y, -1, false, matrix4f, vertexConsumers, false, 0, packedLight)
+            textRenderer.draw(label, h, y, 0x20FFFFFF, false, matrix4f, vertexConsumers, TextRenderer.TextLayerType.SEE_THROUGH, opacity, packedLight)
+            textRenderer.draw(label, h, y, -1, false, matrix4f, vertexConsumers, TextRenderer.TextLayerType.NORMAL, 0, packedLight)
 
             if (entity.canBattle(player)) {
                 val sendOutBinding = PartySendBinding.boundKey().localizedText
                 val battlePrompt = lang("challenge_label", sendOutBinding)
                 h = (-textRenderer.getWidth(battlePrompt) / 2).toFloat()
-                textRenderer.draw(battlePrompt, h, y + 10, 0x20FFFFFF, false, matrix4f, vertexConsumers, seeThrough, opacity, packedLight)
-                textRenderer.draw(battlePrompt, h, y + 10, -1, false, matrix4f, vertexConsumers, false, 0, packedLight)
+                textRenderer.draw(battlePrompt, h, y + 10, 0x20FFFFFF, false, matrix4f, vertexConsumers, TextRenderer.TextLayerType.SEE_THROUGH, opacity, packedLight)
+                textRenderer.draw(battlePrompt, h, y + 10, -1, false, matrix4f, vertexConsumers, TextRenderer.TextLayerType.NORMAL, 0, packedLight)
             }
             matrices.pop()
         }

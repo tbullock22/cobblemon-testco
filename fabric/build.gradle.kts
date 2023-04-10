@@ -1,3 +1,9 @@
+configurations.all {
+    resolutionStrategy {
+        force(libs.fabricLoader)
+    }
+}
+
 plugins {
     id("cobblemon.platform-conventions")
     id("cobblemon.publish-conventions")

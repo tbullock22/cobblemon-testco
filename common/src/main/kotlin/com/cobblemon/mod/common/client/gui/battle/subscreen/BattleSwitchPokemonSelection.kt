@@ -100,7 +100,7 @@ class BattleSwitchPokemonSelection(
         }
     }
 
-    override fun render(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
+    override fun renderButton(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
         if (opacity <= 0.05F) {
             return
         }

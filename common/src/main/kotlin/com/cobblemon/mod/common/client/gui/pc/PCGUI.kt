@@ -263,8 +263,8 @@ class PCGUI(
             val itemX = x + 3
             val itemY = y + 98
             if (!heldItem.isEmpty) {
-                MinecraftClient.getInstance().itemRenderer.renderGuiItemIcon(heldItem, itemX, itemY)
-                MinecraftClient.getInstance().itemRenderer.renderGuiItemOverlay(MinecraftClient.getInstance().textRenderer, heldItem, itemX, itemY)
+                MinecraftClient.getInstance().itemRenderer.renderGuiItemIcon(matrices, heldItem, itemX, itemY)
+                MinecraftClient.getInstance().itemRenderer.renderGuiItemOverlay(matrices, MinecraftClient.getInstance().textRenderer, heldItem, itemX, itemY)
             }
 
             drawScaledText(

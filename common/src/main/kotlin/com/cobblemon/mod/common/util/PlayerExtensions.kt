@@ -246,7 +246,7 @@ fun PlayerEntity.giveOrDropItemStack(stack: ItemStack, playSound: Boolean = true
     else {
         this.dropItem(stack, false)?.let { itemEntity ->
             itemEntity.resetPickupDelay()
-            itemEntity.owner = this.uuid
+            itemEntity.setOwner(this.uuid)
         }
     }
 }

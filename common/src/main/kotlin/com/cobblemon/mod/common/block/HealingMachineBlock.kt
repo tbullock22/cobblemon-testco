@@ -89,7 +89,7 @@ class HealingMachineBlock(properties: Settings) : BlockWithEntity(properties) {
     }
 
     override fun getPlacementState(blockPlaceContext: ItemPlacementContext): BlockState {
-        return this.defaultState.with(HorizontalFacingBlock.FACING, blockPlaceContext.playerFacing)
+        return this.defaultState.with(HorizontalFacingBlock.FACING, blockPlaceContext.horizontalPlayerFacing)
     }
 
     @Deprecated("Deprecated in Java")

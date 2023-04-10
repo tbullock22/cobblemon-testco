@@ -20,7 +20,7 @@ class SingleTypeWidget(
     private val renderText: Boolean = true
 ) : TypeWidget(pX, pY, pWidth, pHeight, Text.literal("SingleTypeWidget - ${type.name}")) {
 
-    override fun render(pMatrixStack: MatrixStack, pMouseX: Int, pMouseY: Int, pPartialTicks: Float) {
+    override fun renderButton(pMatrixStack: MatrixStack, pMouseX: Int, pMouseY: Int, pPartialTicks: Float) {
         pMatrixStack.push()
         pMatrixStack.translate(0.35, 0.0, 0.0)
         renderType(type, pMatrixStack)

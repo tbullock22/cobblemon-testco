@@ -525,8 +525,8 @@ class Summary private constructor(party: Collection<Pokemon?>, private val edita
         val itemX = x + 3
         val itemY = y + 104
         if (!heldItem.isEmpty) {
-            MinecraftClient.getInstance().itemRenderer.renderGuiItemIcon(heldItem, itemX, itemY)
-            MinecraftClient.getInstance().itemRenderer.renderGuiItemOverlay(MinecraftClient.getInstance().textRenderer, heldItem, itemX, itemY)
+            MinecraftClient.getInstance().itemRenderer.renderGuiItemIcon(pMatrixStack, heldItem, itemX, itemY)
+            MinecraftClient.getInstance().itemRenderer.renderGuiItemOverlay(pMatrixStack, MinecraftClient.getInstance().textRenderer, heldItem, itemX, itemY)
         }
 
         drawScaledText(

@@ -183,7 +183,7 @@ class PCBlock(properties: Settings): BlockWithEntity(properties) {
         val world = blockPlaceContext.world
         if (world.getBlockState(abovePosition).canReplace(blockPlaceContext) && !world.isOutOfHeightLimit(abovePosition)) {
             return defaultState
-                .with(HorizontalFacingBlock.FACING, blockPlaceContext.playerFacing)
+                .with(HorizontalFacingBlock.FACING, blockPlaceContext.horizontalPlayerFacing)
                 .with(PART, PCPart.BOTTOM)
         }
 

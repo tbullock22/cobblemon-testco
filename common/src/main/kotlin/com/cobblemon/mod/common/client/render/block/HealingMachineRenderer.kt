@@ -18,6 +18,7 @@ import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.block.entity.BlockEntityRenderer
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory
 import net.minecraft.client.render.model.json.ModelTransformation
+import net.minecraft.client.render.model.json.ModelTransformationMode
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.util.math.Direction
 import net.minecraft.util.math.RotationAxis
@@ -53,7 +54,7 @@ class HealingMachineRenderer<T: BlockEntity>(ctx: BlockEntityRendererFactory.Con
             poseStack.push()
             val offset = offsets[index]
             poseStack.translate(offset.first, 0.4, offset.second)
-            MinecraftClient.getInstance().itemRenderer.renderItem(pokeBall.stack(), ModelTransformation.Mode.GROUND, light, overlay, poseStack, multiBufferSource, 0)
+            MinecraftClient.getInstance().itemRenderer.renderItem(pokeBall.stack(), ModelTransformationMode.GROUND, light, overlay, poseStack, multiBufferSource, blockEntity.world, 0)
             poseStack.pop()
         }
         poseStack.pop()

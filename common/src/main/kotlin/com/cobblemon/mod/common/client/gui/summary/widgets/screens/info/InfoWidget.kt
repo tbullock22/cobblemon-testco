@@ -36,7 +36,7 @@ class InfoWidget(
         private val infoBaseResource = cobblemonResource("textures/gui/summary/summary_info_base.png")
     }
 
-    override fun render(pMatrixStack: MatrixStack, pMouseX: Int, pMouseY: Int, pPartialTicks: Float) {
+    override fun renderButton(pMatrixStack: MatrixStack, pMouseX: Int, pMouseY: Int, pPartialTicks: Float) {
         // Base texture
         blitk(
             matrixStack = pMatrixStack,

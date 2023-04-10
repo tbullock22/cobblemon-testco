@@ -99,7 +99,7 @@ open class StorageSlot(
         }
         matrices.pop()
 
-        if (isSelected()) {
+        if (isSelected) {
             blitk(
                 matrixStack = matrices,
                 texture = selectPointerResource,
@@ -128,7 +128,7 @@ open class StorageSlot(
         return null
     }
 
-    open fun isSelected(): Boolean {
+    override fun isSelected(): Boolean {
         return getPokemon() == parent.pcGui.previewPokemon
     }
 

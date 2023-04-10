@@ -84,7 +84,7 @@ class BattleGeneralActionSelection(
         )
     }
 
-    override fun render(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
+    override fun renderButton(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
         for (tile in tiles) {
             tile.render(matrices, mouseX, mouseY, delta)
         }

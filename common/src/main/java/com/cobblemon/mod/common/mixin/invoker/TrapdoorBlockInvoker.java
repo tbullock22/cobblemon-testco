@@ -9,6 +9,7 @@
 package com.cobblemon.mod.common.mixin.invoker;
 
 import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.BlockSetType;
 import net.minecraft.block.TrapdoorBlock;
 import net.minecraft.sound.SoundEvent;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,7 +18,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(TrapdoorBlock.class)
 public interface TrapdoorBlockInvoker {
     @Invoker("<init>")
-    static TrapdoorBlock cobblemon$create(AbstractBlock.Settings settings, SoundEvent closeSound, SoundEvent openSound) {
+    static TrapdoorBlock cobblemon$create(AbstractBlock.Settings settings, BlockSetType blockSetType) {
         throw new UnsupportedOperationException();
     }
 }

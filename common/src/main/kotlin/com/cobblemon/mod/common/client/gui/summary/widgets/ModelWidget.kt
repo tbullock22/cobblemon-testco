@@ -36,7 +36,7 @@ class ModelWidget(
     private val minecraft = MinecraftClient.getInstance()
     val rotVec = Vector3f(13F, rotationY, 0F)
 
-    override fun render(pMatrixStack: MatrixStack, pMouseX: Int, pMouseY: Int, pPartialTicks: Float) {
+    override fun renderButton(pMatrixStack: MatrixStack, pMouseX: Int, pMouseY: Int, pPartialTicks: Float) {
         if (!render) {
             return
         }

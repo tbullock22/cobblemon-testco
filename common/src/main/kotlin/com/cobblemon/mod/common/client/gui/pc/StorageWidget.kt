@@ -205,7 +205,7 @@ class StorageWidget(
         }
     }
 
-    override fun render(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
+    override fun renderButton(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
         // Party  Label
         drawScaledText(
             matrixStack = matrices,
