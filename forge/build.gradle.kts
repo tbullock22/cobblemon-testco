@@ -46,13 +46,6 @@ dependencies {
         forgeRuntimeLibrary(it)
         bundle(it)
     }
-
-    listOf(
-        libs.stdlib,
-        libs.serializationCore,
-        libs.serializationJson,
-        libs.reflect
-    ).forEach(::forgeRuntimeLibrary)
 }
 
 tasks {
