@@ -122,4 +122,9 @@ open class FileBackedPokemonStoreFactory<S>(
         saveExecutor.shutdown()
     }
 
+    override fun removeCache(playerID: UUID) {
+        dirtyStores.find { it.uuid == playerID }?.let { save(it) }
+        storeCaches.forEach { (_, cache) -> cache.cacheMap.remove(playerID) }
+    }
+
 }

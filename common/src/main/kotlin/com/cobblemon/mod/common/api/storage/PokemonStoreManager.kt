@@ -97,4 +97,12 @@ open class PokemonStoreManager {
         getPCs(player.uuid).forEach { pc -> pc.sendTo(player) }
         player.sendPacket(SetPartyReferencePacket(parties.first().uuid))
     }
+
+    open fun onPlayerDisconnect(player: ServerPlayerEntity) {
+        factories.firstNotNullOfOrNull {
+            it.removeCache(player.uuid)
+        } ?: throw NoPokemonStoreException(
+            "No factory was able to provide a party for ${player.uuid} - this should not be possible unless someone has removed the default provider!"
+        )
+    }
 }

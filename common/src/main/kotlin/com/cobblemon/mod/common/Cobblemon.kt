@@ -186,6 +186,7 @@ object Cobblemon {
         PlatformEvents.SERVER_PLAYER_LOGOUT.subscribe {
             PCLinkManager.removeLink(it.player.uuid)
             BattleRegistry.getBattleByParticipatingPlayer(it.player)?.stop()
+            storage.onPlayerDisconnect(it.player)
         }
         PlatformEvents.PLAYER_DEATH.subscribe {
             PCLinkManager.removeLink(it.player.uuid)
