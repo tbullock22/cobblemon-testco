@@ -72,6 +72,7 @@ fun blitk(
         vOffset.toFloat() / textureHeight.toFloat(), (vOffset.toFloat() + height.toFloat()) / textureHeight.toFloat()
     )
     matrixStack.pop()
+    RenderSystem.setShaderColor(1f, 1f, 1f, 1f)
 }
 
 fun drawRectangle(
