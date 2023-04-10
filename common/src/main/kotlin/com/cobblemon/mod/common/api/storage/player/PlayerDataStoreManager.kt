@@ -12,11 +12,17 @@ import com.cobblemon.mod.common.api.scheduling.ScheduledTask
 import com.cobblemon.mod.common.api.storage.player.adapter.JsonPlayerData
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.server.MinecraftServer
+
 class PlayerDataStoreManager {
 
     private val jpd = JsonPlayerData()
 
-    private fun registerSaveScheduler() = ScheduledTask.Builder().execute { jpd.saveCache() }.delay(30f).interval(120f).build()
+    private fun registerSaveScheduler() = ScheduledTask.Builder()
+        .execute { jpd.saveCache() }
+        .delay(30f)
+        .interval(120f)
+        .infiniteIterations()
+        .build()
 
     fun setup(server: MinecraftServer) {
         registerSaveScheduler()
