@@ -79,7 +79,7 @@ import com.cobblemon.mod.common.net.serverhandling.storage.party.SwapPartyPokemo
 import com.cobblemon.mod.common.net.serverhandling.storage.pc.*
 import com.cobblemon.mod.common.util.server
 import kotlin.reflect.KClass
-import net.minecraft.network.Packet
+import net.minecraft.network.packet.Packet
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.network.listener.ClientPlayPacketListener
 import net.minecraft.server.network.ServerPlayerEntity

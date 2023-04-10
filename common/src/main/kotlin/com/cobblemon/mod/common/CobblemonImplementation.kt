@@ -15,9 +15,9 @@ import com.mojang.brigadier.arguments.ArgumentType
 import kotlin.reflect.KClass
 import net.minecraft.advancement.criterion.Criterion
 import net.minecraft.command.argument.serialize.ArgumentSerializer
-import net.minecraft.network.Packet
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.network.listener.ClientPlayPacketListener
+import net.minecraft.network.packet.Packet
 import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.resource.ResourceReloader
